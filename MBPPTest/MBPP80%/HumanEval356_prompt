@@ -1,0 +1,10 @@
+import math
+def get_First_Set_Bit_Pos(n):
+     return math.log2(n&-n)+1
+The following is chain of thought:
+1. The function `get_First_Set_Bit_Pos(n)` aims to find the position of the first set bit (least significant set bit) in the binary representation of integer `n`.
+2. The expression `n & -n` isolates the least significant set bit (turns all other bits to 0).
+3. Taking `math.log2()` of this value gives the exponent (which corresponds to the bit position when counting from 0).
+4. Since the problem likely expects positions to start counting from 1 (not 0), we add 1 to the result.
+5. However, we must handle the special case where `n = 0` (which has no set bits) to avoid a domain error in `math.log2()`.
+6. The current implementation doesn't handle `n = 0`, so we need to add a che

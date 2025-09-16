@@ -1,0 +1,30 @@
+CodeGeneration:
+ize a list for the key (tuple) if it doesn't exist, then append 1 to that list.
+4. After processing all sublists, iterate through the dictionary items:
+   - For each key-value pair, replace the list of 1's with the sum of that list (which gives the count).
+5. Return the dictionary with tuples as keys and their counts as values.
+
+Here is the complete function with the docstring:
+
+```python
+def unique_sublists(list1):
+    """
+    Count the occurrences of each unique sublist in the given list of lists.
+    
+    Args:
+        list1 (list of list): Input list containing sublists.
+    
+    Returns:
+        dict: Dictionary with tuples (representing sublists) as keys and their counts as values.
+    
+    Example:
+        >>> unique_sublists([[1, 2], [3, 4], [1, 2]])
+        {(1, 2): 2, (3, 4): 1}
+    """
+    result = {}
+    for l in list1:
+        result.setdefault(tuple(l), list()).append(1)
+    for a, b in result.items():
+        result[a] = sum(b)
+    return result
+```

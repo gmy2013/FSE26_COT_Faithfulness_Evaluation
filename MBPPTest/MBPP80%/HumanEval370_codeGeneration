@@ -1,0 +1,34 @@
+CodeGeneration:
+1` (adding one segment).
+3. **Return Result**: After processing, `dp[n]` holds the maximum segments for length `n` (or `-1` if unreachable).
+
+Here is the complete function with the docstring:
+
+```python
+def maximum_segments(n, a, b, c):
+    """
+    Given a rod of length n and three segment lengths a, b, and c,
+    find the maximum number of segments that can be cut from the rod
+    using segments of lengths a, b, and c (any number of times each).
+
+    Args:
+        n (int): Total length of the rod.
+        a (int): First segment length.
+        b (int): Second segment length.
+        c (int): Third segment length.
+
+    Returns:
+        int: Maximum number of segments, or -1 if not possible.
+    """
+    dp = [-1] * (n + 10)
+    dp[0] = 0
+    for i in range(0, n):
+        if dp[i] != -1:
+            if i + a <= n:
+                dp[i + a] = max(dp[i] + 1, dp[i + a])
+            if i + b <= n:
+                dp[i + b] = max(dp[i] + 1, dp[i + b])
+            if i + c <= n:
+                dp[i + c] = max(dp[i] + 1, dp[i + c])
+    return dp[n]
+```

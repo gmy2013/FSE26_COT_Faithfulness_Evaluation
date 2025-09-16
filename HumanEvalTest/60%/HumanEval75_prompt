@@ -1,0 +1,50 @@
+
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+
+The following is chain of thought:
+To solve this problem, we need to determine if a given number `a` (less than 100) is the product of exactly three prime numbers. The approach involves generating all primes up to 100 (since `a < 100`), then checking all combinations of three primes (with repetition allowed) to see if their product equals `a`.
+
+1. **Generate primes up to 100**: Since `a` is less than 100, the primes we need are all primes less than 100. The largest prime factor in any triple product must be at most `a` (which is <100), so generating primes up to 100 is sufficient.
+2. **Check all combinations of three primes**: For each triple (p, q, r) of primes (allowing duplicates), compute the product. If the product equals `a`, return True.
+3. **Efficiency consideration**: Since the number of primes up to 100 is small (25 primes), iterating over all combinations (including duplicates) is feasible (25^3 = 15625 combinations, which is acceptable for a number less than 100).
+
+Steps in code:
+- Generate list of primes up to 100.
+- Use nested loops to iterate over all possible triples (with repetition allowed).
+- If any triple product equals `a`, return True.
+- If no triple found after all iterations, return False.
+
+Note: The problem allows the same prime to be used multiple times (e.g., 8 = 2*2*2), so duplicates are allowed in the triple.
+
+Let's implement accordingly.
+```python
+def is_multiply_prime(a):
+    # Generate primes up to 100
+    primes = []
+    for num in range(2, 101):
+        is_prime = True
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(num)
+    
+    # Check all combinations of three primes (with repetition)
+    n = len(primes)
+    for i in range(n):
+        for j in range(i, n):   # Start from i to avoid duplicates if we care about order? But order doesn't matter for product.
+            for k in range(j, n): # Start from j for same reason.
+                if primes[i] * primes[j] * primes[k] == a:
+                    return True
+    return False
+```
+
+However, the above nested loops might miss some cases if we require distinct primes? Actually

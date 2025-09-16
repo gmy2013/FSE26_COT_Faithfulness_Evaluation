@@ -1,0 +1,32 @@
+def factorial(start,end): 
+    res = 1 
+    for i in range(start,end + 1): 
+        res *= i      
+    return res 
+def sum_of_square(n): 
+   return int(factorial(n + 1, 2 * n)  /factorial(1, n)) 
+The following is chain of thought:
+Let's analyze the function `sum_of_square(n)` step by step:
+
+1. The function `factorial(start, end)` computes the product of all integers from `start` to `end` inclusive.
+2. In `sum_of_square(n)`, we have:
+   - `factorial(n + 1, 2 * n)` which computes the product from (n+1) to (2n)
+   - `factorial(1, n)` which computes the product from 1 to n (which is n!)
+3. So the expression is: `factorial(n+1, 2*n) / factorial(1, n)`
+4. Let's simplify this:
+   - `factorial(n+1, 2*n) = (n+1)*(n+2)*...*(2n)`
+   - `factorial(1, n) = 1*2*...*n = n!`
+5. Therefore, `(n+1)*(n+2)*...*(2n) / n!` is equivalent to `(2n)! / (n! * n!)` because:
+   - `(2n)! = 1*2*...*n*(n+1)*...*(2n) = n! * (n+1)*...*(2n)`
+   - So `(n+1)*...*(2n) = (2n)! / n!`
+   - Then dividing by n! gives `(2n)! / (n! * n!)` which is the binomial coefficient C(2n, n).
+6. However, the function is named `sum_of_square(n)`, which suggests it might be computing something else. Actually, the binomial coefficient C(2n, n) is not the sum of squares.
+7. But note: There is a known identity: the sum of squares of the first n integers is n(n+1)(2n+1)/6.
+   This function does not compute that.
+8. Alternatively, consider the central binomial coefficient: C(2n, n) = (2n)!/(n!)^2.
+   This is what the function computes.
+9. However, the function name `sum_of_square` is misleading. It might be a misnomer, or perhaps it is intended for a specific purpose.
+10. Given the code exactly as written, the function returns the integer value of C(2n, n), the central binomial coefficient.
+
+So the chain of thought is:
+- The function computes the product from (n+1) to (2n

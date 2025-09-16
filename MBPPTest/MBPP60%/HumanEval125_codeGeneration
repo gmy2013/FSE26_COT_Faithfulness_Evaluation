@@ -1,0 +1,27 @@
+CodeGeneration:
+the product for each pair.
+5. Convert the generator to a tuple and return it.
+
+Here is the complete function:
+
+```python
+def multiply_elements(test_tup):
+    """Multiply consecutive elements in a tuple and return the results as a tuple.
+    
+    Args:
+        test_tup (tuple): Input tuple containing numbers
+        
+    Returns:
+        tuple: Tuple containing products of consecutive elements
+        
+    Examples:
+        >>> multiply_elements((1, 5, 7, 8, 10))
+        (5, 35, 56, 80)
+        >>> multiply_elements((2, 4, 6))
+        (8, 24)
+        >>> multiply_elements((3,))
+        ()
+    """
+    res = tuple(i * j for i, j in zip(test_tup, test_tup[1:]))
+    return res
+```

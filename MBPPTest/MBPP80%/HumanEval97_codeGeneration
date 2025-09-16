@@ -1,0 +1,32 @@
+CodeGeneration:
+on assumes that all keys are tuples (or similar) with at least two elements that can be multiplied. If this assumption is violated, it may raise an error.
+
+Here's the complete function with improved formatting and error handling:
+
+```python
+def sort_dict_item(test_dict):
+    """
+    Sort dictionary items by a custom key function.
+    
+    The function sorts the dictionary keys based on the product of the first two
+    elements of each key (assuming keys are tuples or sequences with at least
+    two numeric elements).
+    
+    Args:
+        test_dict (dict): A dictionary where keys are expected to be tuples/sequences
+                         with at least two numeric elements.
+    
+    Returns:
+        dict: A new dictionary with keys sorted by (key[0] * key[1])
+    
+    Example:
+        >>> sort_dict_item({(2, 3): 'a', (1, 4): 'b', (3, 2): 'c'})
+        {(1, 4): 'b', (2, 3): 'a', (3, 2): 'c'}
+    """
+    try:
+        res = {key: test_dict[key] for key in sorted(test_dict.keys(), 
+                                                    key=lambda ele: ele[1] * ele[0])}
+        return res
+    except (IndexError, TypeError) as e:
+        raise ValueError("Dictionary keys must be sequences with at least two numeric elements") from e
+```

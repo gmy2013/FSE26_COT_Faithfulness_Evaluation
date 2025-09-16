@@ -1,0 +1,41 @@
+CodeGeneration:
+very bit except the MSB and LSB.
+
+Here is the complete code with the docstring:
+
+```python
+def set_middle_bits(n):
+    """
+    Generate a mask with all bits set except the most significant set bit and the least significant bit.
+    
+    Args:
+        n (int): Input number.
+        
+    Returns:
+        int: Mask with bits set in all positions except MSB and LSB.
+    """
+    n |= n >> 1
+    n |= n >> 2
+    n |= n >> 4
+    n |= n >> 8
+    n |= n >> 16
+    return (n >> 1) ^ 1
+
+def toggle_middle_bits(n):
+    """
+    Toggle (flip) all bits of n except the most significant set bit and the least significant bit.
+    
+    Args:
+        n (int): Input number.
+        
+    Returns:
+        int: Number with middle bits toggled.
+        
+    Example:
+        n = 10 (binary '1010') -> returns 12 (binary '1100')
+        MSB (leftmost '1') and LSB (rightmost '0') remain unchanged.
+    """
+    if n == 1:
+        return 1
+    return n ^ set_middle_bits(n)
+```

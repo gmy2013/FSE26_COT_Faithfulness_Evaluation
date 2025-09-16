@@ -1,0 +1,21 @@
+
+
+def monotonic(l: list):
+    """Return True is list elements are monotonically increasing or decreasing.
+    >>> monotonic([1, 2, 4, 20])
+    True
+    >>> monotonic([1, 20, 4, 10])
+    False
+    >>> monotonic([4, 1, 0, -10])
+    True
+    """
+
+The following is chain of thought:
+We are checking if the list is either entirely non-decreasing or entirely non-increasing.
+ Steps:
+ 1. Check if the list has less than 2 elements - if yes, return True (trivially monotonic).
+ 2. Check for non-decreasing: traverse the list and check if every element is >= the previous.
+ 3. Check for non-increasing: traverse the list and check if every element is <= the previous.
+ 4. Return True if either non-decreasing or non-increasing is True.
+
+ However, note: the examples include strictly increasing/decreasing, but the problem 

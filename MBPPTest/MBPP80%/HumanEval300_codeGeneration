@@ -1,0 +1,31 @@
+CodeGeneration:
+```python
+def smallest_multiple(n):
+    """
+    Returns the smallest positive number that is evenly divisible by all numbers from 1 to n.
+    
+    Args:
+        n (int): Upper bound of the range (1 to n)
+        
+    Returns:
+        int: The smallest number divisible by all numbers from 1 to n
+    """
+    if n <= 2:
+        return n
+    
+    # Start checking from n*2 since n itself might not be divisible by all numbers
+    i = n * 2
+    
+    # Only need to check factors greater than n/2 since smaller factors
+    # are divisors of larger ones in the range
+    factors = [number for number in range(n, n//2, -1) if number > 1]
+    
+    while True:
+        for a in factors:
+            if i % a != 0:
+                i += n  # Only need to check multiples of n
+                break
+        else:
+            # If we didn't break from the inner loop, all factors divide i
+            return i
+```

@@ -1,0 +1,8 @@
+def concatenate_nested(test_tup1, test_tup2):
+  res = test_tup1 + test_tup2
+  return (res) 
+The following is chain of thought:
+We are given two nested tuples. The function should concatenate them at the top level.
+ Since tuples are immutable, we can simply use the + operator to concatenate them.
+ This will create a new tuple that contains all elements of test_tup1 followed by all elements of test_tup2.
+ The function returns this new tuple.

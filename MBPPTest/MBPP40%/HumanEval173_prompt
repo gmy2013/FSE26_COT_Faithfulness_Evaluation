@@ -1,0 +1,16 @@
+import re 
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+def check_email(email): 
+	if(re.search(regex,email)): 
+		return ("Valid Email") 
+	else: 
+		return ("Invalid Email") 
+The following is chain of thought:
+The function `check_email` uses a regular expression to validate email addresses. Here is the structured chain of thought:
+
+1. **Function Purpose**: Validate an input string as an email address based on a specific regex pattern.
+2. **Regex Pattern Analysis**:
+   - `^[a-z0-9]+`: Starts with one or more alphanumeric characters (lowercase letters or digits).
+   - `[\._]?`: Optionally contains a dot or underscore (but only one, and it must be between alphanumeric parts).
+   - `[a-z0-9]+`: Followed by one or more alphanumeric characters.
+   - `[@]`: Contains an "@" symbo

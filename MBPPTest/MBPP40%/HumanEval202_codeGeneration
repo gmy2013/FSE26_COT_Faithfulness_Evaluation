@@ -1,0 +1,23 @@
+CodeGeneration:
+n.
+   - `n / i == i`: This checks if the other divisor is also `i`, meaning `n = i*i`.
+4. If both conditions are true, it returns `True` (indicating `n` is a perfect square).
+5. If the loop completes without finding such `i`, it returns `False`.
+
+However, note that the condition `(n % i == 0) and (n / i == i)` is equivalent to `i * i == n`, but with an extra divisibility check. Since `i*i == n` implies `n % i == 0`, the divisibility check is redundant.
+
+We can simplify the function by directly checking if `i*i == n`. Here's the improved version:
+
+```python
+def is_Perfect_Square(n):
+    i = 1
+    while i * i <= n:
+        if i * i == n:
+            return True
+        i += 1
+    return False
+```
+
+This version is more efficient and clearer. It iterates through integers `i` starting from 1, and for each, checks if `i*i` equals `n`. If found, returns `True`; if the square exceeds `n`, returns `False`.
+
+Let me write the complete function accordingly.

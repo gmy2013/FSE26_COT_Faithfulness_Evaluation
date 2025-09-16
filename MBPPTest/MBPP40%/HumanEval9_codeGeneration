@@ -1,0 +1,33 @@
+CodeGeneration:
+ds to index L-1.
+4. We can achieve this by slicing the list: take all elements before index L-1 and all elements after index L-1, then concatenate them.
+5. The code `list1[:L-1]` gives elements from start to index L-2 (inclusive), and `list1[L:]` gives elements from index L to the end.
+6. This effectively excludes the element at index L-1 (which is the L-th element).
+
+Here's the complete function:
+
+```python
+def remove_kth_element(list1, L):
+    """
+    Remove the k-th element from a list (1-indexed).
+    
+    Args:
+        list1 (list): The input list from which to remove an element.
+        L (int): The position (1-indexed) of the element to remove.
+    
+    Returns:
+        list: A new list with the k-th element removed.
+    
+    Examples:
+        >>> remove_kth_element([1, 2, 3, 4, 5], 2)
+        [1, 3, 4, 5]
+        >>> remove_kth_element(['a', 'b', 'c', 'd'], 3)
+        ['a', 'b', 'd']
+    """
+    if L < 1 or L > len(list1):
+        raise IndexError("Position L is out of range for the given list")
+    
+    return list1[:L-1] + list1[L:]
+```
+
+The function includes input validation to ensure L is within valid bounds (1 to len(list1)), and returns a new list with the specified element removed.

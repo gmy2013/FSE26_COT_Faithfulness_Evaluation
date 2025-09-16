@@ -1,0 +1,13 @@
+def Check_Solution(a,b,c) : 
+    if ((b*b) - (4*a*c)) > 0 : 
+        return ("2 solutions") 
+    elif ((b*b) - (4*a*c)) == 0 : 
+        return ("1 solution") 
+    else : 
+        return ("No solutions") 
+The following is chain of thought:
+1. The function `Check_Solution` takes three parameters: `a`, `b`, and `c`, which represent the coefficients of a quadratic equation.
+2. The discriminant of the quadratic equation is calculated as `(b*b) - (4*a*c)`.
+3. If the discriminant is greater than 0, the quadratic equation has two distinct real solutions, so return "2 solutions".
+4. If the discriminant is exactly 0, the quadratic equation has exactly one real solution (a repeated root), so return "1 solution".
+5. If the discriminant is less than 0, the quadratic equation has no real solutions (only complex ones)

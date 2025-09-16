@@ -1,0 +1,12 @@
+def Check_Solution(a,b,c):  
+    if b == 0:  
+        return ("Yes")  
+    else: 
+        return ("No")  
+The following is chain of thought:
+The function `Check_Solution` appears to check if `b` is zero, returning "Yes" if true and "No" otherwise. However, the docstring is missing, so the intended purpose is unclear from the code alone. Based on the function name, it might be related to verifying a solution to an equation or system where `b=0` is a condition for validity.
+
+Chain of thought:
+1. The function takes three parameters: `a`, `b`, and `c`.
+2. It only checks the value of `b`, ignoring `a` and `c`.
+3

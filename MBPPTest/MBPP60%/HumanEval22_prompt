@@ -1,0 +1,6 @@
+def nth_nums(nums,n):
+ nth_nums = list(map(lambda x: x ** n, nums))
+ return nth_nums
+The following is chain of thought:
+1. Understand the function purpose: The function should raise each element in the input list `nums` to the power `n`.
+2. Consider the approach: Use a lambda function with `map` to apply the exponentiation operation to each elemen

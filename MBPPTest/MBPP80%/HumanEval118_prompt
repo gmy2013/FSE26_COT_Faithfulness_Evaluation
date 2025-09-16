@@ -1,0 +1,18 @@
+import re
+def text_match(text):
+        patterns = 'ab*?'
+        if re.search(patterns,  text):
+                return 'Found a match!'
+        else:
+                return('Not matched!')
+The following is chain of thought:
+1. The function `text_match` checks if the input string `text` contains a pattern defined by the regex `'ab*?'`.
+2. The regex pattern `'ab*?'` means:
+   - `a`: matches the literal character 'a'
+   - `b*?`: matches zero or more 'b's, but as few as possible (non-greedy quantifier)
+3. This pattern will match:
+   - Any occurrence of 'a' (with zero 'b's following it)
+   - Or 'a' followed by one or more 'b's (but matching minimally)
+4. Since the pattern can match just a single 'a', and `re.search` returns the first match found:
+   - The function will return 'Found a match!' if the text contains at least one 'a'
+   - It will return 'Not matched!' only if the text contains no 

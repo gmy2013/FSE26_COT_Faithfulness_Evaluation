@@ -1,0 +1,36 @@
+
+def prod_signs(arr):
+    """
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by product of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    Note: return None for empty arr.
+
+    Example:
+    >>> prod_signs([1, 2, 2, -4]) == -9
+    >>> prod_signs([0, 1]) == 0
+    >>> prod_signs([]) == None
+    """
+
+The following is chain of thought:
+We are given an array `arr` of integers.
+ Steps:
+ 1. If the array is empty, return None.
+ 2. Initialize a variable `product` to 1 to accumulate the product of signs.
+ 3. Initialize a variable `sum_magnitudes` to 0 to accumulate the sum of absolute values.
+ 4. Iterate over each number in the array:
+    - For each number, determine its sign:
+        - If the number is positive, sign is 1.
+        - If the number is negative, sign is -1.
+        - If the number is zero, sign is 0.
+    - Multiply the current `product` by the sign (this will update the product accordingly).
+    - Add the absolute value of the number to `sum_magnitudes`.
+ 5. After processing all numbers, return `product * sum_magnitudes`.
+
+ However, note: if at any point the product becomes zero (because we encountered a zero), then the entire product becomes zero and remains zero.
+ So we can break early if product becomes zero? But we still need to sum the magnitudes of all numbers (including after zero) as per the problem?
+ Actually, the problem says: "sum of magnitudes of integers multiplied by product of all signs". So we must sum all magnitudes and multiply by the product of all signs.
+
+ But if we have a zero, the product becomes zero and the entire result becomes zero. So we can break early for efficiency? However, we still need to compute the sum of magnitudes for all elements (even after zero) because the problem requires the sum of magnitudes of all integers. So we cannot break the loop early.
+
+ Alternatively, we can compute the product of signs and the sum of magnitudes in the same loop without b

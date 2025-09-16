@@ -1,0 +1,28 @@
+20%CoT
+CodeGeneration:
+```python
+def select_words(s, n):
+    """ Given a string s and a natural number n, return a list of all words from 
+    string s that contain exactly n consonants, in the order they appear in s. """
+    
+    # Define a set of vowels for easy lookup
+    vowels = set('aeiouAEIOU')
+    
+    # Initialize the list to store the result words
+    result = []
+    
+    # Split the input string `s` into words
+    words = s.split()
+    
+    # Process each word in the list of words
+    for word in words:
+        consonant_count = 0
+        for char in word:
+            if char.isalpha() and char not in vowels:
+                consonant_count += 1
+        
+        # If the consonant count matches 'n', add the word to the result list
+        if consonant_count == n:
+            result.append(word)
+    
+    return result

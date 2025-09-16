@@ -1,0 +1,19 @@
+CodeGeneration:
+t to `res`.
+4. After the loop, append `dig` to `res`.
+5. Return `res`.
+
+Here is the complete function:
+
+```python
+def move_num(test_str):
+    res = ''
+    dig = ''
+    for ele in test_str:
+        if ele.isdigit():
+            dig += ele
+        else:
+            res += ele
+    res += dig
+    return res
+```

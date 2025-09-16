@@ -1,0 +1,10 @@
+def len_log(list1):
+    min=len(list1[0])
+    for i in list1:
+        if len(i)<min:
+            min=len(i)
+    return min
+The following is chain of thought:
+1. The function `len_log` takes a list of strings `list1` as input.
+2. Initialize `min` to the length of the first element in `list1`.
+3. Iterate through each element `i

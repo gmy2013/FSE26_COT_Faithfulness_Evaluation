@@ -1,0 +1,16 @@
+
+
+def string_sequence(n: int) -> str:
+    """ Return a string containing space-delimited numbers starting from 0 upto n inclusive.
+    >>> string_sequence(0)
+    '0'
+    >>> string_sequence(5)
+    '0 1 2 3 4 5'
+    """
+
+The following is chain of thought:
+To solve the problem, the function `string_sequence` needs to generate a sequence of numbers starting from 0 up to `n`, inclusive, and return those numbers as a space-delimited string. Here's a structured chain of thought to implement this:
+
+1. **Understand the input and output requirements**:
+   - Input: An integer `n`.
+   - Outp

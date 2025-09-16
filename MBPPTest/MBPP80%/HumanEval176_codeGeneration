@@ -1,0 +1,43 @@
+CodeGeneration:
+Based on the chain of thought, I can see this function calculates the sum of distinct elements in an array. However, I notice there's an issue with the implementation - it doesn't handle the case where the array might be empty (n=0). Let me provide an improved version:
+
+```python
+def find_Sum(arr, n):
+    """
+    Calculate the sum of distinct elements in an array.
+    
+    Args:
+        arr (list): Input array of numbers
+        n (int): Length of the array
+    
+    Returns:
+        int/float: Sum of distinct elements in the array
+    
+    Example:
+        >>> find_Sum([1, 2, 2, 3, 4, 4], 6)
+        10
+        >>> find_Sum([5, 5, 5], 3)
+        5
+        >>> find_Sum([], 0)
+        0
+    """
+    if n == 0:
+        return 0
+    
+    arr.sort()
+    total_sum = arr[0]
+    
+    for i in range(n - 1):
+        if arr[i] != arr[i + 1]:
+            total_sum += arr[i + 1]
+    
+    return total_sum
+```
+
+Key improvements made:
+1. Added proper docstring with parameter descriptions and examples
+2. Added edge case handling for empty arrays (n=0)
+3. Renamed variable `sum` to `total_sum` to avoid shadowing the built-in `sum()` function
+4. Maintained the core logic of sorting and comparing adjacent elements to find distinct values
+
+The function still follows the original algorithm: sort the array, then iterate through it while only adding elements that are different from their predecessor.

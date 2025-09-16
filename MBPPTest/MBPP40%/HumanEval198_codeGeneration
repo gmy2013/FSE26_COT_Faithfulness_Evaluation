@@ -1,0 +1,35 @@
+CodeGeneration:
+I'll complete the function based on the docstring and continue the chain of thought:
+
+```python
+INT_BITS = 32
+
+def left_Rotate(n, d):
+    """
+    Performs a left rotation on a 32-bit integer n by d bits.
+    
+    Args:
+        n (int): The 32-bit integer to rotate
+        d (int): Number of bits to rotate left
+    
+    Returns:
+        int: The result of left rotating n by d bits
+    
+    Example:
+        >>> left_Rotate(0b11000000000000000000000000000011, 2)
+        0b00000000000000000000000000001111
+    """
+    # Ensure d is within valid range (0 to 31)
+    d = d % INT_BITS
+    
+    # Left rotation: (n << d) moves left bits to higher positions,
+    # (n >> (INT_BITS - d)) moves the bits that would be lost to the right end
+    return (n << d) | (n >> (INT_BITS - d)) & ((1 << INT_BITS) - 1)
+```
+
+**Chain of thought continued:**
+3. The operation `(n << d)` shifts `n` left by `d` bits. This moves the most significant bits to higher positions.
+4. The operation `(n >> (INT_BITS - d))` shifts `n` right by `(32 - d)` bits, which brings the bits that would be lost in the left shift to the least significant positions.
+5. The bitwise OR `|` combines these two results, effectively moving the bits that fell off the left end to the right end.
+6. The mask `& ((1 << INT_BITS) - 1)` ensures the result is constrained to 32 bits by clearing any higher bits that might result from the operations.
+7. The `d = d % INT_BITS` ensures the rotation amount is within the valid range (0-31) by using modulo arithmetic.

@@ -1,0 +1,28 @@
+CodeGeneration:
+the beginning.
+4. Mark `prime[0]` and `prime[1]` as `False` since 0 and 1 are not prime numbers.
+5. Start with the first prime number, 2, and mark all its multiples as non-prime.
+6. Continue this process for all numbers up to the square root of `n`.
+7. Finally, iterate through the list and sum up all indices that are still marked as `True`.
+
+Here is the complete function with the missing part added:
+
+```python
+def sum_Of_Primes(n): 
+    prime = [True] * (n + 1)  
+    prime[0] = False
+    prime[1] = False
+    p = 2
+    while p * p <= n: 
+        if prime[p] == True:  
+            i = p * 2
+            while i <= n: 
+                prime[i] = False
+                i += p 
+        p += 1    
+    sum = 0
+    for i in range (2, n + 1): 
+        if(prime[i]): 
+            sum += i 
+    return sum
+```

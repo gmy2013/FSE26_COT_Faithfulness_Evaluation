@@ -1,0 +1,25 @@
+CodeGeneration:
+```python
+def even_odd_count(num):
+    """Given an integer. return a tuple that has the number of even and odd digits respectively.
+
+     Example:
+        even_odd_count(-12) ==> (1, 1)
+        even_odd_count(123) ==> (1, 2)
+    """
+    # Convert number to string to handle each digit
+    num_str = str(abs(num))  # Use absolute value to remove negative sign
+    
+    even_count = 0
+    odd_count = 0
+    
+    # Iterate through each digit character
+    for digit_char in num_str:
+        digit = int(digit_char)
+        if digit % 2 == 0:  # Even number
+            even_count += 1
+        else:  # Odd number
+            odd_count += 1
+    
+    return (even_count, odd_count)
+```

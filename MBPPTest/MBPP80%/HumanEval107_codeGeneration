@@ -1,0 +1,10 @@
+CodeGeneration:
+on is correctly implemented to convert a space-separated string into a list of words.
+
+Here is the complete function:
+
+```python
+def Convert(string): 
+    li = list(string.split(" ")) 
+    return li 
+```

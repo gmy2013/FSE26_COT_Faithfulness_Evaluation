@@ -1,0 +1,33 @@
+def chinese_zodiac(year):
+ if (year - 2000) % 12 == 0:
+     sign = 'Dragon'
+ elif (year - 2000) % 12 == 1:
+     sign = 'Snake'
+ elif (year - 2000) % 12 == 2:
+     sign = 'Horse'
+ elif (year - 2000) % 12 == 3:
+     sign = 'sheep'
+ elif (year - 2000) % 12 == 4:
+     sign = 'Monkey'
+ elif (year - 2000) % 12 == 5:
+     sign = 'Rooster'
+ elif (year - 2000) % 12 == 6:
+     sign = 'Dog'
+ elif (year - 2000) % 12 == 7:
+     sign = 'Pig'
+ elif (year - 2000) % 12 == 8:
+     sign = 'Rat'
+ elif (year - 2000) % 12 == 9:
+     sign = 'Ox'
+ elif (year - 2000) % 12 == 10:
+     sign = 'Tiger'
+ else:
+     sign = 'Hare'
+ return sign
+The following is chain of thought:
+1. The function calculates the Chinese zodiac sign based on the input year.
+2. It uses 2000 as a reference year (which is the Year of the Dragon).
+3. The calculation finds the remainder when (year - 2000) is divided by 12.
+4. Each remainder value (0-11) corresponds to a specific zodiac animal.
+5. The function returns the zodiac sign as a string.
+6. Note: The animal names use inconsistent capitalizat

@@ -1,0 +1,22 @@
+CodeGeneration:
+11. These are the months with 30 days (April, June, September, November).
+3. Therefore, the function returns True for months with 30 days, and False otherwise.
+
+Here is the complete function with improved formatting and a docstring:
+
+```python
+def check_monthnumber_number(monthnum3):
+    """
+    Check if a given month number has 30 days.
+    
+    Args:
+        monthnum3 (int): Month number (1-12)
+    
+    Returns:
+        bool: True if month has 30 days (April, June, September, November), False otherwise
+    """
+    if monthnum3 == 4 or monthnum3 == 6 or monthnum3 == 9 or monthnum3 == 11:
+        return True
+    else:
+        return False
+```

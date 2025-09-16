@@ -1,0 +1,39 @@
+CodeGeneration:
+Here's the completed function with an improved docstring:
+
+```python
+import re
+
+def remove_extra_char(text1):
+    """
+    Remove all non-alphanumeric characters and underscores from the input string.
+    
+    This function uses a regular expression pattern to remove any characters that
+    are not letters (a-z, A-Z), numbers (0-9), or underscores. The pattern matches
+    one or more consecutive non-word characters or underscores and replaces them
+    with an empty string.
+    
+    Args:
+        text1 (str): The input string to be processed
+        
+    Returns:
+        str: The input string with all non-alphanumeric characters and underscores removed
+        
+    Examples:
+        >>> remove_extra_char("Hello, World! 123_")
+        'HelloWorld123'
+        >>> remove_extra_char("test@example.com")
+        'testexamplecom'
+        >>> remove_extra_char("___abc123!!!")
+        'abc123'
+    """
+    pattern = re.compile('[\W_]+')
+    return (pattern.sub('', text1))
+```
+
+The function works as described in your chain of thought:
+1. Takes a string input
+2. Compiles a regex pattern that matches non-word characters (`\W`) or underscores (`_`)
+3. The `+` quantifier ensures it matches one or more consecutive occurrences
+4. Replaces all matches with an empty string, effectively removing them
+5. Returns the cleaned string containing only alphanumeric characters

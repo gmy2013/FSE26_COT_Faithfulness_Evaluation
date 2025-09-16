@@ -1,0 +1,213 @@
+
+def do_algebra(operator, operand):
+    """
+    Given two lists operator, and operand. The first list has basic algebra operations, and 
+    the second list is a list of integers. Use the two given lists to build the algebric 
+    expression and return the evaluation of this expression.
+
+    The basic algebra operations:
+    Addition ( + ) 
+    Subtraction ( - ) 
+    Multiplication ( * ) 
+    Floor division ( // ) 
+    Exponentiation ( ** ) 
+
+    Example:
+    operator['+', '*', '-']
+    array = [2, 3, 4, 5]
+    result = 2 + 3 * 4 - 5
+    => result = 9
+
+    Note:
+        The length of operator list is equal to the length of operand list minus one.
+        Operand is a list of of non-negative integers.
+        Operator list has at least one operator, and operand list has at least two operands.
+
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We have two lists: `operator` (containing strings of operations) and `operand` (containing integers).
+2. The expression is built by alternating operands and operators: first operand, first operator, second operand, second operator, etc.
+3. We need to evaluate the expression with standard operator precedence.
+
+However, note the example: 
+   operator = ['+', '*', '-']
+   operand = [2, 3, 4, 5]
+   Expression: 2 + 3 * 4 - 5
+
+This follows standard precedence: multiplication before addition/subtraction. So we cannot simply evaluate left-to-right.
+
+Approach:
+- We can use a stack to evaluate with operator precedence, but that might be complex.
+- Alternatively, we can convert the expression to postfix (Reverse Polish Notation) and then evaluate.
+- But since the operations are limited to basic algebra (with precedence: exponentiation > multiplication/floor division > addition/subtraction), we can handle it with a stack-based evaluator.
+
+However, a simpler idea: use a while loop that processes higher precedence operators first.
+
+But note: the operations are:
+   Exponentiation (**) has highest precedence.
+   Then multiplication (*) and floor division (//) have same precedence (left associative).
+   Then addition (+) and subtraction (-) have same precedence (left associative).
+
+Plan:
+1. We'll combine the operands and operators into a list of tokens: [op0, op1, op2, ...] and operators in between.
+2. We'll evaluate in passes: first handle exponentiation, then multiplication and floor division, then addition and subtraction.
+
+Alternatively, we can use recursion or stack, but for clarity we can do:
+
+Steps:
+   tokens = [operand[0]]
+   for i in range(len(operator)):
+        tokens.append(operator[i])
+        tokens.append(operand[i+1])
+
+   Now tokens is a list like [2, '+', 3, '*', 4, '-', 5]
+
+   Then we evaluate with precedence:
+
+   First pass: handle exponentiation ('**')
+   Second pass: handle multiplication ('*') and floor division ('//')
+   Third pass: handle addition ('+') and subtraction ('-')
+
+But we must be careful: operators are left-associative.
+
+Implementation for one pass:
+   We traverse the tokens and when we see an operator of the current level, we apply it to the previous and next number.
+
+However, modifying the list while iterating can be tricky.
+
+Alternatively, we can use a while loop that scans for the highest precedence operator and reduces it.
+
+But given the constraints (lists are not huge), we can do three passes.
+
+Let's define a function to evaluate a list of tokens with a set of operators:
+
+   def eval_tokens(tokens, ops):
+        i = 1
+        while i < len(tokens) - 1:
+            if tokens[i] in ops:
+                # apply operator at i
+                left = tokens[i-1]
+                right = tokens[i+1]
+                op = tokens[i]
+                if op == '**':
+                    res = left ** right
+                elif op == '*':
+                    res = left * right
+                elif op == '//':
+                    res = left // right
+                elif op == '+':
+                    res = left + right
+                elif op == '-':
+                    res = left - right
+                # replace the three tokens with the result
+                tokens[i-1:i+2] = [res]
+                # don't advance i because we shortened the list
+            else:
+                i += 2
+        return tokens
+
+But we need to do this for each precedence level.
+
+So overall:
+   tokens = build from operand and operator
+   tokens = eval_tokens(tokens, ['**'])   # highest precedence
+   tokens = eval_tokens(tokens, ['*','//'])
+   tokens = eval_tokens(tokens, ['+','-'])
+
+Finally, tokens[0] is the result.
+
+But note: exponentiation is right-associative, but the problem doesn't specify associativity for exponentiation. However, in Python, exponentiation is right-associative. So we should process from right to left for exponentiation.
+
+So we need to adjust for exponentiation: traverse from right to left.
+
+Therefore, we'll modify eval_tokens to have a direction for exponentiation.
+
+Alternatively, we can handle exponentiation separately.
+
+Given the complexity, let's implement:
+
+   tokens = initial list
+
+   # First: handle exponentiation (right-associative)
+   i = len(tokens) - 2
+   while i >= 1:
+        if tokens[i] == '**':
+            left = tokens[i-1]
+            right = tokens[i+1]
+            res = left ** right
+            tokens[i-1:i+2] = [res]
+            # since we replaced, the list is shorter, we need to adjust i
+            i = min(i-1, len(tokens)-2)   # but we are going backwards, so we can continue
+        else:
+            i -= 2
+
+   Then for * and // (left-associative): traverse left to right.
+   Then for + and - (left-associative): traverse left to right.
+
+But this might be messy.
+
+Alternatively, we can use a recursive descent parser, but that is overkill.
+
+Another idea: use the built-in eval, but that is not safe and the problem likely expects implementation.
+
+But the problem says "return the evaluation", and operands are non-negative, so it is safe? However, the problem expects code without using eval.
+
+So we implement with precedence.
+
+Given time, we'll do:
+
+   tokens = [operand[0]]
+   for i in range(len(operator)):
+        tokens.append(operator[i])
+        tokens.append(operand[i+1])
+
+   # Now reduce exponentiation from right to left.
+   i = len(tokens) - 2
+   while i > 0:
+        if tokens[i] == '**':
+            tokens[i-1] = tokens[i-1] ** tokens[i+1]
+            del tokens[i:i+2]
+        i -= 2
+
+   # Then reduce * and // left to right.
+   i = 1
+   while i < len(tokens) - 1:
+        if tokens[i] in ['*','//']:
+            if tokens[i] == '*':
+                tokens[i-1] = tokens[i-1] * tokens[i+1]
+            else:
+                tokens[i-1] = tokens[i-1] // tokens[i+1]
+            del tokens[i:i+2]
+        else:
+            i += 2
+
+   # Then reduce + and - left to right.
+   i = 1
+   while i < len(tokens) - 1:
+        if tokens[i] in ['+','-']:
+            if tokens[i] == '+':
+                tokens[i-1] = tokens[i-1] + tokens[i+1]
+            else:
+                tokens[i-1] = tokens[i-1] - tokens[i+1]
+            del tokens[i:i+2]
+        else:
+            i += 2
+
+   return tokens[0]
+
+This should work.
+
+Let's test with example:
+   tokens initially: [2, '+', 3, '*', 4, '-', 5]
+   No exponentiation.
+   For * and //: at i=3, we have '*', so do 3*4=12, now tokens become [2, '+', 12, '-', 5]
+   Then for + and -: first at i=1: '+', so 2+12=14, tokens become [14, '-', 5]
+   Then at i=1: '-', so 14-5=9.
+
+Correct.
+
+Another test: exponentiation: 
+   operator = ['**', '*'], operand = [2,3,4

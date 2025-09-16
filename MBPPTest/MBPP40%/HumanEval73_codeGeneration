@@ -1,0 +1,37 @@
+CodeGeneration:
+ates.
+4. The string is split into words using `split()`.
+5. An `OrderedDict` is created with words as both keys and values (the value doesn't matter for deduplication).
+6. The keys of the OrderedDict (unique words in order) are joined back into a string with spaces.
+
+Here's the complete function with improved readability:
+
+```python
+from collections import OrderedDict
+
+def remove_duplicate(string):
+    """
+    Remove duplicate words from a string while preserving the order of first occurrences.
+    
+    Args:
+        string (str): Input string containing words separated by spaces
+        
+    Returns:
+        str: String with duplicate words removed, maintaining original order
+        
+    Example:
+        >>> remove_duplicate("hello world hello again")
+        'hello world again'
+    """
+    # Split string into words, use OrderedDict to remove duplicates while preserving order
+    unique_words = OrderedDict.fromkeys(string.split())
+    # Join the unique words back into a string
+    result = ' '.join(unique_words.keys())
+    return result
+```
+
+This implementation:
+- Uses the more efficient `OrderedDict.fromkeys()` method
+- Maintains the original order of first occurrences
+- Properly handles words separated by spaces
+- Returns the deduplicated string with single spaces between words

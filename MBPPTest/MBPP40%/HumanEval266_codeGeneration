@@ -1,0 +1,18 @@
+CodeGeneration:
+ement, check if it is odd by using the modulus operator (`arr[i] % 2`). If the result is non-zero (True), increment the `odd` counter.
+5. After counting all odd elements, check if the count of odd numbers is itself odd (`odd % 2` is non-zero). If so, return 1; otherwise, return 2.
+
+This function determines the minimum number (either 1 or 2) to return based on whether the count of odd numbers in the array is odd or even.
+
+Here is the complete function:
+
+```python
+def min_Num(arr, n):  
+    odd = 0
+    for i in range(n): 
+        if (arr[i] % 2): 
+            odd += 1 
+    if (odd % 2): 
+        return 1
+    return 2
+```

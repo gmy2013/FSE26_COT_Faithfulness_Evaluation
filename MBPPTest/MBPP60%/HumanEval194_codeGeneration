@@ -1,0 +1,29 @@
+CodeGeneration:
+The function you provided is already correct and efficient for finding the `n` cheapest items based on the 'price' key. Here's the complete implementation:
+
+```python
+import heapq
+
+def cheap_items(items, n):
+    """
+    Return the n cheapest items from a list of dictionaries based on the 'price' key.
+    
+    Args:
+        items (list): List of dictionaries where each dictionary has a 'price' key
+        n (int): Number of cheapest items to return
+    
+    Returns:
+        list: List of n dictionaries with the lowest prices
+    
+    Example:
+        >>> items = [{'name': 'item1', 'price': 10}, 
+        ...          {'name': 'item2', 'price': 5}, 
+        ...          {'name': 'item3', 'price': 15}]
+        >>> cheap_items(items, 2)
+        [{'name': 'item2', 'price': 5}, {'name': 'item1', 'price': 10}]
+    """
+    cheap_items = heapq.nsmallest(n, items, key=lambda s: s['price'])
+    return cheap_items
+```
+
+The function uses `heapq.nsmallest()` which is efficient for this purpose, especially when `n` is small compared to the total number of items. The lambda function extracts the 'price' value from each dictionary for comparison.

@@ -1,0 +1,31 @@
+CodeGeneration:
+[1] as the key) to ensure groupby works correctly.
+5. The groupby function groups elements by the second element of each tuple.
+6. For each group (key and iterator of values), it extracts the first element of each tuple in the group and stores them as a list in the dictionary with the key being the second element.
+7. Finally, the dictionary is returned.
+
+Here is the complete function with the docstring:
+
+```python
+from itertools import groupby 
+
+def group_element(test_list):
+    """
+    Groups elements of a list of tuples by their second element.
+    
+    Args:
+        test_list (list): A list of tuples where each tuple has at least two elements.
+        
+    Returns:
+        dict: A dictionary where keys are the second elements from the tuples,
+              and values are lists of first elements from tuples that share the same second element.
+              
+    Example:
+        >>> group_element([('a', 1), ('b', 2), ('c', 1), ('d', 3), ('e', 2)])
+        {1: ['a', 'c'], 2: ['b', 'e'], 3: ['d']}
+    """
+    res = dict()
+    for key, val in groupby(sorted(test_list, key=lambda ele: ele[1]), key=lambda ele: ele[1]):
+        res[key] = [ele[0] for ele in val] 
+    return res
+```

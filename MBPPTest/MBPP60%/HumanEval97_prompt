@@ -1,0 +1,10 @@
+def sort_dict_item(test_dict):
+  res = {key: test_dict[key] for key in sorted(test_dict.keys(), key = lambda ele: ele[1] * ele[0])}
+  return  (res) 
+
+The following is chain of thought:
+1. The function `sort_dict_item` takes a dictionary `test_dict` as input.
+2. The goal is to return a new dictionary with keys sorted by a custom key function.
+3. The custom key function sorts the keys by the product of their elements (assuming keys are tuples with at least two elements).
+4. The dictionary comprehension creates a new dictionary by iterating over keys sorted using `sorted(test_dict.keys(), key=lambda ele: ele[1] * ele[0])`.
+5. The sorted keys are used to access the

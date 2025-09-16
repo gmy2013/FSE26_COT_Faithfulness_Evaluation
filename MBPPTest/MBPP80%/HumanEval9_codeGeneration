@@ -1,0 +1,25 @@
+CodeGeneration:
+two slices effectively removes the element at index L-1.
+
+Here's the complete function with the docstring:
+
+```python
+def remove_kth_element(list1, L):
+    """
+    Remove the element at the L-th position (1-indexed) from the list.
+    
+    Args:
+        list1 (list): The input list from which to remove an element
+        L (int): The 1-indexed position of the element to remove
+    
+    Returns:
+        list: A new list with the L-th element removed
+    
+    Example:
+        >>> remove_kth_element([1, 2, 3, 4, 5], 3)
+        [1, 2, 4, 5]
+        >>> remove_kth_element(['a', 'b', 'c', 'd'], 1)
+        ['b', 'c', 'd']
+    """
+    return list1[:L-1] + list1[L:]
+```

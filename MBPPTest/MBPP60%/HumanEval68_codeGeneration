@@ -1,0 +1,29 @@
+CodeGeneration:
+99 (with optional leading digit 0 or 1, but note this also allows numbers like 099 which would be invalid).
+3. **Pattern Flaw**: The current regex pattern has a flaw: it allows leading zeros (e.g., "192.168.01.1" would be matched as valid, but in standard IPv4, leading zeros are not allowed; each octet should be a decimal number without extra leading zeros).
+4. **Correction Needed**: To strictly validate IPv4 addresses without leading zeros, the regex should be adjusted. Specifically, for the last alternative in each octet, it should not allow a leading zero followed by another digit (unless the number is exactly "0"). A better pattern would be:
+   - For numbers 0-9: `[0-9]`
+   - For numbers 10-99: `[1-9][0-9]`
+   - For numbers 100-199: `1[0-9][0-9]`
+   - For numbers 200-249: `2[0-4][0-9]`
+   - For numbers 250-255: `25[0-5]`
+5. **Revised Regex**: The corrected regex should be:
+   `^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$`
+   Note: This pattern ensures no leading zeros (except for the single digit '0' itself).
+6. **Implementation**: Use the corrected regex in the function.
+
+Given the above, here is the corrected code:
+
+```python
+import re
+
+regex = r'^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$'
+
+def check_IP(Ip):
+    if re.search(regex, Ip):
+        return "Valid IP address"
+    else:
+        return "Invalid IP address"
+```
+
+This function now correctly validates IPv4 addresses without allowing leading zeros.

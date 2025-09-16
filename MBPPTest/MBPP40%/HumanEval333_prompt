@@ -1,0 +1,8 @@
+def dealnnoy_num(n, m): 
+	if (m == 0 or n == 0) : 
+		return 1
+	return dealnnoy_num(m - 1, n) + dealnnoy_num(m - 1, n - 1) + dealnnoy_num(m, n - 1)
+The following is chain of thought:
+The function `dealnnoy_num(n, m)` is intended to compute the Dealnnoy number, but the current implementation has two issues:
+1. The base case should be when either n or m is 0 (which is correct), but the recursive calls have swapped arguments.
+2. The recursive formula for Dealnnoy numbers is D(m,n) = D(m-1,n) + D(m-1,n-1) + D(m,n-1), but the current implementati

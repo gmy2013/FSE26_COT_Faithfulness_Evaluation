@@ -1,0 +1,33 @@
+CodeGeneration:
+1) clears the least significant set bit
+   - Each iteration clears one set bit and increments parity counter
+4. **Parity Check**: After counting all set bits, check if count is even
+5. **Return Result**: Return True for even parity, False for odd
+
+Here is the complete function with proper formatting and comments:
+
+```python
+def check_Even_Parity(x):
+    """
+    Check if a number has even parity (even number of 1 bits in binary representation).
+    
+    Args:
+        x (int): The number to check for even parity
+        
+    Returns:
+        bool: True if x has even parity, False otherwise
+    """
+    parity = 0
+    while (x != 0):
+        # Brian Kernighan's algorithm: clears the least significant set bit
+        x = x & (x - 1)
+        parity += 1
+    
+    # Check if the number of set bits is even
+    if (parity % 2 == 0):
+        return True
+    else:
+        return False
+```
+
+The function efficiently counts the number of set bits using Brian Kernighan's algorithm and returns True if the count is even (even parity), False otherwise.

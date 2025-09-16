@@ -1,0 +1,12 @@
+CodeGeneration:
+t, it sorts the elements in descending order using `sort(reverse=True)`.
+4. Finally, it returns the modified list of lists.
+
+Here is the complete function:
+
+```python
+def reverse_list_lists(lists):
+    for l in lists:
+        l.sort(reverse = True)
+    return lists
+```

@@ -1,0 +1,25 @@
+def sum_Of_Subarray_Prod(arr,n):
+    ans = 0
+    res = 0
+    i = n - 1
+    while (i >= 0):
+        incr = arr[i]*(1 + res)
+        ans += incr
+        res = incr
+        i -= 1
+    return (ans)
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function calculates the sum of products of all contiguous subarrays.
+2. It uses a reverse iteration (from last element to first).
+3. For each element `arr[i]`, it computes:
+   - `incr = arr[i] * (1 + res)`
+   - Adds `incr` to the cumulative answer `ans`
+   - Updates `res` to be `incr` for the next iteration
+
+Let's break down the logic:
+- `res` stores the sum of products of all contiguous subarrays starting at index `i+1` (to the right).
+- When we add `arr[i]` to the front, we can form:
+   a) The single element `arr[i]` (product = `arr[i]`)
+   b) All previ

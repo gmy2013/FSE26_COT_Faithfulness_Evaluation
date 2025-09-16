@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the implementation based on the chain of thought:
+
+```python
+def cycpattern_check(a, b):
+    """You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word
+    cycpattern_check("abcd","abd") => False
+    cycpattern_check("hello","ell") => True
+    cycpattern_check("whassup","psus") => False
+    cycpattern_check("abab","baa") => True
+    cycpattern_check("efef","eeff") => False
+    cycpattern_check("himenss","simen") => True
+    """
+    # Handle edge case where b is empty
+    if not b:
+        return True
+    
+    # Generate all rotations of b by concatenating b with itself
+    doubled_b = b + b
+    n = len(b)
+    
+    # Check each rotation (avoid duplicates by only checking first n rotations)
+    for i in range(n):
+        rotation = doubled_b[i:i+n]
+        if rotation in a:
+            return True
+    
+    return False
+```
+
+**Explanation:**
+- We first handle the edge case where `b` is empty (an empty string is always a substring)
+- We create `doubled_b = b + b` to easily generate all rotations
+- We iterate through each possible starting position `i` from 0 to `len(b)-1`
+- For each position, we extract a substring of length `len(b)` from `doubled_b`
+- We check if this rotation exists as a substring in `a`
+- If any rotation is found, we immediately return `True`
+- If no rotations are found after checking all possibilities, we return `False`
+
+This approach efficiently checks all possible rotations without generating duplicate checks, and handles all the test cases correctly.

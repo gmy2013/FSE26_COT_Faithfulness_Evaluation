@@ -1,0 +1,9 @@
+CodeGeneration:
+um(lst) / len(lst)`.
+
+Here is the completed function:
+
+```python
+def Average(lst): 
+    return sum(lst) / len(lst)
+```

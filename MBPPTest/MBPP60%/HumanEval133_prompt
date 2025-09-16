@@ -1,0 +1,25 @@
+def sum_Of_Subarray_Prod(arr,n):
+    ans = 0
+    res = 0
+    i = n - 1
+    while (i >= 0):
+        incr = arr[i]*(1 + res)
+        ans += incr
+        res = incr
+        i -= 1
+    return (ans)
+The following is chain of thought:
+Here is the structured chain of thought for the given function:
+
+1. **Initialize variables**: 
+   - `ans` to accumulate the total sum of all subarray products
+   - `res` to store the cumulative product contribution from the right side
+   - `i` as an index starting from the end of the array
+
+2. **Process array from right to left**:
+   - For each element `arr[i]`, calculate `incr = arr[i] * (1 + res)`
+   - This represents the sum of products of all subarrays ending at position `i`
+
+3. **Update results**:
+   - Add `incr` to the total sum `ans`
+ 

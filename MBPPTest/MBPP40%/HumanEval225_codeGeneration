@@ -1,0 +1,64 @@
+CodeGeneration:
+Here's the improved function with proper mathematical conditions and input validation:
+
+```python
+def check_Type_Of_Triangle(a, b, c):
+    """
+    Classify a triangle based on its side lengths into:
+    - Right-angled: one angle exactly 90 degrees
+    - Obtuse-angled: one angle greater than 90 degrees  
+    - Acute-angled: all angles less than 90 degrees
+    
+    Args:
+        a, b, c (float): side lengths of the triangle
+        
+    Returns:
+        str: Type of triangle or error message if invalid triangle
+        
+    Raises:
+        ValueError: If sides cannot form a valid triangle
+    """
+    # Validate triangle inequality
+    if a <= 0 or b <= 0 or c <= 0:
+        return "Invalid triangle: All sides must be positive"
+    
+    if not (a + b > c and a + c > b and b + c > a):
+        return "Invalid triangle: Does not satisfy triangle inequality"
+    
+    # Calculate squares of sides
+    sqa = a * a
+    sqb = b * b  
+    sqc = c * c
+    
+    # Check for right triangle (Pythagorean theorem)
+    if abs(sqa - (sqb + sqc)) < 1e-10:
+        return "Right-angled Triangle"
+    elif abs(sqb - (sqa + sqc)) < 1e-10:
+        return "Right-angled Triangle"
+    elif abs(sqc - (sqa + sqb)) < 1e-10:
+        return "Right-angled Triangle"
+    
+    # Check for obtuse triangle
+    elif sqa > sqb + sqc:
+        return "Obtuse-angled Triangle"
+    elif sqb > sqa + sqc:
+        return "Obtuse-angled Triangle"
+    elif sqc > sqa + sqb:
+        return "Obtuse-angled Triangle"
+    
+    # Otherwise it's acute
+    else:
+        return "Acute-angled Triangle"
+```
+
+Key improvements made:
+1. **Added input validation** - checks for positive sides and triangle inequality
+2. **Fixed mathematical conditions** - proper Pythagorean theorem implementation
+3. **Added floating-point tolerance** - uses `abs(difference) < 1e-10` for equality comparisons
+4. **Improved readability** - better variable names and structure
+5. **Added comprehensive docstring** - explains parameters, returns, and behavior
+
+The function now correctly handles:
+- Valid triangles of all types
+- Invalid inputs (non-positive sides, impossible triangles)
+- Floating-point precision issues in right triangle detection

@@ -1,0 +1,16 @@
+CodeGeneration:
+ough each element `ele` in the tuple `test_tup`.
+4. For each element, increment the count in `res` for that element.
+5. Convert the `defaultdict` to a regular dictionary and then to a string to return the frequency dictionary as a string.
+
+Here is the complete function:
+
+```python
+from collections import defaultdict
+
+def freq_element(test_tup):
+    res = defaultdict(int)
+    for ele in test_tup:
+        res[ele] += 1
+    return str(dict(res))
+```

@@ -1,0 +1,17 @@
+CodeGeneration:
+use the built-in `all()` function with a generator expression for a more concise solution.
+
+Here's the implementation:
+
+```python
+def below_threshold(l: list, t: int):
+    """Return True if all numbers in the list l are below threshold t.
+    >>> below_threshold([1, 2, 4, 10], 100)
+    True
+    >>> below_threshold([1, 20, 4, 10], 5)
+    False
+    """
+    return all(x < t for x in l)
+```
+
+The function uses a generator expression `(x < t for x in l)` that creates an iterator of boolean values indicating whether each element is below the threshold. The `all()` function then checks if all these boolean values are `True`, returning `True` only when every element satisfies the condition `x < t`.

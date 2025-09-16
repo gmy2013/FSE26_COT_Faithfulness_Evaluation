@@ -1,0 +1,18 @@
+CodeGeneration:
+nts the logic to check if two arrays are equal by comparing their sorted versions. However, there is a small issue in the loop range: it should iterate from 0 to n-1 (inclusive), but the current code uses `range(0, n - 1)`, which only goes up to n-2. This means the last element is never compared.
+
+Here is the corrected function:
+
+```python
+def are_Equal(arr1, arr2, n, m):
+    if n != m:
+        return False
+    arr1.sort()
+    arr2.sort()
+    for i in range(n):
+        if arr1[i] != arr2[i]:
+            return False
+    return True
+```
+
+Alternatively, you can use `range(0, n)` which is equivalent to `range(n)`. This ensures all indices from 0 to n-1 are checked.

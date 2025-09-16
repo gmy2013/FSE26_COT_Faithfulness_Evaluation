@@ -1,0 +1,23 @@
+CodeGeneration:
+row in `list1` and access the element at index `C`, then sum these elements.
+
+Here's the complete function:
+
+```python
+def sum_column(list1, C):
+    """Return the sum of all elements in column C of the 2D list list1.
+    
+    Args:
+        list1: A list of lists (2D list) containing numeric values
+        C: Integer index of the column to sum
+        
+    Returns:
+        The sum of all elements in column C
+        
+    Example:
+        >>> sum_column([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1)
+        15
+    """
+    result = sum(row[C] for row in list1)
+    return result
+```

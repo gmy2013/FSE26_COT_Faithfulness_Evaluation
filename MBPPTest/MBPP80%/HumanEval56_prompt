@@ -1,0 +1,15 @@
+import math 
+def first_Digit(n) : 
+    fact = 1
+    for i in range(2,n + 1) : 
+        fact = fact * i 
+        while (fact % 10 == 0) :  
+            fact = int(fact / 10) 
+    while (fact >= 10) : 
+        fact = int(fact / 10) 
+    return math.floor(fact) 
+The following is chain of thought:
+1. The function calculates the factorial of `n` but avoids trailing zeros by removing factors of 10 during computation.
+2. After computing the factorial without trailing zeros, it extracts the first digit by repeatedly dividing by 10 until the number is less than 10.
+3. The final result is the integer floor of the remaining single-digit number (which is already an integer, so math.floor is redundant but safe).
+4. 

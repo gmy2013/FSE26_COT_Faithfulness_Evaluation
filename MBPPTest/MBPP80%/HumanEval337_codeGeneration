@@ -1,0 +1,50 @@
+CodeGeneration:
+es_j], C[res_k])`.
+
+Here is the complete function with the docstring:
+
+```python
+import sys 
+
+def find_closet(A, B, C, p, q, r):
+    """
+    Find a triplet (a, b, c) from three sorted arrays A, B, C such that
+    max(a, b, c) - min(a, b, c) is minimized.
+    
+    Parameters:
+    A, B, C (list): Three sorted arrays
+    p, q, r (int): Lengths of arrays A, B, C respectively
+    
+    Returns:
+    tuple: The triplet (a, b, c) that minimizes the range
+    """
+    diff = sys.maxsize 
+    res_i = 0
+    res_j = 0
+    res_k = 0
+    i = 0
+    j = 0
+    k = 0
+    
+    while i < p and j < q and k < r:
+        minimum = min(A[i], B[j], C[k])
+        maximum = max(A[i], B[j], C[k])
+        
+        if maximum - minimum < diff:
+            res_i = i
+            res_j = j
+            res_k = k
+            diff = maximum - minimum
+        
+        if diff == 0:
+            break
+        
+        if A[i] == minimum:
+            i += 1
+        elif B[j] == minimum:
+            j += 1
+        else:
+            k += 1
+    
+    return A[res_i], B[res_j], C[res_k]
+```

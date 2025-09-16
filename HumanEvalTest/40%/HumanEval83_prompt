@@ -1,0 +1,16 @@
+
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+
+The following is chain of thought:
+To solve this problem, we need to count the n-digit positive integers that either start with 1 or end with 1 (or both). We can use the principle of inclusion-exclusion to avoid double-counting numbers that both start and end with 1.
+
+1. Count numbers that start with 1: The first digit is fixed as 1. The remaining n-1 digits can be any digit from 0 to 9 (but note: the entire number is n-digit, so the first digit cannot be 0). However, since the first digit is fixed to 1, we only need to consider the remaining n-1 digits. Each of these digits has 10 possibilities (0-9). So, there are \(10^{n-1}\) numbers that start with 1.
+
+2. Count numbers that end with 1: The last digit is fixed as 1. The first digit (which is the most significant digit) cannot be 0 (to ensure it is an n-digit number). So, the first digit has 9 choices (1-9). The remaining n-2 digits (if any) have 10 choices each (0-9). So, the total is \(9 \times 10^{n-2}\).
+
+3. However, numbers that both start and end with 1 are counted in both the above groups. So, we subtract the count of these numbers to avoid double-counting.
+   - For numbers that both start and end with 1: The first and last digits are fixed to 1. The middle n-2 digits can be any digit (0-9), s

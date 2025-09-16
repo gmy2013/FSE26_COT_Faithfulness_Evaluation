@@ -1,0 +1,22 @@
+20%CoT
+CodeGeneration:
+paces.
+2. Use the delimiters to split the string into words.
+3. Return the resulting list of words.
+
+Here is the implementation:
+
+```python
+def words_string(s):
+    # Identify the delimiters: commas and spaces
+    delimiters = [',', ' ']
+    
+    # Use the delimiters to split the string into words
+    # Replace commas with spaces and then split by spaces
+    words = s.replace(',', ' ').split()
+    
+    # Return the resulting list of words
+    return words
+```
+
+This function will handle both commas and spaces as delimiters and return an array of words.

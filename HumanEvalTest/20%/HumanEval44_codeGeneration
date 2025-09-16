@@ -1,0 +1,44 @@
+20%CoT
+CodeGeneration:
+rt a number `x` from base 10 to another base `base`, we repeatedly divide the number by `base` and keep track of the remainders. These remainders represent the digits of the number in the new base, starting from the least significant digit.
+
+2. **Algorithm**:
+   - Initialize an empty list `digits` to store the digits of the number in the new base.
+   - While `x` is greater than 0:
+     - Compute the remainder of `x` divided by `base` using the modulo operation (`x % base`). This remainder is the next least significant digit in the new base.
+     - Prepend this remainder to the `digits` list.
+     - Update `x` to the quotient of `x` divided by `base` (`x // base`).
+   - If `x` is 0, we should still represent it correctly in the new base. If `digits` is empty, we can simply return '0'.
+   - Join the elements of the `digits` list into a single string and return it.
+
+3. **Edge Cases**:
+   - When `x` is 0, the result should be '0' regardless of the base.
+   - Ensure that the base is valid (i.e., between 2 and 9).
+
+Here's the implementation of the `change_base` function:
+
+```python
+def change_base(x: int, base: int) -> str:
+    """Change numerical base of input number x to base.
+    return string representation after the conversion.
+    base numbers are less than 10.
+    """
+    if base < 2 or base >= 10:
+        raise ValueError("Base must be between 2 and 9")
+
+    if x == 0:
+        return "0"
+    
+    digits = []
+    
+    while x > 0:
+        remainder = x % base
+        digits.append(str(remainder))
+        x = x // base
+    
+    # Since we collected digits from least significant to most significant,
+    # we need to reverse them
+    return ''.join(reversed(digits))
+```
+
+This code uses a list to collect digits and then reverses the list to construct the final string representation. It handles the conversion process efficiently and checks for valid bases.

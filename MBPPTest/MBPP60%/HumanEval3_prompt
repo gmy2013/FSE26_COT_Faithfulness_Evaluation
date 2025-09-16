@@ -1,0 +1,7 @@
+def reverse_words(s):
+        return ' '.join(reversed(s.split()))
+The following is chain of thought:
+1. The function `reverse_words` takes a string `s` as input.
+2. The goal is to reverse the order of words in the string.
+3. First, split the string into a list of words using `s.split()`. This splits by whitespace.
+4. Reverse the l

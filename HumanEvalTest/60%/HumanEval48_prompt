@@ -1,0 +1,23 @@
+
+
+def is_palindrome(text: str):
+    """
+    Checks if given string is a palindrome
+    >>> is_palindrome('')
+    True
+    >>> is_palindrome('aba')
+    True
+    >>> is_palindrome('aaaaa')
+    True
+    >>> is_palindrome('zbcd')
+    False
+    """
+
+The following is chain of thought:
+We are checking if a string is a palindrome (reads the same forwards and backwards).
+ Steps:
+ 1. Normalize the string by converting to lowercase and removing non-alphanumeric characters? 
+    But the examples don't require this (e.g., no mixed case or punctuation in test cases).
+    The docstring examples are all lowercase and alphanumeric, so we can proceed without normalization.
+ 2. Compare the string with its reverse.
+ 3. Return True if they are equal, False

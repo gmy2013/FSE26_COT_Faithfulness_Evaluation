@@ -1,0 +1,70 @@
+CodeGeneration:
+Based on the chain of thought and the existing code structure, here's the complete implementation with improved code formatting and comments:
+
+```python
+def find_ind(key, i, n, k, arr):
+    """
+    Helper function to find the largest index j such that arr[j] - key ≤ k
+    using binary search.
+    
+    Args:
+        key: The reference value (arr[i])
+        i: Starting index
+        n: Length of array
+        k: Maximum allowed difference
+        arr: Sorted array
+    
+    Returns:
+        int: Largest index j where arr[j] - key ≤ k, or -1 if not found
+    """
+    ind = -1
+    start = i + 1
+    end = n - 1
+    
+    while start < end:
+        mid = start + (end - start) // 2
+        
+        if arr[mid] - key <= k:
+            ind = mid
+            start = mid + 1
+        else:
+            end = mid
+    
+    return ind
+
+
+def removals(arr, n, k):
+    """
+    Find the minimum number of elements to remove so that the difference
+    between any two remaining elements is at most k.
+    
+    Args:
+        arr: Input array of integers
+        n: Length of the array
+        k: Maximum allowed difference between any two elements
+    
+    Returns:
+        int: Minimum number of elements to remove
+    """
+    ans = n - 1  # Initialize with worst case (remove all but one element)
+    arr.sort()   # Sort the array to enable binary search
+    
+    for i in range(n):
+        # Find the largest index j such that arr[j] - arr[i] ≤ k
+        j = find_ind(arr[i], i, n, k, arr)
+        
+        if j != -1:
+            # Calculate number of elements in valid range [i, j]
+            elements_in_range = j - i + 1
+            # Update minimum removals needed
+            ans = min(ans, n - elements_in_range)
+    
+    return ans
+```
+
+The code works as follows:
+1. **Sorting**: The array is sorted to arrange elements in ascending order
+2. **Binary Search**: For each element `arr[i]`, we find the largest index `j` where `arr[j] - arr[i] ≤ k`
+3. **Minimum Calculation**: The minimum number of removals is found by considering the largest valid contiguous subarray where all elements satisfy the difference constraint
+
+The time complexity is O(n log n) due to sorting and binary search operations.

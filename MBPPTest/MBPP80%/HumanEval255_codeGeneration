@@ -1,0 +1,44 @@
+CodeGeneration:
+ling:** The array is binary (0s and 1s). The precomputation starts from the end (n-1) and moves backwards, correctly accumulating zeros. The loop for counting swaps iterates from left to right, adding zeros to the right for each 1.
+
+Here is the complete function with detailed comments:
+
+```python
+def find_Min_Swaps(arr, n):
+    """
+    Calculates the minimum number of adjacent swaps required to group all 1's together in a binary array.
+
+    Args:
+        arr (list): A list of integers (0s and 1s) representing the binary array.
+        n (int): The length of the array.
+
+    Returns:
+        int: The minimum number of adjacent swaps needed to group all 1's together.
+
+    Explanation:
+        The function works by precomputing the number of zeros to the right of each index.
+        For each '1' in the array, the number of swaps required to move it to the end of the group of 1's
+        is equal to the number of zeros to its right (each zero requires one swap to pass).
+        Summing these values for all '1's gives the total minimum adjacent swaps.
+    """
+    # Precompute noOfZeroes: noOfZeroes[i] stores the number of zeros from index i to the end (inclusive)
+    noOfZeroes = [0] * n
+    # Initialize the last element: if the last element is 0, count 1; else 0.
+    noOfZeroes[n - 1] = 1 - arr[n - 1]
+    # Traverse from the second last element to the first (right to left)
+    for i in range(n-2, -1, -1):
+        # Carry over the count from the next index
+        noOfZeroes[i] = noOfZeroes[i + 1]
+        # If current element is 0, increment the count
+        if arr[i] == 0:
+            noOfZeroes[i] += 1
+
+    count = 0
+    # Traverse from left to right
+    for i in range(0, n):
+        # For each '1', add the number of zeros to its right (which are the zeros it must swap with to move right)
+        if arr[i] == 1:
+            count += noOfZeroes[i]
+
+    return count
+```

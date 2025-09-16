@@ -1,0 +1,28 @@
+CodeGeneration:
+orrect but inefficient for large numbers because it iterates up to `sqrt(n)`, which can be slow.
+
+A more efficient method is to use binary search to check if `n` is a perfect square. Here's an improved version:
+
+```python
+def is_Perfect_Square(n):
+    if n < 0:
+        return False
+    if n == 0 or n == 1:
+        return True
+        
+    left, right = 1, n
+    while left <= right:
+        mid = (left + right) // 2
+        square = mid * mid
+        
+        if square == n:
+            return True
+        elif square < n:
+            left = mid + 1
+        else:
+            right = mid - 1
+            
+    return False
+```
+
+This binary search approach has O(log n) time complexity compared to the original O(√n) approach, making it much more efficient for large numbers.

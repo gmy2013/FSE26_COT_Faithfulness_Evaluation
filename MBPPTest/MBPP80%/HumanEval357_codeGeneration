@@ -1,0 +1,35 @@
+CodeGeneration:
+ucted roman_num string
+
+The function correctly implements the standard greedy algorithm for converting integers to Roman numerals by processing values from largest to smallest.
+
+Here's the complete function with improved formatting and comments:
+
+```python
+def int_to_roman(num):
+    """
+    Convert an integer to a Roman numeral.
+    
+    Args:
+        num (int): A positive integer to convert (1-3999 typically)
+    
+    Returns:
+        str: The Roman numeral representation of the input number
+    """
+    # Value-symbol pairs in descending order
+    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    syb = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    
+    roman_num = ''
+    i = 0
+    
+    # Process each value from largest to smallest
+    while num > 0:
+        # Add the appropriate symbol for each occurrence of the current value
+        for _ in range(num // val[i]):
+            roman_num += syb[i]
+            num -= val[i]
+        i += 1
+    
+    return roman_num
+```

@@ -1,0 +1,26 @@
+CodeGeneration:
+return 0
+   - Otherwise, return (4 - length) which will be:
+        * 2 if there are two duplicates (length=2)
+        * 3 if all three are the same (length=1)
+
+Here's the complete function:
+
+```python
+def test_three_equal(x, y, z):
+    """Return 0 if all three values are different, 2 if exactly two are equal, or 3 if all three are equal.
+    
+    Args:
+        x: First value
+        y: Second value  
+        z: Third value
+        
+    Returns:
+        int: 0, 2, or 3 depending on the equality pattern
+    """
+    result = set([x, y, z])
+    if len(result) == 3:
+        return 0
+    else:
+        return (4 - len(result))
+```

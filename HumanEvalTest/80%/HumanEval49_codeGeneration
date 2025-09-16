@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the implementation of the function using exponentiation by squaring:
+
+```python
+def modp(n: int, p: int):
+    """Return 2^n modulo p (be aware of numerics).
+    >>> modp(3, 5)
+    3
+    >>> modp(1101, 101)
+    2
+    >>> modp(0, 101)
+    1
+    >>> modp(3, 11)
+    8
+    >>> modp(100, 101)
+    1
+    """
+    result = 1
+    base = 2
+    n_remaining = n
+    
+    while n_remaining > 0:
+        if n_remaining % 2 == 1:
+            result = (result * base) % p
+        base = (base * base) % p
+        n_remaining //= 2
+    
+    return result
+```
+
+This implementation uses the exponentiation by squaring algorithm to efficiently compute 2^n mod p, which is especially important for large values of n. The algorithm works by breaking down the exponentiation into smaller, more manageable operations while keeping all intermediate results modulo p to prevent numeric overflow.

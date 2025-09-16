@@ -1,0 +1,32 @@
+CodeGeneration:
+The function `count_same_pair` is already complete and correctly implemented. Here's the full code with the completed docstring:
+
+```python
+from operator import eq
+
+def count_same_pair(nums1, nums2):
+    """
+    Count the number of index positions where the elements in nums1 and nums2 are equal.
+    
+    Args:
+        nums1 (list): First list of numbers
+        nums2 (list): Second list of numbers
+    
+    Returns:
+        int: Number of positions where nums1[i] == nums2[i]
+    
+    Example:
+        >>> count_same_pair([1, 2, 3], [1, 2, 4])
+        2
+        >>> count_same_pair([1, 2, 3], [3, 2, 1])
+        1
+    """
+    result = sum(map(eq, nums1, nums2))
+    return result
+```
+
+The function works exactly as described in your chain of thought:
+- `map(eq, nums1, nums2)` applies the equality operator to corresponding elements
+- This returns an iterator of boolean values (True/False)
+- `sum()` treats True as 1 and False as 0, giving the count of equal pairs
+- The function returns this count as the result

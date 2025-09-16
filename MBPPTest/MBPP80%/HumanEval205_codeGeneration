@@ -1,0 +1,28 @@
+CodeGeneration:
+haracter, we should compare the current `cnt` with `res` and update `res` only if `cnt` is larger. Then reset `cnt` to 0.
+
+Here's the corrected function:
+
+```python
+def max_run_uppercase(test_str):
+    cnt = 0
+    res = 0
+    for idx in range(0, len(test_str)):
+        if test_str[idx].isupper():
+            cnt += 1
+        else:
+            if cnt > res:
+                res = cnt
+            cnt = 0
+    # After loop, check if we ended with an uppercase run
+    if cnt > res:
+        res = cnt
+    return res
+```
+
+The key changes:
+1. Added `if cnt > res:` before updating `res` when encountering non-uppercase
+2. Added the same comparison after the loop to handle the case where the string ends with uppercase characters
+3. Removed the unnecessary parentheses around the return value
+
+This ensures we always track the maximum run of uppercase characters throughout the entire string.

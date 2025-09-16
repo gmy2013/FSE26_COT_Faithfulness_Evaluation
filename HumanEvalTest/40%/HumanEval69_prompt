@@ -1,0 +1,48 @@
+
+def search(lst):
+    '''
+    You are given a non-empty list of positive integers. Return the greatest integer that is greater than 
+    zero, and has a frequency greater than or equal to the value of the integer itself. 
+    The frequency of an integer is the number of times it appears in the list.
+    If no such a value exist, return -1.
+    Examples:
+        search([4, 1, 2, 2, 3, 1]) == 2
+        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3
+        search([5, 5, 4, 4, 4]) == -1
+    '''
+
+The following is chain of thought:
+We are given a non-empty list of positive integers.
+ We need to find the greatest integer (say x) such that:
+   x > 0
+   frequency of x in the list >= x
+ If no such integer exists, return -1.
+
+ Steps:
+ 1. Count the frequency of each number in the list.
+ 2. Consider only numbers that are positive (which they all are by input condition) and where frequency >= number.
+ 3. Among these numbers, we want the greatest one.
+ 4. If there are no numbers satisfying the condition, return -1.
+
+ However, note: we are to return the integer itself (not the frequency) and we want the greatest integer that meets the condition.
+
+ Important: We are to return the greatest integer that satisfies the condition. So we should look for the largest number that has frequency at least as large as itself.
+
+ But note: the examples:
+   [4,1,2,2,3,1] -> 2 (because 2 appears 2 times, which is >=2; also 1 appears 2 times which is >=1, but 2 is greater than 1 and also satisfies. Also 3 appears 1 time which is <3, 4 appears 1 time which is <4)
+   [1,2,2,3,3,3,4,4,4] -> 3 (because 3 appears 3 times, which is >=3; also 2 appears 2 times (>=2) and 1 appears 1 time (>=1), but 3 is the greatest that satisfies)
+   [5,5,4,4,4] -> -1: 
+        5: frequency=2 < 5 -> not valid.
+        4: frequency=3 < 4 -> not valid.
+        So no number satisfies.
+
+ Implementation:
+   We can create a frequency dictionary.
+   Then, we can iterate over the keys (numbers) that are positive (which they all are) and check if freq[key] >= key.
+   Then we want the maximum key that satisfies this condition.
+
+   However, note: we are to return the greatest integer that satisfies. So we can collect all keys that satisfy and then take the max.
+
+   But what if there are multiple? We want the maximum key.
+
+   Alternatively, we can iterate from the largest key downwards 

@@ -1,0 +1,76 @@
+
+
+def prime_fib(n: int):
+    """
+    prime_fib returns n-th number that is a Fibonacci number and it's also prime.
+    >>> prime_fib(1)
+    2
+    >>> prime_fib(2)
+    3
+    >>> prime_fib(3)
+    5
+    >>> prime_fib(4)
+    13
+    >>> prime_fib(5)
+    89
+    """
+
+The following is chain of thought:
+To solve this problem, we need to generate Fibonacci numbers and check if they are prime. We'll keep track of the Fibonacci sequence and for each Fibonacci number, check if it is prime. We'll count such numbers until we reach the n-th one.
+
+Approach:
+1. We need a helper function to check if a number is prime.
+2. Generate Fibonacci numbers sequentially.
+3. For each Fibonacci number, check if it is prime.
+4. Maintain a count of prime Fibonacci numbers found.
+5. When the count reaches n, return that Fibonacci number.
+
+Important considerations:
+- The Fibonacci sequence starts with 0 and 1, but we are only interested in prime ones. Note that 0 and 1 are not prime.
+- The first prime Fibonacci is 2 (which is the 3rd Fibonacci number), then 3 (4th), 5 (5th), 13 (7th), etc.
+- We need to generate Fibonacci numbers efficiently, but since n is expected to be small (as per examples), we can generate sequentially without performance issues.
+
+Let's code accordingly.
+
+We'll create:
+- is_prime(x): to check if x is prime (handling edge cases: numbers less than 2 are not prime, even numbers except 2 are not prime, then check divisors up to sqrt(x)).
+- In prime_fib(n): initialize Fibonacci sequence with first two numbers (0,1). Then generate next Fibonacci numbers, check if they are prime, and count until we get n prime Fibonacci numbers.
+
+Note: The examples: 
+n=1 -> 2 (which is fib index 3)
+n=2 -> 3 (fib index 4)
+n=3 -> 5 (fib index 5)
+n=4 -> 13 (fib index 7)
+n=5 -> 89 (fib index 11)
+
+So we are returning the actual Fibonacci number that is prime, not the index.
+
+Implementation:
+We'll iterate generating Fibonacci numbers, and for each new one, check if it is prime. If so, increment count. When count equals n, return that number.
+
+We'll avoid storing the entire list of Fibonacci numbers if not needed, but we need to keep the last two to generate the next.
+
+Code structure:
+def is_prime(x):
+    if x < 2:
+        return False
+    if x == 2:
+        return True
+    if x % 2 == 0:
+        return False
+    for i in range(3, int(x**0.5)+1, 2):
+        if x % i == 0:
+            return False
+    return True
+
+def prime_fib(n):
+    count = 0
+    a, b = 0, 1  # first two Fibonacci numbers
+    # Check initial ones? a=0 not prime, b=1 not prime.
+    while count < n:
+        next_fib = a + b
+        a, b = b, next_fib
+        if is_prime(next_fib):
+            count += 1
+            if count == n:
+        

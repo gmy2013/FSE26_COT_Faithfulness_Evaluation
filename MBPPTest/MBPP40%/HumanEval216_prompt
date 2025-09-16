@@ -1,0 +1,6 @@
+def div_of_nums(nums,m,n):
+ result = list(filter(lambda x: (x % m == 0 or x % n == 0), nums)) 
+ return result
+The following is chain of thought:
+1. The function `div_of_nums` takes three parameters: `nums` (a list of numbers), `m`, and `n` (divisors).
+2. The goal is to return a new list containing elements from `nums` that are divisible by `m` OR div

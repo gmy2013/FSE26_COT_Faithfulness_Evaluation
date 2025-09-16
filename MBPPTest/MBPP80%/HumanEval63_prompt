@@ -1,0 +1,36 @@
+def average_Even(n) : 
+    if (n% 2!= 0) : 
+        return ("Invalid Input") 
+        return -1  
+    sm = 0
+    count = 0
+    while (n>= 2) : 
+        count = count+1
+        sm = sm+n 
+        n = n-2
+    return sm // count 
+The following is chain of thought:
+Here's the structured chain of thought for analyzing and improving the given function:
+
+1. **Identify the function's purpose**: Calculate the average of even numbers from n down to 2
+
+2. **Analyze existing issues**:
+   - The function has a return statement followed by another return statement on the same condition, which is unreachable
+   - The function uses integer division which may not give precise results for averages
+   - The function handles only positive even numbers as valid input
+
+3. **Consider edge cases**:
+   - n = 0 (should be handled as invalid input since there are no even numbers to average)
+   - n = 2 (smallest valid even number)
+   - Negative even numbers (current implementation doesn't handle them)
+
+4. **Determine optimal approach**:
+   - Use mathematical formula for sum of even numbers: n(n+2)/4
+   - Count of even numbers: n/2
+   - Average = (n+2)/2
+
+5. **Implement improvements**:
+   - Remove unreachable return statement
+   - Handle n=0 case
+   - Use mathematical formula for efficiency
+   - Return float for precise av

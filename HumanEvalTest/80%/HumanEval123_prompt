@@ -1,0 +1,84 @@
+
+def get_odd_collatz(n):
+    """
+    Given a positive integer n, return a sorted list that has the odd numbers in collatz sequence.
+
+    The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined
+    as follows: start with any positive integer n. Then each term is obtained from the 
+    previous term as follows: if the previous term is even, the next term is one half of 
+    the previous term. If the previous term is odd, the next term is 3 times the previous
+    term plus 1. The conjecture is that no matter what value of n, the sequence will always reach 1.
+
+    Note: 
+        1. Collatz(1) is [1].
+        2. returned list sorted in increasing order.
+
+    For example:
+    get_odd_collatz(5) returns [1, 5] # The collatz sequence for 5 is [5, 16, 8, 4, 2, 1], so the odd numbers are only 1, and 5.
+    """
+
+The following is chain of thought:
+We are generating the Collatz sequence for n and collecting all odd numbers.
+ Then we return the sorted list of these odd numbers (in increasing order).
+ Since the list is built by appending as we traverse, we can sort at the end.
+ Steps:
+ 1. Initialize an empty list for the odd numbers.
+ 2. Start with the given number n.
+ 3. While the current number is not 1, we check if it is odd. If so, add to the list.
+    Then update the number according to the Collatz rule.
+ 4. After the loop, we must not forget to check the number 1 (which is odd) and add it.
+    Alternatively, we can include 1 at the end since the sequence always ends at 1.
+ 5. However, note that the sequence for n=1 is just [1]. So we should handle that.
+
+ Alternatively, we can use a while loop that runs until we hit 1, and then add 1 at the end?
+ But actually, we can include 1 in the loop by checking after the loop? Or we can include it at the beginning.
+
+ Actually, we can start with the current number = n, and then while current != 1:
+    if current is odd, add to list.
+    then update current.
+ Then after the loop, we have to add 1? Because the sequence ends at 1.
+
+ However, note that the sequence for n=1: we should have [1]. So we can do:
+
+ Let current = n
+ odd_list = []
+ while current != 1:
+     if current % 2 == 1:
+         odd_list.append(current)
+     current = current // 2 if current % 2 == 0 else 3 * current + 1
+ Then after the loop, we add 1 (since the sequence ends at 1, which is odd).
+
+ But wait: what if n is 1? Then the while loop doesn't run, and we need to add 1.
+
+ So we can do:
+   odd_list = []
+   current = n
+   while current != 1:
+        if current % 2 == 1:
+            odd_list.append(current)
+        current = current // 2 if current % 2 == 0 else 3 * current + 1
+   odd_list.append(1)   # because the sequence always ends at 1
+
+ However, we must be cautious: the sequence for n=1: we get [1] (appended at the end). Correct.
+
+ But what about the number 1 in the middle? Actually, the sequence only has 1 at the end.
+
+ But let's test with n=5:
+   current=5 (odd) -> add 5, then current becomes 3*5+1=16.
+   current=16 (even) -> no add, current becomes 8.
+   current=8 (even) -> no add, current becomes 4.
+   current=4 (even) -> no add, current becomes 2.
+   current=2 (even) -> no add, current becomes 1.
+   then we break and add 1.
+   So odd_list = [5, 1] -> then we sort to [1,5]. Correct.
+
+ So the code is:
+
+   odd_list = []
+   current = n
+   while current != 1:
+        if current % 2 == 1:
+            odd_list.append(current)
+        current = current // 2 if current % 2 == 0 else 3 * current + 1
+   odd_list.append(1)
+   ret

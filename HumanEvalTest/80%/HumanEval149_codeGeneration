@@ -1,0 +1,20 @@
+CodeGeneration:
+```python
+def sorted_list_sum(lst):
+    # Filter out strings with odd lengths
+    filtered_list = [word for word in lst if len(word) % 2 == 0]
+    
+    # Sort the list: first by length (ascending), then alphabetically
+    sorted_list = sorted(filtered_list, key=lambda x: (len(x), x))
+    
+    return sorted_list
+```
+
+The function works as follows:
+1. It filters the input list to keep only strings with even lengths using a list comprehension
+2. It sorts the filtered list using a custom key that first sorts by length, then alphabetically
+3. The sorted() function handles both sorting criteria in the specified order
+
+Test cases:
+- sorted_list_sum(["aa", "a", "aaa"]) returns ["aa"] (only "aa" has even length)
+- sorted_list_sum(["ab", "a", "aaa", "cd"]) returns ["ab", "cd"] (both have length 2, sorted alphabetically)

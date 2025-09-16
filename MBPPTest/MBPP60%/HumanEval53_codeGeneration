@@ -1,0 +1,11 @@
+CodeGeneration:
+er`.
+4. Finally, it returns the calculated perimeter.
+
+The code is already correct and complete. Here is the function as provided:
+
+```python
+def rectangle_perimeter(l, b):
+    perimeter = 2 * (l + b)
+    return perimeter
+```

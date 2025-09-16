@@ -1,0 +1,15 @@
+
+def smallest_change(arr):
+    """
+    Given an array arr of integers, find the minimum number of elements that
+    need to be changed to make the array palindromic. A palindromic array is an array that
+    is read the same backwards and forwards. In one change, you can change one element to any other element.
+
+    For example:
+    smallest_change([1,2,3,5,4,7,9,6]) == 4
+    smallest_change([1, 2, 3, 4, 3, 2, 2]) == 1
+    smallest_change([1, 2, 3, 2, 1]) == 0
+    """
+
+The following is chain of thought:
+To solve this problem, we need to determine the minimum number of changes required to make an array palindromic. A palindromic array reads the same forwards and backwards. Each change allows us to alter one element to any other value. The key insight is that for the array to be palindromic, pairs of symmetric elements (i.e., the first and last, second and second last, etc.) must be equal. Therefor

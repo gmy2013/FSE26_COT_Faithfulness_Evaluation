@@ -1,0 +1,67 @@
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+
+The following is chain of thought:
+We are implementing a function to return the n-th Fibonacci number.
+ The Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+ Note: The problem examples show fib(1)=1, fib(8)=21, fib(10)=55.
+ This suggests the sequence is indexed starting at 1: 
+   fib(1) = 1 (first number)
+   fib(2) = 1 (second number)
+   fib(3) = 2, etc.
+
+ We can use iterative method for efficiency.
+ Steps:
+   If n is 0, return 0? But examples start at n=1, so we assume n>=1.
+   For n=1 or n=2, return 1.
+   For n>2, compute iteratively.
+
+ Alternatively, we can handle n=0 as well if needed, but the examples don't include it.
+ Since the docstring examples start at n=1, we'll assume n>=1.
+
+ However, to be safe, we can also handle n=0 by returning 0.
+
+ Let's implement iteratively with two variables.
+ We'll initialize:
+   a = 0 (for fib(0))
+   b = 1 (for fib(1))
+
+ Then for i in range(2, n+1):
+   c = a + b
+   a = b
+   b = c
+
+ But note: if n=0, we return a=0.
+ if n=1, we return b=1.
+
+ Actually, we can loop from 2 to n (inclusive) to compute the n-th number.
+
+ However, the examples require n>=1. But to make the function robust, we handle n=0 as well.
+
+ Since the docstring doesn't specify n=0, but it's common to include, we'll handle it.
+
+ Implementation:
+
+   if n == 0:
+        return 0
+   elif n == 1:
+        return 1
+   else:
+        a, b = 0, 1
+        for i in range(2, n+1):
+            a, b = b, a+b
+        return b
+
+ But wait: for n=2, we want to return 1.
+   i=2: a becomes 1, b becomes 0+1=1 -> returns b=1. Correct.
+
+ Alternatively, we can start with a=0, b=1 and iterate exactly 

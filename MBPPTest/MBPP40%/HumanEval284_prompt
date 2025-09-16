@@ -1,0 +1,18 @@
+def is_Isomorphic(str1,str2):          
+    dict_str1 = {}
+    dict_str2 = {}
+    for i, value in enumerate(str1):
+        dict_str1[value] = dict_str1.get(value,[]) + [i]        
+    for j, value in enumerate(str2):
+        dict_str2[value] = dict_str2.get(value,[]) + [j]
+    if sorted(dict_str1.values()) == sorted(dict_str2.values()):
+        return True
+    else:
+        return False
+The following is chain of thought:
+1. Analyze the problem: The function checks if two strings are isomorphic by comparing character position patterns.
+2. Observe current implementation: 
+   - Creates two dictionaries mapping characters to lists of their indices
+   - Compares sorted lists of index positions
+3. Identify potential issues:
+   - The approach correctly identifies isomorphic strings

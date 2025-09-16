@@ -1,0 +1,37 @@
+CodeGeneration:
+I'll complete the function based on the docstring and your chain of thought. The function finds duplicate elements in a list, returning each duplicate only once.
+
+```python
+def Repeat(x):
+    """
+    Find all duplicate elements in a list, returning each duplicate only once.
+    
+    Args:
+        x (list): Input list to search for duplicates
+        
+    Returns:
+        list: List containing each duplicate element (appearing only once)
+    
+    Example:
+        >>> Repeat([1, 2, 3, 2, 1, 4, 5, 4])
+        [1, 2, 4]
+        >>> Repeat(['a', 'b', 'a', 'c', 'b'])
+        ['a', 'b']
+    """
+    _size = len(x) 
+    repeated = [] 
+    for i in range(_size): 
+        k = i + 1
+        for j in range(k, _size): 
+            if x[i] == x[j] and x[i] not in repeated: 
+                repeated.append(x[i]) 
+    return repeated
+```
+
+The function works as described:
+1. It iterates through each element in the list
+2. For each element, it checks all subsequent elements for duplicates
+3. When a duplicate is found, it adds the element to the result list only if it hasn't been added already
+4. Returns the list of unique duplicate elements
+
+This implementation has O(n²) time complexity due to the nested loops, which is efficient enough for small to medium-sized lists. For very large lists, you might consider using a dictionary-based approach for better performance.

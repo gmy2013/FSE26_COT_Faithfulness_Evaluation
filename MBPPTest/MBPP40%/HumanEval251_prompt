@@ -1,0 +1,10 @@
+def remove_negs(num_list): 
+    for item in num_list: 
+        if item < 0: 
+           num_list.remove(item) 
+    return num_list
+The following is chain of thought:
+1. The function `remove_negs` takes a list of numbers as input.
+2. It iterates through each item in the list using a for loop.
+3. For each item, it checks if the item is negative (less than 0).
+4. If an item is negati

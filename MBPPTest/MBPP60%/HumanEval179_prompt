@@ -1,0 +1,16 @@
+from itertools import combinations 
+def find_combinations(test_list):
+  res = [(b1 + a1, b2 + a2) for (a1, a2), (b1, b2) in combinations(test_list, 2)]
+  return (res) 
+The following is chain of thought:
+Let's break down the function step by step:
+
+1. The function `find_combinations` takes a list `test_list` as input.
+2. It uses `itertools.combinations` to generate all unique pairs of elements from `test_list`.
+3. Each element in `test_list` is expected to be a tuple of two items (like (x, y)).
+4. For each pair of tuples: ((a1, a2), (b1, b2)), it creates a new tuple where:
+   - The first element is the sum of the first element of the second tuple and the first element of the first tuple (b1 + a1).
+   - The second element is the sum of the second element of the second tuple and the second element of the first tuple (b2 + a2).
+5. It collects all these resulting tuples into a list `res` and returns it.
+
+However, note the order in the addition: (b1 + a1, b2 + a2). This means for each combination of two tuples, it adds the first tuple's elements 

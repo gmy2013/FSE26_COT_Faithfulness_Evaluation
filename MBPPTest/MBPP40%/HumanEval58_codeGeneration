@@ -1,0 +1,36 @@
+CodeGeneration:
+5. For each pair (i, j), it checks if the elements at these indices are equal and if the element is not already in the `repeated` list.
+6. If both conditions are true, it appends the element to `repeated`.
+7. Finally, it returns the `repeated` list containing all duplicate elements found.
+
+Here's the complete function with the docstring:
+
+```python
+def Repeat(x):
+    """
+    Find all duplicate elements in a list.
+    
+    This function identifies all elements that appear more than once in the input list
+    and returns them in the order they were first found as duplicates.
+    
+    Args:
+        x (list): The input list to search for duplicates
+        
+    Returns:
+        list: A list containing all duplicate elements found in the input list
+        
+    Example:
+        >>> Repeat([1, 2, 3, 2, 1, 4, 5, 4])
+        [1, 2, 4]
+        >>> Repeat(['a', 'b', 'a', 'c', 'b'])
+        ['a', 'b']
+    """
+    _size = len(x) 
+    repeated = [] 
+    for i in range(_size): 
+        k = i + 1
+        for j in range(k, _size): 
+            if x[i] == x[j] and x[i] not in repeated: 
+                repeated.append(x[i]) 
+    return repeated
+```

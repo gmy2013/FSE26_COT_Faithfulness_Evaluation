@@ -1,0 +1,30 @@
+CodeGeneration:
+element = l1[i + 1]`.
+5. **Create tuple and append**: Form a tuple `(current_element, next_element)` and append it to `temp`.
+6. **Return the result**: After processing all pairs, return `temp`.
+
+Here is the complete function:
+
+```python
+def pair_wise(l1):
+    """Return a list of tuples containing consecutive pairs of elements from the input list.
+    
+    Args:
+        l1 (list): Input list of elements
+        
+    Returns:
+        list: List of tuples where each tuple contains (current_element, next_element)
+        
+    Example:
+        >>> pair_wise([1, 2, 3, 4])
+        [(1, 2), (2, 3), (3, 4)]
+        >>> pair_wise(['a', 'b', 'c'])
+        [('a', 'b'), ('b', 'c')]
+    """
+    temp = []
+    for i in range(len(l1) - 1):
+        current_element, next_element = l1[i], l1[i + 1]
+        x = (current_element, next_element)
+        temp.append(x)
+    return temp
+```

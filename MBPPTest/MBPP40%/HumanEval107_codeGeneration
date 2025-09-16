@@ -1,0 +1,19 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def Convert(string):
+    """
+    Converts a string into a list of words by splitting on spaces.
+    
+    Args:
+        string (str): The input string to be converted
+        
+    Returns:
+        list: A list containing the words from the input string
+    """
+    li = list(string.split(" "))
+    return li
+```
+
+The function takes a string, splits it into words using spaces as delimiters, and returns the resulting list.

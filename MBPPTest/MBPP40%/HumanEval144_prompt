@@ -1,0 +1,8 @@
+def divisible_by_digits(startnum, endnum):
+    return [n for n in range(startnum, endnum+1) \
+                if not any(map(lambda x: int(x) == 0 or n%int(x) != 0, str(n)))]
+The following is chain of thought:
+1. **Function Purpose**: Generate numbers between `startnum` and `endnum` (inclusive) that are divisible by each of their own digits.
+2. **List Comprehension**: Iterate through each number `n` in the range from `startnum` to `endnum`.
+3. **Convert Number to String**: Convert `n` to a string to process each digit individually.
+4. **Check Each Digit**: For each digit in the string

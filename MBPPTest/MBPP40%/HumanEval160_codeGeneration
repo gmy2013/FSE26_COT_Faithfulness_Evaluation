@@ -1,0 +1,33 @@
+CodeGeneration:
+Here's the corrected function with improved logic and documentation:
+
+```python
+def arc_length(d, a):
+    """
+    Calculate the arc length of a circle sector.
+    
+    Args:
+        d (float): Diameter of the circle
+        a (float): Angle of the sector in degrees
+    
+    Returns:
+        float: Arc length of the sector, or None if angle is 360 degrees or more
+    """
+    pi = 22/7
+    
+    # Check if angle is 360 degrees or more (full circle or invalid)
+    if a >= 360:
+        return None
+    
+    # Calculate arc length: (circumference) * (angle/360)
+    arclength = (pi * d) * (a / 360)
+    return arclength
+```
+
+The function:
+1. Takes diameter `d` and angle `a` (in degrees) as input
+2. Returns `None` if the angle is 360° or more (since this would represent a full circle or invalid sector)
+3. Calculates the arc length using the formula: (π × diameter) × (angle/360)
+4. Uses the approximation π ≈ 22/7 as specified
+
+The function correctly handles the case where the angle is exactly 360° by returning `None`, as this would represent the full circumference rather than an arc segment.

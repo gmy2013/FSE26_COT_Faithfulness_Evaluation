@@ -1,0 +1,33 @@
+from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """ For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+    1.0
+    """
+
+The following is chain of thought:
+We are calculating the Mean Absolute Deviation (MAD) around the mean.
+ Steps:
+ 1. Calculate the mean of the input list.
+ 2. For each number, compute the absolute difference from the mean.
+ 3. Calculate the average of these absolute differences.
+ 4. Return the result.
+
+ Let's implement accordingly.
+ Note: We need to handle the case of an empty list to avoid division by zero.
+ However, the problem states "list of input numbers", so we assume non-empty.
+ But to be safe, we can add a check.
+
+ Implementation:
+   n = len(numbers)
+   if n == 0: return 0.0   (or perhaps raise an error? The problem doesn't specify, but the example has non-empty)
+   Since the docstring example has non-empty, we assume non-empty. But for robustness, we handle empty.
+
+ However, the problem says "list of input numbers", which implies at least one number?
+ But to be safe, we

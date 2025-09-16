@@ -1,0 +1,30 @@
+20%CoT
+CodeGeneration:
+ntaining only the positive numbers from the input list. 
+
+2. **Iterate over the List**: We will iterate through each element of the list `l`.
+
+3. **Check for Positivity**: For each element, we check if it is greater than zero. If it is, we consider it as a positive number.
+
+4. **Collect Positive Numbers**: We collect all such positive numbers in a new list.
+
+5. **Return the Result**: Finally, we return the list containing all the positive numbers.
+
+Now, let's implement the function:
+
+```python
+def get_positive(l: list):
+    """Return only positive numbers in the list.
+    >>> get_positive([-1, 2, -4, 5, 6])
+    [2, 5, 6]
+    >>> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+    [5, 3, 2, 3, 9, 123, 1]
+    """
+    positive_numbers = []  # Initialize an empty list to store positive numbers
+    for num in l:  # Iterate through each number in the input list
+        if num > 0:  # Check if the number is positive
+            positive_numbers.append(num)  # Add positive number to the list
+    return positive_numbers  # Return the list of positive numbers
+```
+
+This function uses a simple list comprehension to filter out positive numbers from the input list.

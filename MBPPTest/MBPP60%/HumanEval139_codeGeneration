@@ -1,0 +1,25 @@
+CodeGeneration:
+ictionary from these pairs.
+
+However, note that if the tuple has an odd number of elements, the last element will be ignored since it won't form a complete pair.
+
+Let me complete the function with proper formatting and add a docstring for clarity:
+
+```python
+def tuple_to_dict(test_tup):
+    """
+    Convert a tuple to a dictionary by grouping elements into key-value pairs.
+    
+    Args:
+        test_tup (tuple): Input tuple containing elements to be converted to dictionary
+        
+    Returns:
+        dict: Dictionary created from consecutive pairs of tuple elements
+        
+    Example:
+        >>> tuple_to_dict(('a', 1, 'b', 2, 'c', 3))
+        {'a': 1, 'b': 2, 'c': 3}
+    """
+    res = dict(test_tup[idx : idx + 2] for idx in range(0, len(test_tup), 2))
+    return res
+```

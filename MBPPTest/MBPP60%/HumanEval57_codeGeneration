@@ -1,0 +1,22 @@
+CodeGeneration:
+```python
+def max_occurrences(list1):
+    """
+    Returns the element that occurs the most times in the given list.
+    If multiple elements have the same maximum frequency, returns the first one encountered.
+    
+    Args:
+        list1 (list): The input list to search for the most frequent element
+        
+    Returns:
+        The element that occurs most frequently in the list
+    """
+    max_val = 0
+    result = list1[0] 
+    for i in list1:
+        occu = list1.count(i)
+        if occu > max_val:
+            max_val = occu
+            result = i 
+    return result
+```

@@ -1,0 +1,42 @@
+CodeGeneration:
+**Critical Issue Identification**:
+The function attempts to modify a tuple in-place, but tuples are immutable in Python. This will raise a `TypeError` when trying to swap elements.
+
+**Corrected Implementation**:
+```python
+def sort_tuple(tup):
+    """
+    Sorts a tuple of tuples based on the first element of each inner tuple.
+    
+    Args:
+        tup: A tuple containing inner tuples (each inner tuple must have at least one element)
+    
+    Returns:
+        A new tuple sorted by the first element of each inner tuple in ascending order
+    """
+    # Convert to list for mutability, sort, then convert back to tuple
+    lst = list(tup)
+    n = len(lst)
+    for i in range(n):
+        for j in range(n - i - 1):
+            if lst[j][0] > lst[j + 1][0]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+    return tuple(lst)
+```
+
+**Alternative More Pythonic Implementation**:
+```python
+def sort_tuple(tup):
+    """
+    Sorts a tuple of tuples based on the first element of each inner tuple.
+    
+    Args:
+        tup: A tuple containing inner tuples (each inner tuple must have at least one element)
+    
+    Returns:
+        A new tuple sorted by the first element of each inner tuple in ascending order
+    """
+    return tuple(sorted(tup, key=lambda x: x[0]))
+```
+
+The second implementation is more efficient (O(n log n) vs O(n²)) and follows Python's built-in sorting capabilities while maintaining the tuple return type.

@@ -1,0 +1,20 @@
+def adjac(ele, sub = []): 
+  if not ele: 
+     yield sub 
+  else: 
+     yield from [idx for j in range(ele[0] - 1, ele[0] + 2) 
+                for idx in adjac(ele[1:], sub + [j])] 
+def get_coordinates(test_tup):
+  res = list(adjac(test_tup))
+  return (res) 
+The following is chain of thought:
+Let me analyze this code step by step:
+
+1. **Function `adjac(ele, sub=[])`**:
+   - This is a recursive generator function
+   - Base case: if `ele` is empty, it yields the current `sub` list
+   - Recursive case: for each element in `ele`, it generates values in the range `[ele[0]-1, ele[0]+1]` (inclusive)
+   - It recursively calls itself with the remaining elements and appends each generated value to `sub`
+
+2. **Function `get_coordinates(test_tup)`**:
+   - Calls `adjac(test_tup)` to g

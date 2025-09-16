@@ -1,0 +1,38 @@
+CodeGeneration:
+Here's the completed function with the corrected implementation:
+
+```python
+def lcs_of_three(X, Y, Z, m, n, o):
+    """
+    Find the length of the longest common subsequence of three sequences.
+    
+    Args:
+        X, Y, Z: The three input sequences
+        m, n, o: Lengths of sequences X, Y, Z respectively
+    
+    Returns:
+        int: Length of the longest common subsequence
+    """
+    L = [[[0 for i in range(o+1)] for j in range(n+1)] 
+        for k in range(m+1)] 
+    for i in range(m+1): 
+        for j in range(n+1): 
+            for k in range(o+1): 
+                if (i == 0 or j == 0 or k == 0): 
+                    L[i][j][k] = 0
+                elif (X[i-1] == Y[j-1] and
+                    X[i-1] == Z[k-1]): 
+                    L[i][j][k] = L[i-1][j-1][k-1] + 1
+                else: 
+                    L[i][j][k] = max(max(L[i-1][j][k], 
+                    L[i][j-1][k]), 
+                                    L[i][j][k-1]) 
+    return L[m][n][o]
+```
+
+The function implements a dynamic programming solution to find the longest common subsequence of three sequences using a 3D DP table. The algorithm correctly handles:
+- Base cases (empty sequences)
+- Character matching when all three sequences have the same character
+- The case where characters don't match by taking the maximum of the three possible previous states
+
+The time complexity is O(m*n*o) and space complexity is O(m*n*o).

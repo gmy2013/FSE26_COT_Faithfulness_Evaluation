@@ -1,0 +1,13 @@
+def length_Of_Last_Word(a): 
+    l = 0
+    x = a.strip() 
+    for i in range(len(x)): 
+        if x[i] == " ": 
+            l = 0
+        else: 
+            l += 1
+    return l 
+The following is chain of thought:
+1. Strip leading/trailing whitespace from input string `a` and store in `x`
+2. Initialize counter `l` to 0 to track length of current word
+3. Iterate through each character in the stri

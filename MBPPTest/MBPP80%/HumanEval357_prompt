@@ -1,0 +1,29 @@
+def int_to_roman( num):
+        val = [1000, 900, 500, 400,100, 90, 50, 40,10, 9, 5, 4,1]
+        syb = ["M", "CM", "D", "CD","C", "XC", "L", "XL","X", "IX", "V", "IV","I"]
+        roman_num = ''
+        i = 0
+        while  num > 0:
+            for _ in range(num // val[i]):
+                roman_num += syb[i]
+                num -= val[i]
+            i += 1
+        return roman_num
+The following is chain of thought:
+Here is the structured chain of thought for the int_to_roman function:
+
+1. **Input Validation**: The function expects a positive integer input (num) but doesn't explicitly validate it
+2. **Data Structures**: 
+   - val: List of integer values in descending order that correspond to Roman numeral symbols
+   - syb: List of Roman numeral symbols that match the values in the val list
+3. **Initialization**:
+   - roman_num: Empty string to build the Roman numeral representation
+   - i: Counter variable starting at 0 to iterate through the value/symbol lists
+4. **Main Algorithm**:
+   - While loop continues as long as num > 0
+   - For each value in val list (starting from largest):
+     - Calculate how many times the current value fits into num (num // val[i])
+     - Append the corresponding symbol that many times to roman_num
+     - Subtract the value from num for each symbol added
+   - Increment i to move to the next smaller value/symbol pair
+5. **Termination**: When num reaches 0, return the constr

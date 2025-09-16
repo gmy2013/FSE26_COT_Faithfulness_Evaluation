@@ -1,0 +1,55 @@
+CodeGeneration:
+Looking at this implementation, I can see it's checking for isomorphism by comparing the patterns of character positions. However, there's a more efficient way to implement this using a single pass through both strings.
+
+Here's an improved implementation:
+
+```python
+def is_Isomorphic(str1, str2):
+    """
+    Check if two strings are isomorphic.
+    
+    Two strings are isomorphic if the characters in str1 can be replaced to get str2,
+    with the mapping being consistent throughout the string.
+    
+    Args:
+        str1 (str): First input string
+        str2 (str): Second input string
+    
+    Returns:
+        bool: True if strings are isomorphic, False otherwise
+    
+    Examples:
+        >>> is_Isomorphic("egg", "add")
+        True
+        >>> is_Isomorphic("foo", "bar")
+        False
+        >>> is_Isomorphic("paper", "title")
+        True
+    """
+    if len(str1) != len(str2):
+        return False
+    
+    mapping = {}
+    mapped_chars = set()
+    
+    for char1, char2 in zip(str1, str2):
+        if char1 in mapping:
+            if mapping[char1] != char2:
+                return False
+        else:
+            if char2 in mapped_chars:
+                return False
+            mapping[char1] = char2
+            mapped_chars.add(char2)
+    
+    return True
+```
+
+The key improvements:
+1. **Single pass**: Processes both strings simultaneously using `zip()`
+2. **Early termination**: Returns `False` immediately when inconsistency is found
+3. **Two-way validation**: Ensures the mapping is one-to-one (no two characters map to the same character)
+4. **Length check**: Handles strings of different lengths upfront
+5. **Memory efficient**: Uses O(n) space instead of building full index lists
+
+This approach is more efficient both in time (O(n)) and space (O(n)) compared to the original implementation which builds complete index mappings before comparison.

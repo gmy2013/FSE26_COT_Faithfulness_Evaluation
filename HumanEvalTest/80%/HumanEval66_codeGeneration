@@ -1,0 +1,32 @@
+CodeGeneration:
+Here's the implementation of the function based on the requirements:
+
+```python
+def digitSum(s):
+    """Task
+    Write a function that takes a string as input and returns the sum of the upper characters only'
+    ASCII codes.
+
+    Examples:
+        digitSum("") => 0
+        digitSum("abAB") => 131
+        digitSum("abcCd") => 67
+        digitSum("helloE") => 69
+        digitSum("woArBld") => 131
+        digitSum("aAaaaXa") => 153
+    """
+    total = 0
+    for char in s:
+        if char.isupper():
+            total += ord(char)
+    return total
+```
+
+The function works as follows:
+- Initializes `total` to 0 to accumulate the sum
+- Iterates through each character in the input string
+- Uses `char.isupper()` to check if the character is uppercase
+- If uppercase, adds its ASCII value (obtained with `ord(char)`) to the total
+- Returns the final sum after processing all characters
+
+This handles the empty string case correctly (returns 0) and only considers uppercase characters as specified.

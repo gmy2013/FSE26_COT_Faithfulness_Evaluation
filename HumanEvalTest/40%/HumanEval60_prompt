@@ -1,0 +1,24 @@
+
+
+def sum_to_n(n: int):
+    """sum_to_n is a function that sums numbers from 1 to n.
+    >>> sum_to_n(30)
+    465
+    >>> sum_to_n(100)
+    5050
+    >>> sum_to_n(5)
+    15
+    >>> sum_to_n(10)
+    55
+    >>> sum_to_n(1)
+    1
+    """
+
+The following is chain of thought:
+We are summing numbers from 1 to n. This is an arithmetic series with a known formula: n*(n+1)//2.
+We can use this formula for an efficient O(1) solution.
+
+Alternatively, we could use a loop to accumulate the sum, but the formula is more efficient.
+
+Given the examples in the docstring, we can verify:
+n=30: 30*31//2 = 930//2 

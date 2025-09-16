@@ -1,0 +1,24 @@
+
+FIX = """
+Add more test cases.
+"""
+
+def vowels_count(s):
+    """Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+
+    Example:
+    >>> vowels_count("abcde")
+    2
+    >>> vowels_count("ACEDY")
+    3
+    """
+
+The following is chain of thought:
+1. **Understanding the Problem:**
+   - We need to count the number of vowels in a given string.
+   - The vowels are defined as 'a', 'e', 'i', 'o', 'u', and 'y' when 'y' is the last character of the string.
+
+2. **Plan the Soluti

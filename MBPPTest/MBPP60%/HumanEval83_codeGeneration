@@ -1,0 +1,31 @@
+CodeGeneration:
+Based on the chain of thought and the given function, here's the complete implementation:
+
+```python
+def count_Char(str, x):
+    """
+    Count occurrences of character x in the first n characters of a repeated string pattern.
+    
+    Args:
+        str: The string pattern to be repeated
+        x: The character to count occurrences of
+        
+    Returns:
+        int: Number of times character x appears in the first n characters
+             when the string is repeated multiple times
+    """
+    count = 0
+    for i in range(len(str)):  
+        if (str[i] == x): 
+            count += 1
+    n = 10
+    repititions = n // len(str)  
+    count = count * repititions  
+    l = n % len(str)  
+    for i in range(l): 
+        if (str[i] == x):  
+            count += 1
+    return count
+```
+
+The function counts how many times character `x` appears in the first 10 characters when the input string is repeated. It first counts occurrences in one full string, then multiplies by the number of complete repetitions that fit in 10 characters, and finally adds occurrences from any remaining partial string at the end.

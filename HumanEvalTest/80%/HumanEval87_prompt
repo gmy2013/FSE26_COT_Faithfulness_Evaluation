@@ -1,0 +1,101 @@
+
+def get_row(lst, x):
+    """
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    
+    Examples:
+    get_row([
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1,2,3,4,5,1]
+    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]
+    get_row([], 1) == []
+    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]
+    """
+
+The following is chain of thought:
+We are given a nested list `lst` and an integer `x`.
+ We need to find all occurrences of `x` and return their coordinates as (row, column).
+ The result should be sorted first by row in ascending order.
+ For the same row, the coordinates should be sorted by column in descending order.
+
+ Steps:
+ 1. Initialize an empty list to store the coordinates.
+ 2. Iterate over each row (with index i) in the given list `lst`.
+ 3. For each row, iterate over each element (with index j) in that row.
+ 4. If the element equals `x`, then append the coordinate (i, j) to the result list.
+ 5. Now, we need to sort the list of coordinates. First by row (ascending) and then by column (descending).
+    We can use the `sorted` function with a key that first uses the row (index 0) for ascending,
+    and then the negative of the column (index 1) for descending? Alternatively, we can do a two-level sort.
+    Actually, we can do:
+        sorted_result = sorted(result, key=lambda coord: (coord[0], -coord[1]))
+    This will sort by row ascending (since coord[0] is the row) and then by negative column which is equivalent to column descending.
+
+ However, note: the example output for the first example is [(0,0), (1,4), (1,0), (2,5), (2,0)].
+    So for row 1: we have (1,4) and (1,0) - which are sorted by column descending (4 then 0).
+
+ 6. Return the sorted list.
+
+ Let's code accordingly.
+ But note: we are building the list by iterating row by row and within each row we are iterating from left to right (so columns in ascending order).
+ However, we want for the same row the columns in descending order. So if we collect all occurrences and then sort as described, it should work.
+
+ Alternatively, we could for each row, traverse the columns in reverse order and then we wouldn't need to sort by column? But wait: we need to sort the entire list by row ascending and then by column descending. So if we traverse rows in order and for each row we traverse columns in reverse, then we would get for each row the columns in descending order. Then when we append, the list would naturally be sorted by row ascending and for same row the columns descending. However, we must be cautious: if we do that, the entire list would be in the correct order without needing an explicit sort? Let's see:
+
+ For row i, if we iterate j from last to first (i.e., reverse order of columns), then we would get the coordinates for that row in descending column order. Then if we iterate rows from first to last, we are building the list with rows in ascending order and for each row the columns in descending. So the entire list would be sorted as required.
+
+ This might be more efficient because we avoid a sort at the end.
+
+ So plan:
+   result = []
+   for i in range(len(lst)):
+        for j in range(len(lst[i])-1, -1, -1):   # iterate backwards over columns
+            if lst[i][j] == x:
+                result.append((i, j))
+
+ But wait: this would produce for the first example:
+   row0: j from 5 down to 0: we find x at j=0 -> (0,0)
+   row1: j from 5 down to 0: we find x at j=4 and then j=0 -> (1,4), (1,0)
+   row2: j from 5 down to 0: we find x at j=5 and j=0 -> (2,5), (2,0)
+   So the entire list would be: [(0,0), (1,4), (1,0), (2,5), (2,0)] which is exactly the desired output.
+
+ However, note: we are iterating the rows in ascending order and for each row the columns in descending order. So the list is built in the required sorted order.
+
+ But what if there are multiple rows? The rows are in ascending order because we iterate i from 0 to end.
+ And for each row, we are going from high column to low column, so we get descending columns.
+
+ Therefore, we can avoid an explicit sort by doing this reverse column iteration.
+
+ However, we must be cautious: the problem says "sort coordinates initially by rows in ascending order. Also, sort coordinates of the row by columns in descending order." So this method produces exactly that.
+
+ So we can do without a sort at the end.
+
+ But let's consider the alternative: if we iterate in the natural order (forward in columns) and then sort, it would work too. But the reverse iteration within each row is more efficient because it avoids a separate sort step.
+
+ Therefore, we will iterate over rows in ascending order, and for each row iterate over columns in descending order.
+
+ Code:
+
+   result = []
+   for i in range(len(lst)):
+        # iterate j from last index to 0
+        for j in range(len(lst[i])-1, -1, -1):
+            if lst[i][j] == x:
+                result.append((i, j))
+
+   return result
+
+ Let's test with the examples:
+
+ Example 1:
+   lst = [
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1

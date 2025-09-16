@@ -1,0 +1,24 @@
+def same_Length(A,B): 
+    while (A > 0 and B > 0): 
+        A = A / 10; 
+        B = B / 10; 
+    if (A == 0 and B == 0): 
+        return True; 
+    return False; 
+The following is chain of thought:
+1. The function `same_Length` checks if two integers A and B have the same number of digits.
+2. The current implementation uses a while loop that divides both numbers by 10 until at least one becomes zero.
+3. After the loop, it checks if both A and B are exactly zero to return True, else False.
+4. However, this approach has a flaw: dividing integers by 10 in Python (if A and B are integers) may not reduce them to zero exactly due to floating-point representation.
+5. For example, if A=100 and B=10, after first division: A=10.0, B=1.0; after second: A=1.0, B=0.1; then loop stops (B>0 is true? Actually 0.1>0 is true, so it continues? Wait, let's trace:
+   - Initially A=100, B=10.
+   - Iteration 1: A=100/10=10.0, B=10/10=1.0 (both >0, continue).
+   - Iteration 2: A=10.0/10=1.0, B=1.0/10=0.1 (both >0, continue).
+   - Iteration 3: A=1.0/10=0.1, B=0.1/10=0.01 (both >0, continue).
+   - This continues indefinitely because numbers never become exactly zero due to floating-point imprecision.
+6. The while loop condition (A>0 and B>0) will never become false for positive integers because repeated division by 10 produces positive floats that are never exactly zero.
+7. Therefore, the function will run an infinite loop for any positive integers A and B.
+8. To fix this, we should avoid floating-point operations and instead count the digits using integer arithmetic (e.g., using logarithm or repeated integer division by 10).
+9. Alternatively, we can convert the numbers to strings and compare their lengths.
+10. Since the problem requires generating code, we'll provide a corrected version using string conversion for clarity and reliability.
+11. The corrected function: convert A and B to strings (ignoring negative signs if needed, but the problem states A>0 and B>0 in th

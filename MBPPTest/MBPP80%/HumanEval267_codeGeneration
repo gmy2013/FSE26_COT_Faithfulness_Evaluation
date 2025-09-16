@@ -1,0 +1,35 @@
+CodeGeneration:
+y 1 (continuing current word)
+4. After loop completes, `l` will contain length of last word
+5. Return `l`
+
+Here's the complete function with the docstring:
+
+```python
+def length_Of_Last_Word(a):
+    """
+    Returns the length of the last word in the given string.
+    
+    Args:
+        a (str): Input string containing words separated by spaces
+        
+    Returns:
+        int: Length of the last word in the string
+        
+    Example:
+        >>> length_Of_Last_Word("Hello World")
+        5
+        >>> length_Of_Last_Word("   fly me   to   the moon  ")
+        4
+        >>> length_Of_Last_Word("luffy is still joyboy")
+        6
+    """
+    l = 0
+    x = a.strip() 
+    for i in range(len(x)): 
+        if x[i] == " ": 
+            l = 0
+        else: 
+            l += 1
+    return l
+```

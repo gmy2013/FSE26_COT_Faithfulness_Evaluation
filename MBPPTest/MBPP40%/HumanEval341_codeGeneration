@@ -1,0 +1,16 @@
+CodeGeneration:
+Iterate through each element in `check_list`:
+   - If the element is found in `test_tup`, set `res` to `True` and break out of the loop
+4. Return the result `res`
+
+Here's the complete function:
+
+```python
+def check_element(test_tup, check_list):
+    res = False
+    for ele in check_list:
+        if ele in test_tup:
+            res = True
+            break
+    return res
+```

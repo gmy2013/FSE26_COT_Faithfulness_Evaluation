@@ -1,0 +1,20 @@
+CodeGeneration:
+2 + 2 + 2 + (n - 6). Since n is even and >=8, n-6 is even and >=2, which is positive and even. Therefore, for even n >=8, it is always possible.
+
+However, let's verify with the examples:
+- n=4: even but <8 → False
+- n=6: even but <8 → False
+- n=8: even and >=8 → True (2+2+2+2)
+
+So the function can be implemented as:
+
+```python
+def is_equal_to_sum_even(n):
+    """Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers
+    Example
+    is_equal_to_sum_even(4) == False
+    is_equal_to_sum_even(6) == False
+    is_equal_to_sum_even(8) == True
+    """
+    return n >= 8 and n % 2 == 0
+```

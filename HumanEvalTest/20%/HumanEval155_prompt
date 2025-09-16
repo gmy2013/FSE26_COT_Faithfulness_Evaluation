@@ -1,0 +1,13 @@
+
+def even_odd_count(num):
+    """Given an integer. return a tuple that has the number of even and odd digits respectively.
+
+     Example:
+        even_odd_count(-12) ==> (1, 1)
+        even_odd_count(123) ==> (1, 2)
+    """
+
+The following is chain of thought:
+First, the function needs to handle negative numbers. Since the sign doesn't affect whether a digit is even or odd, I should convert the number to its absolute value to work with the digits only.
+
+Next, I need to iterate through each digit of the number. To do that, I can convert the absolute value of the number to a string to easily access e

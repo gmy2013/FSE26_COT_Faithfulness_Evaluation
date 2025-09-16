@@ -1,0 +1,22 @@
+CodeGeneration:
+The function appears to be correctly implemented based on the regex pattern 'a.*?b$'. Here's the complete function with the return statement fixed:
+
+```python
+import re
+
+def text_match(text):
+    patterns = 'a.*?b$'
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return 'Not matched!'
+```
+
+**Examples of how this function works:**
+- `text_match("a test b")` → "Found a match!" (starts with 'a', ends with 'b')
+- `text_match("apple")` → "Not matched!" (doesn't end with 'b')
+- `text_match("banana")` → "Not matched!" (doesn't start with 'a')
+- `text_match("a quick brown fox jumps over b")` → "Found a match!" (starts with 'a', ends with 'b')
+- `text_match("test a b")` → "Found a match!" (contains 'a' and ends with 'b')
+
+Note: Since `re.search()` is used (not `re.match()`), the pattern can match anywhere in the string as long as it ends with 'b'.

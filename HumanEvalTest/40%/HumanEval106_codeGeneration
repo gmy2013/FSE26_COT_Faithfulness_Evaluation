@@ -1,0 +1,26 @@
+CodeGeneration:
+```python
+def f(n):
+    """ Implement the function f that takes n as a parameter,
+    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even
+    or the sum of numbers from 1 to i otherwise.
+    i starts from 1.
+    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).
+    Example:
+    f(5) == [1, 2, 6, 24, 15]
+    """
+    result = []
+    current_factorial = 1
+    
+    for i in range(1, n + 1):
+        current_factorial *= i  # Update factorial for current i
+        
+        if i % 2 == 0:
+            # For even i: use the factorial
+            result.append(current_factorial)
+        else:
+            # For odd i: use the sum of numbers from 1 to i
+            result.append(i * (i + 1) // 2)
+    
+    return result
+```

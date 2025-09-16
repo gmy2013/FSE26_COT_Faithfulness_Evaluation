@@ -1,0 +1,27 @@
+def find_Extra(arr1,arr2,n) : 
+    for i in range(0, n) : 
+        if (arr1[i] != arr2[i]) : 
+            return i 
+    return n 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose**: The function finds the index where two arrays first differ, or returns the length if no differences are found in the first n elements.
+
+2. **Input Analysis**: 
+   - Takes two arrays (arr1 and arr2) and an integer n
+   - n represents the number of elements to compare (likely the length of one array)
+
+3. **Algorithm Selection**: 
+   - Uses a linear search approach
+   - Iterates through indices 0 to n-1
+   - Compares corresponding elements at each index
+
+4. **Comparison Logic**:
+   - For each index i from 0 to n-1:
+     - If arr1[i] ≠ arr2[i], return the current index i
+   - If all n elements match, return n (indicating the extra element is at the end)
+
+5. **Edge Case Handling**:
+   - Handles the case where arrays are identical for first n elements by returning n
+   - Assumes arr2 has at least n elements (potential for IndexError if not)

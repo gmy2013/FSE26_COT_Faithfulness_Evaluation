@@ -1,0 +1,28 @@
+CodeGeneration:
+uppercase) at the beginning
+   - `[A-Za-z0-9_]*` matches zero or more alphanumeric characters or underscores
+4. If the pattern matches, it returns "Valid", otherwise "Invalid"
+
+Here's the complete function:
+
+```python
+import re 
+
+regex = '^[aeiouAEIOU][A-Za-z0-9_]*'
+
+def check_str(string):
+    """
+    Check if a string starts with a vowel (a,e,i,o,u) and is followed by 
+    zero or more alphanumeric characters or underscores.
+    
+    Args:
+        string (str): The input string to check
+        
+    Returns:
+        str: "Valid" if the string matches the pattern, "Invalid" otherwise
+    """
+    if(re.search(regex, string)): 
+        return ("Valid") 
+    else: 
+        return ("Invalid")
+```

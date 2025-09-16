@@ -1,0 +1,18 @@
+CodeGeneration:
+2 is not found, return False
+   - If all elements are found, return True
+
+The implementation is correct and efficient (O(m+n) time complexity). Here's the complete function:
+
+```python
+def is_subset(arr1, m, arr2, n): 
+    hashset = set() 
+    for i in range(0, m): 
+        hashset.add(arr1[i]) 
+    for i in range(0, n): 
+        if arr2[i] in hashset: 
+            continue
+        else: 
+            return False
+    return True
+```

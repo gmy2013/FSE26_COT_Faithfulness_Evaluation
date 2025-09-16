@@ -1,0 +1,17 @@
+CodeGeneration:
+b
+    >>> greatest_common_divisor(3, 5)
+    1
+    >>> greatest_common_divisor(25, 15)
+    5
+    """
+    # Take absolute values to handle negative inputs
+    a = abs(a)
+    b = abs(b)
+    
+    # Euclidean algorithm
+    while b != 0:
+        a, b = b, a % b
+    
+    return a
+```

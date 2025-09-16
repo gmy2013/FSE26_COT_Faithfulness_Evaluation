@@ -1,0 +1,32 @@
+CodeGeneration:
+Here's the implementation:
+
+```python
+def largest_divisor(n: int) -> int:
+    """ For a given number n, find the largest number that divides n evenly, smaller than n
+    >>> largest_divisor(15)
+    5
+    """
+    if n <= 1:
+        return 0
+    
+    # Start from n//2 and go downwards to find the largest divisor
+    for i in range(n // 2, 0, -1):
+        if n % i == 0:
+            return i
+    
+    return 1  # This line should never be reached for n > 1
+```
+
+This implementation:
+1. Handles the edge case where n ≤ 1 by returning 0
+2. For n > 1, starts checking from n//2 down to 1
+3. Returns the first divisor found (which will be the largest one)
+4. The final return statement is a safeguard that should never be reached for valid inputs
+
+The algorithm is efficient because:
+- It starts from the largest possible candidate (n//2)
+- It stops immediately when it finds the first divisor
+- It avoids checking numbers larger than n//2 since no divisor (other than n itself) can be larger than n//2
+
+For n=15: n//2=7, checks 7 (not a divisor), 6 (not), 5 (divisor) → returns 5 ✓

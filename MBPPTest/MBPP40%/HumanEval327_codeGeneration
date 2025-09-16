@@ -1,0 +1,20 @@
+CodeGeneration:
+```python
+import re
+
+def change_date_format(dt):
+    """
+    Change date format from YYYY-MM-DD to DD-MM-YYYY.
+    
+    Args:
+        dt (str): A string containing a date in YYYY-MM-DD format.
+    
+    Returns:
+        str: The date reformatted to DD-MM-YYYY format.
+    
+    Example:
+        >>> change_date_format("2023-12-25")
+        '25-12-2023'
+    """
+    return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', dt)
+```

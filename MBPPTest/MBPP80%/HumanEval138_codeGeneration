@@ -1,0 +1,23 @@
+CodeGeneration:
+Based on the provided function and the typical docstring for `find_Index(n)`, which is to find the smallest integer `m` such that the triangular number `T_m = m(m+1)/2` has at least `n` digits, I notice that the current implementation uses `round()` which may not always return the smallest integer satisfying the condition. For correctness, `math.ceil()` should be used instead.
+
+Here's the corrected implementation:
+
+```python
+import math
+
+def find_Index(n):
+    """
+    Find the smallest integer m such that the triangular number T_m = m(m+1)/2 has at least n digits.
+    
+    Args:
+        n (int): The minimum number of digits required.
+    
+    Returns:
+        int: The smallest integer m satisfying the condition.
+    """
+    x = math.sqrt(2 * math.pow(10, (n - 1)))
+    return math.ceil(x)
+```
+
+This implementation uses `math.ceil()` to ensure we get the smallest integer `m` that satisfies `m(m+1)/2 ≥ 10^(n-1)`, which guarantees the triangular number has at least `n` digits.

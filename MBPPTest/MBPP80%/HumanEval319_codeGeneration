@@ -1,0 +1,18 @@
+CodeGeneration:
+Based on the analysis, here's the corrected function:
+
+```python
+def remove_tuple(test_list):
+    """Remove tuples from test_list where all elements are None.
+    
+    Args:
+        test_list: A list of tuples to filter
+        
+    Returns:
+        A list with tuples that contain at least one non-None element
+    """
+    res = [sub for sub in test_list if not all(ele == None for ele in sub)]
+    return res
+```
+
+The key change is returning `res` directly instead of `str(res)`, which preserves the actual list structure rather than converting it to a string representation.

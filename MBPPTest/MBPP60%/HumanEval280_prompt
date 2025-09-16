@@ -1,0 +1,22 @@
+def sum_even_odd(list1):
+    first_even = next((el for el in list1 if el%2==0),-1)
+    first_odd = next((el for el in list1 if el%2!=0),-1)
+    return (first_even+first_odd)
+The following is chain of thought:
+Here's the structured chain of thought for analyzing this function:
+
+1. **Function Purpose**: The function takes a list of numbers and returns the sum of the first even and first odd numbers found
+
+2. **First Even Logic**: 
+   - Uses generator expression to find first element where `el%2==0` (even number)
+   - `next()` returns the first matching element or -1 if no even numbers exist
+
+3. **First Odd Logic**:
+   - Uses generator expression to find first element where `el%2!=0` (odd number)
+   - `next()` returns the first matching element or -1 if no odd numbers exist
+
+4. **Return Value**: Returns the sum of the first even and first odd numbers found
+
+5. **Edge Cases**:
+   - If list contains only even numbers: first_even = first even, first_odd = -1
+   - If li

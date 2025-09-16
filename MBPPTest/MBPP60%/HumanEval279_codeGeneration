@@ -1,0 +1,29 @@
+CodeGeneration:
+less than 0, there are no real solutions (the solutions are complex).
+
+Here is the complete function with the docstring:
+
+```python
+def Check_Solution(a, b, c):
+    """
+    Determines the number of real solutions for a quadratic equation of the form ax^2 + bx + c = 0.
+    
+    Args:
+        a (float): Coefficient of x^2
+        b (float): Coefficient of x
+        c (float): Constant term
+    
+    Returns:
+        str: "2 solutions" if discriminant > 0,
+             "1 solution" if discriminant == 0,
+             "No solutions" if discriminant < 0
+    """
+    discriminant = (b * b) - (4 * a * c)
+    
+    if discriminant > 0:
+        return "2 solutions"
+    elif discriminant == 0:
+        return "1 solution"
+    else:
+        return "No solutions"
+```

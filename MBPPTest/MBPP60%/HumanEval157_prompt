@@ -1,0 +1,14 @@
+def unique_sublists(list1):
+    result ={}
+    for l in  list1: 
+        result.setdefault(tuple(l), list()).append(1) 
+    for a, b in result.items(): 
+        result[a] = sum(b)
+    return result
+The following is chain of thought:
+1. The function `unique_sublists` takes a list of lists (`list1`) as input.
+2. Initialize an empty dictionary `result` to store the counts.
+3. Iterate over each sublist `l` in `list1`:
+   - Convert the sublist `l` to a tuple (since lists are unhashable and cannot be dictionary keys).
+   - Use `setdefault` to initialize the key (the tuple) with an empty list if it doesn't exist.
+   - Append `1` to the list associated with that key (to later coun

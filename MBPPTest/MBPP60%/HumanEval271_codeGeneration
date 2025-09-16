@@ -1,0 +1,25 @@
+CodeGeneration:
+```python
+def check_subset(list1, list2):
+    """
+    Check if list2 is a subset of list1.
+
+    Args:
+        list1 (list): The list to check against (potential superset).
+        list2 (list): The list to check if it's a subset of list1.
+
+    Returns:
+        bool: True if every element in list2 is present in list1, False otherwise.
+
+    Examples:
+        >>> check_subset([1, 2, 3, 4], [2, 3])
+        True
+        >>> check_subset([1, 2, 3], [2, 4])
+        False
+        >>> check_subset([], [])
+        True
+        >>> check_subset([1, 2], [])
+        True
+    """
+    return all(map(list1.__contains__, list2))
+```

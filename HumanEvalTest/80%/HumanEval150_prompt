@@ -1,0 +1,41 @@
+
+def x_or_y(n, x, y):
+    """A simple program which should return the value of x if n is 
+    a prime number and should return the value of y otherwise.
+
+    Examples:
+    for x_or_y(7, 34, 12) == 34
+    for x_or_y(15, 8, 5) == 5
+    
+    """
+
+The following is chain of thought:
+To implement this function, we need to:
+1. Check if n is a prime number
+2. Return x if n is prime, otherwise return y
+
+Steps for prime check:
+- If n <= 1, it's not prime
+- Check divisibility from 2 to sqrt(n) (inclusive)
+- If any number divides n, it's not prime
+- Otherwise, it's prime
+
+Let's implement accordingly.
+
+Note: Special cases for n=2 (prime) and even numbers >2 (not prime) can be handled efficiently.
+We'll write an optimized prime check function.
+```python
+def x_or_y(n, x, y):
+    """A simple program which should return the value of x if n is 
+    a prime number and should return the value of y otherwise.
+
+    Examples:
+    for x_or_y(7, 34, 12) == 34
+    for x_or_y(15, 8, 5) == 5
+    
+    """
+    if n <= 1:
+        return y
+    if n == 2:
+        return x
+    if n % 

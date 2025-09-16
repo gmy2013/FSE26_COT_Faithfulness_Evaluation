@@ -1,0 +1,15 @@
+def same_Length(A,B): 
+    while (A > 0 and B > 0): 
+        A = A / 10; 
+        B = B / 10; 
+    if (A == 0 and B == 0): 
+        return True; 
+    return False; 
+The following is chain of thought:
+1. The function `same_Length` aims to check if two integers A and B have the same number of digits.
+2. The current implementation uses a while loop to repeatedly divide both numbers by 10 until at least one becomes zero.
+3. After the loop, it checks if both numbers are zero to return True (same length) or False otherwise.
+4. However, this approach has a flaw: dividing integers by 10 in Python may produce floats (e.g., 1/10 becomes 0.1), which can lead to incorrect comparisons.
+5. To fix this, integer division (//) should be used instead of float division (/) to ensure we are working with integers.
+6. Additionally, the condition should check for both numbers being exactly zero after the same number of divisions.
+7. Revised plan: use integer division by 10 in the while loop to cou

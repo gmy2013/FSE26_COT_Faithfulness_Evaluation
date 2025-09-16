@@ -1,0 +1,42 @@
+
+
+def change_base(x: int, base: int):
+    """Change numerical base of input number x to base.
+    return string representation after the conversion.
+    base numbers are less than 10.
+    >>> change_base(8, 3)
+    '22'
+    >>> change_base(8, 2)
+    '1000'
+    >>> change_base(7, 2)
+    '111'
+    """
+
+The following is chain of thought:
+We are converting a number x to a given base (which is less than 10).
+ Since base is less than 10, we can use digits 0 to base-1.
+ We need to return a string representation.
+
+ Steps:
+ 1. Handle the case when x is 0: return "0".
+ 2. We will build the digits from least significant to most.
+ 3. While x is greater than 0:
+      digit = x % base
+      append the digit (as a string) to the result (but note: we are building backwards)
+      x = x // base
+ 4. Since we are building from least significant to most, we need to reverse the result at the end.
+
+ However, note: if we build the string by prepending each digit, we avoid reversing.
+ But building a string by repeated concatenation at the beginning is inefficient.
+
+ Alternatively, we can collect digits in a list and then combine at the end.
+
+ Let's use a list to collect digits, then reverse and join.
+
+ Special case: if x is 0, return "0".
+
+ Example: x=8, base=2:
+   x=8 -> 8 % 2 = 0, x becomes 4 -> list: ['0']
+   x=4 -> 4 % 2 = 0, x becomes 2 -> list: ['0','0']
+   x=2 -> 2 % 2 = 0, x becomes 1 -> list: ['0','0','0']
+   x=1 -> 1 % 2 = 1, x 

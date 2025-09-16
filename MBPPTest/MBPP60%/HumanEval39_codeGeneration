@@ -1,0 +1,21 @@
+CodeGeneration:
+egex substitution to each, and return the list of processed strings.
+
+Here is the corrected function:
+
+```python
+import re
+def remove_parenthesis(items):
+    """Remove text within parentheses from each string in the list.
+
+    Args:
+        items (list): List of strings that may contain parentheses.
+
+    Returns:
+        list: List of strings with text within parentheses removed.
+    """
+    result = []
+    for item in items:
+        result.append(re.sub(r" ?\([^)]+\)", "", item))
+    return result
+```

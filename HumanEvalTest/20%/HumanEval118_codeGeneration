@@ -1,0 +1,48 @@
+20%CoT
+CodeGeneration:
+To solve this problem, we need to follow these steps:
+
+1. Identify all vowels and consonants in the given word.
+2. Traverse the word from the right to the left.
+3. Check for the condition where a vowel is between two consonants.
+4. Return the first vowel that satisfies this condition.
+5. If no such vowel is found, return an empty string.
+
+Here is the complete implementation of the function:
+
+```python
+def get_closest_vowel(word):
+    vowels = set("AEIOUaeiou")
+    
+    # We will traverse from right to left
+    n = len(word)
+    
+    # Edge case for words with less than 3 letters
+    if n < 3:
+        return ""
+    
+    for i in range(n - 2, 0, -1):
+        if word[i] in vowels and word[i-1] not in vowels and word[i+1] not in vowels:
+            return word[i]
+    
+    return ""
+```
+
+Let's break down the logic:
+
+1. We define a set of vowels, which will be used for quick lookup.
+2. We traverse the word from right to left starting from the third last character to the second character.
+3. For each character, we check if it is a vowel and it is surrounded by consonants on both sides.
+4. If we find such a vowel, we return it immediately.
+5. If the loop completes without finding any such vowel, we return an empty string.
+
+Let's test the function with the provided examples:
+
+```python
+print(get_closest_vowel("yogurt"))  # Should return "u"
+print(get_closest_vowel("FULL"))    # Should return "U"
+print(get_closest_vowel("quick"))   # Should return ""
+print(get_closest_vowel("ab"))      # Should return ""
+```
+
+These tests should pass based on the problem's requirements.

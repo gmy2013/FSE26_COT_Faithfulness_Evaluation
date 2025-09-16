@@ -1,0 +1,16 @@
+20%CoT
+CodeGeneration:
+```python
+def is_simple_power(x, n):
+    if x == 1:  # Any number raised to the power of 0 is 1.
+        return True
+    if n == 1:  # Only 1^0 = 1 is valid, any other power of 1 remains 1.
+        return False
+
+    power = 1
+    while power < x:
+        power *= n
+        if power == x:
+            return True
+
+    return False

@@ -1,0 +1,37 @@
+CodeGeneration:
+t element with odd frequency.
+   - Return that element or -1 if none found.
+
+Here's the optimized implementation:
+
+```python
+def get_odd_occurence(arr, arr_size):
+    """
+    Finds and returns the first element that appears an odd number of times in the array.
+    
+    Args:
+        arr: List of integers
+        arr_size: Size of the array
+    
+    Returns:
+        The first element with odd occurrence count, or -1 if no such element exists
+    """
+    frequency = {}
+    
+    # Count frequency of each element
+    for num in arr:
+        frequency[num] = frequency.get(num, 0) + 1
+    
+    # Find first element with odd frequency
+    for num in arr:
+        if frequency[num] % 2 != 0:
+            return num
+    
+    return -1
+```
+
+This implementation:
+1. Uses O(n) time complexity (instead of O(n²))
+2. Uses O(n) space complexity for the frequency dictionary
+3. Maintains the original behavior of returning the first element with odd occurrence
+4. Still returns -1 if no element has odd frequency (though this case is unlikely if input guarantees exactly one odd occurrence)

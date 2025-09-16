@@ -1,0 +1,35 @@
+CodeGeneration:
+I see the issue. The function incorrectly returns early for N >= 10, but we should compute the last two digits of factorial for any non-negative integer N. Here's the corrected function:
+
+```python
+def last_Two_Digits(N):
+    """
+    Compute the last two digits of N! (factorial of N).
+    
+    Args:
+        N (int): A non-negative integer
+        
+    Returns:
+        int: The last two digits of N! (00 to 99)
+    """
+    if N < 0:
+        raise ValueError("N must be a non-negative integer")
+    
+    if N == 0 or N == 1:
+        return 1
+    
+    fac = 1
+    for i in range(2, N + 1):
+        fac = (fac * i) % 100
+    
+    return fac
+```
+
+The key changes:
+1. Removed the incorrect early return condition for N >= 10
+2. Added proper input validation for negative numbers
+3. Added special case handling for N = 0 and N = 1 (0! = 1, 1! = 1)
+4. Optimized the loop to start from 2 instead of 1
+5. Added proper docstring documentation
+
+This function now correctly computes the last two digits of N! for any non-negative integer N by using modulo 100 arithmetic to prevent integer overflow and efficiently extract just the last two digits.

@@ -1,0 +1,27 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def max_similar_indices(test_list1, test_list2):
+    """
+    Takes two lists of tuples and returns a new list where each tuple contains
+    the maximum values from corresponding positions in the input tuples.
+    
+    Args:
+        test_list1 (list): List of tuples, each containing two numeric elements
+        test_list2 (list): List of tuples, each containing two numeric elements
+    
+    Returns:
+        list: List of tuples where each tuple contains (max(x1, x2), max(y1, y2))
+               for corresponding tuples from the input lists
+    
+    Example:
+        >>> max_similar_indices([(1, 2), (3, 4)], [(5, 6), (7, 8)])
+        [(5, 6), (7, 8)]
+        >>> max_similar_indices([(10, 5), (2, 8)], [(3, 7), (9, 1)])
+        [(10, 7), (9, 8)]
+    """
+    res = [(max(x[0], y[0]), max(x[1], y[1]))
+           for x, y in zip(test_list1, test_list2)]
+    return (res)
+```

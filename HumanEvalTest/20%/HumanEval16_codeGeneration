@@ -1,0 +1,29 @@
+20%CoT
+CodeGeneration:
+'X', 'x', and 'X' are considered the same character.
+2. Plan the solution:
+   - Convert the string to lowercase to handle case insensitivity.
+   - Use a set to store characters since a set automatically handles duplicates and only keeps unique elements.
+   - Add each character from the string to the set.
+   - The number of distinct characters is simply the size of the set.
+3. Implement the solution:
+
+```python
+def count_distinct_characters(string: str) -> int:
+    """ Given a string, find out how many distinct characters (regardless of case) does it consist of
+    >>> count_distinct_characters('xyzXYZ')
+    3
+    >>> count_distinct_characters('Jerry')
+    4
+    """
+    # Convert the string to lowercase
+    lowercase_string = string.lower()
+    
+    # Create a set to store unique characters
+    unique_characters = set(lowercase_string)
+    
+    # Return the size of the set, which represents the number of distinct characters
+    return len(unique_characters)
+```
+
+This implementation will correctly return the number of distinct characters in the input string, considering case insensitivity.

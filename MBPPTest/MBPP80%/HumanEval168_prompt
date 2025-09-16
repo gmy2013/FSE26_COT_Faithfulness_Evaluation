@@ -1,0 +1,10 @@
+def Diff(li1,li2):
+    return (list(list(set(li1)-set(li2)) + list(set(li2)-set(li1))))
+ 
+The following is chain of thought:
+1. The function `Diff` takes two lists `li1` and `li2` as input.
+2. Convert both lists to sets to remove duplicates and enable set operations.
+3. Calculate the set difference `set(li1) - set(li2)` to get elements in `li1` but not in `li2`.
+4. Calculate the set difference `set(li2) - set(li1)` to get elements in `li2` but not in `li1`.
+5. Convert both resulting sets back to lists.
+6. Concatenate the two lists using the `+` op

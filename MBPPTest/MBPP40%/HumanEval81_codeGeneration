@@ -1,0 +1,24 @@
+CodeGeneration:
+unction that multiplies each pair of elements from `nums1` and `nums2`.
+4. Convert the map object to a list and return it.
+
+Here is the complete function:
+
+```python
+def mul_list(nums1, nums2):
+    """Multiply corresponding elements from two lists and return the result as a list.
+    
+    Args:
+        nums1 (list): First list of numbers
+        nums2 (list): Second list of numbers
+    
+    Returns:
+        list: List containing the product of corresponding elements
+        
+    Example:
+        >>> mul_list([1, 2, 3], [4, 5, 6])
+        [4, 10, 18]
+    """
+    result = map(lambda x, y: x * y, nums1, nums2)
+    return list(result)
+```

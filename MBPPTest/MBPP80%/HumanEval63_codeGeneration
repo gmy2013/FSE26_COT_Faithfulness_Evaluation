@@ -1,0 +1,31 @@
+CodeGeneration:
+```python
+def average_Even(n):
+    """
+    Calculate the average of even numbers from n down to 2.
+    
+    Args:
+        n (int): The upper bound even number (must be positive and even)
+    
+    Returns:
+        float: The average of even numbers from n down to 2
+        str: "Invalid Input" if n is not a positive even number
+    
+    Examples:
+        >>> average_Even(6)
+        4.0
+        >>> average_Even(4)
+        3.0
+        >>> average_Even(0)
+        'Invalid Input'
+        >>> average_Even(-2)
+        'Invalid Input'
+        >>> average_Even(3)
+        'Invalid Input'
+    """
+    if n <= 0 or n % 2 != 0:
+        return "Invalid Input"
+    
+    # Using mathematical formula: average = (n + 2) / 2
+    return (n + 2) / 2
+```

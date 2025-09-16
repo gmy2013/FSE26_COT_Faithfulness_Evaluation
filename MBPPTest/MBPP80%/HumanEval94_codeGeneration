@@ -1,0 +1,27 @@
+CodeGeneration:
+lengths - the function will only compare up to the length of the shorter tuple.
+
+Here's the complete function with proper handling for tuples of different lengths:
+
+```python
+def check_greater(test_tup1, test_tup2):
+    """
+    Check if every element in test_tup1 is less than the corresponding element in test_tup2.
+    
+    Args:
+        test_tup1 (tuple): First tuple to compare
+        test_tup2 (tuple): Second tuple to compare
+    
+    Returns:
+        bool: True if all elements in test_tup1 are less than corresponding elements in test_tup2,
+              False otherwise. If tuples have different lengths, only compares up to the shorter length.
+    """
+    res = all(x < y for x, y in zip(test_tup1, test_tup2))
+    return res
+```
+
+The function will work correctly for:
+- Tuples of equal length
+- Tuples of different lengths (compares only the common indices)
+- Empty tuples (returns True since there are no elements to compare)
+- Any data types that support the < comparison operator

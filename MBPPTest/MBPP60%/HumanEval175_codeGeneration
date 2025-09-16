@@ -1,0 +1,42 @@
+CodeGeneration:
+```python
+def count_vowels(test_str):
+    """
+    Counts the number of non-vowel characters that have at least one adjacent vowel.
+    
+    Args:
+        test_str (str): The input string to analyze
+        
+    Returns:
+        int: The count of non-vowel characters with adjacent vowels
+        
+    Examples:
+        >>> count_vowels('abc')
+        1
+        >>> count_vowels('hello')
+        2
+        >>> count_vowels('aeiou')
+        0
+    """
+    res = 0
+    vow_list = ['a', 'e', 'i', 'o', 'u']
+    
+    # Handle empty string or single character
+    if len(test_str) <= 1:
+        return 0
+    
+    # Process middle characters (index 1 to len-2)
+    for idx in range(1, len(test_str) - 1):
+        if test_str[idx] not in vow_list and (test_str[idx - 1] in vow_list or test_str[idx + 1] in vow_list):
+            res += 1
+    
+    # Handle first character
+    if test_str[0] not in vow_list and test_str[1] in vow_list:
+        res += 1
+    
+    # Handle last character
+    if test_str[-1] not in vow_list and test_str[-2] in vow_list:
+        res += 1
+    
+    return res
+```

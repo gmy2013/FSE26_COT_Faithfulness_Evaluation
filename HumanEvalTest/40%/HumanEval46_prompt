@@ -1,0 +1,29 @@
+
+
+def fib4(n: int):
+    """The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+    fib4(0) -> 0
+    fib4(1) -> 0
+    fib4(2) -> 2
+    fib4(3) -> 0
+    fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).
+    Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.
+    >>> fib4(5)
+    4
+    >>> fib4(6)
+    8
+    >>> fib4(7)
+    14
+    """
+
+The following is chain of thought:
+Looking at the problem, I need to implement an iterative solution for the fib4 sequence without recursion.
+
+Chain of thought:
+1. The fib4 sequence has base cases: n=0→0, n=1→0, n=2→2, n=3→0
+2. For n≥4, fib4(n) = fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4)
+3. Since recursion is not allowed, I'll use an iterative approach with a list to store previous values
+4. I'll handle the base cases directly for n < 4
+5. For n ≥ 4, I'll iteratively build up the sequence from the base cases
+
+Here's the implementatio

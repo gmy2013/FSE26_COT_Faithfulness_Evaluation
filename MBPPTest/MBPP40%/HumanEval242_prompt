@@ -1,0 +1,18 @@
+import heapq
+def nth_super_ugly_number(n, primes):
+    uglies = [1]
+    def gen(prime):
+        for ugly in uglies:
+            yield ugly * prime
+    merged = heapq.merge(*map(gen, primes))
+    while len(uglies) < n:
+        ugly = next(merged)
+        if ugly != uglies[-1]:
+            uglies.append(ugly)
+    return uglies[-1]
+The following is chain of thought:
+1. **Understand the problem**: The function finds the nth super ugly number, which is a positive integer whose prime factors are all in the given list of primes.
+
+2. **Initial setup**: Start with the first ugly number, 1, stored in the list `uglies`.
+
+3. **Generator function**: Define a helper ge

@@ -1,0 +1,13 @@
+def Check_Solution(a,b,c) : 
+    if ((b*b) - (4*a*c)) > 0 : 
+        return ("2 solutions") 
+    elif ((b*b) - (4*a*c)) == 0 : 
+        return ("1 solution") 
+    else : 
+        return ("No solutions") 
+The following is chain of thought:
+1. The function `Check_Solution` takes three parameters: `a`, `b`, and `c`.
+2. It calculates the discriminant of a quadratic equation using the formula: discriminant = b² - 4ac.
+3. It checks if the discriminant is greater than 0:
+   - If true, it returns the string "2 solutions", indicating two distinct real roots.
+4. If the discriminant is

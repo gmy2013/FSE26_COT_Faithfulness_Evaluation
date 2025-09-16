@@ -1,0 +1,17 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+def is_nonagonal(n):
+    """Return the nth nonagonal number.
+    
+    Args:
+        n (int): The position in the nonagonal number sequence (1-based index)
+    
+    Returns:
+        int: The nth nonagonal number calculated using the formula n*(7n-5)/2
+    """
+    return int(n * (7 * n - 5) / 2)
+```
+
+The function correctly implements the formula for the nth nonagonal number, which is n*(7n-5)/2. The int() conversion ensures the result is returned as an integer since the formula always produces integer results for integer inputs.

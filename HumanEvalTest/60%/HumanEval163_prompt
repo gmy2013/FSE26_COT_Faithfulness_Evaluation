@@ -1,0 +1,32 @@
+
+def generate_integers(a, b):
+    """
+    Given two positive integers a and b, return the even digits between a
+    and b, in ascending order.
+
+    For example:
+    generate_integers(2, 8) => [2, 4, 6, 8]
+    generate_integers(8, 2) => [2, 4, 6, 8]
+    generate_integers(10, 14) => []
+    """
+
+The following is chain of thought:
+We are given two positive integers a and b.
+ We need to return the even digits between a and b in ascending order.
+ Note: The digits we consider are 0,2,4,6,8 (even digits). However, note the examples: 
+   generate_integers(2,8) returns [2,4,6,8] and generate_integers(10,14) returns [].
+ The problem says "even digits", meaning the numbers themselves must be even digits (i.e., single-digit even numbers).
+ So we are only looking for numbers that are in the set {0,2,4,6,8}. But note: the problem says positive integers, so 0 is not included.
+ Therefore, the even digits we care about are 2,4,6,8.
+
+ Steps:
+ 1. Since the range might be given in any order (a to b or b to a), we should first determine the start and end of the range.
+    Let low = min(a, b) and high = max(a, b).
+ 2. We need to iterate from low to high (inclusive) and check if a number is an even digit (i.e., in {2,4,6,8}).
+ 3. Collect these numbers in a list and return in ascending order (which is natural since we iterate from low to high).
+
+ However, note: the example generate_integers(10,14) returns [] because there are no even digits between 10 and 14 (since 10,12,14 are two-digit numbers and not in the set of even digits which are single-digit).
+
+ Implementation:
+   We define the set of even digits: even_digits = {2,4,6,8}
+   Then we iterate fro

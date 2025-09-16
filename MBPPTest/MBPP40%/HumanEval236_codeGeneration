@@ -1,0 +1,34 @@
+CodeGeneration:
+Looking at the function, I can see it correctly calculates the sum of cubes of the first `n` odd numbers. However, I can suggest a more efficient approach using a mathematical formula.
+
+The sum of cubes of the first `n` odd numbers can be calculated directly with the formula: `n² * (2n² - 1)`
+
+Here's an optimized version:
+
+```python
+def cube_Sum(n):
+    """
+    Calculate the sum of cubes of the first n odd numbers.
+    
+    Args:
+        n (int): Number of odd numbers to include in the sum
+    
+    Returns:
+        int: Sum of cubes of first n odd numbers
+    
+    Formula: n² * (2n² - 1)
+    """
+    return n * n * (2 * n * n - 1)
+```
+
+This version:
+1. Uses the direct mathematical formula instead of a loop
+2. Has O(1) time complexity instead of O(n)
+3. Is more efficient for large values of n
+4. Produces identical results to the original function
+
+Both implementations will give the same results:
+- cube_Sum(1) = 1
+- cube_Sum(2) = 1 + 27 = 28
+- cube_Sum(3) = 1 + 27 + 125 = 153
+- cube_Sum(4) = 1 + 27 + 125 + 343 = 496

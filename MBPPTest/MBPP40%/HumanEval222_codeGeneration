@@ -1,0 +1,22 @@
+CodeGeneration:
+```python
+import re 
+def check_substring(string, sample) : 
+  if (sample in string): 
+      y = "\A" + sample 
+      x = re.search(y, string) 
+      if x : 
+          return ("string starts with the given substring") 
+      else : 
+          return ("string doesnt start with the given substring") 
+  else : 
+      return ("entered string isnt a substring")
+```
+
+The function appears to be complete and working correctly. It:
+1. Checks if `sample` is a substring of `string` using the `in` operator
+2. If not found, returns "entered string isn't a substring"
+3. If found, uses regex pattern `\A` + `sample` to check if the string starts with the substring
+4. Returns appropriate messages based on whether the string starts with the substring or not
+
+The regex pattern `\A` is the correct anchor for matching the start of the string, and the function handles all the cases described in the docstring.

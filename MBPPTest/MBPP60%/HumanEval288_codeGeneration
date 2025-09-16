@@ -1,0 +1,28 @@
+CodeGeneration:
+in descending order.
+
+Here is the complete function with the docstring:
+
+```python
+def reverse_list_lists(lists):
+    """Reverse the order of elements in each sublist of a list of lists.
+    
+    This function takes a list of lists as input and sorts each sublist
+    in descending order (reverse order).
+    
+    Args:
+        lists: A list containing sublists of elements to be sorted in reverse order
+        
+    Returns:
+        list: The same list of lists with each sublist sorted in descending order
+        
+    Example:
+        >>> reverse_list_lists([[1, 2, 3], [4, 5, 6]])
+        [[3, 2, 1], [6, 5, 4]]
+        >>> reverse_list_lists([[3, 1, 2], [6, 4, 5]])
+        [[3, 2, 1], [6, 5, 4]]
+    """
+    for l in lists:
+        l.sort(reverse=True)
+    return lists
+```

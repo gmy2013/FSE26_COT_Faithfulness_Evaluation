@@ -1,0 +1,89 @@
+
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+
+The following is chain of thought:
+We are given a string containing only '[' and ']'
+ We need to check if there exists a valid subsequence (which means we can skip some brackets arbitrarily) 
+ such that at least one bracket is nested. This is equivalent to having at least one pair of matching brackets 
+ that has another pair inside it.
+
+ However, note that the problem does not require the entire string to be balanced, only a subsequence.
+
+ Observation:
+ The problem is equivalent to: can we find a pattern like "[ ... [ ... ] ... ]" in the string (with possibly skipped brackets)
+ such that the inner brackets form a valid pair? Actually, we don't even require the entire subsequence to be balanced? 
+ But the docstring says "valid subsequence of brackets", meaning the subsequence itself must be balanced? Actually, the examples:
+
+  is_nested('[[]]') ➞ True   : because the entire string is balanced and has nesting.
+  is_nested('[]]]]]]][[[[[]') ➞ False
+  is_nested('[][]') ➞ False   : because even though it is balanced, there is no nesting.
+
+ So the subsequence must be balanced and have at least one nesting.
+
+ Alternate approach:
+ We are allowed to choose any subsequence. So we want to know if we can pick a balanced subsequence that has nesting.
+
+ How can we form a nested structure? We need at least two pairs: an outer pair and an inner pair.
+
+ Actually, the minimal nested structure is "[[]]". So we need to check if we can extract such a pattern.
+
+ But note: we can skip brackets arbitrarily. So we are free to ignore any brackets that we don't want.
+
+ Therefore, the problem reduces to: does the string contain at least four brackets that form the pattern "[[]]" in order?
+ However, wait: what about deeper nesting? Actually, any nesting requires at least two pairs with one inside the other.
+
+ But the minimal requirement is two pairs: the outer pair and one inner pair. So we need to find two pairs such that the inner pair is inside the outer pair.
+
+ However, we are allowed to skip brackets arbitrarily. So we can always form a nested structure if we have at least two '[' and two ']' with the two '[' occurring before the two ']', and moreover, the first '[' must be before the second '[' and the first ']' must be before the second ']', and the second '[' must be before the first ']' to have nesting.
+
+ Actually, to form the pattern "[ [] ]", we need:
+   first '[' at index i
+   second '[' at index j (with j>i)
+   first ']' at index k (with k>j)
+   second ']' at index l (with l>k)
+
+ So the sequence of indices: i < j < k < l.
+
+ Therefore, the problem becomes: does the string have at least two '[' and two ']' such that we can arrange them in the order: [ , [ , ] , ] with the indices increasing?
+
+ But note: we are allowed to skip any brackets. So we don't require consecutive brackets.
+
+ So we can simply:
+   Count the number of '[' and ']'. But that is not enough because we need the order.
+
+ Actually, we can do:
+   We need to find two opening brackets that have two closing brackets after them, and the second opening bracket must be before the first closing bracket.
+
+ Alternatively, we can think greedily:
+
+   We want to form a nested structure. The minimal nested structure requires two pairs. So we need to check if we can find two pairs that are nested.
+
+   How about: we traverse and try to form a balanced subsequence that has at least two pairs with one inside the other.
+
+   However, there is a simpler idea: we can always form a nested structure if there are at least two pairs of brackets that are "overlapping" in the sense that one is inside the other.
+
+   Actually, the necessary and sufficient condition is: the string must contain at least two '[' and two ']', and the second '[' must come before the second last ']'? Not exactly.
+
+   Let me try with examples:
+
+   Example: "[[][]]" -> True. We have many brackets.
+
+   Actually, we can use a greedy matching:
+
+   We are allowed to choose any subsequence. So we can try to form the pattern "[[]]".
+
+   So we need to find:
+        an opening bracket (call it A)
+        then another opening 

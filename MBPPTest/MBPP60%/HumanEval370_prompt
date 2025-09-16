@@ -1,0 +1,27 @@
+def maximum_segments(n, a, b, c) : 
+	dp = [-1] * (n + 10) 
+	dp[0] = 0
+	for i in range(0, n) : 
+		if (dp[i] != -1) : 
+			if(i + a <= n ): 
+				dp[i + a] = max(dp[i] + 1, 
+							dp[i + a]) 
+			if(i + b <= n ): 
+				dp[i + b] = max(dp[i] + 1, 
+							dp[i + b]) 
+			if(i + c <= n ): 
+				dp[i + c] = max(dp[i] + 1, 
+							dp[i + c]) 
+	return dp[n]
+The following is chain of thought:
+1. **Understand the Problem**: The function `maximum_segments` aims to find the maximum number of segments of lengths `a`, `b`, or `c` that can be combined to exactly form a rod of length `n`. It uses dynamic programming (DP) to solve this.
+
+2. **Initialize DP Array**: 
+   - Create a DP array `dp` of size `n + 10` (with extra buffer to avoid index errors), initialized to `-1` (indicating unreachable states).
+   - Set `dp[0] = 0` because zero segments are needed to form length 0.
+
+3. **Iterate Through Possible Lengths**:
+   - For each length `i` from 0 to `n-1`:
+     - If `dp[i]` is reachable (i.e., not `-1`), consider adding segments of lengths `a`, `b`, or `c`.
+     - For each segment length (`a`, `b`, `c`):
+        

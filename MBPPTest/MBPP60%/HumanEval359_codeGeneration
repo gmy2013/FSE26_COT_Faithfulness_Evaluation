@@ -1,0 +1,84 @@
+CodeGeneration:
+Based on the analysis, here is an optimized version of the function using memoization to improve efficiency:
+
+```python
+def get_noOfways(n, memo=None):
+    """
+    Calculate the number of ways to reach step n by taking 1 or 2 steps at a time.
+    Uses memoization to optimize the recursive Fibonacci calculation.
+    
+    Args:
+        n: The target step number (non-negative integer)
+        memo: Dictionary for memoization (internal use)
+    
+    Returns:
+        int: Number of ways to reach step n
+    
+    Examples:
+        >>> get_noOfways(0)
+        0
+        >>> get_noOfways(1)
+        1
+        >>> get_noOfways(4)
+        3
+        >>> get_noOfways(5)
+        5
+    """
+    if memo is None:
+        memo = {}
+    
+    # Check if result is already memoized
+    if n in memo:
+        return memo[n]
+    
+    # Base cases
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    
+    # Recursive case with memoization
+    result = get_noOfways(n - 1, memo) + get_noOfways(n - 2, memo)
+    memo[n] = result
+    return result
+```
+
+For even better performance with large inputs, here's an iterative version:
+
+```python
+def get_noOfways(n):
+    """
+    Calculate the number of ways to reach step n by taking 1 or 2 steps at a time.
+    Uses iterative approach for optimal performance.
+    
+    Args:
+        n: The target step number (non-negative integer)
+    
+    Returns:
+        int: Number of ways to reach step n
+    
+    Examples:
+        >>> get_noOfways(0)
+        0
+        >>> get_noOfways(1)
+        1
+        >>> get_noOfways(4)
+        3
+        >>> get_noOfways(5)
+        5
+    """
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    
+    # Initialize Fibonacci sequence
+    a, b = 0, 1
+    
+    for i in range(2, n + 1):
+        a, b = b, a + b
+    
+    return b
+```
+
+The iterative version has O(n) time complexity and O(1) space complexity, making it the most efficient solution for large values of n.

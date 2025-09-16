@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+from collections import defaultdict 
+
+def get_unique(test_list):
+    """
+    Counts the number of unique first elements for each second element in a list of tuples.
+    
+    Args:
+        test_list (list): A list of tuples where each tuple contains two elements
+        
+    Returns:
+        str: A string representation of a dictionary where keys are the second elements
+             from the input tuples and values are the count of unique first elements
+             associated with each key.
+    
+    Example:
+        >>> get_unique([(5, 6), (2, 6), (3, 6), (4, 7), (5, 7)])
+        "{6: 3, 7: 2}"
+    """
+    res = defaultdict(list)
+    for sub in test_list:
+        res[sub[1]].append(sub[0])
+    res = dict(res)
+    res_dict = dict()
+    for key in res:
+        res_dict[key] = len(list(set(res[key])))
+    return (str(res_dict))
+```

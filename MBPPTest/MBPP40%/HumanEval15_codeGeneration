@@ -1,0 +1,31 @@
+CodeGeneration:
+her and then iterates over these pairs.
+4. For each pair `(ele1, ele2)`, it computes `ele1 % ele2` (the remainder when `ele1` is divided by `ele2`).
+5. The results are collected into a new tuple `res` using a tuple comprehension.
+6. Finally, the function returns the resulting tuple.
+
+Here is the complete function with the docstring:
+
+```python
+def tuple_modulo(test_tup1, test_tup2):
+    """
+    Compute the element-wise modulo operation between two tuples.
+
+    This function takes two tuples of the same length and returns a new tuple
+    where each element is the result of the modulo operation between corresponding
+    elements of the input tuples.
+
+    Parameters:
+    test_tup1 (tuple): The first input tuple containing dividend elements.
+    test_tup2 (tuple): The second input tuple containing divisor elements.
+
+    Returns:
+    tuple: A tuple where each element is test_tup1[i] % test_tup2[i].
+
+    Example:
+    >>> tuple_modulo((10, 4, 18), (5, 3, 7))
+    (0, 1, 4)
+    """
+    res = tuple(ele1 % ele2 for ele1, ele2 in zip(test_tup1, test_tup2)) 
+    return res
+```

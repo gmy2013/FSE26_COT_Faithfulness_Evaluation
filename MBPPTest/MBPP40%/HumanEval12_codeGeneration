@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def maximum_value(test_list):
+    """
+    Find the maximum value for each key in a list of (key, list) tuples.
+    
+    Args:
+        test_list (list): A list of tuples where each tuple contains a key and a list of numbers.
+        
+    Returns:
+        list: A list of tuples where each tuple contains the original key and the maximum value from its corresponding list.
+        
+    Example:
+        >>> maximum_value([('a', [1, 2, 3]), ('b', [4, 5, 6])])
+        [('a', 3), ('b', 6)]
+    """
+    res = [(key, max(lst)) for key, lst in test_list]
+    return res
+```
+
+The function works by:
+1. Iterating through each tuple in `test_list`
+2. For each tuple, extracting the key and the list of numbers
+3. Using the built-in `max()` function to find the maximum value in each list
+4. Creating a new tuple with the original key and the maximum value
+5. Returning a list of these new tuples
+
+The list comprehension efficiently handles this transformation in a single line of code.

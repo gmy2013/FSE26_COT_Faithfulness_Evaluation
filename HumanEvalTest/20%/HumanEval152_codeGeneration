@@ -1,0 +1,28 @@
+20%CoT
+CodeGeneration:
+0 if the guess is correct (i.e., game[i] == guess[i])
+  Otherwise, the absolute difference between the actual score and the guessed score (abs(game[i] - guess[i]))
+
+We can iterate through both lists simultaneously and compute the result for each index.
+
+Here is the implementation:
+
+```python
+def compare(game,guess):
+    result = []
+    for i in range(len(game)):
+        if game[i] == guess[i]:
+            result.append(0)
+        else:
+            result.append(abs(game[i] - guess[i]))
+    return result
+```
+
+Alternatively, we can use a list comprehension for a more concise solution:
+
+```python
+def compare(game,guess):
+    return [0 if g == h else abs(g - h) for g, h in zip(game, guess)]
+```
+
+Both implementations will produce the correct results for the given examples.

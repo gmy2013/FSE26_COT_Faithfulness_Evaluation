@@ -1,0 +1,28 @@
+CodeGeneration:
+uld be used for larger inputs. Here is the optimized dynamic programming version:
+
+```python
+def super_seq(X, Y, m, n):
+    # Create a DP table of size (m+1) x (n+1)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    # Fill the DP table
+    for i in range(m + 1):
+        for j in range(n + 1):
+            # If first string is empty, SCS length is length of second string
+            if i == 0:
+                dp[i][j] = j
+            # If second string is empty, SCS length is length of first string
+            elif j == 0:
+                dp[i][j] = i
+            # If last characters match, include it once
+            elif X[i - 1] == Y[j - 1]:
+                dp[i][j] = 1 + dp[i - 1][j - 1]
+            # If last characters don't match, take minimum of two possibilities
+            else:
+                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1])
+    
+    return dp[m][n]
+```
+
+This DP solution has O(m*n) time and space complexity, making it much more efficient for practical use cases.

@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the completed function with the corrected implementation:
+
+```python
+def sample_nam(sample_names):
+    """
+    Filter names that start with uppercase and have remaining letters lowercase,
+    then return the total length of all filtered names concatenated together.
+    
+    Args:
+        sample_names (list): List of strings representing names
+    
+    Returns:
+        int: Total length of all valid names concatenated together
+    """
+    # Filter names: first character uppercase, remaining characters lowercase
+    filtered_names = list(filter(lambda el: el[0].isupper() and el[1:].islower(), sample_names))
+    
+    # Join all filtered names into one string and return its length
+    return len(''.join(filtered_names))
+```
+
+The function works as follows:
+1. Filters the input list to keep only strings that start with an uppercase letter and have all remaining characters in lowercase
+2. Joins all valid strings into a single concatenated string
+3. Returns the total length of this concatenated string
+
+Example usage:
+```python
+print(sample_nam(["John", "doe", "Mary", "SMITH", "Alice"]))  # Output: 13 (John+Mary+Alice = 4+4+5)
+```

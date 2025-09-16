@@ -1,0 +1,44 @@
+CodeGeneration:
+iterates through the list from the first element to the second-to-last element.
+6. For each element, it compares with the next element. If they are equal, it increments `running_count`.
+7. If they are different, it appends the current `running_count` to `frequency` and the current element to `element`, then resets `running_count` to 1.
+8. After the loop, it appends the final `running_count` and the last element to their respective lists.
+9. Finally, it returns both `element` and `frequency` lists.
+
+Here is the complete function with the docstring:
+
+```python
+def count_duplic(lists):
+    """
+    Count consecutive duplicate elements in a sorted list and return their frequencies.
+    
+    This function takes a sorted list and returns two lists:
+    - element: contains the unique elements in order of appearance
+    - frequency: contains the count of consecutive occurrences for each element
+    
+    Args:
+        lists (list): A sorted list of elements (should be sorted for meaningful results)
+    
+    Returns:
+        tuple: A tuple containing two lists (element, frequency)
+    
+    Example:
+        >>> count_duplic([1, 1, 2, 3, 3, 3, 4])
+        ([1, 2, 3, 4], [2, 1, 3, 1])
+    """
+    element = []
+    frequency = []
+    if not lists:
+        return element
+    running_count = 1
+    for i in range(len(lists)-1):
+        if lists[i] == lists[i+1]:
+            running_count += 1
+        else:
+            frequency.append(running_count)
+            element.append(lists[i])
+            running_count = 1
+    frequency.append(running_count)
+    element.append(lists[i+1])
+    return element, frequency
+```

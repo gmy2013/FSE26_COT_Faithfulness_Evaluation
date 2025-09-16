@@ -1,0 +1,25 @@
+CodeGeneration:
+back into a string with spaces and returned.
+
+Here is the complete function with the docstring:
+
+```python
+from collections import OrderedDict
+
+def remove_duplicate(string):
+    """
+    Remove duplicate words from a string while preserving the order of first occurrences.
+    
+    Args:
+        string (str): Input string containing words separated by spaces
+        
+    Returns:
+        str: String with duplicate words removed, maintaining original order
+        
+    Example:
+        >>> remove_duplicate("hello world hello again world")
+        'hello world again'
+    """
+    result = ' '.join(OrderedDict((w, w) for w in string.split()).keys())
+    return result
+```

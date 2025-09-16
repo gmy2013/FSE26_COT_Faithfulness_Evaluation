@@ -1,0 +1,8 @@
+import re
+def remove_spaces(text):
+ return (re.sub(' +',' ',text))
+The following is chain of thought:
+1. The function `remove_spaces` takes a string `text` as input.
+2. It uses the `re.sub` function from the `re` module to perform a regex substitution.
+3. The regex pattern `' +'` matches one or more space characters.
+4. The 

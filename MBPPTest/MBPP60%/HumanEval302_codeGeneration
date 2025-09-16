@@ -1,0 +1,16 @@
+CodeGeneration:
+I'll complete the function based on the provided logic. Here's the corrected and properly formatted Python code:
+
+```python
+def count_Unset_Bits(n):
+    cnt = 0
+    for i in range(1, n + 1):
+        temp = i
+        while temp:
+            if temp % 2 == 0:
+                cnt += 1
+            temp = temp // 2
+    return cnt
+```
+
+This function counts the number of unset bits (0s) in the binary representations of all numbers from 1 to n. For each number, it processes the bits from least significant to most significant by repeatedly dividing by 2 and checking if the remainder is 0 (indicating an unset bit). The function returns the total count of all unset bits found across all numbers in the range.

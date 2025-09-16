@@ -1,0 +1,36 @@
+def count_Fac(n):  
+    m = n 
+    count = 0
+    i = 2
+    while((i * i) <= m): 
+        total = 0
+        while (n % i == 0): 
+            n /= i 
+            total += 1 
+        temp = 0
+        j = 1
+        while((temp + j) <= total): 
+            temp += j 
+            count += 1
+            j += 1 
+        i += 1
+    if (n != 1): 
+        count += 1 
+    return count 
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function counts the number of factors of n! (n factorial)
+2. It uses prime factorization and Legendre's formula
+3. For each prime factor i, it calculates the exponent in n!
+4. Then it counts how many distinct exponents can be formed (1, 1+2, 1+2+3, etc.)
+
+Chain of thought:
+1. Initialize count to 0, m = n (original input)
+2. Start with prime factor i = 2
+3. For each prime i ≤ √m, calculate its exponent in n! (total)
+4. For that prime, count how many triangular numbers ≤ total
+   (j=1,2,3... such that 1+2+...+j ≤ total)
+5. Increment i to next prime (via i += 1, not optimal but works)
+6. If remaining n > 1, it's a prime factor with exponent 1, so add 1 to count
+7. 

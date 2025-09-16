@@ -1,0 +1,11 @@
+def find_Points(l1,r1,l2,r2): 
+    x = min(l1,l2) if (l1 != l2) else -1
+    y = max(r1,r2) if (r1 != r2) else -1
+    return (x,y)
+The following is chain of thought:
+1. The function `find_Points` takes four parameters: l1, r1, l2, r2.
+2. It needs to compute two values: x and y.
+3. For x: if l1 and l2 are not equal, take the minimum of l1 and l2. If they are equal, set x to -1.
+4. For y: if r1 and r2 are not equal, take the maximum of r1 and r2. If they are equal, set y to -1.
+5. Return the tuple (x, y).
+6. The code correctly imp

@@ -1,0 +1,43 @@
+CodeGeneration:
+ve, it removes that item from the list using `num_list.remove(item)`.
+5. Finally, it returns the modified list.
+
+However, there is a critical issue with this implementation: modifying a list while iterating over it can lead to unexpected behavior because the iteration index gets out of sync with the actual list elements. For example, if two consecutive negative numbers exist, the second one might be skipped because the list shifts after removal.
+
+To fix this, we should create a new list with only the non-negative elements, or iterate over a copy of the list. Here is the corrected code:
+
+```python
+def remove_negs(num_list):
+    """Remove all negative numbers from the input list.
+    
+    Args:
+        num_list (list): A list of numbers (integers or floats).
+        
+    Returns:
+        list: A new list with all negative numbers removed.
+    """
+    return [num for num in num_list if num >= 0]
+```
+
+Alternatively, if you want to modify the original list in-place (which might be desired in some cases), you can use:
+
+```python
+def remove_negs(num_list):
+    """Remove all negative numbers from the input list in-place.
+    
+    Args:
+        num_list (list): A list of numbers (integers or floats).
+        
+    Returns:
+        list: The same list with all negative numbers removed.
+    """
+    i = 0
+    while i < len(num_list):
+        if num_list[i] < 0:
+            num_list.pop(i)
+        else:
+            i += 1
+    return num_list
+```
+
+The first approach (using list comprehension) is generally preferred as it is more Pythonic and avoids the pitfalls of modifying a list during iteration.

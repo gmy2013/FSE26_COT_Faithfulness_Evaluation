@@ -1,0 +1,28 @@
+
+
+def common(l1: list, l2: list):
+    """Return sorted unique common elements for two lists.
+    >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])
+    [1, 5, 653]
+    >>> common([5, 3, 2, 8], [3, 2])
+    [2, 3]
+
+    """
+
+The following is chain of thought:
+To solve this problem, we need to find the sorted unique common elements between two lists. Here's the step-by-step reasoning:
+
+1. **Identify common elements**: We need elements that exist in both lists.
+2. **Ensure uniqueness**: Each common element should appear only once in the result, even if it appears multiple times in either list.
+3. **Sort the result**: The output should be in ascending order.
+
+Approach:
+- Convert both lists to sets to remove duplicates and allow efficient intersection.
+- Use set intersection to get common elements.
+- Convert the result to a sorted list.
+
+Let's implement accordingly.
+```python
+def common(l1: list, l2: list):
+    """Return sorted unique common elements for two lists.
+ 

@@ -1,0 +1,15 @@
+def count_Rotation(arr,n):   
+    for i in range (1,n): 
+        if (arr[i] < arr[i - 1]): 
+            return i  
+    return 0
+The following is chain of thought:
+Here's the structured chain of thought for the count_Rotation function:
+
+1. **Problem Analysis**: The function needs to count the number of rotations in a sorted array that has been rotated. In a rotated sorted array, there will be exactly one point where the next element is smaller than the previous one.
+
+2. **Approach Selection**: Iterate through the array starting from the second element (index 1) and compare each element with its predecessor.
+
+3. **Key Insight**: The rotation point is identified when we find an element that is smaller than the element immediately before it. This indicates the original start of the sorted array.
+
+4. **Edge Case Handling**: If no such point is foun

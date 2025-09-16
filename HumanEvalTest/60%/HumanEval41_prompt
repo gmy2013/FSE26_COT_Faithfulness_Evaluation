@@ -1,0 +1,21 @@
+
+
+def car_race_collision(n: int):
+    """
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move in the same speed.  Two cars are said to collide
+    when a car that's moving left to right hits a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such collisions.
+    """
+
+The following is chain of thought:
+The problem involves two sets of n cars each moving in opposite directions on a straight road. Since all cars move at the same speed and collisions only occur between cars moving in opposite directions, we can model this as pairs of cars from the two sets passing each other.
+
+Key observations:
+1. Each left-to-right car will eventually meet every right-to-left car that started ahead of it in the opposite direction.
+2. However, since the cars are infinitely sturdy and con

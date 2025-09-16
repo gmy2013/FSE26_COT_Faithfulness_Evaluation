@@ -1,0 +1,37 @@
+CodeGeneration:
+Based on the chain of thought, the function appears to be working correctly. The implementation uses the Sieve of Eratosthenes approach to efficiently compute the sum of distinct prime divisors for each number up to N, and returns the result for the specific number N.
+
+Here's the complete function with proper documentation:
+
+```python
+def Sum(N):
+    """
+    Compute the sum of all distinct prime divisors of the number N.
+    
+    This function uses a sieve approach to efficiently calculate the sum of
+    distinct prime divisors for all numbers up to N, then returns the result
+    for the specific number N.
+    
+    Args:
+        N (int): The number for which to compute the sum of distinct prime divisors
+        
+    Returns:
+        int: The sum of all distinct prime divisors of N
+        
+    Example:
+        >>> Sum(12)
+        5  # Prime divisors of 12 are 2 and 3, so 2 + 3 = 5
+        >>> Sum(15)
+        8  # Prime divisors of 15 are 3 and 5, so 3 + 5 = 8
+    """
+    SumOfPrimeDivisors = [0] * (N + 1)
+    
+    for i in range(2, N + 1):
+        if SumOfPrimeDivisors[i] == 0:  # i is prime
+            for j in range(i, N + 1, i):
+                SumOfPrimeDivisors[j] += i
+                
+    return SumOfPrimeDivisors[N]
+```
+
+The function correctly implements the algorithm described in your chain of thought. It efficiently computes the sum of distinct prime divisors using a sieve method with time complexity O(N log log N), which is optimal for this type of problem.

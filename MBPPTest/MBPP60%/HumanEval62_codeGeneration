@@ -1,0 +1,27 @@
+CodeGeneration:
+true, update `ans` to be the maximum of the current `ans` and `k`.
+6. After the loop, check if `ans` is between 0 and `n` (inclusive). If so, return `ans`; otherwise, return -1.
+
+Here is the complete function with the docstring:
+
+```python
+import sys
+
+def find_max_val(n, x, y):
+    """
+    Find the maximum value k in the range [0, n] such that k % x == y.
+
+    Args:
+        n (int): The upper bound of the range (inclusive).
+        x (int): The divisor for the modulo operation.
+        y (int): The remainder to check for.
+
+    Returns:
+        int: The maximum k in [0, n] satisfying k % x == y, or -1 if no such k exists.
+    """
+    ans = -sys.maxsize
+    for k in range(n + 1):
+        if (k % x == y):
+            ans = max(ans, k)
+    return (ans if (ans >= 0 and ans <= n) else -1)
+```

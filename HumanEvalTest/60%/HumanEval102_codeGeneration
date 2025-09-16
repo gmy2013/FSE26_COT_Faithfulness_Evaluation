@@ -1,0 +1,27 @@
+CodeGeneration:
+```python
+def choose_num(x, y):
+    """This function takes two positive numbers x and y and returns the
+    biggest even integer number that is in the range [x, y] inclusive. If 
+    there's no such number, then the function should return -1.
+
+    For example:
+    choose_num(12, 15) = 14
+    choose_num(13, 12) = -1
+    """
+    # Determine the actual range boundaries
+    start = min(x, y)
+    end = max(x, y)
+    
+    # Find the largest even number ≤ end
+    if end % 2 == 0:
+        largest_even = end
+    else:
+        largest_even = end - 1
+    
+    # Check if this even number is within our range
+    if largest_even >= start:
+        return largest_even
+    else:
+        return -1
+```

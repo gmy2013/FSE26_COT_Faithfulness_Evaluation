@@ -1,0 +1,79 @@
+
+def do_algebra(operator, operand):
+    """
+    Given two lists operator, and operand. The first list has basic algebra operations, and 
+    the second list is a list of integers. Use the two given lists to build the algebric 
+    expression and return the evaluation of this expression.
+
+    The basic algebra operations:
+    Addition ( + ) 
+    Subtraction ( - ) 
+    Multiplication ( * ) 
+    Floor division ( // ) 
+    Exponentiation ( ** ) 
+
+    Example:
+    operator['+', '*', '-']
+    array = [2, 3, 4, 5]
+    result = 2 + 3 * 4 - 5
+    => result = 9
+
+    Note:
+        The length of operator list is equal to the length of operand list minus one.
+        Operand is a list of of non-negative integers.
+        Operator list has at least one operator, and operand list has at least two operands.
+
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We have two lists: `operator` (containing strings of operations) and `operand` (containing integers).
+2. The expression is built by alternating operands and operators: first operand, then operator[0], then operand[1], then operator[1], etc.
+3. We need to evaluate the expression with standard operator precedence (exponentiation, multiplication/division, addition/subtraction).
+4. However, note the example: `2 + 3 * 4 - 5` evaluates to 9, which is (2 + (3*4) - 5) = (2+12-5)=9. This follows standard precedence.
+5. Since we have multiple operators with different precedences, we cannot simply evaluate left-to-right. We need to respect operator precedence.
+
+Approach:
+- We can use a stack-based evaluation or convert to postfix, but that might be complex.
+- Alternatively, we can iterate through the operators by precedence levels.
+- Another idea: since the operations are binary, we can build an expression tree, but that is heavy.
+- Alternatively, we can group operations by precedence: first handle exponentiation, then multiplication/floor division, then addition/subtraction.
+
+But note: the operations are in a list, and we need to combine with operands.
+
+Actually, we can use a recursive approach or use a while loop that processes higher precedence operators first.
+
+However, a simpler idea: we can combine the operands and operators into a list of tokens, and then evaluate with precedence.
+
+But since we are in Python, we can also generate a string and use `eval`, but that might be unsafe (though the input is controlled in this context). The problem says "return the evaluation", and operands are non-negative integers.
+
+But the problem does not require avoiding `eval`. However, for correctness and practice, we should implement without `eval`.
+
+Plan without eval:
+1. We have tokens: [op0, op1, op2, ...] and operands: [a0, a1, a2, a3]
+2. The expression is a0 op0 a1 op1 a2 op2 a3.
+3. We need to evaluate with operator precedence.
+
+We can define precedence:
+precedence = {'**': 3, '*': 2, '//': 2, '+': 1, '-': 1}
+
+We can use two stacks: one for values, one for operators.
+But since the expression is linear (no parentheses), we can process from left to right with precedence.
+
+Alternatively, we can iterate multiple times: first do all exponentiations, then multiplications and divisions, then additions and subtractions.
+
+Steps:
+- Create a list `tokens` that interleaves operands and operators: [a0, op0, a1, op1, a2, op2, a3]
+- Then, we process tokens in passes by precedence.
+
+Implementation for multiple passes:
+
+First, define precedence levels in order: [['**'], ['*', '//'], ['+', '-']]
+
+For each level in precedence levels:
+   i = 1
+   while i < len(tokens)-1:
+        if tokens[i] is in current level:
+            left = tokens[i-1]
+    

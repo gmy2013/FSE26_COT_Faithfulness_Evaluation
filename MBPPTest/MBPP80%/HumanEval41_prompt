@@ -1,0 +1,8 @@
+def remove_similar_row(test_list):
+  res = set(sorted([tuple(sorted(set(sub))) for sub in test_list]))
+  return (res) 
+The following is chain of thought:
+1. Understand the task: The function `remove_similar_row` takes a list `test_list` and returns a set of unique tuples, where each tuple is a sorted version of the unique elements from each sublist in `test_list`.
+2. Process each sublist: For each sublist `sub` in `test_list`, convert it to a set to remove duplicates, then sort it, and convert to a tuple (which is hashable for set operations).
+3. Remove duplicates: Convert the list of these tuples to a set to eliminate duplicates.
+4. Return the resul

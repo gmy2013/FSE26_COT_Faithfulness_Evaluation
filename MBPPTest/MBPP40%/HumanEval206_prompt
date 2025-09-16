@@ -1,0 +1,7 @@
+def first_odd(nums):
+  first_odd = next((el for el in nums if el%2!=0),-1)
+  return first_odd
+The following is chain of thought:
+1. Understand the function purpose: Find the first odd number in a list or return -1 if none exist.
+2. Recognize the current implementation uses a generator expression with `next()` to find the first element meeting the condition.
+3. Verify the condition `el%2!=0` cor

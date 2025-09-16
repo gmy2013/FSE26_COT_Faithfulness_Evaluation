@@ -1,0 +1,13 @@
+def access_key(ditionary,key):
+  return list(ditionary)[key]
+The following is chain of thought:
+1. The function name is `access_key` and it takes two parameters: `ditionary` (which appears to be a typo for 'dictionary') and `key`.
+2. The current implementation converts the dictionary to a list of keys and returns the element at index `key`.
+3. However, this approach has issues:
+   - The parameter name `ditionary` is misspelled (should be 'dictionary')
+   - Converting the entire dictionary to a list is inefficient for large dictionaries
+   - Dictionary keys are unordered in older Python versions (though ordered in 3.7+)
+   - This doesn't actually access the value associated with the key, but rather treats the dictionary as an ordered collection
+4. Based on the function name `access_key`, it should likely return the value associated with the given key.
+5. The proper way to access a dictionary value is using square bracket notation: `dictionary[key]`
+6. We should also handle the case where the key doesn't exist

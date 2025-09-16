@@ -1,0 +1,14 @@
+CodeGeneration:
+vert the rounded integer to binary using bin() function, which returns a string starting with '0b'.
+5. Return the binary string.
+
+Here is the implementation:
+
+```python
+def rounded_avg(n, m):
+    if n > m:
+        return -1
+    avg = (n + m) / 2.0
+    rounded = round(avg)
+    return bin(rounded)
+```

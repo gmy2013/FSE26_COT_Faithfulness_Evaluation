@@ -1,0 +1,38 @@
+CodeGeneration:
+`my_list` (inclusive), generating combinations of each size.
+4. For each size `i`, `combinations(my_list, i)` returns tuples of all combinations of `i` elements from `my_list`.
+5. These tuples are converted to lists using a list comprehension.
+6. If the generated list for a particular `i` is non-empty (which it always is except when `i=0` and `my_list` is empty, but `combinations` handles this correctly), the sublists are added to the result list `subs`.
+7. Finally, the complete list of all sublists is returned.
+
+Here is the complete function with the docstring:
+
+```python
+from itertools import combinations
+
+def sub_lists(my_list):
+    """
+    Generate all possible sublists (subsets) of the input list.
+    
+    Args:
+        my_list (list): Input list to generate sublists from
+        
+    Returns:
+        list: List of all possible sublists (including empty list)
+        
+    Examples:
+        >>> sub_lists([1, 2, 3])
+        [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
+        
+        >>> sub_lists(['a'])
+        [[], ['a']]
+    """
+    subs = []
+    for i in range(0, len(my_list)+1):
+        temp = [list(x) for x in combinations(my_list, i)]
+        if len(temp)>0:
+            subs.extend(temp)
+    return subs
+```
+
+The function efficiently generates all 2^n possible sublists of the input list using itertools.combinations for optimal performance.

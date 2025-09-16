@@ -1,0 +1,25 @@
+CodeGeneration:
+I see you've already provided a complete and correct implementation of the `nth_nums` function! Here's the code with proper formatting:
+
+```python
+def nth_nums(nums, n):
+    """Raise each number in the list to the nth power.
+    
+    Args:
+        nums: List of numbers
+        n: Exponent to raise each number to
+        
+    Returns:
+        List where each element is the corresponding element from nums raised to the nth power
+    """
+    nth_nums = list(map(lambda x: x ** n, nums))
+    return nth_nums
+```
+
+Your implementation is perfect - it correctly:
+1. Takes a list of numbers and an exponent
+2. Uses `map()` with a lambda function to apply the exponentiation
+3. Converts the map object to a list
+4. Returns the resulting list
+
+The function will work correctly for any list of numbers and any integer exponent.

@@ -1,0 +1,9 @@
+CodeGeneration:
+n result of this comparison.
+
+Here is the corrected function:
+
+```python
+def is_upper(string):
+    return string == string.upper()
+```

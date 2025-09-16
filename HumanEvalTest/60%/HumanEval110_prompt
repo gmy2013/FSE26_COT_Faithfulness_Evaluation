@@ -1,0 +1,39 @@
+
+def exchange(lst1, lst2):
+    """In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return "YES".
+    Otherwise, return "NO".
+    For example:
+    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => "YES"
+    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => "NO"
+    It is assumed that the input lists will be non-empty.
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+We need to make all elements in lst1 even by swapping any number of elements between lst1 and lst2.
+Note: We can swap as many times as we want (each swap exchanges one element from lst1 with one from lst2).
+
+Observation:
+- For lst1 to have all even numbers, we need to replace every odd number currently in lst1 with an even number.
+- The even numbers we get must come from lst2 (via swapping). Similarly, when we swap an odd number from lst1 to lst2, we are giving an odd number to lst2.
+
+However, we don't need to track the exact swaps. Instead, we can think about the net requirement:
+
+Let:
+- Let odd1 = number of odd numbers in lst1
+- Let even2 = number of even numbers in lst2
+
+We need to replace every odd number in lst1 with an even number. So we need at least 'odd1' even numbers from lst2 to swap into lst1.
+
+But when we swap, we are also giving something to lst2. For each swap, we take an even number from lst2 and give an odd number from lst1 to lst2. So the number of even numbers in lst2 must be at least the number of odd numbers we need to replace in lst1.
+
+Therefore, if the number of even numbers in lst2 (even2) is >= the number of odd numbers in lst1 (odd1), then we can do the swaps. Otherwise, we cannot.
+
+Wait: Is that sufficient? Consider what we are giving to lst2: we are giving odd numbers. This doesn't affect the even count in lst2 negatively. Actually, when we swap an odd from lst1 with an even from lst2:
+- We are adding an even to lst1 (good) and

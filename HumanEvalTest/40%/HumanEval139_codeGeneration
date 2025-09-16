@@ -1,0 +1,30 @@
+CodeGeneration:
+We can compute the product of factorials from 1! to n! by first computing the factorial for each integer from 1 to n and then multiplying them together. We'll use dynamic programming to compute the factorials efficiently.
+
+```python
+def special_factorial(n):
+    """The Brazilian factorial is defined as:
+    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!
+    where n > 0
+
+    For example:
+    >>> special_factorial(4)
+    288
+
+    The function will receive an integer as input and should return the special
+    factorial of this integer.
+    """
+    # Initialize the factorial for 1
+    fact = 1
+    # Initialize the product of factorials
+    product = 1
+    # Iterate from 1 to n
+    for k in range(1, n+1):
+        # Compute k! by multiplying the previous factorial by k
+        fact *= k
+        # Multiply the current product by k!
+        product *= fact
+    return product
+```
+
+This code efficiently computes the special factorial by maintaining a running factorial and accumulating the product of these factorials in a single pass. The time complexity is O(n) and space complexity is O(1).

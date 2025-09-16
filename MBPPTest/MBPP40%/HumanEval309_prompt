@@ -1,0 +1,12 @@
+import datetime
+def check_date(m, d, y):
+    try:
+        m, d, y = map(int, (m, d, y))
+        datetime.date(y, m, d)
+        return True
+    except ValueError:
+        return False
+The following is chain of thought:
+1. The function `check_date` takes three parameters: `m`, `d`, `y` (month, day, year).
+2. The function attempts to convert these parameters to integers using `map(int, (m, d, y))`.
+3. It then tries to creat

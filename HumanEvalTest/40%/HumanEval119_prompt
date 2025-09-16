@@ -1,0 +1,37 @@
+
+def match_parens(lst):
+    '''
+    You are given a list of two strings, both strings consist of open
+    parentheses '(' or close parentheses ')' only.
+    Your job is to check if it is possible to concatenate the two strings in
+    some order, that the resulting string will be good.
+    A string S is considered to be good if and only if all parentheses in S
+    are balanced. For example: the string '(())()' is good, while the string
+    '())' is not.
+    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
+
+    Examples:
+    match_parens(['()(', ')']) == 'Yes'
+    match_parens([')', ')']) == 'No'
+    '''
+
+The following is chain of thought:
+To solve this problem, we need to determine whether we can concatenate two given strings of parentheses in some order (either first string followed by second, or second followed by first) such that the resulting string is "good", meaning all parentheses are balanced.
+
+**Approach:**
+1. **Understanding Balanced Parentheses**: A string is balanced if every opening parenthesis '(' has a corresponding closing parenthesis ')', and they are properly nested. We can use a stack or a counter to check balance.
+2. **Key Insight**: Instead of generating both concatenations and checking each for balance (which might be inefficient for large strings), we can use a greedy approach with a counter.
+3. **Counter Method**: 
+   - Let `s1` and `s2` be the two strings.
+   - We consider two orders: `s1 + s2` and `s2 + s1`.
+   - For a string to be balanced, the total number of open and close parentheses must be equal, and at no point should the number of closing parentheses exceed the number of opening ones.
+4. **Efficient Check**:
+   - For a candidate string, we traverse and maintain a counter `balance` that increments for '(' and decrements for ')'. If at any point the balance becomes negative, it is unbalanced. At the end, the balance should be zero.
+   - However, we can avoid building the entire string by processing each string sequentially and checking the balance condition without breaking.
+5. **Implementation**:
+   - Define a helper function `is_balanced(s)` that checks if a string `s` is balanced. It returns a boolean.
+   - Alternatively, we can write a helper that returns the final balance and the minimum balance during traversal (to check for negative condition). But for simplicity, we can just simulate the concatenation without constructing the string.
+6. **Optimization**:
+   - Actually, we can simulate the concatenation without building the string by processing each character and updating the balance. For each order, we check:
+        balance = 0
+  

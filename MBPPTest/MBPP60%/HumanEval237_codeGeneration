@@ -1,0 +1,92 @@
+CodeGeneration:
+is even and the other is odd): it's impossible to make the strings equal with swaps, so return -1.
+
+However, note that the code currently has:
+```python
+    elif ((c0 + c1) % 2 == 0) : 
+        return result + 2;  
+    else : 
+        return -1;
+```
+
+This is correct because:
+- If both c0 and c1 are even: handled by first condition.
+- If both are odd: then (c0+c1)%2==0 (odd+odd=even), so it returns result+2.
+- Otherwise (one even, one odd): (c0+c1)%2==1 (even+odd=odd), so it returns -1.
+
+So the code is correct as is.
+
+But let me verify with an example:
+s1 = "1100", s2 = "1001"
+Mismatches:
+Index0: s1='1', s2='1' -> match
+Index1: s1='1', s2='0' -> c1 +=1 (now c1=1)
+Index2: s1='0', s2='0' -> match
+Index3: s1='0', s2='1' -> c0 +=1 (now c0=1)
+So c0=1, c1=1 (both odd).
+Base result = 1//2 + 1//2 = 0+0=0.
+Then since (c0+c1)%2=2%2=0, return 0+2=2.
+
+Indeed, we need two swaps:
+Swap index1 and index3: 
+After swap: s1 becomes "1001" which equals s2? Wait no:
+Original s1="1100", swap positions 1 and 3: 
+s1[1] and s1[3] are swapped: becomes "1001", which matches s2="1001". So only one swap is needed? 
+
+Wait, that contradicts. Actually, with one swap we fixed both mismatches. So why does the code say 2?
+
+There is an error in the code's logic.
+
+Correction:
+When we have one mismatch of type (0,1) and one of type (1,0), we can fix them with one swap: swap the two mismatched positions. For example, in the above, swap index1 (which has '1' in s1 and should be '0') with index3 (which has '0' in s1 and should be '1'). After swap, both become correct.
+
+So the code should return 1 for this case, not 2.
+
+Therefore, the code has a bug. The correct approach is:
+result = (c0 + c1) // 2   [because each swap can fix two mismatches]
+But note: if both c0 and c1 are odd, then (c0+c1) is even, and (c0+c1)//2 is an integer. In the example, (1+1)//2=1.
+
+So we can simply do:
+result = (c0 + c1) // 2
+But wait: is that always valid? Consider if we have two mismatches of the same type, say two c0. Then we need one swap to fix them (swap two '0's in s1 with two '1's in other positions? Actually, to fix two (0,1) mismatches, we can swap one of the '0's in s1 (at a mismatch) with a '1' in s1 at a correct position? But that might break a correct pair.
+
+Actually, the minimal swaps is achieved by first swapping mismatches of the same type to reduce the count, and then handling the leftover. But it turns out that the minimal number of swaps is always (c0 + c1) // 2 if c0 == c1 (mod 2)? Actually, it is only possible if the total number of mismatches is even. And indeed, if the total is even, we can always fix with (c0+c1)//2 swaps.
+
+So the correct function should be:
+def min_Swaps(s1, s2):
+    c0 = 0
+    c1 = 0
+    for i in range(len(s1)):
+        if s1[i] == '0' and s2[i] == '1':
+            c0 += 1
+        elif s1[i] == '1' and s2[i] == '0':
+            c1 += 1
+    if (c0 + c1) % 2 != 0:
+        return -1
+    return (c0 + c1) // 2
+
+But wait, is that always minimal? Consider the example with two c0 and two c1. How many swaps? With two swaps: swap two mismatches to fix four. But can we do it in two? Yes. And (c0+c1)//2 = 4//2=2.
+
+And for the previous example with one c0 and one c1: (1+1)//2=1.
+
+So the correct code is much simpler.
+
+Therefore, the given code is flawed. The correct implementation is:
+
+```python
+def min_Swaps(s1, s2):
+    c0 = 0
+    c1 = 0
+    for i in range(len(s1)):
+        if s1[i] == '0' and s2[i] == '1':
+            c0 += 1
+        elif s1[i] == '1' and s2[i] == '0':
+            c1 += 1
+    if (c0 + c1) % 2 != 0:
+        return -1
+    return (c0 + c1) // 2
+```
+
+This matches the docstring: returns the minimum number of swaps to make s1 equal to s2, or -1 if impossible.
+
+So I will provide this corrected code.

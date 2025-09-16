@@ -1,0 +1,55 @@
+CodeGeneration:
+, 1+2+3, etc. until the sum doesn't exceed the exponent)
+5. **Remaining Prime**: If n > 1 after processing all factors, it means n itself is prime and counts as one divisor
+
+Here's the complete function with improved comments:
+
+```python
+def count_Fac(n):
+    """
+    Count the number of distinct factorial divisors of a given number n.
+    
+    A factorial divisor is a divisor that can be expressed as k! for some integer k.
+    This function calculates how many such distinct factorial divisors exist for n.
+    
+    Args:
+        n (int): The number to count factorial divisors for
+        
+    Returns:
+        int: The number of distinct factorial divisors of n
+        
+    Example:
+        >>> count_Fac(6)
+        3  # 1!, 2!, 3! are divisors of 6
+    """
+    m = n  # Store original n for reference
+    count = 0  # Count of factorial divisors
+    i = 2  # Start with first prime
+    
+    # Factorize n and process each prime factor
+    while (i * i) <= m:
+        total = 0  # Exponent of current prime factor
+        
+        # Count exponent of current prime factor i
+        while n % i == 0:
+            n //= i
+            total += 1
+        
+        # Calculate how many factorial divisors can be formed from this exponent
+        temp = 0  # Running sum of triangular numbers
+        j = 1  # Current triangular number index
+        
+        # Use triangular numbers pattern: 1, 1+2, 1+2+3, etc.
+        while (temp + j) <= total:
+            temp += j
+            count += 1
+            j += 1
+        
+        i += 1  # Move to next potential prime factor
+    
+    # Handle remaining prime factor (if n > 1, it's prime)
+    if n != 1:
+        count += 1
+    
+    return count
+```

@@ -1,0 +1,33 @@
+def min_Swaps(s1,s2) :  
+    c0 = 0; c1 = 0;  
+    for i in range(len(s1)) :  
+        if (s1[i] == '0' and s2[i] == '1') : 
+            c0 += 1;    
+        elif (s1[i] == '1' and s2[i] == '0') : 
+            c1 += 1;  
+    result = c0 // 2 + c1 // 2;  
+    if (c0 % 2 == 0 and c1 % 2 == 0) : 
+        return result;  
+    elif ((c0 + c1) % 2 == 0) : 
+        return result + 2;  
+    else : 
+        return -1;  
+The following is chain of thought:
+Let's break down the function step by step:
+
+1. **Initialization**: `c0` and `c1` are counters for two types of mismatches:
+   - `c0` counts positions where `s1` has '0' and `s2` has '1'
+   - `c1` counts positions where `s1` has '1' and `s2` has '0'
+
+2. **Loop through each index**: For each character position, check the mismatch type and increment the respective counter.
+
+3. **Calculate base swaps**: Each swap can correct two mismatches. So, `c0//2` swaps correct pairs of `c0` mismatches, and `c1//2` swaps correct pairs of `c1` mismatches.
+
+4. **Check remaining mismatches**:
+   - If both `c0` and `c1` are even (i.e., no leftovers), return `result`.
+   - If the total number of mismatches (`c0 + c1`) is even (meaning both `c0` and `c1` are odd, since even+even=even is already handled, so this must be odd+odd=even), then we have one leftover of each type. These require two additional swaps (e.g., first swap creates a match but causes a new mismatch elsewhere, then a second swap fixes that). So return `result + 2`.
+   - Otherwise (if total mismatches is odd), it's impossible to make the strings equal with swaps, so return `-1`.
+
+However, note the condition `elif ((c0 + c1) % 2 == 0)` actually catches the case where both `c0` and `c1` are odd (because odd+odd=even). The first condition already handled both even. So the only remaining even total is when both are odd.
+
+But wait: what if one is even and one is odd? Then total is odd, which falls to the `else` and returns `-1`. This is correct because you cannot fix an imbalance (e.g., one ext

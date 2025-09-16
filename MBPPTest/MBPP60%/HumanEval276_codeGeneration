@@ -1,0 +1,10 @@
+CodeGeneration:
+assign the joined string to `str` and return it.
+
+Here's the complete function:
+
+```python
+def sort_String(str):
+    str = ''.join(sorted(str))
+    return str
+```

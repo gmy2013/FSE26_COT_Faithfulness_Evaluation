@@ -1,0 +1,12 @@
+def mutiple_tuple(nums):
+    temp = list(nums)
+    product = 1 
+    for x in temp:
+        product *= x
+    return product
+The following is chain of thought:
+1. The function `mutiple_tuple` takes a tuple `nums` as input.
+2. Convert the tuple to a list to allow iteration (though tuples are also iterable, this conversion is acceptable).
+3. Initialize `product` to 1, as multiplying by 1 is the identity operation.
+4. Iterate over each element `x` in the list (which was converted from the tuple).
+5. M

@@ -1,0 +1,43 @@
+CodeGeneration:
+I'll implement the corrected version of the function to properly identify triangle types based on the Pythagorean theorem and its converse.
+
+```python
+def check_Type_Of_Triangle(a, b, c):
+    """
+    Determines the type of triangle based on side lengths using the Pythagorean theorem.
+    
+    Args:
+        a, b, c (float): The lengths of the three sides of the triangle
+    
+    Returns:
+        str: The type of triangle - "Right-angled Triangle", "Obtuse-angled Triangle", 
+             or "Acute-angled Triangle"
+    
+    Note:
+        - Uses the Pythagorean theorem: a² + b² = c² for right triangles
+        - For obtuse triangles: a² + b² < c² (where c is the longest side)
+        - For acute triangles: a² + b² > c² (where c is the longest side)
+    """
+    # Calculate squares of sides
+    sqa = pow(a, 2)
+    sqb = pow(b, 2)
+    sqc = pow(c, 2)
+    
+    # Check for right triangle (Pythagorean theorem)
+    if (sqa == sqb + sqc) or (sqb == sqa + sqc) or (sqc == sqa + sqb):
+        return "Right-angled Triangle"
+    # Check for obtuse triangle (converse of Pythagorean theorem)
+    elif (sqa > sqb + sqc) or (sqb > sqa + sqc) or (sqc > sqa + sqb):
+        return "Obtuse-angled Triangle"
+    # Otherwise it's an acute triangle
+    else:
+        return "Acute-angled Triangle"
+```
+
+The key corrections made:
+1. Fixed the right triangle condition to properly check if any side squared equals the sum of the other two sides squared
+2. Maintained the correct obtuse triangle condition (which was already correct)
+3. Kept the else case for acute triangles
+4. Added proper docstring documentation explaining the function's purpose and logic
+
+This implementation now correctly identifies triangle types based on the relationships between the squares of the side lengths.

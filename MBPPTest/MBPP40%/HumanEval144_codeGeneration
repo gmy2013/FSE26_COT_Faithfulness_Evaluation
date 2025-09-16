@@ -1,0 +1,36 @@
+CodeGeneration:
+```python
+def divisible_by_digits(startnum, endnum):
+    """
+    Write a function to find numbers within a given range from startnum to endnum where each number is divisible by every digit it contains.
+    
+    Note: The digit 0 should be ignored. If the number contains zero as a digit, it should be excluded.
+    
+    Args:
+        startnum (int): The starting number of the range (inclusive).
+        endnum (int): The ending number of the range (inclusive).
+    
+    Returns:
+        list: A list of numbers that are divisible by each of their non-zero digits.
+    
+    Examples:
+        >>> divisible_by_digits(1, 22)
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+        >>> divisible_by_digits(1, 100)
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22, 24, 33, 36, 44, 48, 55, 66, 77, 88, 99]
+    """
+    result = []
+    for n in range(startnum, endnum + 1):
+        digits = str(n)
+        valid = True
+        for digit in digits:
+            d = int(digit)
+            if d == 0:  # Skip zero digits
+                continue
+            if n % d != 0:
+                valid = False
+                break
+        if valid and not any(d == '0' for d in digits):  # Ensure no zero digits exist
+            result.append(n)
+    return result
+```

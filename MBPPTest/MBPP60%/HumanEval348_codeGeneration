@@ -1,0 +1,18 @@
+CodeGeneration:
+Based on the chain of thought, here's the complete function implementation:
+
+```python
+def count_digs(tup):
+    return sum([len(str(ele)) for ele in tup])
+
+def sort_list(test_list):
+    test_list.sort(key=count_digs)
+    return str(test_list)
+```
+
+This implementation:
+- Defines `count_digs()` that takes a tuple and returns the sum of digit lengths for all elements
+- Defines `sort_list()` that sorts the input list using `count_digs` as the key function
+- Returns the sorted list converted to a string representation
+
+The function will sort tuples in the list based on their total digit count (sum of lengths when converted to strings).

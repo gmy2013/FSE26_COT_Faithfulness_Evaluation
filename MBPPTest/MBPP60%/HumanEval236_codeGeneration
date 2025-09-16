@@ -1,0 +1,23 @@
+CodeGeneration:
+al `sum`.
+4. Finally, the function returns the total sum.
+
+However, note that the formula for the sum of cubes of the first `n` odd numbers is known to be `n^2 * (2*n^2 - 1)`. This closed-form formula can be used for a more efficient computation without a loop.
+
+Let's implement the function using the closed-form formula for better performance, especially for large `n`.
+
+```python
+def cube_Sum(n):
+    """
+    Calculate the sum of cubes of the first n odd numbers.
+
+    Args:
+        n (int): Number of odd terms to consider.
+
+    Returns:
+        int: Sum of cubes of the first n odd numbers.
+    """
+    return n * n * (2 * n * n - 1)
+```
+
+This implementation is efficient and concise, leveraging the mathematical identity for the sum.

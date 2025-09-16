@@ -1,0 +1,17 @@
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+
+The following is chain of thought:
+We are to implement a function that returns the n-th Fibonacci number.
+ The Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+ Note: The problem examples: fib(10)=55, fib(1)=1, fib(8)=21.
+ This suggests that the first Fibonacci number (n=1) is 1, and n=2 is 1, e

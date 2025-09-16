@@ -1,0 +1,11 @@
+def all_Characters_Same(s) :
+    n = len(s)
+    for i in range(1,n) :
+        if s[i] != s[0] :
+            return False
+    return True
+The following is chain of thought:
+1. The function `all_Characters_Same` checks if all characters in a string `s` are identical.
+2. It first calculates the length of the string and stores it in `n`.
+3. It then iterates from index 1 to the end of the string (index `n-1`).
+4. For each character at index `i`, it compares it with th

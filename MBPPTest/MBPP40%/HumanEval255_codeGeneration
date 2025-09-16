@@ -1,0 +1,42 @@
+CodeGeneration:
+the 1's to the left). However, we need to consider the cumulative zeros to the right for each 1 to calculate the total swaps.
+
+3. **Implementation Plan:**
+   - Create an array `noOfZeroes` where `noOfZeroes[i]` stores the number of zeros from index `i` to the end.
+   - Traverse the array from right to left to populate `noOfZeroes`.
+   - For each 1 encountered, add the number of zeros to its right (i.e., `noOfZeroes[i]`) to the total count.
+
+4. **Code Explanation:**
+   - Initialize `noOfZeroes` with zeros, of length `n`.
+   - Set the last element of `noOfZeroes` to 1 if the last element of `arr` is 0, else 0.
+   - For indices from `n-2` down to 0:
+        - Start with the value from the next index.
+        - If the current element is 0, increment the count.
+   - Then, for each index from 0 to `n-1`:
+        - If the element is 1, add `noOfZeroes[i]` to `count`.
+   - Return `count`.
+
+The provided code correctly implements this logic. Here is the function with added comments for clarity:
+
+```python
+def find_Min_Swaps(arr, n):
+    # Array to store the number of zeros from index i to the end
+    noOfZeroes = [0] * n
+    count = 0  # Total swaps needed
+
+    # Initialize the last element of noOfZeroes
+    noOfZeroes[n - 1] = 1 - arr[n - 1]  # 1 if arr[n-1] is 0, else 0
+
+    # Populate noOfZeroes from right to left
+    for i in range(n-2, -1, -1):
+        noOfZeroes[i] = noOfZeroes[i + 1]  # Carry over the count from the right
+        if arr[i] == 0:
+            noOfZeroes[i] += 1  # Increment if current element is zero
+
+    # For each '1' in the array, add the number of zeros to its right
+    for i in range(0, n):
+        if arr[i] == 1:
+            count += noOfZeroes[i]
+
+    return count
+```

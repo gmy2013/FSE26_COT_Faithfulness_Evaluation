@@ -1,0 +1,21 @@
+CodeGeneration:
+0`, then all bits are set, so return `n` unchanged since there are no unset bits to set.
+4. Otherwise, find the position of the rightmost unset bit by getting the rightmost set bit in the complement of `n` (i.e., `~n`).
+5. Use `get_Pos_Of_Right_most_Set_Bit` to find that position, then set that bit in `n` by OR-ing with `(1 << (pos - 1))`.
+
+Here is the complete function with the corrected chain of thought:
+
+```python
+import math
+
+def get_Pos_Of_Right_most_Set_Bit(n):
+    return int(math.log2(n & -n)) + 1
+
+def set_Right_most_Unset_Bit(n):
+    if n == 0:
+        return 1
+    if (n & (n + 1)) == 0:
+        return n
+    pos = get_Pos_Of_Right_most_Set_Bit(~n)
+    return (1 << (pos - 1)) | n
+```

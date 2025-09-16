@@ -1,0 +1,53 @@
+
+def fix_spaces(text):
+    """
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with - 
+    
+    fix_spaces("Example") == "Example"
+    fix_spaces("Example 1") == "Example_1"
+    fix_spaces(" Example 2") == "_Example_2"
+    fix_spaces(" Example   3") == "_Example-3"
+    """
+
+The following is chain of thought:
+We are going to process the string to replace spaces with underscores, but if there are more than 2 consecutive spaces, replace that entire group with a single '-'.
+ Steps:
+ 1. We cannot simply replace every space with an underscore because we have to handle consecutive spaces differently.
+ 2. We need to group consecutive spaces together.
+ 3. For each group of consecutive spaces:
+    - If the group has 1 or 2 spaces, replace with underscores (same number as the spaces).
+    - If the group has more than 2 spaces, replace with a single '-'.
+ 4. We can use a while loop to traverse the string and build the result, but a more efficient way is to use regular expressions to find groups of spaces.
+
+ Alternatively, we can use regex to substitute:
+   - Find all occurrences of two or more spaces? Actually, we need to distinguish between 1, 2, and more than 2.
+   However, note: we want to replace 1 space by '_', 2 spaces by '__', and 3 or more by a single '-'.
+
+ But note the examples:
+   " Example 2" -> has a leading space (1 space) and a single space between words -> becomes "_Example_2"
+   " Example   3" -> leading space (1) and then 3 consecutive spaces -> becomes "_Example-3"
+
+ So we can break the problem into:
+   - Split the string by non-space characters? Actually, we want to preserve the non-space parts.
+   - Alternatively, we can use a regex to match the spaces and then replace accordingly.
+
+ Let's use re.sub with a function that checks the length of the matched group.
+
+ Plan:
+   Use re.sub(r' +', lambda match: ... , text)
+
+   In the lambda:
+      if len(match.group()) == 1: return '_'
+      if len(match.group()) == 2: return '__'
+      else: return '-'
+
+ However, note: the example " Example   3" has two groups: one single space at the beginning and then three spaces.
+   The regex will match the first group as one space (so replaced by '_') and then the next group as three spaces (replaced by '-').
+
+ But wait: the example " Example 2" has two groups: one at the beginning (1 space) and one between words (1 space). So it becomes two underscores.
+
+ However, the example says " Example 2" becomes "_Example_2", which is correct.
+
+ But note: wha

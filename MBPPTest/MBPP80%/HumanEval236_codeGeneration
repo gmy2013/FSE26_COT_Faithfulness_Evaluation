@@ -1,0 +1,37 @@
+CodeGeneration:
+I see you've provided a function and a chain of thought. Based on your description, the function appears to be correctly implemented to calculate the sum of cubes of the first n odd numbers.
+
+Here's the function with proper formatting and a complete docstring:
+
+```python
+def cube_Sum(n):
+    """
+    Calculate the sum of cubes of the first n odd numbers.
+    
+    Args:
+        n (int): Number of odd numbers to include in the sum
+        
+    Returns:
+        int: Sum of cubes of the first n odd numbers
+        
+    Examples:
+        >>> cube_Sum(1)
+        1
+        >>> cube_Sum(2)
+        28
+        >>> cube_Sum(3)
+        153
+    """
+    sum = 0   
+    for i in range(0, n):
+        sum += (2*i + 1) * (2*i + 1) * (2*i + 1) 
+    return sum
+```
+
+The function correctly implements the mathematical formula for the sum of cubes of odd numbers:
+- For i = 0: (2*0 + 1)³ = 1³ = 1
+- For i = 1: (2*1 + 1)³ = 3³ = 27
+- For i = 2: (2*2 + 1)³ = 5³ = 125
+- And so on...
+
+This gives the sequence: 1, 28 (1+27), 153 (1+27+125), etc.

@@ -1,0 +1,66 @@
+
+def move_one_ball(arr):
+    """We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The
+    numbers in the array will be randomly ordered. Your task is to determine if
+    it is possible to get an array sorted in non-decreasing order by performing 
+    the following operation on the given array:
+        You are allowed to perform right shift operation any number of times.
+    
+    One right shift operation means shifting all elements of the array by one
+    position in the right direction. The last element of the array will be moved to
+    the starting position in the array i.e. 0th index. 
+
+    If it is possible to obtain the sorted array by performing the above operation
+    then return True else return False.
+    If the given array is empty then return True.
+
+    Note: The given list is guaranteed to have unique elements.
+
+    For Example:
+    
+    move_one_ball([3, 4, 5, 1, 2])==>True
+    Explanation: By performin 2 right shift operations, non-decreasing order can
+                 be achieved for the given array.
+    move_one_ball([3, 5, 4, 1, 2])==>False
+    Explanation:It is not possible to get non-decreasing order for the given
+                array by performing any number of right shift operations.
+                
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We are allowed to perform right shifts any number of times. Each right shift moves every element one step to the right, with the last element wrapping around to the front.
+2. We need to check if there exists some number of right shifts (k) such that the resulting array is sorted in non-decreasing order.
+3. Since the array has unique elements, the sorted array is strictly increasing.
+
+Observation:
+- After k right shifts, the array becomes: [arr[n-k], arr[n-k+1], ..., arr[n-1], arr[0], arr[1], ..., arr[n-k-1]]
+- So we are effectively looking for a k such that when we rotate the array to the right by k, it becomes sorted.
+
+Alternate approach:
+- Instead of actually rotating and checking for every k (which would be O(n^2)), we can think about the structure of a sorted array that has been rotated.
+- In a sorted rotated array (with unique elements), there should be exactly one "drop" (where arr[i] > arr[i+1]) when traversing the array. This drop indicates the wrap-around point.
+- However, if the array is already sorted, there is no drop.
+
+Steps:
+1. If the array is empty, return True.
+2. Find the index where the sorted order "breaks". Since the array might be rotated, we are looking for the point where the next element is smaller than the previous (indicating the end of the sorted segment and the start of the next sorted segment).
+3. There should be at most one such drop. If there are more than one, it cannot be sorted by rotation.
+4. Also, the last element must be <= the first element (if there is a drop) because after rotation the array should be sorted.
+
+Algorithm:
+- Let n = len(arr)
+- If n == 0: return True
+- Count the number of indices i (from 0 to n-1) such that arr[i] > arr[(i+1) % n]
+   - Why modulo? Because we are considering circularly.
+- If the number of such drops is 0, the array is already sorted -> return True.
+- If the number of such drops is exactly 1, then we can rotate to make it sorted. But we must also check that the last element is <= the first element? Actually, if there is one drop, it must be at the wrap-around. So if we have one drop at index i, then rotating so that i+1 becomes the first element should yield the sorted array. However, we need to ensure that the entire array can be sorted by this rotation.
+- Actually, if there is exactly one drop, and if the last element <= first element (so that after rotation the wrap-around is consistent), then it is possible.
+
+But wait: Consider [3,4,5,1,2]:
+   Drops: 
+     3<4 -> no
+     4<5 -> no
+     5>1 -> yes (index 2)
+     1<2 -> n

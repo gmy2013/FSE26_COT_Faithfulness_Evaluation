@@ -1,0 +1,19 @@
+20%CoT
+CodeGeneration:
+otential divisor, which is `n-1`, and decrease the number until we find a divisor.
+
+2. **Check if the number is a divisor**: For each number `i` starting from `n-1`, check if `n` is evenly divisible by `i` (i.e., `n % i == 0`).
+
+3. **Return the largest divisor found**: Once a divisor is found, return it immediately since we are checking from largest to smallest.
+
+This approach ensures that the first divisor encountered is the largest possible divisor less than `n`. Let's implement this:
+
+```python
+def largest_divisor(n: int) -> int:
+    """ For a given number n, find the largest number that divides n evenly, smaller than n """
+    for i in range(n-1, 0, -1):  # Start from n-1 and go downwards to 1
+        if n % i == 0:           # Check if i is a divisor of n
+            return i             # Return the first (largest) divisor found
+```
+
+This code efficiently finds the largest divisor less than `n` by checking divisibility in descending order starting from `n-1`.

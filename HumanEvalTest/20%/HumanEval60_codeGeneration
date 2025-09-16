@@ -1,0 +1,36 @@
+20%CoT
+CodeGeneration:
+:**
+   The sequence of numbers we need to sum is an arithmetic sequence starting from 1 and ending at n, with a common difference of 1.
+
+2. **Use the formula for the sum of an arithmetic series:**
+   The formula to find the sum of the first n natural numbers is given by:
+   \[
+   S = \frac{n(n + 1)}{2}
+   \]
+   where \( n \) is the last number in the sequence.
+
+3. **Implement the formula in the function:**
+   We'll use this formula in our function to calculate the sum quickly and efficiently without needing to iterate through all numbers.
+
+Here's the implementation of the function using the above steps:
+
+```python
+def sum_to_n(n: int):
+    """sum_to_n is a function that sums numbers from 1 to n.
+    >>> sum_to_n(30)
+    465
+    >>> sum_to_n(100)
+    5050
+    >>> sum_to_n(5)
+    15
+    >>> sum_to_n(10)
+    55
+    >>> sum_to_n(1)
+    1
+    """
+    # Apply the formula for the sum of the first n natural numbers
+    return n * (n + 1) // 2
+```
+
+This function uses integer division (`//`) to ensure the result is an integer, which is appropriate since the sum of natural numbers should indeed be an integer.

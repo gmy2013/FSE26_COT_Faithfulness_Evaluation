@@ -1,0 +1,32 @@
+CodeGeneration:
+The function `move_last` moves all occurrences of the first element to the end of the list while preserving the order of other elements. Here's the complete function:
+
+```python
+def move_last(num_list):
+    """Move all occurrences of the first element to the end of the list.
+    
+    Args:
+        num_list: List of numbers
+        
+    Returns:
+        List with all occurrences of the first element moved to the end
+        
+    Examples:
+        >>> move_last([1, 2, 3, 1, 4, 1])
+        [2, 3, 4, 1, 1, 1]
+        >>> move_last([5, 5, 5, 5])
+        [5, 5, 5, 5]
+        >>> move_last([3, 2, 1])
+        [2, 1, 3]
+    """
+    a = [num_list[0] for i in range(num_list.count(num_list[0]))]
+    x = [ i for i in num_list if i != num_list[0]]
+    x.extend(a)
+    return (x)
+```
+
+The function works as follows:
+1. `a` contains all occurrences of the first element
+2. `x` contains all elements except the first element
+3. The two lists are combined, placing all occurrences of the first element at the end
+4. The order of non-first elements is preserved

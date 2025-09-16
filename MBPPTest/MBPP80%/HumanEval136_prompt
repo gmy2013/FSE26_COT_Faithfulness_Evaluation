@@ -1,0 +1,16 @@
+import re 
+regex = '^[aeiouAEIOU][A-Za-z0-9_]*'
+def check_str(string): 
+	if(re.search(regex, string)): 
+		return ("Valid") 
+	else: 
+		return ("Invalid") 
+The following is chain of thought:
+1. The function `check_str` takes a string as input.
+2. It uses the regex pattern `'^[aeiouAEIOU][A-Za-z0-9_]*'` to check if the string matches.
+3. The regex pattern means:
+   - `^` asserts the start of the string.
+   - `[aeiouAEIOU]` matches any vowel (case-insensitive) as the first character.
+   - `[A-Za-z0-9_]*` matches zero or more alphanumeric characters or underscores for the rest of the string.
+4. If the regex search finds a match, it returns "Valid".
+5. If no match is 

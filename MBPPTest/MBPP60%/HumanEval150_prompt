@@ -1,0 +1,12 @@
+def check_min_heap(arr, i):
+    if 2 * i + 2 > len(arr):
+        return True
+    left_child = (arr[i] <= arr[2 * i + 1]) and check_min_heap(arr, 2 * i + 1)
+    right_child = (2 * i + 2 == len(arr)) or (arr[i] <= arr[2 * i + 2] 
+                                      and check_min_heap(arr, 2 * i + 2))
+    return left_child and right_child
+The following is chain of thought:
+1. The function `check_min_heap` recursively verifies if an array represents a min-heap starting from index `i`.
+2. Base case: If the right child index (2*i+2) exceeds the array length, it means the current node has no children, so it's a valid min-heap by default.
+3. For the left child: Check if the current node's value is <= the left child's value, and recursively check the left subtree.
+4. For the right child: If the right 

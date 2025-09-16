@@ -1,0 +1,8 @@
+from itertools import groupby 
+def extract_elements(numbers, n):
+    result = [i for i, j in groupby(numbers) if len(list(j)) == n] 
+    return result
+The following is chain of thought:
+1. The function `extract_elements` takes two parameters: `numbers` (a list) and `n` (an integer).
+2. It uses `itertools.groupby` to group consecutive identical elements in `numbers`.
+3. For each group, it checks if the length of the group (number of co

@@ -1,0 +1,10 @@
+def check_identical(test_list1, test_list2):
+  res = test_list1 == test_list2
+  return (res) 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose Analysis**: The function needs to check if two lists are identical
+2. **Input Parameters**: Accepts two lists (test_list1 and test_list2) as input
+3. **Core Logic**: Uses the equality operator (==) to compare both lists
+   - The == operator compares list elements in order and

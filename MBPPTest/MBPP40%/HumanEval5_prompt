@@ -1,0 +1,7 @@
+import math
+def radian_degree(degree):
+ radian = degree*(math.pi/180)
+ return radian
+The following is chain of thought:
+1. The function `radian_degree` takes a parameter `degree`.
+2. The conversion formula from degrees to radians is: radian

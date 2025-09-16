@@ -1,0 +1,48 @@
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+import re
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+    # Split the string into sentences using the delimiters . ? !
+    sentences = re.split(r'[.?!]', S)
+    count = 0
+    
+    for sentence in sentences:
+        # Remove leading/trailing whitespace
+        sentence = sentence.strip()
+        if not sentence:  # Skip empty sentences
+            continue
+        
+        # Split into words and get the first word
+        words = sentence.split()
+        if words and words[0] == "I":
+            count += 1
+            
+    return count
+```
+
+The function works by:
+1. Using regular expressions to split the input string into sentences based on the delimiters `.`, `?`, and `!`
+2. Processing each sentence by stripping whitespace and skipping empty ones
+3. Splitting each sentence into words and checking if the first word is exactly "I"
+4. Counting all sentences that meet this criterion
+
+This handles edge cases like:
+- "I." (single word sentence)
+- "I am happy" (sentence starting with "I")
+- "In case" (doesn't count since it starts with "In", not "I")
+- Multiple spaces between words
+- Empty sentences created by consecutive delimiters

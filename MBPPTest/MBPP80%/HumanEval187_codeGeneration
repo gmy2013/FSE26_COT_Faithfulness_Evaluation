@@ -1,0 +1,8 @@
+CodeGeneration:
+ovided code already implements this logic correctly. Here is the complete function:
+
+```python
+def new_tuple(test_list, test_str):
+    res = tuple(test_list + [test_str])
+    return (res)
+```

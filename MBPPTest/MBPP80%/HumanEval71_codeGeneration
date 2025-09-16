@@ -1,0 +1,45 @@
+CodeGeneration:
+`num3` being the maximum and assigns it to `lnum`.
+6. Finally, the function returns `lnum`.
+
+Here is the complete function:
+
+```python
+def max_of_three(num1, num2, num3):
+    """
+    Returns the maximum of three numbers.
+    
+    Parameters:
+    num1 (int/float): First number
+    num2 (int/float): Second number
+    num3 (int/float): Third number
+    
+    Returns:
+    int/float: The largest of the three input numbers
+    """
+    if (num1 >= num2) and (num1 >= num3):
+        lnum = num1
+    elif (num2 >= num1) and (num2 >= num3):
+        lnum = num2
+    else:
+        lnum = num3
+    return lnum
+```
+
+Alternative implementation using Python's built-in `max()` function:
+
+```python
+def max_of_three(num1, num2, num3):
+    """
+    Returns the maximum of three numbers.
+    
+    Parameters:
+    num1 (int/float): First number
+    num2 (int/float): Second number
+    num3 (int/float): Third number
+    
+    Returns:
+    int/float: The largest of the three input numbers
+    """
+    return max(num1, num2, num3)
+```

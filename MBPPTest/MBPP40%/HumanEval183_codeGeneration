@@ -1,0 +1,24 @@
+CodeGeneration:
+Based on the docstring and your chain of thought, here's the complete function:
+
+```python
+def mul_even_odd(list1):
+    """
+    Multiply the first even and first odd numbers in the list.
+    
+    Args:
+        list1 (list): List of integers
+        
+    Returns:
+        int: Product of first even and first odd numbers, or -1 if either is not found
+    """
+    first_even = next((el for el in list1 if el % 2 == 0), -1)
+    first_odd = next((el for el in list1 if el % 2 != 0), -1)
+    return first_even * first_odd
+```
+
+The function:
+1. Uses generator expressions with `next()` to find the first even and first odd numbers
+2. Returns -1 as default if no even or odd number is found
+3. Returns the product of the first even and first odd numbers found
+4. Handles edge cases where either even or odd numbers might not exist in the list

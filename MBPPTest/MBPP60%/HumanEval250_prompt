@@ -1,0 +1,8 @@
+def Sum_of_Inverse_Divisors(N,Sum): 
+    ans = float(Sum)*1.0 /float(N);  
+    return round(ans,2); 
+The following is chain of thought:
+1. The function takes two parameters: N and Sum.
+2. It calculates the value of Sum divided by N as a floating point number.
+3. The result is rounded to two decimal places.
+4. The

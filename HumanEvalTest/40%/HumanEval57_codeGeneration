@@ -1,0 +1,43 @@
+CodeGeneration:
+is non-decreasing OR non-increasing.
+
+ Implementation:
+ We can create two flags: is_increasing and is_decreasing, both initially True.
+ Then iterate through the list and update the flags based on comparisons.
+
+ Here's the implementation:
+```python
+def monotonic(l: list):
+    """Return True is list elements are monotonically increasing or decreasing.
+    >>> monotonic([1, 2, 4, 20])
+    True
+    >>> monotonic([1, 20, 4, 10])
+    False
+    >>> monotonic([4, 1, 0, -10])
+    True
+    """
+    if len(l) <= 2:
+        return True
+    
+    is_increasing = True
+    is_decreasing = True
+    
+    for i in range(1, len(l)):
+        if l[i] > l[i-1]:
+            is_decreasing = False
+        elif l[i] < l[i-1]:
+            is_increasing = False
+        
+        # If both flags become False, we can break early
+        if not is_increasing and not is_decreasing:
+            return False
+    
+    return is_increasing or is_decreasing
+```
+
+This implementation:
+1. Handles lists with 0, 1, or 2 elements (always monotonic)
+2. Uses two flags to track both increasing and decreasing possibilities
+3. Breaks early if both flags become False
+4. Returns True if either increasing or decreasing pattern holds throughout the list
+5. Handles equal values correctly (they don't violate either monotonic pattern)

@@ -1,0 +1,19 @@
+def set_middle_bits(n):  
+    n |= n >> 1; 
+    n |= n >> 2; 
+    n |= n >> 4; 
+    n |= n >> 8; 
+    n |= n >> 16;  
+    return (n >> 1) ^ 1
+def toggle_middle_bits(n): 
+    if (n == 1): 
+        return 1
+    return n ^ set_middle_bits(n) 
+The following is chain of thought:
+The function `toggle_middle_bits(n)` toggles (flips) all bits of `n` except the most significant set bit and the least significant bit.
+
+**Chain of Thought:**
+1. **Handle edge case**: If `n == 1` (binary `1`), there are no middle bits to toggle, so return `1` unchanged.
+2. **General case**: For `n > 1`:
+   - `set_middle_bits(n)` creates a bitmask where all bits from the MSB to the LSB are set to 1.
+   - Shifting right by 1 (`n >> 1`) t

@@ -1,0 +1,16 @@
+def sort_dict_item(test_dict):
+  res = {key: test_dict[key] for key in sorted(test_dict.keys(), key = lambda ele: ele[1] * ele[0])}
+  return  (res) 
+
+The following is chain of thought:
+Here is the structured chain of thought for analyzing the given function:
+
+1. **Function Purpose Analysis**: The function `sort_dict_item` takes a dictionary `test_dict` and returns a new dictionary with keys sorted based on a custom sorting criterion.
+
+2. **Key Sorting Mechanism**: 
+   - The keys are sorted using `sorted(test_dict.keys(), key = lambda ele: ele[1] * ele[0])`
+   - This implies that each key is expected to be a tuple or sequence with at least two elements (index 0 and 1)
+   - The sorting key multiplies the first element (index 0) by the second element (index 1) of each key
+
+3. **Dictionary Reconstruction**: 
+   - 

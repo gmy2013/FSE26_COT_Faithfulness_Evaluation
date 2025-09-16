@@ -1,0 +1,13 @@
+import re
+text = 'Python Exercises'
+def replace_spaces(text):
+  text =text.replace (" ", "_")
+  return (text)
+  text =text.replace ("_", " ")
+  return (text)
+The following is chain of thought:
+1. The function `replace_spaces` takes a string `text` as input.
+2. The first operation replaces all spaces with underscores: `text.replace(" ", "_")`.
+3. The function returns this modified string immediately with `return (text)`.
+4. The code after the return statement (`text =text.replace ("_", " ")` and `return (text)`) is unreachable and will never execute.
+5. Therefore, the function effectively replaces spaces with underscores and returns that result.

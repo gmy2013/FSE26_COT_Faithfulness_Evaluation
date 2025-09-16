@@ -1,0 +1,32 @@
+CodeGeneration:
+or accessing tuple elements by index.
+
+Here's the complete function with the docstring:
+
+```python
+def get_item(tup1, index):
+    """
+    Retrieve an element from a tuple at the specified index.
+    
+    Args:
+        tup1 (tuple): The tuple from which to retrieve an element
+        index (int): The index of the element to retrieve
+        
+    Returns:
+        The element at the specified index in the tuple
+        
+    Example:
+        >>> get_item((1, 2, 3), 1)
+        2
+        >>> get_item(('a', 'b', 'c'), 0)
+        'a'
+    """
+    item = tup1[index]
+    return item
+```
+
+This implementation:
+- Takes advantage of Python's built-in tuple indexing
+- Has O(1) time complexity for accessing elements
+- Includes proper error handling through Python's built-in IndexError if the index is out of bounds
+- Is simple, readable, and follows Python conventions

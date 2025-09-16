@@ -1,0 +1,79 @@
+from typing import List
+
+
+def factorize(n: int) -> List[int]:
+    """ Return list of prime factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+    >>> factorize(8)
+    [2, 2, 2]
+    >>> factorize(25)
+    [5, 5]
+    >>> factorize(70)
+    [2, 5, 7]
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to factorize an integer n into its prime factors.
+2. The factors should be listed from smallest to largest.
+3. Each prime factor should appear as many times as it divides n.
+4. The product of all factors in the list should equal n.
+
+Approach:
+- Start with the smallest prime factor (2).
+- While n is divisible by 2, add 2 to the list and divide n by 2.
+- Then check for odd factors starting from 3, incrementing by 2.
+- For each candidate factor i, while n is divisible by i, add i to the list and divide n by i.
+- Continue until n becomes 1.
+- If n is a prime number greater than 2, it will be handled by the loop.
+
+Let's implement accordingly.
+
+Note: We'll handle n=1 as a special case (should return empty list? But the problem says integer, and 1 has no prime factors. However, the examples don't include 1. According to the definition, 1 has no prime factors. So for n=1, return [].
+
+But the docstring examples don't include 1. Let's check the constraints: the input integer n. We should consider n>=2? Actually, the problem says "given integer", which could be 1. But factorization of 1 is typically represented as an empty product. So we return [].
+
+However, the problem states: "Input number should be equal to the product of all factors". For n=1, the product of an empty list is 1 (by convention), so it's consistent.
+
+So we'll handle n=1.
+
+Now code:
+
+Steps:
+1. Initialize an empty list for factors.
+2. If n==1, return [].
+3. While n is divisible by 2, add 2 to the list and divide n by 2.
+4. Then for i from 3 to sqrt(n) (inclusive), stepping by 2.
+   - While n is divisible by i, add i to the list and divide n by i.
+5. After the loop, if n is still greater than 1, then n is prime, so add n to the list.
+6. Return the list.
+
+But note: we need to check factors up to sqrt(n) because if n is composite, it has a factor <= sqrt(n). However, after dividing by all factors up to sqrt(n), if n>1, then it is prime.
+
+Let's code accordingly.
+
+We'll use:
+factors = []
+d = 2
+while d*d <= n:
+    while n % d == 0:
+        factors.append(d)
+        n //= d
+    d += 1
+if n > 1:
+    factors.append(n)
+
+But we need to handle even factors first, then odd. So we can do:
+
+First handle 2 separately, then odd factors.
+
+So:
+factors = []
+while n % 2 == 0:
+    factors.append(2)
+    n //= 2
+f = 3
+while f * f <= n:
+    while n % f == 0

@@ -1,0 +1,47 @@
+CodeGeneration:
+Looking at this function, I can see it creates a specific ordering of numbers from 1 to n where all odd numbers come first (in increasing order), followed by all even numbers (in increasing order), and returns the k-th element.
+
+Here's a more Pythonic implementation of the same logic:
+
+```python
+def get_Number(n, k):
+    """
+    Returns the k-th number in a specific ordering of numbers from 1 to n.
+    
+    The ordering places all odd numbers first (in increasing order),
+    followed by all even numbers (in increasing order).
+    
+    Args:
+        n (int): The upper limit of numbers to include (1 to n)
+        k (int): The position to return (1-indexed)
+    
+    Returns:
+        int: The k-th number in the specific ordering
+    
+    Example:
+        >>> get_Number(5, 1)
+        1
+        >>> get_Number(5, 3)
+        5
+        >>> get_Number(5, 4)
+        2
+    """
+    # Count how many odd numbers are in range 1 to n
+    num_odds = (n + 1) // 2
+    
+    if k <= num_odds:
+        # k-th element is in the odd numbers section
+        return 2 * k - 1
+    else:
+        # k-th element is in the even numbers section
+        return 2 * (k - num_odds)
+```
+
+This implementation is more efficient as it:
+1. Avoids building an entire array (O(1) space vs O(n) space)
+2. Uses mathematical calculation instead of loops (O(1) time vs O(n) time)
+3. Produces the same results as the original function
+
+The logic is:
+- If k is within the range of odd numbers, return the k-th odd number
+- If k is beyond the odd numbers, return the (k - num_odds)-th even number

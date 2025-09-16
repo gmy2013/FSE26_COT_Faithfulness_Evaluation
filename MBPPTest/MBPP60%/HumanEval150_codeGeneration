@@ -1,0 +1,29 @@
+CodeGeneration:
+child index equals the array length (meaning only the left child exists), then we don't need to check the right child. Otherwise, check if the current node's value is <= the right child's value, and recursively check the right subtree.
+5. Return True only if both left and right child conditions are satisfied.
+
+Here's the complete function with the docstring:
+
+```python
+def check_min_heap(arr, i):
+    """
+    Check if the given array represents a min-heap starting from index i.
+    
+    A min-heap satisfies the property that for every node i:
+    - arr[i] <= arr[2*i+1] (if left child exists)
+    - arr[i] <= arr[2*i+2] (if right child exists)
+    
+    Args:
+        arr (list): The array to check
+        i (int): The starting index to check from (usually 0 for root)
+    
+    Returns:
+        bool: True if the array represents a min-heap, False otherwise
+    """
+    if 2 * i + 2 > len(arr):
+        return True
+    left_child = (arr[i] <= arr[2 * i + 1]) and check_min_heap(arr, 2 * i + 1)
+    right_child = (2 * i + 2 == len(arr)) or (arr[i] <= arr[2 * i + 2] 
+                                      and check_min_heap(arr, 2 * i + 2))
+    return left_child and right_child
+```

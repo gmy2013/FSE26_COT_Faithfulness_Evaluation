@@ -1,0 +1,34 @@
+CodeGeneration:
+Let's verify with the example: n=3 (odd)
+   i=0: 3 + 2*0 = 3
+   i=1: 3 + 2*1 = 5
+   i=2: 3 + 2*2 = 7
+   Result: [3,5,7] which matches.
+
+ Similarly, if n=4 (even):
+   i=0: 4
+   i=1: 6
+   i=2: 8
+   i=3: 10
+   So the list would be [4,6,8,10]. And indeed, 4 is even, next even is 6, then 8, then 10.
+
+ So the solution is straightforward.
+
+ Code implementation:
+```python
+def make_a_pile(n):
+    """
+    Given a positive integer n, you have to make a pile of n levels of stones.
+    The first level has n stones.
+    The number of stones in the next level is:
+        - the next odd number if n is odd.
+        - the next even number if n is even.
+    Return the number of stones in each level in a list, where element at index
+    i represents the number of stones in the level (i+1).
+
+    Examples:
+    >>> make_a_pile(3)
+    [3, 5, 7]
+    """
+    return [n + 2 * i for i in range(n)]
+```

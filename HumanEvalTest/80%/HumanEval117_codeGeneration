@@ -1,0 +1,12 @@
+CodeGeneration:
+= s.split()
+    result = []
+    for word in words:
+        consonant_count = 0
+        for char in word.lower():
+            if char.isalpha() and char not in vowels:
+                consonant_count += 1
+        if consonant_count == n:
+            result.append(word)
+    return result
+```

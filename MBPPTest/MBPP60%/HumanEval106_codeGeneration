@@ -1,0 +1,40 @@
+CodeGeneration:
+dd: add the remaining bits (n % powerOf2)
+
+4. **Update**: Double powerOf2 to move to the next bit position
+5. **Termination**: When powerOf2 exceeds n, return cnt
+
+Here's the complete function with improved comments:
+
+```python
+def count_Set_Bits(n):
+    """
+    Count the total number of set bits (1s) in the binary representations 
+    of all numbers from 0 to n inclusive.
+    
+    Args:
+        n (int): The upper bound of the range (0 to n)
+    
+    Returns:
+        int: Total count of set bits from 0 to n
+    """
+    n += 1  # Include 0 in the count (range becomes 0 to n inclusive)
+    powerOf2 = 2  # Start with the second bit position (LSB already handled)
+    cnt = n // 2  # Each number contributes at least 1 set bit for the LSB
+    
+    while powerOf2 <= n:
+        # Calculate number of complete number pairs at this bit position
+        totalPairs = n // powerOf2
+        
+        # Add set bits from complete pairs (each pair contributes powerOf2 bits)
+        cnt += (totalPairs // 2) * powerOf2
+        
+        # Handle remaining numbers if totalPairs is odd
+        if totalPairs & 1:
+            cnt += n % powerOf2
+        
+        # Move to the next bit position
+        powerOf2 <<= 1
+    
+    return cnt
+```

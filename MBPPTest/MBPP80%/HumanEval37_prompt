@@ -1,0 +1,9 @@
+import math
+def wind_chill(v,t):
+ windchill = 13.12 + 0.6215*t -  11.37*math.pow(v, 0.16) + 0.3965*t*math.pow(v, 0.16)
+ return int(round(windchill, 0))
+The following is chain of thought:
+1. The function `wind_chill` takes two parameters: `v` (wind speed) and `t` (temperature in Celsius).
+2. The formula calculates wind chill: 13.12 + 0.6215*t - 11.37*v^0.16 + 0.3965*t*v^0.16.
+3. `math.pow(v, 0.16)` computes v raised to the power of 0.16.
+4. The result is rounded to the nearest integer using `round(w

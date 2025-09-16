@@ -1,0 +1,27 @@
+20%CoT
+CodeGeneration:
+```python
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+    
+    # 1. Input Validation
+    assert len(a) == len(b), "Both strings must be of the same length."
+    assert all(c in '01' for c in a), "String 'a' must consist only of '1's and '0's."
+    assert all(c in '01' for c in b), "String 'b' must consist only of '1's and '0's."
+    
+    # 2. Initialize result list to store XOR results for each character
+    result = []
+    
+    # 3. Perform XOR operation for each character pair from strings 'a' and 'b'
+    for char_a, char_b in zip(a, b):
+        # Calculate XOR for the current pair of bits and append to result list
+        xor_result = '1' if char_a != char_b else '0'
+        result.append(xor_result)
+    
+    # 4. Combine the result list into a single string
+    return ''.join(result)
+```

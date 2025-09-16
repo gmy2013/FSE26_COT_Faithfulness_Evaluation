@@ -1,0 +1,25 @@
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+
+The following is chain of thought:
+We are given a positive integer n. We need to compute the product of its odd digits.
+ Steps:
+ 1. Convert the integer to a string to iterate over each digit.
+ 2. Initialize a variable `product` to 1 (since we are multiplying).
+ 3. For each digit in the string:
+      - Convert the digit back to an integer.
+      - Check if it is odd (using modulo 2).
+      - If it is odd, multiply it with the current product.
+ 4. If we found at least one odd digit, return the product.
+ 5. However, if no odd digit is found (meaning product remains 1 and we never multiplied any odd digit) we should return 0.
+    But note: if we multiply no numbers, the product is 1. But the problem says return 0 if all digits are even.
+    So we need to check if we encountered any odd digit. Alternatively, we can initialize product to 0? But that would break multiplication.
+    Instead, we can set a flag or check at the end if product is still 1 and no multiplication was done? But what if the number has an odd digit 1? Then product would be 1.
+    Actually, we

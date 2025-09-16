@@ -1,0 +1,33 @@
+CodeGeneration:
+rimeDivisors[j]`. This accumulates the sum of distinct prime divisors for each number.
+
+4. Finally, it returns `SumOfPrimeDivisors[N]`, which is the sum of all distinct prime divisors of `N`.
+
+However, note that the function as written has a small issue: it doesn't account for the fact that a number might have multiple prime divisors, and we want to add each distinct prime only once. The current code does this correctly because for each prime `i`, it adds `i` to all multiples of `i` exactly once. So for a number `j`, every distinct prime divisor `i` of `j` will be added exactly once when `i` is processed.
+
+Therefore, the function is correct.
+
+Let me write the complete function with the docstring:
+
+```python
+def Sum(N):
+    """
+    Compute the sum of all distinct prime divisors of N.
+
+    Args:
+        N (int): The number for which to compute the sum of distinct prime divisors.
+
+    Returns:
+        int: The sum of all distinct prime divisors of N.
+
+    Example:
+        >>> Sum(12)
+        5   # because distinct prime divisors of 12 are 2 and 3, and 2+3=5.
+    """
+    SumOfPrimeDivisors = [0] * (N + 1)
+    for i in range(2, N + 1):
+        if SumOfPrimeDivisors[i] == 0:
+            for j in range(i, N + 1, i):
+                SumOfPrimeDivisors[j] += i
+    return SumOfPrimeDivisors[N]
+```

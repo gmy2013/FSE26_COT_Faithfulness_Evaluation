@@ -1,0 +1,9 @@
+def convert(list): 
+    s = [str(i) for i in list] 
+    res = int("".join(s))  
+    return (res) 
+The following is chain of thought:
+1. The function `convert` takes a list as input.
+2. It converts each element in the list to a string using a list comprehension: `[str(i) for i in list]`.
+3. It joins these string elements together into a single string using `"".join(s)`.
+4. It converts the joined 

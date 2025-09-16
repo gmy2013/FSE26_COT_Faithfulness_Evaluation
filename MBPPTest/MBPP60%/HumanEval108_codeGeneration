@@ -1,0 +1,23 @@
+CodeGeneration:
+`res_dict` to store the final results.
+6. For each key in `res`:
+   - Convert the list of values associated with the key to a set to remove duplicates.
+   - Count the number of unique elements in that set.
+   - Assign this count to `res_dict` with the same key.
+7. Return the string representation of `res_dict`.
+
+Here is the complete function:
+
+```python
+from collections import defaultdict 
+
+def get_unique(test_list):
+    res = defaultdict(list)
+    for sub in test_list:
+        res[sub[1]].append(sub[0])
+    res = dict(res)
+    res_dict = dict()
+    for key in res:
+        res_dict[key] = len(list(set(res[key])))
+    return str(res_dict)
+```

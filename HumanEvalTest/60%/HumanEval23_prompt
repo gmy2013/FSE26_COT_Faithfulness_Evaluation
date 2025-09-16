@@ -1,0 +1,19 @@
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+
+The following is chain of thought:
+We are implementing a function to return the length of a string.
+ Since Python has a built-in len() function, we can simply use that.
+ However, the problem might be expecting us to implement it without using len().
+ But the docstring examples are straightforward and match the behavior of len().
+ Given the instructions, we should use the most direct approach.
+ Let's use the built-in len() function to return the length.
+ Alternatively, we could iterate to count, but that would be inefficient.
+ Since the

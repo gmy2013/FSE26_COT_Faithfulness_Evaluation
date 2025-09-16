@@ -1,0 +1,30 @@
+CodeGeneration:
+4. Apply `math.ceil` to the scaled value to round it up to the nearest integer.
+5. Multiply the result by `n` to scale it back to the original magnitude.
+6. Finally, apply `round` with `digits` to ensure the result has exactly the specified number of decimal places, handling any floating-point precision issues.
+
+Here is the complete function with the docstring:
+
+```python
+import math
+
+def round_up(a, digits):
+    """
+    Rounds a number up to the specified number of decimal places.
+
+    Args:
+        a (float): The number to round up.
+        digits (int): The number of decimal places to round to.
+
+    Returns:
+        float: The rounded up number.
+
+    Example:
+        >>> round_up(2.222, 2)
+        2.23
+        >>> round_up(3.14159, 3)
+        3.142
+    """
+    n = 10**-digits
+    return round(math.ceil(a / n) * n, digits)
+```

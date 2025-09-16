@@ -1,0 +1,51 @@
+20%CoT
+CodeGeneration:
+cases**: We begin by handling the base cases explicitly. According to the definition:
+   - `fibfib(0) = 0`
+   - `fibfib(1) = 0`
+   - `fibfib(2) = 1`
+
+2. **Iterative Computation**: For `n >= 3`, we use an iterative approach to compute each `fibfib(i)` up to `fibfib(n)`. We need to keep track of the last three computed values to efficiently calculate the next value in the sequence.
+
+3. **Optimization with Constant Space**: Instead of keeping an array of all computed values, we can maintain just three variables to store the last three values of the sequence, updating them iteratively as we progress.
+
+Here's how the implementation would look:
+
+```python
+def fibfib(n: int):
+    """The FibFib number sequence is a sequence similar to the Fibonacci sequence that's defined as follows:
+    fibfib(0) == 0
+    fibfib(1) == 0
+    fibfib(2) == 1
+    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+    Please write a function to efficiently compute the n-th element of the fibfib number sequence.
+    >>> fibfib(1)
+    0
+    >>> fibfib(5)
+    4
+    >>> fibfib(8)
+    24
+    """
+    
+    # Base cases
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    
+    # Variables to store the last three values
+    a, b, c = 0, 0, 1  # Corresponds to fibfib(0), fibfib(1), fibfib(2)
+    
+    for i in range(3, n + 1):
+        # Compute the next value in the sequence
+        current = a + b + c
+        # Update the last three values
+        a, b, c = b, c, current
+    
+    # The result is stored in `c` since `c` is the most recent computed fibfib(i)
+    return c
+```
+
+This implementation efficiently computes the n-th FibFib number using O(n) time complexity and O(1) space complexity.

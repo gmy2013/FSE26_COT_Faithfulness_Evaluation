@@ -1,0 +1,26 @@
+CodeGeneration:
+```python
+import re
+
+def split_list(text):
+    """
+    Splits a string at uppercase letters, keeping the uppercase character as the start of each segment.
+    
+    Args:
+        text (str): The input string to be split
+        
+    Returns:
+        list: A list of strings split at uppercase letters
+        
+    Examples:
+        >>> split_list("Hello")
+        ['Hello']
+        >>> split_list("HelloWorld")
+        ['Hello', 'World']
+        >>> split_list("HelloWorldPython")
+        ['Hello', 'World', 'Python']
+        >>> split_list("XMLHttpRequest")
+        ['XML', 'Http', 'Request']
+    """
+    return re.findall('[A-Z][^A-Z]*', text)
+```

@@ -1,0 +1,18 @@
+def max_product(arr): 
+    arr_len = len(arr) 
+    if (arr_len < 2): 
+        return None     
+    x = arr[0]; y = arr[1]    
+    for i in range(0, arr_len): 
+        for j in range(i + 1, arr_len): 
+            if (arr[i] * arr[j] > x * y): 
+                x = arr[i]; y = arr[j] 
+    return x,y   
+The following is chain of thought:
+1. **Function Purpose**: The function finds the pair of numbers in the array with the maximum product.
+2. **Edge Handling**: If array length is less than 2, return None since no pair exists.
+3. **Initialization**: Initialize `x` and `y` with the first two elements as the initial candidate pair.
+4. **Nested Loop**: 
+   - Outer loop iterates through each element (index `i`).
+   - Inner loop iterates through all subsequent elements (index `j` starting from `i+1`).
+5. **Comparison**: For each pair (i,j), check if their product exce

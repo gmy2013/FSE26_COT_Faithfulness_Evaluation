@@ -1,0 +1,34 @@
+
+def maximum(arr, k):
+    """
+    Given an array arr of integers and a positive integer k, return a sorted list 
+    of length k with the maximum k numbers in arr.
+
+    Example 1:
+
+        Input: arr = [-3, -4, 5], k = 3
+        Output: [-4, -3, 5]
+
+    Example 2:
+
+        Input: arr = [4, -4, 4], k = 2
+        Output: [4, 4]
+
+    Example 3:
+
+        Input: arr = [-3, 2, 1, 2, -1, -2, 1], k = 1
+        Output: [2]
+
+    Note:
+        1. The length of the array will be in the range of [1, 1000].
+        2. The elements in the array will be in the range of [-1000, 1000].
+        3. 0 <= k <= len(arr)
+    """
+
+The following is chain of thought:
+1. We need to find the k largest numbers from the array.
+2. Since we need to return them sorted, we can first find the k largest elements and then sort them.
+3. One efficient approach is to use a min-heap of size k to track the k largest elements.
+4. Alternatively, we can sort the entire array and take the last k elements, but this would be O(n log n) which is acceptable given the constraints (n <= 1000).
+5. Given the small constraints, we can simply sort the entire array and return the last k elements in sorted order.
+6. However, note that the examples show the output sorted in ascending order 

@@ -1,0 +1,21 @@
+
+
+def string_sequence(n: int) -> str:
+    """ Return a string containing space-delimited numbers starting from 0 upto n inclusive.
+    >>> string_sequence(0)
+    '0'
+    >>> string_sequence(5)
+    '0 1 2 3 4 5'
+    """
+
+The following is chain of thought:
+We are to generate a string of numbers from 0 to n (inclusive), separated by spaces.
+ Steps:
+ 1. We need to generate numbers from 0 to n.
+ 2. Convert each number to a string.
+ 3. Join these strings with a space as the delimiter.
+
+ We can use a range from 0 to n+1 (since range is exclusive at the end) and then convert each number to string.
+ Then use the string method `join` to combine them with spaces.
+
+ Example: for n=5, 

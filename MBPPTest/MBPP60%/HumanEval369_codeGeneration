@@ -1,0 +1,17 @@
+CodeGeneration:
+ere `x` is greater than or equal to `y`.
+
+This implementation is correct and efficient for finding the minimum of two numbers. Here's the complete function:
+
+```python
+def min_of_two(x, y):
+    if x < y:
+        return x
+    return y
+```
+
+This function:
+- Compares `x` and `y` using the less than operator
+- Returns `x` if it's smaller than `y`
+- Returns `y` in all other cases (when `y` is smaller or equal to `x`)
+- Handles all numeric types (integers, floats) and any other types that support comparison with `<`

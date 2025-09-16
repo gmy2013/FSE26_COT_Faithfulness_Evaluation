@@ -1,0 +1,16 @@
+CodeGeneration:
+'a' at all.
+
+However, note that the pattern `'ab*?'` is non-greedy, but since we're only looking for the first occurrence and `re.search` returns as soon as it finds any match, the function effectively just checks if there's at least one 'a' in the text.
+
+Here's the complete function:
+
+```python
+import re
+def text_match(text):
+        patterns = 'ab*?'
+        if re.search(patterns,  text):
+                return 'Found a match!'
+        else:
+                return('Not matched!')
+```

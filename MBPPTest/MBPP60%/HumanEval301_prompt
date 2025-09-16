@@ -1,0 +1,11 @@
+from collections import Counter
+def add_dict(d1,d2):
+   add_dict = Counter(d1) + Counter(d2)
+   return add_dict
+The following is chain of thought:
+1. The function `add_dict` takes two dictionaries `d1` and `d2` as arguments.
+2. The goal is to combine these dictionaries by adding the values for common keys.
+3. We can use `Counter` from the `collections` module, which supports addition operations where values for common keys are summed.
+4. Convert both dictionaries to `Counter` objects.
+5. Add the two `Counter` objects together. This will create a new `Counter` where:
+   - Keys present in

@@ -1,0 +1,25 @@
+CodeGeneration:
+6. Iterate over each element `ele` in that value.
+7. Collect all these elements into a set to automatically remove duplicates.
+8. Convert the set to a sorted list for the final result.
+
+Here is the complete function:
+
+```python
+def extract_unique(test_dict):
+    """
+    Extracts all unique elements from all values in the dictionary and returns them as a sorted list.
+    
+    Args:
+        test_dict (dict): A dictionary where values are iterables (e.g., lists, sets, tuples)
+    
+    Returns:
+        list: A sorted list of all unique elements from all values
+    
+    Example:
+        >>> extract_unique({'a': [1, 2, 3], 'b': [2, 3, 4], 'c': [3, 4, 5]})
+        [1, 2, 3, 4, 5]
+    """
+    res = list(sorted({ele for val in test_dict.values() for ele in val}))
+    return res
+```

@@ -1,0 +1,23 @@
+CodeGeneration:
+Here's the implementation:
+
+```python
+def count_distinct_characters(string: str) -> int:
+    """ Given a string, find out how many distinct characters (regardless of case) does it consist of
+    >>> count_distinct_characters('xyzXYZ')
+    3
+    >>> count_distinct_characters('Jerry')
+    4
+    """
+    # Convert to lowercase to ignore case differences, then create a set to get distinct characters
+    return len(set(string.lower()))
+```
+
+The function works by:
+1. Converting the input string to lowercase using `string.lower()` to normalize all characters
+2. Creating a set from the lowercase string, which automatically removes duplicates
+3. Returning the length of the set, which gives the count of distinct characters
+
+Test cases:
+- `'xyzXYZ'` → `'xyzxyz'` → set `{'x', 'y', 'z'}` → returns 3
+- `'Jerry'` → `'jerry'` → set `{'j', 'e', 'r', 'y'}` → returns 4

@@ -1,0 +1,17 @@
+
+def minSubArraySum(nums):
+    """
+    Given an array of integers nums, find the minimum sum of any non-empty sub-array
+    of nums.
+    Example
+    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    minSubArraySum([-1, -2, -3]) == -6
+    """
+
+The following is chain of thought:
+We are to find the minimum sum of any non-empty subarray.
+ This is similar to the classic "maximum subarray sum" problem (Kadane's algorithm) but for minimum.
+ We can use a similar approach by iterating and keeping track of the current minimum sum ending at each index.
+ Steps:
+ 1. Initialize current_min = nums[0] and global_min = nums[0]
+ 2

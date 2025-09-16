@@ -1,0 +1,45 @@
+CodeGeneration:
+or each row `i` from 1 to n:
+     - Set `bell[i][0] = bell[i-1][i-1]` (the last element of the previous row)
+     - For each column `j` from 1 to i:
+         - Set `bell[i][j] = bell[i-1][j-1] + bell[i][j-1]`
+4. **Return Result**: The nth Bell number is stored in `bell[n][0]`
+
+Here's the complete function:
+
+```python
+def bell_Number(n):
+    """
+    Compute the nth Bell number using dynamic programming.
+    
+    Args:
+        n (int): The index of the Bell number to compute
+        
+    Returns:
+        int: The nth Bell number
+        
+    Examples:
+        >>> bell_Number(0)
+        1
+        >>> bell_Number(1)
+        1
+        >>> bell_Number(2)
+        2
+        >>> bell_Number(3)
+        5
+    """
+    # Create a 2D table to store intermediate results
+    bell = [[0 for i in range(n+1)] for j in range(n+1)]
+    
+    # Base case: Bell number for n=0 is 1
+    bell[0][0] = 1
+    
+    # Fill the table using dynamic programming
+    for i in range(1, n+1):
+        bell[i][0] = bell[i-1][i-1]
+        for j in range(1, i+1):
+            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]
+    
+    # The nth Bell number is stored in bell[n][0]
+    return bell[n][0]
+```

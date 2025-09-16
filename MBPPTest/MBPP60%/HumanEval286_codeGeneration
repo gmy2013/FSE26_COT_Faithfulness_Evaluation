@@ -1,0 +1,10 @@
+CodeGeneration:
+sion `(n^1 == n-1)` evaluates to `True` for odd numbers and `False` for even numbers.
+2. We can directly return this boolean expression without the if-else structure.
+
+Here's the improved implementation:
+
+```python
+def is_odd(n):
+    return (n ^ 1) == (n - 1)
+```

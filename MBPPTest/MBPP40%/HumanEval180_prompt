@@ -1,0 +1,18 @@
+import math 
+def count_Divisors(n) : 
+    count = 0
+    for i in range(1, (int)(math.sqrt(n)) + 2) : 
+        if (n % i == 0) : 
+            if( n // i == i) : 
+                count = count + 1
+            else : 
+                count = count + 2
+    if (count % 2 == 0) : 
+        return ("Even") 
+    else : 
+        return ("Odd") 
+The following is chain of thought:
+1. **Understand the problem**: The function counts the number of divisors of `n` and returns "Even" if the count is even, "Odd" if it's odd.
+2. **Initialize count**: Start with `count = 0` to accumulate the number of divisors.
+3. **Iterate up to sqrt(n)**: Divisors come in pairs (i, n//i). Only need to iterate up to √n to find all pairs.
+   - Use `range(1, int(math.sqrt(n)) + 2)` to ensure we cover 

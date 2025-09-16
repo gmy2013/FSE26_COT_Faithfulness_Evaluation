@@ -1,0 +1,25 @@
+CodeGeneration:
+```python
+def remove_nested(test_tup):
+    """Remove nested tuples from the input tuple.
+    
+    Args:
+        test_tup: Input tuple that may contain nested tuples
+        
+    Returns:
+        A new tuple containing only the non-tuple elements from the input
+        
+    Examples:
+        >>> remove_nested((1, (2, 3), 4, (5, 6)))
+        (1, 4)
+        >>> remove_nested((1, 2, 3))
+        (1, 2, 3)
+        >>> remove_nested((), (1, 2), 3))
+        (3,)
+    """
+    res = tuple()
+    for ele in test_tup:
+        if not isinstance(ele, tuple):
+            res = res + (ele,)
+    return res
+```

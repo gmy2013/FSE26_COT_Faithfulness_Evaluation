@@ -1,0 +1,16 @@
+from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+
+The following is chain of thought:
+We are given a list of strings and need to return their concatenation.
+ Since the input is a list of strings, we can use the str.join() method.
+ An empty list should return an empty string, which join handles naturally.
+ We'

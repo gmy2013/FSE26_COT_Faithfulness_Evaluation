@@ -1,0 +1,30 @@
+CodeGeneration:
+Based on the chain of thought, the function appears to be correctly implemented. However, I notice the docstring is missing. Here's the complete function with an appropriate docstring:
+
+```python
+import re
+
+def text_starta_endb(text):
+    """
+    Check if a string starts with 'a' and ends with 'b'.
+    
+    Args:
+        text (str): The input string to check
+        
+    Returns:
+        str: 'Found a match!' if the string starts with 'a' and ends with 'b',
+             'Not matched!' otherwise
+    """
+    patterns = 'a.*?b$'
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return 'Not matched!'
+```
+
+The function correctly uses the regex pattern `'a.*?b$'` to:
+- Match literal 'a' at the start
+- Match any characters (non-greedily) with `.*?`
+- Match literal 'b' at the end with `b$`
+
+The `re.search()` function will return a match object if the pattern is found anywhere in the string, and since the pattern includes anchors (implicit start anchor and explicit end anchor `$`), it effectively checks if the string starts with 'a' and ends with 'b'.

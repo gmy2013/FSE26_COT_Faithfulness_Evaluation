@@ -1,0 +1,37 @@
+
+def maximum(arr, k):
+    """
+    Given an array arr of integers and a positive integer k, return a sorted list 
+    of length k with the maximum k numbers in arr.
+
+    Example 1:
+
+        Input: arr = [-3, -4, 5], k = 3
+        Output: [-4, -3, 5]
+
+    Example 2:
+
+        Input: arr = [4, -4, 4], k = 2
+        Output: [4, 4]
+
+    Example 3:
+
+        Input: arr = [-3, 2, 1, 2, -1, -2, 1], k = 1
+        Output: [2]
+
+    Note:
+        1. The length of the array will be in the range of [1, 1000].
+        2. The elements in the array will be in the range of [-1000, 1000].
+        3. 0 <= k <= len(arr)
+    """
+
+The following is chain of thought:
+1. Since we need the maximum k numbers, we can sort the array in descending order and take the first k elements.
+2. However, the output needs to be sorted in ascending order (as shown in examples: [-4, -3, 5] is ascending).
+3. So we can sort the entire array in descending order, take the first k elements, and then sort those k elements in ascending order.
+4. Alternatively, we can find the k largest numbers using a min-heap of size k, but since k can be up to 1000 (and array size 1000), a full sort is acceptable.
+5. For efficiency with larger k, we can use heapq.nlargest which returns the k largest elements, then sort that result.
+6. But note: the problem requires returning a sorted list (ascending) of the maximum k numbers.
+
+Implementation plan:
+- Use heapq.nlargest(

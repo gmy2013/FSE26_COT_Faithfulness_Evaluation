@@ -1,0 +1,43 @@
+CodeGeneration:
+o there are \(10^{n-2}\) such numbers.
+
+Therefore, by the inclusion-exclusion principle:
+Total = (numbers starting with 1) + (numbers ending with 1) - (numbers both starting and ending with 1)
+Total = \(10^{n-1} + 9 \times 10^{n-2} - 10^{n-2}\)
+Simplify: \(10^{n-1} + 8 \times 10^{n-2}\)
+
+But note: for n=1, the above formula for numbers ending with 1 would be \(9 \times 10^{-1}\) which is not defined. So we need to handle n=1 separately.
+
+For n=1:
+- Numbers that start with 1: only the number 1 -> count=1
+- Numbers that end with 1: only the number 1 -> count=1
+- Numbers that both start and end with 1: only the number 1 -> count=1
+So total = 1 + 1 - 1 = 1
+
+Alternatively, we can note that for n=1, the formula \(10^{n-1} + 8 \times 10^{n-2}\) would be \(10^0 + 8 \times 10^{-1}\) which is not valid. So we can adjust the formula to be valid for n>=1.
+
+We can write:
+If n==1:
+    return 1
+Else:
+    return 10**(n-1) + 8 * 10**(n-2)
+
+But let's verify for n=2:
+Numbers that start with 1: 10,11,12,...,19 -> 10 numbers
+Numbers that end with 1: 11,21,31,...,91 -> 9 numbers
+Numbers both: 11 -> 1 number
+Total = 10 + 9 - 1 = 18
+Using formula: 10**(1) + 8 * 10**(0) = 10 + 8 = 18 -> correct.
+
+So the code can be implemented as:
+
+```python
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+    if n == 1:
+        return 1
+    return 10**(n-1) + 8 * 10**(n-2)
+```

@@ -1,0 +1,39 @@
+CodeGeneration:
+substring of the doubled first string
+4. If it is, then they are rotations; otherwise, they are not
+
+Here's the complete function:
+
+```python
+def are_Rotations(string1, string2):
+    """
+    Check if two strings are rotations of each other.
+
+    Args:
+        string1 (str): The first string
+        string2 (str): The second string
+
+    Returns:
+        bool: True if string2 is a rotation of string1, False otherwise
+
+    Examples:
+        >>> are_Rotations("abcd", "cdab")
+        True
+        >>> are_Rotations("abcd", "acbd")
+        False
+        >>> are_Rotations("hello", "world")
+        False
+    """
+    size1 = len(string1)
+    size2 = len(string2)
+    
+    if size1 != size2:
+        return False
+    
+    temp = string1 + string1
+    
+    if temp.count(string2) > 0:
+        return True
+    else:
+        return False
+```

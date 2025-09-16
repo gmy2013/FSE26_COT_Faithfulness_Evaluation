@@ -1,0 +1,212 @@
+CodeGeneration:
+right = tokens[i+1]
+            op = tokens[i]
+            result = apply_operation(left, op, right)
+            # Replace the three tokens with the result
+            tokens[i-1:i+2] = [result]
+        else:
+            i += 2  # Move to next operator
+
+But we need to be careful with indices.
+
+Alternatively, we can use a while loop that scans for the highest precedence operator at each step.
+
+Let's implement with a while loop that finds the next operator with highest precedence.
+
+Code:
+
+```python
+def do_algebra(operator, operand):
+    # Precedence dictionary: higher number means higher precedence
+    precedence = {'**': 3, '*': 2, '//': 2, '+': 1, '-': 1}
+    
+    # Helper function to apply an operation
+    def apply_op(a, op, b):
+        if op == '+':
+            return a + b
+        elif op == '-':
+            return a - b
+        elif op == '*':
+            return a * b
+        elif op == '//':
+            return a // b
+        elif op == '**':
+            return a ** b
+    
+    # Create initial tokens list by interleaving operands and operators
+    tokens = []
+    for i in range(len(operand)):
+        tokens.append(operand[i])
+        if i < len(operator):
+            tokens.append(operator[i])
+    
+    # While there are operators left to process
+    while len(tokens) > 1:
+        # Find the operator with the highest precedence
+        max_prec = -1
+        max_index = -1
+        for i in range(1, len(tokens)-1, 2):  # Operators are at odd indices
+            op = tokens[i]
+            if precedence[op] > max_prec:
+                max_prec = precedence[op]
+                max_index = i
+        
+        # Apply the operation at max_index
+        left = tokens[max_index-1]
+        op = tokens[max_index]
+        right = tokens[max_index+1]
+        result = apply_op(left, op, right)
+        
+        # Replace the three tokens with the result
+        tokens[max_index-1:max_index+2] = [result]
+    
+    return tokens[0]
+```
+
+Let's test with the example:
+operator = ['+', '*', '-']
+operand = [2, 3, 4, 5]
+
+tokens initially: [2, '+', 3, '*', 4, '-', 5]
+First, find highest precedence: '*' has precedence 2, others have 1 -> max_index=3
+Apply 3 * 4 = 12 -> tokens become [2, '+', 12, '-', 5]
+Now, both '+' and '-' have precedence 1, so we take the first one: max_index=1
+Apply 2 + 12 = 14 -> tokens become [14, '-', 5]
+Then apply 14 - 5 = 9 -> returns 9. Correct.
+
+This should work.
+
+Note: For operators with same precedence, we process from left to right, which is correct for +,- and *,// (left associative). Exponentiation is right associative, but in our case we process the highest precedence first, and if there are multiple exponentiations, we process the leftmost first (which is correct for left associativity). However, exponentiation is typically right associative. For example, 2**3**2 should be 2**(3**2)=512, not (2**3)**2=64.
+
+But in our algorithm, we process the highest precedence first, and if there are multiple with same precedence, we take the leftmost. So for 2**3**2, we would process the leftmost ** first, which would be wrong.
+
+So we need to handle exponentiation differently: it should be right associative.
+
+We can adjust: for exponentiation, we should process from right to left.
+
+We can modify the algorithm: when finding the highest precedence operator, if there are multiple with the same highest precedence, and if that precedence is for exponentiation, we should take the rightmost one. For other operators, take the leftmost.
+
+Let's update the code:
+
+```python
+def do_algebra(operator, operand):
+    precedence = {'**': 3, '*': 2, '//': 2, '+': 1, '-': 1}
+    
+    def apply_op(a, op, b):
+        if op == '+':
+            return a + b
+        elif op == '-':
+            return a - b
+        elif op == '*':
+            return a * b
+        elif op == '//':
+            return a // b
+        elif op == '**':
+            return a ** b
+    
+    tokens = []
+    for i in range(len(operand)):
+        tokens.append(operand[i])
+        if i < len(operator):
+            tokens.append(operator[i])
+    
+    while len(tokens) > 1:
+        max_prec = -1
+        max_index = -1
+        # First pass: find the highest precedence
+        for i in range(1, len(tokens)-1, 2):
+            op = tokens[i]
+            if precedence[op] > max_prec:
+                max_prec = precedence[op]
+        # Now, among operators with max_prec, find the one to process
+        candidates = []
+        for i in range(1, len(tokens)-1, 2):
+            if precedence[tokens[i]] == max_prec:
+                candidates.append(i)
+        if max_prec == 3:  # exponentiation: right associative
+            index_to_use = candidates[-1]  # rightmost
+        else:  # left associative
+            index_to_use = candidates[0]   # leftmost
+        
+        left = tokens[index_to_use-1]
+        op = tokens[index_to_use]
+        right = tokens[index_to_use+1]
+        result = apply_op(left, op, right)
+        tokens[index_to_use-1:index_to_use+2] = [result]
+    
+    return tokens[0]
+```
+
+This should handle exponentiation correctly.
+
+Let's test with 2**3**2:
+tokens: [2, '**', 3, '**', 2]
+max_prec=3, candidates are [1,3]. Since it's exponentiation, we take rightmost: index=3.
+Apply 3**2=9 -> tokens become [2, '**', 9]
+Then apply 2**9=512. Correct.
+
+Now, for other operators, e.g., 8//3//2: should be (8//3)//2 = 2//2=1 (left associative).
+tokens: [8, '//', 3, '//', 2]
+max_prec=2, candidates [1,3]. For '//', we take leftmost: index=1.
+Apply 8//3=2 -> tokens become [2, '//', 2]
+Then apply 2//2=1. Correct.
+
+So this should work.
+
+We'll implement with this approach.
+
+Final code:
+```python
+def do_algebra(operator, operand):
+    precedence = {'**': 3, '*': 2, '//': 2, '+': 1, '-': 1}
+    
+    def apply_op(a, op, b):
+        if op == '+':
+            return a + b
+        elif op == '-':
+            return a - b
+        elif op == '*':
+            return a * b
+        elif op == '//':
+            return a // b
+        elif op == '**':
+            return a ** b
+    
+    # Build the token list
+    tokens = []
+    for i in range(len(operand)):
+        tokens.append(operand[i])
+        if i < len(operator):
+            tokens.append(operator[i])
+    
+    # Evaluate expression
+    while len(tokens) > 1:
+        # Find the highest precedence
+        max_prec = -1
+        for i in range(1, len(tokens)-1, 2):
+            op = tokens[i]
+            if precedence[op] > max_prec:
+                max_prec = precedence[op]
+        
+        # Collect indices of operators with max_prec
+        candidates = []
+        for i in range(1, len(tokens)-1, 2):
+            if precedence[tokens[i]] == max_prec:
+                candidates.append(i)
+        
+        # Choose the index based on associativity
+        if max_prec == 3:  # exponentiation: right associative
+            idx = candidates[-1]
+        else:  # left associative
+            idx = candidates[0]
+        
+        # Apply the operation
+        a = tokens[idx-1]
+        op = tokens[idx]
+        b = tokens[idx+1]
+        res = apply_op(a, op, b)
+        # Replace the three tokens with the result
+        tokens[idx-1:idx+2] = [res]
+    
+    return tokens[0]
+```

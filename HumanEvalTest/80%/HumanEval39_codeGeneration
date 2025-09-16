@@ -1,0 +1,58 @@
+CodeGeneration:
+return next_fib
+
+However, we need to consider that the first prime Fibonacci is 2, which is the third Fibonacci number. In the initial state, a=0, b=1, then we generate next_fib = 0+1 = 1 (not prime), then a=1, b=1, next_fib=1+1=2 (prime), etc. This should work.
+
+Let me test with the examples:
+For n=1: 
+Start: count=0, a=0, b=1
+First iteration: next_fib=0+1=1 -> not prime -> a=1, b=1
+Second iteration: next_fib=1+1=2 -> prime -> count=1, return 2 ✓
+
+For n=2:
+After returning 2, we continue: a=1, b=2
+next_fib=1+2=3 -> prime -> count=2, return 3 ✓
+
+So it works.
+
+Let's code accordingly.
+
+Note: We need to handle the case when n=0? But according to docstring, n is at least 1.
+
+Final code:<｜end▁of▁thinking｜>```python
+def prime_fib(n: int):
+    """
+    prime_fib returns n-th number that is a Fibonacci number and it's also prime.
+    >>> prime_fib(1)
+    2
+    >>> prime_fib(2)
+    3
+    >>> prime_fib(3)
+    5
+    >>> prime_fib(4)
+    13
+    >>> prime_fib(5)
+    89
+    """
+    def is_prime(x):
+        if x < 2:
+            return False
+        if x == 2:
+            return True
+        if x % 2 == 0:
+            return False
+        for i in range(3, int(x**0.5) + 1, 2):
+            if x % i == 0:
+                return False
+        return True
+
+    count = 0
+    a, b = 0, 1
+    while count < n:
+        next_fib = a + b
+        a, b = b, next_fib
+        if is_prime(next_fib):
+            count += 1
+            if count == n:
+                return next_fib
+```

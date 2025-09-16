@@ -1,0 +1,19 @@
+CodeGeneration:
+4 * side_length (since all sides are equal)
+4. Therefore, the function returns `4 * a`
+
+Here is the completed function:
+
+```python
+def rombus_perimeter(a):
+    """Calculate the perimeter of a rhombus.
+    
+    Args:
+        a (float): Length of one side of the rhombus.
+        
+    Returns:
+        float: The perimeter of the rhombus (4 * a).
+    """
+    perimeter = 4 * a
+    return perimeter
+```

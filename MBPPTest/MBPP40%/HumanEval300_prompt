@@ -1,0 +1,17 @@
+def smallest_multiple(n):
+    if (n<=2):
+      return n
+    i = n * 2
+    factors = [number  for number in range(n, 1, -1) if number * 2 > n]
+    while True:
+        for a in factors:
+            if i % a != 0:
+                i += n
+                break
+            if (a == factors[-1] and i % a == 0):
+                return i
+The following is chain of thought:
+1. **Understand the problem**: The function should return the smallest number divisible by all integers from 1 to n (LCM of 1..n).
+2. **Base case handling**: For n <= 2, return n directly since LCM(1,2)=2 and LCM(1)=1.
+3. **Optimization insight**: Instead of checking all numbers from 1 to n, we only need to check numbers > n/2 (since smaller numbers are factors of larger ones).
+4. **Initial

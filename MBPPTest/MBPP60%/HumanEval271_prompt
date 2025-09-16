@@ -1,0 +1,7 @@
+def check_subset(list1,list2): 
+    return all(map(list1.__contains__,list2)) 
+The following is chain of thought:
+1. The function `check_subset` takes two lists as input: `list1` and `list2`.
+2. The goal is to check if every element in `list2` is present in `list1` (i.e., if `list2` is a subset of `list1`).
+3. The implementation uses `map(list1.__contains__, list2)`, which applies the `__contains__` method of `list1` to each element in `list2`.
+   - For each element in `list2`, `list1.__contains__(element)` returns `True` if the element is in `li

@@ -1,0 +1,74 @@
+import math
+
+
+def poly(xs: list, x: float):
+    """
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """ xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    >>> round(find_zero([1, 2]), 2) # f(x) = 1 + 2x
+    -0.5
+    >>> round(find_zero([-6, 11, -6, 1]), 2) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3
+    1.0
+    """
+
+The following is chain of thought:
+We are given that the polynomial has an even number of coefficients and the largest non-zero coefficient (so the polynomial is non-constant).
+ The polynomial has at least one real root (guaranteed by the conditions).
+ We can use Newton's method to find a root.
+
+ Steps:
+ 1. Define the polynomial function using the given coefficients.
+ 2. Define the derivative of the polynomial (needed for Newton's method).
+ 3. Use Newton's method with an initial guess (we can start at 0 for simplicity, but note that if the derivative at 0 is zero we might need to adjust).
+ 4. Iterate until convergence.
+
+ However, note: the problem says "returns only one zero point", and the examples are simple.
+
+ Alternatively, since the polynomial is guaranteed to have a root and the degree is odd (because the number of coefficients is even, meaning the polynomial has odd degree) we can also use a bracketing method? But Newton is simpler.
+
+ But caution: Newton might not always converge, but given the constraints we assume it will.
+
+ Implementation for derivative:
+   The derivative of poly(x) = sum_{i=0}^{n-1} xs[i] * x^i is: sum_{i=1}^{n-1} i * xs[i] * x^(i-1)
+
+ Steps for Newton:
+   x_{n+1} = x_n - f(x_n) / f'(x_n)
+
+ We'll iterate until the change is very small.
+
+ However, note the example: [1,2] is linear so one step of Newton from any point would give the exact root.
+
+ Let's code accordingly.
+
+ Important: The list xs has coefficients from constant term to highest degree.
+
+ Example: xs = [1,2] -> f(x)=1+2x, derivative is 2.
+   Newton: x1 = x0 - (1+2*x0)/2. Starting at x0=0: x1 = 0 - (1)/2 = -0.5 -> which is the root.
+
+ Another example: xs = [-6,11,-6,1] -> f(x)= -6 + 11x -6x^2 + x^3, derivative is 11 -12x + 3x^2.
+   We need to find a root. The roots are 1,2,3. We should get one of them.
+
+ We'll use a while loop for Newton until convergence.
+
+ Let's code accordingly.
+```python
+    # Define the polynomial function
+    def f(x):
+        return poly(xs, x)
+
+    # Define the derivative function
+    n = len(xs)
+    # The derivative coefficients: for each term i (starting at i=1), the derivative term is i * xs[i] * x^(i-1)
+    # So the derivative polynomial has coefficients: [1 * xs[1], 2 * xs[2], ... , (n-1)*xs[n-1]]
+  

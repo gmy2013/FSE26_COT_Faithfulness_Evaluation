@@ -1,0 +1,43 @@
+from typing import List, Tuple
+
+
+def rolling_max(numbers: List[int]) -> List[int]:
+    """ From a given list of integers, generate a list of rolling maximum element found until given moment
+    in the sequence.
+    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])
+    [1, 2, 3, 3, 3, 4, 4]
+    """
+
+The following is chain of thought:
+Looking at the problem, I need to generate a list where each element is the maximum value encountered so far in the sequence.
+
+Let me think through the approach:
+1. I'll iterate through each number in the input list
+2. For each position, I need to find the maximum value from the start up to that position
+3. I can keep track of the current maximum and update it as I go
+4. For each new number, I'll compare it with the current maximum
+5. If the new number is larger, it becomes the new maximum
+6. Otherwise, I keep the current maximum
+
+The algorithm should work like this:
+- Start with an empty result list
+- Initialize current_max to a very small number (or None)
+- For each number in the input:
+  - If it's the first number or larger than current_max, update current_max
+  - Add current_max to the result list
+
+Let me implement this:
+```python
+def rolling_max(numbers: List[int]) -> List[int]:
+    result = []
+    current_max = float('-inf')
+    
+    for num in numbers:
+        if num > current_max:
+            current_max = num
+        result.append(current_max)
+    
+    return result
+```
+
+This should handle the test c

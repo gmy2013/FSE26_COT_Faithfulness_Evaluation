@@ -1,0 +1,14 @@
+CodeGeneration:
+ramming Approach**:
+   - For each pair at index i (starting from 1), compare with all previous pairs at index j
+   - If the current pair's first element (arr[i].a) is greater than the previous pair's second element (arr[j].b)
+     AND the chain length through j would be longer than the current chain length at i
+   - Update mcl[i] to be mcl[j] + 1
+
+4. **Find Maximum**: After processing all pairs, find the maximum value in the mcl array
+
+5. **Return Result**: Return the maximum chain length found
+
+Here's the complete function with the docstring:
+
+```python

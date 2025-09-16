@@ -1,0 +1,34 @@
+CodeGeneration:
+I'll complete the function based on the docstring and your chain of thought. Here's the implementation:
+
+```python
+def previous_palindrome(num):
+    """
+    Find the largest palindrome number strictly less than the given number.
+    
+    Args:
+        num (int): A positive integer greater than 1
+        
+    Returns:
+        int: The largest palindrome number less than num, or None if no palindrome exists
+        
+    Examples:
+        >>> previous_palindrome(10)
+        9
+        >>> previous_palindrome(100)
+        99
+        >>> previous_palindrome(101)
+        99
+    """
+    for x in range(num-1, 0, -1):
+        if str(x) == str(x)[::-1]:
+            return x
+    return None
+```
+
+The function:
+1. Takes an integer `num` as input
+2. Iterates backwards from `num-1` down to 1
+3. Checks each number by converting to string and comparing with its reverse
+4. Returns the first palindrome found (largest one less than `num`)
+5. Returns `None` if no palindrome is found (though this shouldn't happen for integers > 1)

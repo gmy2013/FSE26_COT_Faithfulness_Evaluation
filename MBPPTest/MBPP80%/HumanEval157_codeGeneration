@@ -1,0 +1,29 @@
+CodeGeneration:
+1's with the sum of that list (i.e., the count of occurrences).
+5. Return the dictionary with unique sublists (as tuples) as keys and their counts as values.
+
+However, the code can be simplified by directly counting occurrences without storing lists of 1's. Here is an optimized version:
+
+```python
+def unique_sublists(list1):
+    """
+    Count the occurrences of each unique sublist in the given list of lists.
+
+    Args:
+        list1 (list of list): A list containing sublists.
+
+    Returns:
+        dict: A dictionary where keys are tuples (representing unique sublists) and values are their counts.
+
+    Example:
+        >>> unique_sublists([[1, 2], [3, 4], [1, 2], [3, 4], [1, 2]])
+        {(1, 2): 3, (3, 4): 2}
+    """
+    result = {}
+    for sublist in list1:
+        key = tuple(sublist)
+        result[key] = result.get(key, 0) + 1
+    return result
+```
+
+This version is more efficient and readable. It uses `dict.get()` to either retrieve the current count or default to 0, then increments it by 1 for each occurrence.

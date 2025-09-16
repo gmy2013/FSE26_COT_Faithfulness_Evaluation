@@ -1,0 +1,9 @@
+import math
+def round_up(a, digits):
+    n = 10**-digits
+    return round(math.ceil(a / n) * n, digits)
+The following is chain of thought:
+1. The function `round_up` takes two arguments: `a` (the number to round) and `digits` (the number of decimal places to round up to).
+2. Compute `n` as `10**-digits`, which represents the precision level (e.g., for `digits=2`, `n=0.01`).
+3. Divide `a` by `n` to scale the number up so that the decimal portion becomes an integer part.
+4. Apply `math.ceil` to this scaled value to round it up to the 

@@ -1,0 +1,52 @@
+CodeGeneration:
+Looking at the function, I notice that the current implementation uses a non-greedy quantifier `*?` which might not be the intended behavior for this pattern matching task. The pattern `'ab*?'` will match "a" followed by the minimal number of 'b's possible, which could lead to unexpected results.
+
+Here's an improved version that uses the greedy quantifier `*` (which matches zero or more 'b's) and includes better error handling:
+
+```python
+import re
+
+def text_match(text):
+    """
+    Check if the input text contains the pattern 'a' followed by zero or more 'b's.
+    
+    Args:
+        text (str): The input string to search for the pattern
+        
+    Returns:
+        str: 'Found a match!' if pattern is found, 'Not matched!' otherwise
+        
+    Examples:
+        >>> text_match("ac")
+        'Found a match!'
+        >>> text_match("abc")
+        'Found a match!'
+        >>> text_match("abbc")
+        'Found a match!'
+        >>> text_match("bc")
+        'Not matched!'
+    """
+    if not isinstance(text, str):
+        return 'Not matched!'
+    
+    patterns = 'ab*'  # Changed from 'ab*?' to 'ab*' for greedy matching
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return 'Not matched!'
+```
+
+Key improvements:
+1. Changed from non-greedy `*?` to greedy `*` quantifier for more intuitive matching behavior
+2. Added input validation to handle non-string inputs
+3. Added comprehensive docstring with examples
+4. Removed unnecessary parentheses in return statements
+5. Maintained the same function signature and return format
+
+The pattern `'ab*'` will now match:
+- "a" (zero 'b's)
+- "ab" (one 'b')
+- "abb" (two 'b's)
+- etc.
+
+This version provides more predictable pattern matching behavior.

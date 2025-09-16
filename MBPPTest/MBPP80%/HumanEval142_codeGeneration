@@ -1,0 +1,21 @@
+CodeGeneration:
+I notice that the docstring for the `rotate_right` function is missing from your query. Without the docstring, I cannot complete the function based on its intended specification.
+
+However, I can analyze the existing code:
+
+```python
+def rotate_right(list1,m,n):
+  result =  list1[-(m):]+list1[:-(n)]
+  return result
+```
+
+This function currently:
+1. Takes the last `m` elements of `list1` using `list1[-(m):]`
+2. Takes all elements except the last `n` elements using `list1[:-(n)]`
+3. Concatenates these two slices and returns the result
+
+The behavior depends on the relationship between `m` and `n`:
+- If `m = n`, this performs a standard right rotation by `m` positions
+- If `m ≠ n`, the resulting list length will be different from the original
+
+Please provide the docstring so I can complete the function according to its intended specification.

@@ -1,0 +1,26 @@
+CodeGeneration:
+a list of the sums of each sublist.
+4. Then use `sum()` on that result to get the total cumulative sum.
+5. Return the total sum.
+
+Here is the complete function:
+
+```python
+def cummulative_sum(test_list):
+    """Return the cumulative sum of all elements in the list of lists.
+    
+    Args:
+        test_list (list of list): A list containing sublists of numbers
+        
+    Returns:
+        int/float: The total sum of all elements in all sublists
+        
+    Examples:
+        >>> cummulative_sum([[1, 2, 3], [4, 5, 6]])
+        21
+        >>> cummulative_sum([[1.5, 2.5], [3.5, 4.5]])
+        12.0
+    """
+    res = sum(map(sum, test_list))
+    return res
+```

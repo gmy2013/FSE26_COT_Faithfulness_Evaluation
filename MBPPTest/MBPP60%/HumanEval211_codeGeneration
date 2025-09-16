@@ -1,0 +1,32 @@
+CodeGeneration:
+Based on the docstring and the provided function, here's the complete implementation:
+
+```python
+import re
+
+def road_rd(street):
+    """
+    Replace 'Road' at the end of a street name with 'Rd.' abbreviation.
+    
+    Args:
+        street (str): The street name to be processed
+        
+    Returns:
+        str: The street name with 'Road' replaced by 'Rd.' if it appears at the end
+    """
+    return re.sub('Road$', 'Rd.', street)
+```
+
+This function:
+- Takes a street name string as input
+- Uses regex to find "Road" at the end of the string (indicated by the `$` anchor)
+- Replaces it with the abbreviated form "Rd."
+- Returns the modified string
+- Leaves strings unchanged if they don't end with "Road"
+
+Example usage:
+```python
+print(road_rd("Main Road"))      # "Main Rd."
+print(road_rd("Broadway Road"))  # "Broadway Rd."
+print(road_rd("Park Avenue"))    # "Park Avenue" (unchanged)
+```

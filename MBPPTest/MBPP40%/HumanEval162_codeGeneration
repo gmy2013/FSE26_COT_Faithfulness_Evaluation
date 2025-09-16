@@ -1,0 +1,28 @@
+CodeGeneration:
+to a very large number (like 10**20) to ensure any valid difference will be smaller.
+5. Iterate through the sorted array from the first element to the second last element.
+6. For each element at index `i`, calculate the difference with the next element (at index `i+1`).
+7. If this difference is smaller than the current `diff`, update `diff` to this new smaller value.
+8. After processing all adjacent pairs, return the smallest difference found.
+
+Here is the complete function:
+
+```python
+def find_Min_Diff(arr, n):
+    """
+    Find the minimum difference between any two elements in the array.
+    
+    Parameters:
+    arr (list): List of integers
+    n (int): Length of the array
+    
+    Returns:
+    int: The minimum difference between any two elements
+    """
+    arr = sorted(arr)
+    diff = 10**20
+    for i in range(n-1):
+        if arr[i+1] - arr[i] < diff:
+            diff = arr[i+1] - arr[i]
+    return diff
+```

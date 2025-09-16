@@ -1,0 +1,30 @@
+CodeGeneration:
+Based on the provided code and the chain of thought, here's the completed function with an appropriate docstring:
+
+```python
+def Check_Solution(a, b, c):
+    """
+    Check if the equation a*x + b = c has a solution.
+    
+    For the linear equation a*x + b = c to have a solution:
+    - If a != 0, there is always a unique solution
+    - If a == 0, the equation becomes b = c, so:
+        * If b == c, there are infinitely many solutions
+        * If b != c, there is no solution
+    
+    This function specifically checks if b == 0, which might indicate
+    a special case where the equation simplifies to a*x = c.
+    
+    Args:
+        a (float): Coefficient of x
+        b (float): Constant term
+        c (float): Right-hand side constant
+    
+    Returns:
+        str: "Yes" if b == 0, "No" otherwise
+    """
+    if b == 0:
+        return "Yes"
+    else:
+        return "No"
+```

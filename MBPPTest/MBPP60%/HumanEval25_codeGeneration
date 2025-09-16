@@ -1,0 +1,26 @@
+CodeGeneration:
+The function name "triangle_area" is misleading since it returns r² (area of a square), not the area of a triangle. Based on the docstring requirement, here's the corrected implementation for calculating the area of an equilateral triangle:
+
+```python
+import math
+
+def triangle_area(r):
+    """
+    Calculate the area of an equilateral triangle with side length r.
+    
+    Args:
+        r (float): Length of one side of the equilateral triangle
+    
+    Returns:
+        float: Area of the equilateral triangle, or -1 if r is negative
+    """
+    if r < 0:
+        return -1
+    return (math.sqrt(3) / 4) * r * r
+```
+
+This implementation:
+1. Checks for negative input and returns -1 as error indicator
+2. Uses the correct formula for equilateral triangle area: (√3/4) × r²
+3. Includes proper documentation explaining the function's purpose
+4. Uses the math module for the square root calculation

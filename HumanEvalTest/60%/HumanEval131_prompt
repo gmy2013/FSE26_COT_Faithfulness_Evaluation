@@ -1,0 +1,28 @@
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+
+The following is chain of thought:
+We are given a positive integer n. We need to compute the product of its odd digits.
+ Steps:
+ 1. Convert the integer to a string to iterate over each digit.
+ 2. Initialize a variable for the product (start at 1) and a flag to check if we found at least one odd digit.
+ 3. Iterate over each character in the string:
+    - Convert the character back to an integer to check if it is odd.
+    - If the digit is odd, multiply it to the product and mark that we found an odd digit.
+ 4. If no odd digit was found, return 0. Otherwise, return the product.
+
+ However, note: if we start with product=1 and multiply by odd digits, if there are no odd digits the product remains 1.
+ But we need to return 0 in that case. So we can either:
+    Option 1: Check during iteration if we found any odd digit. Then at the end, if none found return 0, else return product.
+    Option 2: Initialize product to 0? But then multiplying would be problematic. Alternatively, we can set a flag.
+
+ Let's use a flag (found_odd) initially set to False.
+
+ Alternatively, we can also note: if we don't find any odd digit, the product remains 1. Then we can check at the end: if product is 1 and we never multiplied (meaning no

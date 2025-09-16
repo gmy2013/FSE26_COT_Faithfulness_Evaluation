@@ -1,0 +1,28 @@
+CodeGeneration:
+Based on the chain of thought, here's the complete function implementation:
+
+```python
+import re
+
+def remove_all_spaces(text):
+    """
+    Remove all whitespace characters from the given text.
+    
+    Args:
+        text (str): The input string containing whitespace characters
+        
+    Returns:
+        str: The input string with all whitespace characters removed
+        
+    Examples:
+        >>> remove_all_spaces("hello world")
+        'helloworld'
+        >>> remove_all_spaces("  multiple   spaces  ")
+        'multiplespaces'
+        >>> remove_all_spaces("tabs\tand\nnewlines")
+        'tabsandnewlines'
+    """
+    return re.sub(r'\s+', '', text)
+```
+
+The function uses a regular expression pattern `\s+` to match one or more whitespace characters (including spaces, tabs, newlines, etc.) and replaces them with an empty string, effectively removing all whitespace from the input text.

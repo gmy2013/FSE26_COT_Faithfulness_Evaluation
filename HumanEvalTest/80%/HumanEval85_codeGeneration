@@ -1,0 +1,26 @@
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+def add(lst):
+    """Given a non-empty list of integers lst. add the even elements that are at odd indices..
+
+    Examples:
+        add([4, 2, 6, 7]) ==> 2 
+    """
+    total = 0
+    for index, value in enumerate(lst):
+        if index % 2 != 0 and value % 2 == 0:
+            total += value
+    return total
+```
+
+This implementation:
+1. Initializes `total` to 0 to accumulate the sum
+2. Uses `enumerate()` to iterate through both indices and values
+3. Checks if the index is odd (`index % 2 != 0`)
+4. Checks if the value is even (`value % 2 == 0`)
+5. Adds qualifying values to the total
+6. Returns the final sum
+
+The function correctly handles the example: `add([4, 2, 6, 7])` returns `2` as expected.

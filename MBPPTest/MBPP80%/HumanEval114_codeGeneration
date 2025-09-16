@@ -1,0 +1,22 @@
+CodeGeneration:
+e converted to a tuple and returned.
+
+Here is the complete function:
+
+```python
+def str_to_tuple(test_str):
+    """Convert a string of comma-separated numbers to a tuple of integers.
+    
+    Args:
+        test_str (str): A string containing numbers separated by ', '.
+        
+    Returns:
+        tuple: A tuple of integers parsed from the input string.
+        
+    Example:
+        >>> str_to_tuple('1, 2, 3, 4')
+        (1, 2, 3, 4)
+    """
+    res = tuple(map(int, test_str.split(', ')))
+    return res
+```

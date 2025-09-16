@@ -1,0 +1,12 @@
+CodeGeneration:
+serts a space between the two captured groups, effectively adding a space before each uppercase letter that follows a word character.
+
+5. This function is useful for converting camelCase or PascalCase strings to a spaced format (e.g., "HelloWorld" becomes "Hello World").
+
+Here is the complete function with an example:
+
+```python
+import re
+
+def capital_words_spaces(str1):
+  return re.sub(r"(\w)([A-Z])", r"\1 \2", str1)

@@ -1,0 +1,26 @@
+def pair_OR_Sum(arr,n) : 
+    ans = 0 
+    for i in range(0,n) :    
+        for j in range(i + 1,n) :   
+            ans = ans + (arr[i] ^ arr[j])          
+    return ans 
+The following is chain of thought:
+Let's analyze the problem and the given function:
+
+The function `pair_OR_Sum` calculates the sum of XOR values for all unordered pairs in the array. The current implementation uses nested loops (O(n²) time complexity) which is inefficient for large arrays.
+
+We can optimize this using bit manipulation. The key insight is that we can compute the total XOR sum by considering each bit position independently.
+
+For each bit position k (0 to 31 for integers):
+- Let count be the number of elements where the k-th bit is set.
+- Then, the number of pairs where the k-th bit contributes to the XOR sum is: count * (n - count)
+- Each such pair contributes 2^k to the total sum.
+
+So the total sum = sum over all bits [ (count_k * (n - count_k)) * (2^k) ]
+
+This approach has O(32 * n) = O(n) time complexity.
+
+Here is the optimized implementation:
+
+```python
+def

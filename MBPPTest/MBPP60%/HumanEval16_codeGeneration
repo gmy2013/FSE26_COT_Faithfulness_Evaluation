@@ -1,0 +1,37 @@
+CodeGeneration:
+Based on the chain of thought and the given docstring, here's the complete function with proper implementation:
+
+```python
+def min_Jumps(a, b, d):
+    """
+    Calculate the minimum number of jumps needed to cover distance 'd'
+    using two jump lengths 'a' and 'b'.
+    
+    Args:
+        a (int): First jump length
+        b (int): Second jump length
+        d (int): Target distance to cover
+        
+    Returns:
+        int: Minimum number of jumps required
+    """
+    temp = a
+    a = min(a, b)
+    b = max(temp, b)
+    
+    if d >= b:
+        # Calculate ceiling(d/b) using integer arithmetic
+        return (d + b - 1) // b
+    if d == 0:
+        return 0
+    if d == a:
+        return 1
+    else:
+        return 2
+```
+
+Key improvements made:
+1. Added proper docstring explaining the function's purpose and parameters
+2. Used integer division `//` instead of float division `/` to ensure integer return value
+3. Maintained the original logic flow as described in the chain of thought
+4. The function handles all edge cases as specified: d ≥ b, d = 0, d = a, and other cases (0 < d < b)

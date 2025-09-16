@@ -1,0 +1,12 @@
+
+
+def triangle_area(a, h):
+    """Given length of a side and high return area for a triangle.
+    >>> triangle_area(5, 3)
+    7.5
+    """
+
+The following is chain of thought:
+I need to implement a function that calculates the area of a triangle given the length of a side (a) and the height (h). The formula for triangle area is (base × height) / 2.
+
+Looking at the docstring example: triangle_area(5, 3) should return 7.5.

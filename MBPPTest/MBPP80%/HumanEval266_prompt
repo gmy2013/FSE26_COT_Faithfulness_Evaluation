@@ -1,0 +1,21 @@
+def min_Num(arr,n):  
+    odd = 0
+    for i in range(n): 
+        if (arr[i] % 2): 
+            odd += 1 
+    if (odd % 2): 
+        return 1
+    return 2
+The following is chain of thought:
+Here is the structured chain of thought for the min_Num function:
+
+1. **Function Purpose**: The function finds the minimum number (1 or 2) to return based on the parity (odd/even) count of elements in the array.
+
+2. **Initialize Counter**: Start with `odd = 0` to count how many odd numbers are in the array.
+
+3. **Iterate Through Array**: Loop through each element in the array using `for i in range(n)`.
+
+4. **Check for Odd Numbers**: For each element `arr[i]`, check if it's odd using `arr[i] % 2` (which returns 1 for odd, 0 for even). If odd, increment the `odd` counter.
+
+5. **Determine Return Value**: After counting all odd numbers:
+   - If the count of odd numbers is itself odd (`odd % 2` returns 1), retu

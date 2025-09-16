@@ -1,0 +1,9 @@
+import math 
+def sum_series(number):
+ total = 0
+ total = math.pow((number * (number + 1)) /2, 2)
+ return total
+The following is chain of thought:
+1. The function `sum_series` takes one parameter `number`.
+2. Initialize `total` to 0.
+3. Compute the sum of cubes from 1 to

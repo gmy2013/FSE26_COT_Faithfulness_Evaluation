@@ -1,0 +1,33 @@
+CodeGeneration:
+value
+   - Returns True if all elements are equal and in the same order, False otherwise
+4. **Return Value**: Returns the boolean result of the comparison
+
+Here's the complete function:
+
+```python
+def check_identical(test_list1, test_list2):
+    """
+    Check if two lists are identical.
+    
+    Compares two lists element by element and returns True if they contain
+    the same elements in the same order, False otherwise.
+    
+    Args:
+        test_list1 (list): The first list to compare
+        test_list2 (list): The second list to compare
+    
+    Returns:
+        bool: True if lists are identical, False otherwise
+    
+    Examples:
+        >>> check_identical([1, 2, 3], [1, 2, 3])
+        True
+        >>> check_identical([1, 2, 3], [1, 3, 2])
+        False
+        >>> check_identical(['a', 'b'], ['a', 'b'])
+        True
+    """
+    res = test_list1 == test_list2
+    return res
+```

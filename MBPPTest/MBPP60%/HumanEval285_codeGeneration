@@ -1,0 +1,12 @@
+CodeGeneration:
+After adding all elements, return the average by dividing the total by the number of elements.
+
+Here is the complete function:
+
+```python
+def sum_num(numbers):
+    total = 0
+    for x in numbers:
+        total += x
+    return total/len(numbers)
+```

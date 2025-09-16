@@ -1,0 +1,11 @@
+from itertools import groupby
+def consecutive_duplicates(nums):
+    return [key for key, group in groupby(nums)] 
+The following is chain of thought:
+1. The function `consecutive_duplicates` takes a list `nums` as input.
+2. The goal is to remove consecutive duplicate elements from the list.
+3. The `itertools.groupby` function groups consecutive identical elements together.
+4. For each group, `groupby` returns a key (the element) and an iterator over the group.
+5. We only need the key (the unique element) from each group of consecutive duplicates.
+6. Therefore, we can use a list comprehension to extract the key from each (key, group) pair.
+7. This results in a list where all consecutive

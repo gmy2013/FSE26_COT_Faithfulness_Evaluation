@@ -1,0 +1,20 @@
+CodeGeneration:
+tiplies each element `x` by `n`.
+4. Convert the map object to a list and return it.
+
+Here is the complete function:
+
+```python
+def ntimes_list(nums, n):
+    """Multiply each element in nums by n and return as a list.
+    
+    Args:
+        nums: List of numbers
+        n: Number to multiply each element by
+    
+    Returns:
+        List where each element is n times the corresponding element in nums
+    """
+    result = map(lambda x: n * x, nums)
+    return list(result)
+```

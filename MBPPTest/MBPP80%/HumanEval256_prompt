@@ -1,0 +1,11 @@
+def listify_list(list1):
+  result = list(map(list,list1)) 
+  return result 
+The following is chain of thought:
+1. The function `listify_list` takes one argument `list1`.
+2. The goal is to convert each element in `list1` into a list.
+3. Using `map(list, list1)` applies the `list()` function to every element in `list1`.
+4. Wrapping the `map` object with `list()` converts it into a list of lists.
+5. The result is returned.
+
+This function is useful when you have an iterable (like tuples, strings, or other iterables) inside a list and want to ensure 

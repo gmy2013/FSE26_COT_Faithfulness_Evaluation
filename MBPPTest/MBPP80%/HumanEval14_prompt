@@ -1,0 +1,8 @@
+def average_tuple(nums):
+    result = [sum(x) / len(x) for x in zip(*nums)]
+    return result
+The following is chain of thought:
+1. The function `average_tuple` takes a list of tuples `nums` as input.
+2. The goal is to compute the average of elements at each position across all tuples.
+3. Use `zip(*nums)` to transpose the list of tuples, grouping elements by their positions.
+4. For each group (position), calculate the average by summing the elem

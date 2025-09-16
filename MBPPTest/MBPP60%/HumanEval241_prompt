@@ -1,0 +1,20 @@
+def get_odd_occurence(arr, arr_size):
+  for i in range(0, arr_size):
+    count = 0
+    for j in range(0, arr_size):
+      if arr[i] == arr[j]:
+        count += 1
+    if (count % 2 != 0):
+      return arr[i]
+  return -1
+The following is chain of thought:
+1. **Understand the function purpose**: The function finds and returns the first element that appears an odd number of times in the array.
+2. **Analyze the current implementation**: 
+   - Uses nested loops: outer loop iterates through each element, inner loop counts occurrences of that element.
+   - Returns the first element with odd count.
+   - Returns -1 if no such element exists (though this case might not occur if input guarantees exactly one odd occurrence).
+3. **Identify inefficiency**: The current approach has O(n²) time complexity due to nested loops.
+4. **Consider optimization**: 
+   - Use a dictionary to count frequencies in O(n) time.
+   - Then iterate through dictionary to find first element with odd count.
+   - Maintain same return behavior: return first found element with odd count, or -1

@@ -1,0 +1,53 @@
+
+
+def fizz_buzz(n: int):
+    """Return the number of times the digit 7 appears in integers less than n which are divisible by 11 or 13.
+    >>> fizz_buzz(50)
+    0
+    >>> fizz_buzz(78)
+    2
+    >>> fizz_buzz(79)
+    3
+    """
+
+The following is chain of thought:
+To solve this problem, we need to count the number of times the digit '7' appears in all integers less than `n` that are divisible by 11 or 13. Here is the step-by-step approach:
+
+1. **Iterate through all integers less than `n`**: We need to check each number from 1 to `n-1`.
+2. **Check divisibility**: For each number, check if it is divisible by 11 or 13.
+3. **Count digit '7'**: For numbers that meet the divisibility condition, convert the number to a string and count the occurrences of the digit '7'.
+4. **Accumulate the total count**: Sum the counts of '7' from all valid numbers.
+
+Let's break down the examples to validate the approach:
+- For `n=50`: Numbers divisible by 11 or 13 below 50 are 11,13,22,26,33,39,44. None of these contain the digit '7', so the result is 0.
+- For `n=78`: Numbers divisible by 11 or 13 below 78 include 77 (which has two '7's). Other numbers like 11,13,22,26,33,39,44,55,65,66 do not have any '7'. So total count is 2.
+- For `n=79`: Includes all numbers from previous case plus 78 (not divisible by 11 or 13) and 77 is still included. So same as above? Wait, actually 77 is below 79 and has two '7's. But also note 77 is below 78 and 79. However, the example output for n=79 is 3. This suggests there might be another number? Actually, 77 is the only number with '7' in this range? But 77 has two '7's. So why 3 for n=79?
+   Let me recalc for n=79:
+   Numbers divisible by 11 or 13 below 79: same as for n=78 plus 78? But 78 is not divisible by 11 or 13. So same set as n=78. However, wait: 77 is included and has two '7's. So why is the answer 3?
+   Actually, there is another number: 70? But 70 is not divisible by 11 or 13. Alternatively, 77 is counted twice? No.
+   Alternatively, perhaps the number 77 is counted for both divisors? But the problem says "divisible by 11 or 13", so it should be counted once.
+   Alternatively, maybe there is a number like 77 and also 7? But 7 is not divisible by 11 or 13.
+   Alternatively, maybe 77 is the only one, but with two '7's, and for n=79 we have the same as n=78? But the example says n=78 gives 2 and n=79 gives 3.
+
+   After rethinking: Actually, for n=79, the numbers include 77 (which has two '7's) and also 78 is not divisible. But wait, there is also 70? No.
+   Alternatively, perhaps the number 77 is counted only once, but it has two '7's. So for n=78, we have numbers up to 77, so we have 77. For n=79, we have the same numbers plus 78? But 78 is not divisible.
+   So why 3? This indicates a mistake in the example understanding.
+
+   However, looking back at the problem: "integers less than n". So for n=79, we include numbers from 1 to 78.
+   Now, which numbers are divisible by 11 or 13 below 79?
+   They are: 11,13,22,26,33,39,44,55,65,66,77.
+   Now, count the '7's: only 77 has two '7's. So total should be 2. But the example says 3.
+
+   This suggests there might be an error in the example. Alternatively, perhaps the number 70 is included? But 70 is not divisible by 11 or 13.
+   Alternatively, perhaps the number 77 is counted twice because it is divisible by both? But the problem says "or", so it should be counted once.
+
+   After double-checking: Actually, 77 is divisible by both 11 and 13? No, 77/13 is not integer. So only by 11.
+   So only one occurrence of 77.
+
+   Given the discrepancy, I will trust the examples as provided. The function must return 0 for n=50, 2 for n=78, and 3 for n=79.
+
+   How to get 3 for n=79? Perhaps there is another number: 70 is not divisible. 77 has two '7's. So to get 3, we need one more '7'. Perhaps 77 is counted twice? But that would be incorrect.
+
+   Alternatively, maybe the number 7 is considered? But 7 is not divisible by 11 or 13.
+
+   After re-reading the problem: "integers less than n". So for n=79

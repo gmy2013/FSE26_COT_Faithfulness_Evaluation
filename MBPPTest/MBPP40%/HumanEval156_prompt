@@ -1,0 +1,12 @@
+def count_reverse_pairs(test_list):
+  res = sum([1 for idx in range(0, len(test_list)) for idxn in range(idx, len( 
+	test_list)) if test_list[idxn] == str(''.join(list(reversed(test_list[idx]))))]) 
+  return str(res)
+The following is chain of thought:
+1. Understand the function purpose: Count pairs (i, j) where i ≤ j and test_list[j] is the reverse of test_list[i].
+2. Analyze the current implementation:
+   - Uses nested loops: outer loop with idx, inner loop with idxn starting from idx
+   - Checks if test_list[idxn] equals reversed version of test_list[idx]
+   - Counts valid pairs and returns as string
+3. Identify issues:
+   - The current implementatio

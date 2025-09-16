@@ -1,0 +1,18 @@
+CodeGeneration:
+To implement this efficiently, we can start from `n//2` and go downwards to 1, as the largest divisor (other than `n`) must be at most `n//2`. This avoids checking numbers larger than `n//2`, which cannot be divisors (except `n` itself).
+
+Here's the code:
+
+```python
+def largest_divisor(n: int) -> int:
+    """ For a given number n, find the largest number that divides n evenly, smaller than n
+    >>> largest_divisor(15)
+    5
+    """
+    for i in range(n // 2, 0, -1):
+        if n % i == 0:
+            return i
+    return 1  # In case n is 1, but n should be at least 1 per problem context?
+```
+
+Note: This function assumes `n` is a positive integer greater than 1. For `n=1`, it returns 1 (which is correct since the only divisor is 1, and it is smaller than 1? Actually, for n=1, there is no divisor smaller than 1, but the problem might not cover that edge case. The docstring example uses 15, so we can assume n>=2. However, to be safe, we return 1 if no divisor is found (which only happens for n=1).

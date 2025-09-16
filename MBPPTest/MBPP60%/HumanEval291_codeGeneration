@@ -1,0 +1,32 @@
+CodeGeneration:
+replacement string `' '` replaces each match with a single space.
+5. The function returns the modified string with extra spaces removed.
+
+Here is the complete function:
+
+```python
+import re
+
+def remove_spaces(text):
+    """
+    Remove extra spaces from the given text.
+    
+    This function replaces multiple consecutive spaces with a single space,
+    effectively normalizing the spacing in the text.
+    
+    Args:
+        text (str): The input string that may contain multiple spaces.
+        
+    Returns:
+        str: The input string with multiple spaces replaced by single spaces.
+        
+    Examples:
+        >>> remove_spaces("Hello    world")
+        'Hello world'
+        >>> remove_spaces("Multiple   spaces   here")
+        'Multiple spaces here'
+        >>> remove_spaces("NoExtraSpaces")
+        'NoExtraSpaces'
+    """
+    return re.sub(' +', ' ', text)
+```

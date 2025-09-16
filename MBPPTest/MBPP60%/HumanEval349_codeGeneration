@@ -1,0 +1,38 @@
+CodeGeneration:
+igns are correctly mapped, but note that 'sheep' should be capitalized for consistency ('Sheep').
+6. The last case (remainder 11) is correctly assigned to 'Hare'.
+
+Here is the improved function with consistent capitalization and a more efficient approach using a list:
+
+```python
+def chinese_zodiac(year):
+    """
+    Calculate the Chinese zodiac sign for a given year.
+
+    The Chinese zodiac is a 12-year cycle, with each year assigned an animal sign.
+    The cycle starts from the year 2000 which is the Dragon year (remainder 0).
+
+    Parameters:
+    year (int): The year for which to determine the zodiac sign.
+
+    Returns:
+    str: The Chinese zodiac sign corresponding to the input year.
+
+    Examples:
+    >>> chinese_zodiac(2000)
+    'Dragon'
+    >>> chinese_zodiac(2023)
+    'Rabbit'  # Note: 2023 is Rabbit year, which corresponds to Hare in some systems
+    """
+    signs = ['Dragon', 'Snake', 'Horse', 'Sheep', 'Monkey', 'Rooster', 
+             'Dog', 'Pig', 'Rat', 'Ox', 'Tiger', 'Hare']
+    remainder = (year - 2000) % 12
+    return signs[remainder]
+```
+
+This implementation:
+1. Uses a list for cleaner, more maintainable code
+2. Provides proper documentation with examples
+3. Maintains consistent capitalization
+4. Handles all cases efficiently with O(1) lookup time
+5. Includes the note about 'Hare' vs 'Rabbit' terminology in the docstring

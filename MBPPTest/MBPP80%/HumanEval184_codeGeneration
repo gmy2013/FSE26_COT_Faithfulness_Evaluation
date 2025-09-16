@@ -1,0 +1,43 @@
+CodeGeneration:
+eturn the tuple**: The function returns the resulting tuple.
+
+However, note that the current implementation might not handle cases where the ellipsis is part of the string in a different way (e.g., without spaces), or if there are multiple ellipses. Also, the split assumes a comma followed by a space, which might not always be the case. Let's improve the function to be more robust.
+
+Here's an improved version:
+
+```python
+def tuple_str_int(test_str):
+    """
+    Convert a string representation of a tuple of integers (possibly containing ellipsis) to an actual tuple of integers.
+    
+    Args:
+        test_str (str): The string representing the tuple, e.g., "(1, 2, 3, ...)".
+    
+    Returns:
+        tuple: A tuple of integers extracted from the string.
+    
+    Example:
+        >>> tuple_str_int("(1, 2, 3, ...)")
+        (1, 2, 3)
+    """
+    # Remove parentheses and ellipsis, and split by commas
+    cleaned = test_str.strip().replace('(', '').replace(')', '').replace('...', '')
+    # Split by comma and remove any empty strings from the list
+    num_strs = [part.strip() for part in cleaned.split(',') if part.strip() != '']
+    # Convert each non-empty string to integer and form a tuple
+    res = tuple(int(num) for num in num_strs)
+    return res
+```
+
+This improved version:
+1. Uses `strip()` to remove any leading/trailing whitespace from the entire string.
+2. Handles splitting by comma without assuming a space after it.
+3. Filters out any empty strings that might result from the split (e.g., due to ellipsis at the end).
+4. Is more robust to variations in the input format.
+
+You can use this function as follows:
+```python
+print(tuple_str_int("(1, 2, 3, ...)"))  # Output: (1, 2, 3)
+print(tuple_str_int("(5, 10, 15)"))     # Output: (5, 10, 15)
+print(tuple_str_int("(100, ...)"))      # Output: (100,)
+```

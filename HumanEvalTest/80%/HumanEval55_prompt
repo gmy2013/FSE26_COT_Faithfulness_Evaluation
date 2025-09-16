@@ -1,0 +1,45 @@
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+
+The following is chain of thought:
+We are to implement a function that returns the n-th Fibonacci number.
+ The Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+ Note: The problem examples:
+   fib(10) returns 55 -> so the 10th Fibonacci number is 55 (if we start counting at index 1: F1=1, F2=1, F3=2, ... F10=55)
+   fib(1) returns 1 -> first number is 1
+   fib(8) returns 21 -> eighth number is 21
+
+ However, note that the sequence can be defined with F0=0 and F1=1.
+ But the examples start at n=1 returning 1. So we need to be consistent.
+
+ Since the examples start at n=1 (which returns 1), we can define:
+   if n == 0: return 0
+   if n == 1: return 1
+   but note: the problem says "n-th", and the examples start at 1.
+
+ Alternatively, we can note that the examples do not include n=0. The problem says "n-th", and the examples are for n>=1.
+
+ However, to be safe, we should handle n=0 as well? But the examples don't show it. Let's check the docstring: it doesn't show n=0.
+
+ But the function signature says `n: int`, which could be non-negative? Or also negative? The problem doesn't specify.
+
+ However, the examples are non-negative. We should handle negative inputs? The problem doesn't say. But typically, Fibonacci is defined for non-negative n.
+
+ Since the problem doesn't specify, we assume n is non-negative.
+
+ Approach:
+ We can use iterative method to compute Fibonacci numbers efficiently.
+
+ Steps:
+   if n == 0: return 0
+   if n == 1: return 1
+   otherwise, we iterate from 2 to n, updating two variables that hold

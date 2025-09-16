@@ -1,0 +1,33 @@
+20%CoT
+CodeGeneration:
+Here's the implementation:
+
+```python
+def move_one_ball(arr):
+    if not arr:
+        return True
+        
+    n = len(arr)
+    # Find the number of positions where current > next (drops)
+    drops = 0
+    for i in range(n):
+        if arr[i] > arr[(i + 1) % n]:
+            drops += 1
+            if drops > 1:
+                return False
+    
+    return drops <= 1
+```
+
+**Explanation:**
+
+1. **Empty array check**: If the array is empty, return True as specified.
+
+2. **Count drops**: We iterate through the array and count how many times an element is greater than the next element (considering the circular nature using modulo). In a properly rotated sorted array, there should be at most 1 such "drop" - this occurs at the wrap-around point where the largest element meets the smallest element.
+
+3. **Decision logic**: 
+   - If there are 0 drops, the array is already sorted
+   - If there is exactly 1 drop, we can rotate the array to make it sorted
+   - If there are more than 1 drops, no rotation can make the array sorted
+
+This approach efficiently checks the condition in O(n) time with O(1) space complexity.

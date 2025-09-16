@@ -1,0 +1,17 @@
+
+
+def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    """
+
+The following is chain of thought:
+To determine the largest prime factor of a given integer `n`, we can follow these steps:
+
+1. **Handle the smallest prime factor (2):**
+   - First, check if `n` is divisible by 2. 
+   - While `n` is even (i.e., divisible by 2), divide `n` by 2.
+   - This ensures that we remove 

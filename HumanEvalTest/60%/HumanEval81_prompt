@@ -1,0 +1,91 @@
+
+def numerical_letter_grade(grades):
+    """It is the last week of the semester and the teacher has to give the grades
+    to students. The teacher has been making her own algorithm for grading.
+    The only problem is, she has lost the code she used for grading.
+    She has given you a list of GPAs for some students and you have to write 
+    a function that can output a list of letter grades using the following table:
+             GPA       |    Letter grade
+              4.0                A+
+            > 3.7                A 
+            > 3.3                A- 
+            > 3.0                B+
+            > 2.7                B 
+            > 2.3                B-
+            > 2.0                C+
+            > 1.7                C
+            > 1.3                C-
+            > 1.0                D+ 
+            > 0.7                D 
+            > 0.0                D-
+              0.0                E
+    
+
+    Example:
+    grade_equation([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']
+    """
+
+The following is chain of thought:
+We are given a list of GPAs and need to map each GPA to a letter grade based on the provided table.
+ The table has specific ranges for each letter grade. Note that the ranges are exclusive for the lower bounds and inclusive for the upper bounds?
+ Actually, from the table, we see that the grades are defined with ">" meaning greater than (so exclusive) and then an inclusive upper bound?
+ But note: the table says "> 3.7" for A, meaning that if the GPA is greater than 3.7 and up to 4.0 (but not including 4.0) then it's A? However, 4.0 is explicitly given as A+.
+ Actually, let's interpret the table carefully:
+
+ The table is:
+   GPA         Letter grade
+   4.0          A+
+   > 3.7        A
+   > 3.3        A-
+   > 3.0        B+
+   > 2.7        B
+   > 2.3        B-
+   > 2.0        C+
+   > 1.7        C
+   > 1.3        C-
+   > 1.0        D+
+   > 0.7        D
+   > 0.0        D-
+   0.0          E
+
+ However, note that the table uses ">" which might be ambiguous. Actually, the common way to read this is:
+   A+ for exactly 4.0
+   A for GPAs greater than 3.7 and up to 4.0 (but not including 4.0) - but wait, 4.0 is already taken by A+.
+   Similarly, A for >3.7 means that if the GPA is above 3.7 and at most 4.0, but since 4.0 is separate, we can assume that A is for (3.7, 4.0).
+   But note: the table does not specify the upper bound for each grade. Actually, the table is meant to be read from top to bottom.
+
+ We can interpret it as:
+   If GPA is 4.0 -> A+
+   Else if GPA > 3.7 -> A
+   Else if GPA > 3.3 -> A-
+   Else if GPA > 3.0 -> B+
+   Else if GPA > 2.7 -> B
+   Else if GPA > 2.3 -> B-
+   Else if GPA > 2.0 -> C+
+   Else if GPA > 1.7 -> C
+   Else if GPA > 1.3 -> C-
+   Else if GPA > 1.0 -> D+
+   Else if GPA > 0.7 -> D
+   Else if GPA > 0.0 -> D-
+   Else (GPA == 0.0) -> E
+
+ However, note that the example: 
+   numerical_letter_grade([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']
+
+ Let's check:
+   4.0 -> A+
+   3 -> which is 3.0: according to our rule, 3.0 is not greater than 3.0 (so it doesn't fall into B+), but wait: the table says "> 3.0" for B+.
+   So for 3.0, it is not greater than 3.0, so it would fall to the next? But the next is B: which requires >2.7. So 3.0 is greater than 2.7 -> B.
+   However, the example output for 3 is 'B'. So that matches.
+
+   1.7: is 1.7 greater than 1.7? No. So it falls to the next: C- requires >1.3. 1.7 is greater than 1.3 -> so it would be C-? But the example output for 1.7 is 'C-'. So that matches.
+
+   2: which is 2.0. Is 2.0 greater than 2.0? No. So it falls to the next: C requires >1.7. 2.0 is greater than 1.7 -> so it would be C. The example output for 2 is 'C'. So that matches.
+
+   3.5: which is greater than 3.3 -> so it would be A-. The example output is 'A-'. So that matches.
+
+ But wait: what about the boundaries? For example, what about a GPA of 3.7? 
+   According to our rule: 3.7 is not greater than 3.7 (so it doesn't qualify for A), but it is greater than 3.3 -> so it would be A-.
+   However, the table says "> 3.7" for A. So 3.7 exactly should not be A. So that is correct.
+
+ Similarly, 3.3 exactly would not be A- (because it is not greater than 3.3) and

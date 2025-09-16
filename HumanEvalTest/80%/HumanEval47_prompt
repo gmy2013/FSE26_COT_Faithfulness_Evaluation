@@ -1,0 +1,34 @@
+
+
+def median(l: list):
+    """Return median of elements in the list l.
+    >>> median([3, 1, 2, 4, 5])
+    3
+    >>> median([-10, 4, 6, 1000, 10, 20])
+    15.0
+    """
+
+The following is chain of thought:
+To implement the median function, we need to:
+1. Sort the list to arrange elements in ascending order
+2. Check if the list length is odd or even
+3. For odd length: return the middle element
+4. For even length: return the average of the two middle elements
+
+Let's implement this step by step:
+
+1. First, sort the input list
+2. Calculate the length of the list
+3. If length is odd, median is at index (n//2)
+4. If length is even, median is average of elements at indices (n//2 - 1) and (n//2)
+
+The implementation handles both integer and float results appropriately.
+
+```python
+def median(l: list):
+    """Return median of elements in the list l.
+    >>> median([3, 1, 2, 4, 5])
+    3
+    >>> median([-10, 4, 6, 1000, 10, 20])
+    15.0
+    """

@@ -1,0 +1,2 @@
+CodeGeneration:
+To solve this problem, we need to generate a list of prime numbers that are less than a given non-negative integer `n`. The function should return an array of the first `n` integers that are prime and less than `n`.

@@ -1,0 +1,16 @@
+CodeGeneration:
+5. the function returns "Accept"; otherwise, it returns "Discard".
+
+However, note that the regex pattern `[a-zA-z0-9]$` has a potential issue: `A-z` includes characters between 'Z' and 'a' in the ASCII table (such as '[', '\', ']', '^', '_', '`'), which are not alphanumeric. It should be `[a-zA-Z0-9]$` to correctly match only alphanumeric characters at the end of the string.
+
+Here is the corrected code:
+
+```python
+import re 
+regex = '[a-zA-Z0-9]$'
+def check_alphanumeric(string): 
+    if(re.search(regex, string)): 
+        return ("Accept") 
+    else: 
+        return ("Discard")
+```

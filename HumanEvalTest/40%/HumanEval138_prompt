@@ -1,0 +1,15 @@
+
+def is_equal_to_sum_even(n):
+    """Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers
+    Example
+    is_equal_to_sum_even(4) == False
+    is_equal_to_sum_even(6) == False
+    is_equal_to_sum_even(8) == True
+    """
+
+The following is chain of thought:
+To determine if a number `n` can be written as the sum of exactly 4 positive even numbers, note that each even number must be at least 2. Therefore, the smallest possible sum is 2+2+2+2=8. So, if `n < 8`, it is impossible.
+
+Since all numbers are even, their sum must be even. So, if `n` is odd, it cannot be expressed as such.
+
+For even `n >= 8`, we can always represent it as 

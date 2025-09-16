@@ -1,0 +1,17 @@
+CodeGeneration:
+```python
+def vowels_count(s):
+    s_lower = s.lower()
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    count = 0
+    
+    # Count regular vowels
+    for char in s_lower:
+        if char in vowels:
+            count += 1
+    
+    # Check if last character is 'y' and add to count
+    if len(s_lower) > 0 and s_lower[-1] == 'y':
+        count += 1
+    
+    return count

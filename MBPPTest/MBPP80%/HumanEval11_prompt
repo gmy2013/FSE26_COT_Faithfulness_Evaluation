@@ -1,0 +1,8 @@
+def merge(lst):  
+    return [list(ele) for ele in list(zip(*lst))] 
+The following is chain of thought:
+1. The function `merge` takes a list `lst` as input.
+2. The goal is to transpose the given list of lists (convert rows to columns).
+3. Using `zip(*lst)` unpacks the list and zips corresponding elements from each sublist.
+4. Each zipped element is a tuple, which is converted to a list with `list(ele)`.
+5. The list comprehension creates a new list of t

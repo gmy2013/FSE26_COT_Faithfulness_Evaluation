@@ -1,0 +1,35 @@
+
+
+def is_prime(n):
+    """Return true if a given number is prime, and false otherwise.
+    >>> is_prime(6)
+    False
+    >>> is_prime(101)
+    True
+    >>> is_prime(11)
+    True
+    >>> is_prime(13441)
+    True
+    >>> is_prime(61)
+    True
+    >>> is_prime(4)
+    False
+    >>> is_prime(1)
+    False
+    """
+
+The following is chain of thought:
+To implement the `is_prime` function, we need to check if a number `n` is prime. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+
+Steps:
+1. Handle edge cases: numbers less than 2 are not prime.
+2. Check for divisibility from 2 up to the square root of `n` (inclusive). If `n` is divisible by any number in this range, it is not prime.
+3. If no divisors are found, return True.
+
+The square root is used because a factor larger than the square root would have a corresponding factor smaller than the square root.
+
+Let's code accordingly.
+
+```python
+def is_prime(n):
+    """Ret

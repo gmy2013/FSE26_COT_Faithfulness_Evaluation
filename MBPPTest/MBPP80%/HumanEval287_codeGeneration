@@ -1,0 +1,31 @@
+CodeGeneration:
+Based on your chain of thought analysis, I can see that the function is already correctly implemented to perform element-wise subtraction between two nested tuples. Here's the complete function with proper formatting:
+
+```python
+def substract_elements(test_tup1, test_tup2):
+    """
+    Performs element-wise subtraction between two nested tuples.
+    
+    Args:
+        test_tup1 (tuple): First nested tuple containing numerical elements
+        test_tup2 (tuple): Second nested tuple with same dimensions as test_tup1
+    
+    Returns:
+        tuple: Nested tuple containing element-wise differences (test_tup1 - test_tup2)
+    
+    Example:
+        >>> substract_elements(((1, 2), (3, 4)), ((0, 1), (1, 2)))
+        ((1, 1), (2, 2))
+    """
+    res = tuple(tuple(a - b for a, b in zip(tup1, tup2))
+               for tup1, tup2 in zip(test_tup1, test_tup2))
+    return res
+```
+
+The function correctly implements:
+- Outer zip() to iterate through corresponding inner tuples
+- Inner zip() to iterate through corresponding elements within each inner tuple
+- Element-wise subtraction (a - b)
+- Proper tuple construction at both inner and outer levels
+
+Note: The function assumes both input tuples have identical dimensions and contain numerical elements that support subtraction.

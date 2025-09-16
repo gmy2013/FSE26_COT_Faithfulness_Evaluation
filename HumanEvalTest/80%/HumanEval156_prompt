@@ -1,0 +1,48 @@
+
+def int_to_mini_roman(number):
+    """
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+
+    Examples:
+    >>> int_to_mini_roman(19) == 'xix'
+    >>> int_to_mini_roman(152) == 'clii'
+    >>> int_to_mini_roman(426) == 'cdxxvi'
+    """
+
+The following is chain of thought:
+To solve this problem, we need to convert a given positive integer (between 1 and 1000) into its Roman numeral equivalent in lowercase. Roman numerals are represented using combinations of letters from the Latin alphabet. The basic symbols and their values are:
+- I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000.
+
+The approach involves:
+1. Defining mappings for the thousands, hundreds, tens, and units places.
+2. Breaking the number into thousands, hundreds, tens, and units digits.
+3. Converting each digit to its Roman numeral representation using the appropriate mapping for its place value.
+4. Combining these representations and converting the entire string to lowercase.
+
+We'll handle each digit separately:
+- For thousands (1000): only up to 1000, so we only need to handle 1000 (which is "M").
+- For hundreds: digits 0-9 mapped to Roman numerals (e.g., 0->"", 1->"C", 4->"CD", 9->"CM").
+- For tens: digits 0-9 mapped (e.g., 0->"", 1->"X", 4->"XL", 9->"XC").
+- For units: digits 0-9 mapped (e.g., 0->"", 1->"I", 4->"IV", 9->"IX").
+
+We'll create helper mappings for each place value to avoid repetition and ensure correctness.
+
+Let's code accordingly.
+```python
+def int_to_mini_roman(number):
+    """
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+
+    Examples:
+    >>> int_to_mini_roman(19) == 'xix'
+    >>> int_to_mini_roman(152) == 'clii'
+    >>> int_to_mini_roman(426) == 'cdxxvi'
+    """
+    # Define mappings for each place value
+    thousands = ["", "M", "MM", "MMM"][:number//1000 + 1]  # Only up to 1000, so max "M" for 1000
+    hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+    tens = ["", "X", "XX", "

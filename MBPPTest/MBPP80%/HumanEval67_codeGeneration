@@ -1,0 +1,30 @@
+CodeGeneration:
+iple consecutive occurrences of `char` into one.
+4. Finally, it returns the modified string.
+
+Here is the complete function with the docstring:
+
+```python
+import re
+
+def replace(string, char):
+    """
+    Replace all occurrences of two or more consecutive `char` with a single `char`.
+    
+    Args:
+        string (str): The input string to process.
+        char (str): The character to collapse in the string.
+    
+    Returns:
+        str: The string with consecutive `char` occurrences collapsed.
+    
+    Example:
+        >>> replace("hello!!! world!!", "!")
+        'hello! world!'
+        >>> replace("aaabbbccc", "a")
+        'abbbccc'
+    """
+    pattern = char + '{2,}'
+    string = re.sub(pattern, char, string)
+    return string
+```

@@ -1,0 +1,12 @@
+import re
+def occurance_substring(text,pattern):
+ for match in re.finditer(pattern, text):
+    s = match.start()
+    e = match.end()
+    return (text[s:e], s, e)
+The following is chain of thought:
+1. The function `occurance_substring` takes two parameters: `text` (the string to search in) and `pattern` (the regex pattern to search for).
+2. It uses `re.finditer()` to find all non-overlapping matches of the pattern in the text, which returns an iterator of match objects.
+3. For each match found, it extracts the start index using `match.start()` and end index using `match.end()`.
+4. It returns a tuple containing the matched substring (using slicing `text[s:e]`), the start index, and the end index.
+5. The function returns immediately after the first match is found (due to the return statement inside the loop), so 

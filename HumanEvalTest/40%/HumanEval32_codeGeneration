@@ -1,0 +1,32 @@
+CodeGeneration:
+# Use bisection method to find a root in the interval [-1000, 1000]
+    a = -1000.0
+    b = 1000.0
+    # Check if the signs are opposite at the endpoints
+    # If not, we might need to adjust, but given the polynomial is odd-degree, they should be for large enough M.
+    # However, to be safe, we can verify and adjust if necessary.
+    fa = poly(xs, a)
+    fb = poly(xs, b)
+    
+    # If the signs are the same, we might need to expand the interval, but according to the problem, it guarantees a solution.
+    # Since the polynomial is odd-degree, for large |x|, the sign is determined by the leading term.
+    # So if the leading coefficient is positive, then as x->∞, poly(x)->∞, and as x->-∞, poly(x)->-∞.
+    # Similarly, if negative, then as x->∞, poly(x)->-∞, and as x->-∞, poly(x)->∞.
+    # Therefore, for sufficiently large M, f(-M) and f(M) have opposite signs.
+    # We use M=1000, which should be sufficient for most polynomials.
+
+    # Now perform bisection until we have a root within tolerance.
+    tolerance = 1e-10
+    max_iter = 100
+    for _ in range(max_iter):
+        mid = (a + b) / 2.0
+        f_mid = poly(xs, mid)
+        if abs(f_mid) < tolerance:
+            return mid
+        if fa * f_mid < 0:
+            b = mid
+            fb = f_mid
+        else:
+            a = mid
+            fa = f_mid
+    return (a + b) / 2.0

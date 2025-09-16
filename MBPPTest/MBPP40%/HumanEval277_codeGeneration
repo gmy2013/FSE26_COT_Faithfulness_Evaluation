@@ -1,0 +1,26 @@
+CodeGeneration:
+is correct for checking if all elements of `test_tuple` are present in `K`.
+
+Here's the complete function with proper formatting:
+
+```python
+def check_tuples(test_tuple, K):
+    """Check if all elements in test_tuple are present in K.
+    
+    Args:
+        test_tuple: A tuple whose elements need to be checked
+        K: A container (list, tuple, set, etc.) to check membership against
+        
+    Returns:
+        bool: True if all elements of test_tuple are in K, False otherwise
+    """
+    res = all(ele in K for ele in test_tuple)
+    return res
+```
+
+The implementation correctly uses:
+- `all()` to check if all elements satisfy a condition
+- A generator expression `(ele in K for ele in test_tuple)` to check membership
+- The `in` operator to test if each element exists in `K`
+
+This works efficiently for any iterable `K` (list, tuple, set, etc.) and handles empty tuples correctly (returns True for empty input).

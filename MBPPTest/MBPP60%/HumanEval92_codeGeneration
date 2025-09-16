@@ -1,0 +1,24 @@
+CodeGeneration:
+Here's the complete function with the corrected docstring:
+
+```python
+import re
+
+def remove_multiple_spaces(text1):
+    """
+    Remove multiple consecutive spaces from a string and replace them with a single space.
+    
+    Args:
+        text1 (str): The input string containing multiple spaces
+        
+    Returns:
+        str: The cleaned string with multiple spaces replaced by single spaces
+        
+    Example:
+        >>> remove_multiple_spaces("Hello    world!  How   are you?")
+        'Hello world! How are you?'
+    """
+    return (re.sub(' +',' ',text1))
+```
+
+The function uses a regular expression pattern `' +'` which matches one or more space characters, and replaces them with a single space `' '` using the `re.sub()` method. This effectively collapses multiple consecutive spaces into single spaces throughout the input string.

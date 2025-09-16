@@ -1,0 +1,17 @@
+CodeGeneration:
+Looking at the function and the chain of thought, the implementation appears to be correct and complete. The function properly:
+
+1. Takes two parameters: `actual_cost` and `sale_amount`
+2. Compares them for equality using `==` operator
+3. Returns `True` when they are equal (no profit, no loss)
+4. Returns `False` when they are not equal (either profit or loss)
+
+The code is concise and achieves the intended functionality. No additional changes are needed.
+
+```python
+def noprofit_noloss(actual_cost, sale_amount): 
+    if sale_amount == actual_cost:
+        return True
+    else:
+        return False
+```

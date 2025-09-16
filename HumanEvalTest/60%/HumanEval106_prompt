@@ -1,0 +1,46 @@
+
+def f(n):
+    """ Implement the function f that takes n as a parameter,
+    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even
+    or the sum of numbers from 1 to i otherwise.
+    i starts from 1.
+    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).
+    Example:
+    f(5) == [1, 2, 6, 24, 15]
+    """
+
+The following is chain of thought:
+To implement this function, we need to generate a list of size `n` where each element at index `i` (with i starting from 1) is computed as follows:
+- If `i` is even, the value is the factorial of `i`.
+- If `i` is odd, the value is the sum of numbers from 1 to `i`.
+
+Note: The index `i` in the problem is 1-based, meaning the first element corresponds to i=1, second to i=2, etc.
+
+We can break down the solution into steps:
+1. Initialize an empty list to store the results.
+2. Iterate from i=1 to i=n (inclusive).
+3. For each i:
+   - If i is even, compute factorial(i). We can compute factorial iteratively.
+   - Else (i is odd), compute the sum from 1 to i. This is an arithmetic series sum: i*(i+1)//2.
+4. Append the computed value to the list.
+5. Return the list.
+
+However, note that for even i we need factorial, which grows very fast. But since n is the parameter, we assume it's manageable.
+
+Let's code accordingly. We'll compute factorial for even indices and the triangular number for odd indices.
+
+Important: The index in the list is 0-based, but the value i we are using is 1-based. So for the first element (index 0) we use i=1, for index 1 we use i=2, etc.
+
+We can write a helper function for factorial, but for simplicity we can compute it in a loop.
+
+Alternatively, we can compute the factorial without a helper by maintaining a running product for efficiency? But since we are iterating sequentially, we can compute the factorial for each even number independently. However, we can optimize by reusing the previous factorial for even numbers? Actually, the even numbers are not consecutive in terms of factorial: factorial(i) for i=2,4,6,... which are not consecutive. So it might be simpler to compute each factorial from scratch.
+
+But to avoid redundant calculations, we can compute the factorial iteratively as we go along. However, for clarity, we'll compute each required factorial independently.
+
+Alternatively, we can precompute factorials for all even numbers up to n? But n might be large, and we only need factorials for even i.
+
+Actually, we can compute the factorial for a given i with a loop. Since n is the size, and i goes up to n, we can compute factorial for each even i without too much overhead if n is not huge.
+
+Similarly, the sum for odd i is straightforward with the formula.
+
+Let's implement without overcomplicating.

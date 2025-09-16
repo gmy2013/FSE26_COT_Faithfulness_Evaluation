@@ -1,0 +1,16 @@
+def count_elim(num):
+  count_elim = 0
+  for n in num:
+    if isinstance(n, tuple):
+        break
+    count_elim += 1
+  return count_elim
+The following is chain of thought:
+1. The function `count_elim` takes a parameter `num`, which is expected to be an iterable (likely a list or tuple).
+2. Initialize a counter `count_elim` to 0.
+3. Iterate over each element `n` in the input `num`.
+4. For each element, check if it is an instance of `tuple`.
+5. If an element is a tuple, break out of the loop immediately.
+6. If not, increment the counter by 1.
+7. After breaking (or finishing the loop), return the counter value.
+8. The function counts the number of non-tuple elements from the star

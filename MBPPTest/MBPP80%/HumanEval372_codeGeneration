@@ -1,0 +1,27 @@
+CodeGeneration:
+ets the substring from the start to index `d` (exclusive).
+   - Concatenating them gives the left-rotated string.
+
+The implementation is correct and efficient. Here's the complete function:
+
+```python
+def left_rotate(s, d):
+    """
+    Rotate the string s to the left by d positions.
+    
+    Args:
+        s (str): The input string to be rotated
+        d (int): Number of positions to rotate left
+    
+    Returns:
+        str: The rotated string
+    
+    Examples:
+        >>> left_rotate("abcdef", 2)
+        'cdefab'
+        >>> left_rotate("hello", 3)
+        'lohel'
+    """
+    tmp = s[d:] + s[0:d]
+    return tmp
+```

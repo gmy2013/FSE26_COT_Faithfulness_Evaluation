@@ -1,0 +1,26 @@
+20%CoT
+CodeGeneration:
+To achieve the function's objective, we need to extract the decimal part of a given positive floating point number. The decimal part is simply the value left after subtracting the integer part of the number from the number itself. Here's how you can implement this:
+
+1. **Extract the Integer Part**: Use the `int()` function to get the integer part of the number. This function truncates the floating point number to its integer component.
+2. **Calculate the Decimal Part**: Subtract the integer part from the original number to get the decimal part.
+3. **Return the Decimal Part**: Return the result of the subtraction which gives us the decimal part of the number.
+
+Below is the implementation of the function:
+
+```python
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    an integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+    integer_part = int(number)  # Get the integer part of the number
+    decimal_part = number - integer_part  # Subtract integer part from the number to get the decimal part
+    return decimal_part
+```
+
+This function should work as expected, returning the fractional part of the given positive floating point number.

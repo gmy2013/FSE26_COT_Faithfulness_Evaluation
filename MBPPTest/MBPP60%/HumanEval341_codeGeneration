@@ -1,0 +1,25 @@
+CodeGeneration:
+5. If found, set `res` to `True` and break out of the loop early since we only need to know if at least one element exists.
+6. Return the result `res`.
+
+Here's the complete function:
+
+```python
+def check_element(test_tup, check_list):
+    """
+    Check if any element from check_list exists in test_tup.
+    
+    Args:
+        test_tup (tuple): The tuple to search in
+        check_list (list): The list of elements to check for
+    
+    Returns:
+        bool: True if any element from check_list is found in test_tup, False otherwise
+    """
+    res = False
+    for ele in check_list:
+        if ele in test_tup:
+            res = True
+            break
+    return res
+```

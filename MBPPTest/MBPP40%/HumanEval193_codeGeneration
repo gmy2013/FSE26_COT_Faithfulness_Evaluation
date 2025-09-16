@@ -1,0 +1,28 @@
+CodeGeneration:
+3. `b$` matches the literal 'b' at the end of the string.
+4. The function returns 'Found a match!' if the pattern is found, otherwise 'Not matched!'.
+
+Here's the complete function:
+
+```python
+import re
+
+def text_starta_endb(text):
+    """
+    Check if a string starts with 'a' and ends with 'b'.
+    
+    Args:
+        text (str): The input string to check
+        
+    Returns:
+        str: 'Found a match!' if the string starts with 'a' and ends with 'b',
+             otherwise 'Not matched!'
+    """
+    patterns = 'a.*?b$'
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return 'Not matched!'
+```
+
+The function correctly implements the specified behavior using regex to check if a string starts with 'a' and ends with 'b'.

@@ -1,0 +1,36 @@
+20%CoT
+CodeGeneration:
+list is empty or has only one distinct value), we should return None.
+
+Here's the implementation:
+
+```python
+def next_smallest(lst):
+    """
+    You are given a list of integers.
+    Write a function next_smallest() that returns the 2nd smallest element of the list.
+    Return None if there is no such element.
+    
+    next_smallest([1, 2, 3, 4, 5]) == 2
+    next_smallest([5, 1, 4, 3, 2]) == 2
+    next_smallest([]) == None
+    next_smallest([1, 1]) == None
+    """
+    if len(lst) < 2:
+        return None
+    
+    # Remove duplicates and sort to get unique elements in ascending order
+    unique_sorted = sorted(set(lst))
+    
+    # If there are at least 2 distinct elements, return the second one
+    if len(unique_sorted) >= 2:
+        return unique_sorted[1]
+    else:
+        return None
+```
+
+This implementation:
+1. First checks if the list has fewer than 2 elements (immediate None return)
+2. Converts the list to a set to remove duplicates, then sorts it
+3. If there are at least 2 distinct elements, returns the second smallest
+4. Returns None if there's only one distinct element (like [1, 1])

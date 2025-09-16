@@ -1,0 +1,8 @@
+import re
+def remove_extra_char(text1):
+  pattern = re.compile('[\W_]+')
+  return (pattern.sub('', text1))
+The following is chain of thought:
+1. The function `remove_extra_char` takes a string `text1` as input.
+2. It compiles a regex pattern that matches any non-word character (`\W`) or underscore (`_`), using `[\W_]+` to match one or more occurrences.
+3. The pattern is applied to `text1` with `sub('', text1)`, r

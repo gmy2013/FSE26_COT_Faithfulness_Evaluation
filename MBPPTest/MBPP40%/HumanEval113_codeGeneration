@@ -1,0 +1,68 @@
+CodeGeneration:
+Looking at this function, I can see it's designed to count the number of factors of a number, but there's an issue with the implementation. The inner loops for counting factor combinations don't correctly calculate the total number of factors.
+
+Here's the corrected implementation:
+
+```python
+def count_Fac(n):
+    """
+    Count the total number of factors of a given integer n.
+    
+    Args:
+        n (int): The integer to count factors for
+        
+    Returns:
+        int: The total number of factors of n
+    """
+    if n <= 0:
+        return 0
+    
+    count = 1  # Start with 1 (since every number has at least 1 as a factor)
+    temp = n
+    
+    # Factorize the number and count factors
+    i = 2
+    while i * i <= temp:
+        exponent = 0
+        while temp % i == 0:
+            temp //= i
+            exponent += 1
+        count *= (exponent + 1)  # Multiply by (exponent + 1) for each prime factor
+        i += 1
+    
+    # If there's a remaining prime factor greater than sqrt(n)
+    if temp > 1:
+        count *= 2  # This prime factor contributes exponent 1, so multiply by 2
+    
+    return count
+```
+
+**Alternative simpler implementation using divisor counting:**
+
+```python
+def count_Fac(n):
+    """
+    Count the total number of factors of a given integer n.
+    
+    Args:
+        n (int): The integer to count factors for
+        
+    Returns:
+        int: The total number of factors of n
+    """
+    if n <= 0:
+        return 0
+    
+    count = 0
+    i = 1
+    while i * i <= n:
+        if n % i == 0:
+            count += 1
+            if i != n // i:  # Don't count the same factor twice for perfect squares
+                count += 1
+        i += 1
+    
+    return count
+```
+
+The second implementation is more straightforward - it simply iterates through all possible divisors up to √n and counts them, making sure not to double-count for perfect squares.

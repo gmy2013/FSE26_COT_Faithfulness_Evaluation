@@ -1,0 +1,10 @@
+def tuple_modulo(test_tup1, test_tup2):
+  res = tuple(ele1 % ele2 for ele1, ele2 in zip(test_tup1, test_tup2)) 
+  return (res) 
+The following is chain of thought:
+1. Understand the function purpose: Perform element-wise modulo operation between two tuples.
+2. Identify input: Two tuples `test_tup1` and `test_tup2` of equal length.
+3. Processing steps:
+   - Use `zip()` to pair corresponding elements from both tuples
+   - Iterate through each pair with a generator expression
+   - Calculate `ele1 % ele2` for 

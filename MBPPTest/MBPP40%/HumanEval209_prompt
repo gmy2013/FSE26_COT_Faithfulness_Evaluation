@@ -1,0 +1,8 @@
+from collections import Counter
+def count_variable(a,b,c,d):
+  c = Counter(p=a, q=b, r=c, s=d)
+  return list(c.elements())
+The following is chain of thought:
+1. The function `count_variable` takes four arguments: `a`, `b`, `c`, and `d`.
+2. It creates a `Counter` object with keys 'p', 'q', 'r', 's' mapped to the values of `a`, `b`, `c`, `d` respectively.
+3. The `Counter` object `c` will count the occurrences of each key based on the integer value provided (each value should be a non-negative in

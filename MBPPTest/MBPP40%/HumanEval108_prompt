@@ -1,0 +1,21 @@
+from collections import defaultdict 
+def get_unique(test_list):
+  res = defaultdict(list)
+  for sub in test_list:
+    res[sub[1]].append(sub[0])
+  res = dict(res)
+  res_dict = dict()
+  for key in res:
+    res_dict[key] = len(list(set(res[key])))
+  return (str(res_dict)) 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose**: The function takes a list of tuples and returns a dictionary showing the count of unique first elements for each second element
+
+2. **Data Structure**: Uses defaultdict(list) to efficiently group elements by their second value
+
+3. **Grouping Logic**: 
+   - Iterates through each tuple in the input list
+   - Uses the second element (sub[1]) as key
+   - Appends the fi

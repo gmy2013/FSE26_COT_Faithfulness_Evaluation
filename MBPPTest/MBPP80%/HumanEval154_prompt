@@ -1,0 +1,18 @@
+def second_smallest(numbers):
+  if (len(numbers)<2):
+    return
+  if ((len(numbers)==2)  and (numbers[0] == numbers[1]) ):
+    return
+  dup_items = set()
+  uniq_items = []
+  for x in numbers:
+    if x not in dup_items:
+      uniq_items.append(x)
+      dup_items.add(x)
+  uniq_items.sort()    
+  return  uniq_items[1] 
+The following is chain of thought:
+1. **Check for insufficient elements**: If the list has fewer than 2 elements, return `None` immediately since there can't be a second smallest.
+2. **Check for two identical elements**: If there are exactly two elements and they are equal, return `None` since there is no distinct second smallest.
+3. **Remove duplicates**: Create a set to track duplicates and build a list of unique elements by iterating through the input.
+4. **Sort unique elements**: Sort the list of unique elements to order them from smallest to la

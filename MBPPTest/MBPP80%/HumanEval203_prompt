@@ -1,0 +1,12 @@
+def is_Product_Even(arr,n): 
+    for i in range(0,n): 
+        if ((arr[i] & 1) == 0): 
+            return True
+    return False
+The following is chain of thought:
+1. The function `is_Product_Even` checks if the product of all elements in the array `arr` (with length `n`) is even.
+2. A product is even if at least one factor is even (i.e., divisible by 2).
+3. Instead of computing the actual product (which could be large), we can check for the presence of any even number in the array.
+4. The code iterates through each element in the array using a loop from index `0` to `n-1`.
+5. For each element, it checks if it is even by using the bitwise AND with 1: `(arr[i] & 1) == 0`. This is equivalent to checking if the last bit is 0, which means the number is even.
+6. If any even number is found, it returns `True` immediately (early termination)

@@ -1,0 +1,55 @@
+CodeGeneration:
+I -> I (vowel) -> (73-65+2=10 -> 65+10=75 -> 'K')
+   s -> S (not vowel) -> S
+   So "tHKS" for first word.
+
+   Continue with the rest:
+   space -> space (not letter, so swapcase does nothing) -> space
+   i -> I (vowel) -> 'K'
+   s -> S (not vowel) -> S
+   space -> space
+   a -> A (vowel) -> (65-65+2=2 -> 65+2=67 -> 'C')
+   space -> space
+   m -> M (not vowel) -> M
+   e -> E (vowel) -> 'G'
+   s -> S (not vowel) -> S
+   s -> S (not vowel) -> S
+   a -> A (vowel) -> 'C'
+   g -> G (not vowel) -> G
+   e -> E (vowel) -> 'G'
+
+   So the result is "tHKS KS C MGSSCGG", which matches the example.
+
+Here's the implementation:
+
+```python
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+    result = []
+    vowels = 'aeiouAEIOU'
+    
+    for char in message:
+        swapped = char.swapcase()
+        if swapped in vowels:
+            if swapped.islower():
+                new_ord = (ord(swapped) - ord('a') + 2) % 26 + ord('a')
+            else:
+                new_ord = (ord(swapped) - ord('A') + 2) % 26 + ord('A')
+            result.append(chr(new_ord))
+        else:
+            result.append(swapped)
+    
+    return ''.join(result)
+```

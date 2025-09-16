@@ -1,0 +1,21 @@
+CodeGeneration:
+ilter` with a lambda function that checks if each number is greater than 0.
+4. Then we sum the filtered list of positive numbers and return the result.
+
+Here's the complete function:
+
+```python
+def sum_positivenum(nums):
+    """Return the sum of all positive numbers in the given list.
+    
+    Args:
+        nums: A list of numbers (can contain integers and/or floats)
+    
+    Returns:
+        The sum of all positive numbers in the list
+    """
+    positive_nums = list(filter(lambda x: x > 0, nums))
+    return sum(positive_nums)
+```
+
+Note: I improved the variable name from `sum_positivenum` to `positive_nums` to avoid confusion with the function name, and used `x` instead of `nums` in the lambda parameter for clarity.

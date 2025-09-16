@@ -1,0 +1,34 @@
+CodeGeneration:
+Here's the improved function with proper error handling:
+
+```python
+def max_of_nth(test_list, N):
+    """
+    Find the maximum value from the Nth element of each sublist.
+    
+    Args:
+        test_list: List of lists containing numerical values
+        N: Index of the element to compare (0-based)
+    
+    Returns:
+        Maximum value from the Nth elements
+    
+    Raises:
+        ValueError: If test_list is empty or N is negative
+        IndexError: If any sublist doesn't have an element at index N
+    """
+    if not test_list:
+        raise ValueError("Input list cannot be empty")
+    
+    if N < 0:
+        raise ValueError("N must be a non-negative integer")
+    
+    # Using generator expression for memory efficiency
+    return max(sub[N] for sub in test_list)
+```
+
+Key improvements:
+- Added input validation for empty lists and negative indices
+- Used a generator expression instead of list comprehension for better memory efficiency
+- Added comprehensive docstring with parameter descriptions and error conditions
+- Maintained the same core functionality while making it more robust

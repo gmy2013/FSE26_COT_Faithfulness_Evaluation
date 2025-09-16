@@ -1,0 +1,24 @@
+CodeGeneration:
+Here's the complete function based on the docstring and your chain of thought:
+
+```python
+def count_Pairs(arr, n):
+    """
+    Count the number of pairs of equal elements in the array.
+    
+    Args:
+        arr: List of elements
+        n: Length of the array
+    
+    Returns:
+        int: Number of pairs where arr[i] == arr[j] and i < j
+    """
+    cnt = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if arr[i] == arr[j]:
+                cnt += 1
+    return cnt
+```
+
+The function counts all pairs of indices (i, j) where i < j and arr[i] equals arr[j], using a nested loop approach to avoid duplicate counting.

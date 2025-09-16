@@ -1,0 +1,13 @@
+def is_Two_Alter(s):  
+    for i in range (len( s) - 2) : 
+        if (s[i] != s[i + 2]) : 
+            return False
+    if (s[0] == s[1]): 
+        return False
+    return True
+The following is chain of thought:
+1. The function `is_Two_Alter(s)` checks if a string `s` consists of exactly two alternating characters.
+2. The first loop checks that every character at position `i` matches the character at `i+2` (ensuring alternation every two steps).
+3. After the loop, it checks that the first two characters are different (to ensure exactly two distinct alternating characters).
+4. If both conditions are satisfied, it returns `True`; otherwise, it returns `False`.
+5. However, the loop condition `range(len(s)-2)` may miss checking the last two characters in some cases, 

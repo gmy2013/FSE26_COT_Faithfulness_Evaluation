@@ -1,0 +1,34 @@
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+
+The following is chain of thought:
+We are given a list `xs` of coefficients for a polynomial, where the index represents the exponent.
+ The polynomial is: xs[0] * x^0 + xs[1] * x^1 + xs[2] * x^2 + ... 
+ To compute the derivative, we apply the power rule: for each term with coefficient `c` and exponent `n` (n>=1), 
+ the derivative is `n * c * x^(n-1)`.
+ Since the constant term (exponent 0) has derivative 0, we skip it.
+
+ Steps:
+ 1. Initialize an empty list for the derivative coefficients.
+ 2. Iterate over the indices of `xs` starting from index 1 (since the derivative of the constant term is 0).
+ 3. For each index `i` (which corresponds to the exponent `i`), the derivative coefficient is `i * xs[i]`.
+ 4. Append this value to the result list.
+ 5. Return the result list.
+
+ Example: 
+   Input [3, 1, 2, 4, 5] represents: 3 + 1*x + 2*x^2 + 4*x^3 + 5*x^4.
+   Derivative: 1*1 + 2*2*x + 3*4*x^2 + 4*5*x^3 = 1 + 4x + 12x^2 + 20x^3.
+   So the output should be [1, 4, 12, 20].
+
+ Note: If the input has only one element (constant polynomial), the derivative is 0. But we should return an empty list?
+ However, the examples show that for a constant we return an empty list? Actually, in the example [3,1,2,4,5] the derivative has 4 elements.
+ But if the in

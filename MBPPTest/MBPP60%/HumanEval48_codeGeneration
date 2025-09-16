@@ -1,0 +1,14 @@
+CodeGeneration:
+1 (default).
+4. In each iteration, add the element at the current index `i` from the list `nums` to `sum_range`.
+5. After the loop, return the accumulated sum `sum_range`.
+
+The code is already correct and complete as per the docstring. Here is the function again for clarity:
+
+```python
+def sum_Range_list(nums, m, n):
+    sum_range = 0
+    for i in range(m, n+1, 1):
+        sum_range += nums[i]
+    return sum_range
+```

@@ -1,0 +1,50 @@
+
+def check_if_last_char_is_a_letter(txt):
+    '''
+    Create a function that returns True if the last character
+    of a given string is an alphabetical character and is not
+    a part of a word, and False otherwise.
+    Note: "word" is a group of characters separated by space.
+
+    Examples:
+    check_if_last_char_is_a_letter("apple pie") ➞ False
+    check_if_last_char_is_a_letter("apple pi e") ➞ True
+    check_if_last_char_is_a_letter("apple pi e ") ➞ False
+    check_if_last_char_is_a_letter("") ➞ False 
+    '''
+
+The following is chain of thought:
+Let's break down the problem:
+1. We need to check if the last character is an alphabetical character (a letter)
+2. AND that it is not part of a word (meaning it should be separated by space, or be the only character)
+3. A "word" is defined as a group of characters separated by space
+
+Approach:
+- If the string is empty, return False
+- Check if the last character is a letter using isalpha()
+- If it is a letter, we need to check if it's not part of a word:
+  - If the character before it (if exists) is a space, then it's not part of a word
+  - Or if it's the only character in the string (so index 0 is the last char)
+- Otherwise, return False
+
+Edge cases:
+- Empty string: return False
+- String ending with space: return False (last char is space, not letter)
+- Single letter: should return True (it's a letter and not part of a word since no spaces)
+- Last character is letter but preceded by non-space: then it's part of a word, return False
+
+So the condition should be:
+- Last character is alpha AND (it's the first character OR the character before it is a space)
+But also need to handle case where last character is space (already handled by isalpha() check)
+
+Let's implement accordingly.
+```python
+def check_if_last_char_is_a_letter(txt):
+    '''
+    Create a function that returns True if the last character
+    of a given string is an alphabetical character and is not
+    a part of a word, and False otherwise.
+    Note: "word" is a group of characters separated by space.
+
+    Examples:
+    check_if_last_char_is_a_letter("apple pie") ➞ False

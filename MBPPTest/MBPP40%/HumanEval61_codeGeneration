@@ -1,0 +1,27 @@
+CodeGeneration:
+lementation: The provided code already correctly implements this by using a dictionary comprehension that sorts each value list.
+
+Here is the complete function with an appropriate docstring:
+
+```python
+def sorted_dict(dict1):
+    """
+    Returns a new dictionary with sorted values for each key.
+    
+    This function takes a dictionary where each value is an iterable,
+    and returns a new dictionary with the same keys but with each
+    value sorted in ascending order.
+    
+    Args:
+        dict1 (dict): A dictionary with iterable values
+        
+    Returns:
+        dict: A new dictionary with sorted values for each key
+        
+    Example:
+        >>> sorted_dict({'a': [3, 1, 2], 'b': [5, 4]})
+        {'a': [1, 2, 3], 'b': [4, 5]}
+    """
+    sorted_dict = {x: sorted(y) for x, y in dict1.items()}
+    return sorted_dict
+```

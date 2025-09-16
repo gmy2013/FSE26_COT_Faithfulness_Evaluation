@@ -1,0 +1,17 @@
+def discriminant_value(x,y,z):
+    discriminant = (y**2) - (4*x*z)
+    if discriminant > 0:
+        return ("Two solutions",discriminant)
+    elif discriminant == 0:
+        return ("one solution",discriminant)
+    elif discriminant < 0:
+        return ("no real solution",discriminant)
+The following is chain of thought:
+1. Analyze the function name and parameters: The function is named `discriminant_value` and takes three parameters `x`, `y`, and `z`.
+2. Understand the mathematical operation: The function calculates the discriminant of a quadratic equation using the formula `b² - 4ac`, where `x` represents `a`, `y` represents `b`, and `z` represents `c`.
+3. Check the conditional logic: The function evaluates the discriminant value and returns:
+   - "Two solutions" when discriminant > 0
+   - "one solution" when discriminant == 0
+   - "no real solution" when discriminant < 0
+4. Return format: The function returns a tuple containing a string description and the calculated discriminant value in all cases.
+5. Verify completeness: The function handles all three possible cases (pos

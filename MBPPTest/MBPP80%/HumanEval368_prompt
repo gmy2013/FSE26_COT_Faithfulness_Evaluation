@@ -1,0 +1,16 @@
+def join_tuples(test_list):
+  res = []
+  for sub in test_list:
+    if res and res[-1][0] == sub[0]:
+      res[-1].extend(sub[1:])
+    else:
+      res.append([ele for ele in sub])
+  res = list(map(tuple, res))
+  return (res) 
+The following is chain of thought:
+1. Initialize an empty list `res` to store the merged tuples as lists (for mutability during processing).
+2. Iterate through each tuple `sub` in the input list `test_list`.
+3. Check if `res` is not empty and the first element of the last list in `res` matches the first element of the current tuple `sub`.
+   - If true, extend the last list in `res` with the remaining elements of `sub` (from index 1 onward).
+4. Otherwise (no match or `res` is empty), append a new list containing all elements of the current tuple `sub` to `res`.
+5. After

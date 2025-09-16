@@ -1,0 +1,17 @@
+CodeGeneration:
+```python
+def series_sum(number):
+    """
+    Calculate the sum of squares of the first n natural numbers.
+    
+    Uses the mathematical formula: n(n+1)(2n+1)/6
+    
+    Args:
+        number (int): The number of natural numbers to sum the squares of
+    
+    Returns:
+        float: The sum of squares of the first n natural numbers
+    """
+    total = (number * (number + 1) * (2 * number + 1)) / 6
+    return total
+```

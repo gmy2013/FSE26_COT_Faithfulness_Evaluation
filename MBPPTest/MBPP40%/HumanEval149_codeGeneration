@@ -1,0 +1,34 @@
+CodeGeneration:
+g the elements of `test_tup`.
+3. The function then returns the modified list `test_list`.
+
+However, note that the function modifies the original list passed in as an argument (since lists are mutable in Python), and returns a reference to that same modified list.
+
+Here's the complete function with proper documentation:
+
+```python
+def add_tuple(test_list, test_tup):
+    """
+    Add all elements from a tuple to the end of a list.
+    
+    This function modifies the original list in-place by extending it
+    with all elements from the given tuple.
+    
+    Args:
+        test_list (list): The list to be extended
+        test_tup (tuple): The tuple whose elements will be added to the list
+    
+    Returns:
+        list: The modified list (same object as test_list)
+    
+    Example:
+        >>> my_list = [1, 2, 3]
+        >>> my_tuple = (4, 5)
+        >>> add_tuple(my_list, my_tuple)
+        [1, 2, 3, 4, 5]
+        >>> my_list
+        [1, 2, 3, 4, 5]
+    """
+    test_list += test_tup
+    return test_list
+```

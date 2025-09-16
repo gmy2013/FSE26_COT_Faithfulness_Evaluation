@@ -1,0 +1,24 @@
+CodeGeneration:
+n` (inclusive). For each `i`, compute the `i`-th odd number as `j = 2*i - 1`.
+4. Raise `j` to the fourth power and add it to `sm`.
+5. After the loop, return the accumulated sum `sm`.
+
+The code is correct and efficient for the given purpose. However, we can make it more concise by eliminating the temporary variable `j`:
+
+```python
+def odd_Num_Sum(n):
+    sm = 0
+    for i in range(1, n + 1):
+        odd_num = 2 * i - 1
+        sm += odd_num ** 4
+    return sm
+```
+
+Alternatively, we can use a more Pythonic approach with a generator expression:
+
+```python
+def odd_Num_Sum(n):
+    return sum((2*i - 1)**4 for i in range(1, n + 1))
+```
+
+This version is more concise and readable while maintaining the same functionality.

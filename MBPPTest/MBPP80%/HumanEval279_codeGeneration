@@ -1,0 +1,33 @@
+CodeGeneration:
+The function is already correctly implemented based on the docstring and chain of thought. Here's the complete function with proper formatting:
+
+```python
+def Check_Solution(a, b, c):
+    """
+    Determines the number of real solutions for a quadratic equation ax² + bx + c = 0.
+    
+    Args:
+        a (float): Coefficient of x²
+        b (float): Coefficient of x
+        c (float): Constant term
+    
+    Returns:
+        str: "2 solutions" if discriminant > 0
+              "1 solution" if discriminant == 0
+              "No solutions" if discriminant < 0
+    """
+    discriminant = (b * b) - (4 * a * c)
+    
+    if discriminant > 0:
+        return "2 solutions"
+    elif discriminant == 0:
+        return "1 solution"
+    else:
+        return "No solutions"
+```
+
+The function correctly:
+1. Calculates the discriminant using `(b*b) - (4*a*c)`
+2. Returns "2 solutions" when discriminant > 0 (two distinct real roots)
+3. Returns "1 solution" when discriminant == 0 (one repeated real root)
+4. Returns "No solutions" when discriminant < 0 (no real roots, only complex ones)

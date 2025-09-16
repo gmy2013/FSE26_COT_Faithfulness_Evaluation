@@ -1,0 +1,9 @@
+def remove_length(test_str, K):
+  temp = test_str.split()
+  res = [ele for ele in temp if len(ele) != K]
+  res = ' '.join(res)
+  return (res) 
+The following is chain of thought:
+1. Split the input string into a list of words using space as the delimiter.
+2. Filter the list to keep only words whose length is not equal to K.
+3. Join the filtered list back into a string with spa

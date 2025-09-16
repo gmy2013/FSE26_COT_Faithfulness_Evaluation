@@ -1,0 +1,25 @@
+CodeGeneration:
+(n!)^2
+
+However, the function is named `sum_of_squares`, but this expression actually computes the central binomial coefficient, which is C(2n, n) = (2n)!/(n!)^2.
+
+For the sum of squares of the first n natural numbers, the correct formula is:
+sum_{k=1}^n k^2 = n(n+1)(2n+1)/6
+
+Here's the corrected implementation:
+
+```python
+def sum_of_square(n):
+    """
+    Calculate the sum of squares of the first n natural numbers.
+    
+    Args:
+        n (int): The number of natural numbers to sum squares of
+    
+    Returns:
+        int: The sum 1^2 + 2^2 + ... + n^2
+    """
+    return n * (n + 1) * (2 * n + 1) // 6
+```
+
+The original implementation was mathematically incorrect for calculating the sum of squares, though it correctly computes the central binomial coefficient C(2n, n).

@@ -1,0 +1,48 @@
+CodeGeneration:
+Here's the corrected implementation of the function:
+
+```python
+def sort_tuple(tup):
+    """
+    Sorts a tuple of tuples based on the first element of each inner tuple.
+    
+    Args:
+        tup (tuple): A tuple containing tuples to be sorted
+        
+    Returns:
+        list: A sorted list of tuples (since tuples are immutable)
+    """
+    # Convert tuple to list for mutability
+    lst = list(tup)
+    n = len(lst)
+    
+    for i in range(n):
+        for j in range(n-i-1):
+            if lst[j][0] > lst[j + 1][0]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
+    
+    return lst
+```
+
+**Key changes made:**
+1. Converted the input tuple to a list first since tuples are immutable and cannot be modified in-place
+2. Updated the docstring to clarify the function's behavior
+3. Changed the return type to list since we can't modify the original tuple
+4. Used the list variable throughout the sorting process instead of trying to modify the tuple
+
+**Alternative approach using built-in sorted():**
+```python
+def sort_tuple(tup):
+    """
+    Sorts a tuple of tuples based on the first element of each inner tuple.
+    
+    Args:
+        tup (tuple): A tuple containing tuples to be sorted
+        
+    Returns:
+        list: A sorted list of tuples
+    """
+    return sorted(tup, key=lambda x: x[0])
+```
+
+The second approach is more Pythonic and efficient, using Python's built-in `sorted()` function with a lambda function as the key.

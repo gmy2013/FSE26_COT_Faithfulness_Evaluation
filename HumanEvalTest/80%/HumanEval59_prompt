@@ -1,0 +1,61 @@
+
+
+def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    """
+
+The following is chain of thought:
+We are to find the largest prime factor of n (n > 1 and not prime).
+ Approach:
+ 1. Start with the smallest prime factor (2) and divide n by it as long as possible.
+ 2. Then check odd factors starting from 3, incrementing by 2.
+ 3. Each time we find a factor, we divide n by it until it is no longer divisible.
+ 4. The last factor that divides n will be the largest prime factor.
+
+ Steps in code:
+ - Initialize a variable for the largest factor (start with 1).
+ - While n is divisible by 2, set largest factor to 2 and divide n by 2.
+ - Then for odd factors from 3 to sqrt(n) (inclusive), step by 2.
+   - While n is divisible by current factor, set largest factor to current factor and divide n by it.
+ - After the loop, if n is greater than 1, then n itself is prime and is the largest factor.
+ - Return the largest factor.
+
+ However, note: the problem states n is not prime, but we still handle the case where n becomes prime at the end.
+
+ Implementation:
+ Let factor = 2
+ largest = 1
+ While n % factor == 0:
+     largest = factor
+     n //= factor
+
+ Then factor = 3
+ While factor * factor <= n:
+     While n % factor == 0:
+         largest = factor
+         n //= factor
+     factor += 2
+
+ If n > 1:
+     largest = n
+
+ Return largest
+
+ But note: the problem says n is not prime, so we don't expect n to be prime at the end? Actually, it might become prime.
+ However, the problem states that n is not prime initially, but after dividing by factors it might become prime.
+
+ So we proceed with the above.
+
+ Let's test with examples:
+ Example 1: n=13195
+   Divide by 5: n becomes 2639, largest=5.
+   Then check factors: 3? 2639 % 3 !=0. 5? already did. 7: 2639/7=377, largest=7.
+   Then n=377. Check 7: 377/7 is not integer. Next 11: 377/11=34.27? no. 13: 377/13=29, largest=13.
+   Then n=29. Now factor=15 (next odd), but 15*15=225 >29. So we break. Then n=29>1, so largest=29. Correct.
+
+ Example 2: n=2048
+   Divide by 2 repeatedly 

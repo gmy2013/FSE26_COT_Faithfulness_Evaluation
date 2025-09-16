@@ -1,0 +1,50 @@
+CodeGeneration:
+at digit by integer division.
+   - Check if `n` becomes 0 (to avoid processing non-existent digits).
+   - Extract the next rightmost digit (even position) and multiply it with `prodEven`.
+   - Remove that digit by integer division.
+6. After processing all digits, compare `prodOdd` and `prodEven`.
+7. Return `True` if they are equal, otherwise `False`.
+
+However, there's an issue with the current implementation: it considers the rightmost digit as the first odd position, but typically positions are counted from left to right (most significant digit first). The docstring doesn't specify the counting direction, but let's assume the standard left-to-right numbering.
+
+Let me fix the implementation to count positions from left to right:
+
+```python
+def product_Equal(n):
+    """
+    Check if the product of digits at odd positions equals the product of digits at even positions.
+    
+    Positions are counted from left to right (most significant digit is position 1).
+    
+    Args:
+        n (int): The number to check
+        
+    Returns:
+        bool: True if product of odd-positioned digits equals product of even-positioned digits, False otherwise
+    """
+    if n < 10:
+        return False
+    
+    # Convert number to string to process digits from left to right
+    digits = str(n)
+    prod_odd = 1
+    prod_even = 1
+    
+    for i, digit in enumerate(digits, 1):  # Start counting from 1
+        if i % 2 == 1:  # Odd position (1st, 3rd, 5th, etc.)
+            prod_odd *= int(digit)
+        else:  # Even position (2nd, 4th, 6th, etc.)
+            prod_even *= int(digit)
+    
+    return prod_odd == prod_even
+```
+
+This implementation:
+1. Converts the number to a string to process digits from left to right
+2. Uses enumeration starting from 1 to count positions correctly
+3. Multiplies digits at odd positions (1, 3, 5, ...) together
+4. Multiplies digits at even positions (2, 4, 6, ...) together
+5. Returns True if the products are equal, False otherwise
+
+The function now correctly implements the intended behavior with standard left-to-right position numbering.

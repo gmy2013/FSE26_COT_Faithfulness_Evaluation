@@ -1,0 +1,39 @@
+
+def exchange(lst1, lst2):
+    """In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return "YES".
+    Otherwise, return "NO".
+    For example:
+    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => "YES"
+    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => "NO"
+    It is assumed that the input lists will be non-empty.
+    """
+
+The following is chain of thought:
+We are allowed to exchange any number of elements between lst1 and lst2.
+ Goal: Make all elements in lst1 even.
+ We can swap any element from lst1 with any element from lst2 arbitrarily many times.
+
+ Important: We are not limited to one swap; we can do multiple swaps.
+
+ Observation:
+ The problem reduces to: we need to have at least k even numbers available to be in lst1, where k = len(lst1).
+ Why? Because we need all elements in lst1 to be even.
+
+ How many even numbers are currently in lst1? Let that be e1.
+ How many even numbers are in lst2? Let that be e2.
+
+ But note: we can swap an odd number from lst1 with an even number from lst2 to increase the count of even numbers in lst1.
+ Alternatively, we can also swap an even number from lst1 with an odd number from lst2 if we have too many evens? Actually, we don't want to do that because we want to keep evens in lst1.
+
+ However, we are allowed to do any number of swaps. So we can think of it as:
+
+ We need to have at least len(lst1) even numbers in the combined set of lst1 and lst2? Actually, no: because we can only exchange between the two lists. So the total number of even numbers in both lists is fixed.
+
+ But note: we are allowed to swap any element from lst1 with any element from lst2. So effectively, we can choose any len(lst1) elements from the combined set of both lists to be in lst1? However, we cannot change the total multiset of the two lists. The exchanges are just rearrangements between the two lists.
+
+ Actually, the entire operation is just reassigning the elements to the two lists arbi

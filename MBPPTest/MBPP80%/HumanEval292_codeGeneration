@@ -1,0 +1,31 @@
+CodeGeneration:
+Based on the function implementation and the chain of thought, here is the complete function with docstring:
+
+```python
+def Extract(lst):
+    """
+    Extract the last element from each item in the input list.
+    
+    This function takes a list of iterable items (lists, tuples, strings, etc.)
+    and returns a new list containing the last element from each item.
+    
+    Args:
+        lst (list): A list of iterable items from which to extract last elements
+        
+    Returns:
+        list: A list containing the last element from each item in the input list
+        
+    Examples:
+        >>> Extract([[1, 2, 3], [4, 5], [6, 7, 8, 9]])
+        [3, 5, 9]
+        
+        >>> Extract([(1, 2), (3, 4, 5), (6,)])
+        [2, 5, 6]
+        
+        >>> Extract(['abc', 'def', 'ghi'])
+        ['c', 'f', 'i']
+    """
+    return [item[-1] for item in lst]
+```
+
+The function extracts the last element from each iterable item in the input list using negative indexing (`item[-1]`) and returns them as a new list.

@@ -1,0 +1,40 @@
+CodeGeneration:
+ent count exceeds previous maximum.
+6. Return the maximum platforms needed (result).
+
+Here is the complete function with the docstring:
+
+```python
+def find_platform(arr, dep, n):
+    """
+    Finds the minimum number of platforms required for a railway station
+    so that no train waits, given arrival and departure times of n trains.
+    
+    Args:
+        arr: List of arrival times
+        dep: List of departure times
+        n: Number of trains (length of arr and dep)
+    
+    Returns:
+        Minimum number of platforms required
+    """
+    arr.sort() 
+    dep.sort() 
+    plat_needed = 1
+    result = 1
+    i = 1
+    j = 0
+    
+    while (i < n and j < n): 
+        if (arr[i] <= dep[j]):           
+            plat_needed += 1
+            i += 1
+        elif (arr[i] > dep[j]):           
+            plat_needed -= 1
+            j += 1
+        
+        if (plat_needed > result):  
+            result = plat_needed           
+    
+    return result
+```

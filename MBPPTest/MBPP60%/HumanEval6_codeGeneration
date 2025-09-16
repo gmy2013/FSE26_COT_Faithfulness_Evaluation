@@ -1,0 +1,32 @@
+CodeGeneration:
+Here's the corrected function with the completed docstring:
+
+```python
+import re
+
+pattern = 'fox'
+text = 'The quick brown fox jumps over the lazy dog.'
+
+def find_literals(text, pattern):
+    """
+    Find the first occurrence of a literal pattern in text and return match details.
+    
+    Args:
+        text (str): The text string to search within
+        pattern (str): The literal pattern to search for
+    
+    Returns:
+        tuple: A tuple containing (pattern_string, start_index, end_index)
+    """
+    match = re.search(pattern, text)
+    s = match.start()
+    e = match.end()
+    return (match.re.pattern, s, e)
+```
+
+The function searches for the literal pattern in the text and returns a tuple with:
+- The pattern string that was matched
+- The start index of the match
+- The end index of the match
+
+For the given example, it would return: `('fox', 16, 19)`

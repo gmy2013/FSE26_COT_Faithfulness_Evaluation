@@ -1,0 +1,22 @@
+
+def generate_integers(a, b):
+    """
+    Given two positive integers a and b, return the even digits between a
+    and b, in ascending order.
+
+    For example:
+    generate_integers(2, 8) => [2, 4, 6, 8]
+    generate_integers(8, 2) => [2, 4, 6, 8]
+    generate_integers(10, 14) => []
+    """
+
+The following is chain of thought:
+We are given two positive integers a and b.
+ We need to return the even digits between a and b (inclusive) in ascending order.
+ Note: The problem says "even digits", but from the examples, it's clear that we are to return numbers that are even (not digits of the numbers).
+ However, the example generate_integers(10, 14) returns [] because there are no even digits? Wait, let's check the example: 
+   The example says generate_integers(10, 14) => [].
+ But 10, 12, 14 are even numbers. So why []?
+ Actually, the docstring says "even digits", meaning we are to look at the digits (0,2,4,6,8) that appear in the numbers between a and b.
+ However, the example generate_integers(10,14) returns [] because the numbers in that range have digits 1,0,1,2,1,3,1,4. The even digits are 0,2,4.
+ But the problem says "return the even digits", so we should return the distinct even digits that appear in any number in the range?

@@ -1,0 +1,6 @@
+def is_nonagonal(n): 
+	return int(n * (7 * n - 5) / 2) 
+The following is chain of thought:
+1. Understand the problem: The function calculates the nth nonagonal number.
+2. Recall the formula: The nth nonagonal number is given by n*(7n - 5)/2.
+3. Implement the formula: Multiply n by (7*n - 5), then d

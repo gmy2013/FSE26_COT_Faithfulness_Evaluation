@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the corrected function:
+
+```python
+def prime_num(num):
+    if num <= 1:
+        return False
+    if num == 2:
+        return True
+    if num % 2 == 0:
+        return False
+    
+    for i in range(3, int(num**0.5) + 1, 2):
+        if num % i == 0:
+            return False
+    return True
+```
+
+Key improvements made:
+1. **Handles edge cases**: Returns False for numbers ≤ 1, and handles 2 as a special case
+2. **Optimized range**: Uses `range(3, int(num**0.5) + 1, 2)` to only check odd divisors up to the square root
+3. **Correct return logic**: Only returns True after checking all possible divisors
+4. **Even number optimization**: Immediately returns False for even numbers greater than 2
+5. **Efficiency**: Reduces the number of checks from O(n) to O(√n)
+
+The function now correctly identifies prime numbers:
+- `prime_num(2)` → `True`
+- `prime_num(7)` → `True`
+- `prime_num(4)` → `False`
+- `prime_num(1)` → `False`
+- `prime_num(0)` → `False`

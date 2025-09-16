@@ -1,0 +1,13 @@
+def find_fixed_point(arr, n): 
+	for i in range(n): 
+		if arr[i] is i: 
+			return i 
+	return -1
+The following is chain of thought:
+1. **Understand the function purpose**: The function finds a fixed point in an array where the value equals its index.
+2. **Analyze current implementation**: 
+   - Uses a simple linear scan through the array
+   - Checks if `arr[i] == i` (though uses `is` which should be `==` for value comparison)
+   - Returns the first fixed point found or -1 if none exists
+3. **Identify issues**:
+ 

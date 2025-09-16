@@ -1,0 +1,15 @@
+import math 
+def find_Digits(n): 
+    if (n < 0): 
+        return 0;
+    if (n <= 1): 
+        return 1; 
+    x = ((n * math.log10(n / math.e) + math.log10(2 * math.pi * n) /2.0)); 
+    return math.floor(x) + 1; 
+The following is chain of thought:
+1. The function `find_Digits` calculates the number of digits in the factorial of a non-negative integer `n`.
+2. For negative input (`n < 0`), it returns 0 since factorial is undefined for negative numbers.
+3. For `n = 0` or `n = 1` (where `n <= 1`), it returns 1 because 0! = 1 and 1! = 1, both having 1 digit.
+4. For larger `n`, it uses Stirling's approximation to compute the logarithm of the factorial without calculating the factorial directly (which avoids overflow for large `n`).
+   - The formula approximates `log10(n!)` as `n * log10(n/e) + log10(2*pi*n)/2`.
+5. The result `x` is the approximate base-10 logarithm of `n!`, so the number of digits is `fl

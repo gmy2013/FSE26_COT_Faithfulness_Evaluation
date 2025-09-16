@@ -1,0 +1,29 @@
+CodeGeneration:
+keys) and for each key, retrieve its corresponding value from the dictionary
+
+4. **Result Construction**: Create a new list of tuples in the exact order specified by `ord_list`
+
+5. **Return**: Return the newly ordered list of tuples
+
+Here's the complete function with the docstring:
+
+```python
+def re_arrange_tuples(test_list, ord_list):
+    """
+    Rearranges a list of tuples based on a specified order of keys.
+    
+    Args:
+        test_list (list): A list of tuples where each tuple contains (key, value)
+        ord_list (list): A list of keys in the desired order
+    
+    Returns:
+        list: A new list of tuples ordered according to ord_list
+    
+    Example:
+        >>> re_arrange_tuples([('a', 1), ('b', 2), ('c', 3)], ['c', 'a', 'b'])
+        [('c', 3), ('a', 1), ('b', 2)]
+    """
+    temp = dict(test_list)
+    res = [(key, temp[key]) for key in ord_list]
+    return res
+```

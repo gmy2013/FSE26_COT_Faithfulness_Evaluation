@@ -1,0 +1,30 @@
+CodeGeneration:
+digits. If not, we may need to increment until we find the correct `m`.
+
+Let me adjust the function to ensure correctness by checking the actual number of digits of the triangular number for the computed `m` and adjusting if necessary.
+
+```python
+import math
+
+def find_Index(n):
+    """
+    Find the smallest integer m such that the triangular number T_m = m(m+1)/2 has at least n digits.
+    
+    Args:
+    n (int): The minimum number of digits required.
+    
+    Returns:
+    int: The smallest m such that T_m has at least n digits.
+    """
+    if n <= 1:
+        return 1  # T1 = 1 has 1 digit
+    
+    # Approximate m using m >= sqrt(2 * 10^(n-1))
+    approx_m = math.isqrt(2 * (10 ** (n - 1)))
+    # Start from the approximation and check if T_m has at least n digits
+    m = approx_m
+    while True:
+        T_m = m * (m + 1) // 2
+        if T_m >= 10 ** (n - 1):  # This condition ensures at least n digits
+            return m
+        m += 1

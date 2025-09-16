@@ -1,0 +1,15 @@
+def is_triangleexists(a,b,c): 
+    if(a != 0 and b != 0 and c != 0 and (a + b + c)== 180): 
+        if((a + b)>= c or (b + c)>= a or (a + c)>= b): 
+            return True 
+        else:
+            return False
+    else:
+        return False
+The following is chain of thought:
+Here's the structured chain of thought for the is_triangleexists function:
+
+1. **Check for non-zero angles**: Verify that all three angles (a, b, c) are non-zero values
+2. **Check angle sum condition**: Confirm that the sum of all three angles equals 180 degrees (fundamental triangle property)
+3. **Check triangle inequality**: Verify that the sum of any two angles is greater than or equal to the third angle
+   - This ensures the angles can form a valid triangle (since in any triangle,

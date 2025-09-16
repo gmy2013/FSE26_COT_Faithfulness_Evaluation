@@ -1,0 +1,26 @@
+CodeGeneration:
+on has the arguments swapped in the recursive calls (it uses n and m instead of m and n).
+
+Let's correct the function by swapping the arguments in the recursive calls to match the standard Dealnnoy recurrence.
+
+```python
+def dealnnoy_num(n, m):
+    if (m == 0 or n == 0):
+        return 1
+    return dealnnoy_num(m - 1, n) + dealnnoy_num(m - 1, n - 1) + dealnnoy_num(m, n - 1)
+```
+
+However, note that the function parameters are (n, m), but the recurrence expects (m, n). To maintain consistency with the parameter order, we should adjust the recursive calls accordingly. Alternatively, we can swap the parameters in the function definition to match the standard notation. Since the docstring doesn't specify the order, let's assume the function should compute D(n, m) with the standard recurrence.
+
+The corrected function with proper argument order:
+
+```python
+def dealnnoy_num(n, m):
+    if n == 0 or m == 0:
+        return 1
+    return dealnnoy_num(n - 1, m) + dealnnoy_num(n - 1, m - 1) + dealnnoy_num(n, m - 1)
+```
+
+This implementation correctly computes the Dealnnoy number D(n, m) using the recurrence:
+D(n, m) = D(n-1, m) + D(n-1, m-1) + D(n, m-1)
+with base case D(n, 0) = D(0, m) = 1.

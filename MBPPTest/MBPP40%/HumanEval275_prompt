@@ -1,0 +1,21 @@
+def lcm(x, y):
+   if x > y:
+       z = x
+   else:
+       z = y
+   while(True):
+       if((z % x == 0) and (z % y == 0)):
+           lcm = z
+           break
+       z += 1
+   return lcm
+The following is chain of thought:
+Here is the structured chain of thought for the LCM function:
+
+1. **Input Validation**: The function takes two integer parameters x and y
+2. **Initial Setup**: 
+   - Determine the larger of the two numbers to use as the starting point
+   - If x > y, set z = x; otherwise set z = y
+3. **LCM Calculation Loop**:
+   - Use an infinite while loop to iterate through numbers
+   - Check if the current number z is div

@@ -1,0 +1,48 @@
+CodeGeneration:
+Looking at the problem and the examples, I can see that the key insight is correct: we need to check if the string contains the subsequence "[ [ ] ]" (two opening brackets followed by two closing brackets in that order). This pattern represents the minimal nested structure where one bracket is nested inside another.
+
+Here's the efficient implementation:
+
+```python
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+    # We're looking for the pattern: '[', '[', ']', ']' in order
+    pattern = ['[', '[', ']', ']']
+    pattern_index = 0
+    
+    for char in string:
+        if pattern_index < len(pattern) and char == pattern[pattern_index]:
+            pattern_index += 1
+            if pattern_index == len(pattern):
+                return True
+    
+    return False
+```
+
+This solution works by:
+1. Defining the target pattern we're looking for: two opening brackets followed by two closing brackets
+2. Iterating through the string character by character
+3. Trying to match the pattern in sequence
+4. Returning True as soon as we find the complete pattern
+5. Returning False if we reach the end without finding the pattern
+
+The time complexity is O(n) where n is the length of the string, and space complexity is O(1), making it very efficient.
+
+Let's verify with the test cases:
+- `[[]]` → matches the pattern exactly
+- `[]]]]]]][[[[[]` → cannot find two '[' before two ']'
+- `[][]` → has the pattern but not in the right order (opens, closes, opens, closes)
+- `[]` → too short
+- `[[][]]` → contains the pattern (first two '[', then the two ']' at the end)
+- `[[]][[` → contains the pattern (first two '[', then the first two ']')

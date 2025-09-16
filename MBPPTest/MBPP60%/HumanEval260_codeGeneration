@@ -1,0 +1,22 @@
+CodeGeneration:
+Here's the corrected function with the completed docstring:
+
+```python
+from collections import Counter 
+
+def anagram_lambda(texts, str):
+    """
+    Filter a list of strings to find all anagrams of a target string.
+    
+    Args:
+        texts (list): List of strings to search through
+        str (string): Target string to find anagrams of
+    
+    Returns:
+        list: List of strings from texts that are anagrams of str
+    """
+    result = list(filter(lambda x: (Counter(str) == Counter(x)), texts)) 
+    return result
+```
+
+The function filters the input list `texts` to return only those strings that are anagrams of the target string `str`, using `Counter` objects to compare character frequencies.

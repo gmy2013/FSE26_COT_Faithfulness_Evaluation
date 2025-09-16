@@ -1,0 +1,29 @@
+CodeGeneration:
+The average (mean) of the input numbers.
+
+Here's the corrected function with proper docstring:
+
+```python
+def sum_num(numbers):
+    """
+    Calculate the average (mean) of a list of numbers.
+    
+    Args:
+        numbers (list): A list of numbers (int or float)
+    
+    Returns:
+        float: The average of the input numbers
+    
+    Example:
+        >>> sum_num([1, 2, 3, 4, 5])
+        3.0
+        >>> sum_num([10, 20, 30])
+        20.0
+    """
+    total = 0
+    for x in numbers:
+        total += x
+    return total / len(numbers)
+```
+
+Note: The function name `sum_num` is somewhat misleading since it actually calculates the average rather than just summing numbers. A more descriptive name would be `calculate_average` or `mean`, but I've kept the original function name as requested.

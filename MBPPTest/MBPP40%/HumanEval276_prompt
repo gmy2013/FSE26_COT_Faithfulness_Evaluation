@@ -1,0 +1,8 @@
+def sort_String(str) : 
+    str = ''.join(sorted(str)) 
+    return (str) 
+The following is chain of thought:
+1. Understand the function purpose: The function `sort_String` takes a string as input and returns the string with its characters sorted in ascending order.
+2. Analyze the current implementation: 
+   - The input string `str` is sorted using the built-in `sorted()` function, which returns a list of sorted characters.
+   - The `join()` method is used to 

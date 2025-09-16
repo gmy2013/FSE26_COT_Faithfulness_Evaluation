@@ -1,0 +1,12 @@
+CodeGeneration:
+char in group:
+            if char == '(':
+                current_level += 1
+                max_level = max(max_level, current_level)
+            elif char == ')':
+                current_level -= 1
+        
+        result.append(max_level)
+    
+    return result
+```

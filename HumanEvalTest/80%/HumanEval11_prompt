@@ -1,0 +1,101 @@
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+
+The following is chain of thought:
+We are given two strings of '0's and '1's. We need to perform a binary XOR operation on each corresponding pair of bits.
+ Steps:
+ 1. Check that the strings are of the same length? The problem doesn't specify, but the example has same length.
+    However, the docstring doesn't require same length. We should handle strings of different lengths by padding the shorter one with zeros?
+    But note: the problem says "consisting only of 1s and 0s", but doesn't say they are same length.
+    However, the example is same length. To be safe, we should consider padding to the same length.
+
+ 2. Alternatively, we can iterate over the indices from 0 to the maximum length minus one.
+    For each index, if it is beyond the length of a string, we treat that bit as '0'.
+
+ 3. But the problem does not specify how to handle different lengths. Since it's binary XOR, we should pad with zeros to the left (same as in binary numbers).
+
+ 4. However, the example does not require padding. Let's look at the docstring: it says "consisting only of 1s and 0s", but doesn't say they are same length.
+    But the example has same length. To be consistent with binary numbers, we should pad the shorter string with zeros to the left.
+
+ 5. Alternatively, we can do without explicit padding by iterating from the end (like we do in manual binary addition) but that might be more complex.
+
+ 6. Another idea: we can convert the strings to integers, then do XOR, then convert back to binary string without the '0b' prefix.
+    But note: the strings might be very long and converting to integers might not be efficient for very long strings, but the problem doesn't specify constraints.
+
+ 7. However, the problem says "consisting only of 1s and 0s", so they are binary representations. We can use int(a,2) and int(b,2), then do XOR, then convert to binary with bin().
+
+ 8. But we must be cautious: if the strings are long, integer conversion might be limited by Python's integer size? Actually, Python integers are arbitrary precision, so it should be okay.
+
+ 9. Also, we need to remove the '0b' prefix from the bin() result. And we need to pad the result to the same length as the maximum of the two inputs? Actually, the result might have leading zeros, but the example doesn't require leading zeros? The example returns '100' which has no leading zero.
+
+ 10. However, if we use integer conversion, we might lose leading zeros. For example, if we have two strings of same length, the result should have the same length? Not necessarily: XOR of two numbers of same length might result in a number with fewer bits (if there are leading zeros). But the problem doesn't specify.
+
+ 11. Alternatively, we can do a character-by-character XOR without converting to integers. This would avoid the integer conversion and handle very long strings without any issue (though the problem doesn't specify length).
+
+ 12. Let's do character-by-character with padding to the maximum length.
+
+ 13. Steps for character-by-character:
+     - Determine the maximum length n = max(len(a), len(b))
+     - Pad both strings to length n by adding zeros to the left.
+     - Then, for each index i from 0 to n-1:
+          if a[i] and b[i] are both '0' or both '1', then output '0', else '1'
+     - But note: we padded with zeros, so for indices beyond the original string, we use '0'.
+
+ 14. However, we must be careful: when we pad, we are effectively doing:
+        a_padded = a.zfill(n)
+        b_padded = b.zfill(n)
+
+ 15. Then we can iterate and build the result string.
+
+ 16. But we might have leading zeros in the result? We should remove leading zeros? However, the example doesn't have leading zeros. But what if the result is all zeros? Then we should return at least one zero.
+
+ 17. Actually, the problem says "return result also as a string". It doesn't specify about leading zeros. The example has no leading zero.
+
+ 18. However, if we have two strings of different length, and we pad, then the result might have leading zeros. For example: 
+        a = '1', b = '0' -> padded to same length? Actually, if we pad to max length (1), then we have a_padded='1', b_padded='0', result='1'. 
+        But if we have a='001', b='1', then we pad both to length 3: a_padded='001', b_padded='001' (because we pad with zeros to the left) -> wait, no: we pad to max length which is 3. So a is already 3, b becomes '001'. Then XOR: 
+           001
+           001
+           ---
+           000   -> which is '000'. But we should return '0'? Or keep the leading zeros? The problem doesn't say.
+
+ 19. Alternatively, we can avoid padding and iterate from the end. But that would be more complex.
+
+ 20. Given the ambiguity, and since the problem example has same length, we might assume same length. But the docstring doesn't require same length.
+
+ 21. Another idea: use the integer conversion method, and then format the result to the same length as the maximum input length? But that might be complicated.
+
+ 22. Actually, the problem does not require the output to have the same length as the inputs. It just says "return result also as a string". So we can return without leading zeros.
+
+ 23. So, if we use integer conversion:
+        a_int = int(a, 2)
+        b_int = int(b, 2)
+        result_int = a_int ^ b_int
+        result_str = bin(result_int)[2:]   # remove '0b'
+        But if the result is zero, then bin(0) is '0b0', so [2:] would be '0'. So that's good.
+
+ 24. However, if the strings are very long, integer conversion might be inefficient in terms of memory and time? But for the purpose of this problem, it is acceptable.
+
+ 25. Since the problem does not specify the length, and to be efficient for very long strings, we should do the character-by-character with padding.
+
+ 26. But to avoid leading zeros in the result, we can remove them after building the string. However, if the entire result is zeros, we must keep one zero.
+
+ 27. Let's decide to do character-by-character with padding to the maximum length, and then remove any leading zeros, but if all zeros then return '0'.
+
+ 28. Steps for character-by-character:
+        n = max(len(a), len(b))
+        a_padded = a.zfill(n)
+        b_padded = b.zfill(n)
+        res_list = []
+        for i in range(n):
+            if a_padded[i] == b_padded[i]:
+                res_list.append('0')
+            else:
+                res_list.a

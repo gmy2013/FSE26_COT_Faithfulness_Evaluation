@@ -1,0 +1,9 @@
+def sorted_models(models):
+ sorted_models = sorted(models, key = lambda x: x['color'])
+ return sorted_models
+The following is chain of thought:
+1. The function `sorted_models` takes a list of dictionaries `models` as input.
+2. Each dictionary in `models` represents a model and has a key 'color'.
+3. The goal is to sort the list of dictionaries based on the value of the 'color' key.
+4. Use Python's built-in `sorted` function with a `key` parameter.
+5. The `key` should be a lambda fun

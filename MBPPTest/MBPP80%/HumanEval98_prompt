@@ -1,0 +1,27 @@
+def min_Swaps(str1,str2) : 
+    count = 0
+    for i in range(len(str1)) : 
+        if str1[i] != str2[i] : 
+            count += 1
+    if count % 2 == 0 : 
+        return (count // 2) 
+    else : 
+        return ("Not Possible") 
+The following is chain of thought:
+Here's the structured chain of thought for the min_Swaps function:
+
+1. **Problem Analysis**: The function calculates the minimum number of swaps needed to make two strings identical by swapping adjacent characters only.
+
+2. **Key Insight**: Each swap operation can fix two mismatches at once (swapping adjacent characters corrects both positions), so the minimum number of swaps is half the number of mismatches.
+
+3. **Edge Case**: If the number of mismatches is odd, it's impossible to make the strings identical with adjacent swaps because you'd be left with one uncorrected mismatch.
+
+4. **Algorithm Selection**:
+   - Count all positions where the two strings differ
+   - If the count is even, return half the count (each swap fixes two mismatches)
+   - If the count is odd, return "Not Possible"
+
+5. **Implementation Details**:
+   - Iterate through each character position in both strings
+   - Increment counter when characters at the same position differ
+   - Check parity of the mismatc

@@ -1,0 +1,30 @@
+CodeGeneration:
+The function you provided correctly implements the desired behavior. Here's the complete function with the docstring:
+
+```python
+def reverse_words(s):
+    """Reverse the order of words in a string.
+    
+    Args:
+        s (str): Input string containing words separated by whitespace
+        
+    Returns:
+        str: String with words in reverse order
+        
+    Examples:
+        >>> reverse_words("hello world")
+        'world hello'
+        >>> reverse_words("Python is great")
+        'great is Python'
+        >>> reverse_words("  multiple   spaces  ")
+        'spaces multiple'
+    """
+    return ' '.join(reversed(s.split()))
+```
+
+The function works as follows:
+1. `s.split()` splits the input string into a list of words using whitespace as the delimiter
+2. `reversed()` reverses the order of the words in the list
+3. `' '.join()` combines the reversed list back into a string with single spaces between words
+
+This handles multiple spaces between words by normalizing them to single spaces in the output, which is typically the expected behavior for this type of function.

@@ -1,0 +1,32 @@
+CodeGeneration:
+Based on the analysis, the function behaves as described. Here is the code with the docstring completed:
+
+```python
+def sum_nums(x, y, m, n):
+    """
+    Compute the sum of x and y, and return 20 if the sum is in the range [m, n),
+    otherwise return the actual sum.
+
+    Args:
+        x (int): First number to add.
+        y (int): Second number to add.
+        m (int): Start of the range (inclusive).
+        n (int): End of the range (exclusive).
+
+    Returns:
+        int: 20 if the sum is in [m, n), otherwise the sum of x and y.
+
+    Examples:
+        >>> sum_nums(5, 3, 5, 10)
+        20
+        >>> sum_nums(5, 3, 10, 15)
+        8
+        >>> sum_nums(7, 8, 10, 20)
+        15
+    """
+    sum_nums = x + y
+    if sum_nums in range(m, n):
+        return 20
+    else:
+        return sum_nums
+```

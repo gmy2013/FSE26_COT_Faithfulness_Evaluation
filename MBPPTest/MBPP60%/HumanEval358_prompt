@@ -1,0 +1,7 @@
+def Average(lst): 
+    return sum(lst) / len(lst) 
+The following is chain of thought:
+1. The function `Average` takes a list `lst` as input.
+2. The function calculates the sum of all elements in the list using `sum(lst)`.
+3. It then divides this sum by the length of the list (number of elements) using `len(lst)`.
+4. The resul

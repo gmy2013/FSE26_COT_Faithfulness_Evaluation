@@ -1,0 +1,33 @@
+CodeGeneration:
+ion for better performance with larger strings.
+
+Here's the implementation:
+
+```python
+def remove_vowels(text):
+    """
+    remove_vowels is a function that takes string and returns string without vowels.
+    >>> remove_vowels('')
+    ''
+    >>> remove_vowels("abcdef\nghijklm")
+    'bcdf\nghjklm'
+    >>> remove_vowels('abcdef')
+    'bcdf'
+    >>> remove_vowels('aaaaa')
+    ''
+    >>> remove_vowels('aaBAA')
+    'B'
+    >>> remove_vowels('zbcd')
+    'zbcd'
+    """
+    vowels = "aeiouAEIOU"
+    return ''.join([char for char in text if char not in vowels])
+```
+
+This implementation:
+1. Defines all vowels (both lowercase and uppercase)
+2. Uses a list comprehension to filter out vowel characters
+3. Joins the remaining characters back into a string
+4. Returns the result
+
+The list comprehension approach is efficient and readable, handling all the test cases correctly including empty strings, strings with mixed case, and strings with newline characters.

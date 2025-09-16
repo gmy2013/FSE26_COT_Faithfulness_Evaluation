@@ -1,0 +1,32 @@
+20%CoT
+CodeGeneration:
+times each integer appears in the list.
+
+   - **Check Condition:** Iterate over the dictionary, and check if the frequency of each integer is greater than or equal to the integer itself.
+
+   - **Determine the Greatest Integer:** Keep track of the greatest integer that satisfies the condition.
+
+3. **Implementation:**
+
+```python
+def search(lst):
+    # Count the frequencies of each integer
+    frequency = {}
+    for num in lst:
+        if num in frequency:
+            frequency[num] += 1
+        else:
+            frequency[num] = 1
+    
+    # Initialize the result variable
+    result = -1
+    
+    # Iterate over the frequency dictionary
+    for num, count in frequency.items():
+        # Check if the frequency is greater than or equal to the number itself
+        if count >= num:
+            # Update result if we found a greater valid number
+            result = max(result, num)
+    
+    # Return the greatest integer that meets the condition or -1 if none is found
+    return result

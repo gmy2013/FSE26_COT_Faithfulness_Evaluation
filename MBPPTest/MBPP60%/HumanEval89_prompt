@@ -1,0 +1,12 @@
+def mul_consecutive_nums(nums):
+    result = [b*a for a, b in zip(nums[:-1], nums[1:])]
+    return result
+The following is chain of thought:
+1. **Understand the function purpose**: The function should multiply each consecutive pair of numbers in the input list.
+2. **Analyze the given code**:
+   - `nums[:-1]` gets all elements except the last.
+   - `nums[1:]` gets all elements except the first.
+   - `zip` pairs these two slices element-wise.
+   - The list comprehension multiplies each pair (a, b).
+3. **Verify correctness**:
+   - For input

@@ -1,0 +1,11 @@
+def remove_list_range(list1, leftrange, rigthrange):
+   result = [i for i in list1 if (min(i)>=leftrange and max(i)<=rigthrange)]
+   return result
+The following is chain of thought:
+1. Understand the function purpose: Remove sublists where min or max values fall outside [leftrange, rightrange]
+2. Analyze the current implementation: Uses list comprehension with min(i) and max(i) checks
+3. Identify issues: 
+   - Variable name "rigthrange" has a typo (should be "rightrange")
+   - The logic correctly filters sublists where all elements are within the range
+4. Consider edge cases: 
+   - Empty

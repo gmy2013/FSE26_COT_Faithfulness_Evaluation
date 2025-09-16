@@ -1,0 +1,9 @@
+def check_subset(test_tup1, test_tup2):
+  res = set(test_tup2).issubset(test_tup1)
+  return (res) 
+The following is chain of thought:
+Here is the structured chain of thought for implementing the check_subset function:
+
+1. **Function Purpose Analysis**: The function needs to check if all elements of test_tup2 are present in test_tup1
+2. **Input Type Consideration**: Both inputs are tuples, but set operations require iterable inputs
+3. **Set Conversion Strategy**: Con

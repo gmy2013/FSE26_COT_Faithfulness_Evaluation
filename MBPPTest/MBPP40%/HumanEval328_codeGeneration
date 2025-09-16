@@ -1,0 +1,20 @@
+CodeGeneration:
+ed on the tuple to count occurrences of `value`.
+3. The count is then returned.
+
+Here is the complete function:
+
+```python
+def count_tuplex(tuplex, value):
+    """Count the number of occurrences of value in the given tuple.
+    
+    Args:
+        tuplex (tuple): The tuple to search in
+        value: The value to count occurrences of
+        
+    Returns:
+        int: Number of times value appears in the tuple
+    """
+    count = tuplex.count(value)
+    return count
+```

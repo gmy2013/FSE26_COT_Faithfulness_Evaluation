@@ -1,0 +1,12 @@
+def is_decimal(num):
+    import re
+    dnumre = re.compile(r"""^[0-9]+(\.[0-9]{1,2})?$""")
+    result = dnumre.search(num)
+    return bool(result)
+The following is chain of thought:
+1. The function `is_decimal` checks if a string `num` represents a valid decimal number with up to two decimal places.
+2. It imports the `re` module to use regular expressions.
+3. The regex pattern `r"""^[0-9]+(\.[0-9]{1,2})?$"""` is compiled:
+   - `^` asserts the start of the string.
+   - `[0-9]+` matches one or more digits (integer part).
+   - `(\.[

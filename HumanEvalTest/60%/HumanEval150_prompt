@@ -1,0 +1,30 @@
+
+def x_or_y(n, x, y):
+    """A simple program which should return the value of x if n is 
+    a prime number and should return the value of y otherwise.
+
+    Examples:
+    for x_or_y(7, 34, 12) == 34
+    for x_or_y(15, 8, 5) == 5
+    
+    """
+
+The following is chain of thought:
+We are to return x if n is prime, otherwise y.
+ Steps:
+ 1. Check if n is less than 2 -> not prime -> return y.
+ 2. For n >= 2, check divisibility from 2 to sqrt(n) (inclusive).
+ 3. If any divisor found, return y (not prime).
+ 4. Otherwise, return x (prime).
+
+ Edge: n=2 is prime -> return x.
+ Let's code accordingly.
+ We'll iterate from 2 to int(sqrt(n)) + 1.
+ Note: We must handle n=1 (not prime) and n=0 (not prime) as well.
+ However, the problem says "prime number", and primes are defined for integers >=2.
+ So for n < 2, we return y.
+
+ Implementation:
+   if n < 2:
+        return y
+   for

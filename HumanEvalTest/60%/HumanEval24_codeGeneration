@@ -1,0 +1,16 @@
+CodeGeneration:
+rgest number that divides n evenly, smaller than n
+    >>> largest_divisor(15)
+    5
+    """
+    if n <= 1:
+        return 1
+    
+    # Find the smallest divisor greater than 1
+    for d in range(2, int(n**0.5) + 1):
+        if n % d == 0:
+            return n // d
+    
+    # If no divisor found (n is prime), return 1
+    return 1
+```

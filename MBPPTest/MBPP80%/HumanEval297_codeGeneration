@@ -1,0 +1,35 @@
+CodeGeneration:
+Based on your chain of thought analysis, I can see that the function is already correctly implemented. Here's the complete function with the docstring:
+
+```python
+from itertools import groupby
+
+def extract_elements(numbers, n):
+    """
+    Extract elements from a list that appear exactly n times consecutively.
+    
+    Args:
+        numbers: List of elements (any data type supporting equality comparison)
+        n: Integer representing the exact number of consecutive occurrences to filter
+    
+    Returns:
+        List of elements that appear exactly n times consecutively in the input list
+    
+    Examples:
+        >>> extract_elements([1, 1, 2, 2, 2, 3, 3, 4], 2)
+        [1, 3]
+        >>> extract_elements(['a', 'a', 'b', 'c', 'c', 'c'], 3)
+        ['c']
+        >>> extract_elements([], 2)
+        []
+    """
+    result = [i for i, j in groupby(numbers) if len(list(j)) == n]
+    return result
+```
+
+The function correctly:
+- Uses `itertools.groupby` to group consecutive identical elements
+- Filters for groups with exactly `n` consecutive occurrences
+- Returns a list of the elements that meet this criteria
+- Handles edge cases like empty lists gracefully
+- Works with any data type that supports equality comparison

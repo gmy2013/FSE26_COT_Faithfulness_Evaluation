@@ -1,0 +1,45 @@
+
+def cycpattern_check(a , b):
+    """You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word
+    cycpattern_check("abcd","abd") => False
+    cycpattern_check("hello","ell") => True
+    cycpattern_check("whassup","psus") => False
+    cycpattern_check("abab","baa") => True
+    cycpattern_check("efef","eeff") => False
+    cycpattern_check("himenss","simen") => True
+
+    """
+
+The following is chain of thought:
+**Chain of Thought:**
+
+1. **Understand the Problem:** We need to check if the second word `b` (or any of its cyclic rotations) is a substring of the first word `a`.
+2. **Key Insight:** Instead of generating all rotations of `b` and checking each one against `a`, we can note that all rotations of `b` are contained in the string `b + b` (concatenating `b` with itself). For example, rotations of "abc" are "abc", "bca", "cab", and all appear in "abcabc".
+3. **Efficient Approach:** Check if any substring of `b + b` of length `len(b)` (which corresponds to a rotation) is contained in `a`. However, we can avoid generating all rotations explicitly by simply checking if `a` contains any substring of length `len(b)` from `b + b`? But wait, actually we can do:
+   - If `b` is a substring of `a`, return True.
+   - Otherwise, we need to check for rotations. But note: all rotations of `b` are exactly the substrings of length `len(b)` in `b + b` (except the original `b` which we already checked? Actually, the original `b` is the first substring in `b+b`). So we can iterate over all starting indices in `b+b` (from 1 to len(b)-1) to get rotations and check if they are in `a`.
+4. **But Wait:** There is a simpler way: if we create `double_b = b + b`, then every rotation of `b` is a contiguous substring of `double_b` of length `len(b)`. So we can iterate over all rotations by taking `double_b[i:i+len(b)]` for i in range(0, len(b)).
+   - However, note that when i=0, we get the original `b`, which we already know is not in `a` (if we get to the rotation check). So we can skip i=0 if we already checked `b`? Actually, we should check all rotations including the original.
+5. **Optimization:** Actually, we don't need to generate all rotations explicitly. We can just check if `a` contains any substring of length `len(b)` from `double_b`. But we must avoid checking the same substring multiple times? Actually, the rotations are distinct for i in [0, len(b)-1] (if all characters are distinct, but if there are duplicates, same rotation might appear multiple times? But no, because we are taking contiguous chunks of length len(b) in double_b, and there are exactly len(b) such chunks, each being a distinct rotation (even if the string has duplicates, the rotations are still distinct as sequences, unless the string is periodic).
+6. **Implementation Plan:**
+   - If `b` is empty, it is always a substring? But according to examples, we assume non-empty? Actually, the examples don't have empty, but to be safe: if `b` is empty, return True (since empty string is substring of any string).
+   - Let n = len(b)
+   - If n == 0: return True
+   - Check if `b` is directly a substring of `a`: if yes, return True.
+   - Otherwise, create `double_b = b + b`
+   - For each starting index i from 1 to n-1 (to avoid the original which we already checked), take the substring `rot = double_b[i:i+n]` and check if `rot` is in `a`. If found, return True.
+   - If no rotation is found, return False.
+7. **Edge Cases:** 
+   - If `b` is longer than `a`, then no rotation can be substring? So we can return False early.
+   - Also, if `b` is empty, as above.
+8. **Code Structure:**
+   - Check if len(b) > len(a): return False
+   - Check if b in a: return True
+   - double_b = b + b
+   - for i in range(1, len(b)):
+        rotation = double_b[i:i+len(b)]
+        if rotation in a:
+            return True
+   - return False
+
+But note: the range for i should be from 1 to len(b) (exclusive of len(b))? Actually, we want to get all rotations except the original. The rotations correspond to i=0,1,...,len(b)-1. So we skip i=0 (which is the ori

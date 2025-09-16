@@ -1,0 +1,37 @@
+CodeGeneration:
+rged stream, adding unique numbers to `uglies` until we have `n` numbers.
+6. **Return result**: The last element in `uglies` is the nth super ugly number.
+
+Here is the complete function with the docstring:
+
+```python
+import heapq
+
+def nth_super_ugly_number(n, primes):
+    """
+    Find the nth super ugly number.
+    
+    Super ugly numbers are positive numbers whose all prime factors are in the given list of primes.
+    
+    Args:
+        n (int): The position of the desired super ugly number (1-based index).
+        primes (list): List of prime numbers to use as factors.
+    
+    Returns:
+        int: The nth super ugly number.
+    
+    Example:
+        >>> nth_super_ugly_number(12, [2,7,13,19])
+        32
+    """
+    uglies = [1]
+    def gen(prime):
+        for ugly in uglies:
+            yield ugly * prime
+    merged = heapq.merge(*map(gen, primes))
+    while len(uglies) < n:
+        ugly = next(merged)
+        if ugly != uglies[-1]:
+            uglies.append(ugly)
+    return uglies[-1]
+```

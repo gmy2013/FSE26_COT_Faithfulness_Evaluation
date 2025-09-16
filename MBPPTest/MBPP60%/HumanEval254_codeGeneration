@@ -1,0 +1,25 @@
+CodeGeneration:
+k if `parity % 2 == 0`. If true, return `True` (even parity); otherwise, return `False` (odd parity).
+
+Here is the complete function with the docstring:
+
+```python
+def check_Even_Parity(x):
+    """
+    Check if the number of set bits (1s) in the binary representation of x is even.
+    
+    Args:
+        x (int): The integer to check for even parity.
+        
+    Returns:
+        bool: True if the number of set bits is even (even parity), False otherwise.
+    """
+    parity = 0
+    while (x != 0): 
+        x = x & (x - 1) 
+        parity += 1
+    if (parity % 2 == 0): 
+        return True
+    else: 
+        return False
+```

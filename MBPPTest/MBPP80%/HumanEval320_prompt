@@ -1,0 +1,17 @@
+def chunk_tuples(test_tup, N):
+  res = [test_tup[i : i + N] for i in range(0, len(test_tup), N)]
+  return (res) 
+The following is chain of thought:
+Here is the structured chain of thought for implementing the chunk_tuples function:
+
+1. **Understand the problem**: The function needs to split a tuple into smaller chunks of size N
+2. **Input analysis**: 
+   - test_tup: input tuple to be chunked
+   - N: size of each chunk
+3. **Output requirement**: Return a list of tuples where each tuple contains N elements from the original tuple
+4. **Approach selection**: Use list comprehension with slicing to create chunks
+5. **Implementation details**:
+   - Iterate through the tuple using range(0, len(test_tup), N) to get starting indices
+   - For each index i, slice the tuple from i to i+N
+   - Collect all slices into a list
+6. **Edge case consideration**: The function handles cases where the t

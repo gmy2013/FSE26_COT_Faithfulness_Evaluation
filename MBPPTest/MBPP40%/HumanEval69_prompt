@@ -1,0 +1,9 @@
+def decreasing_trend(nums):
+    if (sorted(nums)== nums):
+        return True
+    else:
+        return False
+The following is chain of thought:
+1. The function `decreasing_trend` is intended to check if a list of numbers is in strictly decreasing order.
+2. The current implementation checks if the list is equal to its sorted version, which would only return `True` for non-decreasing (ascending) order, not decreasing.
+3. To check for decreasing order, we should co

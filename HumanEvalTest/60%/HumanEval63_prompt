@@ -1,0 +1,32 @@
+
+
+def fibfib(n: int):
+    """The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+    fibfib(0) == 0
+    fibfib(1) == 0
+    fibfib(2) == 1
+    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+    Please write a function to efficiently compute the n-th element of the fibfib number sequence.
+    >>> fibfib(1)
+    0
+    >>> fibfib(5)
+    4
+    >>> fibfib(8)
+    24
+    """
+
+The following is chain of thought:
+The FibFib sequence requires each term to be the sum of the three previous terms. For efficiency, we'll use memoization to avoid redundant calculations.
+
+Since the sequence is defined as:
+- fibfib(0) = 0
+- fibfib(1) = 0  
+- fibfib(2) = 1
+- fibfib(n) = fibfib(n-1) + fibfib(n-2) + fibfib(n-3)
+
+We can implement this with memoization to cache previously computed values:
+```python
+def fibfib(n: int):
+    memo = {0: 0, 1: 0, 2: 1}
+    
+    def fib

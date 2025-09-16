@@ -1,0 +1,59 @@
+from typing import List, Tuple
+
+
+def find_closest_elements(numbers: List[float]) -> Tuple[float, float]:
+    """ From a supplied list of numbers (of length at least two) select and return two that are the closest to each
+    other and return them in order (smaller number, larger number).
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+    (2.0, 2.2)
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+    (2.0, 2.0)
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to find two numbers in the list that have the smallest difference between them.
+2. The list has at least two elements.
+3. We need to return the pair as (smaller, larger). If they are equal, both will be the same.
+4. We should consider all possible pairs to find the closest.
+
+Approach:
+- Sort the list to make it easier to compare adjacent elements (closest numbers are likely to be adjacent in sorted order).
+- However, we must be cautious: the absolute closest pair might not be adjacent in the original list, but in a sorted list, the closest pair must be adjacent. Why?
+  Because if the list is sorted, the minimal difference between any two numbers must occur between two consecutive numbers in the sorted list. (Proof: if there were a closer pair that is not adjacent, it would contradict the sorted order.)
+- So we can sort the list and then iterate through adjacent pairs to find the pair with the smallest difference.
+- But note: the problem does not require the numbers to be consecutive in the original list, just the two closest. So sorting is efficient and correct.
+
+Steps in code:
+1. Sort the input list.
+2. Initialize variables to track the minimal difference and the best pair.
+3. Iterate through the sorted list from index 0 to len(numbers)-2, comparing each element with the next.
+4. For each pair (i, i+1), compute the absolute difference.
+5. If this difference is smaller than the current minimum, update the minimum and the best pair.
+6. The best pair will naturally be (smaller, larger) because the list is sorted.
+7. Return the best pair.
+
+Edge case: if there are duplicate numbers, the difference will be zero and we can return immediately if we find such a pair? But we must check all adjacent pairs to be sure we get the first occurrence? Actually, if we find a zero difference, we can return that pair immediately because no pair can be closer. However, we should still check all adjacent pairs in case there are multiple zeros? But the problem doesn't require the first occurrence, just any closest pair. So we can break early if we find a zero? But wait: if there are multiple pairs with zero difference, we need to return one. However, the problem does not specify which pair to return if there are multiple closest. So we can return the first one we find with minimal difference.
+
+But to be efficient, we can break early if we find a zero difference? Actually, we cannot break early because we are iterating adjacent pairs in sorted order. If we find a zero, it is the smallest possible. So we can break as soon as we find a zero? However, we must be cautious: if we break at the first zero, we might miss a pair that is even closer? But zero is the smallest possible difference. So if we find a pair with difference 0, we can return immediately.
+
+But wait: what if there are multiple pairs with zero? We are iterating in sorted order. The first zero we find is acceptable. So we can break early.
+
+However, for correctness, we can simply iterate through all adjacent pairs without breaking early, since the list is sorted and the operation is O(n). But for efficiency, we can break if we find a zero.
+
+But the problem does not require optimization for zeros. So we can just iterate all.
+
+Let's code without early break for simplicity.
+
+Implementation:
+
+sorted_nums = sorted(numbers)
+min_diff = float('inf')
+best_pair = None
+
+for i in range(len(sorted_nums)-1):
+    diff = sorted_nums[i+1] - sorted_nums[i]   # since sorted, this is positive
+    if diff < min_diff:
+        min_diff = diff
+        best_pair = (sorted_nums[i], sorted

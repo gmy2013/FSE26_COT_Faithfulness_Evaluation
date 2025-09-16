@@ -1,0 +1,27 @@
+CodeGeneration:
+Here's the completed function based on the docstring and chain of thought:
+
+```python
+def fifth_Power_Sum(n):
+    """
+    Calculates the sum of the fifth powers of all integers from 1 to n.
+    
+    Args:
+        n (int): The upper bound of the range (inclusive)
+    
+    Returns:
+        int: The sum of i^5 for i from 1 to n
+    """
+    sm = 0
+    for i in range(1, n + 1):
+        sm = sm + (i * i * i * i * i)
+    return sm
+```
+
+The function is already complete and correctly implements the described logic. It:
+1. Initializes `sm` to 0 to accumulate the sum
+2. Iterates through integers 1 to n (inclusive) using `range(1, n + 1)`
+3. Adds the fifth power of each integer to the running total
+4. Returns the final sum
+
+The fifth power is calculated as `i * i * i * i * i` which is equivalent to i⁵.

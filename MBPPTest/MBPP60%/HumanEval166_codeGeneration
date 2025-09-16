@@ -1,0 +1,37 @@
+CodeGeneration:
+Here's the complete function implementation based on the chain of thought:
+
+```python
+def get_Pairs_Count(arr, n, sum):
+    """
+    Count the number of pairs in an array that sum to a specific target value.
+    
+    Args:
+        arr (list): The input array of numbers
+        n (int): The length of the array
+        sum (int): The target sum value
+    
+    Returns:
+        int: The count of pairs that sum to the target value
+    """
+    count = 0  # Initialize counter for valid pairs
+    
+    # Outer loop: iterate through each element
+    for i in range(0, n):
+        # Inner loop: iterate through all subsequent elements
+        for j in range(i + 1, n):
+            # Check if current pair sums to target
+            if arr[i] + arr[j] == sum:
+                count += 1
+    
+    return count
+```
+
+This implementation follows the exact logic described in the chain of thought:
+- Initializes a counter at 0
+- Uses nested loops where the outer loop goes through each element
+- The inner loop checks all elements after the current one to avoid duplicates
+- Increments the counter when a valid pair is found
+- Returns the total count of valid pairs
+
+The time complexity is O(n²) due to the nested loops, which is appropriate for this straightforward approach.

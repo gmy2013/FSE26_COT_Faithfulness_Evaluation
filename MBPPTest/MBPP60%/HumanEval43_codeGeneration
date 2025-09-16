@@ -1,0 +1,28 @@
+CodeGeneration:
+Based on the analysis, the function correctly implements the described behavior. Here's the complete function with improved documentation:
+
+```python
+def reverse_Array_Upto_K(input, k):
+    """
+    Reverse the first k elements of an array while keeping the remaining elements unchanged.
+    
+    Args:
+        input (list): The original array/list to be modified
+        k (int): The position up to which elements should be reversed (1-based index)
+    
+    Returns:
+        list: A new list with first k elements reversed and remaining elements unchanged
+    
+    Example:
+        >>> reverse_Array_Upto_K([1, 2, 3, 4, 5], 3)
+        [3, 2, 1, 4, 5]
+        >>> reverse_Array_Upto_K(['a', 'b', 'c', 'd'], 2)
+        ['b', 'a', 'c', 'd']
+    """
+    return (input[k-1::-1] + input[k:])
+```
+
+The function works as follows:
+- `input[k-1::-1]` reverses elements from index (k-1) down to index 0
+- `input[k:]` takes all elements from index k to the end unchanged
+- The two slices are concatenated to form the final result

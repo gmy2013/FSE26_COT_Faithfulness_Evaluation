@@ -1,0 +1,15 @@
+def is_nonagonal(n): 
+	return int(n * (7 * n - 5) / 2) 
+The following is chain of thought:
+Here is the structured chain of thought for the given function:
+
+1. **Function Purpose**: The function calculates the nth nonagonal number
+2. **Mathematical Formula**: Nonagonal numbers follow the formula: n(7n-5)/2
+3. **Input Parameter**: n (position in the sequence)
+4. **Calculation Steps**:
+   - Multiply n by 7: 7n
+   - Subtract 5: 7n - 5
+   - Multiply by n: n(7n - 5)
+   - Divide by 2: n(7n - 5)/2
+5. **Return Type**: Convert result to integer since nonagonal numbers are whole numbers
+6. **Edge Cases**: The formula wo

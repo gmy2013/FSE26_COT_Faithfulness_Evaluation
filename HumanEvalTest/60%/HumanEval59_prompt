@@ -1,0 +1,70 @@
+
+
+def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    """
+
+The following is chain of thought:
+We are to find the largest prime factor of n (n > 1 and not prime).
+ Approach:
+ 1. Start by dividing n by 2 repeatedly until it is odd (to handle the smallest prime factor 2).
+ 2. Then check for odd factors starting from 3 upwards.
+ 3. For each factor i, divide n by i as long as it is divisible.
+ 4. The last factor that divides n will be the largest prime factor.
+
+ Steps in code:
+ - Initialize a variable to store the current largest prime factor (start with 2 if even).
+ - While n is even, set largest factor to 2 and divide n by 2 until it is no longer even.
+ - Then set factor i to 3 and go up to sqrt(n) (since any factor beyond sqrt(n) would be paired with a smaller one).
+ - For each i, if it divides n, set it as the current largest factor and divide n by i until it is no longer divisible.
+ - After the loop, if n is greater than 1, then n itself is prime and the largest factor.
+ - Return the largest factor found.
+
+ However, note: the problem states n is not prime, but we still need to handle the case when the remaining n is prime (which would be the largest factor).
+
+ Implementation:
+ Let current_largest = 1 (but we know n>1 and not prime, so we will have at least one prime factor).
+ Actually, we can start without initializing a separate variable for largest, because we can return the last factor that divides n (which is the largest) or the remaining n.
+
+ Alternatively, we can:
+   while n % 2 == 0:
+        n //= 2
+        largest = 2   # but 2 might be the largest only if n becomes 1
+
+   Then for i from 3 to sqrt(n) (inclusive), step by 2.
+   While n % i == 0:
+        n //= i
+        largest = i
+
+   Then if n > 1, then n is prime and larger than any factor we found.
+
+ So we can return n if n>1, else return the last stored largest.
+
+ However, we need to store the largest factor we found during division.
+
+ Actually, we don't need to store all, we can just update the largest as we go.
+
+ But note: the factors we get are increasing (i goes from 3,5,7,...) so the last factor we divide by is the largest? Not exactly: because we divide out all factors of i, so the next factors are larger.
+
+ However, the largest prime factor might be the one that remains at the end.
+
+ So the algorithm:
+   largest = 1
+   # Factor out 2s
+   while n % 2 == 0:
+        largest = 2
+        n //= 2
+
+   # Now n is odd
+   i = 3
+   while i * i <= n:
+        while n % i == 0:
+            largest = i
+            n //= i
+        i += 2
+
+   # Now, if n is greater than 1, then n is prime and l

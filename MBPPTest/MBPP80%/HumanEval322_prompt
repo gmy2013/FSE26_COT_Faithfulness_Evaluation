@@ -1,0 +1,22 @@
+def super_seq(X, Y, m, n):
+	if (not m):
+		return n
+	if (not n):
+		return m
+	if (X[m - 1] == Y[n - 1]):
+		return 1 + super_seq(X, Y, m - 1, n - 1)
+	return 1 + min(super_seq(X, Y, m - 1, n),	super_seq(X, Y, m, n - 1))
+The following is chain of thought:
+Let's analyze the function `super_seq(X, Y, m, n)` step by step:
+
+1. **Base Case 1**: If `m` is 0 (meaning string `X` is empty), the shortest supersequence must include all characters of `Y`, so return `n` (length of `Y`).
+2. **Base Case 2**: If `n` is 0 (meaning string `Y` is empty), the shortest supersequence must include all characters of `X`, so return `m` (length of `X`).
+3. **Recursive Case 1**: If the last characters of `X` and `Y` match (i.e., `X[m-1] == Y[n-1]`), then this common character should be included only once in the supersequence. So, we add 1 (for this common character) and recursively solve for the remaining parts: `m-1` and `n-1`.
+4. **Recursive Case 2**: If the last characters do not match, we have two choices:
+   - Include the last character of `X` and recursively solve for `m-1` and `n`.
+   - Include the last character of `Y` and recursively solve for `m` and `n-1`.
+   We take the minimum of these two options (since we want the shortest supersequence) and add 1 (for the included character).
+
+This function recursively computes the length of the shortest common supersequence (SCS) of strings `X` and `Y` (with lengths `m` and `n` respectively). The SCS is the shortest string that contains both `X` and `Y` as subsequences.
+
+However, note that this implementation uses pure recursion without memoization, so it has exponential time complexity (O(2^(m+n)) in the worst case. For efficiency, dynamic programming (with a DP table) sho

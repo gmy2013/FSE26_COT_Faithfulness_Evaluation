@@ -1,0 +1,26 @@
+
+def is_happy(s):
+    """You are given a string s.
+    Your task is to check if the string is happy or not.
+    A string is happy if its length is at least 3 and every 3 consecutive letters are distinct
+    For example:
+    is_happy(a) => False
+    is_happy(aa) => False
+    is_happy(abcd) => True
+    is_happy(aabb) => False
+    is_happy(adb) => True
+    is_happy(xyy) => False
+    """
+
+The following is chain of thought:
+1. Check if the string length is less than 3. If yes, return False immediately since the condition "length at least 3" fails.
+2. If the length is 3 or more, iterate through the string from index 0 to len(s)-3 (to avoid index out of range).
+3. For each starting index i, check the three consecutive characters: s[i], s[i+1], s[i+2].
+4. If at any point these three characters are not all distinct (i.e., if any two are equal), return False.
+5. If the entire loop completes without finding any violation, return True.
+
+Now, implementing this logic in code:
+```python
+def is_happy(s):
+    if len(s) < 3:
+        r

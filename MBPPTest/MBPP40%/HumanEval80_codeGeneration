@@ -1,0 +1,34 @@
+CodeGeneration:
+to the square root of n for efficiency, since any divisor larger than sqrt(n) would have a corresponding divisor smaller than sqrt(n) that we would have already found.
+4. If no divisor is found, then n is prime and we return n itself.
+
+Here is the complete function with the docstring:
+
+```python
+def smallest_Divisor(n):
+    """
+    Returns the smallest divisor (greater than 1) of the given integer n.
+    
+    Args:
+        n (int): The integer to find the smallest divisor for.
+        
+    Returns:
+        int: The smallest divisor of n (greater than 1). If n is prime, returns n.
+        
+    Examples:
+        >>> smallest_Divisor(15)
+        3
+        >>> smallest_Divisor(17)
+        17
+        >>> smallest_Divisor(4)
+        2
+    """
+    if n % 2 == 0:
+        return 2
+    i = 3
+    while i * i <= n:
+        if n % i == 0:
+            return i
+        i += 2
+    return n
+```

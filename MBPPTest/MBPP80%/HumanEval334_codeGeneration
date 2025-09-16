@@ -1,0 +1,22 @@
+CodeGeneration:
+orrect and efficient for this purpose.
+
+However, the initialization to 0 is redundant since it's immediately overwritten. We can remove it for cleaner code.
+
+Here's the improved version:
+
+```python
+def series_sum(number):
+    """
+    Calculate the sum of squares of the first n natural numbers.
+    
+    Args:
+        number (int): The number of natural numbers to sum squares of
+    
+    Returns:
+        float: The sum of squares of the first n natural numbers
+    """
+    return (number * (number + 1) * (2 * number + 1)) / 6
+```
+
+The function now directly returns the result of the mathematical formula without the unnecessary intermediate variable assignment.

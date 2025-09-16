@@ -1,0 +1,37 @@
+CodeGeneration:
+ince factorial(0) = factorial(1) = 1, which has 1 digit.
+4. For n > 1, it uses Stirling's approximation to compute the number of digits without calculating the actual factorial.
+5. The formula used is: digits = floor(log10(n!)) + 1 ≈ floor(n * log10(n/e) + log10(2*π*n)/2) + 1
+
+Here's the complete function with the docstring:
+
+```python
+import math 
+
+def find_Digits(n):
+    """
+    Calculate the number of digits in the factorial of a non-negative integer n.
+    
+    Args:
+        n (int): A non-negative integer
+        
+    Returns:
+        int: Number of digits in n! (factorial of n)
+        
+    Examples:
+        >>> find_Digits(0)
+        1
+        >>> find_Digits(1)
+        1
+        >>> find_Digits(5)
+        3
+        >>> find_Digits(10)
+        7
+    """
+    if (n < 0): 
+        return 0
+    if (n <= 1): 
+        return 1
+    x = ((n * math.log10(n / math.e) + math.log10(2 * math.pi * n) / 2.0))
+    return math.floor(x) + 1
+```

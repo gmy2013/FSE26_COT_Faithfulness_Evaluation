@@ -1,0 +1,29 @@
+def sort_tuple(tup): 
+	n = len(tup) 
+	for i in range(n): 
+		for j in range(n-i-1): 
+			if tup[j][0] > tup[j + 1][0]: 
+				tup[j], tup[j + 1] = tup[j + 1], tup[j] 
+	return tup
+The following is chain of thought:
+Here is the structured chain of thought for the given function:
+
+1. **Function Purpose**: The function `sort_tuple` sorts a tuple of tuples based on the first element of each inner tuple using the bubble sort algorithm.
+
+2. **Input Analysis**: 
+   - Parameter: `tup` - a tuple containing inner tuples (or other indexable elements)
+   - Assumption: Each inner element must be indexable and have at least one element at index 0
+
+3. **Algorithm Selection**: 
+   - Uses bubble sort algorithm (O(n²) complexity)
+   - Sorts in ascending order based on the first element of each inner tuple
+
+4. **Implementation Steps**:
+   - Get length of input tuple `n = len(tup)`
+   - Outer loop: iterate `n` times (number of passes needed)
+   - Inner loop: compare adjacent elements, reducing range each pass (bubble sort optimization)
+   - Comparison: `tup[j][0] > tup[j + 1][0]` compares first elements
+   - Swap: if comparison is true, swap positions using tuple unpacking
+   - Return: modified tuple (note: tuples are immutable, but this modifies the original reference)
+
+5. *

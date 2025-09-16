@@ -1,0 +1,42 @@
+CodeGeneration:
+Based on the chain of thought analysis, here's the improved implementation:
+
+```python
+def average_Even(n):
+    """
+    Calculate the average of even numbers from n down to 2.
+    
+    Args:
+        n (int): The starting even number (must be even and positive)
+    
+    Returns:
+        float: The average of even numbers from n down to 2
+        str: "Invalid Input" if n is not even or positive
+    
+    Raises:
+        ValueError: If n is not even or positive
+    """
+    if n <= 0 or n % 2 != 0:
+        raise ValueError("Invalid Input: n must be a positive even number")
+    
+    total = 0
+    count = 0
+    current = n
+    
+    while current >= 2:
+        total += current
+        count += 1
+        current -= 2
+    
+    return total / count
+```
+
+Key improvements made:
+- Fixed the unreachable `return -1` statement
+- Added validation for positive numbers
+- Changed to return float division instead of integer division
+- Used more descriptive variable names
+- Added proper docstring with parameter and return type documentation
+- Used exception handling instead of returning mixed types
+- Removed unnecessary parentheses in conditionals
+- Added proper error handling with ValueError exception

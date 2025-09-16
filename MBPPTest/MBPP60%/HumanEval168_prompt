@@ -1,0 +1,13 @@
+def Diff(li1,li2):
+    return (list(list(set(li1)-set(li2)) + list(set(li2)-set(li1))))
+ 
+The following is chain of thought:
+1. **Understand the function purpose**: The function `Diff` takes two lists (`li1` and `li2`) and returns the symmetric difference between them.
+2. **Break down the existing logic**:
+   - Convert both lists to sets to remove duplicates and enable set operations.
+   - Compute `set(li1) - set(li2)` to get elements in `li1` but not in `li2`.
+   - Compute `set(li2) - set(li1)` to get elements in `li2` but not in `li1`.
+   - Convert both resulting sets to lists.
+   - Concatenate the two lists.
+   - Return the concatenated list.
+3. **Note**: The symmetric difference is the union of the differen

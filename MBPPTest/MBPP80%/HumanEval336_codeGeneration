@@ -1,0 +1,33 @@
+CodeGeneration:
+first one encountered (since dictionaries in Python 3.7+ maintain insertion order, and Counter preserves the order of first occurrence for elements with equal counts).
+
+Here is the complete function with the docstring:
+
+```python
+from collections import Counter
+
+def max_char(str1):
+    """
+    Return the character with the maximum frequency in the given string.
+    
+    If multiple characters have the same maximum frequency, returns the
+    first one encountered in the string.
+    
+    Args:
+        str1 (str): The input string to analyze
+        
+    Returns:
+        str: The character with the highest frequency
+        
+    Examples:
+        >>> max_char("hello")
+        'l'
+        >>> max_char("aabbcc")
+        'a'
+        >>> max_char("test")
+        't'
+    """
+    temp = Counter(str1) 
+    max_char = max(temp, key=temp.get)
+    return max_char
+```

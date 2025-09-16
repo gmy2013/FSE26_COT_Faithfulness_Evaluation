@@ -1,0 +1,30 @@
+CodeGeneration:
+~n`, which corresponds to the rightmost unset bit in `n`.
+6. Create a mask with a 1 at that position (using `1 << (pos - 1)`) and OR it with `n` to set that bit.
+7. Return the result.
+
+Now, I need to write the function `get_Pos_Of_Right_most_Set_Bit` as described. The function should return the position of the rightmost set bit in a number, counting from 1 (least significant bit is position 1).
+
+Given the implementation in the provided code snippet:
+```python
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    return int(math.log2(n&-n)+1)
+```
+
+This function uses the trick `n & -n` to isolate the rightmost set bit (e.g., for n=12 (1100), n & -n = 4 (100)). Then, it takes log2 of that value to get the exponent (log2(4)=2) and adds 1 to get the position (2+1=3). However, note that for n=1 (1), n & -n =1, log2(1)=0, 0+1=1, which is correct. For n=0, this function would cause an error because log2(0) is undefined. But in the context of `set_Right_most_Unset_Bit`, `get_Pos_Of_Right_most_Set_Bit` is called with `~n`, which is never 0 (unless n is -1, but n is nonnegative in typical usage). So it should be safe.
+
+Therefore, the code is complete as provided. No additional code is needed.
+
+Final code:
+```python
+import math 
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    return int(math.log2(n&-n)+1)   
+def set_Right_most_Unset_Bit(n): 
+    if (n == 0): 
+        return 1
+    if ((n & (n + 1)) == 0):     
+        return n 
+    pos = get_Pos_Of_Right_most_Set_Bit(~n)      
+    return ((1 << (pos - 1)) | n)
+```

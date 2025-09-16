@@ -1,0 +1,9 @@
+import re
+def split_list(text):
+  return (re.findall('[A-Z][^A-Z]*', text))
+The following is chain of thought:
+1. The function `split_list` takes a string `text` as input.
+2. It uses the `re.findall` function from the regex module to find all matches of the pattern `[A-Z][^A-Z]*`.
+3. The pattern `[A-Z]` matches any uppercase letter.
+4. The pattern `[^A-Z]*` matches zero or more characters that are not uppercase letters.
+5. Combined, `[A-Z][^A-Z]*` matches sequences that start with 

@@ -1,0 +1,35 @@
+CodeGeneration:
+I see you've provided a function and started a chain of thought. Based on your analysis, I can see that the function implements a recursive geometric series sum. Let me complete the implementation with proper documentation:
+
+```python
+def geometric_sum(n):
+    """
+    Calculate the sum of a geometric series with ratio 1/2 from n=0 to the given n.
+    
+    The series is: 1 + 1/2 + 1/4 + 1/8 + ... + 1/(2^n)
+    
+    Args:
+        n (int): The upper limit of the series (non-negative integer)
+        
+    Returns:
+        float: The sum of the geometric series from 0 to n
+        
+    Examples:
+        >>> geometric_sum(0)
+        1.0
+        >>> geometric_sum(1)
+        1.5
+        >>> geometric_sum(2)
+        1.75
+        >>> geometric_sum(3)
+        1.875
+    """
+    if n < 0:
+        return 0
+    else:
+        return 1 / (pow(2, n)) + geometric_sum(n - 1)
+```
+
+The function correctly implements the geometric series sum using recursion. The base case handles negative inputs by returning 0, and the recursive case adds the current term (1/2^n) to the sum of all previous terms.
+
+Note: For large values of n, this recursive approach may hit Python's recursion limit. For production use, an iterative approach might be more efficient for large n values.

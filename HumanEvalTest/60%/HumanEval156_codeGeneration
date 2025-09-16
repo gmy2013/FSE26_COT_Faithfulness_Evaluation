@@ -1,0 +1,41 @@
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+def int_to_mini_roman(number):
+    """
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+
+    Examples:
+    >>> int_to_mini_roman(19) == 'xix'
+    >>> int_to_mini_roman(152) == 'clii'
+    >>> int_to_mini_roman(426) == 'cdxxvi'
+    """
+    # Define mappings for Roman numerals
+    units = ['', 'i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix']
+    tens = ['', 'x', 'xx', 'xxx', 'xl', 'l', 'lx', 'lxx', 'lxxx', 'xc']
+    hundreds = ['', 'c', 'cc', 'ccc', 'cd', 'd', 'dc', 'dcc', 'dccc', 'cm']
+    thousands = ['', 'm', 'mm', 'mmm']  # Though number <= 1000, so max is 'm'
+    
+    # Break the number into digits
+    th = number // 1000
+    h = (number % 1000) // 100
+    t = (number % 100) // 10
+    u = number % 10
+    
+    # Convert each digit to Roman numeral and combine
+    roman_numeral = thousands[th] + hundreds[h] + tens[t] + units[u]
+    
+    return roman_numeral
+```
+
+The function works by:
+1. Defining mappings for each digit place (units, tens, hundreds, thousands)
+2. Extracting each digit from the input number
+3. Converting each digit to its Roman numeral equivalent using the mappings
+4. Combining all parts to form the complete Roman numeral string
+5. Returning the result (already in lowercase as defined in the mappings)
+
+The mappings use lowercase letters as required, and the function handles all numbers from 1 to 1000 inclusive.

@@ -1,0 +1,31 @@
+from typing import List
+
+
+def factorize(n: int) -> List[int]:
+    """ Return list of prime factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+    >>> factorize(8)
+    [2, 2, 2]
+    >>> factorize(25)
+    [5, 5]
+    >>> factorize(70)
+    [2, 5, 7]
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to factorize an integer n into its prime factors.
+2. The factors should be listed from smallest to largest.
+3. Each prime factor should appear as many times as it divides the number.
+4. The product of all factors in the list should equal n.
+
+Approach:
+- Start with the smallest prime factor (2).
+- While n is divisible by 2, add 2 to the list and divide n by 2.
+- Then check for odd factors starting from 3, up to sqrt(n).
+- For each possible factor i, while n is divisible by i, add i to the list and divide n by i.
+- After processing all factors up to sqrt(n), if n is still greater than 1, it is a prime number and should be added to the list.
+
+Implementatio

@@ -1,0 +1,32 @@
+CodeGeneration:
+`(ord(ch) - 5 - ord("a")) % 26` might be negative, we can add 26 before taking modulo to ensure it's positive, or use modulo arithmetic that handles negatives correctly.
+
+Here's the implementation:
+
+```python
+def decode_shift(s: str):
+    """
+    takes as input string encoded with encode_shift function. Returns decoded string.
+    """
+    return "".join([chr(((ord(ch) - 5 - ord("a")) % 26 + ord("a")) for ch in s])
+```
+
+However, to handle negative values more explicitly, we can write it as:
+
+```python
+def decode_shift(s: str):
+    """
+    takes as input string encoded with encode_shift function. Returns decoded string.
+    """
+    decoded = ""
+    for ch in s:
+        # Reverse the shift: subtract 5 instead of adding
+        shifted = (ord(ch) - ord("a") - 5) % 26
+        if shifted < 0:
+            shifted += 26
+        decoded_char = chr(shifted + ord("a"))
+        decoded += decoded_char
+    return decoded
+```
+
+But since Python's modulo operator handles negative numbers correctly (e.g., `-1 % 26 = 25`), the first implementation is sufficient and more concise.

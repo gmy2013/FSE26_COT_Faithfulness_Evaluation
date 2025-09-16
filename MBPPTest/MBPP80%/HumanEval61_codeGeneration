@@ -1,0 +1,22 @@
+CodeGeneration:
+and value `sorted(y)`.
+
+Here is the complete function:
+
+```python
+def sorted_dict(dict1):
+    """Return a new dictionary with the same keys as dict1 but with sorted values.
+    
+    Args:
+        dict1: A dictionary where values are iterables that can be sorted
+        
+    Returns:
+        A new dictionary with sorted values for each key
+        
+    Example:
+        >>> sorted_dict({'a': [3, 1, 2], 'b': [5, 4, 6]})
+        {'a': [1, 2, 3], 'b': [4, 5, 6]}
+    """
+    sorted_dict = {x: sorted(y) for x, y in dict1.items()}
+    return sorted_dict
+```

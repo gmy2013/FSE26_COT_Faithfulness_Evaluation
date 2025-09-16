@@ -1,0 +1,23 @@
+CodeGeneration:
+Here's the completed function:
+
+```python
+def noprofit_noloss(actual_cost, sale_amount):
+    """
+    Determine if there is no profit and no loss in a transaction.
+    
+    Args:
+        actual_cost (float): The original cost of the item
+        sale_amount (float): The amount the item was sold for
+    
+    Returns:
+        bool: True if sale_amount equals actual_cost (no profit, no loss),
+              False otherwise
+    """
+    if sale_amount == actual_cost:
+        return True
+    else:
+        return False
+```
+
+The function correctly implements the logic to check if there's no profit and no loss by comparing if the sale amount equals the actual cost. When they are equal, it returns True, indicating no profit and no loss. When they differ, it returns False, indicating either a profit or loss occurred.

@@ -1,0 +1,43 @@
+CodeGeneration:
+Based on the analysis, I can see this code generates all adjacent coordinate sequences. Let me provide a complete implementation with proper documentation:
+
+```python
+def adjac(ele, sub = []):
+    """
+    Recursive generator function that generates all adjacent coordinate sequences.
+    
+    For each element in the input sequence, generates coordinates that are ±1 from
+    the original value, creating all possible combinations of adjacent coordinates.
+    
+    Args:
+        ele: Input tuple/sequence of coordinates
+        sub: Accumulator list for the current coordinate sequence (default empty list)
+    
+    Yields:
+        Lists of adjacent coordinate sequences
+    """
+    if not ele: 
+        yield sub 
+    else: 
+        yield from [idx for j in range(ele[0] - 1, ele[0] + 2) 
+                   for idx in adjac(ele[1:], sub + [j])] 
+
+def get_coordinates(test_tup):
+    """
+    Generates all possible adjacent coordinate sequences for a given tuple.
+    
+    For each coordinate in the input tuple, considers values that are ±1 from
+    the original coordinate, creating all combinations of adjacent positions.
+    
+    Args:
+        test_tup: Input tuple of coordinates (e.g., (1, 2, 3))
+    
+    Returns:
+        List of all possible adjacent coordinate sequences
+    
+    Example:
+        >>> get_coordinates((1, 2))
+        [[0, 1], [0, 2], [0, 3], [1, 1], [1, 2], [1, 3], [2, 1], [2, 2], [2, 3]]
+    """
+    res = list(adjac(test_tup))
+    return res

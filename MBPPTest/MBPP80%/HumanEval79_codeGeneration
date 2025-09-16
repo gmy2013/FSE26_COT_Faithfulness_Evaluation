@@ -1,0 +1,17 @@
+CodeGeneration:
+re concise and efficient.
+
+Here's the improved implementation:
+
+```python
+def increasing_trend(nums):
+    """Check if a list of numbers is sorted in non-decreasing order.
+    
+    Args:
+        nums: List of numbers to check
+        
+    Returns:
+        bool: True if the list is sorted in non-decreasing order, False otherwise
+    """
+    return sorted(nums) == nums
+```

@@ -1,0 +1,23 @@
+CodeGeneration:
+*i*i*i*i is equivalent to i⁵, so the code correctly computes the sum of fifth powers.
+
+Here's the complete function:
+
+```python
+def fifth_Power_Sum(n):
+    """
+    Calculate the sum of the fifth powers of all integers from 1 to n.
+    
+    Args:
+        n (int): The upper bound of the range (inclusive)
+    
+    Returns:
+        int: The sum of i⁵ for i from 1 to n
+    """
+    sm = 0
+    for i in range(1, n + 1):
+        sm = sm + (i * i * i * i * i)
+    return sm
+```
+
+The function works as intended - it iterates through numbers 1 to n, calculates each number's fifth power, and accumulates the sum.

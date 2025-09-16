@@ -1,0 +1,27 @@
+CodeGeneration:
+The function you provided is correct and follows the triangle angle sum property. However, I notice the docstring is missing. Here's the complete function with an appropriate docstring:
+
+```python
+def validity_triangle(a, b, c):
+    """
+    Check if three angles can form a valid triangle.
+    
+    According to the triangle angle sum property, the sum of interior angles
+    of a triangle must equal 180 degrees.
+    
+    Args:
+        a (float): First angle in degrees
+        b (float): Second angle in degrees  
+        c (float): Third angle in degrees
+        
+    Returns:
+        bool: True if angles form a valid triangle, False otherwise
+    """
+    total = a + b + c
+    if total == 180:
+        return True
+    else:
+        return False
+```
+
+The function correctly implements the logic to validate triangle angles by checking if their sum equals 180 degrees.

@@ -1,0 +1,26 @@
+CodeGeneration:
+```python
+def zip_list(list1, list2):
+    """
+    Combine corresponding elements from two lists into sublists.
+
+    This function takes two lists and returns a new list where each element is a list
+    containing the corresponding elements from the input lists. If the input lists
+    are of different lengths, the result will be truncated to the length of the shorter list.
+
+    Args:
+        list1: First input list
+        list2: Second input list
+
+    Returns:
+        list: A list of lists where each inner list contains corresponding elements
+              from list1 and list2
+
+    Example:
+        >>> zip_list([1, 2, 3], ['a', 'b', 'c'])
+        [[1, 'a'], [2, 'b'], [3, 'c']]
+        >>> zip_list([1, 2], ['a', 'b', 'c'])
+        [[1, 'a'], [2, 'b']]
+    """
+    return [list(pair) for pair in zip(list1, list2)]
+```

@@ -1,0 +1,70 @@
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+The following is chain of thought:
+First, I need to sort the list in a strange order: start with the min, then max of the remaining, then min, and so on.
+
+The list might be empty, so I should handle that case.
+
+I can do this by repeatedly finding the min and max from the current list and building the result step by step.
+
+Since the list is modified (elements are removed as we take min and max), I should work on a copy to avoid modifying the original.
+
+Plan:
+1. If the list is empty, return an empty list.
+2. Make a copy of the list to work on.
+3. Initialize an empty result list.
+4. While the working list is not empty:
+   a. Find the minimum value in the current working list.
+   b. Remove that minimum value and append it to the result.
+   c. If the working list is not empty after that:
+        Find the maximum value in the current working list.
+        Remove that maximum value and append it to the result.
+5. Return the result.
+
+But note: in the example [1,2,3,4]:
+   First min is 1 -> result [1], remove 1 -> list becomes [2,3,4]
+   Then max is 4 -> result [1,4], remove 4 -> list becomes [2,3]
+   Then min is 2 -> result [1,4,2], remove 2 -> list becomes [3]
+   Then max is 3 -> result [1,4,2,3], remove 3 -> list empty, done.
+
+This matches the example.
+
+Another example: [5,5,5,5] all same.
+   First min is 5 -> result [5], remove one 5 -> list [5,5,5]
+   Then max is 5 -> result [5,5], remove one 5 -> list [5,5]
+   Then min is 5 -> result [5,5,5], remove one 5 -> list [5]
+   Then max is 5 -> result [5,5,5,5], remove last 5 -> done.
+
+Also matches.
+
+So the algorithm is correct.
+
+I need to implement this in code.
+
+Steps in code:
+- Check if lst is empty, return [].
+- Create a copy: work_list = lst[:]
+- result = []
+- while work_list is not empty:
+    min_val = min(work_list)
+    result.append(min_val)
+    work_list.remove(min_val)   # remove the first occurrence of min_val
+    if work_list:  # if not empty
+        max_val = max(work_list)
+        result.append(max_val)
+        work_list.remove(max_val)   # remove the first occurrence of max_val
+
+Return result.
+
+But note: when there are duplicates, like [5,5,5,5], removing by value removes the first occurrence, w

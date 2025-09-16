@@ -1,0 +1,21 @@
+CodeGeneration:
+(base1 + base2) * height
+3. The function calculates this area and returns it.
+
+Here is the complete function:
+
+```python
+def area_trapezium(base1, base2, height):
+    """Calculate the area of a trapezium.
+    
+    Args:
+        base1 (float): Length of the first base of the trapezium.
+        base2 (float): Length of the second base of the trapezium.
+        height (float): Height of the trapezium.
+    
+    Returns:
+        float: The area of the trapezium.
+    """
+    area = 0.5 * (base1 + base2) * height
+    return area
+```

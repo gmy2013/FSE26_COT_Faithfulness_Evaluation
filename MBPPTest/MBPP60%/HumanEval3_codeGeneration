@@ -1,0 +1,25 @@
+CodeGeneration:
+ist of words using `reversed()`.
+5. Join the reversed list back into a string with spaces using `' '.join()`.
+6. Return the resulting string.
+
+Here is the complete function:
+
+```python
+def reverse_words(s):
+    """Reverse the order of words in a string.
+
+    Args:
+        s (str): Input string
+
+    Returns:
+        str: String with words in reverse order
+
+    Examples:
+        >>> reverse_words("hello world")
+        'world hello'
+        >>> reverse_words("Python is great")
+        'great is Python'
+    """
+    return ' '.join(reversed(s.split()))
+```

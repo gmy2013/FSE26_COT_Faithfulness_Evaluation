@@ -1,0 +1,13 @@
+CodeGeneration:
+yes, return 'YES'; otherwise, return 'NO'.
+
+Here is the complete function:
+
+```python
+def unique_Element(arr,n):
+    s = set(arr)
+    if (len(s) == 1):
+        return ('YES')
+    else:
+        return ('NO')
+```

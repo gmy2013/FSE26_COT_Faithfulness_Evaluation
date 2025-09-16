@@ -1,0 +1,35 @@
+CodeGeneration:
+```python
+def check_Even_Parity(x):
+    """
+    Check if the number of set bits (1s) in the binary representation of x has even parity.
+    
+    This function uses Brian Kernighan's algorithm to count the number of set bits
+    and returns True if the count is even (even parity), False otherwise.
+    
+    Note: This function is designed for nonnegative integers. For negative integers,
+    the behavior is undefined due to Python's arbitrary precision integer representation.
+    
+    Args:
+        x (int): A nonnegative integer whose parity is to be checked
+        
+    Returns:
+        bool: True if x has even parity (even number of set bits), False otherwise
+        
+    Examples:
+        >>> check_Even_Parity(5)  # 5 in binary is '101' (2 set bits - even)
+        True
+        >>> check_Even_Parity(7)  # 7 in binary is '111' (3 set bits - odd)
+        False
+        >>> check_Even_Parity(0)  # 0 has 0 set bits (even)
+        True
+    """
+    parity = 0
+    while (x != 0): 
+        x = x & (x - 1) 
+        parity += 1
+    if (parity % 2 == 0): 
+        return True
+    else: 
+        return False
+```

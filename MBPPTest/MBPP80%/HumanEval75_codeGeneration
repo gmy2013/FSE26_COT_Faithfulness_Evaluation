@@ -1,0 +1,28 @@
+CodeGeneration:
+ned.
+
+However, the function name and docstring suggest it should remove "extra" characters, but the current implementation removes all non-word characters (except underscores are also removed due to the inclusion of `_` in the pattern). If the intent is to remove only consecutive duplicates of non-word characters, the pattern should be adjusted. But based on the given code, it seems to remove all non-alphanumeric characters including underscores.
+
+Let me provide a corrected version with a proper docstring:
+
+```python
+import re
+def remove_extra_char(text1):
+    """
+    Remove all non-alphanumeric characters from the input string.
+    
+    This function uses a regular expression to remove any character that is not
+    a word character (alphanumeric) or underscore, but note that underscores
+    are also removed due to the specific pattern.
+    
+    Args:
+        text1 (str): The input string from which to remove non-alphanumeric characters.
+        
+    Returns:
+        str: The input string with all non-alphanumeric characters removed.
+    """
+    pattern = re.compile(r'[\W_]+')
+    return pattern.sub('', text1)
+```
+
+If you meant to remove only consecutive non-alphanumeric characters (treating them as "extra"), the current implementation already does that due to the `+` quantifier. If you have a different requirement, please clarify.

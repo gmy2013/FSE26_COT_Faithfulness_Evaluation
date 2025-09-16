@@ -1,0 +1,54 @@
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+The following is chain of thought:
+We are given a string S of words. We need to count sentences that start with "I".
+ Steps:
+ 1. Split the string into sentences using delimiters: '.', '?', '!'
+ 2. For each sentence:
+    - Strip any leading/trailing whitespace.
+    - Check if the sentence starts with the word "I" (note: "I" must be followed by a space or end of string to be a word).
+    - But note: the problem says "starts with the word 'I'", so we need to check if the first word is exactly "I".
+ 3. How to check first word?
+    - Split the sentence into words? Alternatively, we can check if the sentence starts with "I " or if the sentence is exactly "I".
+    - However, consider: "I." -> this is a sentence with one word "I". So we should also consider if the sentence ends immediately after "I" with a delimiter (but the delimiter is already removed when splitting?).
+ 4. Actually, when we split by delimiters, the delimiters are not included in the sentences. So a sentence like "I." becomes just "I".
+ 5. So we can check:
+    - If the sentence starts with "I " OR if the entire sentence is "I".
+ 6. Alternatively, we can split the sentence into words and take the first word. But note: what if there are multiple spaces? So better to split and then check first non-empty word?
+ 7. However, the problem says "starts with the word I", meaning the first word (after trimming) should be "I".
+
+ Approach:
+   sentences = split S by ['.', '?', '!']
+   count = 0
+   for each sentence in sentences:
+        sentence = sentence.strip()
+        if sentence is empty: skip.
+        words = sentence.split()   # split by whitespace
+        if the first word (if exists) is "I":
+            count += 1
+
+ 8. But note: what if the sentence is "I"? Then words = ['I'] -> first word is "I", so it counts.
+ 9. What if the sentence is "I am happy"? Then words = ['I', 'am', 'happy'] -> first word is "I", so it counts.
+10. What if the sentence is "In case"? Then first word is "In", which is not "I", so it doesn't count.
+11. So this approach is correct.
+
+ Implementation:
+   We split the string S into sentences using the delimiters. We can use re.split to split by multiple delimiters.
+   Alternatively, we can replace all delimiters with a common delimiter (say, '.') and then split by that.
+   But using re.split is straightforward.
+
+ Let's use re.split to split by the pattern [.?!]
+
+ Howe

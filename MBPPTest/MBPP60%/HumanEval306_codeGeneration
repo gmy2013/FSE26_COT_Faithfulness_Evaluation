@@ -1,0 +1,51 @@
+CodeGeneration:
+I'll complete the function based on the provided docstring and chain of thought. The function implements the "lucky number" sieve algorithm.
+
+```python
+def lucky_num(n):
+    """
+    Generate the first n lucky numbers using the lucky number sieve algorithm.
+    
+    Args:
+        n (int): Number of lucky numbers to return
+    
+    Returns:
+        list: List containing the first n lucky numbers
+    """
+    # Create initial list of odd numbers (starting from 1)
+    List = list(range(-1, n*n+9, 2))
+    i = 2
+    
+    # Sieve process: remove numbers at positions that are multiples of the current lucky number
+    while i < len(List) and List[i:]:
+        # Get the current lucky number to use for sieving
+        sieve_num = List[i]
+        
+        # Calculate indices to remove (multiples of the current lucky number)
+        indices_to_remove = []
+        step = sieve_num
+        start_index = sieve_num
+        
+        # Generate indices to remove (starting at position sieve_num, stepping by sieve_num)
+        while start_index < len(List):
+            indices_to_remove.append(start_index)
+            start_index += step
+        
+        # Remove elements at the calculated indices (from highest to lowest to avoid index shifting issues)
+        for idx in sorted(indices_to_remove, reverse=True):
+            if idx < len(List):
+                del List[idx]
+        
+        i += 1
+    
+    # Return the first n lucky numbers (excluding the initial -1)
+    return List[1:n+1]
+```
+
+The function works as follows:
+1. Creates an initial list of odd numbers starting from 1 (the -1 is included but will be removed later)
+2. Uses a sieve process where it removes numbers at positions that are multiples of each successive lucky number
+3. The first number (1) is always lucky, then it uses each subsequent number to sieve the list
+4. Returns the first n numbers from the resulting list (excluding the initial -1)
+
+This implements the classic lucky number algorithm where numbers are eliminated based on their position rather than their value.

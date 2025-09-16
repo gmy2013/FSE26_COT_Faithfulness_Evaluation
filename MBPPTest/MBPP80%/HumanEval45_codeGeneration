@@ -1,0 +1,29 @@
+CodeGeneration:
+) and then cubes it.
+
+Here's the complete function with the docstring:
+
+```python
+def No_of_cubes(N, K):
+    """
+    Calculate the number of cubes of side length K that can fit inside a larger cube of side length N.
+    
+    Args:
+        N (int): Side length of the larger cube
+        K (int): Side length of the smaller cubes
+    
+    Returns:
+        int: Number of K-sized cubes that can fit in the N-sized cube
+    """
+    No = 0
+    No = (N - K + 1)
+    No = pow(No, 3)
+    return No
+```
+
+The function correctly implements the mathematical formula for counting the number of smaller cubes that can fit inside a larger cube by:
+1. Calculating the number of positions along one dimension: (N - K + 1)
+2. Cubing this value to account for all three dimensions of the cube
+3. Returning the result
+
+This follows the standard combinatorial approach for counting sub-cubes within a larger cube.

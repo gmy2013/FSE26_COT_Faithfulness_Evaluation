@@ -1,0 +1,16 @@
+from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """ Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    >>> intersperse([], 4)
+    []
+    >>> intersperse([1, 2, 3], 4)
+    [1, 4, 2, 4, 3]
+    """
+
+The following is chain of thought:
+1. **Understand the problem**:
+    - We need to insert a delimiter between every two consecutive elements of a list.
+    - The function should return a new list with the delimiter inserted.
+    - If the list is empty, the result s

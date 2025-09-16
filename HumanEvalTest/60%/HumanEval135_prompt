@@ -1,0 +1,31 @@
+
+def can_arrange(arr):
+    """Create a function which returns the largest index of an element which
+    is not greater than or equal to the element immediately preceding it. If
+    no such element exists then return -1. The given array will not contain
+    duplicate values.
+
+    Examples:
+    can_arrange([1,2,4,3,5]) = 3
+    can_arrange([1,2,3]) = -1
+    """
+
+The following is chain of thought:
+We are to find the largest index where arr[i] <= arr[i-1] (i.e., not greater than preceding element)
+ Since no duplicates, we're looking for indices where the element breaks the strictly increasing pattern
+ We need to return the largest index where this occurs, or -1 if no such index exists
+ Approach:
+   Iterate from index 1 to len(arr)-1 (since we compare with previous element)
+   Check if current element <= previous element
+   Track the largest index where this condition is true
+   If we find any such index, return the largest one found
+   If none found, return -1
+
+ Steps:
+   1. Initialize a variable to store the result, starting at -1
+   2. Loop through indices from 1 to n-1 (inclusive)
+   3. For each index i, check if arr[i] <= arr[i-1]
+   4. If true, update result to i (since we want largest index, we can simply update whenever we find a valid one)
+   5. After loop, return result
+
+ Note: Since we iterate from le

@@ -1,0 +1,56 @@
+CodeGeneration:
+Here's an efficient iterative implementation of the fib4 function:
+
+```python
+def fib4(n: int):
+    """The Fib4 number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+    fib4(0) -> 0
+    fib4(1) -> 0
+    fib4(2) -> 2
+    fib4(3) -> 0
+    fib4(n) -> fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4).
+    Please write a function to efficiently compute the n-th element of the fib4 number sequence.  Do not use recursion.
+    >>> fib4(5)
+    4
+    >>> fib4(6)
+    8
+    >>> fib4(7)
+    14
+    """
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    
+    # Base cases
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 2
+    elif n == 3:
+        return 0
+    
+    # Initialize the last 4 values for iterative calculation
+    a, b, c, d = 0, 0, 2, 0  # fib4(0), fib4(1), fib4(2), fib4(3)
+    
+    # Iteratively calculate fib4(n) for n >= 4
+    for i in range(4, n + 1):
+        # Calculate next value using recurrence relation
+        next_val = a + b + c + d
+        # Shift values for next iteration
+        a, b, c, d = b, c, d, next_val
+    
+    return d
+```
+
+This implementation:
+1. Handles the base cases directly for n < 4
+2. Uses an iterative approach with constant space (only storing 4 values at a time)
+3. Has O(n) time complexity and O(1) space complexity
+4. Avoids recursion as requested
+5. Correctly implements the recurrence relation fib4(n) = fib4(n-1) + fib4(n-2) + fib4(n-3) + fib4(n-4)
+
+The function will work correctly for the provided test cases:
+- fib4(5) = fib4(4) + fib4(3) + fib4(2) + fib4(1) = 2 + 0 + 2 + 0 = 4
+- fib4(6) = fib4(5) + fib4(4) + fib4(3) + fib4(2) = 4 + 2 + 0 + 2 = 8
+- fib4(7) = fib4(6) + fib4(5) + fib4(4) + fib4(3) = 8 + 4 + 2 + 0 = 14

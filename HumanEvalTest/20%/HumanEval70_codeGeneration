@@ -1,0 +1,37 @@
+20%CoT
+CodeGeneration:
+```python
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+    result = []  # Initialize an empty list to store the result.
+    lst = sorted(lst)  # Step 2: Sort the list.
+    
+    # We will use two pointers to approach from both ends of the sorted list.
+    left = 0
+    right = len(lst) - 1
+    
+    # Step 3: Alternately pick the smallest and largest remaining element.
+    while left <= right:
+        # Add the smallest remaining element (pointed by `left`).
+        result.append(lst[left])
+        left += 1
+        
+        # If there are still elements remaining, add the largest (pointed by `right`).
+        if left <= right:
+            result.append(lst[right])
+            right -= 1
+    
+    return result
+```
+
+This function sorts the input list `lst`, then alternately picks the smallest and largest remaining element using two pointers (`left` and `right`). The smallest element is picked from the start of the sorted list and the largest from the end, and they are added to the `result` list until all elements have been processed.

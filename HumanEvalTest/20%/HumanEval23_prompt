@@ -1,0 +1,16 @@
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+
+The following is chain of thought:
+1. **Understanding the Problem**: 
+   - The function `strlen` takes a single argument `string`, which is expected to be a string.
+   - The task is to return the length of the given string using Python.
+
+2. **Clarifications from D

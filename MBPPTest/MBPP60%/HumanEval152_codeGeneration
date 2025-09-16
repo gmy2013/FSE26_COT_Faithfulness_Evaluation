@@ -1,0 +1,22 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+def min_k(test_list, K):
+    """
+    Returns the K smallest elements from a list of tuples based on the second element.
+    
+    Args:
+        test_list (list): List of tuples to be processed
+        K (int): Number of smallest elements to return
+        
+    Returns:
+        list: List containing the K tuples with smallest second elements
+        
+    Example:
+        >>> min_k([('a', 5), ('b', 2), ('c', 8), ('d', 1)], 2)
+        [('d', 1), ('b', 2)]
+    """
+    res = sorted(test_list, key = lambda x: x[1])[:K]
+    return (res)
+```

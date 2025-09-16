@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the implementation based on your chain of thought:
+
+```python
+def can_arrange(arr):
+    """Create a function which returns the largest index of an element which
+    is not greater than or equal to the element immediately preceding it. If
+    no such element exists then return -1. The given array will not contain
+    duplicate values.
+
+    Examples:
+    can_arrange([1,2,4,3,5]) = 3
+    can_arrange([1,2,3]) = -1
+    """
+    result = -1
+    for i in range(1, len(arr)):
+        if arr[i] <= arr[i-1]:
+            result = i
+    return result
+```
+
+This implementation:
+1. Starts with `result = -1` as the default return value
+2. Iterates through indices 1 to len(arr)-1 (comparing each element with its predecessor)
+3. Updates the result to the current index whenever `arr[i] <= arr[i-1]` is true
+4. Returns the largest index found (or -1 if no such index exists)
+
+The function correctly handles the examples:
+- `can_arrange([1,2,4,3,5])` returns 3 because at index 3, 3 ≤ 4
+- `can_arrange([1,2,3])` returns -1 because all elements are strictly increasing

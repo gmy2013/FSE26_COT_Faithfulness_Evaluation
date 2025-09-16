@@ -1,0 +1,25 @@
+CodeGeneration:
+odd` counter by 1.
+
+5. **Check Odd Count Parity**: After processing all elements, check if the count of odd numbers (`odd`) is itself odd using `(odd % 2)`. If true, return 1; otherwise, return 2.
+
+6. **Return Values**: The function returns 1 if the number of odd elements is odd, and 2 if it is even.
+
+Here is the complete code with the chain of thought integrated as comments:
+
+```python
+def min_Num(arr, n):
+    # Initialize a counter for odd numbers
+    odd = 0
+    # Iterate through each element in the array
+    for i in range(n):
+        # Check if the current element is odd
+        if arr[i] % 2:
+            # Increment the odd counter if it is odd
+            odd += 1
+    # Check if the count of odd numbers is odd
+    if odd % 2:
+        return 1
+    else:
+        return 2
+```

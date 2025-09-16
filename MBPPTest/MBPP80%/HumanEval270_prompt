@@ -1,0 +1,16 @@
+def are_Rotations(string1,string2): 
+    size1 = len(string1) 
+    size2 = len(string2) 
+    temp = '' 
+    if size1 != size2: 
+        return False
+    temp = string1 + string1 
+    if (temp.count(string2)> 0): 
+        return True
+    else: 
+        return False
+The following is chain of thought:
+1. Check if the lengths of string1 and string2 are different - if so, they cannot be rotations, return False
+2. Create a doubled version of string1 by concatenating it with itself
+3. Check if string2 appears as a substring in this doubled string
+4. If string2 is found, return True (they are ro

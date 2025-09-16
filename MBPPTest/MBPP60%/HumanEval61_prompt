@@ -1,0 +1,8 @@
+def sorted_dict(dict1):
+  sorted_dict = {x: sorted(y) for x, y in dict1.items()}
+  return sorted_dict
+The following is chain of thought:
+1. Analyze the function name and purpose: The function is named `sorted_dict` and takes `dict1` as input.
+2. Understand the docstring requirement: The function should return a new dictionary where each value (which is a list) is sorted.
+3. Process each key-value pair: For every key `x` and value `y` (which is a list) in `dict1.items()`, sort the list `y`.
+4. Construct the n

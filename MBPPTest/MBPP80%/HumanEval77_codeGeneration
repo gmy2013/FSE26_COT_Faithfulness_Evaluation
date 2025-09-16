@@ -1,0 +1,27 @@
+CodeGeneration:
+oach is efficient and straightforward for removing all space characters from the input string.
+
+Here is the complete function:
+
+```python
+def remove_spaces(str1):
+    """
+    Remove all space characters from the input string.
+    
+    Args:
+        str1 (str): The input string from which spaces will be removed.
+    
+    Returns:
+        str: The input string with all space characters removed.
+    
+    Examples:
+        >>> remove_spaces('hello world')
+        'helloworld'
+        >>> remove_spaces('  spaces  everywhere  ')
+        'spaceseverywhere'
+        >>> remove_spaces('no_spaces_here')
+        'no_spaces_here'
+    """
+    str1 = str1.replace(' ', '')
+    return str1
+```

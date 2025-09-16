@@ -1,0 +1,18 @@
+CodeGeneration:
+Here's the corrected function with the complete regex pattern:
+
+```python
+def is_decimal(num):
+    import re
+    dnumre = re.compile(r"""^[0-9]+(\.[0-9]{1,2})?$""")
+    result = dnumre.search(num)
+    return bool(result)
+```
+
+The complete regex pattern breakdown:
+- `^` asserts the start of the string
+- `[0-9]+` matches one or more digits (integer part)
+- `(\.[0-9]{1,2})?` optionally matches a decimal point followed by 1 or 2 digits
+- `$` asserts the end of the string
+
+This function will return `True` for strings like "123", "123.4", "123.45" and `False` for strings like "abc", "123.", "123.456", or "123.4a".

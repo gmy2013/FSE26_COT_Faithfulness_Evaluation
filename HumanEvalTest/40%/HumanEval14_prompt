@@ -1,0 +1,15 @@
+from typing import List
+
+
+def all_prefixes(string: str) -> List[str]:
+    """ Return list of all prefixes from shortest to longest of the input string
+    >>> all_prefixes('abc')
+    ['a', 'ab', 'abc']
+    """
+
+The following is chain of thought:
+We are generating all prefixes of the input string from shortest to longest.
+ The prefixes are: first character, first two, first three, ... up to the entire string.
+ We can use a list comprehension to generate these by slicing the string from start to index i+1 for i in range(len(string)).
+ Alternatively, we can iterate over the indices and collect the slices.
+ Since the probl

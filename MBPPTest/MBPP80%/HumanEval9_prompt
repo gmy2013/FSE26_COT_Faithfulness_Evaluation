@@ -1,0 +1,10 @@
+def remove_kth_element(list1, L):
+    return  list1[:L-1] + list1[L:]
+The following is chain of thought:
+1. The function `remove_kth_element` takes two parameters: `list1` (a list) and `L` (an integer position).
+2. The goal is to remove the element at the L-th position (1-indexed) from the list.
+3. Since lists are 0-indexed in Python, the element at position L corresponds to index L-1.
+4. The solution uses list slicing: 
+   - `list1[:L-1]` gets all elements from the start up to (but not including) index L-1.
+   - `list1[L:]` gets all elements from index L to the end.
+5. Concatenating these 

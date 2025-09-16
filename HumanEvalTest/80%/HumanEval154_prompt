@@ -1,0 +1,30 @@
+
+def cycpattern_check(a , b):
+    """You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word
+    cycpattern_check("abcd","abd") => False
+    cycpattern_check("hello","ell") => True
+    cycpattern_check("whassup","psus") => False
+    cycpattern_check("abab","baa") => True
+    cycpattern_check("efef","eeff") => False
+    cycpattern_check("himenss","simen") => True
+
+    """
+
+The following is chain of thought:
+To solve this problem, we need to check if the second word (or any of its rotations) is a substring of the first word. A rotation of a string is formed by moving its first character to the end any number of times. For example, rotations of "abc" are "abc", "bca", "cab".
+
+Approach:
+1. Generate all rotations of the second word.
+2. For each rotation, check if it exists as a substring in the first word.
+3. If any rotation is found, return True; otherwise, return False.
+
+Steps:
+- For a string `b` of length n, there are n rotations (including the original).
+- To generate a rotation: for each index i (0 to n-1), form a string by taking substring from i to end and concatenating with substring from start to i.
+- Alternatively, we can create rotations by slicing: `b[i:] + b[:i]` for each i.
+- Then, for each rotation, check if it is in string `a`.
+- If found, return True immediately. If none found after all rotations, return False.
+
+Edge cases:
+- If `b` is empty, then it should be considered a substring of any `a`? But according to examples, both words are given, so we assume non-empty? However, to be safe, we can handle empty: if b is empty, return True (since empty string is substring of any string).
+- But examples don't have

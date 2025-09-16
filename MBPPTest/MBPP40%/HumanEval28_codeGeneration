@@ -1,0 +1,30 @@
+CodeGeneration:
+likely intends to split the list into even and odd numbers, returning both lists.
+
+Here's the corrected function:
+
+```python
+def Split(list):
+    """Split a list into even and odd numbers.
+    
+    Args:
+        list: Input list of integers
+        
+    Returns:
+        tuple: A tuple containing two lists - (even_numbers, odd_numbers)
+    """
+    ev_li = []
+    od_li = []
+    for i in list:
+        if i % 2 == 0:
+            ev_li.append(i)
+        else:
+            od_li.append(i)
+    return (ev_li, od_li)
+```
+
+The function now:
+1. Creates two separate lists for even and odd numbers
+2. Iterates through the input list and categorizes each number
+3. Returns both lists as a tuple for easy unpacking
+4. Includes a proper docstring explaining the function's purpose and return value

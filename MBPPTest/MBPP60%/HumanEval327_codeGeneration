@@ -1,0 +1,30 @@
+CodeGeneration:
+Based on the chain of thought, the function is already correctly implemented. However, there's a redundant second `return` statement that would never be executed. Here's the corrected version:
+
+```python
+import re
+
+def change_date_format(dt):
+    """
+    Change date format from YYYY-MM-DD to DD-MM-YYYY.
+    
+    Args:
+        dt (str): A string containing a date in YYYY-MM-DD format
+        
+    Returns:
+        str: The date converted to DD-MM-YYYY format
+        
+    Example:
+        >>> change_date_format("2023-12-25")
+        '25-12-2023'
+        >>> change_date_format("2023-1-5")
+        '5-1-2023'
+    """
+    return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', dt)
+```
+
+The function:
+1. Uses regex to match dates in YYYY-MM-DD format
+2. Captures year, month, and day as separate groups
+3. Reorders them to DD-MM-YYYY format using backreferences
+4. Handles both single-digit and double-digit months/days correctly

@@ -1,0 +1,8 @@
+def last(n):
+   return n[-1]
+def sort_list_last(tuples):
+  return sorted(tuples, key=last)
+The following is chain of thought:
+1. The function `last(n)` returns the last element of the input `n`.
+2. The function `sort_list_last(tuples)` sorts the list of tuples using the `last` function as the key.
+3. The `sorted` function uses the `last` function to extract the last element of each tuple for comparison during sorting.

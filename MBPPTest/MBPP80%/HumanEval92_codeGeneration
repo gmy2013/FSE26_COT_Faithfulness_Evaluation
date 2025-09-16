@@ -1,0 +1,36 @@
+CodeGeneration:
+y), including leading/trailing spaces if present, though those are not specifically trimmed here.
+
+7. **Alternative Approach**: Without regex, one could use string methods like `split()` and `join()`, but regex is efficient and concise for this task.
+
+8. **Potential Improvements**: To also remove leading and trailing spaces, one might chain `.strip()` or adjust the regex, but the current function focuses only on internal multiple spaces.
+
+Here is the complete function with the docstring:
+
+```python
+import re
+
+def remove_multiple_spaces(text1):
+    """
+    Replace multiple consecutive spaces in a string with a single space.
+
+    This function uses regular expressions to identify sequences of one or more
+    space characters and replaces them with a single space, effectively
+    normalizing the spacing within the string.
+
+    Parameters:
+    text1 (str): The input string that may contain multiple consecutive spaces.
+
+    Returns:
+    str: The string with multiple spaces collapsed into single spaces.
+
+    Examples:
+    >>> remove_multiple_spaces("Hello    world!")
+    'Hello world!'
+    >>> remove_multiple_spaces("Multiple   spaces   here.")
+    'Multiple spaces here.'
+    >>> remove_multiple_spaces("NoExtraSpaces")
+    'NoExtraSpaces'
+    """
+    return re.sub(' +', ' ', text1)
+```

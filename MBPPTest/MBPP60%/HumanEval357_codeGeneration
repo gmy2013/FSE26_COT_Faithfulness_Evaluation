@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the complete function with the corrected logic:
+
+```python
+def int_to_roman(num):
+    """
+    Convert an integer to a Roman numeral string.
+    
+    Args:
+        num (int): The integer to convert (1-3999)
+    
+    Returns:
+        str: The Roman numeral representation of the input number
+    """
+    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    syb = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    roman_num = ''
+    i = 0
+    
+    while num > 0:
+        # Check how many times the current value fits into num
+        count = num // val[i]
+        if count > 0:
+            # Append the corresponding symbol count times
+            roman_num += syb[i] * count
+            # Subtract the value from num
+            num -= val[i] * count
+        # Move to the next smaller value
+        i += 1
+    
+    return roman_num
+```
+
+The key improvements made:
+1. Added proper docstring with parameter and return value documentation
+2. Fixed the logic to use multiplication for appending multiple occurrences of the same symbol
+3. Added proper spacing and formatting for readability
+4. Used a more explicit approach with a `count` variable for clarity
+
+The function works by iterating through the values from largest to smallest, appending the corresponding Roman numeral symbols and subtracting the value from the input number until it reaches zero.

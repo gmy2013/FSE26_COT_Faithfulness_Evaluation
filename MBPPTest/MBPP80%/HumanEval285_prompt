@@ -1,0 +1,12 @@
+def sum_num(numbers):
+    total = 0
+    for x in numbers:
+        total += x
+    return total/len(numbers) 
+The following is chain of thought:
+1. The function is named `sum_num` and takes a parameter `numbers`.
+2. The function initializes a variable `total` to 0.
+3. It iterates over each element `x` in `numbers`, adding each element to `total`.
+4. After the loop, it returns `total` divided by the length of `numbers`.
+5. This calculates the average (mean) of the numbers in the list.
+6. The function does not handle empty lists; if `numbers` is empty, `len(numbers)` would 

@@ -1,0 +1,36 @@
+CodeGeneration:
+e the two possible products and return the maximum.
+
+Here is the complete function with the docstring:
+
+```python
+def maximum_product(nums):
+    """
+    Given a list of integers, return the maximum product that can be obtained by multiplying any three numbers.
+    
+    Args:
+        nums (list): List of integers (length >= 3)
+    
+    Returns:
+        int: Maximum product of any three numbers from the list
+    
+    Examples:
+        >>> maximum_product([1, 2, 3])
+        6
+        >>> maximum_product([-10, -10, 5, 2])
+        500
+        >>> maximum_product([-1, -2, -3, -4])
+        -6
+    """
+    import heapq
+    # Get the three largest numbers and two smallest numbers
+    largest_three = heapq.nlargest(3, nums)
+    smallest_two = heapq.nsmallest(2, nums)
+    
+    # Calculate the two possible maximum products
+    product1 = largest_three[0] * largest_three[1] * largest_three[2]
+    product2 = largest_three[0] * smallest_two[0] * smallest_two[1]
+    
+    # Return the maximum of the two products
+    return max(product1, product2)
+```

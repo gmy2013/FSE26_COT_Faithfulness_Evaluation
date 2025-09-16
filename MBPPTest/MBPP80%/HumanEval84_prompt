@@ -1,0 +1,22 @@
+def sum_Of_Primes(n): 
+    prime = [True] * (n + 1)  
+    p = 2
+    while p * p <= n: 
+        if prime[p] == True:  
+            i = p * 2
+            while i <= n: 
+                prime[i] = False
+                i += p 
+        p += 1    
+    sum = 0
+    for i in range (2,n + 1): 
+        if(prime[i]): 
+            sum += i 
+    return sum
+The following is chain of thought:
+1. The function `sum_Of_Primes(n)` computes the sum of all prime numbers up to and including `n`.
+2. It uses the Sieve of Eratosthenes algorithm to generate all primes up to `n`.
+3. Initialize a boolean list `prime` of length `n+1` with all values set to `True`, where each index represents whether the number is prime.
+4. Start with the first prime number `p = 2`.
+5. For each `p` from 2 to sqrt(n), if `prime[p]` is `True`, mark all multiples of `p` (starting from `p*2`) as `False` (non-prime).
+6. After processing all

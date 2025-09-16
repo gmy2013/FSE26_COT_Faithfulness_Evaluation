@@ -1,0 +1,35 @@
+CodeGeneration:
+Here's the implementation based on the chain of thought:
+
+```python
+def monotonic(l: list):
+    """Return True is list elements are monotonically increasing or decreasing.
+    >>> monotonic([1, 2, 4, 20])
+    True
+    >>> monotonic([1, 20, 4, 10])
+    False
+    >>> monotonic([4, 1, 0, -10])
+    True
+    """
+    if len(l) <= 1:
+        return True
+    
+    is_non_decreasing = True
+    is_non_increasing = True
+    
+    for i in range(len(l) - 1):
+        if l[i] > l[i + 1]:
+            is_non_decreasing = False
+        if l[i] < l[i + 1]:
+            is_non_increasing = False
+    
+    return is_non_decreasing or is_non_increasing
+```
+
+This implementation:
+1. Handles edge cases where the list has 0 or 1 elements (trivially monotonic)
+2. Uses two flags to track whether the list is non-decreasing or non-increasing
+3. Iterates through adjacent pairs to update the flags
+4. Returns True if either condition is satisfied
+
+The time complexity is O(n) and space complexity is O(1), making it efficient for large lists.

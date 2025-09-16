@@ -1,0 +1,40 @@
+CodeGeneration:
+I'll implement the function to find the largest prime factor by dividing out all smaller factors first, which will leave the largest prime factor at the end.
+
+```python
+def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    """
+    # Divide out all factors of 2
+    while n % 2 == 0:
+        n //= 2
+        # If n becomes 1, then 2 was the largest prime factor
+        if n == 1:
+            return 2
+    
+    # Now check odd factors starting from 3
+    factor = 3
+    while factor * factor <= n:
+        while n % factor == 0:
+            n //= factor
+            # If n becomes 1, current factor is the largest
+            if n == 1:
+                return factor
+        factor += 2
+    
+    # If we reach here, n is prime and is the largest factor
+    return n
+```
+
+This implementation:
+1. First handles all factors of 2 separately
+2. Then checks odd factors starting from 3, incrementing by 2
+3. Divides out each factor completely before moving to the next
+4. Returns immediately when n becomes 1 (indicating the last factor was the largest)
+5. Returns n if it remains greater than 1 after checking all factors up to √n
+
+The algorithm efficiently finds the largest prime factor by systematically eliminating all smaller factors first.

@@ -1,0 +1,21 @@
+CodeGeneration:
+r each element from index 0 to the end.
+   - Inner loop iterates over all subsequent elements to form pairs.
+   - For each pair, compare their product with the current maximum product.
+   - If a larger product is found, update the pair.
+5. **Return**: Return the pair with the maximum product.
+
+Here is the complete function:
+
+```python
+def max_product(arr): 
+    arr_len = len(arr) 
+    if (arr_len < 2): 
+        return None     
+    x = arr[0]; y = arr[1]    
+    for i in range(0, arr_len): 
+        for j in range(i + 1, arr_len): 
+            if (arr[i] * arr[j] > x * y): 
+                x = arr[i]; y = arr[j] 
+    return x,y
+```

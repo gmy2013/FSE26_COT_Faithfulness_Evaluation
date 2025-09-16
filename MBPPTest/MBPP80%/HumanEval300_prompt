@@ -1,0 +1,19 @@
+def smallest_multiple(n):
+    if (n<=2):
+      return n
+    i = n * 2
+    factors = [number  for number in range(n, 1, -1) if number * 2 > n]
+    while True:
+        for a in factors:
+            if i % a != 0:
+                i += n
+                break
+            if (a == factors[-1] and i % a == 0):
+                return i
+The following is chain of thought:
+1. **Understand the problem**: The function `smallest_multiple(n)` should return the smallest positive number that is evenly divisible by all numbers from 1 to n.
+2. **Base case handling**: If n is 2 or less, return n directly since the LCM of [1, n] is n.
+3. **Initialize candidate**: Start checking from `i = n * 2` (since n! is divisible by all but we want the smallest, and n itself might not be sufficient).
+4. **Optimize factors to check**: Only factors greater than n/2 need to be checked (because any number divisible by a larger number is automatically divisible by its divisors). Create `factors` list from n down to floor(n/2)+1.
+5. **Iterate candidate**: Increment i by n each time (since the solution must be a multiple of n) and check divisibility by each factor in the optimized list.
+6. **Check divisibility**: For each candidate i, check if it is divisible by every number in `factors`. If any fails, break and try n

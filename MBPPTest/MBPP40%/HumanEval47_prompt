@@ -1,0 +1,14 @@
+from itertools import zip_longest, chain, tee
+def exchange_elements(lst):
+    lst1, lst2 = tee(iter(lst), 2)
+    return list(chain.from_iterable(zip_longest(lst[1::2], lst[::2])))
+The following is chain of thought:
+Let me analyze this function step by step:
+
+1. The function takes a list `lst` as input
+2. It creates two independent iterators from the list using `tee()`
+3. It uses list slicing to get:
+   - `lst[1::2]` - all elements starting from index 1 with step 2 (odd indices)
+   - `lst[::2]` - all elements starting from index 0 with step 2 (even indices)
+4. `zip_longest()` pairs elements from these two sequences, filling missing values with None
+5. `chain.from_iterable()` flattens the zipped pairs

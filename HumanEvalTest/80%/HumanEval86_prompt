@@ -1,0 +1,116 @@
+
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+
+The following is chain of thought:
+We are given a string `s`. We need to split it into words (by space) and then sort each word's characters by their ASCII values.
+ However, we must preserve the original order of words and spaces. So we can split the string into words and non-words (spaces) but note: the problem says to keep the order of words and blank spaces.
+ Actually, the problem says: "keep the order of words and blank spaces". So we should consider that the input might have multiple spaces? But the example doesn't show that.
+ However, the docstring says: "all words (separated by space)" and "keep the order of words and blank spaces".
+
+ Approach:
+ We cannot simply split by space and then join because we might lose multiple spaces. So we need to tokenize the string into words and spaces.
+
+ But note: the example 'Hello World!!!' becomes 'Hello !!!Wdlor'. Here, the word "World!!!" is actually one word? Actually, the example output has '!!!Wdlor'. So the word includes non-letters? And the sorting is by ASCII.
+
+ Actually, the problem says: "all words (separated by space)". So a word is any sequence of non-space characters. So we should split the string by spaces, but we need to preserve the spaces as well.
+
+ However, the problem says: "keep the order of words and blank spaces". So if there are multiple consecutive spaces, we should preserve them.
+
+ So we can:
+ 1. Split the string into a list of words and spaces. Actually, we can use: if we split by space, we lose the spaces. So we need to tokenize.
+
+ Alternatively, we can iterate through the string and group consecutive non-space characters (words) and space characters (spaces).
+
+ Steps:
+ - Initialize an empty list for tokens.
+ - Traverse the string and group consecutive non-spaces (words) and consecutive spaces.
+ - For each token that is a word (non-space), we sort the characters in ascending order by their ASCII value.
+ - For a space token, we leave it unchanged.
+ - Then combine all tokens to form the result.
+
+ But note: the problem says "blank spaces" - meaning we should preserve the spaces exactly.
+
+ However, the problem examples are simple. But to be general, we should handle multiple spaces.
+
+ Implementation for tokenization:
+   tokens = []
+   i = 0
+   n = len(s)
+   while i < n:
+        if s[i] is space:
+            j = i
+            while j < n and s[j] == ' ':
+                j += 1
+            tokens.append(s[i:j])
+            i = j
+        else:
+            j = i
+            while j < n and s[j] != ' ':
+                j += 1
+            tokens.append(s[i:j])
+            i = j
+
+ Then, for each token:
+   if the token has no space (i.e., it's a word), then we sort the string (each character) by its ASCII value. Note: we can use sorted(token) which returns a list of sorted characters, then ''.join that.
+   else, we leave it as is.
+
+ Finally, we combine all tokens to get the result.
+
+ However, note: the example 'Hello World!!!' has a word "World!!!" which becomes "!!!Wdlor" when sorted. The ASCII values: '!' is 33, 'W' is 87, 'o' is 111, 'r' is 114, 'l' is 108, 'd' is 100.
+ So sorted order: '!', '!', '!', 'W', 'd', 'l', 'o', 'r' -> but wait: actually the sorted should be: the smallest ASCII first. So the exclamation marks come first, then 'W', then 'd' (100), then 'l' (108), then 'o' (111), then 'r' (114). So "!!!Wdlor" which is exactly the example.
+
+ So we are correct.
+
+ Let's code accordingly.
+
+ But note: the problem says "ascending order based on ascii value". So we use sorted(token) which sorts in ascending order.
+
+ However, we must be cautious: the tokenization should be exact.
+
+ Alternatively, we can use a simpler method: split the string by spaces but also capture the spaces? Actually, we can use the built-in split with a capture? But that might be complicated.
+
+ Alternatively, we can use: we know that the words are separated by spaces. So we can split the string into words with s.split() but that would remove all spaces and we cannot get them back. So we cannot use that.
+
+ So we do the tokenization as described.
+
+ Code:
+
+def anti_shuffle(s):
+    tokens = []
+    i = 0
+    n = len(s)
+    while i < n:
+        if s[i] == ' ':
+            j = i
+            while j < n and s[j] == ' ':
+                j += 1
+            tokens.append(s[i:j])
+            i = j
+        else:
+            j = i
+            while j < n and s[j] != ' ':
+                j += 1
+            word = s[i:j]
+            sorted_word = ''.join(sorted(word))
+            tokens.append(sorted_word)
+            i = j
+
+    return ''.join(tokens)
+
+Let's test with examples:
+ Example 1: 'Hi' -> tokens: ['Hi'] -> sort 'Hi': 'H' (72) and 'i' (105) -> sorted: 'Hi' (since H comes before i) -> correct.
+ Example 2: 'hello' -> tokens: ['hello'] -> sorted: 'ehllo' -> correct.
+ Example 3: 'Hello World!!!' -> tokens: ['Hello', ' ', 'World!!!']? Wait, no: actually the string is "Hello World!!!", which has a space between Hello and World!!!.
+ So we tokenize: first word: "Hello", then a 

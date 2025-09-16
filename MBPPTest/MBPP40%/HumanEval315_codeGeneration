@@ -1,0 +1,29 @@
+CodeGeneration:
+Based on the docstring and the intended behavior to return the triplet when found, here's the corrected function:
+
+```python
+def find_triplet_array(A, arr_size, sum):
+    """
+    Finds a triplet in array A that sums to the given value.
+    
+    Args:
+        A: List of integers
+        arr_size: Size of the array
+        sum: Target sum value
+        
+    Returns:
+        Tuple of three elements that sum to target, or False if no triplet found
+    """
+    for i in range(0, arr_size-2):
+        for j in range(i + 1, arr_size-1):
+            for k in range(j + 1, arr_size):
+                if A[i] + A[j] + A[k] == sum:
+                    return A[i], A[j], A[k]
+    return False
+```
+
+The key changes made:
+1. Removed the unreachable `return True` statement after returning the triplet
+2. The function now properly returns either the triplet (as a tuple) when found, or `False` if no triplet exists
+3. Added proper docstring documentation
+4. Maintained the original triple nested loop structure for checking all possible triplets

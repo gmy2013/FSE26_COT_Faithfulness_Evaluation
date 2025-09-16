@@ -1,0 +1,35 @@
+CodeGeneration:
+Based on the chain of thought and the existing code, here's the complete function with proper docstring:
+
+```python
+def count_Rotation(arr, n):
+    """
+    Count the number of rotations in a sorted and rotated array.
+    
+    The function finds the index where the array elements drop, which indicates
+    the rotation point. This index corresponds to the number of rotations.
+    
+    Args:
+        arr (list): A sorted and rotated array of distinct elements
+        n (int): The length of the array
+        
+    Returns:
+        int: The number of rotations (0 if array is not rotated or empty)
+        
+    Example:
+        >>> count_Rotation([15, 18, 2, 3, 6, 12], 6)
+        2
+        >>> count_Rotation([1, 2, 3, 4, 5], 5)
+        0
+    """
+    for i in range(1, n): 
+        if (arr[i] < arr[i - 1]): 
+            return i  
+    return 0
+```
+
+The function works as described in your chain of thought:
+- It iterates through the array starting from index 1
+- Compares each element with its predecessor
+- Returns the index where a drop occurs (indicating the rotation point)
+- Returns 0 if no rotation is found (array is already sorted or empty)

@@ -1,0 +1,31 @@
+20%CoT
+CodeGeneration:
+Let's continue with the thought process and complete the function implementation:
+
+3. **Clarifications from Docstring**: 
+   - The docstring provides examples of how the function should behave:
+     - If the input is an empty string `''`, the output should be `0`.
+     - If the input is `'abc'`, the output should be `3`.
+   - This aligns with the standard behavior of calculating the length of a string.
+
+4. **Approach**:
+   - In Python, we can use the built-in `len()` function to determine the length of a string.
+   - The `len()` function returns the number of characters in the string, which is precisely what we need.
+
+5. **Implementation**:
+   - The implementation of the function is straightforward. We will return the result of `len(string)`.
+
+Here is the complete implementation:
+
+```python
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+    return len(string)
+```
+
+This function utilizes the `len()` function to return the length of the input string, adhering to the problem requirements and the provided examples in the docstring.

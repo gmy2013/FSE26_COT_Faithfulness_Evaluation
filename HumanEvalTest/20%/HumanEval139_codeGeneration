@@ -1,0 +1,38 @@
+20%CoT
+CodeGeneration:
+Sure! Let's complete the function based on the provided docstring and the chain of thought.
+
+First, we will verify that the input integer `n` is greater than 0. If it's not, we can raise an exception or handle the error as required.
+
+Next, we initialize a variable to hold the result of the special factorial. We will then iterate from `n` down to 1, calculating the factorial for each number and multiplying it into our result.
+
+Here's the complete code for the function:
+
+```python
+import math
+
+def special_factorial(n):
+    """The Brazilian factorial is defined as:
+    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!
+    where n > 0
+
+    For example:
+    >>> special_factorial(4)
+    288
+
+    The function will receive an integer as input and should return the special
+    factorial of this integer.
+    """
+    
+    # Step 1: Verify that input integer n is greater than 0.
+    if n <= 0:
+        raise ValueError("The input integer must be greater than 0.")
+    
+    # Step 2: Initialize a variable to hold the result.
+    result = 1
+    
+    # Step 3: Calculate the special factorial.
+    for i in range(1, n + 1):
+        result *= math.factorial(i)
+    
+    return result

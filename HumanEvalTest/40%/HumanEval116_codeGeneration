@@ -1,0 +1,35 @@
+CodeGeneration:
+Looking at the examples and requirements, I need to handle both positive and negative integers by counting the number of '1's in their binary representation (ignoring the sign), then sort by this count first, and by decimal value for ties.
+
+Here's the implementation:
+
+```python
+def sort_array(arr):
+    """
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    >>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+    >>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+    >>> sort_array([1, 0, 2, 3, 4]) == [0, 1, 2, 3, 4]
+    """
+    def count_ones(n):
+        # Get binary representation as string, remove '0b' prefix and minus sign
+        binary_str = bin(abs(n)) if n < 0 else bin(n)
+        return binary_str.count('1')
+    
+    # Sort by number of ones first, then by decimal value
+    return sorted(arr, key=lambda x: (count_ones(x), x))
+```
+
+The function works by:
+1. Defining a helper function `count_ones()` that converts numbers to their binary representation and counts the '1's
+2. For negative numbers, it uses the absolute value to get the binary representation (ignoring the sign)
+3. Using Python's `sorted()` function with a custom key that first sorts by the number of ones, then by the decimal value
+
+This handles all the test cases:
+- `[1, 5, 2, 3, 4]` → sorted by ones count then value
+- `[-2, -3, -4, -5, -6]` → sorted primarily by decimal value since ones count varies
+- `[1, 0, 2, 3, 4]` → 0 has 0 ones, so comes first, others sorted by ones then value

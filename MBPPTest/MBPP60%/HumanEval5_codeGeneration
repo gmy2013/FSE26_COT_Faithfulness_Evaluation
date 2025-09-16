@@ -1,0 +1,13 @@
+CodeGeneration:
+radian value.
+5. The function returns this computed radian value.
+
+The provided code is correct and complete. Here is the function as it should be:
+
+```python
+import math
+
+def radian_degree(degree):
+    radian = degree * (math.pi / 180)
+    return radian
+```

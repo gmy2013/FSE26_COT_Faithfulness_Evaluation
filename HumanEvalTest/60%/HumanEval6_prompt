@@ -1,0 +1,31 @@
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+
+The following is chain of thought:
+I need to implement a function that takes a string of multiple parenthesis groups separated by spaces and returns a list of the maximum nesting depth for each group.
+
+Let me think through the approach:
+1. Split the input string by spaces to get individual parenthesis groups
+2. For each group, calculate the maximum nesting depth
+3. To calculate depth for a single group: track current depth and max depth
+4. Iterate through each character: increment depth on '(', decrement on ')', and update max depth
+5. Return list of max depths for all groups
+
+Here's the implementation:
+
+```python
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.

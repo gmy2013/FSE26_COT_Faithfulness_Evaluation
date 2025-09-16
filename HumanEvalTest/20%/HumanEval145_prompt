@@ -1,0 +1,56 @@
+
+def order_by_points(nums):
+    """
+    Write a function which sorts the given list of integers
+    in ascending order according to the sum of their digits.
+    Note: if there are several items with similar sum of their digits,
+    order them based on their index in original list.
+
+    For example:
+    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    >>> order_by_points([]) == []
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to sort the list `nums` based on the sum of digits of each number.
+2. The sum of digits should be calculated for each number (ignoring negative signs, so treat absolute value for digit summing).
+3. If two numbers have the same digit sum, we must preserve their original relative order (i.e., stable sort by original index).
+4. We cannot simply use the built-in `sort` with a key that only considers digit sum because that would not be stable for ties? Actually, Python's sort is stable when the key is the same, but we need to ensure that the original index is used as a secondary key to break ties.
+
+However, note the requirement: "order them based on their index in original list". This means if two numbers have the same digit sum, the one that appeared first in the original list should come first.
+
+But since we are sorting, we need to make sure that the sorting is stable. Alternatively, we can use the index as a secondary key.
+
+Approach:
+- For each number, compute the sum of its digits (taking absolute value to ignore negative sign).
+- We want to sort primarily by this digit sum.
+- For numbers with the same digit sum, we want to sort by their original index (which we can get by enumerating).
+
+However, we cannot lose the original index. So we can create a list of tuples: (digit_sum, original_index, number)
+Then sort this list by digit_sum (ascending) and then by original_index (ascending).
+Then extract the numbers.
+
+Alternatively, we can use a key function that returns (digit_sum, index). But when we use `sorted`, we can provide a key that returns a tuple. However, we don't have the index in the key function unless we enumerate.
+
+So we can do:
+
+enumerated = list(enumerate(nums))
+Then sort enumerated by key: (digit_sum of num, index)
+Then extract the numbers.
+
+But note: we are only allowed to use the index for breaking ties, and we want to preserve the original order for same digit sum.
+
+Let's code accordingly.
+
+Steps:
+1. If the list is empty, return empty list.
+2. Create a list of tuples: (index, number) for each element.
+3. Define a function to compute digit sum for a number: 
+   def digit_sum(n):
+        n_abs = abs(n)
+        s = 0
+        while n_abs:
+            s += n_abs % 10
+            n_abs //=

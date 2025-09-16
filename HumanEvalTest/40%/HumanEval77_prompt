@@ -1,0 +1,46 @@
+
+def iscube(a):
+    '''
+    Write a function that takes an integer a and returns True 
+    if this ingeger is a cube of some integer number.
+    Note: you may assume the input is always valid.
+    Examples:
+    iscube(1) ==> True
+    iscube(2) ==> False
+    iscube(-1) ==> True
+    iscube(64) ==> True
+    iscube(0) ==> True
+    iscube(180) ==> False
+    '''
+
+The following is chain of thought:
+1. The function needs to check if integer `a` is a perfect cube (cube of some integer).
+2. Since cubes can be negative (e.g., -1 is cube of -1), we need to handle negative inputs.
+3. For a=0, it should return True (0 is cube of 0).
+4. Approach: Calculate the cube root of `a`, round it to the nearest integer, then check if cubing that integer gives back `a`.
+5. However, due to floating point precision issues with large numbers, we should use integer-based methods.
+6. Better approach: Check if there exists an integer `x` such that `x*x*x == a`.
+7. We can iterate possible cube roots, but this might be inefficient for large |a|.
+8. Alternatively, we can compute the cube root approximately and check nearby integers.
+9. Since the problem states input is always valid (integer), we can use:
+   - If `a` is 0: return True
+   - Compute candidate = round(a ** (1/3))
+   - But for negative numbers: we need to handle the cube root properly (negative cube root exists).
+10. Actually, for negative `a`, we can compute the cube root of |a| and then negate.
+11. However, to avoid floating point inaccuracies, we can do:
+    candidate = round(a ** (1/3))
+    if candidate**3 == a:
+        return True
+    else:
+        # Check candidate-1 and candidate+1 to handle rounding issues
+        return (candidate-1)**3 == a or (candidate+1)**3 == a
+12. But this might not be necessary for all cases. Alternatively, we can use exact integer method.
+13. Since the cube root of |a| must be between 0 and |a|, we can do binary search for integer cube root.
+14. However, for simplicity and given that the input size isn't specified, we'll use the rounding method with checks.
+15. Special case: when a is negative, we can compute the cube root of |a| and then check with negative sign.
+16. Implementation plan:
+    if a == 0:
+        return True
+    # Compute approximate cube root
+    root = round(abs(a) ** (1/3))
+    # Check root and root-1, root+1

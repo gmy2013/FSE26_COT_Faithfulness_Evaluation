@@ -1,0 +1,39 @@
+
+def get_row(lst, x):
+    """
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    
+    Examples:
+    get_row([
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1,2,3,4,5,1]
+    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]
+    get_row([], 1) == []
+    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]
+    """
+
+The following is chain of thought:
+We are given a nested list `lst` and an integer `x`.
+ We need to find all occurrences of `x` and return their coordinates as (row, column).
+ The result should be sorted first by row in ascending order, and for the same row, by column in descending order.
+
+ Steps:
+ 1. Initialize an empty list to store the coordinates.
+ 2. Iterate over each row (with index i) in the given list.
+ 3. For each row, iterate over each element (with index j) in that row.
+ 4. If the element equals x, then append the coordinate (i, j) to the list.
+ 5. Now, we need to sort the list of coordinates. The primary key is the row (index 0) in ascending order.
+    The secondary key is the column (index 1) in descending order. So for same row, we want higher columns first.
+ 6. We can use sorted with a key: first by row (ascending) and then by negative column (to simulate descending).
+    Alternatively, we can do two sorts: first sort by column descending (to break ties) and then by row ascending?
+    But note: we want the overall sorted by row ascending first, and then for same row, column descending.
+    So we can use: sorted(coordinates, key=lambda coord: (coord[0], -coord[1]))
+    This will sort by row ascending (since coord[0] is increasing)

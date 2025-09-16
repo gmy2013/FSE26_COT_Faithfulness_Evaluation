@@ -1,0 +1,11 @@
+def is_Word_Present(sentence,word): 
+    s = sentence.split(" ") 
+    for i in s:  
+        if (i == word): 
+            return True
+    return False
+The following is chain of thought:
+1. The function `is_Word_Present` takes two parameters: `sentence` (a string) and `word` (a string to search for).
+2. Split the input `sentence` into a list of words using `split(" ")`, which splits on spaces.
+3. Iterate through each element `i` in the split list `s`.
+4. For each elemen

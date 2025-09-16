@@ -1,0 +1,52 @@
+CodeGeneration:
+Here's the implementation:
+
+```python
+def prime_fib(n: int):
+    """
+    prime_fib returns n-th number that is a Fibonacci number and it's also prime.
+    >>> prime_fib(1)
+    2
+    >>> prime_fib(2)
+    3
+    >>> prime_fib(3)
+    5
+    >>> prime_fib(4)
+    13
+    >>> prime_fib(5)
+    89
+    """
+    if n <= 0:
+        return None
+    
+    def is_prime(num):
+        if num < 2:
+            return False
+        if num == 2:
+            return True
+        if num % 2 == 0:
+            return False
+        for i in range(3, int(num**0.5) + 1, 2):
+            if num % i == 0:
+                return False
+        return True
+    
+    count = 0
+    a, b = 0, 1
+    
+    while count < n:
+        a, b = b, a + b
+        if a > 1 and is_prime(a):
+            count += 1
+            if count == n:
+                return a
+```
+
+This implementation:
+1. Handles edge cases by checking if n is positive
+2. Uses a helper function `is_prime()` to check for primality efficiently
+3. Generates Fibonacci numbers sequentially using tuple unpacking
+4. Counts prime Fibonacci numbers until it reaches the n-th one
+5. Returns the n-th prime Fibonacci number
+
+The algorithm efficiently generates Fibonacci numbers and checks each one for primality, stopping when it finds the n-th prime Fibonacci number.

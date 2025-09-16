@@ -1,0 +1,56 @@
+CodeGeneration:
+Here's the implementation of the `factorize` function:
+
+```python
+from typing import List
+import math
+
+
+def factorize(n: int) -> List[int]:
+    """ Return list of prime factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+    >>> factorize(8)
+    [2, 2, 2]
+    >>> factorize(25)
+    [5, 5]
+    >>> factorize(70)
+    [2, 5, 7]
+    """
+    factors = []
+    
+    # Handle the case when n is 1
+    if n == 1:
+        return []
+    
+    # Factor out all 2s
+    while n % 2 == 0:
+        factors.append(2)
+        n = n // 2
+    
+    # Check for odd factors starting from 3
+    # Only need to check up to sqrt(n)
+    i = 3
+    max_factor = math.isqrt(n)
+    
+    while i <= max_factor:
+        while n % i == 0:
+            factors.append(i)
+            n = n // i
+            max_factor = math.isqrt(n)  # Update max_factor since n changed
+        i += 2
+    
+    # If n is still greater than 1, it's a prime number
+    if n > 1:
+        factors.append(n)
+    
+    return factors
+```
+
+This implementation follows the approach you outlined:
+1. First factors out all 2s (the only even prime)
+2. Then checks odd factors starting from 3 up to √n
+3. If n is still greater than 1 after this process, it means n itself is prime
+4. Returns the list of factors in order from smallest to largest
+
+The function handles edge cases like n=1 and ensures the product of all factors equals the original input number.

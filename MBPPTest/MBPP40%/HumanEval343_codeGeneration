@@ -1,0 +1,26 @@
+CodeGeneration:
+Here's the corrected function with a complete implementation:
+
+```python
+import re
+def num_position(text):
+    """Return the starting index of the first number in the text.
+    
+    Args:
+        text (str): The input string to search for numbers
+        
+    Returns:
+        int: The starting index of the first number, or None if no number is found
+    """
+    for m in re.finditer(r"\d+", text):
+        return m.start()
+    return None
+```
+
+The function now:
+1. Uses a raw string `r"\d+"` for the regex pattern (best practice)
+2. Returns `None` if no numbers are found in the text
+3. Includes proper docstring documentation
+4. Still efficiently returns the starting position of the first number found
+
+The function will return immediately when it finds the first number match, making it efficient for finding just the first occurrence.

@@ -1,0 +1,23 @@
+CodeGeneration:
+the condition (i.e., are anagrams of `str`).
+5. The result is converted to a list and returned.
+
+Here is the complete function:
+
+```python
+from collections import Counter
+
+def anagram_lambda(texts, str):
+    """
+    Filters a list of strings to return only those that are anagrams of the target string.
+    
+    Args:
+        texts (list): List of strings to filter
+        str (str): Target string to compare against for anagram matching
+    
+    Returns:
+        list: List of strings from texts that are anagrams of str
+    """
+    result = list(filter(lambda x: (Counter(str) == Counter(x)), texts))
+    return result
+```

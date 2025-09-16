@@ -1,0 +1,20 @@
+CodeGeneration:
+calculates and returns the magnitude of a complex number with real part `a` and imaginary part `b`.
+
+```python
+import cmath
+
+def len_complex(a, b):
+    """Calculate the magnitude (length) of a complex number.
+    
+    Args:
+        a (float): Real part of the complex number
+        b (float): Imaginary part of the complex number
+        
+    Returns:
+        float: The magnitude (absolute value) of the complex number a + bi
+    """
+    cn = complex(a, b)
+    length = abs(cn)
+    return length
+```

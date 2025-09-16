@@ -1,0 +1,19 @@
+
+
+def change_base(x: int, base: int):
+    """Change numerical base of input number x to base.
+    return string representation after the conversion.
+    base numbers are less than 10.
+    >>> change_base(8, 3)
+    '22'
+    >>> change_base(8, 2)
+    '1000'
+    >>> change_base(7, 2)
+    '111'
+    """
+
+The following is chain of thought:
+To implement the `change_base` function, we need to convert a given integer `x` into a string representation of a number in a specified base `base`. The base can be any integer less than 10. Here's how we can approach the problem:
+
+1. **Understand the Conversion Process**: 
+   - To conve

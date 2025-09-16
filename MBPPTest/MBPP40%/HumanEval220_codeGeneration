@@ -1,0 +1,22 @@
+CodeGeneration:
+```python
+import collections as ct
+
+def merge_dictionaries(dict1, dict2):
+    """
+    Merge two dictionaries, with values from dict2 taking precedence over dict1.
+    
+    Args:
+        dict1 (dict): First dictionary to merge
+        dict2 (dict): Second dictionary to merge (takes precedence)
+    
+    Returns:
+        dict: A new dictionary containing the merged key-value pairs
+    
+    Example:
+        >>> merge_dictionaries({'a': 1, 'b': 2}, {'b': 3, 'c': 4})
+        {'a': 1, 'b': 3, 'c': 4}
+    """
+    merged_dict = dict(ct.ChainMap({}, dict1, dict2))
+    return merged_dict
+```

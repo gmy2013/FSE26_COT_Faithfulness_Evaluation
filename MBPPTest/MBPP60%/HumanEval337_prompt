@@ -1,0 +1,34 @@
+import sys 
+
+def find_closet(A, B, C, p, q, r): 
+	diff = sys.maxsize 
+	res_i = 0
+	res_j = 0
+	res_k = 0
+	i = 0
+	j = 0
+	k = 0
+	while(i < p and j < q and k < r): 
+		minimum = min(A[i], min(B[j], C[k])) 
+		maximum = max(A[i], max(B[j], C[k])); 
+		if maximum-minimum < diff: 
+			res_i = i 
+			res_j = j 
+			res_k = k 
+			diff = maximum - minimum; 
+		if diff == 0: 
+			break
+		if A[i] == minimum: 
+			i = i+1
+		elif B[j] == minimum: 
+			j = j+1
+		else: 
+			k = k+1
+	return A[res_i],B[res_j],C[res_k]
+The following is chain of thought:
+1. **Initialization**: Initialize `diff` to a large value (using `sys.maxsize`) to track the smallest range found. Initialize `res_i`, `res_j`, `res_k` to store indices of the current closest triplet.
+2. **Pointer Initialization**: Set three pointers `i`, `j`, `k` to 0 for traversing arrays `A`, `B`, and `C`.
+3. **Loop Condition**: Continue while all pointers are within their respective array bounds (`i < p`, `j < q`, `k < r`).
+4. **Compute Current Range**: For the current triplet `(A[i], B[j], C[k])`, find the `minimum` and `maximum` values.
+5. **Update Closest Triplet**: If the current range (`maximum - minimum`) is smaller than `diff`, update `diff` and store the current indices.
+6. **Early Termination**: If `diff` becomes 0 (sma

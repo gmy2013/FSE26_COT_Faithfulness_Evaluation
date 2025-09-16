@@ -1,0 +1,32 @@
+CodeGeneration:
+ro Handling**: For non-zero values, using -1/i creates:
+   - Positive numbers become negative (lower values)
+   - Negative numbers become positive (higher values)
+   - This ensures ordering: zero, positive numbers, negative numbers
+
+Here's the complete function:
+
+```python
+def rearrange_numbs(array_nums):
+    """
+    Rearranges numbers in a specific order: zeros first, then positive numbers, then negative numbers.
+    
+    Args:
+        array_nums (list): List of numbers to be rearranged
+        
+    Returns:
+        list: Rearranged list with zeros first, then positive numbers, then negative numbers
+        
+    Example:
+        >>> rearrange_numbs([1, -2, 0, 3, -1, 0])
+        [0, 0, 1, 3, -2, -1]
+    """
+    result = sorted(array_nums, key = lambda i: 0 if i == 0 else -1 / i)
+    return result
+```
+
+The sorting key works as follows:
+- Zeros get key = 0 (highest priority)
+- Positive numbers get negative keys (e.g., 1 → -1, 2 → -0.5)
+- Negative numbers get positive keys (e.g., -1 → 1, -2 → 0.5)
+- This creates the desired ordering: zeros, positives, negatives

@@ -1,0 +1,25 @@
+CodeGeneration:
+d dividing by the number of elements in that group.
+5. Return the list of averages.
+
+Here is the complete function:
+
+```python
+def average_tuple(nums):
+    """Calculate the average of elements at each position in a list of tuples.
+    
+    Args:
+        nums (list): A list of tuples where each tuple has the same length.
+        
+    Returns:
+        list: A list of averages for each position.
+        
+    Example:
+        >>> average_tuple([(10, 10, 10), (30, 45, 56), (81, 80, 39), (1, 2, 3)])
+        [30.5, 34.25, 27.0]
+        >>> average_tuple([(1, 2), (3, 4), (5, 6)])
+        [3.0, 4.0]
+    """
+    result = [sum(x) / len(x) for x in zip(*nums)]
+    return result
+```

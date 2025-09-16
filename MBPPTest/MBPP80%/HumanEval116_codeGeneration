@@ -1,0 +1,71 @@
+CodeGeneration:
+It loops through each element, converting it to float and adding to `mean`.
+5. It divides the total sum by the number of elements to get the mean.
+6. Returns the calculated mean.
+
+Now, I need to complete the following function based on the docstring:
+
+```python
+def median_calc(data):
+    """
+    Calculate the median of a list of numbers.
+
+    Parameters:
+    data (list): A list of numbers (can be integers or floats).
+
+    Returns:
+    float: The median value of the list.
+
+    Examples:
+    >>> median_calc([1, 3, 2])
+    2.0
+    >>> median_calc([1, 3, 2, 4])
+    2.5
+    >>> median_calc([5])
+    5.0
+    >>> median_calc([])
+    nan
+    """
+    # Your code here
+```
+
+Based on the docstring and examples, I need to implement a function that calculates the median of a list of numbers. The median is the middle value when the list is sorted. For an even number of elements, it's the average of the two middle values. For an empty list, it should return nan.
+
+Here's the implementation:
+
+```python
+def median_calc(data):
+    """
+    Calculate the median of a list of numbers.
+
+    Parameters:
+    data (list): A list of numbers (can be integers or floats).
+
+    Returns:
+    float: The median value of the list.
+
+    Examples:
+    >>> median_calc([1, 3, 2])
+    2.0
+    >>> median_calc([1, 3, 2, 4])
+    2.5
+    >>> median_calc([5])
+    5.0
+    >>> median_calc([])
+    nan
+    """
+    if not data:
+        return float('nan')
+    
+    sorted_data = sorted(data)
+    n = len(sorted_data)
+    
+    if n % 2 == 1:
+        # Odd number of elements - return the middle element
+        return float(sorted_data[n // 2])
+    else:
+        # Even number of elements - return average of two middle elements
+        mid1 = sorted_data[n // 2 - 1]
+        mid2 = sorted_data[n // 2]
+        return (float(mid1) + float(mid2)) / 2.0
+```

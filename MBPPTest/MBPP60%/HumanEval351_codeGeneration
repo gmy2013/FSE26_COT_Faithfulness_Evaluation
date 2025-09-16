@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the complete function with the chain of thought implemented:
+
+```python
+def nCr_mod_p(n, r, p): 
+    # Handle symmetry property: nCr = nC(n-r)
+    if (r > n - r): 
+        r = n - r 
+    
+    # Initialize DP array to store intermediate combinations
+    C = [0 for i in range(r + 1)] 
+    C[0] = 1  # Base case: nC0 = 1
+    
+    # Iterative computation using Pascal's triangle approach
+    for i in range(1, n + 1): 
+        # Process backwards to avoid overwriting values needed for current iteration
+        for j in range(min(i, r), 0, -1): 
+            C[j] = (C[j] + C[j-1]) % p 
+    
+    return C[r]
+```
+
+**Key features of this implementation:**
+- **Space efficient**: Uses O(r) space instead of O(n×r)
+- **Time efficient**: O(n×r) time complexity
+- **Modular arithmetic**: Applies modulus p at each step to prevent overflow
+- **Backward iteration**: Processes the inner loop backwards to avoid overwriting values needed for the current computation
+- **Symmetry optimization**: Reduces r when r > n-r to minimize computations
+
+This function efficiently computes binomial coefficients modulo p using dynamic programming with the Pascal's triangle recurrence relation.

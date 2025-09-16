@@ -1,0 +1,14 @@
+import re
+pattern = 'fox'
+text = 'The quick brown fox jumps over the lazy dog.'
+def find_literals(text, pattern):
+  match = re.search(pattern, text)
+  s = match.start()
+  e = match.end()
+  return (match.re.pattern, s, e)
+The following is chain of thought:
+1. The function `find_literals` takes two arguments: `text` (the string to search) and `pattern` (the regex pattern to find).
+2. Use `re.search()` to find the first occurrence of the pattern in the text.
+3. Get the start index of the match using `match.start()`.
+4. Get the end index of the match using `match.end()`.
+5. Return a tuple containing: the original pattern string (accessed via `match.re.pattern`), the start i

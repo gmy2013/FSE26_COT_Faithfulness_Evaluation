@@ -1,0 +1,64 @@
+CodeGeneration:
+becomes 0 -> list: ['0','0','0','1']
+   Then reverse the list: ['1','0','0','0'] and join to get "1000".
+
+ But note: we can avoid reversing by building the string in reverse order by prepending, but that is inefficient for long strings.
+
+ Alternatively, we can build the list and then reverse at the end.
+
+ However, we can also use recursion or a while loop that builds the string from the end.
+
+ Since the base is small (less than 10), and numbers are integers, we can use:
+
+ Let's code accordingly.
+
+ Implementation:
+
+   if x == 0:
+        return "0"
+   digits = []
+   while x:
+        digits.append(str(x % base))
+        x //= base
+   return ''.join(digits[::-1])
+
+ But note: the above for x=0 returns "0", which is correct.
+
+ Let's test with examples:
+
+   change_base(8,3): 
+        x=8: 8 % 3 = 2, x=8//3=2
+        x=2: 2 % 3 = 2, x=2//3=0
+        digits = ['2','2'] -> reversed is ['2','2'] -> joined "22"
+
+   change_base(8,2): as above -> "1000"
+
+   change_base(7,2):
+        x=7: 7%2=1, x=3
+        x=3: 3%2=1, x=1
+        x=1: 1%2=1, x=0
+        digits = ['1','1','1'] -> reversed is same -> "111"
+
+ So it works.
+
+ Code:<｜end▁of▁thinking｜>```python
+def change_base(x: int, base: int):
+    """Change numerical base of input number x to base.
+    return string representation after the conversion.
+    base numbers are less than 10.
+    >>> change_base(8, 3)
+    '22'
+    >>> change_base(8, 2)
+    '1000'
+    >>> change_base(7, 2)
+    '111'
+    """
+    if x == 0:
+        return "0"
+    digits = []
+    n = x
+    while n:
+        digits.append(str(n % base))
+        n //= base
+    return ''.join(digits[::-1])
+```

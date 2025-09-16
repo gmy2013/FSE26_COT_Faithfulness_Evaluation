@@ -1,0 +1,34 @@
+
+def special_factorial(n):
+    """The Brazilian factorial is defined as:
+    brazilian_factorial(n) = n! * (n-1)! * (n-2)! * ... * 1!
+    where n > 0
+
+    For example:
+    >>> special_factorial(4)
+    288
+
+    The function will receive an integer as input and should return the special
+    factorial of this integer.
+    """
+
+The following is chain of thought:
+We are to compute the product of factorials from 1! to n!.
+ Steps:
+ 1. We need to compute the factorial for each integer k from 1 to n.
+ 2. Then multiply all these factorials together.
+
+ However, note that the definition is:
+   special_factorial(n) = n! * (n-1)! * ... * 1!
+
+ Approach:
+ We can iterate from 1 to n, and for each k, compute k! and accumulate the product.
+
+ But note: we are computing factorials for k=1,2,...,n. We can use a loop to compute each factorial and then multiply.
+
+ Alternatively, we can use dynamic programming to avoid recalculating factorials repeatedly:
+   Let fact[k] = k! , then we can compute:
+        fact[1] = 1
+        fact[k] = fact[k-1] * k   for k>=2
+
+ Then

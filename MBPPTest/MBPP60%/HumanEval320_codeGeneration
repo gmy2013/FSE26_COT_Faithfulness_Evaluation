@@ -1,0 +1,31 @@
+CodeGeneration:
+Based on the docstring and chain of thought, here's the complete function:
+
+```python
+def chunk_tuples(test_tup, N):
+    """Split a tuple into chunks of size N.
+    
+    Args:
+        test_tup: Input tuple to be chunked
+        N: Size of each chunk
+        
+    Returns:
+        List of tuples, each containing N elements from the original tuple
+        
+    Example:
+        >>> chunk_tuples((1, 2, 3, 4, 5, 6), 2)
+        [(1, 2), (3, 4), (5, 6)]
+        >>> chunk_tuples((1, 2, 3, 4, 5), 3)
+        [(1, 2, 3), (4, 5)]
+    """
+    res = [test_tup[i : i + N] for i in range(0, len(test_tup), N)]
+    return res
+```
+
+The function works by:
+1. Using `range(0, len(test_tup), N)` to generate starting indices with step size N
+2. For each index `i`, slicing the tuple from position `i` to `i + N`
+3. Collecting all the resulting chunks in a list
+4. Returning the list of chunks
+
+The slicing operation `test_tup[i : i + N]` automatically handles cases where the last chunk might be smaller than N by stopping at the end of the tuple.

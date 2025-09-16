@@ -1,0 +1,22 @@
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+The following is chain of thought:
+To solve this problem, we need to check if there are any two numbers in the list that are closer to each other than the given threshold. The approach involves comparing each pair of distinct numbers in the list and checking if their absolute difference is less than the threshold.
+
+Chain of thought:
+1. We need to iterate through each element in the list and compare it with every other element that comes after it to avoid redundant checks (since |a-b| is symmetric and we don't need to compare an element with itself).
+2. For each pair (i, j) where i < j, compute the absolute difference |numbers[i] - numbers[j]|.
+3. If any such difference is less than the threshold, return True immediately.
+4. If no such pair is found after checking all, return False.
+
+This approach ensures we efficiently check all unique pairs without duplication. The time complexity is O(n^2) which is acceptable for small t

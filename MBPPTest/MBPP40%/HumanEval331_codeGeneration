@@ -1,0 +1,15 @@
+CodeGeneration:
+ent `x`, check if it is not already in `temp`.
+4. If it is not in `temp`, append it to `temp`.
+5. After processing all elements, return `temp` which contains unique elements in the order of their first occurrence.
+
+Here is the complete function:
+
+```python
+def remove_duplic_list(l):
+    temp = []
+    for x in l:
+        if x not in temp:
+            temp.append(x)
+    return temp
+```

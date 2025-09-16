@@ -1,0 +1,34 @@
+class Pair(object): 
+	def __init__(self, a, b): 
+		self.a = a 
+		self.b = b 
+def max_chain_length(arr, n): 
+	max = 0
+	mcl = [1 for i in range(n)] 
+	for i in range(1, n): 
+		for j in range(0, i): 
+			if (arr[i].a > arr[j].b and
+				mcl[i] < mcl[j] + 1): 
+				mcl[i] = mcl[j] + 1
+	for i in range(n): 
+		if (max < mcl[i]): 
+			max = mcl[i] 
+	return max
+The following is chain of thought:
+Here's the structured chain of thought for the max_chain_length function:
+
+1. **Initialize variables**: 
+   - Set `max = 0` to track the maximum chain length found
+   - Create `mcl` (maximum chain length) array initialized to 1 for all positions
+
+2. **Dynamic programming approach**:
+   - Use nested loops to compare each pair with all previous pairs
+   - Outer loop iterates from index 1 to n-1 (current pair being considered)
+   - Inner loop iterates from index 0 to i-1 (all previous pairs)
+
+3. **Chain condition check**:
+   - For each pair comparison, check if current pair's `a` > previous pair's `b`
+   - Also check if current chain length can be improved by extending previous chain
+
+4. **Update chain length**:
+   - If conditions are me

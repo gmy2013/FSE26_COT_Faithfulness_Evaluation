@@ -1,0 +1,12 @@
+def harmonic_sum(n):
+  if n < 2:
+    return 1
+  else:
+    return 1 / n + (harmonic_sum(n - 1))
+The following is chain of thought:
+The function `harmonic_sum(n)` computes the n-th harmonic number using recursion.
+
+Chain of thought:
+1. Base case: when n < 2, return 1 (H₁ = 1)
+2. Recursive case: return 1/n + harmonic_sum(n-1)
+3. This follows the mathematical definition: Hₙ =

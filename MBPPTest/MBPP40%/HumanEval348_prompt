@@ -1,0 +1,9 @@
+def count_digs(tup):
+  return sum([len(str(ele)) for ele in tup ]) 
+def sort_list(test_list):
+  test_list.sort(key = count_digs)
+  return (str(test_list))
+The following is chain of thought:
+1. The function `sort_list` takes a list `test_list` as input.
+2. It sorts `test_list` using the `sort` method with a key function `count_digs`.
+3. The key function `count_digs` calculates the total number of digits across a

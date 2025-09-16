@@ -1,0 +1,18 @@
+CodeGeneration:
+The function you provided is already correct and complete. Here's the implementation:
+
+```python
+def max_sum_list(lists):
+    return max(lists, key=sum)
+```
+
+This function:
+- Takes a list of lists as input
+- Uses the `max()` function with `key=sum` to find the sublist with the highest sum
+- Returns that sublist
+
+Example usage:
+```python
+lists = [[1, 2, 3], [4, 5, 6], [10, 11]]
+result = max_sum_list(lists)  # Returns [10, 11] (sum = 21)
+```

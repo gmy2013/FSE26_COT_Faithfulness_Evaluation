@@ -1,0 +1,31 @@
+import math
+def sum_of_odd_Factors(n): 
+    res = 1
+    while n % 2 == 0: 
+        n = n // 2 
+    for i in range(3,int(math.sqrt(n) + 1)): 
+        count = 0
+        curr_sum = 1
+        curr_term = 1
+        while n % i == 0: 
+            count+=1 
+            n = n // i 
+            curr_term *= i 
+            curr_sum += curr_term    
+        res *= curr_sum  
+    if n >= 2: 
+        res *= (1 + n) 
+    return res 
+The following is chain of thought:
+Here is the structured chain of thought for the sum_of_odd_Factors function:
+
+1. **Initialize result**: Start with res = 1 since 1 is always an odd factor
+2. **Remove even factors**: While n is divisible by 2, repeatedly divide n by 2 to eliminate all even prime factors
+3. **Factorize remaining odd number**: 
+   - Iterate through potential odd factors from 3 to √n
+   - For each prime factor i, calculate the sum of all powers of i (i⁰ + i¹ + i² + ... + i^k)
+   - Multiply this sum into the result
+4. **Handle remaining prime**: If n > 1 after factorization, it's a prime number itself - add (1 + n) to the result
+5. **Return final sum**: The product of all prime power sums gives the sum of all odd divisors
+
+Th

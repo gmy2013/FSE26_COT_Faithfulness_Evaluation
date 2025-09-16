@@ -1,0 +1,41 @@
+
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+
+The following is chain of thought:
+To solve this problem, we need to count the n-digit positive integers that either start with 1 or end with 1 (or both). We can break this down using the principle of inclusion-exclusion to avoid double-counting numbers that both start and end with 1.
+
+1. **Total n-digit numbers**: The range is from 10^(n-1) to (10^n - 1). There are 9 * 10^(n-1) n-digit numbers (since the first digit can be 1-9 and the rest 0-9).
+
+2. **Numbers starting with 1**: The first digit is fixed as 1. The remaining (n-1) digits can be any digit from 0 to 9. So, there are 10^(n-1) such numbers.
+
+3. **Numbers ending with 1**: The last digit is fixed as 1. The first digit can be from 1 to 9 (to be n-digit) and the middle (n-2) digits can be 0-9. So, there are 9 * 10^(n-2) such numbers? Wait, actually: for the first digit (1-9) and the last digit fixed to 1, the middle (n-2) digits are free (0-9). So total is 9 * 10^(n-2). However, note that when n=1, there are no middle digits, and the first digit is also the last. So we need to be careful.
+
+   Actually, for n-digit numbers ending with 1:
+   - The last digit is 1.
+   - The first digit can be from 1 to 9 (cannot be 0).
+   - The digits in between (if any) can be 0-9.
+   So total = 9 * 10^(n-2) for n>=2. For n=1, it is just 1 (the number "1").
+
+4. **Numbers that both start and end with 1**: The first and last digits are fixed as 1. The middle (n-2) digits can be 0-9. So, there are 10^(n-2) such numbers for n>=2. For n=1, it is 1.
+
+5. Now, by inclusion-exclusion: 
+   Count = (numbers starting with 1) + (numbers ending with 1) - (numbers both starting and ending with 1)
+
+So:
+   For n>=2:
+        count = 10^(n-1) + 9 * 10^(n-2) - 10^(n-2)
+             = 10^(n-1) + 8 * 10^(n-2)
+   For n=1:
+        numbers starting with 1: 1 (only "1")
+        numbers ending with 1: 1
+        numbers both: 1
+        So count = 1 + 1 - 1 = 1.
+
+But wait, for n=1, the numbers are 1 to 9. Only "1" starts and ends with 1. So indeed 1.
+
+Alternatively, we can express for all n:
+   count

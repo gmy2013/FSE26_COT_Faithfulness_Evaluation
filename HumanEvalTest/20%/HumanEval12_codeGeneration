@@ -1,0 +1,35 @@
+20%CoT
+CodeGeneration:
+```python
+     found so far. These will be `max_length` to store the length of the longest string found, and `longest_string` to store the string itself. Both can start with initial values of `0` and `None`, respectively.
+
+3. **Iterate Through the List**:
+   - Loop through each string in the `strings` list.
+
+4. **Compare String Lengths**:
+   - For each string, check its length. If it is greater than `max_length`, update `max_length` and `longest_string` with the current string's length and the string itself.
+
+5. **Return the Result**:
+   - After finishing the loop, `longest_string` will hold the longest string from the list. Return `longest_string`.
+
+Here's the completed function:
+
+```python
+def longest(strings: List[str]) -> Optional[str]:
+    """ Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    """
+    if not strings:  # Check for empty list
+        return None
+
+    max_length = 0
+    longest_string = None
+
+    for string in strings:
+        if len(string) > max_length:
+            max_length = len(string)
+            longest_string = string
+
+    return longest_string
+```
+```

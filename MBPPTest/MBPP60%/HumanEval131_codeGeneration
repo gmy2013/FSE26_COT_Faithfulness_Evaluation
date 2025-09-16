@@ -1,0 +1,25 @@
+CodeGeneration:
+olon `:`.
+3. The modified string is then returned.
+
+Here is the complete function with the docstring:
+
+```python
+import re
+
+def replace_specialchar(text):
+    """
+    Replace all occurrences of space, comma, or period in the given text with a colon.
+    
+    Parameters:
+    text (str): The input string to process
+    
+    Returns:
+    str: The modified string with special characters replaced by colons
+    
+    Example:
+    >>> replace_specialchar("Hello, world. How are you?")
+    'Hello::world::How:are:you?'
+    """
+    return re.sub("[ ,.]", ":", text)
+```

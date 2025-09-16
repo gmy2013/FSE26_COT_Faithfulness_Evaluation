@@ -1,0 +1,23 @@
+CodeGeneration:
+ward and correct as written. Here's the complete function:
+
+```python
+def get_item(tup1, index):
+    """Return the element at the given index in the tuple.
+    
+    Args:
+        tup1 (tuple): The tuple from which to retrieve an element
+        index (int): The index of the element to retrieve
+        
+    Returns:
+        The element at the specified index in the tuple
+        
+    Example:
+        >>> get_item(('a', 'b', 'c'), 1)
+        'b'
+        >>> get_item((10, 20, 30), 0)
+        10
+    """
+    item = tup1[index]
+    return item
+```

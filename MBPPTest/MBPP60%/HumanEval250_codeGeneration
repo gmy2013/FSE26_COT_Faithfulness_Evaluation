@@ -1,0 +1,27 @@
+CodeGeneration:
+Here's the completed function with improved implementation:
+
+```python
+def Sum_of_Inverse_Divisors(N, Sum):
+    """
+    Calculate the average of divisors by dividing the sum by the count.
+    
+    Parameters:
+    N (int): The number of divisors
+    Sum (int/float): The sum of divisors
+    
+    Returns:
+    float: The average of divisors rounded to 2 decimal places
+    """
+    if N == 0:
+        raise ValueError("N cannot be zero (division by zero)")
+    
+    ans = float(Sum) / float(N)
+    return round(ans, 2)
+```
+
+Key improvements made:
+- Added proper docstring documentation
+- Added error handling for division by zero
+- Maintained the original logic of converting to float and rounding
+- Improved code readability with proper spacing and comments

@@ -1,0 +1,32 @@
+CodeGeneration:
+I'll complete the function based on the docstring and your chain of thought:
+
+```python
+def first_repeated_char(str1):
+  """
+  Identify the first repeated character in a string.
+  
+  Args:
+      str1 (str): The input string to search for repeated characters
+  
+  Returns:
+      str: The first repeated character found, or "None" if no repeats exist
+  """
+  for index, c in enumerate(str1):
+    if str1[:index+1].count(c) > 1:
+      return c 
+  return "None"
+```
+
+**Explanation of the implementation:**
+- The function iterates through each character in the string using `enumerate()` to track both the character and its index
+- For each character at position `index`, it checks if that character appears more than once in the substring from the start up to and including the current position
+- If a character is found that repeats within this substring, it returns that character immediately
+- If no repeated characters are found after checking all positions, it returns "None"
+
+**Example usage:**
+```python
+print(first_repeated_char("hello"))    # Returns 'l'
+print(first_repeated_char("python"))   # Returns "None"
+print(first_repeated_char("abracadabra"))  # Returns 'a'
+```

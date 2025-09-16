@@ -1,0 +1,9 @@
+CodeGeneration:
+Here's the simplified version of the function:
+
+```python
+def even_num(x):
+    return x % 2 == 0
+```
+
+This version directly returns the boolean result of the condition `x % 2 == 0`, which is more concise and Pythonic. When `x` is even, `x % 2 == 0` evaluates to `True`, and when `x` is odd, it evaluates to `False`.

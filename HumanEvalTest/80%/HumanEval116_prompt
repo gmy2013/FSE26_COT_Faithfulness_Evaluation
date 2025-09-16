@@ -1,0 +1,100 @@
+
+def sort_array(arr):
+    """
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    >>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+    >>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+    >>> sort_array([1, 0, 2, 3, 4]) [0, 1, 2, 3, 4]
+    """
+
+The following is chain of thought:
+First, the function needs to sort an array of integers based on two criteria:
+1. The number of ones in their binary representation (for non-negative integers, but note the example includes negative numbers).
+2. For numbers with the same number of ones, sort by their decimal value in ascending order.
+
+Looking at the examples:
+- Example 1: [1, 5, 2, 3, 4] becomes [1, 2, 3, 4, 5]. Let's check the binary:
+  1: '1' -> 1 one
+  5: '101' -> 2 ones
+  2: '10' -> 1 one
+  3: '11' -> 2 ones
+  4: '100' -> 1 one
+  So, numbers with 1 one: 1, 2, 4; with 2 ones: 5, 3.
+  Sorting by decimal within same count: 1,2,4 and 3,5. So overall: [1,2,4,3,5] but expected is [1,2,3,4,5]. Wait, that doesn't match.
+
+Wait, I think I miscounted. Actually:
+1: binary '1' -> 1 one
+2: '10' -> 1 one
+3: '11' -> 2 ones
+4: '100' -> 1 one
+5: '101' -> 2 ones
+So numbers with 1 one: 1,2,4; with 2 ones: 3,5.
+Sorting by decimal: 1,2,4 and 3,5. So [1,2,4,3,5]. But expected is [1,2,3,4,5]. This suggests that for same number of ones, we sort by decimal in ascending order, so 1,2,4 and 3,5, which gives [1,2,4,3,5]. But the expected output is [1,2,3,4,5]. This is inconsistent.
+
+Wait, the docstring says: "For similar number of ones, sort based on decimal value." So for numbers with same ones, we sort by decimal. So 1,2,4 should be sorted as 1,2,4 (which they are), and 3,5 as 3,5. So the sorted array should be [1,2,4,3,5]. But the example says it should be [1,2,3,4,5]. This is a contradiction.
+
+Perhaps I misread the example. The docstring says:
+>>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+This implies that the output is [1,2,3,4,5], which is just sorted by decimal. But that doesn't match the description.
+
+Wait, maybe the description is wrong? Or perhaps I need to consider how negative numbers are represented.
+
+Another example: 
+>>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+Negative numbers: how to count ones? Typically, negative integers are represented in two's complement. But the problem says "non-negative integers", yet the example has negatives.
+
+The docstring says: "array of non-negative integers", but the second example has negatives. This is confusing.
+
+Let me read the docstring again: "In this Kata, you have to sort an array of non-negative integers" – but the second example has negative integers. This might be a mistake in the docstring.
+
+Perhaps the function should handle negative integers as well. The second example sorts negatives in ascending decimal order: [-6,-5,-4,-3,-2], which is just sorted by value.
+
+For negative numbers, counting ones in two's complement might be tricky. But the example output suggests that for negatives, we just sort by decimal value.
+
+Similarly, the third example: [1,0,2,3,4] becomes [0,1,2,3,4]. 0 has 0 ones, which is fewer than 1 one (for 1,2,4) and 2 ones (for 3). So 0 should come first, then 1,2,4, then 3. But 3 has 2 ones, so after 1,2,4. So [0,1,2,4,3]. But expected is [0,1,2,3,4]. Again, it's sorted by decimal.
+
+This suggests that the intended behavior might be to sort primarily by the number of ones, but for numbers with the same number of ones, sort by decimal. However, the examples don't match that.
+
+Wait, perhaps the examples are wrong? Or perhaps for non-negative integers we count ones, but for negative integers we treat them differently.
+
+Another idea: maybe the function should only work for non-negative integers, and the examples with negatives are edge cases that should be handled by sorting by decimal.
+
+But the docstring includes examples with negatives.
+
+Let me check the Kata description. Since it's a Kata, it might be from Codewars, and the examples are given.
+
+Perhaps the function should:
+- For non-negative integers, sort by number of ones, then by decimal.
+- For negative integers, sort by decimal (as they have no binary representation in the same way).
+
+But in the first example, all numbers are positive, but the output is sorted by decimal, not by ones.
+
+This is confusing. Perhaps the docstring has a typo, and the first example should be [1,2,4,3,5] instead of [1,2,3,4,5].
+
+But the second example with negatives is sorted by decimal.
+
+The third example has 0, which is non-negative, and should have 0 ones, so it should come before all others.
+
+Given the inconsistency, I should follow the description: sort by number of ones (for non-negative), then by decimal. For negative numbers, since they are not non-negative, perhaps we should sort by decimal.
+
+But the function is called with negatives, so we need to handle them.
+
+How to count ones for negative integers? In Python, bin(-2) is '-0b10', which is a string with a minus sign. We can't count ones easily.
+
+Perhaps the intended behavior is to use the absolute value or something.
+
+Another thought: perhaps the function should only work for non-negative integers, and if there are negatives, it should raise an error or something. But the examples include negatives.
+
+Let's look at the second example: sort_array([-2,-3,-4,-5,-6]) returns [-6,-5,-4,-3,-2], which is sorted in ascending order.
+
+Similarly, the first example returns sorted in ascending order.
+
+So perhaps the function is supposed to sort by decimal value for all integers, ignoring the binary part? But that doesn't make sense with the description.
+
+Wait, the docstring says "It must be implemented like this:" and gives examples. So even if the description is worded poorly, we should make the function match the examples.
+
+So from the

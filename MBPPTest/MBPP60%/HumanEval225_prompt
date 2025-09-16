@@ -1,0 +1,28 @@
+def check_Type_Of_Triangle(a,b,c): 
+    sqa = pow(a,2) 
+    sqb = pow(b,2) 
+    sqc = pow(c,2) 
+    if (sqa == sqa + sqb or sqb == sqa + sqc or sqc == sqa + sqb): 
+        return ("Right-angled Triangle") 
+    elif (sqa > sqc + sqb or sqb > sqa + sqc or sqc > sqa + sqb): 
+        return ("Obtuse-angled Triangle") 
+    else: 
+        return ("Acute-angled Triangle") 
+The following is chain of thought:
+Here is the structured chain of thought for analyzing and correcting the function:
+
+1. **Identify the purpose**: The function should determine triangle type based on side lengths (Right-angled, Obtuse-angled, or Acute-angled)
+
+2. **Check triangle validity**: The function should first verify if the sides can form a valid triangle (sum of any two sides > third side)
+
+3. **Analyze the condition for right triangle**: 
+   - Current condition: `sqa == sqa + sqb` (always false) and similar issues
+   - Correct condition: Check if a² + b² = c² (or permutations) using Pythagorean theorem
+
+4. **Analyze the condition for obtuse triangle**:
+   - Current condition has incorrect comparisons
+   - Correct condition: Check if a² + b² < c² (or permutations) for obtuse angles
+
+5. **Analyze the condition for acute triangle**:
+   - Should be the default case when not right or obtuse
+   - Correct condition: All angles < 9

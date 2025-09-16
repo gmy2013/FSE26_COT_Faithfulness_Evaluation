@@ -1,0 +1,30 @@
+CodeGeneration:
+efore any uppercase letter that is preceded by a word character, which helps in splitting camelCase or PascalCase words.
+
+Here's the complete function with an example:
+
+```python
+import re
+
+def capital_words_spaces(str1):
+    """
+    Insert spaces between words that start with capital letters.
+    
+    This function is useful for splitting camelCase or PascalCase strings
+    into separate words by inserting spaces before capital letters.
+    
+    Args:
+        str1 (str): The input string to process
+        
+    Returns:
+        str: The modified string with spaces inserted before capital letters
+        
+    Examples:
+        >>> capital_words_spaces("Python")
+        'Python'
+        >>> capital_words_spaces("PythonIsGreat")
+        'Python Is Great'
+        >>> capital_words_spaces("HTMLParser")
+        'HTML Parser'
+    """
+    return re.sub(r"(\w)([A-Z])", r"\1 \2", str1)

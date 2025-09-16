@@ -1,0 +1,13 @@
+def check_K(test_tup, K):
+  res = False
+  for ele in test_tup:
+    if ele == K:
+      res = True
+      break
+  return (res) 
+The following is chain of thought:
+1. The function `check_K` takes two parameters: `test_tup` (a tuple) and `K` (a value to check for).
+2. Initialize a variable `res` to `False`, assuming `K` is not found initially.
+3. Iterate through each element `ele` in the tuple `test_tup`.
+4. For each element, check if it equals `K`.
+5. If found, set `res` to `True` and break out of the loop early (since no need to che

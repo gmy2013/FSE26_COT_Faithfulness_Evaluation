@@ -1,0 +1,31 @@
+CodeGeneration:
+ry and then to a string representation.
+6. Return the string representation of the frequency dictionary.
+
+Here is the complete function:
+
+```python
+from collections import defaultdict
+
+def freq_element(test_tup):
+    """
+    Count the frequency of each element in the given tuple.
+    
+    Args:
+        test_tup (tuple): Input tuple containing elements to count
+    
+    Returns:
+        str: String representation of a dictionary where keys are elements
+             and values are their frequencies in the tuple
+    """
+    res = defaultdict(int)
+    for ele in test_tup:
+        res[ele] += 1
+    return str(dict(res))
+```
+
+Example usage:
+```python
+print(freq_element((1, 2, 3, 2, 1, 1, 4)))  # Output: "{1: 3, 2: 2, 3: 1, 4: 1}"
+print(freq_element(('a', 'b', 'a', 'c', 'b', 'a')))  # Output: "{'a': 3, 'b': 2, 'c': 1}"
+```

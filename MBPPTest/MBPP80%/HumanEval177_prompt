@@ -1,0 +1,10 @@
+from itertools import groupby
+def pack_consecutive_duplicates(list1):
+    return [list(group) for key, group in groupby(list1)]
+The following is chain of thought:
+1. The function `pack_consecutive_duplicates` takes a list `list1` as input.
+2. It uses `itertools.groupby` to group consecutive identical elements in `list1`.
+3. `groupby` returns an iterator yielding tuples `(key, group)` where `key` is the unique element and `group` is an iterator of consecutive duplicates.
+4. For each tuple, the group iterator is converted to a list using `list(group)`.
+5. A list comprehension collects all these group lists into a new list.
+6

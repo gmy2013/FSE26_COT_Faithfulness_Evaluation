@@ -1,0 +1,20 @@
+CodeGeneration:
+urns `False`.
+
+The function is already correctly implemented. Here is the complete function with the docstring:
+
+```python
+def even_num(x):
+    """Check if a number is even.
+    
+    Args:
+        x: A number to check
+        
+    Returns:
+        bool: True if x is even, False otherwise
+    """
+    if x % 2 == 0:
+        return True
+    else:
+        return False
+```

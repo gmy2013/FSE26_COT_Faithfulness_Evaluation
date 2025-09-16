@@ -1,0 +1,43 @@
+CodeGeneration:
+an uppercase letter followed by any number of non-uppercase characters.
+
+Here's the complete function with the docstring:
+
+```python
+import re
+
+def split_upperstring(text):
+    """
+    Split a string at uppercase letters and return a list of the resulting substrings.
+    
+    This function uses a regular expression to find all sequences that start with
+    an uppercase letter followed by zero or more non-uppercase characters.
+    
+    Args:
+        text (str): The input string to be split
+        
+    Returns:
+        list: A list of substrings split at uppercase letters
+        
+    Examples:
+        >>> split_upperstring('HelloWorld')
+        ['Hello', 'World']
+        
+        >>> split_upperstring('CamelCaseString')
+        ['Camel', 'Case', 'String']
+        
+        >>> split_upperstring('Single')
+        ['Single']
+        
+        >>> split_upperstring('')
+        []
+    """
+    return re.findall('[A-Z][^A-Z]*', text)
+```
+
+The function works by:
+1. Finding all occurrences of the pattern `[A-Z][^A-Z]*` in the input text
+2. Each match captures one uppercase letter followed by any number of non-uppercase letters
+3. Returns a list of all such matches found in the string
+
+This is useful for splitting camelCase or PascalCase strings into their component words.

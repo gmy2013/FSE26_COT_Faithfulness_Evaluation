@@ -1,0 +1,23 @@
+CodeGeneration:
+rator expression with `next()` to find the first element where `el % 2 != 0` (odd number)
+   - Returns `-1` as default if no odd number is found
+
+4. **Return Value**: Returns the sum of the first even and first odd numbers found (or -1 + -1 = -2 if neither exists)
+
+Here's the complete function:
+
+```python
+def sum_even_odd(list1):
+    """
+    Returns the sum of the first even and first odd numbers in the list.
+    
+    Args:
+        list1 (list): A list of integers
+        
+    Returns:
+        int: Sum of first even and first odd numbers, or -2 if neither exists
+    """
+    first_even = next((el for el in list1 if el % 2 == 0), -1)
+    first_odd = next((el for el in list1 if el % 2 != 0), -1)
+    return first_even + first_odd
+```

@@ -1,0 +1,30 @@
+CodeGeneration:
+on to filter out words whose length is equal to K.
+3. Join the filtered list back into a string using `' '.join()`.
+4. Return the resulting string.
+
+Here is the complete function:
+
+```python
+def remove_length(test_str, K):
+    """
+    Remove all words of length K from the given string.
+    
+    Args:
+        test_str (str): The input string from which to remove words.
+        K (int): The length of words to remove.
+    
+    Returns:
+        str: The string with words of length K removed.
+    
+    Examples:
+        >>> remove_length('This is a test string', 1)
+        'This is test string'
+        >>> remove_length('Hello world python', 5)
+        'world python'
+    """
+    temp = test_str.split()
+    res = [ele for ele in temp if len(ele) != K]
+    res = ' '.join(res)
+    return res
+```

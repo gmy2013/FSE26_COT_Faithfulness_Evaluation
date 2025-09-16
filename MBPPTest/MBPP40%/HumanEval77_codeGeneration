@@ -1,0 +1,28 @@
+CodeGeneration:
+with empty strings, effectively removing them
+3. The modified string is then returned
+
+Here is the complete function:
+
+```python
+def remove_spaces(str1):
+    """
+    Remove all spaces from the given string.
+    
+    Args:
+        str1 (str): The input string containing spaces
+        
+    Returns:
+        str: The input string with all spaces removed
+        
+    Examples:
+        >>> remove_spaces('hello world')
+        'helloworld'
+        >>> remove_spaces('  multiple   spaces  ')
+        'multiplespaces'
+        >>> remove_spaces('no_spaces_here')
+        'no_spaces_here'
+    """
+    str1 = str1.replace(' ','')
+    return str1
+```

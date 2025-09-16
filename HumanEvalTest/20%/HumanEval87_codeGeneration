@@ -1,0 +1,17 @@
+20%CoT
+CodeGeneration:
+ach element (with index j) in that row.
+ 4. If the element equals `x`, add the coordinate (i, j) to the result.
+ 5. After collecting all coordinates, sort the list first by row (ascending) and then by column (descending).
+
+ Let's implement accordingly.
+```python
+def get_row(lst, x):
+    result = []
+    for i, row in enumerate(lst):
+        for j, value in enumerate(row):
+            if value == x:
+                result.append((i, j))
+    result.sort(key=lambda coord: (coord[0], -coord[1]))
+    return result
+```

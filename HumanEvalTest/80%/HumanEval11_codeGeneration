@@ -1,0 +1,58 @@
+CodeGeneration:
+Here's the implementation using character-by-character XOR with padding and leading zero handling:
+
+```python
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+    n = max(len(a), len(b))
+    a_padded = a.zfill(n)
+    b_padded = b.zfill(n)
+    
+    result_chars = []
+    for i in range(n):
+        if a_padded[i] == b_padded[i]:
+            result_chars.append('0')
+        else:
+            result_chars.append('1')
+    
+    result_str = ''.join(result_chars)
+    
+    # Remove leading zeros, but keep at least one zero if result is all zeros
+    result_str = result_str.lstrip('0')
+    if not result_str:  # If we stripped all zeros
+        return '0'
+    return result_str
+```
+
+Alternative implementation using integer conversion (more concise but potentially less efficient for very long strings):
+
+```python
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+    a_int = int(a, 2) if a else 0
+    b_int = int(b, 2) if b else 0
+    result_int = a_int ^ b_int
+    return bin(result_int)[2:]
+```
+
+Both implementations handle:
+- Strings of different lengths by effectively padding with zeros
+- Leading zeros in the result (removing them while preserving at least one zero)
+- The example case correctly
+- Empty strings (treated as '0')
+
+The character-by-character approach is more memory efficient for very long strings, while the integer conversion approach is more concise and readable for most practical cases.

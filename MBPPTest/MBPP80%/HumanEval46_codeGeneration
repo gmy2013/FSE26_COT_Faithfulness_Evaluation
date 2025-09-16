@@ -1,0 +1,36 @@
+CodeGeneration:
+rld', 'Python'].
+
+However, note that the pattern does not handle consecutive uppercase letters correctly (e.g., "HELLO" would be split into ['H', 'E', 'L', 'L', 'O']). If you want to split camelCase strings while keeping consecutive uppercase letters together (e.g., "XMLHttpRequest" should become ['XML', 'Http', 'Request']), you might need a different approach.
+
+Here is an improved version that handles consecutive uppercase letters:
+
+```python
+import re
+
+def split_upperstring(text):
+    """
+    Split a camelCase or PascalCase string into words.
+    
+    Args:
+        text (str): The input string to split.
+    
+    Returns:
+        list: A list of words split from the input string.
+    
+    Examples:
+        >>> split_upperstring("HelloWorld")
+        ['Hello', 'World']
+        >>> split_upperstring("XMLHttpRequest") 
+        ['XML', 'Http', 'Request']
+        >>> split_upperstring("camelCase")
+        ['camel', 'Case']
+    """
+    return re.findall('[A-Z][a-z]*|[a-z]+', text)
+```
+
+This improved pattern `'[A-Z][a-z]*|[a-z]+'` matches either:
+- An uppercase letter followed by zero or more lowercase letters, OR
+- One or more lowercase letters
+
+This handles both camelCase and PascalCase strings more effectively.

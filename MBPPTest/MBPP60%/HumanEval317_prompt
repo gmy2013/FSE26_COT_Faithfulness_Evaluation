@@ -1,0 +1,24 @@
+def coin_change(S, m, n): 
+    table = [[0 for x in range(m)] for x in range(n+1)] 
+    for i in range(m): 
+        table[0][i] = 1
+    for i in range(1, n+1): 
+        for j in range(m): 
+            x = table[i - S[j]][j] if i-S[j] >= 0 else 0
+            y = table[i][j-1] if j >= 1 else 0 
+            table[i][j] = x + y   
+    return table[n][m-1] 
+The following is chain of thought:
+Here's the structured chain of thought for the coin_change function:
+
+1. **Problem Analysis**: This function solves the coin change problem using dynamic programming to count the number of ways to make change for amount 'n' using coins from set 'S' of size 'm'
+
+2. **Table Initialization**: 
+   - Create a 2D DP table with dimensions (n+1) × m
+   - Initialize first row (amount 0) to 1 since there's exactly 1 way to make change for 0 (using no coins)
+
+3. **DP Table Population**:
+   - Outer loop: Iterate through all amounts from 1 to n
+   - Inner loop: Iterate through all coin denominations
+   - For each cell table[i][j]:
+     - x = number of ways using coin

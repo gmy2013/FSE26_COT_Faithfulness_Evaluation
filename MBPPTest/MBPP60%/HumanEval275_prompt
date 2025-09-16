@@ -1,0 +1,22 @@
+def lcm(x, y):
+   if x > y:
+       z = x
+   else:
+       z = y
+   while(True):
+       if((z % x == 0) and (z % y == 0)):
+           lcm = z
+           break
+       z += 1
+   return lcm
+The following is chain of thought:
+1. **Understand the LCM calculation**: The LCM of two numbers is the smallest positive integer that is divisible by both numbers.
+2. **Analyze the current approach**: 
+   - The code finds the larger of the two numbers to start the search
+   - It then increments this value until it finds a number divisible by both inputs
+   - This brute-force method is inefficient for large numbers
+3. **Identify optimization opportunity**: 
+   - LCM can be calculated using the formula: LCM(a, b) = |a * b| / GCD(a, b)
+   - This is much more efficient than the linear search approach
+4. **Plan the improved implementation**:
+   - First implement a GCD function (u

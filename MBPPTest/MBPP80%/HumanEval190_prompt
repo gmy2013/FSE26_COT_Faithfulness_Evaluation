@@ -1,0 +1,32 @@
+def remove_nested(test_tup):
+  res = tuple()
+  for count, ele in enumerate(test_tup):
+    if not isinstance(ele, tuple):
+      res = res + (ele, )
+  return (res) 
+The following is chain of thought:
+Here is the structured chain of thought for analyzing and improving the given function:
+
+1. **Function Purpose Analysis**: The function `remove_nested` aims to remove nested tuples from the input tuple `test_tup` and return a new tuple containing only non-tuple elements.
+
+2. **Current Implementation Review**: 
+   - The function initializes an empty tuple `res`
+   - It iterates through each element in `test_tup` using `enumerate()`
+   - It checks if each element is not a tuple using `isinstance(ele, tuple)`
+   - Non-tuple elements are added to the result tuple
+   - The result tuple is returned
+
+3. **Issue Identification**: 
+   - The `enumerate()` function is unnecessary since the index `count` is never used
+   - This creates inefficient code as enumerate generates index-value pairs that aren't needed
+
+4. **Optimization Opportunity**: 
+   - Remove the `enumerate()` call since we only need the elements, not their indices
+   - Iterate directly over the tuple elements without generating index pairs
+
+5. **Improved Implementation**:
+   - Change the loop to `for ele in test_tup:` instead of `for count, ele in enumerate(test_tup):`
+   - This maintains the same functionality while improving efficiency
+
+6. **Alternative Approaches Considered**:
+   - A tuple comprehension could be used: `tup

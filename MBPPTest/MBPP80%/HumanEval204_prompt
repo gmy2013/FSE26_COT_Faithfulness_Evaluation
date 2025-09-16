@@ -1,0 +1,8 @@
+def max_sum_list(lists):
+ return max(lists, key=sum)
+The following is chain of thought:
+1. The function `max_sum_list` takes a list of lists as input.
+2. It needs to return the sublist with the maximum sum of its elements.
+3. The `max` function can take a `key` parameter to specify how to compare elements.
+4. Using `key=sum` tells `max` to compute the sum of each sublist and compare those sums.
+5. The sublist with the highest sum wil

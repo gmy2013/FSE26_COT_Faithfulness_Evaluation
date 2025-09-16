@@ -1,0 +1,39 @@
+CodeGeneration:
+Here's the implementation based on your chain of thought:
+
+```python
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "(" and ")".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("(")
+    False
+    >>> correct_bracketing("()")
+    True
+    >>> correct_bracketing("(()())")
+    True
+    >>> correct_bracketing(")(()")
+    False
+    """
+    count = 0
+    for char in brackets:
+        if char == '(':
+            count += 1
+        else:  # char == ')'
+            count -= 1
+        if count < 0:
+            return False
+    return count == 0
+```
+
+This implementation follows your algorithm exactly:
+1. Initialize a counter to 0
+2. For each character: increment for '(', decrement for ')'
+3. Return False immediately if counter becomes negative (more closing than opening)
+4. Return True only if counter ends at 0 (balanced)
+
+The algorithm correctly handles all the test cases:
+- "(" → count=1 → False
+- "()" → count=1 then 0 → True
+- "(()())" → properly balanced → True
+- ")(()" → count becomes -1 immediately → False

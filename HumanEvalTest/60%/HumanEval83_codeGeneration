@@ -1,0 +1,16 @@
+CodeGeneration:
+Let's implement the function based on the chain of thought:
+
+```python
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+    if n == 1:
+        return 1
+    else:
+        return 10**(n-1) + 8 * 10**(n-2)
+```
+
+This implementation handles the case for n=1 separately (where the count is 1) and uses the derived formula for n>=2: \(10^{n-1} + 8 \cdot 10^{n-2}\).

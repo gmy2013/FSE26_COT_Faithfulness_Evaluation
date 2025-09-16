@@ -1,0 +1,32 @@
+20%CoT
+CodeGeneration:
+count of lowercase letters).
+2. We'll iterate through each extension in the list and calculate its strength.
+3. We need to keep track of the strongest extension found so far, and if multiple have the same strength, choose the first one.
+4. Finally, return the result in the format "ClassName.StrongestExtensionName".
+
+Here is the implementation:
+
+```python
+def Strongest_Extension(class_name, extensions):
+    strongest_extension = None
+    max_strength = float('-inf')
+    
+    for ext in extensions:
+        cap = sum(1 for char in ext if char.isupper())
+        sm = sum(1 for char in ext if char.islower())
+        strength = cap - sm
+        
+        if strength > max_strength:
+            max_strength = strength
+            strongest_extension = ext
+    
+    return f"{class_name}.{strongest_extension}"
+```
+
+Let me test it with the provided example:
+- For 'SErviNGSliCes': CAP = 6 (S,E,N,G,S,C), SM = 7 (r,v,i,i,l,i,e) → strength = 6-7 = -1
+- For 'Cheese': CAP = 1 (C), SM = 5 (h,e,e,s,e) → strength = 1-5 = -4
+- For 'StuFfed': CAP = 2 (S,F), SM = 5 (t,u,e,d) → strength = 2-5 = -3
+
+So 'SErviNGSliCes' with strength -1 is indeed the strongest.

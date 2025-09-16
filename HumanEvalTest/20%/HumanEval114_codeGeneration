@@ -1,0 +1,33 @@
+20%CoT
+CodeGeneration:
+To complete the function `minSubArraySum`, we can use a variation of Kadane's algorithm, which is typically used to find the maximum sum of a sub-array. Instead of finding the maximum sum, we will adapt the algorithm to find the minimum sum.
+
+Here is how we can do it:
+
+1. Initialize two variables: `current_min` and `global_min`. Both are set to the first element of the array.
+2. Iterate through the array starting from the second element.
+3. For each element, update `current_min` to be the minimum of the current element itself or the sum of `current_min` and the current element.
+4. Update `global_min` to be the minimum of `global_min` and `current_min`.
+
+Let's implement this:
+
+```python
+def minSubArraySum(nums):
+    """
+    Given an array of integers nums, find the minimum sum of any non-empty sub-array
+    of nums.
+    Example
+    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    minSubArraySum([-1, -2, -3]) == -6
+    """
+    if not nums:
+        return 0
+
+    current_min = global_min = nums[0]
+
+    for num in nums[1:]:
+        current_min = min(num, current_min + num)
+        global_min = min(global_min, current_min)
+
+    return global_min
+```

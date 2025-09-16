@@ -1,0 +1,17 @@
+def remove_nested(test_tup):
+  res = tuple()
+  for count, ele in enumerate(test_tup):
+    if not isinstance(ele, tuple):
+      res = res + (ele, )
+  return (res) 
+The following is chain of thought:
+Let me analyze the function step by step:
+
+1. The function takes a tuple `test_tup` as input
+2. It initializes an empty tuple `res` to store the result
+3. It iterates through each element in `test_tup` using `enumerate` (though the index `count` is not used)
+4. For each element, it checks if it's NOT a tuple using `isinstance(ele, tuple)`
+5. If the element is not a tuple, it adds it to the result tuple
+6. Finally, it returns the result tuple
+
+The function removes all nested tuples from the inpu

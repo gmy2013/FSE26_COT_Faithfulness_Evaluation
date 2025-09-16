@@ -1,0 +1,42 @@
+def sum_Natural(n): 
+    sum = (n * (n + 1)) 
+    return int(sum) 
+def sum_Even(l,r): 
+    return (sum_Natural(int(r / 2)) - sum_Natural(int((l - 1) / 2))) 
+The following is chain of thought:
+1. The function `sum_Natural(n)` calculates the sum of the first n natural numbers using the formula n*(n+1)/2.
+   - However, the implementation incorrectly uses `(n * (n + 1))` without dividing by 2.
+   - This needs to be corrected to `(n * (n + 1)) / 2` for the formula to be accurate.
+
+2. The function `sum_Even(l, r)` calculates the sum of even numbers between l and r (inclusive).
+   - It uses `sum_Natural` to compute the sum of even numbers up to r and subtracts the sum of even numbers up to l-1.
+   - The number of even numbers up to x is floor(x/2). The sum of the first k even numbers is k*(k+1).
+   - Therefore, `sum_Natural(int(r/2))` should give the sum of even numbers up to r (if `sum_Natural` is correct).
+   - Similarly, `sum_Natural(int((l-1)/2))` gives the sum of even numbers up to l-1.
+
+3. Correction needed in `sum_Natural`: The formula should include division by 2.
+   - Change `sum = (n * (n + 1))` to `sum = (n * (n + 1)) / 2`.
+
+4. The return value of `sum_Natural` should be an integer, so we use `int()` to convert, but since the division by 2 might produce a float, we should ensure integer conversion only after the correct calculation.
+
+5. Alternatively, we can use integer arithmetic to avoid floating point issues: `n*(n+1)//2`.
+
+6. Therefore, the corrected `sum_Natural` function should be:
+   `def sum_Natural(n): return n*(n+1)//2`
+
+7. The `sum_Even` function then correctly computes:
+   - Number of even numbers up to r: k1 = r//2
+   - Number of even numbers up to l-1: k2 = (l-1)//2
+   - Sum of even numbers from 1 to r: k1*(k1+1)
+   - Sum of even numbers from 1 to l-1: k2*(k2+1)
+   - So the difference is the sum of evens between l and r.
+
+8. However, note that `sum_Natural(k)` returns the sum of first k natural numbers, which is k(k+1)/2.
+   - But the sum of the first k even numbers is k(k+1) [since 2+4+...+2k = 2*(1+2+...+k) = 2*(k(k+1)/2)=k(k+1)].
+   - So actually, `sum_Natural(k)` returns k(k+1)/2, but we need k(k+1) for the sum of evens.
+
+9. This indicates an error in the approach: `sum_Even` should not use `sum_Natural` directly.
+   - Instead, we should compute the sum of evens up to n as: (number of evens) * (number of evens + 1) = (n//2) * (n//2 + 1).
+   - Or, using the corrected `sum_Natural`: the sum of evens up to n is 2 * sum_Natural(n//2).
+
+10. Alternatively, we can define a helper function for the sum of the f

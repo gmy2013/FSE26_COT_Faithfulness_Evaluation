@@ -1,0 +1,42 @@
+CodeGeneration:
+it with `prodEven`.
+   - Remove that digit by integer division.
+6. After processing all digits, compare `prodOdd` and `prodEven`. If equal, return `True`; otherwise, `False`.
+
+However, note that the current implementation considers positions starting from the right (least significant digit as position 1, which is odd). If the requirement is to consider positions from the left (most significant digit as position 1), the function would need to be adjusted. But based on the given code, it processes from right to left.
+
+Let me verify with an example: n = 1221
+- Rightmost digit (odd): 1 -> prodOdd = 1
+- Remove digit: n becomes 122
+- Next digit (even): 2 -> prodEven = 2
+- Remove digit: n becomes 12
+- Next digit (odd): 2 -> prodOdd = 1*2 = 2
+- Remove digit: n becomes 1
+- Next digit (even): 1 -> prodEven = 2*1 = 2
+- Remove digit: n becomes 0
+- Compare: prodOdd (2) == prodEven (2) -> True
+
+This matches since 1*2 (digits at positions 1 and 3 from right) equals 2*1 (digits at positions 2 and 4 from right).
+
+The code is correct as per the described logic.
+
+Here is the complete function:
+
+```python
+def product_Equal(n): 
+    if n < 10: 
+        return False
+    prodOdd = 1; prodEven = 1
+    while n > 0: 
+        digit = n % 10
+        prodOdd *= digit 
+        n = n//10
+        if n == 0: 
+            break; 
+        digit = n % 10
+        prodEven *= digit 
+        n = n//10
+    if prodOdd == prodEven: 
+        return True
+    return False
+```

@@ -1,0 +1,48 @@
+CodeGeneration:
+```python
+def binomial_coeffi(n, k):
+    """
+    Compute the binomial coefficient C(n, k) recursively.
+
+    Args:
+        n (int): Total number of items.
+        k (int): Number of items to choose.
+
+    Returns:
+        int: The binomial coefficient C(n, k).
+    """
+    if (k == 0 or k == n):
+        return 1
+    return (binomial_coeffi(n - 1, k - 1) 
+        + binomial_coeffi(n - 1, k))
+
+def rencontres_number(n, m):
+    """
+    Compute the Rencontres number D(n, m) recursively.
+
+    The Rencontres number D(n, m) counts the number of permutations of n elements
+    with exactly m fixed points (elements that remain in their original position).
+
+    Args:
+        n (int): Total number of elements.
+        m (int): Number of fixed points.
+
+    Returns:
+        int: The Rencontres number D(n, m).
+
+    Examples:
+        >>> rencontres_number(4, 0)
+        9
+        >>> rencontres_number(4, 1)
+        8
+        >>> rencontres_number(4, 2)
+        6
+    """
+    if (n == 0 and m == 0):
+        return 1
+    if (n == 1 and m == 0):
+        return 0
+    if (m == 0):
+        return ((n - 1) * (rencontres_number(n - 1, 0) + rencontres_number(n - 2, 0)))
+    return (binomial_coeffi(n, m) * rencontres_number(n - m, 0))
+```

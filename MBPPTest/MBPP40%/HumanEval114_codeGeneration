@@ -1,0 +1,12 @@
+CodeGeneration:
+ist of string elements.
+3. Each element is converted to an integer using `map(int, ...)`.
+4. The resulting integers are converted to a tuple and returned.
+
+The provided code already correctly implements this logic. Here's the complete function:
+
+```python
+def str_to_tuple(test_str):
+    res = tuple(map(int, test_str.split(', ')))
+    return res
+```

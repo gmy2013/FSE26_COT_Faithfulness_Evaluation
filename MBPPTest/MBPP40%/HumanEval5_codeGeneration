@@ -1,0 +1,23 @@
+CodeGeneration:
+= degree * (π / 180)
+3. We use math.pi to represent π
+4. Calculate the result and return it
+
+Here's the complete function:
+
+```python
+import math
+
+def radian_degree(degree):
+    """
+    Convert degrees to radians.
+    
+    Args:
+        degree (float): Angle in degrees
+    
+    Returns:
+        float: Angle in radians
+    """
+    radian = degree * (math.pi / 180)
+    return radian
+```

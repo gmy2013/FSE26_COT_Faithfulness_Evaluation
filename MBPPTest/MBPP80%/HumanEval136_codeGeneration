@@ -1,0 +1,26 @@
+CodeGeneration:
+found, it returns "Invalid".
+
+Here is the complete function with the docstring:
+
+```python
+import re 
+
+regex = '^[aeiouAEIOU][A-Za-z0-9_]*'
+
+def check_str(string):
+    """
+    Check if a string starts with a vowel (case-insensitive) and is followed by 
+    zero or more alphanumeric characters or underscores.
+    
+    Args:
+        string (str): The input string to check
+        
+    Returns:
+        str: "Valid" if the string matches the pattern, "Invalid" otherwise
+    """
+    if(re.search(regex, string)): 
+        return ("Valid") 
+    else: 
+        return ("Invalid")
+```

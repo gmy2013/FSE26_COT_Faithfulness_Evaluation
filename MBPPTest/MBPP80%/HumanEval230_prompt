@@ -1,0 +1,16 @@
+def count_Pairs(arr,n): 
+    cnt = 0; 
+    for i in range(n): 
+        for j in range(i + 1,n): 
+            if (arr[i] == arr[j]): 
+                cnt += 1; 
+    return cnt; 
+The following is chain of thought:
+1. The function `count_Pairs` takes an array `arr` and its length `n` as input.
+2. Initialize a counter `cnt` to 0 to keep track of the number of pairs.
+3. Use a nested loop structure:
+   - Outer loop iterates from index `i = 0` to `n-1`.
+   - Inner loop iterates from index `j = i+1` to `n-1` to avoid duplicate pairs and self-comparison.
+4. For each pair (i, j), check if `arr[i]` equals `arr[j]`.
+5. If they are equal, increment the counter `cnt` by 1.
+6. After processi

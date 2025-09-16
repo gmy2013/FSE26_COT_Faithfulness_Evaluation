@@ -1,0 +1,8 @@
+import collections as ct
+def merge_dictionaries(dict1,dict2):
+    merged_dict = dict(ct.ChainMap({}, dict1, dict2))
+    return merged_dict
+The following is chain of thought:
+1. The function `merge_dictionaries` takes two dictionaries as input.
+2. It uses `collections.ChainMap` to create a single view of multiple dictionaries.
+3. The `ChainMap` is constructed with an empty

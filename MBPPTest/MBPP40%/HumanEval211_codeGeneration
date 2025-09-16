@@ -1,0 +1,24 @@
+CodeGeneration:
+```python
+import re
+
+def road_rd(street):
+    """
+    Replace 'Road' at the end of a street name with 'Rd.'.
+    
+    Args:
+        street (str): The street name to be processed.
+    
+    Returns:
+        str: The street name with 'Road' replaced by 'Rd.' if it appears at the end.
+    
+    Examples:
+        >>> road_rd('Main Road')
+        'Main Rd.'
+        >>> road_rd('Broadway')
+        'Broadway'
+        >>> road_rd('Park Road Avenue')
+        'Park Road Avenue'
+    """
+    return re.sub('Road$', 'Rd.', street)
+```

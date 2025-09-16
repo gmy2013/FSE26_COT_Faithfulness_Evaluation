@@ -1,0 +1,27 @@
+CodeGeneration:
+ces the tuple from `idx` to `idx+2`, creating a tuple of two elements (key and value).
+6. The `dict()` constructor then uses these pairs to build the dictionary.
+7. Finally, the dictionary is returned.
+
+Here is the complete function with the docstring:
+
+```python
+def tuple_to_dict(test_tup):
+    """
+    Convert a tuple into a dictionary by grouping elements into key-value pairs.
+    
+    Args:
+        test_tup (tuple): Input tuple containing elements to be converted to key-value pairs.
+                          The tuple should have an even number of elements.
+    
+    Returns:
+        dict: A dictionary where elements at even indices become keys and elements at 
+              odd indices become their corresponding values.
+    
+    Example:
+        >>> tuple_to_dict(('a', 1, 'b', 2, 'c', 3))
+        {'a': 1, 'b': 2, 'c': 3}
+    """
+    res = dict(test_tup[idx : idx + 2] for idx in range(0, len(test_tup), 2))
+    return res
+```

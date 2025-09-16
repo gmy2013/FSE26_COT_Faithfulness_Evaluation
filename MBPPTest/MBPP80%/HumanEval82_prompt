@@ -1,0 +1,28 @@
+def sum_Square(n) : 
+    i = 1 
+    while i*i <= n : 
+        j = 1
+        while (j*j <= n) : 
+            if (i*i+j*j == n) : 
+                return True
+            j = j+1
+        i = i+1     
+    return False
+The following is chain of thought:
+Here is the structured chain of thought for the sum_Square function:
+
+1. **Function Purpose**: Determine if a given number n can be expressed as the sum of two perfect squares (i² + j² = n)
+
+2. **Initialization**: Start with i = 1 to begin checking from the smallest perfect square
+
+3. **Outer Loop**: While i² ≤ n (ensuring we don't check squares larger than n)
+   - Initialize j = 1 for the inner square
+   - **Inner Loop**: While j² ≤ n
+     - Check if i² + j² equals n
+     - If found, immediately return True (early termination)
+     - Increment j to check next square
+   - Increment i to check next square
+
+4. **Termination**: If no pair (i, j) is found after checking all possible combinations where both i² ≤ n and j² ≤ n, return False
+
+5. **Time Complexity**: O(n) - both loops run up to √n, resulting in O(√n × √n)

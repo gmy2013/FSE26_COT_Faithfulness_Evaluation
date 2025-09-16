@@ -1,0 +1,20 @@
+
+def iscube(a):
+    '''
+    Write a function that takes an integer a and returns True 
+    if this ingeger is a cube of some integer number.
+    Note: you may assume the input is always valid.
+    Examples:
+    iscube(1) ==> True
+    iscube(2) ==> False
+    iscube(-1) ==> True
+    iscube(64) ==> True
+    iscube(0) ==> True
+    iscube(180) ==> False
+    '''
+
+The following is chain of thought:
+To determine if an integer `a` is a cube of some integer number, we need to follow these steps:
+
+1. **Handle the Special Case for Zero**: If `a` is zero, it is a cube (0^3 = 0), so return `True`.
+2. **Calculate the Cube Root**: Compute the cube root of `a`. For negative numbers, we need to ensure the c

@@ -1,0 +1,41 @@
+CodeGeneration:
+is exhausted.
+6. Compare the current arrival time (`arr[i]`) with the current departure time (`dep[j]`):
+   - If arrival time is less than or equal to departure time, it means a new train arrives before the previous one departs, so increment `plat_needed` and move to the next arrival.
+   - Otherwise, a train has departed, so decrement `plat_needed` and move to the next departure.
+7. Update `result` to the maximum value of `plat_needed` encountered during the process.
+8. Return `result` which represents the minimum number of platforms required.
+
+Here is the complete function with the docstring:
+
+```python
+def find_platform(arr, dep, n):
+    """
+    Finds the minimum number of platforms required for a railway station
+    so that no train waits, given arrival and departure times of all trains.
+    
+    Args:
+        arr: List of arrival times of trains
+        dep: List of departure times of trains
+        n: Number of trains (length of arr/dep lists)
+    
+    Returns:
+        Minimum number of platforms required
+    """
+    arr.sort() 
+    dep.sort() 
+    plat_needed = 1
+    result = 1
+    i = 1
+    j = 0
+    while (i < n and j < n): 
+        if (arr[i] <= dep[j]):           
+            plat_needed += 1
+            i += 1
+        elif (arr[i] > dep[j]):           
+            plat_needed -= 1
+            j += 1
+        if (plat_needed > result):  
+            result = plat_needed           
+    return result
+```

@@ -1,0 +1,41 @@
+CodeGeneration:
+Here's the complete function with the corrected chain of thought:
+
+```python
+def check_Odd_Parity(x):
+    """
+    Check if a number has odd parity (odd number of 1-bits in its binary representation).
+    
+    Args:
+        x (int): The number to check for odd parity
+        
+    Returns:
+        bool: True if the number has odd parity, False otherwise
+    """
+    parity = 0
+    while (x != 0):
+        x = x & (x - 1)
+        parity += 1
+    if (parity % 2 == 1):
+        return True
+    else:
+        return False
+```
+
+**Complete Chain of Thought:**
+
+1. **Function Purpose**: The function checks if a number has odd parity (odd number of 1-bits in its binary representation)
+
+2. **Initialization**: 
+   - `parity = 0` - counter to track the number of 1-bits
+
+3. **Bit Counting Loop**:
+   - `while (x != 0)` - continues until all bits are processed
+   - `x = x & (x - 1)` - clever bit manipulation that clears the least significant set bit
+   - `parity += 1` - increments the counter each time a 1-bit is found
+
+4. **Parity Check**:
+   - `if (parity % 2 == 1)` - checks if the total count of 1-bits is odd
+   - Returns `True` for odd parity, `False` for even parity
+
+This implementation efficiently counts the number of set bits using Brian Kernighan's algorithm, which has a time complexity of O(k) where k is the number of set bits, making it more efficient than checking each bit individually.

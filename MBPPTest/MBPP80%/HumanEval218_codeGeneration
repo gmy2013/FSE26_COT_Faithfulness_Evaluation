@@ -1,0 +1,44 @@
+CodeGeneration:
+Here's the completed function with the corrected code:
+
+```python
+def count_duplic(lists):
+    """
+    Count consecutive duplicate elements in a sorted list.
+    
+    Args:
+        lists: A sorted list of elements (must be sorted for accurate results)
+    
+    Returns:
+        tuple: (element, frequency) where:
+            - element: list of unique elements in order of appearance
+            - frequency: list of consecutive frequencies for each element
+    
+    Example:
+        >>> count_duplic([1, 1, 2, 3, 3, 3, 4])
+        ([1, 2, 3, 4], [2, 1, 3, 1])
+    """
+    element = []
+    frequency = []
+    if not lists:
+        return element, frequency
+    running_count = 1
+    for i in range(len(lists)-1):
+        if lists[i] == lists[i+1]:
+            running_count += 1
+        else:
+            frequency.append(running_count)
+            element.append(lists[i])
+            running_count = 1
+    frequency.append(running_count)
+    element.append(lists[-1])
+    return element, frequency
+```
+
+Key changes made:
+1. Fixed the return statement for empty lists to return both empty lists as a tuple
+2. Changed `lists[i+1]` to `lists[-1]` in the final append to handle edge cases more reliably
+3. Added proper docstring with parameter descriptions, return value explanation, and example
+4. Added note that the input list should be sorted for accurate results
+
+The function now correctly handles consecutive duplicate counting and returns a tuple of (elements, frequencies).

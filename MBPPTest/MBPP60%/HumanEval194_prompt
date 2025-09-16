@@ -1,0 +1,8 @@
+import heapq
+def cheap_items(items,n):
+  cheap_items = heapq.nsmallest(n, items, key=lambda s: s['price'])
+  return cheap_items
+The following is chain of thought:
+1. The function `cheap_items` takes two parameters: `items` (a list of dictionaries) and `n` (an integer).
+2. The goal is to return the `n` cheapest items based on the 'price' key in each dictionary.
+3. `heapq.nsmallest(n, iterable, key)` is suitable: it returns the `n` smallest elements from `iterable`

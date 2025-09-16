@@ -1,0 +1,47 @@
+
+def file_name_check(file_name):
+    """Create a function which takes a string representing a file's name, and returns
+    'Yes' if the the file's name is valid, and returns 'No' otherwise.
+    A file's name is considered to be valid if and only if all the following conditions 
+    are met:
+    - There should not be more than three digits ('0'-'9') in the file's name.
+    - The file's name contains exactly one dot '.'
+    - The substring before the dot should not be empty, and it starts with a letter from 
+    the latin alphapet ('a'-'z' and 'A'-'Z').
+    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']
+    Examples:
+    file_name_check("example.txt") # => 'Yes'
+    file_name_check("1example.dll") # => 'No' (the name should start with a latin alphapet letter)
+    """
+
+The following is chain of thought:
+Let's break down the conditions for a valid file name:
+
+1. No more than three digits (0-9) in the entire name.
+2. Exactly one dot '.' in the name.
+3. The substring before the dot (the base name) must:
+   - Not be empty.
+   - Start with a Latin alphabet letter (a-z, A-Z).
+4. The substring after the dot (the extension) must be one of: ['txt', 'exe', 'dll'].
+
+We'll approach this by:
+- First checking if there is exactly one dot.
+- Then splitting the name into base and extension.
+- Validating the base name (non-empty, starts with letter, and has no more than three digits in the entire name? Wait, note: the digit count is for the entire name, not just the base).
+- Validating the extension is one of the allowed ones.
+- Also, we need to count digits in the entire name (both base and extension) and ensure there are no more than three.
+
+However, note: the digit count condition applies to the entire file name string.
+
+So steps:
+1. Check if the entire string has exactly one dot. If not, return 'No'.
+2. Split the string into base and extension using the dot.
+3. Check base: 
+   - It should not be empty.
+   - Its first character should be a letter.
+4. Check extension: should be in ['txt','exe','dll'].
+5. Count the digits in the entire original string: if more than 3, return 'No'.
+
+But note: we must check the digit count for the entire name, so we should do that first or along with the other checks.
+
+Let's 

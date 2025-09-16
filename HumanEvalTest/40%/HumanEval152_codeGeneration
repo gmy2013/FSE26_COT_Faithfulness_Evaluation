@@ -1,0 +1,18 @@
+CodeGeneration:
+For each index, check if the actual score (from `game`) equals the guessed score (from `guess`).
+ 4. If they are equal, append 0 to the result list.
+ 5. If not, compute the absolute difference and append that to the result list.
+ 6. Return the result list.
+
+Here is the implementation:
+
+```python
+def compare(game,guess):
+    result = []
+    for i in range(len(game)):
+        if game[i] == guess[i]:
+            result.append(0)
+        else:
+            result.append(abs(game[i] - guess[i]))
+    return result
+```

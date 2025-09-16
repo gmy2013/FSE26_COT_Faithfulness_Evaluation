@@ -1,0 +1,10 @@
+def arc_length(d,a):
+    pi=22/7
+    if a >= 360:
+        return None
+    arclength = (pi*d) * (a/360)
+    return arclength
+The following is chain of thought:
+1. The function `arc_length` calculates the length of an arc given diameter `d` and angle `a`.
+2. The value of pi is approximated as 22/7.
+3. Check if the angle `a` is 360 degrees or more - if so, return `None` (likely because a full circle's circumference would 

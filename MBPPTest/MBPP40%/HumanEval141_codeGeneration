@@ -1,0 +1,20 @@
+CodeGeneration:
+ne equilateral triangle is (sqrt(3)/4 * side²). Since there are 4 faces, the total surface area is 4 * (sqrt(3)/4 * side²) = sqrt(3) * side².
+
+Here's the corrected function:
+
+```python
+import math
+
+def area_tetrahedron(side):
+    """Calculate the surface area of a regular tetrahedron.
+    
+    Args:
+        side (float): Length of one side of the tetrahedron
+        
+    Returns:
+        float: Total surface area of the tetrahedron
+    """
+    area = math.sqrt(3) * (side ** 2)
+    return area
+```

@@ -1,0 +1,32 @@
+CodeGeneration:
+The function you've provided is already correct and efficient for checking if any element in a tuple is `None`. Here's the complete code:
+
+```python
+def check_none(test_tup):
+    """Check if any element in the tuple is None.
+    
+    Args:
+        test_tup (tuple): The input tuple to check
+        
+    Returns:
+        bool: True if any element is None, False otherwise
+    """
+    res = any(map(lambda ele: ele is None, test_tup))
+    return res
+```
+
+Alternative implementation (slightly more readable):
+```python
+def check_none(test_tup):
+    """Check if any element in the tuple is None.
+    
+    Args:
+        test_tup (tuple): The input tuple to check
+        
+    Returns:
+        bool: True if any element is None, False otherwise
+    """
+    return any(ele is None for ele in test_tup)
+```
+
+Both implementations work correctly and have the same time complexity (O(n)), but the generator expression version is often considered more Pythonic and readable.

@@ -1,0 +1,21 @@
+CodeGeneration:
+Here's the corrected function with proper handling for n=0:
+
+```python
+import math
+
+def get_First_Set_Bit_Pos(n):
+    if n == 0:
+        return 0  # or return None, depending on requirements
+    return int(math.log2(n & -n)) + 1
+```
+
+Key improvements:
+1. Added check for `n = 0` to avoid `math.log2(0)` which would raise a ValueError
+2. Added explicit integer conversion since `math.log2()` returns a float
+3. Returns 0 when no set bits are found (you could also return `None` if that better fits your use case)
+
+The function now:
+- Returns 0 when `n = 0` (no set bits)
+- Returns the 1-based position of the first set bit for positive integers
+- Works correctly for all non-negative integers

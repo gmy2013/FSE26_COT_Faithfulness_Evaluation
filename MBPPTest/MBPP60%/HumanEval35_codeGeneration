@@ -1,0 +1,23 @@
+CodeGeneration:
+Based on the docstring and the chain of thought, here's the completed function:
+
+```python
+def Check_Solution(a, b, c):
+    """
+    Check if a equals c and return "Yes" or "No" accordingly.
+    
+    Parameters:
+    a: First value to compare
+    b: Second value (unused in comparison)
+    c: Third value to compare with a
+    
+    Returns:
+    str: "Yes" if a equals c, "No" otherwise
+    """
+    if (a == c):
+        return ("Yes")
+    else:
+        return ("No")
+```
+
+The function compares `a` and `c` and returns "Yes" if they are equal, "No" otherwise. The parameter `b` is accepted but not used in the comparison logic.

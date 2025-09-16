@@ -1,0 +1,28 @@
+CodeGeneration:
+ontaining a string describing the number of solutions and the discriminant value itself.
+
+The function is already correctly implemented. Here's the complete code:
+
+```python
+def discriminant_value(x, y, z):
+    """
+    Calculate the discriminant of a quadratic equation and determine the nature of its solutions.
+    
+    Args:
+        x (float): Coefficient of x² term
+        y (float): Coefficient of x term  
+        z (float): Constant term
+    
+    Returns:
+        tuple: A tuple containing:
+            - string: Description of solution type ("Two solutions", "one solution", or "no real solution")
+            - float: The discriminant value (y² - 4*x*z)
+    """
+    discriminant = (y**2) - (4*x*z)
+    if discriminant > 0:
+        return ("Two solutions", discriminant)
+    elif discriminant == 0:
+        return ("one solution", discriminant)
+    elif discriminant < 0:
+        return ("no real solution", discriminant)
+```

@@ -1,0 +1,34 @@
+CodeGeneration:
+x = min(B - 1, N) because:
+   - For x < B, the function (A*x)//B is strictly increasing with x
+   - At x = B, (A*B)//B = A, but for x = B-1, (A*(B-1))//B = A - ceil(A/B) which is less than A
+   - However, the maximum value in the range [0, N] is achieved at x = min(B-1, N) since:
+     * If N < B-1, the maximum is at x = N
+     * If N ≥ B-1, the maximum is at x = B-1
+
+The provided implementation is correct and optimal.
+
+```python
+def floor_Max(A, B, N):
+    """
+    Find the maximum value of floor((A*x)/B) for integer x in [0, N].
+    
+    Args:
+        A (int): Numerator coefficient
+        B (int): Denominator
+        N (int): Upper bound for x
+    
+    Returns:
+        int: Maximum value of floor((A*x)/B) for x in [0, N]
+    
+    Examples:
+        >>> floor_Max(5, 7, 4)
+        2
+        >>> floor_Max(5, 7, 10)
+        4
+        >>> floor_Max(3, 4, 5)
+        2
+    """
+    x = min(B - 1, N)
+    return (A * x) // B
+```

@@ -1,0 +1,10 @@
+CodeGeneration:
+entation is already correct and complete. Here's the function as provided:
+
+```python
+def rectangle_perimeter(l, b):
+    perimeter = 2 * (l + b)
+    return perimeter
+```
+
+This function correctly calculates and returns the perimeter of a rectangle given its length and breadth.

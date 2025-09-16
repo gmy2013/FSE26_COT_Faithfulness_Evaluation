@@ -1,0 +1,38 @@
+CodeGeneration:
+I'll complete the function based on the provided docstring and chain of thought. Here's the implementation:
+
+```python
+def largest_subset(a, n):
+    """
+    Find the size of the largest subset such that for every pair of elements in the subset,
+    one element is divisible by the other.
+    
+    Args:
+        a (list): List of integers
+        n (int): Length of the list
+    
+    Returns:
+        int: Size of the largest subset
+    """
+    dp = [0 for i in range(n)]
+    dp[n - 1] = 1
+    
+    for i in range(n - 2, -1, -1):
+        mxm = 0
+        for j in range(i + 1, n):
+            if a[j] % a[i] == 0 or a[i] % a[j] == 0:
+                mxm = max(mxm, dp[j])
+        dp[i] = 1 + mxm
+    
+    return max(dp)
+```
+
+This function uses dynamic programming to find the largest subset where for every pair of elements, one is divisible by the other. The algorithm works by:
+
+1. Creating a DP array where `dp[i]` represents the size of the largest valid subset starting at index `i`
+2. Starting from the end of the array and working backwards
+3. For each element, checking all subsequent elements to find those that form valid pairs (where one divides the other)
+4. Taking the maximum chain length from valid subsequent elements
+5. Returning the maximum value from the DP array as the result
+
+The time complexity is O(n²) and space complexity is O(n).

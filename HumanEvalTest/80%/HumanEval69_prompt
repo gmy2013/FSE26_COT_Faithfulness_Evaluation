@@ -1,0 +1,98 @@
+
+def search(lst):
+    '''
+    You are given a non-empty list of positive integers. Return the greatest integer that is greater than 
+    zero, and has a frequency greater than or equal to the value of the integer itself. 
+    The frequency of an integer is the number of times it appears in the list.
+    If no such a value exist, return -1.
+    Examples:
+        search([4, 1, 2, 2, 3, 1]) == 2
+        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3
+        search([5, 5, 4, 4, 4]) == -1
+    '''
+
+The following is chain of thought:
+We are given a non-empty list of positive integers.
+ We need to find the greatest integer that is greater than zero and has a frequency >= the integer itself.
+ Steps:
+ 1. Count the frequency of each number in the list.
+ 2. Consider only numbers that are positive (which they all are, by input condition) and have frequency >= the number.
+ 3. Among these, we want the greatest such number.
+ 4. If no number satisfies, return -1.
+
+ However, note: we are to return the greatest integer that satisfies the condition.
+ So we should look for the largest number (in value) that has frequency >= itself.
+
+ But note: the examples:
+   [4,1,2,2,3,1] -> 2 (because 2 appears twice, which is >=2; also 1 appears twice which is >=1, but 2 is greater than 1)
+   [1,2,2,3,3,3,4,4,4] -> 3 (3 appears 3 times; 2 appears 2 times; 1 appears 1 time; 4 appears 3 times which is <4 -> so 3 is the largest satisfying)
+   [5,5,4,4,4] -> -1 (5: freq=2 <5; 4: freq=3 <4 -> no number satisfies)
+
+ Approach:
+   - We can create a frequency dictionary.
+   - Then, we can iterate over the keys (numbers) that satisfy: key <= frequency[key].
+   - Then, we want the maximum key among these. If there are none, return -1.
+
+ However, note: we are to return the greatest integer. So we should look for the maximum key that meets the condition.
+
+ But caution: what if there are multiple? We just want the maximum key.
+
+ Implementation:
+   freq = {}
+   for num in lst:
+        freq[num] = freq.get(num, 0) + 1
+
+   candidate = -1
+   for num, count in freq.items():
+        if num <= count and num > candidate:
+            candidate = num   # but wait: we are iterating and updating candidate to the largest num that satisfies? Actually, we are updating to the largest so far.
+
+   However, we want the greatest integer. So we can also simply:
+        candidates = [num for num, count in freq.items() if count >= num]
+        if candidates:
+            return max(candidates)
+        else:
+            return -1
+
+ But note: the condition is "greater than zero" - which all numbers are positive so that is already satisfied.
+
+ However, we must consider: what if the list has numbers that are zero? The problem says positive integers, so no zero.
+
+ Let's code accordingly.
+
+ But note: efficiency. The list of candidates might be large, but we are only iterating over distinct numbers.
+
+ Alternatively, we can iterate once to get the max candidate without building a list.
+
+ We can do:
+   candidate = -1
+   for num, count in freq.items():
+        if count >= num and num > candidate:
+            candidate = num
+
+   return candidate if candidate != -1 else -1
+
+ However, note: if we have a candidate that is larger than the current candidate, we update. This will give the maximum number that satisfies.
+
+ But wait: what if we have two numbers that satisfy, say 2 and 3? Then we want 3. So we are updating candidate to the maximum number that satisfies.
+
+ However, this loop does not necessarily iterate in sorted order. But we are comparing with candidate, so it will work.
+
+ Alternatively, we can also iterate over the distinct numbers in descending order and return the first that satisfies? But that might be efficient if we break early.
+
+ But the problem does not require extreme efficiency, and the distinct numbers are at most the size of the list.
+
+ However, to be efficient in the best case (if the largest number satisfies), we can:
+
+   Sort the distinct numbers in descending order and check each until we find one that satisfies.
+
+ But building a sorted list of distinct numbers might be O(n log n) which is acceptable.
+
+ Alternatively, we can just get the maximum candidate without sorting by iterating all.
+
+ Since the distinct numbers are not too many, we can do:
+
+   max_candidate = -1
+   for num, count in freq.items():
+        if count >= num:
+            if num > ma

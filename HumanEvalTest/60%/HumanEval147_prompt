@@ -1,0 +1,86 @@
+
+def get_max_triples(n):
+    """
+    You are given a positive integer n. You have to create an integer array a of length n.
+        For each i (1 ≤ i ≤ n), the value of a[i] = i * i - i + 1.
+        Return the number of triples (a[i], a[j], a[k]) of a where i < j < k, 
+    and a[i] + a[j] + a[k] is a multiple of 3.
+
+    Example :
+        Input: n = 5
+        Output: 1
+        Explanation: 
+        a = [1, 3, 7, 13, 21]
+        The only valid triple is (1, 7, 13).
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to generate an array `a` of length `n` where for each index `i` (1-indexed), `a[i] = i*i - i + 1`.
+   Note: In code, we'll use 0-indexed indices, so for index `i` (0-indexed), the value corresponds to `(i+1)*(i+1) - (i+1) + 1`.
+
+2. We are to count the number of triples (i, j, k) with indices `0 <= i < j < k < n` such that `(a[i] + a[j] + a[k]) % 3 == 0`.
+
+3. Instead of generating the entire array and then iterating over all possible triples (which would be O(n^3) and inefficient for large n),
+   we can use a mathematical insight.
+
+4. Let's analyze the value modulo 3 for each element:
+   For an integer i (1-indexed), we have:
+        a_i = i*i - i + 1
+   Compute this modulo 3:
+
+   Consider i mod 3 can be 0, 1, or 2 (but note i starts at 1, so i mod 3 is actually 1,2,0 for i=1,2,3 etc.)
+
+   Actually, we can compute for each residue class:
+
+   Case 1: i ≡ 0 (mod 3)  => i=3,6,9,...
+        a_i = (3k)*(3k) - (3k) + 1 = 9k^2 - 3k + 1 ≡ 0 - 0 + 1 = 1 (mod 3)
+
+   Case 2: i ≡ 1 (mod 3)  => i=1,4,7,...
+        a_i = (3k+1)^2 - (3k+1) + 1 = 9k^2+6k+1 -3k-1+1 = 9k^2+3k+1 ≡ 0+0+1=1 (mod 3)
+
+   Case 3: i ≡ 2 (mod 3)  => i=2,5,8,...
+        a_i = (3k+2)^2 - (3k+2) + 1 = 9k^2+12k+4 -3k-2+1 = 9k^2+9k+3 ≡ 0 (mod 3)
+
+   So, for every index i (1-indexed):
+        if i mod 3 != 2, then a_i ≡ 1 (mod 3)
+        if i mod 3 == 2, then a_i ≡ 0 (mod 3)
+
+5. Therefore, in the array:
+   - Elements at positions where (i+1) % 3 == 2 (0-indexed index i corresponds to 1-indexed i+1) have value divisible by 3.
+   - All other elements are ≡ 1 mod 3.
+
+6. Now, we need to count triples (i,j,k) such that the sum is divisible by 3.
+   Let:
+        Let count0 = number of elements that are ≡0 mod3 (i.e., from indices where (i+1)%3==2)
+        Let count1 = number of elements that are ≡1 mod3 (all others)
+
+   Note: There are no elements ≡2 mod3.
+
+7. The sum of three numbers is divisible by 3 in the following cases:
+   Case A: 0+0+0
+   Case B: 0+1+1   (because 0+1+1=2, but wait: actually 0+1+1=2 mod3, which is not 0. So this is not valid.)
+   Actually, let's list all possible combinations:
+
+   Since we only have residues 0 and 1:
+
+   Possibilities for (r1, r2, r3):
+        (0,0,0): sum=0 -> valid.
+        (0,0,1): sum=1 -> invalid.
+        (0,1,1): sum=2 -> invalid.
+        (1,1,1): sum=3≡0 -> valid.
+
+   So only two cases are valid: all three are 0, or all three are 1.
+
+8. Therefore, the number of valid triples is:
+        total = C(count0, 3) + C(count1, 3)
+   where C(n,3) is the number of ways to choose 3 from n.
+
+9. Now, we need to compute count0 and count1 for the array of length n.
+
+   For indices from 0 to n-1 (0-indexed), the corresponding 1-indexed value is i+1.
+   So, an element is ≡0 mod3 if (i+1) % 3 == 2.
+
+   How many such indices i in [0, n-1] satisfy (i+1) % 3 == 2?
+        This

@@ -1,0 +1,26 @@
+
+
+def skjkasdkd(lst):
+    """You are given a list of integers.
+    You need to find the largest prime value and return the sum of its digits.
+
+    Examples:
+    For lst = [0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3] the output should be 10
+    For lst = [1,0,1,8,2,4597,2,1,3,40,1,2,1,2,4,2,5,1] the output should be 25
+    For lst = [1,3,1,32,5107,34,83278,109,163,23,2323,32,30,1,9,3] the output should be 13
+    For lst = [0,724,32,71,99,32,6,0,5,91,83,0,5,6] the output should be 11
+    For lst = [0,81,12,3,1,21] the output should be 3
+    For lst = [0,8,1,2,1,7] the output should be 7
+    """
+
+The following is chain of thought:
+To solve this problem, we need to find the largest prime number in a given list of integers and then return the sum of its digits. Here's the step-by-step approach:
+
+1. **Identify Prime Numbers**: First, we need to filter out the prime numbers from the list. A prime number is a number greater than 1 that has no positive divisors other than 1 and itself.
+2. **Find the Largest Prime**: From the list of primes, we need to find the largest one.
+3. **Sum of Digits**: For the largest prime number, we need to calculate the sum of its digits. This involves converting the number to a string to iterate over each digit, converting each digit back to an integer, and summing them up.
+
+Let's break down the implementation:
+
+- **Prime Check Function**: We'll create a helper function `is_prime(n)` to check if a number is prime. This function will handle edge cases (numbers less than 2 are not prime) and check for factors up to the square root of the number for efficiency.
+- **Process the List**: Iterate through the list, use 

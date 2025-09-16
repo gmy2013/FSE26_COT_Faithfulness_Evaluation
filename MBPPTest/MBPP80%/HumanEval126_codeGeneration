@@ -1,0 +1,25 @@
+CodeGeneration:
+umeric characters (including underscores) from the string.
+
+Here's the complete function with the docstring:
+
+```python
+import re 
+
+def remove_char(S):
+    """
+    Removes all non-alphanumeric characters from the input string.
+    
+    Args:
+        S (str): The input string to process
+        
+    Returns:
+        str: The input string with all non-alphanumeric characters removed
+        
+    Example:
+        >>> remove_char("Hello, World! 123_")
+        'HelloWorld123'
+    """
+    result = re.sub('[\W_]+', '', S) 
+    return result
+```

@@ -1,0 +1,31 @@
+from itertools import combinations 
+def find_combinations(test_list):
+  res = [(b1 + a1, b2 + a2) for (a1, a2), (b1, b2) in combinations(test_list, 2)]
+  return (res) 
+The following is chain of thought:
+Let's break down the function step by step:
+
+1. The function `find_combinations` takes a list `test_list` as input.
+2. It uses `itertools.combinations` to generate all pairs of elements from `test_list`.
+3. Each element in `test_list` is expected to be a tuple of two items (like (x, y)).
+4. For each pair of tuples: ((a1, a2), (b1, b2)), it creates a new tuple where:
+   - The first element is the sum of the first element of the second tuple and the first element of the first tuple (b1 + a1).
+   - The second element is the sum of the second element of the second tuple and the second element of the first tuple (b2 + a2).
+5. It returns a list of these resulting tuples.
+
+However, note that the order of the tuples in the combination is important. Since `combinations(test_list, 2)` generates pairs in the order they appear in the list, and we are iterating over them as ((a1, a2), (b1, b2)), the operation is not commutative (i.e., (b1 + a1) is different from (a1 + b1) only if the tuples are different).
+
+But in this case, since addition is commutative, the result would be the same regardless of the order. However, the code specifically adds the first tuple's elements to the second tuple's elements in reverse order (b1 + a1 instead of a1 + b1). This might be intentional or a mistake depending on the requirement.
+
+Let me write the structured chain of thought:
+
+1. Import the `combinations` function from the `itertools` module.
+2. Define the function `find_combinations` that takes `test_list`.
+3. Use a list comprehension to iterate over all pairs of tuples from `test_list`.
+   - Each pair consists of two tuples: (a1, a2) and (b1, b2).
+4. For each pair, create a new tuple where:
+   - The first element is the sum of the first element of the second tuple (b1) and the first element of the first tuple (a1).
+   - The second element is the sum of the second element of the second tuple (b2) and the second element of the first tuple (a2).
+5. Return the list of these new tuples.
+
+The code is correct as per the given implementati

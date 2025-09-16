@@ -1,0 +1,14 @@
+
+
+def median(l: list):
+    """Return median of elements in the list l.
+    >>> median([3, 1, 2, 4, 5])
+    3
+    >>> median([-10, 4, 6, 1000, 10, 20])
+    15.0
+    """
+
+The following is chain of thought:
+1. **Sort the List**: To find the median, the first step is to sort the list of numbers. This ensures that the numbers are in ascending order, which is necessary for finding the middle value(s).
+
+2. **Determine List Length**: Calculate the length of

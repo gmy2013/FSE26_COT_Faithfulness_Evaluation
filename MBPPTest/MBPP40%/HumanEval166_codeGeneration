@@ -1,0 +1,27 @@
+CodeGeneration:
+```python
+def get_Pairs_Count(arr, n, sum):
+    """
+    Count the number of pairs in an array where the sum of two elements equals the target value.
+    
+    Args:
+        arr (list): The input array of numbers
+        n (int): The length of the array
+        sum (int): The target sum value to find
+    
+    Returns:
+        int: The count of pairs whose sum equals the target value
+    
+    Example:
+        >>> get_Pairs_Count([1, 5, 7, -1], 4, 6)
+        2
+        >>> get_Pairs_Count([1, 1, 1, 1], 4, 2)
+        6
+    """
+    count = 0  
+    for i in range(0, n):
+        for j in range(i + 1, n):
+            if arr[i] + arr[j] == sum:
+                count += 1
+    return count
+```

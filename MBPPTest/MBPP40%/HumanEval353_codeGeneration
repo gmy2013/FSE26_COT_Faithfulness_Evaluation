@@ -1,0 +1,14 @@
+CodeGeneration:
+t calculates the difference between `actual_cost` and `sale_amount` and returns that amount.
+4. If false (meaning `actual_cost` is less than or equal to `sale_amount`), it returns `None` since there is no profit.
+
+The function is already complete and correctly implements the described logic. Here's the code again for clarity:
+
+```python
+def profit_amount(actual_cost, sale_amount):
+    if actual_cost > sale_amount:
+        amount = actual_cost - sale_amount
+        return amount
+    else:
+        return None
+```

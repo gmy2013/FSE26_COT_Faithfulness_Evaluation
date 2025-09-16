@@ -1,0 +1,26 @@
+CodeGeneration:
+ex 1 to n-1 and check if the current element is less than the previous one.
+5. If found, return the index as it represents the rotation count.
+6. If no such element is found, return 0 meaning the array is already sorted.
+
+Here's the complete function with improved readability:
+
+```python
+def count_Rotation(arr, n):
+    """
+    Count the number of rotations needed to sort the rotated array in ascending order.
+    
+    Parameters:
+    arr (list): The rotated sorted array
+    n (int): Length of the array
+    
+    Returns:
+    int: Number of rotations needed (index of the minimum element)
+    """
+    for i in range(1, n):
+        if arr[i] < arr[i - 1]:
+            return i
+    return 0
+```
+
+This function works by finding the index where the array breaks its ascending order, which indicates the rotation point. The time complexity is O(n) and space complexity is O(1).

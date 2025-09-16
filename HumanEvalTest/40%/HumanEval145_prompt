@@ -1,0 +1,97 @@
+
+def order_by_points(nums):
+    """
+    Write a function which sorts the given list of integers
+    in ascending order according to the sum of their digits.
+    Note: if there are several items with similar sum of their digits,
+    order them based on their index in original list.
+
+    For example:
+    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    >>> order_by_points([]) == []
+    """
+
+The following is chain of thought:
+We are given a list of integers. We need to sort them by the sum of their digits.
+ However, if two numbers have the same digit sum, we should preserve their original relative order (i.e., stable sort by index).
+ Steps:
+ 1. We cannot simply use the built-in sorted with a key that only considers the digit sum because we need to break ties by original index.
+ 2. We can create a list of tuples: (digit_sum, index, number) for each element.
+ 3. Then sort this list primarily by digit_sum and secondarily by index (to maintain original order for same digit sums).
+ 4. Extract the numbers from the sorted list.
+
+ But note: we are allowed to have negative numbers. The digit sum for a negative number should consider the digits without the sign?
+ Example: -11 has digits [1,1] so sum is 2? But the example output: [-1, -11, 1, -12, 11] 
+ Let's check the example: 
+   -1: digits are [1] -> sum=1
+   -11: digits are [1,1] -> sum=2
+   1: digits [1] -> sum=1
+   -12: digits [1,2] -> sum=3
+   11: digits [1,1] -> sum=2
+
+ So the sorted order by digit sum: 
+   sums: -1 (1), 1 (1) -> then -11 (2), 11 (2) -> then -12 (3)
+ But the example output: [-1, -11, 1, -12, 11] 
+ Wait, the example output has -11 before 1? But both have same digit sum? Actually no: -1 and 1 have same digit sum (1), and then -11 and 11 have same (2), and then -12 (3).
+ However, the example output groups by digit sum? Actually the example output is:
+   [-1, -11, 1, -12, 11] 
+ But this doesn't seem grouped by digit sum. Let me recalculate the digit sums without the sign:
+
+ Actually, the problem says "sum of their digits". We should take the absolute value for digit extraction? 
+ But note: the example includes negative numbers. The problem does not specify to ignore the sign, but the example output suggests that the sign is ignored for digit sum.
+
+ How to get the digits of a number? We can convert the number to string, remove the '-' if present, and then convert each char to int and sum.
+
+ Alternatively, we can use: 
+   digit_sum = sum(int(d) for d in str(abs(n)))
+
+ But wait: what about negative numbers? The example: -1 -> abs(-1)=1 -> digits [1] -> sum=1.
+ Similarly, -11 -> abs(-11)=11 -> digits [1,1] -> sum=2.
+ So that matches.
+
+ However, the example output orders -1 before -11? But -1 has digit sum 1 and -11 has 2, so that is correct ascending.
+
+ Then why is the output not grouped by digit sum? Actually it is:
+   numbers with digit sum 1: -1 and 1. But the output has -1 first and then 1? Actually the example output has -1 first and then -11 (which has sum2) and then 1 (which has sum1) and then -12 (sum3) and then 11 (sum2). This seems out of order.
+
+ Wait, I see the example output is: [-1, -11, 1, -12, 11]
+ But if we sort by digit sum ascending, we should have:
+   digit sum 1: [-1, 1]
+   digit sum 2: [-11, 11]
+   digit sum 3: [-12]
+
+ So the sorted list should be: [-1, 1, -11, 11, -12] OR [1, -1, -11, 11, -12] if we break ties by index?
+
+ But the example output is different. Let me read the example again: 
+   order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+
+ This suggests that the example expects a specific order. How did they break ties?
+
+ Actually, the problem says: "if there are several items with similar sum of their digits, order them based on their index in original list."
+
+ So for numbers with same digit sum, we should not change their relative order? But wait, the original list has:
+   index0: 1
+   index1: 11
+   index2: -1
+   index3: -11
+   index4: -12
+
+ Now, numbers with digit sum 1: 1 (index0) and -1 (index2). So if we break ties by index, we should put 1 (index0) before -1 (index2). But the example output has -1 first and then 1? This contradicts.
+
+ Alternatively, perhaps the problem means to break ties by the original index only when the digit sums are equal? But in the example output, the digit sums are not equal for -1 and -11? So no tie.
+
+ Wait, I see the problem: the example output might be correct if we consider the digit sum without absolute value? But that would be strange for negative digits.
+
+ Another possibility: the problem means the sum of the digits including the sign? But that doesn't make sense.
+
+ Let me check the example carefully: the expected output is [-1, -11, 1, -12, 11]. 
+ Let's compute the digit sums without absolute value for negative numbers? For example:
+   -1: digits are ['-','1']? Then we would have to convert only the digits to integers? But the '-' is not a digit.
+
+ Actually, the common interpretation is to ignore the sign. So why is the example output as it is?
+
+ After re-examining the example, I realize that the example might be sorted primarily by digit sum (ignoring sign) and then by the original index? But that doesn't yield the example output.
+
+ Alternatively, the problem might have a mistake in the example? Or perhaps I misread.
+
+ Let me read the problem state

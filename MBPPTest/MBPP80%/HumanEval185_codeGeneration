@@ -1,0 +1,26 @@
+CodeGeneration:
+re `x` can be inserted in list `a` while keeping it sorted, with `x` placed after any existing values equal to `x`.
+
+The function is already correctly implemented. Here's the complete function:
+
+```python
+import bisect
+
+def right_insertion(a, x):
+    """Return the index at which x should be inserted into list a, assuming a is sorted.
+
+    The return value i is such that all e in a[:i] have e <= x, and all e in a[i:] have e > x.
+    So if x already appears in the list, a.insert(i, x) will insert just after the rightmost x already there.
+
+    Args:
+        a: A sorted list
+        x: The value to find the insertion point for
+
+    Returns:
+        The insertion index i
+    """
+    i = bisect.bisect_right(a, x)
+    return i
+```
+
+The function works as intended - it finds the rightmost position where `x` can be inserted while maintaining the sorted order of the list.

@@ -1,0 +1,20 @@
+CodeGeneration:
+we can convert the list to a tuple after appending the string.
+
+Here's the complete function:
+
+```python
+def new_tuple(test_list, test_str):
+    """
+    Create a new tuple by appending a string to a list and converting to tuple.
+    
+    Args:
+        test_list (list): The input list
+        test_str (str): The string to append
+    
+    Returns:
+        tuple: A tuple containing all elements from test_list with test_str appended
+    """
+    res = tuple(test_list + [test_str])
+    return res
+```

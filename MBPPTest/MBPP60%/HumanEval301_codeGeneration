@@ -1,0 +1,23 @@
+CodeGeneration:
+```python
+from collections import Counter
+
+def add_dict(d1, d2):
+    """
+    Add two dictionaries by summing values for common keys.
+    
+    Args:
+        d1 (dict): First dictionary with numeric values
+        d2 (dict): Second dictionary with numeric values
+    
+    Returns:
+        dict: A new dictionary where values for common keys are summed,
+              and unique keys from both dictionaries are preserved.
+    
+    Example:
+        >>> add_dict({'a': 1, 'b': 2}, {'b': 3, 'c': 4})
+        {'a': 1, 'b': 5, 'c': 4}
+    """
+    add_dict = Counter(d1) + Counter(d2)
+    return dict(add_dict)
+```

@@ -1,0 +1,35 @@
+CodeGeneration:
+Here's the completed function with proper error handling:
+
+```python
+def access_elements(nums, list_index):
+    """
+    Access elements from nums at indices specified in list_index.
+    
+    Args:
+        nums (list): List of elements to access from
+        list_index (list): List of integer indices to access
+        
+    Returns:
+        list: Elements from nums at the specified indices
+        
+    Raises:
+        IndexError: If any index in list_index is out of range for nums
+        TypeError: If list_index contains non-integer values
+    """
+    result = []
+    for i in list_index:
+        if not isinstance(i, int):
+            raise TypeError(f"All indices must be integers, got {type(i).__name__}")
+        if i < 0 or i >= len(nums):
+            raise IndexError(f"Index {i} out of range for list of length {len(nums)}")
+        result.append(nums[i])
+    return result
+```
+
+The function now:
+1. Handles empty `list_index` by returning an empty list
+2. Validates that all indices are integers
+3. Checks for index out of range errors
+4. Provides clear error messages with specific details
+5. Maintains the original functionality for valid inputs

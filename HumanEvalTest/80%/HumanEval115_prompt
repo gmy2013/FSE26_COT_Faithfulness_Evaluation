@@ -1,0 +1,80 @@
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We have a grid where each row is a well, and each 1 in a row is a unit of water.
+2. We have buckets with a fixed capacity to remove water.
+3. We need to calculate the total number of times we must lower buckets to remove all water.
+
+Approach:
+- For each well (each row in the grid), we need to remove all the water (all the 1s).
+- The number of times we need to lower the bucket for a single well is the number of trips required to remove all its water, which is ceil(total_water_in_well / capacity).
+- However, we cannot partially remove water from multiple wells in one trip? Actually, the problem says: "use the buckets to empty the wells". Each lowering of the bucket can only remove water from one well? Or can we use one bucket to remove water from multiple wells?
+
+Wait, let's read the problem again: "each well has a corresponding bucket". This implies that each well has its own bucket. So we are operating on each well independently.
+
+Therefore:
+- For each row (well), count the number of 1s (units of water).
+- For that well, the number of times we need to lower the bucket is ceil(units_of_water / capacity).
+- Sum this over all wells.
+
+But let's check with examples:
+
+Example 1:
+grid = [[0,0,1,0], [0,1,0,0], [1,1,1,1]], capacity=1
+Well1: 1 unit -> ceil(1/1)=1
+Well2: 1 unit -> ceil(1/1)=1
+Well3: 4 units -> ceil(4/1)=4
+Total = 1+1+4=6 -> matches.
+
+Example 2:
+grid = [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]], capacity=2
+Well1: 2 units -> ceil(2/2)=1
+Well2: 0 -> 0
+Well3: 4 units -> ceil(4/2)=2
+Well4: 3 units -> ceil(3/2)=ceil(1.5)=2
+Total = 1+0+2+2=5 -> matches.
+
+So the solution is straightforward.
+
+Implementation:
+- Initialize total_trips = 0
+- For each row in grid:
+    count = number of 1s in the row
+    trips_for_well = mat

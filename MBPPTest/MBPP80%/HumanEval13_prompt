@@ -1,0 +1,8 @@
+def cummulative_sum(test_list):
+  res = sum(map(sum, test_list))
+  return (res)
+The following is chain of thought:
+1. Understand the function purpose: Calculate the cumulative sum of all elements in a nested list structure.
+2. Analyze the current implementation: Uses `map(sum, test_list)` to get sums of each sublist, then sums those results.
+3. Verify correctness: This approach correctly handles lists of lists by summing each sublist first, then summing those sums.
+4. Consider edge cases: Works with empty lists (returns 0), single sublists, and varying sublist leng

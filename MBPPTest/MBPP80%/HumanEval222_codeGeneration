@@ -1,0 +1,37 @@
+CodeGeneration:
+ample` is in the string but not at the beginning), it returns "string doesnt start with the given substring".
+
+However, there are a few issues with the current implementation:
+1. The regex pattern `"\A" + sample` might not work correctly if `sample` contains regex special characters
+2. The function name `check_substring` is misleading since it's specifically checking if the string starts with the substring
+3. The error message "entered string isnt a substring" is confusing since `sample` is the substring being checked
+
+Here's an improved version:
+
+```python
+import re
+
+def check_substring(string, sample):
+    """
+    Check if a string starts with a given substring.
+    
+    Args:
+        string (str): The main string to search in
+        sample (str): The substring to check for at the beginning
+    
+    Returns:
+        str: A message indicating whether the string starts with the substring
+             or if the substring is not found at all
+    """
+    if sample in string:
+        # Escape special regex characters in sample
+        escaped_sample = re.escape(sample)
+        pattern = r"\A" + escaped_sample
+        match = re.search(pattern, string)
+        if match:
+            return "string starts with the given substring"
+        else:
+            return "string doesn't start with the given substring"
+    else:
+        return "substring not found in the string"
+```

@@ -1,0 +1,23 @@
+
+
+def car_race_collision(n: int):
+    """
+    Imagine a road that's a perfectly straight infinitely long line.
+    n cars are driving left to right;  simultaneously, a different set of n cars
+    are driving right to left.   The two sets of cars start out being very far from
+    each other.  All cars move in the same speed.  Two cars are said to collide
+    when a car that's moving left to right hits a car that's moving right to left.
+    However, the cars are infinitely sturdy and strong; as a result, they continue moving
+    in their trajectory as if they did not collide.
+
+    This function outputs the number of such collisions.
+    """
+
+The following is chain of thought:
+The problem involves two sets of n cars each moving in opposite directions on a straight road. Since all cars move at the same speed and are infinitely sturdy (continuing after collisions), each left-to-right car will eventually collide with every right-to-left car that it meets. However, because the cars are initially far apart and moving at constant speed, the collisions occur in pairs based on their relative positions.
+
+Actually, consider the scenario: there are n cars moving left-to-right and n cars moving right-to-left. Each left-to-right car will collide with every right-to-left car that is in its path. But since the cars are all identical in speed and start far apart, the collisions are pairwise between the two groups.
+
+However, note that the problem does not specify the initial positions, but since they start "very far from each other", we can assume that the left-to-right cars are initially to the left of all right-to-left cars. As they move towards each other, each left-to-right car will meet each right-to-left car exactly once. Therefore, the total number of collisions is the product of the number of cars in each group, i.e., n * n = n².
+
+But wait: is that correct? Actually, if we have n cars going left-to-right and n going

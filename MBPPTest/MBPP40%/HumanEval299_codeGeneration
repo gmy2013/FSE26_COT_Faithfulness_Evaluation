@@ -1,0 +1,16 @@
+CodeGeneration:
+mpiled once, which is efficient if the function is called multiple times.
+4. The `match` method checks if the pattern matches the beginning of the string.
+5. If there's a match, it returns `True`; otherwise, it returns `False`.
+
+The function is correct and follows best practices for regex matching in Python. Here's the complete function:
+
+```python
+import re
+def match_num(string):
+    text = re.compile(r"^5")
+    if text.match(string):
+        return True
+    else:
+        return False
+```

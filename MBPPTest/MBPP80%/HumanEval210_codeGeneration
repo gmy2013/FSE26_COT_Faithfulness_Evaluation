@@ -1,0 +1,20 @@
+CodeGeneration:
+Here's the complete function implementation:
+
+```python
+def check_identical(test_list1, test_list2):
+    """
+    Check if two lists are identical.
+    
+    Args:
+        test_list1 (list): First list to compare
+        test_list2 (list): Second list to compare
+    
+    Returns:
+        bool: True if lists are identical (same elements in same order), False otherwise
+    """
+    res = test_list1 == test_list2
+    return (res)
+```
+
+The function compares two lists using Python's built-in equality operator `==`, which checks if both lists have the same elements in the same order. The result is returned as a boolean value.

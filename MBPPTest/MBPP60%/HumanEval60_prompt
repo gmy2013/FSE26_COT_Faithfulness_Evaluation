@@ -1,0 +1,28 @@
+def max_sum_of_three_consecutive(arr, n): 
+	sum = [0 for k in range(n)] 
+	if n >= 1: 
+		sum[0] = arr[0] 
+	if n >= 2: 
+		sum[1] = arr[0] + arr[1] 
+	if n > 2: 
+		sum[2] = max(sum[1], max(arr[1] + arr[2], arr[0] + arr[2])) 
+	for i in range(3, n): 
+		sum[i] = max(max(sum[i-1], sum[i-2] + arr[i]), arr[i] + arr[i-1] + sum[i-3]) 
+	return sum[n-1]
+The following is chain of thought:
+Here's the structured chain of thought for the max_sum_of_three_consecutive function:
+
+1. **Problem Analysis**: The function aims to find the maximum sum of elements where no three consecutive elements are selected. This is a dynamic programming problem with constraints on consecutive selections.
+
+2. **Base Cases Setup**:
+   - For n=1: Only one element exists, so sum[0] = arr[0]
+   - For n=2: Can select both elements since they're not three consecutive, so sum[1] = arr[0] + arr[1]
+   - For n=3: Must avoid selecting all three consecutive elements, so find maximum of:
+     - Previous sum (sum[1])
+     - Last two elements (arr[1] + arr[2])
+     - First and last elements (arr[0] + arr[2])
+
+3. **Dynamic Programming Recurrence**:
+   - For i ≥ 3, consider three possibilities:
+     - Don't include current element: sum[i-1]
+     - Include current element but skip previous one: sum[i-2] +

@@ -1,0 +1,14 @@
+def floor_Min(A,B,N):
+    x = max(B - 1,N)
+    return (A*x) // B
+The following is chain of thought:
+1. The function `floor_Min` takes three integer parameters: A, B, and N.
+2. The goal is to compute the floor of (A*x)/B for an integer x in the range [0, N] that maximizes this value.
+3. The provided solution sets x to the maximum of (B-1) and N, then computes (A*x)//B.
+4. However, this approach may not be correct for all cases. The optimal x is actually min(N, B-1) when trying to maximize the floor value, because:
+   - For x >= B, the expression (A*x)//B increases linearly with x, but since x is constrained by N, we should take x = N if N < B.
+   - But if N >= B, the maximum floor value occurs at x = B-1, because for x = B, (A*B)//B = A, which might be larger, but we need to consider the floor function and the constraint x <= N.
+5. Actually, to maximize floor((A*x)/B) for 0 <= x <= N:
+   - The function f(x) = floor(A*x/B) is non-decreasing in x.
+   - Therefore, the maximum occurs at x = N, unless there is a better value at x = B-1? Wait, reconsider.
+6. However, note that for x = B-1, the value is floor(A*(B-1)/B) =

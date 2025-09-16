@@ -1,0 +1,20 @@
+CodeGeneration:
+```python
+def count_reverse_pairs(test_list):
+    """
+    Count the number of pairs (i, j) such that i <= j and test_list[j] is the reverse of test_list[i].
+
+    Args:
+        test_list (list): List of strings.
+
+    Returns:
+        int: Number of reverse pairs.
+    """
+    count = 0
+    for i in range(len(test_list)):
+        reversed_i = test_list[i][::-1]
+        for j in range(i, len(test_list)):
+            if test_list[j] == reversed_i:
+                count += 1
+    return count
+```

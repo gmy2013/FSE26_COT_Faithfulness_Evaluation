@@ -1,0 +1,24 @@
+CodeGeneration:
+h key-value pair, append the value `v` to the list associated with key `k` in the dictionary.
+5. Return the resulting dictionary.
+
+Here is the complete function:
+
+```python
+from collections import defaultdict
+
+def grouping_dictionary(l):
+    """
+    Groups values by their keys from a list of key-value pairs.
+    
+    Args:
+        l (list): A list of tuples where each tuple is (key, value)
+    
+    Returns:
+        defaultdict: A dictionary where keys map to lists of values
+    """
+    d = defaultdict(list)
+    for k, v in l:
+        d[k].append(v)
+    return d
+```

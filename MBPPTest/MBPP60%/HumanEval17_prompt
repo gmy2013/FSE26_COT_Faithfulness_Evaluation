@@ -1,0 +1,7 @@
+def div_list(nums1,nums2):
+  result = map(lambda x, y: x / y, nums1, nums2)
+  return list(result)
+The following is chain of thought:
+1. The function `div_list` takes two lists `nums1` and `nums2` as parameters.
+2. The goal is to perform element-wise division between corresponding elements of `nums1` and `nums2`.
+3. Use `map` with a `lambda` function that takes two arguments `x` (from `num

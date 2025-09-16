@@ -1,0 +1,28 @@
+CodeGeneration:
+i where arr[i] < arr[i-1], we can return that index since we're going from the end and want the largest index.
+
+Here's the implementation:
+
+```python
+def can_arrange(arr):
+    """Create a function which returns the largest index of an element which
+    is not greater than or equal to the element immediately preceding it. If
+    no such element exists then return -1. The given array will not contain
+    duplicate values.
+
+    Examples:
+    can_arrange([1,2,4,3,5]) = 3
+    can_arrange([1,2,3]) = -1
+    """
+    # Iterate backwards from the last element to the second element
+    for i in range(len(arr) - 1, 0, -1):
+        if arr[i] < arr[i - 1]:
+            return i
+    return -1
+```
+
+This implementation:
+1. Starts from the end of the array and moves backwards
+2. Checks if the current element is less than the previous element
+3. Returns the index immediately when found (which will be the largest index)
+4. Returns -1 if no such index is found after checking all positions

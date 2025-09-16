@@ -1,0 +1,24 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def front_and_rear(test_tup):
+    """Extract and return the first and last elements of a tuple.
+    
+    Args:
+        test_tup: A tuple from which to extract elements
+        
+    Returns:
+        A tuple containing (first_element, last_element) from the input tuple
+        
+    Example:
+        >>> front_and_rear((1, 2, 3, 4))
+        (1, 4)
+        >>> front_and_rear(('a', 'b', 'c'))
+        ('a', 'c')
+    """
+    res = (test_tup[0], test_tup[-1])
+    return (res)
+```
+
+The function implementation is correct and handles the core functionality as described. It uses tuple indexing to access the first element (index 0) and last element (index -1), then returns them as a new tuple.

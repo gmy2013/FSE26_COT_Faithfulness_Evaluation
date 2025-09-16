@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the completed function with the corrected implementation:
+
+```python
+from collections import Counter
+
+def most_common_elem(s, a):
+    """
+    Return the a most common elements in the iterable s along with their counts.
+    
+    Args:
+        s: An iterable (list, string, tuple, etc.) containing elements to count
+        a: An integer specifying how many most common elements to return
+    
+    Returns:
+        A list of tuples where each tuple contains (element, count) for the a most common elements
+    """
+    most_common_elem = Counter(s).most_common(a)
+    return most_common_elem
+```
+
+The function works by:
+1. Creating a `Counter` object from the iterable `s` which counts occurrences of each element
+2. Calling `most_common(a)` on the Counter to get the `a` most frequent elements
+3. Returning a list of tuples where each tuple contains (element, count)
+
+Example usage:
+```python
+print(most_common_elem("hello world", 3))  # [('l', 3), ('o', 2), ('h', 1)]
+print(most_common_elem([1, 2, 2, 3, 3, 3], 2))  # [(3, 3), (2, 2)]
+```

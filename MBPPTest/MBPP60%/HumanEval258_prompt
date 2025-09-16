@@ -1,0 +1,14 @@
+from itertools import combinations
+def sub_lists(my_list):
+	subs = []
+	for i in range(0, len(my_list)+1):
+	  temp = [list(x) for x in combinations(my_list, i)]
+	  if len(temp)>0:
+	    subs.extend(temp)
+	return subs
+The following is chain of thought:
+1. The function `sub_lists` aims to generate all possible sublists of the input list `my_list`.
+2. The function uses `itertools.combinations` to generate combinations of all lengths (from 0 to the length of `my_list`).
+3. For each length `i`, it generates all combinations of `my_list` taken `i` at a time.
+4. Each combination is converted from a tuple to a list and added to the temporary list `temp`.
+5. If `temp` is non-empty (which it alw

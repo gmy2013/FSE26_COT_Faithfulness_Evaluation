@@ -1,0 +1,153 @@
+
+def is_simple_power(x, n):
+    """Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x
+    For example:
+    is_simple_power(1, 4) => true
+    is_simple_power(2, 2) => true
+    is_simple_power(8, 2) => true
+    is_simple_power(3, 2) => false
+    is_simple_power(3, 1) => false
+    is_simple_power(5, 3) => false
+    """
+
+The following is chain of thought:
+First, I need to check if x is a simple power of n. That means there should be an integer k such that n**k equals x.
+
+I should handle edge cases:
+- If n is 1, then n**k is always 1 for any k. So x must be 1 to be true.
+- If n is 0, then n**k is 0 for k>=1, but undefined for k=0. However, the problem says "n**int", so k should be an integer. But n=0 and k=0 is 0**0 which is undefined. So probably n should not be 0, or we need to handle it.
+- If x is 1, then for any n (except n=0), n**0 = 1, so it should be true. But n=0: 0**0 is undefined, so we should avoid that.
+
+Looking at examples: is_simple_power(1,4) is true. So x=1 with n=4 is true because 4**0=1.
+
+Another example: is_simple_power(3,1) is false. n=1: only 1**k=1, so for x=3, it should be false.
+
+Also, is_simple_power(5,3) is false because no integer k such that 3**k=5.
+
+So, algorithm:
+1. If n == 1:
+   - Then only if x == 1, return True, else False.
+2. If x == 1:
+   - Since n**0 =1 for any n !=0, but if n=0, 0**0 is undefined. So we should check n !=0. However, in the context, n is given as parameter. The examples don't have n=0. Probably we can assume n is at least 1? But the function should handle all cases.
+   - Actually, from the examples, n=1,2,3,4 are used. So n is positive integer? The problem doesn't specify, but to be safe, we should handle n=0 and negative n? But n**int: if n is negative, and k is integer, it could be defined. But the examples are all positive.
+   - The problem says "n**int", so k is integer. But for negative n, it might be complex if k is fractional, but k is integer so it's fine. However, the examples are all positive. To keep it simple, I'll assume n and x are non-negative integers? But the function should work for all integers.
+
+But let's see the examples: all x and n are positive integers. So probably we can assume positive inputs.
+
+To be general, I'll handle cases where n <=0 or x<=0.
+
+If n <=0:
+   - n=0: if x=0, 0**k for k>0 is 0, but k=0 is undefined. So probably for n=0, only x=0 might be considered? But 0**1=0, so if x=0 and n=0, it could be true for k=1? But k must be integer. However, the problem says "simple power", and n=0 is tricky.
+   - Similarly, negative n: e.g., n=-2, x=4: (-2)**2=4, so it should be true. But the examples don't cover this.
+
+Given the examples are all positive, and to avoid complexity, I'll assume that n and x are positive integers. So n>=1, x>=1.
+
+So, back to algorithm for positive n and x:
+
+- If n == 1:
+   - return x == 1
+- If x == 1:
+   - return True   (since n**0=1 for n>=1)
+- Otherwise, we need to find an integer k such that n**k == x.
+
+We can iterate k from 0 upwards until n**k >= x.
+For each k, compute n**k:
+   if n**k == x, return True
+   if n**k > x, break and return False
+
+But k starts from 0: n**0=1, which we already handled if x=1.
+
+So we can start k from 1? But for x=1, we already returned true.
+
+Actually, we can handle all by iterating k.
+
+But to be efficient, we can use logarithms? But that might have floating point issues.
+
+Alternatively, we can use a while loop.
+
+Steps:
+1. If n == 1:
+      return x == 1
+2. Let k = 0
+3. While True:
+      power = n ** k
+      if power == x:
+          return True
+      if power > x:
+          return False
+      k += 1
+
+But for large x, this might be inefficient. But since n is at least 2 (if n=1 we handled), k grows quickly.
+
+We can also use log: k = log(x) / log(n), and check if it's integer.
+
+But floating point might be imprecise.
+
+So better to use integer iteration.
+
+Also, we need to handle n=0 and x=0? But assuming positive, we skip.
+
+So code:
+
+def is_simple_power(x, n):
+    if n == 1:
+        return x == 1
+    if x == 1:
+        return True   # because n**0=1 for n>1
+    k = 1
+    power = n
+    while power <= x:
+        if power == x:
+            return True
+        power *= n
+        k += 1
+    return False
+
+Test with examples:
+
+is_simple_power(1,4): 
+   n=4 !=1, x=1 -> return True. Correct.
+
+is_simple_power(2,2):
+   n=2, x=2.
+   k=1, power=2 == x -> True. Correct.
+
+is_simple_power(8,2):
+   k=1: power=2 !=8
+   k=2: power=4 !=8
+   k=3: power=8 ==8 -> True. Correct.
+
+is_simple_power(3,2):
+   k=1:2 !=3
+   k=2:4 >3 -> False. Correct.
+
+is_simple_power(3,1):
+   n=1 -> return x==1? 3!=1 -> False. Correct.
+
+is_simple_power(5,3):
+   k=1:3 !=5
+   k=2:9>5 -> False. Correct.
+
+So it works.
+
+What if n=0? We assumed positive, but to be safe, we can add:
+
+If n == 0:
+   if x == 0:
+      return False? But 0**k for k>0 is 0, but for k=0 undefined. So probably false.
+   else:
+      return False
+
+Similarly, if x=0 and n>0: n**k=0 only if n=0, but n>0, so false.
+
+So we can handle n=0 and x=0 as false.
+
+Also, if n<0? But the examples don't require, so I'll stick to positive.
+
+So final code with assumption that n>=1, x>=1.
+
+But to be complete, let's handle all integers.
+
+If n == 0

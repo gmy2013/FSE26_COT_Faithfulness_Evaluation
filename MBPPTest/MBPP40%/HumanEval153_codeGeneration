@@ -1,0 +1,31 @@
+CodeGeneration:
+4. For each tuple of corresponding elements (m from l1, n from l2, o from l3):
+   - Check if all three elements are equal (m == n == o)
+   - If they are equal, append the element to the result list
+5. Return the result list containing all common elements at corresponding positions
+
+Here is the complete function:
+
+```python
+def extract_index_list(l1, l2, l3):
+    """
+    Extract elements that are common at the same index positions in all three lists.
+    
+    Args:
+        l1 (list): First input list
+        l2 (list): Second input list  
+        l3 (list): Third input list
+        
+    Returns:
+        list: List of elements that are equal at the same index positions in all three lists
+        
+    Example:
+        >>> extract_index_list([1, 1, 3, 4, 5], [1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+        [1, 3, 4, 5]
+    """
+    result = []
+    for m, n, o in zip(l1, l2, l3):
+        if (m == n == o):
+            result.append(m)
+    return result
+```

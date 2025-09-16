@@ -1,0 +1,41 @@
+
+def int_to_mini_roman(number):
+    """
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+
+    Examples:
+    >>> int_to_mini_roman(19) == 'xix'
+    >>> int_to_mini_roman(152) == 'clii'
+    >>> int_to_mini_roman(426) == 'cdxxvi'
+    """
+
+The following is chain of thought:
+To solve this problem, we need to convert a given positive integer (between 1 and 1000) into its Roman numeral representation in lowercase. The approach involves mapping the integer to its Roman numeral by breaking it down into thousands, hundreds, tens, and units places, and then converting each part using predefined mappings.
+
+1. **Define mappings for Roman numerals** for units, tens, hundreds, and thousands. Since the number is at most 1000, we only need to handle up to the thousands place.
+   - Units: 0-9: ['', 'i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix']
+   - Tens: 0-9: ['', 'x', 'xx', 'xxx', 'xl', 'l', 'lx', 'lxx', 'lxxx', 'xc']
+   - Hundreds: 0-9: ['', 'c', 'cc', 'ccc', 'cd', 'd', 'dc', 'dcc', 'dccc', 'cm']
+   - Thousands: Only up to 1 (1000): ['', 'm'] (but since number <=1000, we can have at most one 'm')
+
+2. **Break the number into digits** for thousands, hundreds, tens, and units. For example, 152:
+   - Thousands: 0
+   - Hundreds: 1
+   - Tens: 5
+   - Units: 2
+
+3. **Convert each digit** to its Roman numeral part using the mappings. For 152:
+   - Hundreds: 1 -> 'c'
+   - Tens: 5 -> 'l'
+   - Units: 2 -> 'ii'
+   - So, 'clii'
+
+4. **Combine the parts** to form the full Roman numeral string.
+
+5. **Return the string in lowercase** (which is already ensured by the mappings).
+
+Implementation:
+- Since the number is at most 1000, we can get thousands by integer division by 1000, hundreds by (number % 1000) // 100, tens by (number % 100) // 10, and units by number % 10.
+- Use the mappings to get the Roman parts and concate

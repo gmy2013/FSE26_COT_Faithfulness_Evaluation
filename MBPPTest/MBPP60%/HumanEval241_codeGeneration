@@ -1,0 +1,61 @@
+CodeGeneration:
+Looking at this function, I can see it's inefficient with O(n²) time complexity due to the nested loops. Here's an optimized version using a dictionary for frequency counting:
+
+```python
+def get_odd_occurence(arr, arr_size):
+    """
+    Finds and returns the first element that appears an odd number of times in the array.
+    
+    Args:
+        arr: List of elements to search through
+        arr_size: Size of the array (can be obtained with len(arr))
+    
+    Returns:
+        The first element with odd occurrence count, or -1 if no such element exists
+    """
+    frequency = {}
+    
+    # Count frequency of each element
+    for element in arr:
+        frequency[element] = frequency.get(element, 0) + 1
+    
+    # Find first element with odd count (maintains original order of first occurrence)
+    for element in arr:
+        if frequency[element] % 2 != 0:
+            return element
+    
+    return -1
+```
+
+Alternatively, if you want to avoid iterating through the array twice:
+
+```python
+def get_odd_occurence(arr, arr_size):
+    """
+    Finds and returns the first element that appears an odd number of times in the array.
+    
+    Args:
+        arr: List of elements to search through
+        arr_size: Size of the array (can be obtained with len(arr))
+    
+    Returns:
+        The first element with odd occurrence count, or -1 if no such element exists
+    """
+    frequency = {}
+    first_occurrence = {}
+    
+    for i, element in enumerate(arr):
+        frequency[element] = frequency.get(element, 0) + 1
+        if element not in first_occurrence:
+            first_occurrence[element] = i
+    
+    # Find element with odd count that appears first
+    odd_elements = [element for element in frequency if frequency[element] % 2 != 0]
+    if not odd_elements:
+        return -1
+    
+    # Return the one that appeared first
+    return min(odd_elements, key=lambda x: first_occurrence[x])
+```
+
+The first solution is simpler and more readable, while the second ensures we only iterate once through the array (though it uses more memory). Both solutions have O(n) time complexity compared to the original O(n²).

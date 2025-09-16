@@ -1,0 +1,25 @@
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "<" and ">".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("<")
+    False
+    >>> correct_bracketing("<>")
+    True
+    >>> correct_bracketing("<<><>>")
+    True
+    >>> correct_bracketing("><<>")
+    False
+    """
+
+The following is chain of thought:
+We are going to iterate through each character in the string.
+ We need to track the balance of brackets: 
+   - When we see '<', we increase the balance (meaning we have an open bracket).
+   - When we see '>', we decrease the balance (meaning we close one).
+ However, if at any point the balance becomes negative, that means we have a closing bracket without a corresponding opening one, which is invalid.
+ After processing all brackets, the balance should be zero (all opened are closed).
+
+ Steps:

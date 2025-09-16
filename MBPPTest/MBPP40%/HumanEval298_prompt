@@ -1,0 +1,19 @@
+def check(arr,n): 
+    g = 0 
+    for i in range(1,n): 
+        if (arr[i] - arr[i - 1] > 0 and g == 1): 
+            return False
+        if (arr[i] - arr[i] < 0): 
+            g = 1
+    return True
+The following is chain of thought:
+Let me analyze this function step by step:
+
+1. **Function Purpose**: The function `check(arr, n)` appears to check if an array is non-increasing (each element is ≤ the previous one) after allowing for one initial increase.
+
+2. **Variable `g`**: This is a flag that tracks whether we've encountered a decrease yet. `g=0` means no decrease found, `g=1` means a decrease has been found.
+
+3. **Loop Logic**:
+   - For each element from index 1 to n-1:
+     - If current element > previous element AND we've already seen a decrease (`g==1`), return False
+     - If current element < p

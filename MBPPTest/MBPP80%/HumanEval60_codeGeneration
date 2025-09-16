@@ -1,0 +1,51 @@
+CodeGeneration:
+Based on the chain of thought and the problem requirements, here's the complete function implementation:
+
+```python
+def max_sum_of_three_consecutive(arr, n):
+    """
+    Find the maximum sum of elements where no three consecutive elements are selected.
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+    
+    Returns:
+        Maximum sum without selecting three consecutive elements
+    """
+    if n == 0:
+        return 0
+    
+    # Create sum array to store maximum sum up to each index
+    sum_arr = [0] * n
+    
+    # Base cases
+    if n >= 1:
+        sum_arr[0] = arr[0]
+    if n >= 2:
+        sum_arr[1] = arr[0] + arr[1]
+    if n >= 3:
+        # For n=3, we can take: first two, last two, or first and last
+        sum_arr[2] = max(sum_arr[1], arr[1] + arr[2], arr[0] + arr[2])
+    
+    # Dynamic programming for n >= 4
+    for i in range(3, n):
+        # Three possibilities:
+        # 1. Don't take current element: sum_arr[i-1]
+        # 2. Take current element but skip previous: sum_arr[i-2] + arr[i]
+        # 3. Take current and previous elements but skip the one before: arr[i] + arr[i-1] + sum_arr[i-3]
+        sum_arr[i] = max(sum_arr[i-1], 
+                        sum_arr[i-2] + arr[i], 
+                        arr[i] + arr[i-1] + sum_arr[i-3])
+    
+    return sum_arr[n-1]
+```
+
+Key improvements made:
+1. Renamed `sum` to `sum_arr` to avoid shadowing the built-in `sum()` function
+2. Added proper docstring with parameter and return descriptions
+3. Added explicit check for n=0 case
+4. Fixed the base case for n=3 to properly consider all three valid combinations
+5. Maintained the core dynamic programming logic as described in the chain of thought
+
+The function now correctly handles the constraint of not selecting three consecutive elements while maximizing the sum.

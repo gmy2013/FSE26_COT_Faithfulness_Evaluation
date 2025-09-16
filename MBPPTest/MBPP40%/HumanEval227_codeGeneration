@@ -1,0 +1,20 @@
+CodeGeneration:
+using `isdigit()` method
+   - If true, increment the digit counter
+5. If neither alphabet nor digit, increment the special character counter
+6. Return a tuple containing the three counts
+
+Here's the complete function:
+
+```python
+def count_alpha_dig_spl(string):
+    alphabets = digits = special = 0
+    for i in range(len(string)):
+        if string[i].isalpha():
+            alphabets += 1
+        elif string[i].isdigit():
+            digits += 1
+        else:
+            special += 1
+    return (alphabets, digits, special)
+```

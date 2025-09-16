@@ -1,0 +1,10 @@
+import re
+def extract_date(url):
+        return re.findall(r'/(\d{4})/(\d{1,2})/(\d{1,2})/', url)
+The following is chain of thought:
+1. The function `extract_date` takes a URL string as input.
+2. It uses `re.findall()` to search for a pattern in the URL.
+3. The pattern `r'/(\d{4})/(\d{1,2})/(\d{1,2})/'` matches:
+   - A literal forward slash `/`
+   - Then exactly 4 digits (captured as group 1) for the year
+   - Then a l

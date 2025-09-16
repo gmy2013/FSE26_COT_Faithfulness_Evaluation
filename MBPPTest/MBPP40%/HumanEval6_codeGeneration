@@ -1,0 +1,17 @@
+CodeGeneration:
+e.pattern`
+   - The start index of the match via `match.start()`
+   - The end index of the match via `match.end()`
+4. These three values are returned as a tuple.
+
+Here is the complete function:
+
+```python
+import re
+
+def find_literals(text, pattern):
+    match = re.search(pattern, text)
+    s = match.start()
+    e = match.end()
+    return (match.re.pattern, s, e)
+```

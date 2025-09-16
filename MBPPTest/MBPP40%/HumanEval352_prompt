@@ -1,0 +1,28 @@
+def subset(ar, n): 
+    res = 0
+    ar.sort() 
+    for i in range(0, n) : 
+        count = 1
+        for i in range(n - 1): 
+            if ar[i] == ar[i + 1]: 
+                count+=1
+            else: 
+                break 
+        res = max(res, count)  
+    return res 
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function takes an array `ar` and its length `n`.
+2. It initializes `res = 0` (to store the maximum frequency).
+3. It sorts the array (so identical elements become adjacent).
+4. There's a nested loop structure:
+   - Outer loop: `for i in range(0, n)`
+   - Inner loop: `for i in range(n - 1)` (note: same variable name `i` for both loops)
+5. The inner loop counts consecutive identical elements starting from the beginning of the array each time.
+6. After the inner loop, it updates `res` to be the maximum of its current value and `count`.
+7. Returns `res`.
+
+However, there are issues:
+- The inner loop uses the same variable `i` as the outer loop, which will cause the outer loop to break after the first iteration (since the inner loop modifies `i`).
+- The inner loop always starts from index 0 to n-2, but it should be scanning from the c

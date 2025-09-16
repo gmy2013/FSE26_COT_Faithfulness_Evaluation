@@ -1,0 +1,11 @@
+CodeGeneration:
+se letters (i.e., lowercase letters, digits, punctuation, whitespace, etc.)
+4. This effectively splits the string at each uppercase letter, capturing each "word" or segment that starts with an uppercase letter and continues until the next uppercase letter or end of string.
+5. The function returns a list of these matched segments.
+
+For example:
+- Input: "HelloWorldPython" → Output: ['Hello', 'World', 'Python']
+- Input: "HTMLCSSJS" → Output: ['H', 'T', 'M', 'L', 'C', 'S', 'S', 'J', 'S'] (since each uppercase letter is treated as a separate segment when not followed by lowercase letters)
+- Input: "MyNameIsJohn" → Output: ['My', 'Name', 'Is', 'John']
+
+This function is useful for splitting camelCase or PascalCase strings into their constituent words.

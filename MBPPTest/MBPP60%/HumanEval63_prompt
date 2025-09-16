@@ -1,0 +1,29 @@
+def average_Even(n) : 
+    if (n% 2!= 0) : 
+        return ("Invalid Input") 
+        return -1  
+    sm = 0
+    count = 0
+    while (n>= 2) : 
+        count = count+1
+        sm = sm+n 
+        n = n-2
+    return sm // count 
+The following is chain of thought:
+Here's the structured chain of thought for analyzing and improving the given function:
+
+1. **Identify the function's purpose**: The function calculates the average of even numbers from n down to 2
+
+2. **Analyze the current implementation**:
+   - Input validation: Checks if n is even, returns error message and -1 if not
+   - Initialization: Sets sum and count variables to 0
+   - Loop: Iterates from n down to 2 in steps of 2, accumulating sum and count
+   - Return: Calculates integer average using floor division
+
+3. **Identify issues**:
+   - Multiple return statements after invalid input (message and -1) - only first return executes
+   - Floor division may not be appropriate for exact average calculation
+   - Edge case: n = 0 should be handled (0 is even but no even numbers to average)
+
+4. **Propose improvements**:
+   - Fix the multiple return issue by returni

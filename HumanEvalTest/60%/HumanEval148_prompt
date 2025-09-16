@@ -1,0 +1,29 @@
+
+def bf(planet1, planet2):
+    '''
+    There are eight planets in our solar system: the closerst to the Sun 
+    is Mercury, the next one is Venus, then Earth, Mars, Jupiter, Saturn, 
+    Uranus, Neptune.
+    Write a function that takes two planet names as strings planet1 and planet2. 
+    The function should return a tuple containing all planets whose orbits are 
+    located between the orbit of planet1 and the orbit of planet2, sorted by 
+    the proximity to the sun. 
+    The function should return an empty tuple if planet1 or planet2
+    are not correct planet names. 
+    Examples
+    bf("Jupiter", "Neptune") ==> ("Saturn", "Uranus")
+    bf("Earth", "Mercury") ==> ("Venus")
+    bf("Mercury", "Uranus") ==> ("Venus", "Earth", "Mars", "Jupiter", "Saturn")
+    '''
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We have a fixed order of planets from closest to the sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.
+2. We need to validate that both input planet names are correct.
+3. We need to find the indices of both planets in the ordered list.
+4. We need to extract all planets between these two indices (excluding the endpoints).
+5. The result should be sorted by proximity to the sun (which is the same as the order in our list).
+
+Steps:
+- Define the ordered list 

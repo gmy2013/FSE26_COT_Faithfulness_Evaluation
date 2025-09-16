@@ -1,0 +1,44 @@
+CodeGeneration:
+ound in the doubled string, then string2 is a rotation of string1 → return True
+   - Otherwise, return False
+
+Here is the complete function with improved comments:
+
+```python
+def are_Rotations(string1, string2):
+    """
+    Check if two strings are rotations of each other.
+    
+    Args:
+        string1 (str): First input string
+        string2 (str): Second input string
+    
+    Returns:
+        bool: True if string2 is a rotation of string1, False otherwise
+    
+    Example:
+        >>> are_Rotations("abcd", "cdab")
+        True
+        >>> are_Rotations("hello", "lohel")
+        True
+        >>> are_Rotations("abc", "cba")
+        False
+    """
+    size1 = len(string1)
+    size2 = len(string2)
+    
+    # If lengths are different, they cannot be rotations
+    if size1 != size2:
+        return False
+    
+    # Create a doubled version of string1
+    temp = string1 + string1
+    
+    # Check if string2 appears as a substring in the doubled string
+    if string2 in temp:
+        return True
+    else:
+        return False
+```
+
+The function uses the property that if string2 is a rotation of string1, then string2 must appear as a contiguous substring when string1 is concatenated with itself. This approach has O(n) time complexity where n is the length of the strings.

@@ -1,0 +1,8 @@
+def sort_numeric_strings(nums_str):
+    result = [int(x) for x in nums_str]
+    result.sort()
+    return result
+The following is chain of thought:
+1. The function takes a list of numeric strings `nums_str`.
+2. Convert each string element to an integer using list comprehension: `[int(x) for x in nums_str]`.
+3. Sort the resulting list of integers in ascending order using th

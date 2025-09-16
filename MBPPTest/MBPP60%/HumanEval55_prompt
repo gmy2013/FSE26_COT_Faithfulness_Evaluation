@@ -1,0 +1,14 @@
+def find_Min_Sum(a,b,n): 
+    a.sort() 
+    b.sort() 
+    sum = 0  
+    for i in range(n): 
+        sum = sum + abs(a[i] - b[i]) 
+    return sum
+The following is chain of thought:
+1. Sort both input arrays `a` and `b` in non-decreasing order
+2. Initialize a variable `sum` to accumulate the total minimum sum
+3. Iterate through the first `n` elements of both sorted arrays
+4. For each index `i`, calculate the absolute difference between `a[i]` and `b[i]`
+5. Add this absolute difference to the running sum
+6. Return the final accumulated sum a

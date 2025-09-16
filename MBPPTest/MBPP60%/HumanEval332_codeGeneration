@@ -1,0 +1,39 @@
+CodeGeneration:
+itions where a lowercase letter or digit is followed by an uppercase letter, and inserts an underscore between them.
+4. Finally, the entire string is converted to lowercase to ensure snake_case format.
+
+Here's the complete function with the chain of thought:
+
+```python
+import re
+
+def camel_to_snake(text):
+    """
+    Convert a camelCase string to snake_case.
+    
+    Args:
+        text (str): The camelCase string to convert
+        
+    Returns:
+        str: The converted snake_case string
+        
+    Example:
+        >>> camel_to_snake('camelCaseString')
+        'camel_case_string'
+        >>> camel_to_snake('HTMLParser')
+        'html_parser'
+        >>> camel_to_snake('XMLHttpRequest')
+        'xml_http_request'
+    """
+    # First pass: handle cases where uppercase is followed by lowercase (e.g., CamelCase)
+    str1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', text)
+    
+    # Second pass: handle remaining uppercase letters (e.g., HTTPRequest -> HTTP_Request)
+    # Then convert to lowercase for snake_case format
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', str1).lower()
+```
+
+The function works by:
+1. First identifying patterns like "Camel" in "CamelCase" and inserting underscores
+2. Then handling patterns like "HTTP" in "HTTPRequest" by inserting underscores before uppercase letters
+3. Finally converting everything to lowercase for proper snake_case format

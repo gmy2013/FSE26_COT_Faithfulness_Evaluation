@@ -1,0 +1,16 @@
+CodeGeneration:
+the count in the defaultdict `res` by 1.
+5. Convert the defaultdict to a regular dictionary and then to a string representation.
+6. Return the string representation of the frequency dictionary.
+
+Here's the complete function:
+
+```python
+from collections import defaultdict
+
+def freq_element(test_tup):
+    res = defaultdict(int)
+    for ele in test_tup:
+        res[ele] += 1
+    return str(dict(res))
+```

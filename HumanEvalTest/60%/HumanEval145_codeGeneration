@@ -1,0 +1,66 @@
+CodeGeneration:
+I see the confusion in the example. Let me analyze this carefully:
+
+The key insight is that we need to:
+1. Calculate the digit sum by taking the absolute value first (to handle negative numbers)
+2. Use a stable sort that preserves original order for elements with equal digit sums
+3. The example output shows that elements with the same digit sum maintain their original relative order
+
+Looking at the example:
+- Input: [1, 11, -1, -11, -12]
+- Digit sums: 1→1, 11→2, -1→1, -11→2, -12→3
+- Original order for sum=1: 1 (index 0) then -1 (index 2)
+- Original order for sum=2: 11 (index 1) then -11 (index 3)
+
+The example output [-1, -11, 1, -12, 11] doesn't match this. There might be an error in the example, or perhaps we need to consider negative signs differently.
+
+I'll implement the function as described in the docstring: sort by digit sum (using absolute value), and for equal sums, preserve original order.
+
+```python
+def order_by_points(nums):
+    """
+    Write a function which sorts the given list of integers
+    in ascending order according to the sum of their digits.
+    Note: if there are several items with similar sum of their digits,
+    order them based on their index in original list.
+
+    For example:
+    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    >>> order_by_points([]) == []
+    """
+    def digit_sum(n):
+        """Calculate the sum of digits of a number (ignoring sign)"""
+        n = abs(n)
+        total = 0
+        while n > 0:
+            total += n % 10
+            n //= 10
+        return total
+    
+    # Create a list of tuples: (digit_sum, original_index, value)
+    # We use the index as a secondary key to maintain stability
+    indexed_nums = [(digit_sum(num), i, num) for i, num in enumerate(nums)]
+    
+    # Sort by digit sum (primary) and original index (secondary)
+    indexed_nums.sort(key=lambda x: (x[0], x[1]))
+    
+    # Extract the sorted values
+    return [num for _, _, num in indexed_nums]
+```
+
+However, I notice there's still a discrepancy with the example. Let me test this approach:
+
+For [1, 11, -1, -11, -12]:
+- 1: digit_sum=1, index=0
+- 11: digit_sum=2, index=1  
+- -1: digit_sum=1, index=2
+- -11: digit_sum=2, index=3
+- -12: digit_sum=3, index=4
+
+Sorted by (digit_sum, index): [1, -1, 11, -11, -12]
+
+But the example shows: [-1, -11, 1, -12, 11]
+
+This suggests the example might have an error, or there's a different interpretation of "order them based on their index in original list" (perhaps descending order by index?).
+
+Given the ambiguity, I'll implement the most reasonable interpretation: sort by digit sum, and for equal sums, use ascending index order (preserving original relative order).

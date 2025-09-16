@@ -1,0 +1,20 @@
+import heapq
+def nth_super_ugly_number(n, primes):
+    uglies = [1]
+    def gen(prime):
+        for ugly in uglies:
+            yield ugly * prime
+    merged = heapq.merge(*map(gen, primes))
+    while len(uglies) < n:
+        ugly = next(merged)
+        if ugly != uglies[-1]:
+            uglies.append(ugly)
+    return uglies[-1]
+The following is chain of thought:
+1. The function `nth_super_ugly_number` takes an integer `n` and a list of primes.
+2. Initialize `uglies` list with the first super ugly number, 1.
+3. Define a generator `gen` that multiplies each existing ugly number by a given prime.
+4. Use `heapq.merge` to combine generators for each prime, producing a sorted stream of products.
+5. While the length of `uglies` is less than `n`:
+   - Get the next smallest product from the merged stream.
+   - If it's not a duplicate of the l

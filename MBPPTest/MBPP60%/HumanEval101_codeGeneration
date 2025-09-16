@@ -1,0 +1,61 @@
+CodeGeneration:
+Based on the chain of thought and the existing code structure, here's the complete implementation with improved readability and documentation:
+
+```python
+def find_ind(key, i, n, k, arr):
+    """
+    Helper function to find the largest index j where arr[j] - key ≤ k
+    using binary search.
+    
+    Args:
+        key: The starting value (arr[i])
+        i: Current starting index
+        n: Length of the array
+        k: Maximum allowed difference
+        arr: Sorted input array
+        
+    Returns:
+        int: Largest index j where arr[j] - key ≤ k, or -1 if not found
+    """
+    ind = -1
+    start = i + 1
+    end = n - 1
+    
+    while start < end:
+        mid = start + (end - start) // 2  # More readable integer division
+        
+        if arr[mid] - key <= k:
+            ind = mid
+            start = mid + 1
+        else:
+            end = mid
+    
+    return ind
+
+
+def removals(arr, n, k):
+    """
+    Finds the minimum number of elements to remove from the array
+    such that the difference between any two remaining elements is at most k.
+    
+    Args:
+        arr: Input array of integers
+        n: Length of the array
+        k: Maximum allowed difference between any two elements
+        
+    Returns:
+        int: Minimum number of elements to remove
+    """
+    ans = n - 1  # Initialize with worst case (only one element remains)
+    arr.sort()  # Sort the array to enable binary search
+    
+    for i in range(n):
+        # Find the largest index j where arr[j] - arr[i] ≤ k
+        j = find_ind(arr[i], i, n, k, arr)
+        
+        if j != -1:
+            # Calculate elements to remove: total elements - valid window size
+            current_removals = n - (j - i + 1)
+            ans = min(ans, current_removals)
+    
+    return ans

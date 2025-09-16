@@ -1,0 +1,35 @@
+CodeGeneration:
+s typical for polygonal number functions). However, the current implementation doesn't validate the input.
+
+3. The current implementation returns a float due to division, but should return an integer since nonagonal numbers are integers.
+
+Here's the improved function with input validation and ensuring integer return:
+
+```python
+def is_nonagonal(n):
+    """
+    Return the nth nonagonal number.
+    
+    Args:
+        n (int): A positive integer representing the position in the sequence.
+    
+    Returns:
+        int: The nth nonagonal number.
+    
+    Raises:
+        TypeError: If n is not an integer.
+        ValueError: If n is not positive.
+    """
+    if not isinstance(n, int):
+        raise TypeError("n must be an integer")
+    if n <= 0:
+        raise ValueError("n must be positive")
+    
+    return n * (7 * n - 5) // 2
+```
+
+Key improvements:
+- Added input validation to ensure n is a positive integer
+- Used integer division (//) instead of regular division (/) to ensure integer return
+- Added proper docstring with parameter description, return type, and exceptions
+- Maintained the correct mathematical formula for nonagonal numbers

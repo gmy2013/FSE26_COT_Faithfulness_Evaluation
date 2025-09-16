@@ -1,0 +1,46 @@
+
+def tri(n):
+    """Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in 
+    the last couple centuries. However, what people don't know is Tribonacci sequence.
+    Tribonacci sequence is defined by the recurrence:
+    tri(1) = 3
+    tri(n) = 1 + n / 2, if n is even.
+    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.
+    For example:
+    tri(2) = 1 + (2 / 2) = 2
+    tri(4) = 3
+    tri(3) = tri(2) + tri(1) + tri(4)
+           = 2 + 3 + 3 = 8 
+    You are given a non-negative integer number n, you have to a return a list of the 
+    first n + 1 numbers of the Tribonacci sequence.
+    Examples:
+    tri(3) = [1, 3, 2, 8]
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. The function should return a list of the first n+1 numbers of the Tribonacci sequence.
+2. The sequence starts at index 0? But note the example: tri(3) returns [1, 3, 2, 8] which has 4 elements (indices 0 to 3). So we need to generate from index 0 to n.
+3. However, the recurrence defines:
+   - tri(1) = 3
+   - For even n: tri(n) = 1 + n/2
+   - For odd n (and n>=3): tri(n) = tri(n-1) + tri(n-2) + tri(n+1)   [Note: this uses a future term!]
+
+Wait, there's a problem: for odd n, the recurrence depends on tri(n+1) which is not yet computed. This suggests we cannot compute sequentially from low to high.
+
+But look at the example for n=3 (which is odd):
+   tri(3) = tri(2) + tri(1) + tri(4)
+   So we need tri(4) to compute tri(3). But tri(4) is even: tri(4)=1+4/2=3.
+
+So actually, for odd n, we need to know tri(n+1). This implies we might need to compute even-indexed terms first? Or perhaps the recurrence is meant to be solved differently.
+
+Wait, the docstring says: "return a list of the first n+1 numbers". So for input n, we need to generate indices 0 to n.
+
+But the recurrence defines values for positive integers. What about index 0? The example output for n=3 includes index0=1. How is index0 defined?
+
+The docstring doesn't define tri(0). But the example output for n=3 is [1,3,2,8]. So:
+   index0: 1
+   index1: 3
+   index2: 2 (even: 1+2/2=2)
+   index

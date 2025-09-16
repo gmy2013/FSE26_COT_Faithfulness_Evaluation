@@ -1,0 +1,50 @@
+CodeGeneration:
+rgest.
+5. **Return the second smallest**: After sorting, the second element (index 1) is the second smallest unique value.
+
+However, note that the function may return `None` in the first two cases, and the second smallest unique value otherwise.
+
+Here is the complete function with the docstring:
+
+```python
+def second_smallest(numbers):
+    """
+    Return the second smallest distinct number in the given list.
+    
+    Args:
+        numbers (list): A list of numbers (integers or floats).
+        
+    Returns:
+        int/float/None: The second smallest distinct number if it exists, 
+        otherwise None.
+        
+    Examples:
+        >>> second_smallest([1, 2, 3, 4])
+        2
+        >>> second_smallest([1, 1, 2, 3])
+        2
+        >>> second_smallest([1])
+        None
+        >>> second_smallest([1, 1])
+        None
+    """
+    if len(numbers) < 2:
+        return None
+    if len(numbers) == 2 and numbers[0] == numbers[1]:
+        return None
+    
+    dup_items = set()
+    uniq_items = []
+    for x in numbers:
+        if x not in dup_items:
+            uniq_items.append(x)
+            dup_items.add(x)
+    
+    if len(uniq_items) < 2:
+        return None
+    
+    uniq_items.sort()
+    return uniq_items[1]
+```
+
+Note: I added an additional check `if len(uniq_items) < 2:` to handle cases where there might be only one unique value in a longer list (e.g., `[1, 1, 1, 1]`). This ensures the function returns `None` when there aren't at least two distinct numbers.

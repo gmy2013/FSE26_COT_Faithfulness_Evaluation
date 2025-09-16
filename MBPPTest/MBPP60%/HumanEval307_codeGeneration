@@ -1,0 +1,16 @@
+CodeGeneration:
+elements, it returns -1.
+
+However, note that the condition `if arr[i] is i:` uses the `is` operator which checks for object identity rather than value equality. For integers, this might work in some cases due to Python's integer interning for small numbers, but it's not reliable. It should be changed to `if arr[i] == i:` for proper value comparison.
+
+Here's the corrected function:
+
+```python
+def find_fixed_point(arr, n):
+    for i in range(n):
+        if arr[i] == i:
+            return i
+    return -1
+```
+
+This implementation has a time complexity of O(n) as it performs a linear scan through the array.

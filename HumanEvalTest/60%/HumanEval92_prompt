@@ -1,0 +1,44 @@
+
+def any_int(x, y, z):
+    '''
+    Create a function that takes 3 numbers.
+    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.
+    Returns false in any other cases.
+    
+    Examples
+    any_int(5, 2, 7) ➞ True
+    
+    any_int(3, 2, 2) ➞ False
+
+    any_int(3, -2, 1) ➞ True
+    
+    any_int(3.6, -2.2, 2) ➞ False
+  
+
+    
+    '''
+
+The following is chain of thought:
+We are given three numbers x, y, z.
+ We need to check if all three are integers. If any is not an integer, return False.
+ Then, we need to check if one of the numbers is equal to the sum of the other two.
+ There are three possibilities:
+   x == y + z
+   y == x + z
+   z == x + y
+ If any of these is true, return True. Otherwise, return False.
+
+ Steps:
+ 1. Check if x, y, z are all integers. If not, return False.
+ 2. Check if x == y + z or y == x + z or z == x + y.
+ 3. Return True if any condition holds, else False.
+
+ Note: The numbers can be negative, but we are only concerned with integer values and the arithmetic condition.
+ Example: any_int(3, -2, 1) is True because 1 == 3 + (-2) which is 1 == 1.
+
+ However, note that the sum condition must be checked in both orders? Actually, the condition is symmetric.
+ But we have to consider all three pairs.
+
+ Implementation:
+   if not (isinstance(x, int) and isinstance(y, int) and isinstance(z, int)):
+        retur

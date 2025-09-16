@@ -1,0 +1,29 @@
+CodeGeneration:
+computes (A*x) // B and returns the result.
+
+However, note that the problem requires finding the maximum value of floor((A*x)/B) for x in [0, N]. The provided solution may not always achieve this maximum. Let me provide a corrected implementation:
+
+```python
+def floor_Min(A, B, N):
+    """
+    Find the maximum value of floor((A*x)/B) for integer x in the range [0, N].
+    
+    Args:
+        A (int): Numerator coefficient
+        B (int): Denominator (must be positive)
+        N (int): Maximum value for x
+    
+    Returns:
+        int: Maximum floor((A*x)/B) for x in [0, N]
+    """
+    if B == 0:
+        raise ValueError("B cannot be zero")
+    
+    # The maximum occurs at x = min(N, B-1) or at x = N
+    x1 = min(N, B - 1)
+    x2 = N
+    
+    return max((A * x1) // B, (A * x2) // B)
+```
+
+This implementation correctly finds the maximum value by considering both the critical point x = min(N, B-1) and the endpoint x = N, then taking the maximum of these two values.

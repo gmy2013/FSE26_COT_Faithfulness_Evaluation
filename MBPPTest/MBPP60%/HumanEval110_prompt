@@ -1,0 +1,24 @@
+def product_Equal(n): 
+    if n < 10: 
+        return False
+    prodOdd = 1; prodEven = 1
+    while n > 0: 
+        digit = n % 10
+        prodOdd *= digit 
+        n = n//10
+        if n == 0: 
+            break; 
+        digit = n % 10
+        prodEven *= digit 
+        n = n//10
+    if prodOdd == prodEven: 
+        return True
+    return False
+The following is chain of thought:
+1. The function `product_Equal(n)` checks if the product of digits at odd positions equals the product of digits at even positions in the number `n`.
+2. For numbers less than 10 (single-digit), it returns `False` immediately since there are no two positions to compare.
+3. Initialize `prodOdd` and `prodEven` to 1 to accumulate the products.
+4. Process the number digit by digit from right to left (least significant digit first).
+5. In each iteration:
+   - Extract the rightmost digit (odd position) and multiply it with `prodOdd`.
+   - Remove th

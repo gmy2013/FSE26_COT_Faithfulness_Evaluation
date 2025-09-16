@@ -1,0 +1,17 @@
+def last_Two_Digits(N): 
+    if (N >= 10): 
+        return
+    fac = 1
+    for i in range(1,N + 1): 
+        fac = (fac * i) % 100
+    return (fac) 
+The following is chain of thought:
+1. The function is named `last_Two_Digits` and takes an integer `N` as input.
+2. The docstring is missing, but the intended behavior is to compute the last two digits of N! (factorial of N).
+3. The current code has a condition: if N >= 10, it returns early (without returning a value). This seems incorrect because we should compute for N >= 10 as well.
+4. The logic inside the loop correctly computes factorial modulo 100 to get the last two digits.
+5. The issue is the early return condition. It should be removed or corrected.
+6. Actually, the condition should be reversed: we should handle cases where N is too small? But for factorial, N=0 or 1 is valid.
+7. Alternatively, the condition might be a mistake. Let's check: for N < 10, the factorial might not have two digits? But we still need to return the last two digits (with leading zero if necessary).
+8. Actually, the condition is flawed. We should compute for all N >= 0.
+9. The correct approach is to remove the conditio

@@ -1,0 +1,34 @@
+def count_Unset_Bits(n) :  
+    cnt = 0;  
+    for i in range(1,n + 1) : 
+        temp = i;  
+        while (temp) :  
+            if (temp % 2 == 0) : 
+                cnt += 1;  
+            temp = temp // 2;  
+    return cnt;  
+The following is chain of thought:
+Here's the structured chain of thought for the count_Unset_Bits function:
+
+1. **Function Purpose**: Count total unset bits (0s) in binary representations of all numbers from 1 to n
+
+2. **Initialization**: 
+   - Initialize counter `cnt` to 0 to accumulate unset bits
+
+3. **Outer Loop**: 
+   - Iterate through all numbers from 1 to n (inclusive)
+   - For each number `i`, store it in temporary variable `temp`
+
+4. **Bit Processing**:
+   - While `temp` is not zero (still has bits to process)
+   - Check if least significant bit is 0 (using modulo 2 operation)
+   - If bit is 0, increment the counter
+   - Right-shift equivalent: divide by 2 (integer division) to process next bit
+
+5. **Return Result**:
+   - After processing all numbers and all bits, return total count of unset bits
+
+6. **Algorithm Type**: 
+   - Brute force approach that examines each bit of each number individually
+   - Time complexity: O(n log n) - processes each number and its bits
+   - Space complexity: O(1) - uses c

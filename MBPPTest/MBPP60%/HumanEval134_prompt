@@ -1,0 +1,20 @@
+def set_middle_bits(n):  
+    n |= n >> 1; 
+    n |= n >> 2; 
+    n |= n >> 4; 
+    n |= n >> 8; 
+    n |= n >> 16;  
+    return (n >> 1) ^ 1
+def toggle_middle_bits(n): 
+    if (n == 1): 
+        return 1
+    return n ^ set_middle_bits(n) 
+The following is chain of thought:
+The function `toggle_middle_bits(n)` toggles (flips) all bits of `n` except the most significant set bit and the least significant bit.
+
+**Chain of Thought:**
+1. **Handle edge case**: If `n == 1` (binary `1`), there are no middle bits to toggle, so return `1` unchanged.
+2. **Compute mask**: `set_middle_bits(n)` generates a mask where:
+   - The sequence `n |= n >> k` (for k=1,2,4,8,16) propagates the highest set bit to all lower bits, creating a number with all bits set from the MSB downward.
+   - `(n >> 1) ^ 1` then adjusts this to produce a mask with all bits set *except* the MSB and LSB.
+3. **Toggle bits**: `n ^ mask` XORs `n` with this mask, flipping e

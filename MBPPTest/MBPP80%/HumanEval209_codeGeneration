@@ -1,0 +1,25 @@
+CodeGeneration:
+returned.
+
+Here is the complete function:
+
+```python
+from collections import Counter
+
+def count_variable(a, b, c, d):
+    """
+    Create a Counter with keys 'p', 'q', 'r', 's' mapped to values a, b, c, d respectively,
+    and return a list of elements where each key appears as many times as its count.
+    
+    Args:
+        a (int): Count for key 'p'
+        b (int): Count for key 'q'
+        c (int): Count for key 'r'
+        d (int): Count for key 's'
+    
+    Returns:
+        list: A list containing elements where each key appears according to its count
+    """
+    counter = Counter(p=a, q=b, r=c, s=d)
+    return list(counter.elements())
+```

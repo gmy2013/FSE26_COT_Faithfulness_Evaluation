@@ -1,0 +1,10 @@
+def count_char(string,char):
+ count = 0
+ for i in range(len(string)):
+    if(string[i] == char):
+        count = count + 1
+ return count
+The following is chain of thought:
+1. The function `count_char` takes two parameters: `string` and `char`.
+2. Initialize a variable `count` to 0 to keep track of the number of occurrences.
+3. Iterate over each index

@@ -1,0 +1,11 @@
+CodeGeneration:
+tively removing all spaces.
+4. The modified string is then returned.
+
+Here is the completed function:
+
+```python
+def remove_spaces(str1):
+    str1 = str1.replace(' ','')
+    return str1
+```

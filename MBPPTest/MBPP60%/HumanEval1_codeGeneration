@@ -1,0 +1,32 @@
+CodeGeneration:
+Based on the analysis, the function appears to be working correctly for finding the first repeated character. However, I notice a potential optimization and a minor issue with the return value:
+
+1. The substring slicing `str1[:index+1]` creates a new string each iteration, which could be inefficient for long strings
+2. Returning "None" as a string instead of the actual `None` value
+
+Here's an optimized version that avoids unnecessary slicing and uses proper None return:
+
+```python
+def first_repeated_char(str1):
+    """
+    Find the first repeated character in a string.
+    
+    Args:
+        str1 (str): The input string to search for repeated characters
+        
+    Returns:
+        str or None: The first repeated character, or None if no repeated characters found
+    """
+    seen_chars = set()
+    for char in str1:
+        if char in seen_chars:
+            return char
+        seen_chars.add(char)
+    return None
+```
+
+This version:
+- Uses a set to track seen characters for O(1) lookups
+- Avoids creating substrings on each iteration
+- Returns the actual `None` value instead of a string
+- Maintains the same functionality but with better performance (O(n) time complexity)

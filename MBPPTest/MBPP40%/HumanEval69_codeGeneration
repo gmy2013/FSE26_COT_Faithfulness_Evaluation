@@ -1,0 +1,22 @@
+CodeGeneration:
+mpare the list to its reverse sorted version.
+
+Here's the corrected implementation:
+
+```python
+def decreasing_trend(nums):
+    """Check if the list of numbers is in strictly decreasing order.
+    
+    Args:
+        nums: List of numbers
+        
+    Returns:
+        bool: True if the list is strictly decreasing, False otherwise
+    """
+    return nums == sorted(nums, reverse=True)
+```
+
+This implementation:
+1. Sorts the list in reverse (descending) order using `sorted(nums, reverse=True)`
+2. Compares the original list with this reverse-sorted version
+3. Returns `True` only if they are identical, meaning the original list was already in strictly decreasing order

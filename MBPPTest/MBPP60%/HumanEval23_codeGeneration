@@ -1,0 +1,14 @@
+CodeGeneration:
+```python
+def is_upper(string):
+    """
+    Check if all characters in the string are uppercase.
+
+    Args:
+        string (str): The string to check.
+
+    Returns:
+        bool: True if all characters are uppercase, False otherwise.
+    """
+    return string == string.upper()
+```

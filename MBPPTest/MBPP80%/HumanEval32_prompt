@@ -1,0 +1,34 @@
+def pair_OR_Sum(arr,n) : 
+    ans = 0 
+    for i in range(0,n) :    
+        for j in range(i + 1,n) :   
+            ans = ans + (arr[i] ^ arr[j])          
+    return ans 
+The following is chain of thought:
+Let's analyze the problem and the given function:
+
+The function `pair_OR_Sum` (though named OR, actually computes XOR sum) calculates the sum of XOR values for all unordered pairs in the array.
+
+Given implementation:
+- Uses nested loops: O(n²) time complexity
+- For each pair (i, j) where i < j, computes arr[i] XOR arr[j] and adds to total
+
+Chain of thought for understanding:
+1. Problem: Compute sum of XOR for all unordered pairs in array
+2. Current approach: Brute force - check every pair
+3. For small n, this works, but for large n (n≈10⁵), O(n²) is too slow
+4. Better approach: Use bit manipulation properties
+5. Insight: For each bit position k (0 to 31 for integers), count numbers where k-th bit is set
+6. Let count_k = number of elements with k-th bit set
+7. Then number of pairs where k-th bit contributes to XOR sum is: count_k * (n - count_k)
+8. Total contribution for k-th bit: (count_k * (n - count_k)) * (1 << k)
+9. Sum over all bits gives total XOR sum
+
+However, since the task is to complete the function (which is already complete but inefficient), and we're asked for structured chain of thought only (not to rewrite), we provide:
+
+Structured chain of thought:
+1. Function purpose: Compute sum of XOR for all unordered pairs in array
+2. Current implementation: Double nested loops over array indices
+3. Time complexity: O(n²) - acceptable for small n, inefficient for large n
+4. Space complexity: O(1) - only uses constant extra space
+5. C

@@ -1,0 +1,44 @@
+
+def match_parens(lst):
+    '''
+    You are given a list of two strings, both strings consist of open
+    parentheses '(' or close parentheses ')' only.
+    Your job is to check if it is possible to concatenate the two strings in
+    some order, that the resulting string will be good.
+    A string S is considered to be good if and only if all parentheses in S
+    are balanced. For example: the string '(())()' is good, while the string
+    '())' is not.
+    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
+
+    Examples:
+    match_parens(['()(', ')']) == 'Yes'
+    match_parens([')', ')']) == 'No'
+    '''
+
+The following is chain of thought:
+To solve this problem, we need to determine if we can concatenate two strings of parentheses in some order (either first string followed by second, or second followed by first) such that the resulting string is "good", meaning all parentheses are balanced.
+
+**Approach:**
+1. **Understanding Balanced Parentheses:** A string is balanced if every opening parenthesis '(' has a corresponding closing parenthesis ')', and they are properly nested. We can use a stack or a counter to check balance. However, since we are only allowed to concatenate two strings in two orders, we can simulate both orders.
+
+2. **Key Insight:** For a concatenation of two strings to be balanced, the entire string must be balanced. However, we cannot simply check each string individually because they might be unbalanced on their own but balanced when combined in a specific order.
+
+3. **Efficient Check:** Instead of generating both concatenated strings and checking for balance (which might be inefficient for large strings), we can use a greedy approach with a counter:
+   - Let `s1` and `s2` be the two strings.
+   - Consider both orders: `s1 + s2` and `s2 + s1`.
+   - For each candidate concatenation, we traverse the string and maintain a counter `balance` that increments for '(' and decrements for ')'. If at any point the balance becomes negative, it is unbalanced. At the end, the balance must be zero.
+
+4. **Optimization:** However, we can avoid building the entire string by processing each string sequentially. For a given order, we can:
+   - Start with `balance = 0`.
+   - Process the first string: update the balance. If at any point the balance becomes negative, it fails.
+   - Then process the second string: update the balance. Again, if balance becomes negative during the process, it fails.
+   - At the end, if the balance is zero, it is balanced.
+
+5. **Check Both Orders:** We do the above for both orders (s1 then s2, and s2 then s1). If either order results in a balanced string, return "Yes". Otherwise, "No".
+
+6. **Implementation:**
+   - Define a helper function `is_balanced_order(first, second)` that:
+        balance = 0
+        for char in first:
+            if char == '(': balance += 1
+    

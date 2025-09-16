@@ -1,0 +1,212 @@
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. Convert the input string to a float first to handle decimal numbers.
+2. We need to round to the nearest integer, but with a special rule for .5 cases.
+3. The rule: if exactly halfway between two integers, round away from zero.
+4. This means positive numbers round up (e.g., 14.5 -> 15) and negative numbers round down (e.g., -14.5 -> -15).
+
+We can implement this by:
+- Checking if the fractional part is exactly 0.5 (or -0.5 for negatives).
+- If so, round away from zero: for positive, ceil; for negative, floor.
+- Otherwise, use normal rounding.
+
+However, note that due to floating point precision, we should be cautious when checking for exactly 0.5.
+
+Alternatively, we can use:
+- For positive numbers: if the fractional part is exactly 0.5, we round up.
+- For negative numbers: if the fractional part is exactly -0.5, we round down.
+
+But to avoid floating point issues, we can compare with a tolerance.
+
+Another approach: multiply by 2, round to nearest integer, then divide by 2 and round again? But that might not be straightforward.
+
+Actually, we can use:
+- Check if the absolute value of (value - round(value)) is approximately 0.5 (with tolerance). If so, then we are exactly halfway.
+
+But note: the problem says "equidistant from two integers", which only happens when the fractional part is exactly 0.5.
+
+So steps:
+1. Convert string to float.
+2. Let n = float(value)
+3. Check if n is exactly halfway: i.e., abs(n - round(n)) == 0.5? But due to floating point, we might use tolerance.
+4. If it is halfway:
+   - If n is positive, return ceil(n)
+   - If n is negative, return floor(n)
+5. Otherwise, return round(n) as usual.
+
+But wait: for negative numbers, for example -14.5: 
+   round(-14.5) would be -14 (because Python rounds to even by default), but we want -15.
+
+So we cannot rely on Python's built-in round for halfway cases.
+
+Implementation:
+
+We can do:
+   integer_part = int(n)
+   fractional = n - integer_part
+
+But for negatives, fractional is negative.
+
+Alternatively, we can use:
+   if n >= 0:
+        if n - int(n) == 0.5:
+            return int(n) + 1
+        else:
+            return round(n)   # but careful: for positive, round(n) rounds to even for halfway, but we don't want that for exactly 0.5.
+   Similarly for negative.
+
+But to avoid floating point issues, we should compare with tolerance.
+
+Better: represent the number as a string to avoid floating point? But the input is string, so we can parse the string to see if it ends with ".5".
+
+However, the problem says the input is a string representing a number. It might be "14.5" or "14.500", etc.
+
+So we can parse the string to see if it has a decimal part that is exactly 0.5.
+
+But that might be complicated.
+
+Alternatively, we can use decimal module for exact representation.
+
+But for simplicity, we can use a tolerance.
+
+Let's define:
+   tol = 1e-9
+   n = float(value)
+
+   if abs(n - round(n)) - 0.5) < tol:   # meaning the distance to the nearest integer is 0.5
+        if n > 0:
+            return int(n) + 1
+        else:
+            return int(n) - 1   # because for negative, int(-14.5) is -14, but we want -15 so subtract 1.
+   else:
+        return round(n)
+
+But wait: for negative, int(n) truncates towards zero. So for n = -14.5, int(n) is -14.
+We want to round down to -15.
+
+So for negative halfway, we need to go to floor(n). Actually, floor(-14.5) is -15.
+
+So we can use:
+   if abs(n - round(n)) - 0.5) < tol:
+        if n > 0:
+            return math.ceil(n)
+        else:
+            return math.floor(n)
+
+But we need to import math.
+
+Alternatively, without math: for positive, int(n) + 1; for negative, int(n) - 1 only if n is not integer? But for negative, if n = -14.5, int(n) is -14, so we want -15 = int(n) - 1.
+
+So code:
+
+   import math
+
+   n = float(value)
+   if abs(abs(n - round(n)) - 0.5) < 1e-9:
+        if n > 0:
+            return int(n) + 1
+        else:
+            return int(n) - 1
+   else:
+        return round(n)
+
+But wait: what if n is exactly integer? Then the condition won't hold.
+
+Test with n=10: no problem.
+
+But for n=14.5: 
+   round(14.5) = 14 (because Python rounds to even), but we want 15.
+   So the condition: abs(14.5 - 14) = 0.5, so it matches.
+
+Similarly for -14.5: round(-14.5) = -14 (round to even), but we want -15.
+   abs(-14.5 - (-14)) = abs(-0.5) = 0.5, so matches.
+
+So it works.
+
+However, we can also avoid math by using:
+
+   if n >= 0:
+        if n - int(n) >= 0.5:
+            return int(n) + 1
+        else:
+            return int(n)
+   else:
+        if int(n) - n >= 0.5:   # because fractional is negative
+            return int(n) - 1
+        else:
+            return int(n)
+
+But this doesn't handle the halfway correctly for rounding away: for positive exactly 0.5, we want to round up. So if n - int(n) == 0.5, we round up.
+Similarly for negative: if the fractional part is exactly -0.5, we round down.
+
+But with floating point, we might not get exact 0.5.
+
+So the first method with tolerance is better.
+
+Let's code with tolerance.
+
+We'll define a tolerance.
+
+Also, we can use:
+
+   rounded = round(n)
+   if abs(n - rounded) == 0.5:   # with tolerance
+        if n > 0:
+            return rounded + 1
+        else:
+            return rounded - 1
+   else:
+        return rounded
+
+For n=14.5: rounded = 14, then abs(14.5-14)=0.5, so we return 15.
+For n=-14.5: rounded = -14, abs(-14.5 - (-14)) = 0.5, so we return -15.
+
+This is good.
+
+So implementation:
+
+   n = float(value)
+   rounded = round(n)
+   if abs(n - rounded) == 0.5:   # but use tolerance
+        if n > 0:
+            return rounded + 1
+        else:
+            return rounded - 1
+   else:
+        return rounded
+
+Now with tolerance:
+
+   tol = 1e-9
+   if abs(abs(n - rounded) - 0.5) < tol:
+        ...
+
+But actually, we can check: if abs(n - rounded) - 0.5 < tol and abs(n - rounded) - 0.5 > -tol
+But simpler: if abs( abs(n - rounded) - 0.5 ) < tol
+
+Alternatively, we can check if the fractional part is approximately 0.5 in absolute value.
+
+But the above should work.
+
+Let's write the code accordingly.

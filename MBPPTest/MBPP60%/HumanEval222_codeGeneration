@@ -1,0 +1,23 @@
+CodeGeneration:
+of the string.
+6. If the regex matches, it returns "string starts with the given substring".
+7. If the regex doesn't match, it returns "string doesn't start with the given substring".
+
+Here's the complete function with proper formatting:
+
+```python
+import re
+
+def check_substring(string, sample):
+    if sample in string:
+        y = "\A" + sample
+        x = re.search(y, string)
+        if x:
+            return "string starts with the given substring"
+        else:
+            return "string doesnt start with the given substring"
+    else:
+        return "entered string isnt a substring"
+```
+
+Note: The function could be simplified using `string.startswith(sample)` instead of regex, but the current implementation using regex is valid.

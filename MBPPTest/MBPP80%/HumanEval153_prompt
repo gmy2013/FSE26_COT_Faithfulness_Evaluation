@@ -1,0 +1,17 @@
+def extract_index_list(l1, l2, l3):
+    result = []
+    for m, n, o in zip(l1, l2, l3):
+        if (m == n == o):
+            result.append(m)
+    return result
+The following is chain of thought:
+1. **Understand the function purpose**: The function takes three lists and returns elements that are equal at the same index in all three lists.
+2. **Analyze the current implementation**: 
+   - Uses `zip` to iterate through corresponding elements of l1, l2, and l3 simultaneously.
+   - Checks if all three elements (m, n, o) are equal using `m == n == o`.
+   - Appends the matching element to the result list.
+3. **Verify correctness**: 
+   - The implementation correctly handles the requirement by comparing elements at each index.
+   - Returns a list of common elements preserving their original order.
+4. **Edge cases consideration**: 
+   - Handles lists of different lengths (zip stops 

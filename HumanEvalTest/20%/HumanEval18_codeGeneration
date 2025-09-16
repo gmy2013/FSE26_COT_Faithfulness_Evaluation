@@ -1,0 +1,31 @@
+20%CoT
+CodeGeneration:
+To implement the `how_many_times` function, we need to consider overlapping occurrences of the substring within the original string. Here's the complete implementation based on the chain of thought you provided:
+
+```python
+def how_many_times(string: str, substring: str) -> int:
+    """ Find how many times a given substring can be found in the original string. Count overlapping cases.
+    >>> how_many_times('', 'a')
+    0
+    >>> how_many_times('aaa', 'a')
+    3
+    >>> how_many_times('aaaa', 'aa')
+    3
+    """
+    # Extract the length of the substring
+    substring_length = len(substring)
+    
+    # If the substring is empty or the string is shorter than the substring, return 0
+    if substring_length == 0 or len(string) < substring_length:
+        return 0
+    
+    # Initialize a counter for occurrences
+    count = 0
+    
+    # Iterate over the string and check for occurrences
+    for i in range(len(string) - substring_length + 1):
+        if string[i:i + substring_length] == substring:
+            count += 1
+    
+    return count
+```

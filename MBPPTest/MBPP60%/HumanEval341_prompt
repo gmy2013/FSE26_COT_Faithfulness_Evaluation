@@ -1,0 +1,12 @@
+def check_element(test_tup, check_list):
+  res = False
+  for ele in check_list:
+    if ele in test_tup:
+      res = True
+      break
+  return (res) 
+The following is chain of thought:
+1. The function `check_element` takes two parameters: `test_tup` (a tuple) and `check_list` (a list).
+2. Initialize a variable `res` to `False` to assume no element from `check_list` is in `test_tup` initially.
+3. Iterate over each element `ele` in `check_list`.
+4. For each `ele`, check if it exists in `test_tup` using the `in` operator

@@ -1,0 +1,12 @@
+def check_identical(test_list1, test_list2):
+  res = test_list1 == test_list2
+  return (res) 
+The following is chain of thought:
+Here's the structured chain of thought for implementing the `check_identical` function:
+
+1. **Function Purpose Analysis**: The function needs to compare two lists and return whether they are identical
+2. **Input Parameters**: Two lists (`test_list1` and `test_list2`) to be compared
+3. **Comparison Logic**: Use Python's equality operator `==` which compares both lists element by element
+4. **Return Value**: Return the boolean result of the comparison directly
+5. **Implementation**: Assign the comparison result to variable `res` and return it
+6. **Edge Cases Consideration**: The equality operator handles empty lists, d

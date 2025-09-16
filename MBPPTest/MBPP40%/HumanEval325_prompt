@@ -1,0 +1,26 @@
+def binomial_coeffi(n, k): 
+	if (k == 0 or k == n): 
+		return 1
+	return (binomial_coeffi(n - 1, k - 1) 
+		+ binomial_coeffi(n - 1, k)) 
+def rencontres_number(n, m): 
+	if (n == 0 and m == 0): 
+		return 1
+	if (n == 1 and m == 0): 
+		return 0
+	if (m == 0): 
+		return ((n - 1) * (rencontres_number(n - 1, 0)+ rencontres_number(n - 2, 0))) 
+	return (binomial_coeffi(n, m) * rencontres_number(n - m, 0))
+The following is chain of thought:
+Let's analyze the `rencontres_number` function step by step:
+
+1. **Base Cases**:
+   - If n=0 and m=0, return 1 (by definition, there is 1 permutation of 0 elements with 0 fixed points).
+   - If n=1 and m=0, return 0 (there are no derangements for 1 element).
+   - If m=0 (and n is not 0 or 1), we use the recurrence for derangements: 
+        D(n) = (n-1) * [D(n-1) + D(n-2)]
+
+2. **General Case (m != 0)**:
+   - The number of permutations of n elements with exactly m fixed points is given by:
+        R(n, m) = C(n, m) * D(n-m)
+   where C(n, m) is the 

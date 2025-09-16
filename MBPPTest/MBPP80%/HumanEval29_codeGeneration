@@ -1,0 +1,42 @@
+CodeGeneration:
+I can see you've identified the issue with the original code. The problem is in the list comprehension where it tries to iterate over a generator directly. Here's the corrected implementation:
+
+```python
+def adjac(ele, sub = []):
+    """
+    Generate all adjacent coordinates for a given tuple of integers.
+    
+    For each element in the input tuple, generates coordinates that are
+    ±1 from the original value, creating all possible combinations.
+    
+    Args:
+        ele: Tuple of integers representing coordinates
+        sub: Current accumulated coordinate list (used for recursion)
+    
+    Yields:
+        Lists of adjacent coordinates
+    """
+    if not ele:
+        yield sub
+    else:
+        for j in range(ele[0] - 1, ele[0] + 2):
+            yield from adjac(ele[1:], sub + [j])
+
+def get_coordinates(test_tup):
+    """
+    Get all adjacent coordinates for a given tuple.
+    
+    Args:
+        test_tup: Tuple of integers representing coordinates
+        
+    Returns:
+        List of all adjacent coordinate tuples
+    """
+    res = list(adjac(test_tup))
+    return res
+```
+
+The key fix is replacing the problematic list comprehension with a proper `yield from` statement that iterates through the recursive generator calls. This ensures that all coordinate combinations are properly generated and yielded.
+
+Example usage:
+```python

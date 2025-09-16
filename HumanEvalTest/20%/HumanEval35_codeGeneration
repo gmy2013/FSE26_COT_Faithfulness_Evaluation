@@ -1,0 +1,17 @@
+20%CoT
+CodeGeneration:
+Here's the completion for the `max_element` function based on the given problem description and examples:
+
+```python
+def max_element(l: list):
+    """Return maximum element in the list.
+    >>> max_element([1, 2, 3])
+    3
+    >>> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+    123
+    """
+    # Use Python's built-in max function to find the maximum element in the list
+    return max(l)
+```
+
+This code uses Python's built-in `max()` function, which efficiently returns the maximum value from the list `l`.

@@ -1,0 +1,7 @@
+CodeGeneration:
+# Each left-to-right car will collide with every right-to-left car that it meets
+    # Since all cars move at the same speed, the collisions occur when the positions align
+    # This is equivalent to counting all pairs between the two sets of cars
+    # Therefore, the total number of collisions is n * n = n²
+    
+    return n * n

@@ -1,0 +1,25 @@
+CodeGeneration:
+key in each dictionary.
+3. We can use `heapq.nsmallest` to efficiently get the `n` items with the smallest prices.
+4. The `key` parameter should extract the 'price' value from each dictionary.
+5. Return the list of `n` cheapest items.
+
+Here's the complete function:
+
+```python
+import heapq
+
+def cheap_items(items, n):
+    """
+    Return the n cheapest items from the list based on their price.
+    
+    Args:
+        items (list): A list of dictionaries where each dictionary has a 'price' key.
+        n (int): The number of cheapest items to return.
+    
+    Returns:
+        list: A list of the n cheapest items.
+    """
+    cheap_items = heapq.nsmallest(n, items, key=lambda s: s['price'])
+    return cheap_items
+```

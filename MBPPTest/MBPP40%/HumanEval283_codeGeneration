@@ -1,0 +1,36 @@
+CodeGeneration:
+m position 1 to l-1: `(1 << (l-1)) - 1`
+   - XOR these masks to get bits set only in range [l, r]
+3. **Extract the relevant bits** from n using the mask
+4. **Compare** if the extracted bits match the mask exactly
+
+Here's the complete function with improved variable names and comments:
+
+```python
+def all_Bits_Set_In_The_Given_Range(n, l, r):
+    """
+    Check if all bits in the range [l, r] (inclusive) of number n are set to 1.
+    
+    Args:
+        n (int): The number to check
+        l (int): Left boundary of the bit range (inclusive)
+        r (int): Right boundary of the bit range (inclusive)
+    
+    Returns:
+        bool: True if all bits in range [l, r] are set, False otherwise
+    """
+    # Create a mask with bits set from position 1 to r
+    mask_up_to_r = (1 << r) - 1
+    
+    # Create a mask with bits set from position 1 to l-1
+    mask_up_to_l_minus_1 = (1 << (l - 1)) - 1
+    
+    # XOR to get mask with bits set only in range [l, r]
+    range_mask = mask_up_to_r ^ mask_up_to_l_minus_1
+    
+    # Extract the bits from n in the specified range
+    extracted_bits = n & range_mask
+    
+    # Check if the extracted bits match the range mask exactly
+    return extracted_bits == range_mask
+```

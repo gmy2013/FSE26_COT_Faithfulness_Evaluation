@@ -1,0 +1,12 @@
+20%CoT
+CodeGeneration:
+decode the encoded string, we will need to reverse the shift applied during the encoding process. This means shifting each character 5 positions backward in the alphabet. 
+
+Here's how to implement the `decode_shift` function:
+
+```python
+def decode_shift(s: str):
+    """
+    takes as input string encoded with encode_shift function. Returns decoded string.
+    """
+    return "".join([chr(((ord(ch) - 5 - ord("a")) % 26) + ord("a")) for ch in s])

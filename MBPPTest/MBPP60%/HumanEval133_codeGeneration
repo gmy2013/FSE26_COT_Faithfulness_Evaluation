@@ -1,0 +1,36 @@
+CodeGeneration:
+Based on the docstring and the provided chain of thought, here's the complete function with a proper docstring:
+
+```python
+def sum_Of_Subarray_Prod(arr, n):
+    """
+    Calculate the sum of products of all possible contiguous subarrays of the given array.
+    
+    This function efficiently computes the sum of products of all contiguous subarrays
+    by processing the array from right to left and maintaining cumulative product information.
+    
+    Args:
+        arr (list): Input array of numbers
+        n (int): Length of the input array
+        
+    Returns:
+        int/float: Sum of products of all contiguous subarrays
+        
+    Example:
+        >>> sum_Of_Subarray_Prod([1, 2, 3], 3)
+        23
+        # Explanation: Subarrays: [1], [2], [3], [1,2], [2,3], [1,2,3]
+        # Products: 1 + 2 + 3 + 2 + 6 + 6 = 23
+    """
+    ans = 0
+    res = 0
+    i = n - 1
+    while (i >= 0):
+        incr = arr[i]*(1 + res)
+        ans += incr
+        res = incr
+        i -= 1
+    return (ans)
+```
+
+The function efficiently computes the sum of products of all contiguous subarrays using a dynamic programming approach that processes the array from right to left, maintaining the cumulative product contribution from the right side to avoid redundant calculations.

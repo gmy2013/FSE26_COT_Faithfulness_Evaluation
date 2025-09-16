@@ -1,0 +1,11 @@
+def new_tuple(test_list, test_str):
+  res = tuple(test_list + [test_str])
+  return (res) 
+The following is chain of thought:
+1. The function `new_tuple` takes two parameters: `test_list` (a list) and `test_str` (a string).
+2. The goal is to create a new tuple that contains all elements from `test_list` followed by `test_str`.
+3. Since tuples are immutable, we cannot directly append to a tuple. Instead, we can convert the list to a tuple after modifying the list.
+4. First, create a new list by concatenating `test_list` with `[test_str]` (which is a list containing the single string element).
+5. Then, convert this new list into a tuple using the `tuple()` constructor.
+6. Finally, return the resulting tuple.
+7. The pr

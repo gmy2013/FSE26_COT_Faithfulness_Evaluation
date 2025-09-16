@@ -1,0 +1,25 @@
+def binomial_coeff(n, k): 
+	C = [[0 for j in range(k + 1)] 
+			for i in range(n + 1)] 
+	for i in range(0, n + 1): 
+		for j in range(0, min(i, k) + 1): 
+			if (j == 0 or j == i): 
+				C[i][j] = 1
+			else: 
+				C[i][j] = (C[i - 1][j - 1] 
+							+ C[i - 1][j]) 
+	return C[n][k] 
+def lobb_num(n, m): 
+	return (((2 * m + 1) *
+		binomial_coeff(2 * n, m + n)) 
+					/ (m + n + 1))
+The following is chain of thought:
+We are given two functions: binomial_coeff and lobb_num.
+The binomial_coeff function uses dynamic programming to compute binomial coefficients.
+The lobb_num function computes the Lobb number using the formula: ((2*m+1) * binom(2*n, m+n)) / (m+n+1)
+
+However, note that the binomial_coeff function uses integer arithmetic, but the division in lobb_num might require floating point.
+But since Lobb numbers are integers, we should use integer division? Actually, the formula always yields an integer.
+
+But the code uses integer operations. However, the division in lobb_num uses `/` which in Python 2 is integer division if both operands are integers, but in Python 3 it is float division.
+To ensure integer result (since Lobb numbers are integers) and to be compatible with both Python versions, we should us

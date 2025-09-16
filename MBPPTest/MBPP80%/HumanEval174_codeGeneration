@@ -1,0 +1,33 @@
+CodeGeneration:
+The function you provided is already correct and efficient. Here's the complete implementation with the docstring:
+
+```python
+def odd_position(nums):
+    """Check if all elements in the list are at positions matching their parity.
+    
+    For each index i, the element nums[i] should have the same parity as i:
+    - Even indices (0, 2, 4, ...) should contain even numbers
+    - Odd indices (1, 3, 5, ...) should contain odd numbers
+    
+    Args:
+        nums: A list of integers
+        
+    Returns:
+        bool: True if all elements match their position's parity, False otherwise
+        
+    Examples:
+        >>> odd_position([2, 1, 4, 3, 6, 5])
+        True
+        >>> odd_position([2, 1, 4, 2, 6, 5])
+        False
+        >>> odd_position([])
+        True
+    """
+    return all(nums[i] % 2 == i % 2 for i in range(len(nums)))
+```
+
+The function correctly handles:
+- Empty lists (returns True)
+- Single element lists (index 0 requires an even number)
+- All edge cases by comparing each element's parity with its index parity
+- Uses efficient generator expression with `all()` for short-circuit evaluation

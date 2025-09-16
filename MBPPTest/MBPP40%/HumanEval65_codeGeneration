@@ -1,0 +1,16 @@
+CodeGeneration:
+in the string using a for loop with `range(len(string))`.
+4. For each index, check if the character at that index equals `char`.
+5. If it matches, increment `count` by 1.
+6. After the loop, return the total count.
+
+Here is the complete function:
+
+```python
+def count_char(string, char):
+    count = 0
+    for i in range(len(string)):
+        if string[i] == char:
+            count += 1
+    return count
+```

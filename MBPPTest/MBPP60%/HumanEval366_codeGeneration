@@ -1,0 +1,24 @@
+CodeGeneration:
+ion between this set and the set of all vowels (both uppercase and lowercase)
+   - Checking if the size of this intersection is at least 5
+4. If true, it returns 'accepted', otherwise 'not accepted'
+
+Here is the complete function with the docstring:
+
+```python
+def check(string):
+    """
+    Check if a string contains at least 5 unique vowels (case-insensitive).
+    
+    Args:
+        string (str): The input string to check for vowels
+        
+    Returns:
+        str: 'accepted' if the string contains at least 5 unique vowels, 
+             'not accepted' otherwise
+    """
+    if len(set(string).intersection("AEIOUaeiou")) >= 5: 
+        return 'accepted'
+    else: 
+        return "not accepted"
+```

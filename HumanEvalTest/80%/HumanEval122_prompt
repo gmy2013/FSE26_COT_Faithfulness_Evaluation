@@ -1,0 +1,52 @@
+
+def add_elements(arr, k):
+    """
+    Given a non-empty array of integers arr and an integer k, return
+    the sum of the elements with at most two digits from the first k elements of arr.
+
+    Example:
+
+        Input: arr = [111,21,3,4000,5,6,7,8,9], k = 4
+        Output: 24 # sum of 21 + 3
+
+    Constraints:
+        1. 1 <= len(arr) <= 100
+        2. 1 <= k <= len(arr)
+    """
+
+The following is chain of thought:
+We are given an array `arr` and an integer `k`.
+ We need to consider the first `k` elements of the array.
+ For each of these elements, we check if it has at most two digits (i.e., between -99 and 99 inclusive? But note: the example only has positive integers).
+ However, the problem says "non-empty array of integers", so we should consider negative numbers as well? But the example only has positive.
+ But the docstring says "at most two digits", which for negative numbers would be from -99 to -10 and also -9 to -1? Actually, the number of digits in a negative number is the same as its absolute value.
+ However, note the constraints: the array contains integers. We should consider the absolute value for digit count? Actually, the problem says "digits", which typically refers to the number of digits without the sign.
+ But let's look at the example: it only has positive numbers. Also, the constraints don't specify positive only, but the example input is all positive.
+
+ To be safe, we should consider the absolute value when counting digits. However, the problem says "at most two digits". So:
+   A number has at most two digits if its absolute value is less than 100 (i.e., from -99 to 99 inclusive).
+
+ Steps:
+ 1. Take the first k elements from the array.
+ 2. For each number in these k elements, check if the absolute value of the number is less than 100 (i.e., |x| < 100).
+ 3. Sum all such numbers that satisfy the condition.
+
+ Example: 
+   arr = [111,21,3,4000,5,6,7,8,9], k = 4
+   First 4 elements: [111, 21, 3, 4000]
+   Numbers with at most two digits: 21 (because |21|=21<100) and 3 (|3|=3<100). 111 and 4000 are not.
+   So sum = 21+3 = 24.
+
+ Implementation:
+   We can use a list slice to get the first k elements: arr[:k]
+   Then iterate through each element in that slice, and if abs(x) < 100, add it to the total.
+
+ However, note: what about zero? Zero has one digit. So it should be included. And abs(0)=0<100, so it will be included.
+
+ Code:
+   total = 0
+   for num in arr[:k]:
+        if abs(num) < 100:
+            total += num
+
+ But wait

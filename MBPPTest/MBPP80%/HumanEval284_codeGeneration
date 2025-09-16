@@ -1,0 +1,47 @@
+CodeGeneration:
+Based on the chain of thought analysis, the provided function correctly implements the isomorphic string check. Here's the complete function with the docstring:
+
+```python
+def is_Isomorphic(str1, str2):
+    """
+    Check if two strings are isomorphic.
+    
+    Two strings are isomorphic if characters in the first string can be mapped
+    to characters in the second string while preserving the pattern of character
+    positions. That is, the positions of each character in str1 should match
+    the positions of the corresponding character in str2.
+    
+    Args:
+        str1 (str): First input string
+        str2 (str): Second input string
+        
+    Returns:
+        bool: True if strings are isomorphic, False otherwise
+        
+    Examples:
+        >>> is_Isomorphic("egg", "add")
+        True
+        >>> is_Isomorphic("foo", "bar")
+        False
+        >>> is_Isomorphic("paper", "title")
+        True
+    """
+    dict_str1 = {}
+    dict_str2 = {}
+    for i, value in enumerate(str1):
+        dict_str1[value] = dict_str1.get(value, []) + [i]
+    for j, value in enumerate(str2):
+        dict_str2[value] = dict_str2.get(value, []) + [j]
+    if sorted(dict_str1.values()) == sorted(dict_str2.values()):
+        return True
+    else:
+        return False
+```
+
+The function correctly handles:
+- Different length strings (returns False)
+- Empty strings (returns True)
+- Strings with identical character position patterns
+- All edge cases mentioned in the chain of thought
+
+The implementation efficiently checks isomorphism by comparing the sorted position patterns of characters in both strings.

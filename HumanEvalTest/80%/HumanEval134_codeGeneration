@@ -1,0 +1,22 @@
+CodeGeneration:
+check_if_last_char_is_a_letter("apple pi e") ➞ True
+    check_if_last_char_is_a_letter("apple pi e ") ➞ False
+    check_if_last_char_is_a_letter("") ➞ False 
+    '''
+    if not txt:  # Empty string case
+        return False
+    
+    last_char = txt[-1]
+    if not last_char.isalpha():
+        return False
+    
+    # Check if it's the first character or preceded by space
+    if len(txt) == 1:  # Single character case
+        return True
+    
+    # Check if the character before the last one is a space
+    if txt[-2] == ' ':
+        return True
+    
+    return False
+```

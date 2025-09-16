@@ -1,0 +1,30 @@
+
+
+def sort_third(l: list):
+    """This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l, but sorted.
+    >>> sort_third([1, 2, 3])
+    [1, 2, 3]
+    >>> sort_third([5, 6, 3, 4, 8, 9, 2])
+    [2, 6, 3, 4, 8, 9, 5]
+    """
+
+The following is chain of thought:
+To solve this problem, we need to create a new list that is identical to the input list except at indices divisible by 3, where the values should be sorted. However, note that the sorting should only consider the values at these indices and then place them back in their original positions but in sorted order.
+
+Here's the step-by-step thought process:
+
+1. **Identify indices divisible by 3**: We need to extract the values at every index that is divisible by 3 (i.e., index 0, 3, 6, ...).
+2. **Sort these values**: Sort the extracted values in ascending order.
+3. **Construct the result list**: For each index in the original list:
+   - If the index is not divisible by 3, keep the original value.
+   - If the index is divisible by 3, take the next value from the sorted list (in order).
+
+However, note that the sorted values must be placed back at the same positions (i.e., the sorted value for the smallest index divisible by 3 goes to index 0, the next to index 3, etc.).
+
+Implementation plan:
+- Create a list `to_sort` by collecting all elements at indices divisible by 3.
+- Sort `to_sort`.
+- Create a new list `result` by iterating over the original list:
+  - For each index `i`, if `i % 3 == 0`, take the next value from the sorted list (using a pointer or iterator); otherwise,

@@ -1,0 +1,11 @@
+import re
+def match_num(string):
+    text = re.compile(r"^5")
+    if text.match(string):
+        return True
+    else:
+        return False
+The following is chain of thought:
+1. The function `match_num` checks if the input string starts with the digit '5'.
+2. It uses `re.compile` to create a regex pattern `r"^5"` which matches the start of the string followed by '5'.
+3. The pattern is co

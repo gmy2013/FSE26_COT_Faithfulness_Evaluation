@@ -1,0 +1,11 @@
+def is_abundant(n):
+    fctrsum = sum([fctr for fctr in range(1, n) if n % fctr == 0])
+    return fctrsum > n
+The following is chain of thought:
+1. Understand the problem: An abundant number is one where the sum of its proper divisors (excluding itself) is greater than the number.
+2. Identify the input: The function takes a positive integer `n`.
+3. Plan the approach:
+   - Find all proper divisors of `n` (numbers from 1 to n-1 that divide `n` evenly)
+   - Calculate the sum of these divisors
+   - Compare the sum to `n` and return True if sum > n, False otherwise
+4. Implement t

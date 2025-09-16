@@ -1,0 +1,24 @@
+def find_triplet_array(A, arr_size, sum): 
+	for i in range( 0, arr_size-2): 
+		for j in range(i + 1, arr_size-1): 
+			for k in range(j + 1, arr_size): 
+				if A[i] + A[j] + A[k] == sum: 
+					return  A[i],A[j],A[k] 
+					return True
+	return False
+The following is chain of thought:
+Let me analyze the function step by step:
+
+1. The function has nested loops that iterate through all possible triplets (i, j, k) where i < j < k
+2. For each triplet, it checks if the sum equals the target
+3. When a valid triplet is found, it returns the three values and then tries to return True
+4. However, the second return statement will never execute because the first return exits the function
+5. The function should return either the triplet (if found) or False (if not found)
+
+The issue is that after finding a valid triplet, the function tries to return both the triplet and True, but only the first return statement executes.
+
+Here's the corrected approach:
+- If a triplet is found, return the triplet
+- If no triplet is found after all iterations, return False
+
+The function should be structured t

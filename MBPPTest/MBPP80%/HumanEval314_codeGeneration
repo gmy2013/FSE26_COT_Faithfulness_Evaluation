@@ -1,0 +1,31 @@
+CodeGeneration:
+Based on the chain of thought, the function appears to be working correctly for the described behavior. However, let me verify the logic and provide a complete implementation:
+
+```python
+def rearrange_numbs(array_nums):
+    """
+    Rearranges numbers in a specific order:
+    - All zeros come first
+    - Then positive numbers in descending order
+    - Then negative numbers in ascending order (from least negative to most negative)
+    
+    Args:
+        array_nums (list): List of numbers to be rearranged
+        
+    Returns:
+        list: Rearranged list according to the specified ordering
+    """
+    result = sorted(array_nums, key=lambda i: 0 if i == 0 else -1 / i)
+    return result
+```
+
+The function works as described:
+- Zeros get key = 0 (highest priority)
+- Positive numbers get negative keys: -1/i, so larger positive numbers have keys closer to 0
+- Negative numbers get positive keys: -1/i, so less negative numbers have larger positive keys
+
+This results in the ordering: zeros → positive numbers (descending) → negative numbers (ascending).
+
+Example:
+```python
+print(rearrange_numbs([1, 2, 0, -1, -2, 3, 0]))

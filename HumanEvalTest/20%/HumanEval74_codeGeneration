@@ -1,0 +1,27 @@
+20%CoT
+CodeGeneration:
+ewer characters. If both lists have the same number of characters, return the first list.
+
+2. **Calculate the Total Number of Characters:** For each list, we'll calculate the sum of lengths of all strings in the list.
+
+3. **Compare the Character Counts:** Compare the character counts of both lists.
+
+4. **Return the Appropriate List:** Based on the comparison, return the list with fewer characters or the first list in case of a tie.
+
+Here's the implementation of the function `total_match`:
+
+```python
+def total_match(lst1, lst2):
+    # Calculate the total number of characters in lst1
+    total_chars_lst1 = sum(len(s) for s in lst1)
+    
+    # Calculate the total number of characters in lst2
+    total_chars_lst2 = sum(len(s) for s in lst2)
+    
+    # Compare the total numbers and return the appropriate list
+    if total_chars_lst1 < total_chars_lst2:
+        return lst1
+    elif total_chars_lst2 < total_chars_lst1:
+        return lst2
+    else:
+        return lst1  # Return lst1 if both have the same number of characters

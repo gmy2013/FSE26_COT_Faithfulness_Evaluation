@@ -1,0 +1,25 @@
+CodeGeneration:
+on, which is incorrect for integer comparison. It should use `==` instead.
+
+Here is the corrected function:
+
+```python
+def find_fixed_point(arr, n):
+    """
+    Find a fixed point in a given array of distinct integers.
+    A fixed point is an index i such that arr[i] == i.
+    
+    Parameters:
+    arr (list): List of distinct integers
+    n (int): Length of the array
+    
+    Returns:
+    int: The index of the fixed point if found, -1 otherwise
+    """
+    for i in range(n):
+        if arr[i] == i:  # Changed from 'is' to '=='
+            return i
+    return -1
+```
+
+The key change is replacing `is` with `==` since `is` checks for object identity (same memory location) while `==` checks for value equality, which is what we want for integer comparison.

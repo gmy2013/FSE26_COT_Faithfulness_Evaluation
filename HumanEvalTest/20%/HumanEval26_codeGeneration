@@ -1,0 +1,29 @@
+20%CoT
+CodeGeneration:
+he input list.
+   - The order of elements in the output list should be the same as their first appearance in the input list.
+
+3. **Plan the solution**:
+   - Create a dictionary to count occurrences of each element in the list.
+   - Traverse the list and add elements to the result list if they occur exactly once.
+   - Ensure the order of elements in the result list is the same as their order in the input list.
+
+4. **Implement the solution**:
+
+```python
+def remove_duplicates(numbers: List[int]) -> List[int]:
+    # Step 1: Count occurrences of each element
+    count = {}
+    for number in numbers:
+        if number in count:
+            count[number] += 1
+        else:
+            count[number] = 1
+    
+    # Step 2: Collect elements that occur exactly once
+    result = []
+    for number in numbers:
+        if count[number] == 1:
+            result.append(number)
+    
+    return result

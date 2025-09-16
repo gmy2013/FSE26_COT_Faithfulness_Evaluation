@@ -1,0 +1,27 @@
+CodeGeneration:
+this formula and returns the result.
+
+Here is the complete function:
+
+```python
+def series_sum(number):
+    """
+    Calculate the sum of squares of the first n natural numbers.
+    
+    Args:
+        number (int): The number of natural numbers to sum squares of.
+    
+    Returns:
+        float: The sum of squares of the first n natural numbers.
+    
+    Examples:
+        >>> series_sum(1)
+        1.0
+        >>> series_sum(3)
+        14.0
+        >>> series_sum(5)
+        55.0
+    """
+    total = (number * (number + 1) * (2 * number + 1)) / 6
+    return total
+```

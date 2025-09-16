@@ -1,0 +1,18 @@
+def count_alpha_dig_spl(string):
+  alphabets=digits = special = 0
+  for i in range(len(string)):
+    if(string[i].isalpha()):
+        alphabets = alphabets + 1
+    elif(string[i].isdigit()):
+        digits = digits + 1
+    else:
+        special = special + 1
+  return (alphabets,digits,special)   
+The following is chain of thought:
+1. The function `count_alpha_dig_spl` takes a string as input.
+2. Initialize three counters: `alphabets`, `digits`, and `special` to 0.
+3. Iterate over each character in the string using a for loop with index.
+4. For each character at index `i`:
+   - Check if it is an alphabet using `isalpha()` method. If true, increment `alphabets`.
+   - Else, check if it is a digit using `isdigit()` method. If true, increment `digits`.
+   - Else, increment `special` (for special 

@@ -1,0 +1,6 @@
+def Extract(lst): 
+    return [item[-1] for item in lst] 
+The following is chain of thought:
+1. The function `Extract` takes a list `lst` as input.
+2. It uses a list comprehension to iterate over each `item` in `lst`.
+3. For each `item

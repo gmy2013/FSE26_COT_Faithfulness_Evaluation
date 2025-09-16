@@ -1,0 +1,65 @@
+
+def move_one_ball(arr):
+    """We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The
+    numbers in the array will be randomly ordered. Your task is to determine if
+    it is possible to get an array sorted in non-decreasing order by performing 
+    the following operation on the given array:
+        You are allowed to perform right shift operation any number of times.
+    
+    One right shift operation means shifting all elements of the array by one
+    position in the right direction. The last element of the array will be moved to
+    the starting position in the array i.e. 0th index. 
+
+    If it is possible to obtain the sorted array by performing the above operation
+    then return True else return False.
+    If the given array is empty then return True.
+
+    Note: The given list is guaranteed to have unique elements.
+
+    For Example:
+    
+    move_one_ball([3, 4, 5, 1, 2])==>True
+    Explanation: By performin 2 right shift operations, non-decreasing order can
+                 be achieved for the given array.
+    move_one_ball([3, 5, 4, 1, 2])==>False
+    Explanation:It is not possible to get non-decreasing order for the given
+                array by performing any number of right shift operations.
+                
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We are allowed to perform right shifts any number of times. Each right shift moves every element one step to the right, with the last element wrapping around to the front.
+2. We need to check if there exists some number of right shifts (k) such that the resulting array is sorted in non-decreasing order.
+3. Since the array has unique elements, the sorted array is strictly increasing.
+
+Observation:
+- After k right shifts, the original array becomes: [arr[n-k], arr[n-k+1], ..., arr[n-1], arr[0], arr[1], ..., arr[n-k-1]]
+- We are effectively rotating the array to the right by k positions.
+- So the problem reduces to: can we rotate the array (to the right) so that it becomes sorted?
+
+Alternate approach:
+- Instead of trying all possible rotations (which would be O(n^2)), we can note:
+  - The sorted array is unique (since elements are distinct).
+  - Let sorted_arr = sorted(arr)
+  - We need to check if there exists a rotation of the original array that equals sorted_arr.
+
+But note: the problem does not require the entire array to be rotated to match the sorted array exactly? Actually, yes: we want non-decreasing order which is the sorted array.
+
+However, we can think differently:
+- After a right shift, the array is rotated. So we can consider the original array as a circular array.
+- The condition for being able to sort by rotations is that the array has at most one "descent" when traversed circularly.
+
+More precisely:
+- Traverse the circular array and count how many times we have a drop (i.e., arr[i] > arr[i+1]).
+- For the array to be sortable by rotations, there should be exactly one such drop (or zero if already sorted). Why?
+  - Because if there is zero drop, it is already sorted.
+  - If there is one drop, then we can rotate so that the drop becomes the wrap-around point (which is allowed to have a drop? Actually no: in a sorted circular array, the only allowed drop is at the wrap-around? But wait: in a sorted circular array, the maximum should be followed by the minimum at the wrap-around. So if there is exactly one drop and that drop is from the maximum to the minimum, then it is acceptable.
+
+But note: the array must be rotated to become strictly increasing (non-decreasing, but distinct so strictly increasing). So in the rotated array, the only place where a drop might occur is from the last element to the first? Actually, no: in a sorted array, every adjacent pair must be non-decreasing. So the only exception is at the wrap-around: if the array is sorted, then the last element should be <= the first? But since distinct, last < first? Actually no: in a sorted array, the first is the smallest and the last is the largest. So when we rotate, we break at the point where the largest is followed by the smallest.
+
+So algorithm:
+1. If the array is empty or has one element, return True.
+2. Find the minimum element and its index. There might be multiple? But distinct so one minimum.
+3. Check if from the minimum index to the end, and then from the start to the minimum index-1,

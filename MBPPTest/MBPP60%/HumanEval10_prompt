@@ -1,0 +1,21 @@
+def max_of_nth(test_list, N):
+  res = max([sub[N] for sub in test_list])
+  return (res) 
+The following is chain of thought:
+Here's the structured chain of thought for implementing the max_of_nth function:
+
+1. **Function Purpose Analysis**: The function needs to find the maximum value from the Nth element of each sublist in a 2D list
+
+2. **Input Validation**: 
+   - Check if test_list is empty
+   - Check if N is a valid index for all sublists
+   - Handle edge cases where sublists might have different lengths
+
+3. **Core Logic Implementation**:
+   - Extract all Nth elements from each sublist using list comprehension
+   - Use Python's built-in max() function to find the maximum value
+   - Return the maximum value
+
+4. **Error Handling**:
+   - Add try-except block to handle IndexError when N exceeds sublist lengths
+   - Cons

@@ -1,0 +1,15 @@
+def count_char(string,char):
+ count = 0
+ for i in range(len(string)):
+    if(string[i] == char):
+        count = count + 1
+ return count
+The following is chain of thought:
+1. Analyze the function purpose: Count occurrences of a character in a string
+2. Review the current implementation:
+   - Uses a counter variable initialized to 0
+   - Iterates through string indices using range(len(string))
+   - Compares each character at index i with the target character
+   - Increments counter when match found
+   - Returns the final count
+3. Verify the logic is correct for counting characte

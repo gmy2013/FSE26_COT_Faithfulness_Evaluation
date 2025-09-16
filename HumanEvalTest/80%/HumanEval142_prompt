@@ -1,0 +1,32 @@
+
+
+
+def sum_squares(lst):
+    """"
+    This function will take a list of integers. For all entries in the list, the function shall square the integer entry if its index is a 
+    multiple of 3 and will cube the integer entry if its index is a multiple of 4 and not a multiple of 3. The function will not 
+    change the entries in the list whose indexes are not a multiple of 3 or 4. The function shall then return the sum of all entries. 
+    
+    Examples:
+    For lst = [1,2,3] the output should be 6
+    For lst = []  the output should be 0
+    For lst = [-1,-5,2,-1,-5]  the output should be -126
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to iterate through the list with both index and value.
+2. For each element:
+   - If the index is a multiple of 3 (i % 3 == 0), square the value.
+   - Else if the index is a multiple of 4 (i % 4 == 0) and not a multiple of 3 (already handled by the first condition), cube the value.
+   - Otherwise, leave the value unchanged.
+3. Sum all the processed values.
+4. Return the total sum.
+
+Note: The index check should be done with modulo arithmetic. Also, note that 0 is a multiple of every integer (so index 0 is a multiple of both 3 and 4). However, the condition "multiple of 4 and not a multiple of 3" ensures that indices that are multiples of both (like 0, 12, etc.) are handled by the first case (squared) and not the second.
+
+Let's implement accordingly.
+```python
+def sum_squares(lst):
+   

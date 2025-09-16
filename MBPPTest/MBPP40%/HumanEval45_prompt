@@ -1,0 +1,8 @@
+def No_of_cubes(N,K):
+    No = 0
+    No = (N - K + 1)
+    No = pow(No, 3)
+    return No
+The following is chain of thought:
+1. The function calculates the number of cubes of side length K that can fit inside a larger cube of side length N.
+2. The number of cubes along one dimension is (N - K + 1) because we 

@@ -1,0 +1,22 @@
+CodeGeneration:
+vert test_tup2 to a set to remove duplicates and enable subset checking
+4. **Subset Check**: Use the issubset() method to verify if all elements of test_tup2 are in test_tup1
+5. **Return Result**: Return the boolean result directly
+
+Here's the complete implementation:
+
+```python
+def check_subset(test_tup1, test_tup2):
+    """
+    Check if all elements of test_tup2 are present in test_tup1.
+    
+    Args:
+        test_tup1 (tuple): The tuple to check against
+        test_tup2 (tuple): The tuple to check if it's a subset
+    
+    Returns:
+        bool: True if test_tup2 is a subset of test_tup1, False otherwise
+    """
+    res = set(test_tup2).issubset(test_tup1)
+    return res
+```

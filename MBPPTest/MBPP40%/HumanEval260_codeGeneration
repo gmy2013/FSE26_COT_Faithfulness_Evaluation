@@ -1,0 +1,25 @@
+CodeGeneration:
+```python
+from collections import Counter
+
+def anagram_lambda(texts, target_str):
+    """
+    Filters a list of strings to find all anagrams of a target string.
+    
+    An anagram is a word formed by rearranging the letters of another word,
+    using all the original letters exactly once.
+    
+    Args:
+        texts (list): List of strings to filter
+        target_str (str): Target string to find anagrams of
+    
+    Returns:
+        list: List of strings from texts that are anagrams of target_str
+    
+    Example:
+        >>> anagram_lambda(['listen', 'silent', 'hello', 'world'], 'silent')
+        ['listen', 'silent']
+    """
+    result = list(filter(lambda x: Counter(target_str) == Counter(x), texts))
+    return result
+```

@@ -1,0 +1,39 @@
+CodeGeneration:
+long as `num` is greater than 0.
+6. Inside the while loop, use a for loop to append the appropriate Roman numeral symbol(s) for the current value in `val[i]` as many times as it fits into `num`.
+7. Subtract the value from `num` each time a symbol is added.
+8. Increment `i` to move to the next value in the list.
+9. Return the constructed `roman_num` string.
+
+Here is the complete function with the docstring:
+
+```python
+def int_to_roman(num):
+    """
+    Convert an integer to a Roman numeral string.
+
+    Args:
+        num (int): The integer to convert (1 <= num <= 3999).
+
+    Returns:
+        str: The Roman numeral representation of the integer.
+
+    Examples:
+        >>> int_to_roman(3)
+        'III'
+        >>> int_to_roman(58)
+        'LVIII'
+        >>> int_to_roman(1994)
+        'MCMXCIV'
+    """
+    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    syb = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    roman_num = ''
+    i = 0
+    while num > 0:
+        for _ in range(num // val[i]):
+            roman_num += syb[i]
+            num -= val[i]
+        i += 1
+    return roman_num
+```

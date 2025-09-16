@@ -1,0 +1,10 @@
+def multiply_elements(test_tup):
+  res = tuple(i * j for i, j in zip(test_tup, test_tup[1:]))
+  return (res) 
+The following is chain of thought:
+1. The function `multiply_elements` takes a tuple `test_tup` as input.
+2. The goal is to create a new tuple where each element is the product of consecutive pairs in the input tuple.
+3. To achieve this, we use `zip(test_tup, test_tup[1:])` to create pairs of each element with its next neighbor.
+4. For each pair `(i, j)`, we compute the product `i * j`.
+5. A tuple comprehension `tuple(i * j for i, j in zip(test_tup, test_tup[1:]))` generates the resulting tuple.
+6. The result 

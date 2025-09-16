@@ -1,0 +1,32 @@
+20%CoT
+CodeGeneration:
+```python
+from typing import List, Tuple
+
+def find_closest_elements(numbers: List[float]) -> Tuple[float, float]:
+    """ From a supplied list of numbers (of length at least two) select and return two that are the closest to each
+    other and return them in order (smaller number, larger number).
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+    (2.0, 2.2)
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+    (2.0, 2.0)
+    """
+    
+    # Step 1: Sort the list
+    sorted_numbers = sorted(numbers)
+    
+    # Step 2: Initialize variables
+    min_diff = float('inf')  # Initialize min_diff with a very large value
+    closest_pair = (0, 0)    # Initialize closest_pair
+    
+    # Step 3: Iterate through sorted list and find the closest pair
+    for i in range(len(sorted_numbers) - 1):
+        diff = sorted_numbers[i + 1] - sorted_numbers[i]
+        if diff < min_diff:
+            min_diff = diff
+            closest_pair = (sorted_numbers[i], sorted_numbers[i + 1])
+    
+    return closest_pair
+```
+
+This function first sorts the list of numbers. Then, it iterates through the sorted list to find the pair of numbers with the smallest difference, which means they are the closest to each other. It returns the pair in the order of (smaller number, larger number).

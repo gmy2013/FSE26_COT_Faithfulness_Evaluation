@@ -1,0 +1,18 @@
+20%CoT
+CodeGeneration:
+ut and output**: The function takes two inputs: a list of strings (`strings`) and a substring (`substring`). It outputs a list of strings that contain the substring.
+
+3. **Approach**: We can use a list comprehension to iterate over each string in the input list and check whether the substring is present in the string using the `in` operator.
+
+4. **Edge cases**: Consider cases like empty strings, empty substring, or empty list of strings.
+
+Now, let's write the function code:
+
+```python
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """Filter an input list of strings only for ones that contain given substring."""
+    # Use list comprehension to filter strings containing the substring
+    return [string for string in strings if substring in string]
+```
+
+This implementation uses a list comprehension to filter and return strings from the input list that contain the specified substring.

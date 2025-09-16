@@ -1,0 +1,9 @@
+def area_trapezium(base1,base2,height):
+ area = 0.5 * (base1 + base2) * height
+ return area
+The following is chain of thought:
+1. The function is named `area_trapezium` and takes three parameters: `base1`, `base2`, and `height`.
+2. The formula for the area of a trapezium is 0.5 × (base1 + base2) × height.
+3. The function calculates this value and stores it in the variable `area`.
+4. The function returns the computed area.
+5. The imp

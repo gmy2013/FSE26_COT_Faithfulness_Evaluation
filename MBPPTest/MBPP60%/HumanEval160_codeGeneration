@@ -1,0 +1,25 @@
+CodeGeneration:
+be calculated by `pi*d`, but the function is specifically for arcs, so returning `None` for a full circle might be intended to avoid confusion or indicate an invalid input for an arc).
+
+4. The formula for arc length is (circumference) * (angle/360) = (pi * d) * (a/360).
+
+Here is the completed function with the docstring:
+
+```python
+def arc_length(d, a):
+    """
+    Calculate the length of an arc given the diameter and angle.
+
+    Parameters:
+    d (float): Diameter of the circle.
+    a (float): Angle of the arc in degrees.
+
+    Returns:
+    float: Length of the arc if angle is less than 360, None otherwise.
+    """
+    pi = 22 / 7
+    if a >= 360:
+        return None
+    arclength = (pi * d) * (a / 360)
+    return arclength
+```

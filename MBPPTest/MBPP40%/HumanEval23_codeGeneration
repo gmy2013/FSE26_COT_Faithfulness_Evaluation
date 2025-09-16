@@ -1,0 +1,21 @@
+CodeGeneration:
+string to uppercase, but does not check if it's already uppercase.
+4. To fix this, we should compare the original string to its uppercase version.
+5. If they are equal, then the string is already uppercase and we return True.
+6. Otherwise, we return False.
+
+Here's the corrected implementation:
+
+```python
+def is_upper(string):
+    """
+    Check if the given string is in uppercase.
+
+    Args:
+        string (str): The string to check.
+
+    Returns:
+        bool: True if the string is in uppercase, False otherwise.
+    """
+    return string == string.upper()
+```

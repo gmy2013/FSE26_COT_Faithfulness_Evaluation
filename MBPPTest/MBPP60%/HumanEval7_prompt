@@ -1,0 +1,14 @@
+def bell_Number(n): 
+    bell = [[0 for i in range(n+1)] for j in range(n+1)] 
+    bell[0][0] = 1
+    for i in range(1, n+1):
+        bell[i][0] = bell[i-1][i-1]
+        for j in range(1, i+1): 
+            bell[i][j] = bell[i-1][j-1] + bell[i][j-1] 
+    return bell[n][0] 
+The following is chain of thought:
+1. **Initialization**: Create a 2D list `bell` of size (n+1) x (n+1) initialized with zeros.
+2. **Base Case**: Set `bell[0][0] = 1` as the base value for the Bell number calculation.
+3. **Outer Loop**: Iterate from `i = 1` to `n` (inclusive) to compute each row of the Bell triangle.
+4. **First Element of Row**: Set `bell[i][0] = bell[i-1][i-1]`, which is the last element of the previous row.
+5. **Inner Loop**: For each `j` from 1 to `i` (inclusive), compute `bell[i]

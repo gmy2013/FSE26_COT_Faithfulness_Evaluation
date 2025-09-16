@@ -1,0 +1,26 @@
+def word_len(s): 
+    s = s.split(' ')   
+    for word in s:    
+        if len(word)%2==0: 
+            return True  
+        else:
+          return False
+The following is chain of thought:
+Let me analyze the function step by step:
+
+1. The function splits the input string `s` into words using space as delimiter
+2. It iterates through each word in the resulting list
+3. For the FIRST word only, it checks if the length is even
+4. If the first word has even length, it returns True
+5. If the first word has odd length, it returns False
+6. The function never checks beyond the first word due to the return statements
+
+The issue: The function should return True if ANY word has even length, but currently it only checks the first word.
+
+Correct approach: Check all words, return True immediately when finding an even-length word, return False only after checking all words.
+
+Here's the corrected chain of thought:
+
+1. Split the input string into words
+2. Iterate through each word
+3. For each word, check if its length is even

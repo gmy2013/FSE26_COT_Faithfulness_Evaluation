@@ -1,0 +1,38 @@
+CodeGeneration:
+- i)
+   - Among these, half (rounded up) will be of odd length: ceil((i+1)×(l-i)/2) = ((i+1)×(l-i) + 1) // 2
+
+4. **Implementation**: Multiply each element by its occurrence count in odd-length subarrays and sum them up.
+
+5. **Verification**: The formula correctly handles both even and odd array lengths.
+
+Here's the complete function:
+
+```python
+def Odd_Length_Sum(arr):
+    """
+    Calculates the sum of all elements in odd-length subarrays of the given array.
+
+    Args:
+        arr: List of integers
+
+    Returns:
+        int: Sum of all elements in all odd-length subarrays
+
+    Example:
+        >>> Odd_Length_Sum([1, 4, 2, 5, 3])
+        58
+        >>> Odd_Length_Sum([1, 2])
+        3
+        >>> Odd_Length_Sum([10, 11, 12])
+        66
+    """
+    Sum = 0
+    l = len(arr)
+    for i in range(l):
+        # Calculate number of odd-length subarrays containing element i
+        total_subarrays = (i + 1) * (l - i)
+        odd_subarrays = (total_subarrays + 1) // 2
+        Sum += odd_subarrays * arr[i]
+    return Sum
+```

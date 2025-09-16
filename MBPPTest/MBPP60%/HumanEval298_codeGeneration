@@ -1,0 +1,30 @@
+CodeGeneration:
+3. Continues with strictly decreasing sequence
+    4. Has at least 3 elements (minimum mountain: [1,3,2])
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+        
+    Returns:
+        bool: True if valid mountain, False otherwise
+    """
+    if n < 3:
+        return False
+        
+    g = 0  # Flag to track if we've passed the peak (0 = increasing, 1 = decreasing)
+    
+    for i in range(1, n):
+        if arr[i] == arr[i-1]:  # Flat sequences are not allowed
+            return False
+            
+        if arr[i] > arr[i-1]:  # Still increasing
+            if g == 1:  # But we already started decreasing
+                return False
+                
+        if arr[i] < arr[i-1]:  # Starting to decrease
+            if i == 1:  # Can't start decreasing from the beginning
+                return False
+            g = 1  # Mark that we've passed the peak
+            
+    return g == 1  # Must have both increasing and decreasing parts

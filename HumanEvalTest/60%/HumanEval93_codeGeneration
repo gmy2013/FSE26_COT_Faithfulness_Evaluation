@@ -1,0 +1,44 @@
+CodeGeneration:
+Here's the implementation of the `encode` function:
+
+```python
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+    # First swap case of all letters
+    swapped = message.swapcase()
+    
+    # Define vowel mapping for both cases
+    vowel_map = {
+        'a': 'c', 'e': 'g', 'i': 'k', 'o': 'q', 'u': 'w',
+        'A': 'C', 'E': 'G', 'I': 'K', 'O': 'Q', 'U': 'W'
+    }
+    
+    # Replace vowels with letters two places ahead
+    result = []
+    for char in swapped:
+        if char in vowel_map:
+            result.append(vowel_map[char])
+        else:
+            result.append(char)
+    
+    return ''.join(result)
+```
+
+The function works as follows:
+1. First, it swaps the case of all letters using Python's built-in `swapcase()` method
+2. Then it creates a mapping dictionary that maps each vowel (both lowercase and uppercase) to the letter two places ahead in the alphabet
+3. Finally, it iterates through the swapped-case string and replaces any vowels with their corresponding mapped values, leaving non-vowel characters unchanged
+
+This approach efficiently handles both requirements: case swapping and vowel replacement, in the correct order as specified by the problem.

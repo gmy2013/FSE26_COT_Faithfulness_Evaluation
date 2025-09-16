@@ -1,0 +1,35 @@
+CodeGeneration:
+-123 has digits: -1, 2, 3 with sum (-1) + 2 + 3 = 4.
+
+    Approach:
+    1. For each number in the array:
+        a. Convert the number to a string to process each digit.
+        b. If the number is negative, the first character will be '-', so we need to handle that.
+        c. For negative numbers, the first digit (after the sign) should be considered as negative.
+        d. Sum all the digits (with the appropriate sign for negative numbers).
+        e. Check if the sum > 0.
+
+    2. Count how many numbers satisfy the condition.
+
+    Let's implement accordingly.
+"""
+
+def count_nums(arr):
+    count = 0
+    for num in arr:
+        s = str(num)
+        total = 0
+        # If the number is negative, the first digit (after the sign) is negative.
+        if s[0] == '-':
+            # The first digit (at index 1) is negative.
+            total -= int(s[1])
+            # Then add the rest of the digits (from index 2 onwards) as positive.
+            for digit_char in s[2:]:
+                total += int(digit_char)
+        else:
+            # For positive numbers, just sum all digits.
+            for digit_char in s:
+                total += int(digit_char)
+        if total > 0:
+            count += 1
+    return count

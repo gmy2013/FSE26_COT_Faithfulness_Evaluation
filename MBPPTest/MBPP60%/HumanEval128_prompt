@@ -1,0 +1,9 @@
+def add_list(nums1,nums2):
+  result = map(lambda x, y: x + y, nums1, nums2)
+  return list(result)
+The following is chain of thought:
+1. Analyze the function name and parameters: The function is named `add_list` and takes two parameters `nums1` and `nums2`, which are expected to be lists of numbers.
+2. Understand the purpose: The function should add corresponding elements from the two lists.
+3. Check the implementation: The current code uses `map` with a lambda function that adds pairs of elements from `nums1` and `nums2`.
+4. Verify the return: The result of `map` is converted to a list and returned.
+5. Conside

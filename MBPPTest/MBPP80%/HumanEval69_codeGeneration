@@ -1,0 +1,24 @@
+CodeGeneration:
+Here's the corrected function:
+
+```python
+def decreasing_trend(nums):
+    """
+    Check if the list is in strictly decreasing order.
+    
+    Args:
+        nums (list): List of numbers to check
+        
+    Returns:
+        bool: True if the list is strictly decreasing, False otherwise
+    """
+    return nums == sorted(nums, reverse=True)
+```
+
+The function now:
+1. Uses `sorted(nums, reverse=True)` to get the list sorted in descending order
+2. Compares the original list with this descending sorted version
+3. Returns `True` only if they are identical (meaning the original list was already in strictly decreasing order)
+4. Returns `False` otherwise
+
+This correctly identifies strictly decreasing sequences like `[5, 4, 3, 2, 1]` while rejecting non-decreasing sequences like `[1, 2, 3, 4, 5]` or unordered sequences like `[3, 1, 4, 2]`.

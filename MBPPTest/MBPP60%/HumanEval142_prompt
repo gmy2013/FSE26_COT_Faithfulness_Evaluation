@@ -1,0 +1,15 @@
+def rotate_right(list1,m,n):
+  result =  list1[-(m):]+list1[:-(n)]
+  return result
+The following is chain of thought:
+1. The function `rotate_right` takes three parameters: `list1`, `m`, and `n`.
+2. The goal is to rotate the list to the right by moving the last `m` elements to the front, and then appending the rest of the list (excluding the last `n` elements? Wait, the current implementation uses `list1[:-(n)]`, which means all elements except the last `n`.
+3. However, note that the slice `list1[-(m):]` gets the last `m` elements.
+4. Then `list1[:-(n)]` gets all elements from the start up to (but not including) the last `n` elements.
+5. But if we are rotating right by `m`, we typically want to take the last `m` elements and put them at the front, and then the rest of the list (the first `len(list1)-m` elements) should follow.
+6. So the expected behavior is: `result = last_m_elements + first_len_minus_m_elements`.
+7. Comparing with the current code: `list1[-(m):]` is correct for the last `m` elements.
+8. But `list1[:-(n)]` is not necessarily the first `len(list1)-m` elements; it is the first `len(list1)-n` elements.
+9. Therefore, for a right rotation by `m`, we should have `n = m` to make it consistent? Or perhaps the function is intended to rotate right by `m` and also remove the last `n` elements? But that doesn't match a typical rotation.
+10. Actually, the docstring is missing. The user did not provide a docstring, only the function signature and code. So we must infer the intended behavior from the code.
+11

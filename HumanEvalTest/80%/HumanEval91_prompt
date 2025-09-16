@@ -1,0 +1,46 @@
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+The following is chain of thought:
+1. Split the input string into sentences using '.', '?', and '!' as delimiters.
+2. For each sentence, strip any leading/trailing whitespace.
+3. Check if the sentence starts with the word "I" (case-sensitive, as per typical sentence structure).
+4. Count how many such sentences exist.
+5. Return the count.
+
+Now implementing this logic:
+- Use re.split to split on multiple delimiters: [.?!]
+- For each split part, strip whitespace and check if it starts with "I "
+- Also handle case where sentence is exactly "I" (without trailing space)
+- But note: "I" at start should be a word, so "I " or end of string (if single "I")
+- Actually, we can check: sentence.startswith("I ") or sentence == "I"
+- However, docstring says "starts with the word 'I'", so we need to ensure it's a word boundary
+- But since sentences are split by delimiters, and we strip, the first word should be at start
+- So simply checking if sentence starts with "I " or is exactly "I" should suffice
+- Alternatively, we can split sentence into words and check first word is "I"
+- But simpler: if sentence starts with "I" and (next char is space or end of string)
+- However, to be precise: use regular expression with word boundary or check first word
+
+Let's implement with first word approach:
+- Split sentence into words (by space) and take first word
+- Check if first word is exactly "I"
+
+But note: there might be cases like "I." but we split on punctuation, so after split and strip, "I" remains.
+
+Actually, after splitting on [.?!], the sentences might have trailing punctuation removed? But we split on them, so they are separators.
+
+So implementation:
+- sentences = re.split(r'[.?!]', S)
+- For each s in sentences:
+  

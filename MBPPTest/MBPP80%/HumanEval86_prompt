@@ -1,0 +1,22 @@
+def recur_gcd(a, b):
+	low = min(a, b)
+	high = max(a, b)
+	if low == 0:
+		return high
+	elif low == 1:
+		return 1
+	else:
+		return recur_gcd(low, high%low)
+The following is chain of thought:
+Here's the structured chain of thought for the `recur_gcd` function:
+
+1. **Input Validation**: The function takes two integers `a` and `b` as input parameters
+2. **Determine Min/Max**: 
+   - Calculate `low` as the minimum of `a` and `b`
+   - Calculate `high` as the maximum of `a` and `b`
+3. **Base Case 1**: If `low` equals 0, return `high` (GCD of any number and 0 is the number itself)
+4. **Base Case 2**: If `low` equals 1, return 1 (GCD of any number and 1 is 1)
+5. **Recursive Case**: 
+   - If neither base case is met, recursively call `recur_gcd` with parameters `low` and `high % low`
+   - This implements the Euclidean algorithm: GCD(a, b) = GCD(b, a mod b)
+6. **Termination**: The recursion c

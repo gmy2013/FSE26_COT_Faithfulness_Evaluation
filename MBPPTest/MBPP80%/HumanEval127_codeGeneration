@@ -1,0 +1,51 @@
+CodeGeneration:
+Looking at this function, I can see it's designed to perform element-wise addition of two lists. However, there's a potential issue with the current implementation - it assumes both lists have the same length, which could cause an IndexError if they don't match.
+
+Here's an improved version with proper error handling:
+
+```python
+def sum_list(lst1, lst2):
+    """
+    Returns the element-wise sum of two lists.
+    
+    Args:
+        lst1 (list): First list of numbers
+        lst2 (list): Second list of numbers
+    
+    Returns:
+        list: A new list where each element is the sum of corresponding elements from lst1 and lst2
+    
+    Raises:
+        ValueError: If the input lists have different lengths
+    """
+    if len(lst1) != len(lst2):
+        raise ValueError("Input lists must have the same length")
+    
+    res_list = [lst1[i] + lst2[i] for i in range(len(lst1))]
+    return res_list
+```
+
+Alternatively, here's a more Pythonic version using `zip()`:
+
+```python
+def sum_list(lst1, lst2):
+    """
+    Returns the element-wise sum of two lists.
+    
+    Args:
+        lst1 (list): First list of numbers
+        lst2 (list): Second list of numbers
+    
+    Returns:
+        list: A new list where each element is the sum of corresponding elements from lst1 and lst2
+    
+    Raises:
+        ValueError: If the input lists have different lengths
+    """
+    if len(lst1) != len(lst2):
+        raise ValueError("Input lists must have the same length")
+    
+    return [a + b for a, b in zip(lst1, lst2)]
+```
+
+The zip version is generally preferred as it's more readable and Pythonic, while still maintaining the same functionality with proper error handling.

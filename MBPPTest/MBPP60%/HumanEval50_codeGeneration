@@ -1,0 +1,20 @@
+CodeGeneration:
+) are present in `test_tup1`.
+4. Return the boolean result.
+
+Here is the complete function:
+
+```python
+def check_subset(test_tup1, test_tup2):
+    """Check if test_tup2 is a subset of test_tup1.
+    
+    Args:
+        test_tup1: The main tuple to check against
+        test_tup2: The tuple to check if it's a subset
+        
+    Returns:
+        bool: True if all elements of test_tup2 are in test_tup1, False otherwise
+    """
+    res = set(test_tup2).issubset(test_tup1)
+    return res
+```

@@ -1,0 +1,11 @@
+import re
+def split_list(text):
+  return (re.findall('[A-Z][^A-Z]*', text))
+The following is chain of thought:
+Here is the structured chain of thought for implementing the split_list function:
+
+1. **Function Purpose Analysis**: The function needs to split a string at uppercase letters, keeping each uppercase letter as the start of a new segment.
+
+2. **Pattern Identification**: The regex pattern `[A-Z][^A-Z]*` matches:
+   - `[A-Z]`: A single uppercase letter (start of segment)
+   - `[^A-Z]*`: Zero or more characters that are NOT upperca

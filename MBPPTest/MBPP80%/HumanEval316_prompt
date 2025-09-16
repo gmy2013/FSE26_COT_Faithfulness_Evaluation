@@ -1,0 +1,19 @@
+import re
+def text_uppercase_lowercase(text):
+        patterns = '[A-Z]+[a-z]+$'
+        if re.search(patterns, text):
+                return 'Found a match!'
+        else:
+                return ('Not matched!')
+The following is chain of thought:
+1. The function `text_uppercase_lowercase` checks if the input string matches a specific pattern.
+2. The pattern `'[A-Z]+[a-z]+$'` requires:
+   - One or more uppercase letters at the start (`[A-Z]+`)
+   - Followed by one or more lowercase letters (`[a-z]+`)
+   - And must be at the end of the string (`$`)
+3. However, the pattern does not account for the entire string from start to finish (missing `^` anchor).
+4. The current pattern would match substrings at the end, which might not be the intended behavior.
+5. To match the entire string (from start to end) with uppercase followed by lowercase, the pattern should be `'^[A-Z]+[a-z]+$'`.
+6. The function uses `re.search` which searches anywhere in the string, but with `$` it restricts to the end.
+7. With the current pattern, "ABCabc" would match, but "abcABC" would not (since uppercase must come first).
+8. The function returns 'Found a match!' if the

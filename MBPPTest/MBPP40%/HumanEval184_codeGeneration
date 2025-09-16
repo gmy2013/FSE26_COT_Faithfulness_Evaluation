@@ -1,0 +1,27 @@
+CodeGeneration:
+```python
+def tuple_str_int(test_str):
+    """
+    Convert a string representation of a tuple of integers to an actual tuple of integers.
+    
+    The string may contain parentheses and ellipsis (...) which need to be removed
+    before converting the numeric strings to integers.
+    
+    Args:
+        test_str (str): A string representing a tuple of integers, e.g., "(1, 2, 3, ...)"
+    
+    Returns:
+        tuple: A tuple of integers extracted from the input string
+    
+    Example:
+        >>> tuple_str_int("(1, 2, 3, ...)")
+        (1, 2, 3)
+        >>> tuple_str_int("(5, 10, 15)")
+        (5, 10, 15)
+    """
+    # Remove parentheses and ellipsis, then split by comma and space
+    cleaned_str = test_str.replace('(', '').replace(')', '').replace('...', '')
+    # Split into individual number strings and convert to integers
+    numbers = [int(num) for num in cleaned_str.split(', ') if num.strip()]
+    return tuple(numbers)
+```

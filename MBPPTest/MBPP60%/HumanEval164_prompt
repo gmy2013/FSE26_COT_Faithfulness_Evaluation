@@ -1,0 +1,9 @@
+import math 
+def is_polite(n): 
+	n = n + 1
+	return (int)(n+(math.log((n + math.log(n, 2)), 2))) 
+The following is chain of thought:
+1. The function `is_polite(n)` aims to compute the nth polite number.
+2. Polite numbers are positive integers that can be expressed as the sum of two or more consecutive positive integers.
+3. The formula used is based on the known mathematical relationship: the nth polite number is given by \( n + \lfloor \log_2(n + \log_2 n) \rfloor \).
+4. The implementation first increments n by 1 because the formula is typically indexed starting from 1 (i.e., for n=1, it returns the first polite number

@@ -1,0 +1,29 @@
+
+def reverse_delete(s,c):
+    """Task
+    We are given two strings s and c, you have to deleted all the characters in s that are equal to any character in c
+    then check if the result string is palindrome.
+    A string is called palindrome if it reads the same backward as forward.
+    You should return a tuple containing the result string and True/False for the check.
+    Example
+    For s = "abcde", c = "ae", the result should be ('bcd',False)
+    For s = "abcdef", c = "b"  the result should be ('acdef',False)
+    For s = "abcdedcba", c = "ab", the result should be ('cdedc',True)
+    """
+
+The following is chain of thought:
+1. We need to remove all characters from `s` that are present in `c`.
+2. We can iterate through each character in `s` and only keep those not in `c`.
+3. We can build a new string by concatenating characters that are not in `c`.
+4. Alternatively, we can use a list comprehension to filter out characters in `c` and then join.
+5. After building the result string, we need to check if it is a palindrome.
+6. To check palindrome, we can compare the string with its reverse.
+7. Finally, return a tuple of (result_string, is_palindrome).
+
+Let's implement accordingly.
+```python
+def reverse_delete(s, c):
+    # Create a set of characters to delete for faster lookup
+    chars_to_delete = set(c)
+    # Build the result string by including only characters not in c
+    result_s

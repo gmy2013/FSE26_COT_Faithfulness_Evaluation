@@ -1,0 +1,25 @@
+CodeGeneration:
+```python
+def is_subset(arr1, m, arr2, n):
+    """
+    Check if arr2 is a subset of arr1.
+    
+    Args:
+        arr1: The main array (potential superset)
+        m: Length of arr1
+        arr2: The array to check if it's a subset
+        n: Length of arr2
+    
+    Returns:
+        bool: True if arr2 is a subset of arr1, False otherwise
+    """
+    hashset = set()
+    for i in range(0, m):
+        hashset.add(arr1[i])
+    for i in range(0, n):
+        if arr2[i] in hashset:
+            continue
+        else:
+            return False
+    return True
+```

@@ -1,0 +1,20 @@
+CodeGeneration:
+racter in the set `[ ,.]` (space, comma, or period) with a colon `:`.
+3. The modified string is then returned.
+
+Here is the complete function with the docstring:
+
+```python
+import re
+
+def replace_specialchar(text):
+    """Replace all occurrences of space, comma, or period with a colon.
+    
+    Args:
+        text (str): Input string to process
+        
+    Returns:
+        str: String with spaces, commas, and periods replaced by colons
+    """
+    return re.sub("[ ,.]", ":", text)
+```

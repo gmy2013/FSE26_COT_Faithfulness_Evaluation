@@ -1,0 +1,29 @@
+
+def words_in_sentence(sentence):
+    """
+    You are given a string representing a sentence,
+    the sentence contains some words separated by a space,
+    and you have to return a string that contains the words from the original sentence,
+    whose lengths are prime numbers,
+    the order of the words in the new string should be the same as the original one.
+
+    Example 1:
+        Input: sentence = "This is a test"
+        Output: "is"
+
+    Example 2:
+        Input: sentence = "lets go for swimming"
+        Output: "go for"
+
+    Constraints:
+        * 1 <= len(sentence) <= 100
+        * sentence contains only letters
+    """
+
+The following is chain of thought:
+1. Split the input sentence into a list of words using space as the delimiter.
+2. Define a helper function to check if a number is prime. For numbers less than 2, return False. For numbers >=2, check divisibility from 2 to sqrt(n).
+3. Initialize an empty list to collect words with prime lengths.
+4. Iterate through each word in the split list:
+   - Calculate the length of the word.
+   - If the length is prime, add the word to the result list

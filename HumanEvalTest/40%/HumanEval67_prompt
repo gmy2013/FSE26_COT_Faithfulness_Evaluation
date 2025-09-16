@@ -1,0 +1,39 @@
+
+def fruit_distribution(s,n):
+    """
+    In this task, you will be given a string that represents a number of apples and oranges 
+    that are distributed in a basket of fruit this basket contains 
+    apples, oranges, and mango fruits. Given the string that represents the total number of 
+    the oranges and apples and an integer that represent the total number of the fruits 
+    in the basket return the number of the mango fruits in the basket.
+    for examble:
+    fruit_distribution("5 apples and 6 oranges", 19) ->19 - 5 - 6 = 8
+    fruit_distribution("0 apples and 1 oranges",3) -> 3 - 0 - 1 = 2
+    fruit_distribution("2 apples and 3 oranges", 100) -> 100 - 2 - 3 = 95
+    fruit_distribution("100 apples and 1 oranges",120) -> 120 - 100 - 1 = 19
+    """
+
+The following is chain of thought:
+We are given a string `s` that contains the number of apples and oranges, and an integer `n` that is the total number of fruits.
+ The string `s` has the format: "<number> apples and <number> oranges", where <number> are integers (could be multi-digit).
+ We need to extract the two numbers from the string and subtract them from the total `n` to get the number of mangoes.
+
+ Steps:
+ 1. Split the string to get the words and numbers.
+ 2. The first token should be the number of apples, and the token after "and" should be the number of oranges.
+ 3. Convert these two numbers to integers.
+ 4. Subtract both from the total `n` to get the number of mangoes.
+
+ Example: s = "5 apples and 6 oranges" -> we need to extract 5 and 6.
+
+ Implementation:
+ We can split the string by spaces. The first element is the apple count, and we can look for the word "and" to find the position of the orange count.
+ Alternatively, we can use regular expressions to extract all numbers.
+
+ However, note: the numbers might be multi-digit, and the string format is consistent.
+
+ Let's split the string and then iterate to find the numbers.
+
+ Alternatively, we can use:
+   tokens = s.split()
+   apples

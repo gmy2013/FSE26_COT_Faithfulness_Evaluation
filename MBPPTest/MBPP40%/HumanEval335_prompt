@@ -1,0 +1,12 @@
+def re_arrange_tuples(test_list, ord_list):
+  temp = dict(test_list)
+  res = [(key, temp[key]) for key in ord_list]
+  return (res) 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Input Analysis**: The function takes two parameters - `test_list` (a list of tuples) and `ord_list` (an ordered list of keys)
+
+2. **Dictionary Conversion**: Convert the list of tuples into a dictionary using `dict(test_list)` to create a key-value mapping for efficient lookup
+
+3. **Ordered Reconstruction**: Iterate through the `ord_list` (the desired order of

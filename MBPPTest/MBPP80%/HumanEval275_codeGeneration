@@ -1,0 +1,39 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+def lcm(x, y):
+    """
+    Calculate the Least Common Multiple (LCM) of two integers x and y.
+    
+    Args:
+        x (int): First integer
+        y (int): Second integer
+        
+    Returns:
+        int: The least common multiple of x and y
+        
+    Example:
+        >>> lcm(4, 6)
+        12
+        >>> lcm(15, 20)
+        60
+    """
+    if x > y:
+        z = x
+    else:
+        z = y
+    while(True):
+        if((z % x == 0) and (z % y == 0)):
+            lcm = z
+            break
+        z += 1
+    return lcm
+```
+
+The function works as follows:
+1. It starts by finding the larger of the two numbers since the LCM must be at least that large
+2. It then enters an infinite loop that increments the candidate value `z`
+3. For each value of `z`, it checks if it's divisible by both input numbers
+4. Once a common multiple is found, it breaks the loop and returns the result
+5. The docstring provides clear documentation of the function's purpose, parameters, return value, and usage examples

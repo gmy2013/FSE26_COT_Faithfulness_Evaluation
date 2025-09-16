@@ -1,0 +1,10 @@
+def sector_area(r,a):
+    pi=22/7
+    if a >= 360:
+        return None
+    sectorarea = (pi*r**2) * (a/360)
+    return sectorarea
+The following is chain of thought:
+1. **Function Definition**: The function `sector_area` is defined with parameters `r` (radius) and `a` (angle in degrees).
+2. **Pi Approximation**: The value of pi is approximated as 22/7.
+3. **Angle Check**: If the angl

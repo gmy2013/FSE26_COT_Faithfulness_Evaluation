@@ -1,0 +1,24 @@
+CodeGeneration:
+is returned.
+
+Here is the complete function with the docstring:
+
+```python
+def multiply_elements(test_tup):
+    """
+    Multiply consecutive elements in the tuple and return a tuple of the products.
+    
+    Args:
+        test_tup (tuple): Input tuple of numbers
+        
+    Returns:
+        tuple: A tuple where each element is the product of consecutive pairs
+               from the input tuple
+               
+    Example:
+        >>> multiply_elements((1, 2, 3, 4))
+        (2, 6, 12)
+    """
+    res = tuple(i * j for i, j in zip(test_tup, test_tup[1:]))
+    return res
+```

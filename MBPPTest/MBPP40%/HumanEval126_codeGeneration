@@ -1,0 +1,37 @@
+CodeGeneration:
+The function `remove_char(S)` removes all non-alphanumeric characters from the input string `S` by using a regular expression pattern that matches any non-word character (including underscores) and replaces them with empty strings.
+
+Here's the complete function:
+
+```python
+import re 
+
+def remove_char(S):
+    """
+    Remove all non-alphanumeric characters from the input string.
+    
+    Args:
+        S (str): Input string that may contain non-alphanumeric characters
+    
+    Returns:
+        str: String with all non-alphanumeric characters removed
+    
+    Examples:
+        >>> remove_char("Hello, World! 123")
+        'HelloWorld123'
+        >>> remove_char("test@example.com")
+        'testexamplecom'
+        >>> remove_char("abc_123-def")
+        'abc123def'
+    """
+    result = re.sub('[\W_]+', '', S) 
+    return result
+```
+
+The regex pattern `[\W_]+` works as follows:
+- `\W` matches any non-word character (equivalent to `[^a-zA-Z0-9_]`)
+- `_` explicitly matches underscores
+- The `+` means "one or more occurrences"
+- Together, `[\W_]+` matches any sequence of non-alphanumeric characters including underscores
+
+This function effectively removes all punctuation, whitespace, symbols, and underscores from the input string, leaving only alphanumeric characters.

@@ -1,0 +1,25 @@
+20%CoT
+CodeGeneration:
+need to determine if `n` is a prime number. If it is, we return `x`; otherwise, we return `y`.
+
+Here is the implementation:
+
+```python
+def x_or_y(n, x, y):
+    """A simple program which should return the value of x if n is 
+    a prime number and should return the value of y otherwise.
+
+    Examples:
+    for x_or_y(7, 34, 12) == 34
+    for x_or_y(15, 8, 5) == 5
+    
+    """
+    if n < 2:
+        return y
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return y
+    return x
+```
+
+This function first checks if `n` is less than 2 (since numbers less than 2 are not prime). Then, it checks for factors from 2 up to the square root of `n`. If any factor divides `n` evenly, it returns `y`. If no factors are found, it returns `x`.

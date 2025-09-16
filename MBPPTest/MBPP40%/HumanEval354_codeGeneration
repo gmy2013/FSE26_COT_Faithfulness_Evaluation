@@ -1,0 +1,40 @@
+CodeGeneration:
+-1 (exclusive) that divide `n` evenly.
+   - Then it checks if this sum is greater than `n`.
+4. Identify issue: The current implementation is inefficient for large `n` because it iterates through all numbers from 1 to n-1.
+5. Optimization: We can optimize by iterating only up to sqrt(n) and collecting factors in pairs.
+6. Implementation plan:
+   - Initialize sum to 0.
+   - Iterate i from 1 to sqrt(n).
+   - If i divides n, add i to sum.
+   - If i != n//i and n//i != n, add n//i to sum.
+   - Compare sum to n.
+
+Here's the optimized implementation:
+
+```python
+import math
+
+def is_abundant(n):
+    if n < 1:
+        return False
+    if n == 1:
+        return False
+    
+    fctrsum = 0
+    sqrt_n = int(math.isqrt(n))
+    
+    for i in range(1, sqrt_n + 1):
+        if n % i == 0:
+            fctrsum += i
+            if i != n // i and n // i != n:
+                fctrsum += n // i
+    
+    return fctrsum > n
+```
+
+This implementation:
+- Handles edge cases (n < 1, n = 1)
+- Uses mathematical optimization to reduce time complexity from O(n) to O(√n)
+- Still correctly identifies abundant numbers by summing all proper divisors
+- Maintains the same return logic (sum > n)

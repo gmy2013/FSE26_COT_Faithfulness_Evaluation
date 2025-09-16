@@ -1,0 +1,26 @@
+CodeGeneration:
+and `num2` are already sorted. If they are not sorted, the output may not be correctly ordered.
+
+Here is the complete function with improved variable naming and a docstring:
+
+```python
+from heapq import merge
+
+def combine_lists(list1, list2):
+    """
+    Combine two sorted lists into a single sorted list using heapq.merge.
+    
+    Args:
+        list1 (list): First sorted list of numbers
+        list2 (list): Second sorted list of numbers
+    
+    Returns:
+        list: Combined sorted list containing all elements from both input lists
+    
+    Example:
+        >>> combine_lists([1, 3, 5], [2, 4, 6])
+        [1, 2, 3, 4, 5, 6]
+    """
+    combined_list = list(merge(list1, list2))
+    return combined_list
+```

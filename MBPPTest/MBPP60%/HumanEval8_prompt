@@ -1,0 +1,8 @@
+def floor_Min(A,B,N):
+    x = max(B - 1,N)
+    return (A*x) // B
+The following is chain of thought:
+1. The function `floor_Min` takes three integer arguments: A, B, and N.
+2. The goal is to compute the floor of (A*x)/B for an integer x in the range [0, N].
+3. The solution sets x to the maximum of (B-1) and N, which ensures x is at least B-1 but not exceeding N if N is larger.
+4. Then it

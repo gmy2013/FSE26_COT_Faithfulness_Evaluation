@@ -1,0 +1,30 @@
+CodeGeneration:
+ding the position of the first number.
+
+However, the current implementation has a potential issue: if there are no numbers in the text, the function will return `None` (since the loop won't execute and there's no explicit return statement). To make this more robust, we should handle the case where no numbers are found.
+
+Here's the improved implementation:
+
+```python
+import re
+
+def num_position(text):
+    """
+    Find the starting index of the first occurrence of a number in the text.
+    
+    Args:
+        text (str): The input string to search for numbers
+        
+    Returns:
+        int: The starting index of the first number found, or -1 if no numbers are found
+    """
+    for m in re.finditer(r"\d+", text):
+        return m.start()
+    return -1
+```
+
+This version:
+1. Uses a raw string `r"\d+"` for the regex pattern (good practice)
+2. Returns -1 if no numbers are found (consistent with common string search conventions)
+3. Includes proper docstring documentation
+4. Maintains the efficient early return behavior for the first match found

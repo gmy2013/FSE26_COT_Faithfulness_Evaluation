@@ -1,0 +1,48 @@
+CodeGeneration:
+Here's the implementation of the `histogram` function:
+
+```python
+def histogram(test):
+    """Given a string representing a space separated lowercase letters, return a dictionary
+    of the letter with the most repetition and containing the corresponding count.
+    If several letters have the same occurrence, return all of them.
+    
+    Example:
+    histogram('a b c') == {'a': 1, 'b': 1, 'c': 1}
+    histogram('a b b a') == {'a': 2, 'b': 2}
+    histogram('a b c a b') == {'a': 2, 'b': 2}
+    histogram('b b b b a') == {'b': 4}
+    histogram('') == {}
+
+    """
+    if not test:
+        return {}
+    
+    letters = test.split()
+    frequency = {}
+    
+    for letter in letters:
+        frequency[letter] = frequency.get(letter, 0) + 1
+    
+    if not frequency:
+        return {}
+    
+    max_count = max(frequency.values())
+    result = {}
+    
+    for letter, count in frequency.items():
+        if count == max_count:
+            result[letter] = count
+    
+    return result
+```
+
+**Explanation:**
+1. First, we check if the input string is empty and return an empty dictionary if true
+2. We split the string into individual letters using `split()`
+3. We count the frequency of each letter using a dictionary with `get()` method
+4. We find the maximum frequency count
+5. We iterate through all letters and add only those with the maximum count to the result dictionary
+6. Finally, we return the result dictionary containing only the letter(s) with the highest frequency
+
+This implementation handles all the test cases correctly and efficiently processes the input string.

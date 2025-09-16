@@ -1,0 +1,25 @@
+CodeGeneration:
+Based on the docstring and chain of thought, the function appears to be correctly implemented. It calculates the average of inverse divisors by dividing the sum of inverse divisors by the number of divisors, and returns the result rounded to 2 decimal places.
+
+Here's the complete function with proper documentation:
+
+```python
+def Sum_of_Inverse_Divisors(N, Sum):
+    """
+    Calculate the average of inverse divisors.
+    
+    Parameters:
+    N (int): Number of divisors
+    Sum (float): Sum of inverse divisors
+    
+    Returns:
+    float: Average of inverse divisors, rounded to 2 decimal places
+    """
+    ans = float(Sum) * 1.0 / float(N)
+    return round(ans, 2)
+```
+
+The function correctly:
+1. Converts both parameters to floats to ensure floating-point division
+2. Calculates the average by dividing the sum by the count
+3. Returns the result rounded to 2 decimal places for readability

@@ -1,0 +1,14 @@
+CodeGeneration:
+```python
+def dealnnoy_num(n, m): 
+    if (m == 0 or n == 0): 
+        return 1
+    return dealnnoy_num(m, n - 1) + dealnnoy_num(m - 1, n - 1) + dealnnoy_num(m - 1, n)
+```
+
+This corrected function properly computes the Dealnnoy number D(m, n) where:
+- `dealnnoy_num(m, n - 1)` corresponds to D(m, n-1) - paths ending with a north move
+- `dealnnoy_num(m - 1, n - 1)` corresponds to D(m-1, n-1) - paths ending with a northeast move  
+- `dealnnoy_num(m - 1, n)` corresponds to D(m-1, n) - paths ending with an east move
+
+The base case correctly returns 1 when either dimension is 0, as there's only one straight path along the axis.

@@ -1,0 +1,30 @@
+CodeGeneration:
+s` to ensure the result has exactly `digits` decimal places, handling any floating-point precision issues.
+
+Here is the complete function with the docstring:
+
+```python
+import math
+
+def round_up(a, digits):
+    """
+    Rounds a number up to a specified number of decimal places.
+
+    Parameters:
+    a (float): The number to round up.
+    digits (int): The number of decimal places to round to.
+
+    Returns:
+    float: The rounded up number with exactly `digits` decimal places.
+
+    Example:
+    >>> round_up(3.141, 2)
+    3.15
+    >>> round_up(2.5, 0)
+    3.0
+    >>> round_up(1.2345, 3)
+    1.235
+    """
+    n = 10**-digits
+    return round(math.ceil(a / n) * n, digits)
+```

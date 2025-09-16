@@ -1,0 +1,89 @@
+
+
+def sum_to_n(n: int):
+    """sum_to_n is a function that sums numbers from 1 to n.
+    >>> sum_to_n(30)
+    465
+    >>> sum_to_n(100)
+    5050
+    >>> sum_to_n(5)
+    15
+    >>> sum_to_n(10)
+    55
+    >>> sum_to_n(1)
+    1
+    """
+
+The following is chain of thought:
+We are summing numbers from 1 to n. This is an arithmetic series with a known formula: n*(n+1)//2.
+ We can use this formula for efficient computation.
+ Steps:
+ 1. Check if n is positive. If n <= 0, return 0? But the examples are all positive. However, the docstring doesn't specify for non-positive.
+ 2. Since the examples are positive integers, we assume n is at least 1.
+ 3. Apply the formula: result = n * (n + 1) // 2
+
+ However, let's note the examples:
+   n=30 -> 465
+   n=100 -> 5050
+   n=5 -> 15
+   n=10 -> 55
+   n=1 -> 1
+
+ We can verify with the formula:
+   30*(31)//2 = 930//2 = 465 -> correct.
+   100*101//2 = 10100//2 = 5050 -> correct.
+   5*6//2 = 30//2=15 -> correct.
+   10*11//2=110//2=55 -> correct.
+   1*2//2=2//2=1 -> correct.
+
+ So we implement using the formula.
+
+ Code:
+   return n * (n + 1) // 2
+
+ But what if n is 0? The docstring doesn't specify. However, the examples start at 1.
+ Since the function says "from 1 to n", if n is 0, there are no numbers to sum? So return 0.
+ Similarly, if n is negative? The problem doesn't specify. To be safe, we can handle non-positive n by returning 0.
+
+ However, looking at the docstring, it only tests positive n. So we can either:
+   Option 1: Assume n is positive (as per examples) and just use the formula.
+   Option 2: Handle non-positive by returning 0.
+
+ Since the function is defined to sum from 1 to n, if n < 1, there are no positive integers to sum, so return 0.
+
+ But the docstring doesn't require handling non-positive. However, to make it robust, we can add a condition.
+
+ However, the problem says "Complete the function based on the given docstring". The docstring only provides positive examples.
+
+ Let's see the function signature: n: int. So n can be any integer.
+
+ We can do:
+
+   if n < 1:
+        return 0
+   else:
+        return n * (n + 1) // 2
+
+ But the examples are all positive. The docstring doesn't show negative cases.
+
+ Alternatively, we can just use the formula without condition, but for n=0: 0*1//2=0, which is correct.
+ For negative n: e.g., n=-1: (-1)*0//2 = 0, which is also correct (since there are no numbers from 1 to -1).
+ So actually the formula works for n<=0 as well: it gives 0 for n=0 and negative n.
+
+ Therefore, we can simply return n*(n+1)//2 for any integer n.
+
+ However, let's test for n=0: 0*(1)//2=0 -> correct.
+ n=-1: (-1)*0//2=0 -> correct.
+ n=-5: (-5)*(-4)//2=20//2=10, but that is not correct because we are summing from 1 to -5? There are no numbers.
+
+ Actually, the formula n*(n+1)//2 is for the sum of first n natural numbers. For n<1, the sum should be 0.
+ But the formula for negative n gives positive values? That is wrong.
+
+ So we need to adjust: we should return 0 for n<=0.
+
+ Therefore, we should have:
+
+   if n <= 0:
+        return 0
+   else:
+        ret

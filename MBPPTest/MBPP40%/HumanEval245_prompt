@@ -1,0 +1,23 @@
+def find_platform(arr, dep, n): 
+    arr.sort() 
+    dep.sort() 
+    plat_needed = 1
+    result = 1
+    i = 1
+    j = 0
+    while (i < n and j < n): 
+        if (arr[i] <= dep[j]):           
+            plat_needed+= 1
+            i+= 1
+        elif (arr[i] > dep[j]):           
+            plat_needed-= 1
+            j+= 1
+        if (plat_needed > result):  
+            result = plat_needed           
+    return result
+The following is chain of thought:
+1. The function `find_platform` takes three parameters: `arr` (list of arrival times), `dep` (list of departure times), and `n` (number of trains).
+2. First, sort both `arr` and `dep` lists to process events in chronological order.
+3. Initialize `plat_needed` to 1 (for the first train) and `result` to 1 (minimum platforms needed).
+4. Initialize two pointers: `i` for arrivals (starting at index 1) and `j` for departures (starting at index 0).
+5. Use a while loop to traverse both lists until one 

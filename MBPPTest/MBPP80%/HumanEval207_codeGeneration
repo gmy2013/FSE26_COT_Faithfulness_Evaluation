@@ -1,0 +1,22 @@
+CodeGeneration:
+ck further once found).
+6. Return the result `res`.
+
+However, note that the function can be simplified using Python's built-in `in` operator for tuples, which is efficient and more Pythonic. Here's the improved version:
+
+```python
+def check_K(test_tup, K):
+    """
+    Check if the value K exists in the tuple test_tup.
+    
+    Args:
+        test_tup (tuple): The tuple to search in.
+        K: The value to check for existence in the tuple.
+    
+    Returns:
+        bool: True if K is found in test_tup, False otherwise.
+    """
+    return K in test_tup
+```
+
+This version is more concise, readable, and leverages Python's built-in functionality for membership testing.

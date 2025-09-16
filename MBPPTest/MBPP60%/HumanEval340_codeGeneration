@@ -1,0 +1,38 @@
+CodeGeneration:
+t a tuple, increment the counter by 1.
+7. After the loop (either by breaking or finishing), return the count of non-tuple elements processed before encountering the first tuple.
+
+Here is the complete function with the docstring:
+
+```python
+def count_elim(num):
+    """
+    Count the number of elements in the iterable `num` until the first tuple is encountered.
+
+    This function iterates through the elements of `num` and counts how many elements
+    it processes before finding the first tuple. Once a tuple is found, the loop breaks
+    and the current count is returned. If no tuple is found, it returns the total number
+    of elements in `num`.
+
+    Parameters:
+    num (iterable): An iterable containing elements of various types.
+
+    Returns:
+    int: The number of non-tuple elements processed before the first tuple, or the total
+         number of elements if no tuple is present.
+
+    Examples:
+    >>> count_elim([1, 2, 3, (4, 5), 6])
+    3
+    >>> count_elim([1, 2, 3, 4, 5])
+    5
+    >>> count_elim([(1, 2), 3, 4])
+    0
+    """
+    count_elim = 0
+    for n in num:
+        if isinstance(n, tuple):
+            break
+        count_elim += 1
+    return count_elim
+```

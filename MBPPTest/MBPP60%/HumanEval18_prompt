@@ -1,0 +1,16 @@
+def move_num(test_str):
+  res = ''
+  dig = ''
+  for ele in test_str:
+    if ele.isdigit():
+      dig += ele
+    else:
+      res += ele
+  res += dig
+  return (res) 
+The following is chain of thought:
+1. Initialize an empty string `res` to collect non-digit characters.
+2. Initialize an empty string `dig` to collect digit characters.
+3. Iterate through each character `ele` in the input string `test_str`:
+   - If `ele` is a digit (checked with `isdigit()`), append it to `dig`.
+   - Else, append i

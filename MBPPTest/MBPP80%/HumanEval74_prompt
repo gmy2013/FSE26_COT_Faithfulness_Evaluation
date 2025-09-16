@@ -1,0 +1,14 @@
+def sum_nums(x, y,m,n):
+    sum_nums= x + y
+    if sum_nums in range(m, n):
+        return 20
+    else:
+        return sum_nums
+The following is chain of thought:
+1. The function `sum_nums` takes four parameters: `x`, `y`, `m`, and `n`.
+2. It calculates the sum of `x` and `y` and stores it in a variable `sum_nums`.
+3. It checks if this sum is within the range `[m, n)` (i.e., from `m` inclusive to `n` exclusive).
+4. If the sum is in that range, it returns `20`.
+5. Otherwise, it returns the actual sum of `x` and `y`.
+6. The function handles all numeric types that support addition and comparison.
+7. Edge cases: If `m >= n`, the range will be empty, so the co

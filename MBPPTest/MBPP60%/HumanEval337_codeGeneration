@@ -1,0 +1,51 @@
+CodeGeneration:
+llest possible range), break out of the loop.
+7. **Move Pointer**: Increment the pointer pointing to the smallest value among the three current elements to try to reduce the range.
+8. **Return Result**: After the loop, return the triplet `(A[res_i], B[res_j], C[res_k])` that gives the smallest range.
+
+Here is the completed function with the docstring:
+
+```python
+import sys 
+
+def find_closet(A, B, C, p, q, r):
+    """
+    Find a triplet (a, b, c) from three sorted arrays A, B, C such that 
+    max(a, b, c) - min(a, b, c) is minimized.
+    
+    Args:
+        A (list): First sorted array of length p
+        B (list): Second sorted array of length q  
+        C (list): Third sorted array of length r
+        p (int): Length of array A
+        q (int): Length of array B
+        r (int): Length of array C
+        
+    Returns:
+        tuple: Triplet (a, b, c) with the smallest possible range
+    """
+    diff = sys.maxsize 
+    res_i = 0
+    res_j = 0
+    res_k = 0
+    i = 0
+    j = 0
+    k = 0
+    while(i < p and j < q and k < r): 
+        minimum = min(A[i], min(B[j], C[k])) 
+        maximum = max(A[i], max(B[j], C[k]))
+        if maximum-minimum < diff: 
+            res_i = i 
+            res_j = j 
+            res_k = k 
+            diff = maximum - minimum
+        if diff == 0: 
+            break
+        if A[i] == minimum: 
+            i = i+1
+        elif B[j] == minimum: 
+            j = j+1
+        else: 
+            k = k+1
+    return A[res_i], B[res_j], C[res_k]
+```

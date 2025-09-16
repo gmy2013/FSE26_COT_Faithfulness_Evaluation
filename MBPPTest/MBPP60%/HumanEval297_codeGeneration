@@ -1,0 +1,24 @@
+CodeGeneration:
+Looking at this function, I can see it's already complete and functional. The implementation correctly follows the docstring description:
+
+```python
+from itertools import groupby 
+
+def extract_elements(numbers, n):
+    result = [i for i, j in groupby(numbers) if len(list(j)) == n] 
+    return result
+```
+
+This function:
+- Takes a list of numbers and an integer n
+- Groups consecutive identical elements using `groupby()`
+- For each group, checks if the length equals n
+- Returns a list of elements that appear exactly n times consecutively
+
+Example usage:
+```python
+print(extract_elements([1, 1, 2, 2, 2, 3, 4, 4], 2))  # Returns [1, 4]
+print(extract_elements([1, 1, 2, 2, 2, 3, 4, 4], 3))  # Returns [2]
+```
+
+The function is already complete and doesn't need any modifications.

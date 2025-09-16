@@ -1,0 +1,5 @@
+def count_list(input_list): 
+    return (len(input_list))**2
+The following is chain of thought:
+1. The function is named `count_list` and takes one parameter `input_list`.
+2. The function returns the square of the len

@@ -1,0 +1,12 @@
+def profit_amount(actual_cost,sale_amount): 
+ if(actual_cost > sale_amount):
+    amount = actual_cost - sale_amount
+    return amount
+ else:
+    return None
+The following is chain of thought:
+1. The function `profit_amount` takes two parameters: `actual_cost` and `sale_amount`.
+2. The goal is to calculate the profit amount when `actual_cost` is greater than `sale_amount`.
+3. If `actual_cost` > `sale_amount`, compute the difference (actual_cost - sale_amount) and return it.
+4. If `actual_cost` <= `sale_amount`, return `None` (indicating no profit or loss).
+5. The code correctly implements this logic with an if-

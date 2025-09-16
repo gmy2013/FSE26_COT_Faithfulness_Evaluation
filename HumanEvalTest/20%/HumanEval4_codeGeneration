@@ -1,0 +1,14 @@
+20%CoT
+CodeGeneration:
+```python
+    # Calculate the mean of the given list of numbers. This mean will serve as the center point around which the deviations are measured.
+    mean_value = sum(numbers) / len(numbers)
+    
+    # Compute the absolute deviations from the mean for each number in the list.
+    absolute_deviations = [abs(x - mean_value) for x in numbers]
+    
+    # Calculate the mean of these absolute deviations to get the Mean Absolute Deviation.
+    mad = sum(absolute_deviations) / len(numbers)
+    
+    return mad
+```

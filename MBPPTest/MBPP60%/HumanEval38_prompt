@@ -1,0 +1,6 @@
+def sample_nam(sample_names):
+  sample_names=list(filter(lambda el:el[0].isupper() and el[1:].islower(),sample_names))
+  return len(''.join(sample_names))
+The following is chain of thought:
+1. Filter the input list `sample_names` to keep only strings that start with an uppercase letter and have the rest in lowercase.
+2. Join

@@ -1,0 +1,8 @@
+import re
+def camel_to_snake(text):
+  str1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', text)
+  return re.sub('([a-z0-9])([A-Z])', r'\1_\2', str1).lower()
+The following is chain of thought:
+1. The function `camel_to_snake` converts a camelCase string to snake_case.
+2. First regex `(.)([A-Z][a-z]+)` finds positions where a lowercase letter or digit is followed by an uppercase letter and lowercase letters, inserting an underscore between them.
+3. Second regex `([a-z0-9])([A-Z])` handles cases where an uppercase letter is immediately after a lowercase letter or digit, inserting an under

@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the implementation using fast exponentiation (exponentiation by squaring):
+
+```python
+def modp(n: int, p: int):
+    """Return 2^n modulo p (be aware of numerics).
+    >>> modp(3, 5)
+    3
+    >>> modp(1101, 101)
+    2
+    >>> modp(0, 101)
+    1
+    >>> modp(3, 11)
+    8
+    >>> modp(100, 101)
+    1
+    """
+    if n == 0:
+        return 1
+    
+    result = 1
+    base = 2
+    n_remaining = n
+    
+    while n_remaining > 0:
+        if n_remaining % 2 == 1:
+            result = (result * base) % p
+        base = (base * base) % p
+        n_remaining //= 2
+    
+    return result
+```
+
+This implementation:
+1. Handles the base case where n = 0 (returns 1)
+2. Uses exponentiation by squaring to efficiently compute large powers
+3. Takes modulo p at each step to prevent integer overflow
+4. Has time complexity O(log n), making it efficient even for large values of n
+
+The algorithm works by breaking down the exponentiation into smaller squares and multiplications, always keeping the intermediate values within reasonable size by applying the modulo operation at each step.

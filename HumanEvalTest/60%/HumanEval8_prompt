@@ -1,0 +1,28 @@
+from typing import List, Tuple
+
+
+def sum_product(numbers: List[int]) -> Tuple[int, int]:
+    """ For a given list of integers, return a tuple consisting of a sum and a product of all the integers in a list.
+    Empty sum should be equal to 0 and empty product should be equal to 1.
+    >>> sum_product([])
+    (0, 1)
+    >>> sum_product([1, 2, 3, 4])
+    (10, 24)
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to compute two values: the sum and the product of all integers in the list.
+2. For an empty list:
+   - The sum should be 0 (as stated: empty sum equals 0)
+   - The product should be 1 (as stated: empty product equals 1)
+3. For a non-empty list:
+   - Initialize sum to 0 and product to 1.
+   - Iterate through each number in the list:
+        - Add the number to the sum.
+        - Multiply the product by the number.
+4. Return a tuple (sum, product).
+
+We can handle both cases (empty and non-empty) with the same initialization since:
+- For an empty list, th

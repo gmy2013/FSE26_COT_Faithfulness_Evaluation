@@ -1,0 +1,9 @@
+def move_zero(num_list):
+    a = [0 for i in range(num_list.count(0))]
+    x = [ i for i in num_list if i != 0]
+    x.extend(a)
+    return (x)
+The following is chain of thought:
+1. Count zeros: Use `count(0)` to determine how many zeros are in `num_list`.
+2. Create zero list: Generate a list `a` with that many zeros using list comprehension.
+3. Filter non-zero elements: Create list `x` containing all elements from `num_list` th

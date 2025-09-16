@@ -1,0 +1,25 @@
+
+def even_odd_count(num):
+    """Given an integer. return a tuple that has the number of even and odd digits respectively.
+
+     Example:
+        even_odd_count(-12) ==> (1, 1)
+        even_odd_count(123) ==> (1, 2)
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to count even and odd digits in the given integer.
+2. The integer can be negative, so we should handle the sign.
+3. We'll convert the number to a string to process each digit individually.
+4. For each digit character, convert it to an integer and check if it's even or odd.
+5. Count the even digits and odd digits separately.
+6. Return a tuple with (even_count, odd_count).
+
+Important: We need to ignore the negative sign if present, as it's not a digit.
+
+Implementation steps:
+- Convert the number to a string to handle each character.
+- If the number is negative, we skip the first character ('-').
+- Iterate through each character in the string represent

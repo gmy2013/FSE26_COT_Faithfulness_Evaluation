@@ -1,0 +1,38 @@
+CodeGeneration:
+Based on the chain of thought, here's the complete function with the corrected recurrence relation:
+
+```python
+def max_sum_of_three_consecutive(arr, n):
+    """
+    Find the maximum sum of elements where no three consecutive elements are selected.
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+    
+    Returns:
+        Maximum sum with no three consecutive elements
+    """
+    if n == 0:
+        return 0
+    
+    sum = [0 for k in range(n)]
+    
+    if n >= 1:
+        sum[0] = arr[0]
+    
+    if n >= 2:
+        sum[1] = arr[0] + arr[1]
+    
+    if n >= 3:
+        sum[2] = max(sum[1], max(arr[1] + arr[2], arr[0] + arr[2]))
+    
+    for i in range(3, n):
+        sum[i] = max(sum[i-1],  # Don't include current element
+                     sum[i-2] + arr[i],  # Include current, skip previous
+                     arr[i] + arr[i-1] + sum[i-3])  # Include current and previous, skip one before
+    
+    return sum[n-1]
+```
+
+The function implements the dynamic programming approach to solve the "no three consecutive elements" problem by considering all valid cases at each position and building the solution incrementally.

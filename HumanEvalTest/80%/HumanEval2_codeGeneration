@@ -1,0 +1,26 @@
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+    integer_part = int(number)
+    return number - integer_part
+```
+
+This implementation:
+1. Extracts the integer part using `int(number)` which truncates the decimal portion
+2. Subtracts the integer part from the original number to get the decimal part
+3. Returns the decimal part as a float
+
+The function works correctly for the given example:
+- `truncate_number(3.5)` → `3.5 - 3 = 0.5`
+- `truncate_number(10.75)` → `10.75 - 10 = 0.75`
+- `truncate_number(7.0)` → `7.0 - 7 = 0.0`

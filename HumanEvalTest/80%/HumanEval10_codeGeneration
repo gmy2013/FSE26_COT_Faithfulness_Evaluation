@@ -1,0 +1,30 @@
+CodeGeneration:
+cata')
+    'catac'
+    """
+    # If the string is already a palindrome, return it
+    if is_palindrome(string):
+        return string
+    
+    # Find the longest palindromic suffix
+    for i in range(len(string)):
+        # Check if substring from index i to end is a palindrome
+        if is_palindrome(string[i:]):
+            # The prefix to append in reverse is string[0:i]
+            return string + string[:i][::-1]
+    
+    # This line should never be reached since at least the last character is always a palindrome
+    return string + string[:-1][::-1]
+```
+
+Let me test this with the provided examples:
+- `make_palindrome('')` returns `''` (empty string is already a palindrome)
+- `make_palindrome('cat')`: 
+  - 'cat' is not a palindrome
+  - 'at' is not a palindrome
+  - 't' is a palindrome (i=2)
+  - Append reverse of 'ca' (prefix before index 2) → 'cat' + 'ac' = 'catac'
+- `make_palindrome('cata')`:
+  - 'cata' is not a palindrome
+  - 'ata' is a palindrome (i=1)
+  - Append reverse of 'c' (prefix before index 1) → 'cata' + 'c' = 'catac'

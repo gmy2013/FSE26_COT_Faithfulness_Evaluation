@@ -1,0 +1,30 @@
+CodeGeneration:
+iterable of boolean values (True for equal, False for not equal).
+4. The `sum()` function then counts the number of True values (since True equals 1 and False equals 0 in Python).
+5. The result is returned, which represents the count of positions where the elements in both lists are equal.
+
+Here's the complete function with the docstring:
+
+```python
+from operator import eq
+
+def count_same_pair(nums1, nums2):
+    """
+    Count the number of positions where corresponding elements in two lists are equal.
+    
+    Args:
+        nums1 (list): First list of numbers
+        nums2 (list): Second list of numbers
+    
+    Returns:
+        int: Number of positions where nums1[i] == nums2[i]
+    
+    Example:
+        >>> count_same_pair([1, 2, 3], [1, 2, 4])
+        2
+        >>> count_same_pair([1, 2, 3], [3, 2, 1])
+        1
+    """
+    result = sum(map(eq, nums1, nums2))
+    return result
+```

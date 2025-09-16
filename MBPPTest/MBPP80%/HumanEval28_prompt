@@ -1,0 +1,17 @@
+def Split(list): 
+    ev_li = [] 
+    for i in list: 
+        if (i % 2 == 0): 
+            ev_li.append(i)  
+    return ev_li
+The following is chain of thought:
+1. Analyze the function name and purpose: The function is named `Split` but based on the implementation, it filters even numbers from a list.
+2. Check the input parameter: Takes a single parameter `list` (which should be a list of numbers).
+3. Examine the implementation:
+   - Creates an empty list `ev_li` to store even numbers
+   - Iterates through each element in the input list
+   - Checks if the element is even using modulo operation `i % 2 == 0`
+   - Appends even numbers to `ev_li`
+   - Returns the list of even numbers
+4. Note the limitation: The function only returns even numbers, not both even and odd as the name "Split" might suggest.
+5. Consider edge cases: The function handles empty lists correctly (returns em

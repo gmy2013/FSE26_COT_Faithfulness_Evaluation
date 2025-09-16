@@ -1,0 +1,14 @@
+CodeGeneration:
+Based on the docstring and chain of thought, the function appears to be complete. However, I notice that parameter `b` is not used in the logic, which might be intentional or might indicate an incomplete implementation. 
+
+Here's the function as provided:
+
+```python
+def Check_Solution(a,b,c): 
+    if (a == c): 
+        return ("Yes"); 
+    else: 
+        return ("No");
+```
+
+If this is the intended behavior (only checking if `a` equals `c` and ignoring `b`), then the function is complete. If you'd like me to modify it to incorporate parameter `b` in some way, please provide additional details about the expected logic.

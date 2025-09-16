@@ -1,0 +1,33 @@
+
+def add_elements(arr, k):
+    """
+    Given a non-empty array of integers arr and an integer k, return
+    the sum of the elements with at most two digits from the first k elements of arr.
+
+    Example:
+
+        Input: arr = [111,21,3,4000,5,6,7,8,9], k = 4
+        Output: 24 # sum of 21 + 3
+
+    Constraints:
+        1. 1 <= len(arr) <= 100
+        2. 1 <= k <= len(arr)
+    """
+
+The following is chain of thought:
+We are given an array `arr` and an integer `k`.
+ We need to consider the first `k` elements of the array.
+ For each of these elements, we check if it has at most two digits (i.e., between -99 and 99 inclusive? But note: the example only has positive integers. However, the problem says "integers", so we should consider negative numbers as well? But the example output only sums positive numbers.
+ However, the problem says "at most two digits". So numbers with one or two digits. But note: negative numbers? For example, -5 has one digit? Actually, we are dealing with integers. The number of digits in an integer (ignoring the sign) is the number of digits in its absolute value.
+ So, we can define a number as having at most two digits if its absolute value is less than 100 (i.e., from -99 to 99 inclusive, excluding zero? Actually, zero has one digit? But zero is not positive. However, the problem says "integers", so we should include zero if it appears? But note: the constraints say non-empty array of integers. So zero might be included.
+
+ Actually, let's break down:
+ - A number has one digit if it is between -9 and 9 (inclusive) but not zero? Actually, zero has one digit? Typically, we consider zero to have one digit? But in the context of the problem, we are to count numbers with at most two digits. So zero should be included? However, the example does not have zero.
+
+ But the problem says "at most two digits". So numbers with 1 or 2 digits. How to check?
+   For a number n:
+      if n is negative, we take absolute value.
+   Then, we can check: if n is 0, it has one digit? Actually, we can compute the number of digits by converting to string and removing the minus sign? Alternatively, we can use logarithms? But simpler: for integers, we can check the range.
+
+   Actually, the problem does not require exact digit count, but "at most two digits". So:
+      numbers that satisfy: -99 <= n <= 99? But wait: what about -100? It has 

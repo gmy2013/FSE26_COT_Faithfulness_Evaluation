@@ -1,0 +1,28 @@
+CodeGeneration:
+Based on the chain of thought, the function appears to be correctly implemented. Here's the complete function with the docstring:
+
+```python
+def Sum_of_Inverse_Divisors(N, Sum):
+    """
+    Calculate the sum of inverse divisors of a number N.
+    
+    The sum of inverse divisors is calculated as (Sum of divisors)/N.
+    
+    Args:
+        N (int): The number for which to calculate inverse divisors sum
+        Sum (int): The sum of all divisors of N
+    
+    Returns:
+        float: The sum of inverse divisors, rounded to 2 decimal places
+    """
+    ans = float(Sum) * 1.0 / float(N)
+    return round(ans, 2)
+```
+
+The function correctly:
+1. Takes integer inputs N and Sum
+2. Converts them to floats for floating-point division
+3. Calculates the sum of inverse divisors as Sum/N
+4. Returns the result rounded to 2 decimal places
+
+This implementation matches the mathematical definition that the sum of inverse divisors equals (Sum of divisors)/N.

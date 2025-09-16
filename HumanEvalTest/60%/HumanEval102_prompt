@@ -1,0 +1,35 @@
+
+def choose_num(x, y):
+    """This function takes two positive numbers x and y and returns the
+    biggest even integer number that is in the range [x, y] inclusive. If 
+    there's no such number, then the function should return -1.
+
+    For example:
+    choose_num(12, 15) = 14
+    choose_num(13, 12) = -1
+    """
+
+The following is chain of thought:
+Let me break down the problem step by step:
+
+1. We need to find the largest even integer in the range [x, y] inclusive
+2. If no even number exists in this range, return -1
+3. We need to handle cases where x and y might be in any order (but the problem says "positive numbers")
+4. The range should be considered from min(x,y) to max(x,y) to handle cases like (13, 12)
+
+Here's my approach:
+1. First determine the actual start and end of our range
+2. Find the largest even number ≤ y
+3. Check if this number is ≥ x
+4. If yes, return it; otherwise return -1
+
+To find the largest even number ≤ y:
+- If y is even, it's y itself
+- If y is odd, it's y-1
+
+Then we just need to check if this number is within our range [x, y].
+
+Let me implement this:
+```python
+def choose_num(x, y):
+    """This function takes two positive numbers x and y and r

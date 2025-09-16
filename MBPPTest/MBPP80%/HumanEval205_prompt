@@ -1,0 +1,26 @@
+def max_run_uppercase(test_str):
+  cnt = 0
+  res = 0
+  for idx in range(0, len(test_str)):
+    if test_str[idx].isupper():
+      cnt += 1
+    else:
+      res = cnt
+      cnt = 0
+  if test_str[len(test_str) - 1].isupper():
+    res = cnt
+  return (res)
+The following is chain of thought:
+1. Initialize `cnt` to 0 to track the current run of uppercase characters.
+2. Initialize `res` to 0 to store the maximum run found so far.
+3. Iterate through each character in the string using a for loop.
+4. For each character:
+   - If it's uppercase, increment `cnt`.
+   - If it's not uppercase, update `res` to the maximum of current `res` and `cnt`, then reset `cnt` to 0.
+5. After the loop, check if the last character was uppercase (to handle case where maximum run ends at string end).
+6. Return `res` as the maximum run length.
+
+However, I notice an issue in the provided code: when a non-uppercase character is found, it simply assigns `cnt` to `res` without comparing to see if it's the maximum. This would only capture the last run, not the maximum run.
+
+The corrected logic should be:
+- When encountering a non-uppercase c

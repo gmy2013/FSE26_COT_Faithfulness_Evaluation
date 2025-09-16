@@ -1,0 +1,13 @@
+CodeGeneration:
+d+'` to find all sequences of digits in the input string.
+4. Convert all found digit strings to integers using `map(int, numbers)`.
+5. Return the maximum value from the list of integers using `max(numbers)`.
+
+```python
+import re 
+
+def extract_max(input): 
+    numbers = re.findall('\d+',input) 
+    numbers = map(int,numbers) 
+    return max(numbers)
+```

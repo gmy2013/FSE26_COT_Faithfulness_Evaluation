@@ -1,0 +1,21 @@
+CodeGeneration:
+cube this value to get the total number of cubes in 3D space.
+
+Here's the complete function with improved variable naming and comments:
+
+```python
+def No_of_cubes(N, K):
+    """
+    Calculate the number of cubes of side length K that can fit inside a larger cube of side length N.
+    
+    Args:
+        N (int): Side length of the larger cube
+        K (int): Side length of the smaller cubes
+    
+    Returns:
+        int: Number of smaller cubes that can fit in the larger cube
+    """
+    positions_per_dimension = N - K + 1
+    total_cubes = positions_per_dimension ** 3
+    return total_cubes
+```

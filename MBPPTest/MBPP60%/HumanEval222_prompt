@@ -1,0 +1,17 @@
+import re 
+def check_substring(string, sample) : 
+  if (sample in string): 
+      y = "\A" + sample 
+      x = re.search(y, string) 
+      if x : 
+          return ("string starts with the given substring") 
+      else : 
+          return ("string doesnt start with the given substring") 
+  else : 
+      return ("entered string isnt a substring")
+The following is chain of thought:
+1. The function `check_substring` takes two parameters: `string` and `sample`.
+2. First, it checks if `sample` is a substring of `string` using `sample in string`.
+3. If `sample` is not found in `string`, it returns "entered string isn't a substring".
+4. If `sample` is found, it constructs a regex pattern `"\A" + sample` where `\A` matches the start of the string.
+5. It then uses `re.search()` to check if this pattern matches at the beginning 

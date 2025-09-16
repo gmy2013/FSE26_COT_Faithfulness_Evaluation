@@ -1,0 +1,15 @@
+CodeGeneration:
+Here's the completed function:
+
+```python
+def add(x: int, y: int):
+    """Add two numbers x and y
+    >>> add(2, 3)
+    5
+    >>> add(5, 7)
+    12
+    """
+    return x + y
+```
+
+The function simply returns the sum of the two integer parameters using the `+` operator, which matches the expected behavior shown in the docstring examples.

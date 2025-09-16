@@ -1,0 +1,24 @@
+def is_subset(arr1, m, arr2, n): 
+	hashset = set() 
+	for i in range(0, m): 
+		hashset.add(arr1[i]) 
+	for i in range(0, n): 
+		if arr2[i] in hashset: 
+			continue
+		else: 
+			return False
+	return True		
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose**: Determine if arr2 is a subset of arr1
+2. **Input Parameters**: 
+   - arr1: the main array (potential superset)
+   - m: length of arr1
+   - arr2: the array to check if it's a subset
+   - n: length of arr2
+3. **Data Structure Selection**: Use a hashset for O(1) lookup operations
+4. **Step 1**: Convert arr1 into a hashset to eliminate duplicates and enable fast lookups
+5. **Step 2**: Iterate through each element in arr2
+6. **Step 3**: For each element in arr2, check if it exists in the hashset
+7. **Step 4**

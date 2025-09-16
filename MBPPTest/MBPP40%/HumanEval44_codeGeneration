@@ -1,0 +1,39 @@
+CodeGeneration:
+iven list.
+3. In `find_k_product`, we extract the K-th element from each sublist in `test_list` and compute the product of these elements using `get_product`.
+4. Finally, it returns the computed product.
+
+Here is the complete code with the docstring:
+
+```python
+def get_product(val):
+    """Compute the product of all elements in the given list.
+    
+    Args:
+        val (list): List of numbers to multiply.
+    
+    Returns:
+        int/float: The product of all elements in the list.
+    """
+    res = 1
+    for ele in val:
+        res *= ele
+    return res
+
+def find_k_product(test_list, K):
+    """Find the product of K-th elements from each sublist in the given list.
+    
+    Args:
+        test_list (list): List of sublists containing numbers.
+        K (int): Index of the element to extract from each sublist.
+    
+    Returns:
+        int/float: Product of all K-th elements from the sublists.
+    
+    Example:
+        >>> find_k_product([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1)
+        80  # because 2 * 5 * 8 = 80
+    """
+    res = get_product([sub[K] for sub in test_list])
+    return res
+```

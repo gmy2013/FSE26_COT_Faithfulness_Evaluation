@@ -1,0 +1,29 @@
+
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+
+The following is chain of thought:
+To solve this problem, we need to determine if a given number `a` (less than 100) is the product of exactly three prime numbers. The approach involves generating all primes up to `a` (since `a < 100`, primes are small), then checking all combinations of three primes whose product equals `a`.
+
+1. **Generate primes up to `a`**: Since `a` is less than 100, we can generate primes up to 100. But note: if `a` is small, primes beyond `a` are not needed. However, for simplicity, generate primes up to 100.
+2. **Check combinations**: Iterate over all triplets of primes (with repetition allowed) and check if their product equals `a`.
+3. **Return result**: If any triplet satisfies the condition, return True; else False.
+
+Note: The primes in the triplet can be repeated (e.g., 2*2*2=8), so combinations with replacement are considered.
+
+Let's code accordingly.
+```python
+def is_multiply_prime(a):
+    # Generate primes up to 100 (since a < 100)
+    primes = []
+    for num in range(2, 101):
+        if all(num % i != 0 for i in range(2, int(num**0.5) + 1)):
+            primes.append(num)
+    
+    # Check a

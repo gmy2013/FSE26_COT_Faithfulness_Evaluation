@@ -1,0 +1,36 @@
+CodeGeneration:
+After analyzing the examples and the docstring, it appears that the function should return `True` if both strings contain exactly the same set of characters (ignoring frequency), and `False` otherwise. However, the examples show that frequencies do matter in some cases, but not in the way typical for anagrams.
+
+Looking at the examples:
+- `same_chars('eabcdzzzz', 'dddzzzzzzzddeddabc')` returns `True`: both have characters `a`, `b`, `c`, `d`, `e`, `z`.
+- `same_chars('abcd', 'dddddddabc')` returns `True`: both have `a`, `b`, `c`, `d`.
+- `same_chars('dddddddabc', 'abcd')` returns `True`: same as above.
+- `same_chars('eabcd', 'dddddddabc')` returns `False`: `s0` has `e` but `s1` does not.
+- `same_chars('abcd', 'dddddddabce')` returns `False`: `s1` has `e` but `s0` does not.
+- `same_chars('eabcdzzzz', 'dddzzzzzzzddddabc')` returns `False`: `s0` has `e` but `s1` does not.
+
+Wait, in the last example, `s1` does have `e`? Let's check: `'dddzzzzzzzddddabc'` has no `e`. So indeed, the function checks if the set of characters is identical.
+
+Therefore, the solution is to compare the sets of characters from both strings.
+
+Code:
+
+```python
+def same_chars(s0: str, s1: str):
+    """
+    Check if two words have the same characters.
+    >>> same_chars('eabcdzzzz', 'dddzzzzzzzddeddabc')
+    True
+    >>> same_chars('abcd', 'dddddddabc')
+    True
+    >>> same_chars('dddddddabc', 'abcd')
+    True
+    >>> same_chars('eabcd', 'dddddddabc')
+    False
+    >>> same_chars('abcd', 'dddddddabce')
+    False
+    >>> same_chars('eabcdzzzz', 'dddzzzzzzzddddabc')
+    False
+    """
+    return set(s0) == set(s1)
+```

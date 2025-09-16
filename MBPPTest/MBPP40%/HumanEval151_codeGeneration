@@ -1,0 +1,47 @@
+CodeGeneration:
+ize a list `dp` to store intermediate results with length `n+1`.
+4. Set base cases: `dp[0] = 0` and `dp[1] = 1`.
+5. For indices from 2 to n (inclusive), compute each value using the recurrence relation.
+6. Return `dp[n]`.
+
+Here is the complete function:
+
+```python
+def jacobsthal_num(n):
+    """
+    Compute the n-th Jacobsthal number.
+
+    The Jacobsthal numbers are defined by the recurrence:
+        J(0) = 0
+        J(1) = 1
+        J(n) = J(n-1) + 2 * J(n-2) for n >= 2
+
+    Args:
+        n (int): The index of the Jacobsthal number to compute (non-negative integer).
+
+    Returns:
+        int: The n-th Jacobsthal number.
+
+    Examples:
+        >>> jacobsthal_num(0)
+        0
+        >>> jacobsthal_num(1)
+        1
+        >>> jacobsthal_num(5)
+        11
+    """
+    if n < 0:
+        raise ValueError("n must be a non-negative integer")
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    dp = [0] * (n + 1)
+    dp[0] = 0
+    dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + 2 * dp[i - 2]
+    return dp[n]
+```
+
+This implementation efficiently computes the n-th Jacobsthal number using dynamic programming with O(n) time and space complexity. It includes input validation and handles base cases directly for clarity.

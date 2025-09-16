@@ -1,0 +1,46 @@
+CodeGeneration:
+Based on the chain of thought, the function needs to be modified to handle cases where no match is found and to potentially return all matches instead of just the first one. Here's the corrected implementation:
+
+```python
+import re
+def occurance_substring(text,pattern):
+    """
+    Find all occurrences of a pattern in text and return their details.
+    
+    Args:
+        text (str): The string to search in
+        pattern (str): The regex pattern to search for
+    
+    Returns:
+        list: A list of tuples, each containing (matched_substring, start_index, end_index)
+              Returns empty list if no matches found
+    """
+    matches = []
+    for match in re.finditer(pattern, text):
+        s = match.start()
+        e = match.end()
+        matches.append((text[s:e], s, e))
+    return matches
+```
+
+Or if you want to maintain the original behavior of returning only the first match:
+
+```python
+import re
+def occurance_substring(text,pattern):
+    """
+    Find the first occurrence of a pattern in text and return its details.
+    
+    Args:
+        text (str): The string to search in
+        pattern (str): The regex pattern to search for
+    
+    Returns:
+        tuple: (matched_substring, start_index, end_index) or None if no match found
+    """
+    for match in re.finditer(pattern, text):
+        s = match.start()
+        e = match.end()
+        return (text[s:e], s, e)
+    return None
+```

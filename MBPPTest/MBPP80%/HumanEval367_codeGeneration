@@ -1,0 +1,26 @@
+CodeGeneration:
+maximum possible within the given constraint.
+
+Here is the complete function with the thought process incorporated:
+
+```python
+def floor_Max(A, B, N):
+    """
+    Compute the maximum value of floor((A*x)/B) for x in the range [0, N].
+    
+    The maximum occurs at x = min(B-1, N) because:
+    - For x >= B, the floor function may cause the value to drop due to modulo effects
+    - Therefore, the optimal x is constrained to be at most B-1
+    - If N is less than B-1, then x = N is the maximum possible
+    
+    Args:
+        A (int): Numerator coefficient
+        B (int): Denominator
+        N (int): Maximum value of x
+    
+    Returns:
+        int: Maximum value of floor((A*x)/B) for x in [0, N]
+    """
+    x = min(B - 1, N)
+    return (A * x) // B
+```

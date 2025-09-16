@@ -1,0 +1,184 @@
+
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+
+The following is chain of thought:
+We are only allowed to have square brackets in the input string.
+ We need to check if there exists a valid subsequence (which means we can skip some brackets arbitrarily) 
+ that has at least one nested bracket.
+
+ Observation:
+ The problem reduces to: can we find a pair of matching brackets that has at least one other pair of matching brackets inside?
+ In other words, we are looking for a pattern like "[ ... [ ... ] ... ]" in the subsequence.
+
+ However, note that we are allowed to skip brackets arbitrarily. So we can ignore any brackets that are not useful.
+
+ Important: The entire subsequence must be valid (i.e., every open bracket must have a matching close bracket in the right order).
+
+ Strategy:
+ We don't need to check every possible subsequence. Instead, we can use a greedy approach.
+
+ We note that for there to be a nested structure, we need at least two pairs of brackets such that one is inside the other.
+
+ How can we check this with a subsequence?
+ We can try to form a subsequence that has the form "[ A ]" where A is a non-empty valid bracket subsequence.
+
+ Alternatively, we can think: we need to find two pairs of brackets (i, j) and (k, l) such that:
+   i < k < l < j   (so the inner pair is entirely inside the outer pair).
+
+ But since we can skip brackets arbitrarily, we can look for the existence of such pairs.
+
+ However, a simpler idea:
+ We can traverse the string and use a stack to match brackets. But note: we are allowed to skip brackets arbitrarily.
+
+ Actually, the problem is equivalent to: can we find a subsequence that is a valid bracket string and has depth at least 2?
+
+ How to do it without generating all subsequences?
+
+ Alternate Insight:
+ We can try to greedily form a subsequence that has depth 2.
+
+ Steps:
+ 1. We need to find an open bracket that we can use as the outer open bracket.
+ 2. Then we need to find an open bracket after that (which will be the inner open bracket) and then a close bracket for the inner one, and then a close bracket for the outer one.
+
+ So the pattern we are looking for is: 
+   open1, then open2, then close2, then close1.
+
+ But note: we can skip any brackets in between arbitrarily.
+
+ Therefore, we can do:
+   Look for the first open bracket that we can use as the outer one (say at index i).
+   Then look for an open bracket after i (say at j) that will be the inner one.
+   Then look for a close bracket after j (say at k) for the inner one.
+   Then look for a close bracket after k (say at l) for the outer one.
+
+ If we can find such indices i < j < k < l, then we have found a nested subsequence.
+
+ However, we are allowed to skip brackets arbitrarily, so we can do this greedily.
+
+ But note: the entire subsequence must be valid. However, if we just have the four brackets: [ , [ , ] , ] in that order, that is a valid nested subsequence.
+
+ So the problem reduces to: does the string have four brackets in the order: '[', '[', ']', ']'? (with any number of brackets in between that we can skip)
+
+ However, wait: what if we have more than two pairs? But the minimal nested structure requires two pairs: an outer and an inner.
+
+ Therefore, we can simply check if there exists a subsequence of the form "[ [ ] ]". 
+
+ But note: we are allowed to skip any brackets arbitrarily. So we can look for the pattern:
+
+   Find an open bracket (this will be the outer open)
+   Then find an open bracket after that (inner open)
+   Then find a close bracket after the inner open (inner close)
+   Then find a close bracket after the inner close (outer close)
+
+ So we can do:
+
+   Let n = len(string)
+   For i in range(n):
+        if string[i] == '[':
+            for j in range(i+1, n):
+                if string[j] == '[':
+                    for k in range(j+1, n):
+                        if string[k] == ']':
+                            for l in range(k+1, n):
+                                if string[l] == ']':
+                                    return True
+
+   return False
+
+ However, this is O(n^4) which might be inefficient for long strings.
+
+ But note: the problem says the string contains only square brackets. And the examples are not very long.
+
+ Alternatively, we can do it in linear time by counting.
+
+ Another idea: we need two pairs that are nested. The minimal requirement is two open brackets and two close brackets in the order: open1, open2, close2, close1.
+
+ So we can try to find two open brackets that have two close brackets after them in the right order.
+
+ How about:
+   Let first_open = first occurrence of '['
+   Then find second_open = next occurrence of '[' after first_open.
+   Then find first_close = next occurrence of ']' after second_open.
+   Then find second_close = next occurrence of ']' after first_close.
+
+ If all these exist, then we have a nested subsequence.
+
+ But note: we are allowed to skip brackets arbitrarily. So we can do:
+
+   We traverse and try to form such a sequence.
+
+ Actually, we can do:
+
+   Step 1: Find the first open bracket (index i).
+   Step 2: Find the next open bracket after i (index j).
+   Step 3: Find the first close bracket after j (index k).
+   Step 4: Find the first close bracket after k (index l).
+
+   If we found all, return True.
+
+ But is that always correct? Yes, because we are skipping all other brackets. The subsequence [i, j, k, l] is exactly what we want.
+
+ However, what if the string has many brackets? We might have multiple possibilities. But we only need one.
+
+ But note: we are not required to use the first possible ones. Actually, we can use any.
+
+ So we can do:
+
+   i = first occurrence of '['
+   if i is None: return False   (no open bracket)
+
+   j = next occurrence of '[' after i
+   if j is None: return False   (only one open)
+
+   k = next occurrence of ']' after j
+   if k is None: return False   (no close for the inner)
+
+   l = next occurrence of ']' after k
+   if l is None: return False   (no close for the outer)
+
+   return True
+
+ However, wait: what if the first open bracket is not used as the outer? Actually, we can use any open as the outer. But we are allowed to skip arbitrarily, so we can always use the first open as the outer and the second open as the inner.
+
+ But what if the first open bracket is not followed by a matching close? We don't care because we are skipping. We are only forming a subsequence of four brackets.
+
+ However, there is a catch: the inner close must come before the outer close. So the pattern is fixed.
+
+ But the above method might fail if the first two opens are not followed by two closes in the right order. For example, if the string is "[[[]]]", we have plenty. But if the string is "[]][", then we have:
+
+   i=0 (first open)
+   j=1 (next open? but at index1 we have ']' not '['. So we skip that? Actually, we need to find the next open after i. So we skip the close at index1? But we are allowed to skip arbitrarily. So we look for the next open after index0: in "[]][", the next open after index0 is at index2? because index1 is close.
+
+ So in "[]][":
+   i=0
+   j=2 (the next open after index0)
+   then we need a close after j: index3 is close -> k=3
+   then we need a close after k: but there is no close after index3. So we return false.
+
+ But wait, we could have used the open at index2 as the outer and the close at index3 as the outer close, but we need an inner pair. We don't have an inner open. So indeed no nested subsequence.
+
+ However, what if we use the open at index0 as the inner and the open at index2 as the outer? Then we need:
+   outer open at index2, then inner open at index0? but index0 is before index2 -> not allowed.
+
+ So the inner open must be after the outer open.
+
+ Therefore, the greedy method of taking the first two opens and then two closes after the second open should work.
+
+ But what if the first open is not followed by another open? Then we skip it and try with the next open as the outer?
+
+ Actually, we need to try all possibilities for the outer open and inner open? But we can do:
+
+   We can iterate over the strin

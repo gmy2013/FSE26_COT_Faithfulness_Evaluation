@@ -1,0 +1,27 @@
+CodeGeneration:
+I'll complete the function based on the provided docstring and chain of thought. The function `toggle_middle_bits(n)` should toggle all bits except the most significant set bit and the least significant bit.
+
+```python
+def set_middle_bits(n):  
+    n |= n >> 1; 
+    n |= n >> 2; 
+    n |= n >> 4; 
+    n |= n >> 8; 
+    n |= n >> 16;  
+    return (n >> 1) ^ 1
+
+def toggle_middle_bits(n): 
+    if (n == 1): 
+        return 1
+    return n ^ set_middle_bits(n)
+```
+
+**Explanation:**
+- `set_middle_bits(n)` creates a bitmask where all bits from the most significant set bit to the least significant bit are set to 1
+- The XOR operation `n ^ set_middle_bits(n)` toggles all the bits that are set in the mask
+- This effectively flips all bits except the most significant set bit and the least significant bit
+- The edge case `n == 1` is handled separately since it has no middle bits to toggle
+
+**Example:**
+- For `n = 13` (binary `1101`), `toggle_middle_bits(13)` would toggle the middle bits, resulting in `1001` (decimal `9`)
+- For `n = 1` (binary `1`), it returns `1` unchanged

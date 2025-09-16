@@ -1,0 +1,32 @@
+from typing import List, Any
+
+
+def filter_integers(values: List[Any]) -> List[int]:
+    """ Filter given list of any python values only for integers
+    >>> filter_integers(['a', 3.14, 5])
+    [5]
+    >>> filter_integers([1, 2, 3, 'abc', {}, []])
+    [1, 2, 3]
+    """
+
+The following is chain of thought:
+We are filtering a list of values to only include integers.
+ We need to check the type of each element and keep only those that are integers.
+ We can use a list comprehension with isinstance(element, int) to filter.
+ Note: We should be careful that bool is a subclass of int in Python, but the examples don't include booleans.
+ However, the docstring says "only for integers", so we should exclude booleans since they are not considered integers in this context.
+ We can use `type(x) is int` to strictly check for integers and exclude subclasses like bool.
+ Alternatively, we can use `isinstance(x, int) and not isinstance(x, bool)` to include all integers but exclude booleans.
+ Since the problem says "integers", and booleans are not typically considered integers in this context, we should exclude them.
+
+ Let's look at the examples: 
+   Example 1: ['a', 3.14, 5] -> [5]   (so 3.14 is float, excluded; 5 is int, included)
+   Example 2: [1,2,3,'abc',{},[]] -> [1,2,3] (so numbers are included, others excluded)
+
+ We'll iterate through each value in the list and check if it is an integer and not a boolean.
+
+ Implementation:
+   We can use a list comprehension: [x for x in values if type(x) is int]
+   This will strictly check for int type and exclude subclasses (like bool).
+
+ Alternatively, we can do: [x for x in values if 

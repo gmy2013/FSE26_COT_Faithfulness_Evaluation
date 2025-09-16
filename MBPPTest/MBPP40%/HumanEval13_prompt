@@ -1,0 +1,7 @@
+def cummulative_sum(test_list):
+  res = sum(map(sum, test_list))
+  return (res)
+The following is chain of thought:
+1. The function `cummulative_sum` takes `test_list` as input, which is expected to be a list of lists (or any iterable of iterables containing numbers).
+2. The goal is to compute the total sum of all elements in all sublists.
+3.

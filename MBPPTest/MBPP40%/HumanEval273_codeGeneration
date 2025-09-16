@@ -1,0 +1,51 @@
+CodeGeneration:
+h character in str1
+   - Compare each character in str1 with corresponding character in str2 using modulo indexing
+   - If any mismatch found, return False immediately
+   - If all characters match, return True after complete iteration
+
+4. **Edge Cases Handling**:
+   - Empty strings: function handles correctly (empty str2 would cause division by zero error)
+   - Identical strings: returns True
+   - Partial matches: correctly identifies when pattern doesn't repeat perfectly
+
+Here's the complete function with improved error handling for edge cases:
+
+```python
+def check_Concat(str1, str2):
+    """
+    Check if str1 can be formed by concatenating multiple copies of str2.
+    
+    Args:
+        str1 (str): The target string to check
+        str2 (str): The pattern string to repeat
+        
+    Returns:
+        bool: True if str1 is a concatenation of str2, False otherwise
+        
+    Examples:
+        >>> check_Concat("abcabc", "abc")
+        True
+        >>> check_Concat("abcabc", "ab")
+        False
+        >>> check_Concat("aaa", "a")
+        True
+    """
+    N = len(str1)
+    M = len(str2)
+    
+    # Handle edge case where str2 is empty
+    if M == 0:
+        return N == 0  # Only empty str1 can be formed from empty str2
+    
+    # Check if str1 length is multiple of str2 length
+    if N % M != 0:
+        return False
+    
+    # Verify each character matches the pattern
+    for i in range(N):
+        if str1[i] != str2[i % M]:
+            return False
+            
+    return True
+```

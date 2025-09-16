@@ -1,0 +1,29 @@
+
+
+def sum_squares(lst):
+    """You are given a list of numbers.
+    You need to return the sum of squared numbers in the given list,
+    round each element in the list to the upper int(Ceiling) first.
+    Examples:
+    For lst = [1,2,3] the output should be 14
+    For lst = [1,4,9] the output should be 98
+    For lst = [1,3,5,7] the output should be 84
+    For lst = [1.4,4.2,0] the output should be 29
+    For lst = [-2.4,1,1] the output should be 6
+    
+
+    """
+
+The following is chain of thought:
+To solve this problem, we need to compute the sum of squares of numbers in a list after rounding each number up to the nearest integer (ceiling). The ceiling of a number is the smallest integer greater than or equal to that number. We can use the `math.ceil` function for this purpose.
+
+Steps:
+1. Import the `math` module to use the `ceil` function.
+2. Iterate over each element in the list.
+3. For each element, round it up to the nearest integer using `math.ceil`.
+4. Square the resulting integer.
+5. Accumulate the sum of these squares.
+6. Return the total sum.
+
+Let's implement the function accordingly.
+```python

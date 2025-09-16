@@ -1,0 +1,7 @@
+def sum_list(lst1,lst2):
+  res_list = [lst1[i] + lst2[i] for i in range(len(lst1))] 
+  return res_list
+The following is chain of thought:
+1. The function `sum_list` takes two parameters: `lst1` and `lst2`.
+2. It assumes both lists are of the same length (as there is no explicit check).
+3. It uses a list comprehension

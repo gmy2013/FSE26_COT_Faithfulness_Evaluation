@@ -1,0 +1,29 @@
+CodeGeneration:
+s the min-heap property.
+4. After building the heap, pop elements one by one using `heapq.heappop` to get them in sorted order (ascending).
+5. Return the list of popped elements, which is the sorted version of the input.
+
+Here is the complete function with the docstring:
+
+```python
+import heapq as hq
+
+def heap_sort(iterable):
+    """
+    Sorts the given iterable in ascending order using a heap.
+
+    Parameters:
+    iterable (iterable): An iterable of elements to be sorted.
+
+    Returns:
+    list: A sorted list of elements from the input iterable.
+
+    Example:
+    >>> heap_sort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    """
+    h = []
+    for value in iterable:
+        hq.heappush(h, value)
+    return [hq.heappop(h) for i in range(len(h))]
+```

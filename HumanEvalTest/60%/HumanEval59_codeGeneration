@@ -1,0 +1,91 @@
+CodeGeneration:
+arger than any factor we found so far.
+   if n > 1:
+        largest = n
+
+   return largest
+
+But note: the problem states that n is not prime, but it might be that after factoring out all smaller primes, the remaining n is prime and larger than the previous factors.
+
+Let's test with the examples:
+
+Example 1: n=13195
+   Factor out 2? 13195 is odd, so skip.
+   i=3: 13195 % 3 != 0
+   i=5: 13195 // 5 = 2639, so largest=5, n=2639
+        then 2639 % 5 !=0
+   i=7: 2639 // 7 = 377, so largest=7, n=377
+        then 377 % 7 !=0
+   i=9: 377 % 9 !=0
+   i=11: 377 % 11 !=0
+   i=13: 377 // 13 = 29, so largest=13, n=29
+        then 29 % 13 !=0
+   Now i*i=15*15=225 > 29, so break.
+   Then n=29>1, so largest=29 -> correct.
+
+Example 2: n=2048
+   Factor out 2s: 2048 is even, so we divide by 2 repeatedly until n=1, and set largest=2 each time.
+   Then n=1, and we break out of the while loop for i.
+   Then n=1 is not >1, so return largest=2 -> correct.
+
+So the code is:
+
+def largest_prime_factor(n: int):
+    largest = 1
+    # Factor out all 2s
+    while n % 2 == 0:
+        largest = 2
+        n //= 2
+
+    # n must be odd at this point
+    i = 3
+    while i * i <= n:
+        while n % i == 0:
+            largest = i
+            n //= i
+        i += 2
+
+    # If the remaining n is a prime greater than 2
+    if n > 1:
+        largest = n
+
+    return largest
+
+However, note that the initial value of largest is 1, but we know n>1 and not prime, so we will always set largest to at least 2 (if n is even) or during the odd factors.
+
+But what if n is odd? Then we skip the first while loop, and largest remains 1 until we find a factor. But since n is not prime, we will find at least one factor in the loop.
+
+But to be safe, we can initialize largest to 1 as above.
+
+Let's test with an odd composite: n=15 (which is not prime)
+   Factor out 2? skip.
+   i=3: 15 % 3 ==0, so set largest=3, n=5
+        then 5 % 3 !=0
+   i*i=9 >5, so break.
+   Then n=5>1, so set largest=5 -> correct.
+
+So the code is correct.
+
+Now write the code accordingly.
+```python
+def largest_prime_factor(n: int):
+    largest = 1
+    # Factor out all 2s
+    while n % 2 == 0:
+        largest = 2
+        n //= 2
+
+    # n must be odd at this point
+    i = 3
+    while i * i <= n:
+        while n % i == 0:
+            largest = i
+            n //= i
+        i += 2
+
+    # If the remaining n is a prime greater than 2
+    if n > 1:
+        largest = n
+
+    return largest
+```

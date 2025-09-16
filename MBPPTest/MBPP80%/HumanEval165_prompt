@@ -1,0 +1,15 @@
+def pair_wise(l1):
+    temp = []
+    for i in range(len(l1) - 1):
+        current_element, next_element = l1[i], l1[i + 1]
+        x = (current_element, next_element)
+        temp.append(x)
+    return temp
+The following is chain of thought:
+1. The function `pair_wise` takes a list `l1` as input.
+2. Initialize an empty list `temp` to store the pairs.
+3. Iterate over the indices of `l1` from 0 to `len(l1) - 2` (to avoid index out of bounds).
+4. For each index `i`, get the current element `l1[i]` and the next element `l1[i + 1]`.
+5. Create a tuple `(current_element, next_element)`.
+6. Append this tuple to `temp`.
+7. 

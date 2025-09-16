@@ -1,0 +1,36 @@
+CodeGeneration:
+Based on the chain of thought analysis, here's an optimized version of the function with improved time complexity:
+
+```python
+def first_repeated_char(str1):
+    """
+    Find the first repeated character in a string.
+    
+    Args:
+        str1 (str): Input string to search for repeated characters
+        
+    Returns:
+        str: The first repeated character found, or "None" if no repetitions exist
+    """
+    seen_chars = set()
+    
+    for char in str1:
+        if char in seen_chars:
+            return char
+        seen_chars.add(char)
+    
+    return "None"
+```
+
+**Key improvements:**
+- Uses a set for O(1) lookups instead of counting through substrings
+- Time complexity reduced from O(n²) to O(n)
+- Space complexity is O(n) for the set, which is optimal
+- Maintains the same functionality and return behavior
+- More readable and efficient implementation
+
+The function still:
+- Returns the first repeated character encountered
+- Returns "None" if no repetitions are found
+- Handles edge cases like empty strings correctly
+- Processes the string from left to right

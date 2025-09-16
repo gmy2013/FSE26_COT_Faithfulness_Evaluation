@@ -1,0 +1,8 @@
+def increment_numerics(test_list, K):
+  res = [str(int(ele) + K) if ele.isdigit() else ele for ele in test_list]
+  return res 
+The following is chain of thought:
+1. The function `increment_numerics` takes two parameters: `test_list` (a list of strings) and `K` (an integer).
+2. The goal is to increment only the numeric strings in `test_list` by `K`, while leaving non-numeric strings unchanged.
+3. Use a list comprehension to iterate through each element `ele` in `test_list`.
+4. For each e

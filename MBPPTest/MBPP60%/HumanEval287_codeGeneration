@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the completed function with the corrected implementation:
+
+```python
+def substract_elements(test_tup1, test_tup2):
+    """
+    Subtract corresponding elements from two nested tuples element-wise.
+    
+    Args:
+        test_tup1 (tuple): First nested tuple containing tuples of numbers
+        test_tup2 (tuple): Second nested tuple containing tuples of numbers
+    
+    Returns:
+        tuple: Resulting nested tuple with element-wise subtraction
+    
+    Example:
+        >>> substract_elements(((1, 2), (3, 4)), ((0, 1), (1, 2)))
+        ((1, 1), (2, 2))
+    """
+    res = tuple(tuple(a - b for a, b in zip(tup1, tup2)) 
+               for tup1, tup2 in zip(test_tup1, test_tup2))
+    return res
+```
+
+The function:
+1. Uses nested tuple comprehensions to process the nested structure
+2. Outer `zip()` pairs corresponding inner tuples from both input tuples
+3. Inner `zip()` pairs corresponding elements within each inner tuple pair
+4. Performs element-wise subtraction (a - b) for each element pair
+5. Returns the result as a nested tuple with the same structure as the inputs

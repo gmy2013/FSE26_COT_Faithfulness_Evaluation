@@ -1,0 +1,20 @@
+CodeGeneration:
+ist of models alphabetically by their 'color' attribute.
+4. We use the built-in `sorted` function with a lambda function as the key to extract the 'color' value for each model.
+5. The sorted list is then returned.
+
+Here is the completed function:
+
+```python
+def sorted_models(models):
+    """Sort a list of model dictionaries alphabetically by their color.
+    
+    Args:
+        models: A list of dictionaries, each representing a model with a 'color' key.
+        
+    Returns:
+        A new list of the same model dictionaries, sorted by color in ascending order.
+    """
+    sorted_models = sorted(models, key=lambda x: x['color'])
+    return sorted_models
+```

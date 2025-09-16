@@ -1,0 +1,30 @@
+CodeGeneration:
+unequal length, map() will stop at the shorter list length (which is the expected behavior for element-wise operations)
+
+Here's the complete function with improved docstring:
+
+```python
+def add_list(nums1, nums2):
+    """
+    Add corresponding elements from two lists element-wise.
+    
+    Returns a new list where each element is the sum of the elements
+    at the same position in the input lists. If the lists have different
+    lengths, the result will have the length of the shorter list.
+    
+    Args:
+        nums1 (list): First list of numbers
+        nums2 (list): Second list of numbers
+    
+    Returns:
+        list: List containing element-wise sums
+    
+    Example:
+        >>> add_list([1, 2, 3], [4, 5, 6])
+        [5, 7, 9]
+        >>> add_list([1, 2], [3, 4, 5])
+        [4, 6]
+    """
+    result = map(lambda x, y: x + y, nums1, nums2)
+    return list(result)
+```

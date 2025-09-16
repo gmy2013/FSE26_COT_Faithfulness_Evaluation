@@ -1,0 +1,11 @@
+CodeGeneration:
+characters.
+ 3. Return the length of that set.
+
+ Implementation:
+ Let's convert to lowercase for consistency.
+"""
+
+    normalized_string = string.lower()
+    distinct_chars = set(normalized_string)
+    return len(distinct_chars)

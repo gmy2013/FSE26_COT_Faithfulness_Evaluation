@@ -1,0 +1,11 @@
+CodeGeneration:
+```python
+def reverse_delete(s, c):
+    # Step 1: Delete all characters in s that are present in c
+    result_str = ''.join(char for char in s if char not in c)
+    
+    # Step 2: Check if the resulting string is a palindrome
+    is_palindrome = result_str == result_str[::-1]
+    
+    return (result_str, is_palindrome)
+```

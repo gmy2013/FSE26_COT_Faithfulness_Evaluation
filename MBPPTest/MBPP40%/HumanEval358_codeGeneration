@@ -1,0 +1,13 @@
+CodeGeneration:
+ements in the list.
+3. We can use the built-in `sum()` function to get the total sum of the list.
+4. We can use the built-in `len()` function to get the number of elements.
+5. The average is calculated by dividing the sum by the length.
+6. We return this result.
+
+The implementation is already correct and complete:
+
+```python
+def Average(lst):
+    return sum(lst) / len(lst)
+```

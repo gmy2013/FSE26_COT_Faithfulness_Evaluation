@@ -1,0 +1,37 @@
+
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+
+The following is chain of thought:
+We are given a string S of words. We need to split the string into sentences based on delimiters '.', '?', or '!'.
+ For each sentence, we check if it starts with the word "I" (note: there might be leading spaces, so we should strip whitespace).
+ If a sentence starts with "I", then it counts as a boredom.
+ We return the total count of such sentences.
+
+ Steps:
+ 1. Split the string S into sentences using the delimiters '.', '?', '!'. We can use re.split to split by multiple delimiters.
+ 2. For each sentence in the split list:
+    - Strip any leading and trailing whitespace.
+    - Check if the sentence starts with the word "I". Note: We need to check for the word "I" followed by a space or end of string, but since we are at the beginning, we can check if the first word is exactly "I".
+    However, note: the problem says "starts with the word 'I'", meaning the first word (after stripping) should be "I".
+ 3. Count how many sentences satisfy this condition.
+
+ Important: We should avoid empty sentences (which might occur if there are consecutive delimiters).
+
+ Implementation:
+ Let's use re.split to split the string by the delimiters [.?!]. Then, for each part, we strip and check if it starts with "I " or is exactly "I".
+ Alternatively, we can split the string and then check the first word.
+
+ How to check if a sentence starts with "I":
+   - After stripping, we can split the sentence into words and take the first word. If the first word is "I", then it's a boredom.
+   - Alternatively, we can

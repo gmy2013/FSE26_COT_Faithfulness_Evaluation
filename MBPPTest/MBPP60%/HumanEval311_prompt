@@ -1,0 +1,23 @@
+def binomial_coeff(n, k): 
+	C = [[0 for j in range(k + 1)] 
+			for i in range(n + 1)] 
+	for i in range(0, n + 1): 
+		for j in range(0, min(i, k) + 1): 
+			if (j == 0 or j == i): 
+				C[i][j] = 1
+			else: 
+				C[i][j] = (C[i - 1][j - 1] 
+							+ C[i - 1][j]) 
+	return C[n][k] 
+def lobb_num(n, m): 
+	return (((2 * m + 1) *
+		binomial_coeff(2 * n, m + n)) 
+					/ (m + n + 1))
+The following is chain of thought:
+The function `lobb_num(n, m)` calculates the Lobb number using the formula:
+L(m, n) = ((2m + 1) * C(2n, m + n)) / (m + n + 1)
+
+Chain of thought:
+1. The function takes two parameters: n and m
+2. It calls the binomial_coeff function to compute C(2n, m+n)
+3. It then applies the Lobb number formula: (2m+1) * binomia

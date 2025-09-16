@@ -1,0 +1,8 @@
+def series_sum(number):
+ total = 0
+ total = (number * (number + 1) * (2 * number + 1)) / 6
+ return total
+The following is chain of thought:
+1. The function calculates the sum of squares of the first `number` natural numbers.
+2. The formula for the sum of squares is: n(n+1)(2n+1)/6
+3. The implementation correctly applies 

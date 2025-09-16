@@ -1,0 +1,24 @@
+CodeGeneration:
+of the bit, starting from 0 for the least significant bit).
+4. However, the function returns `math.log2(n&-n)+1`, which adds 1 to shift from 0-indexed to 1-indexed position.
+5. But note: if `n` is 0, `n & -n` is 0, and `math.log2(0)` is undefined (raises ValueError).
+6. Therefore, we need to handle the case when `n` is 0.
+
+Let's update the function to handle `n=0` appropriately. Typically, for `n=0`, there is no set bit, so we might return 0 or -1, but the docstring (not provided) might specify. Since the original code expects a positive integer with at least one set bit, we should check for zero.
+
+Alternatively, we can note that the problem might assume `n > 0`, but to be safe, let's return 0 for `n=0` (meaning no set bit) as a common convention.
+
+Revised code:
+
+```python
+import math
+
+def get_First_Set_Bit_Pos(n):
+    if n == 0:
+        return 0
+    return int(math.log2(n & -n)) + 1
+```
+
+Additionally, we convert the result of `math.log2` to an integer since the position should be an integer.
+
+This function now returns the 1-indexed position of the first set bit (from right) for non-zero `n`, and 0 for `n=0`.

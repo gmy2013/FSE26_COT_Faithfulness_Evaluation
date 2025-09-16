@@ -1,0 +1,83 @@
+
+def simplify(x, n):
+    """Your task is to implement a function that will simplify the expression
+    x * n. The function returns True if x * n evaluates to a whole number and False
+    otherwise. Both x and n, are string representation of a fraction, and have the following format,
+    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.
+
+    You can assume that x, and n are valid fractions, and do not have zero as denominator.
+
+    simplify("1/5", "5/1") = True
+    simplify("1/6", "2/1") = False
+    simplify("7/10", "10/2") = False
+    """
+
+The following is chain of thought:
+We are given two fractions as strings: x and n, each in the form "numerator/denominator".
+ We need to check if the product x * n is a whole number (integer).
+
+ Steps:
+ 1. Split each fraction string to get numerator and denominator as integers.
+ 2. For x: split by '/' to get num_x and den_x.
+ 3. For n: split by '/' to get num_n and den_n.
+ 4. The product x * n = (num_x * num_n) / (den_x * den_n).
+ 5. We need to check if (num_x * num_n) is divisible by (den_x * den_n). 
+    That is, (num_x * num_n) % (den_x * den_n) == 0.
+ 6. However, note: we can also reduce the fraction by dividing numerator and denominator by their gcd to avoid large numbers?
+    But since we are only checking divisibility, we can compute the product and then check modulo.
+
+ But caution: if we compute the product of numerators and denominators, the numbers might be large? 
+ However, the problem says both numerator and denominator are positive whole numbers. We can handle with integer arithmetic.
+
+ Alternate approach: 
+   We can write the product as (num_x * num_n) / (den_x * den_n). 
+   To be an integer, the denominator (den_x * den_n) must divide the numerator (num_x * num_n).
+
+ However, we can also simplify by canceling common factors between the numerator and denominator to avoid large numbers?
+ But the problem does not require the simplified fraction, only whether the result is integer.
+
+ Since the numbers are positive integers, we can compute:
+   numerator_product = num_x * num_n
+   denominator_product = den_x * den_n
+
+ Then check if numerator_product is divisible by denominator_product.
+
+ But note: it is possible that the fraction can be simplified by gcd. However, for divisibility, we can also do:
+   if numerator_product % denominator_product == 0: then it's integer.
+
+ However, we must be cautious: if we compute the product, the numbers might be large? But the problem says "positive whole numbers", which are integers.
+
+ But to avoid potential overflow (though in Python integers are arbitrary precision, but for efficiency we might simplify first) we can reduce by gcd.
+
+ Actually, we can reduce the fraction step by step:
+
+   Let num = num_x * num_n
+   Let den = den_x * den_n
+
+   Then we can compute g = gcd(num, den) and then reduce the fraction to (num/g) / (den/g). Then we check if the denominator becomes 1.
+
+ However, we don't need the reduced fraction, only whether the denominator becomes 1. Alternatively, we can check if den divides num.
+
+ But note: we can also avoid building the large product by simplifying cross factors.
+
+ Another efficient method:
+
+   We have: (num_x/den_x) * (num_n/den_n) = (num_x * num_n) / (den_x * den_n)
+
+   We can break down the factors:
+
+   Let a = num_x, b = den_x, c = num_n, d = den_n.
+
+   Then we need to check if (a*c) is divisible by (b*d).
+
+   We can simplify by checking if (a * c) % (b * d) == 0.
+
+ However, to avoid large numbers, we can simplify by canceling common factors between numerator and denominator.
+
+ We can do:
+
+   Let g1 = gcd(a, d)   -> cancel between first numerator and second denominator
+   Let g2 = gcd(c, b)   -> cancel between second numerator and first denominator
+
+   Then we can set:
+ 

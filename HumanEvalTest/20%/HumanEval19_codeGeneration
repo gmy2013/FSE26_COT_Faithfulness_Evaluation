@@ -1,0 +1,49 @@
+20%CoT
+CodeGeneration:
+o easily convert the word representations into numbers for sorting purposes.
+
+2. **Convert Words to Numbers**: Split the input string by spaces to get a list of number words. Use the dictionary to convert each word to its corresponding numerical value.
+
+3. **Sort the Numbers**: Sort the list of numerical values.
+
+4. **Convert Numbers Back to Words**: Use the inverse of the initial dictionary (mapping from numbers back to words) to translate the sorted numerical values back into their word representations.
+
+5. **Join the Words into a String**: Join the sorted list of words back into a single string with spaces separating the words.
+
+Now, let's implement the function according to the above steps:
+
+```python
+def sort_numbers(numbers: str) -> str:
+    """ Input is a space-delimited string of numerals from 'zero' to 'nine'.
+    Valid choices are 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight' and 'nine'.
+    Return the string with numbers sorted from smallest to largest
+    >>> sort_numbers('three one five')
+    'one three five'
+    """
+    # Step 1: Define a mapping from words to numbers
+    word_to_number = {
+        'zero': 0,
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5,
+        'six': 6,
+        'seven': 7,
+        'eight': 8,
+        'nine': 9
+    }
+    
+    # Step 2: Convert words to numbers
+    number_words = numbers.split()
+    number_values = [word_to_number[word] for word in number_words]
+    
+    # Step 3: Sort the numbers
+    number_values.sort()
+    
+    # Step 4: Convert numbers back to words
+    number_to_word = {v: k for k, v in word_to_number.items()}
+    sorted_words = [number_to_word[number] for number in number_values]
+    
+    # Step 5: Join the words into a string
+    return ' '.join(sorted_words)

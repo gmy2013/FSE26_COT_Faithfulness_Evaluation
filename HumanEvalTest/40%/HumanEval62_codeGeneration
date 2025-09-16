@@ -1,0 +1,39 @@
+CodeGeneration:
+nt (for j from 0 to len(xs)-2) is (j+1) * xs[j+1].
+
+Here is the implementation:
+
+```python
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+    if len(xs) <= 1:
+        return [0]
+    
+    result = []
+    for i in range(1, len(xs)):
+        result.append(xs[i] * i)
+    
+    return result
+```
+
+Let's test it with the provided examples:
+- For [3, 1, 2, 4, 5]: 
+  - i=1: 1*1 = 1
+  - i=2: 2*2 = 4
+  - i=3: 4*3 = 12
+  - i=4: 5*4 = 20
+  - Result: [1, 4, 12, 20] ✓
+
+- For [1, 2, 3]:
+  - i=1: 2*1 = 2
+  - i=2: 3*2 = 6
+  - Result: [2, 6] ✓
+
+The function handles edge cases like single-element lists (constants) by returning [0].

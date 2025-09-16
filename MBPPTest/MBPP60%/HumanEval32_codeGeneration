@@ -1,0 +1,29 @@
+CodeGeneration:
+pair_OR_Sum(arr, n):
+    """
+    Calculate the sum of XOR values for all unordered pairs in the array.
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+    
+    Returns:
+        int: Sum of XOR values for all unordered pairs
+    """
+    total = 0
+    # Consider each bit position (0 to 31 for 32-bit integers)
+    for k in range(32):
+        # Count number of elements with k-th bit set
+        count = 0
+        for num in arr:
+            if num & (1 << k):
+                count += 1
+        
+        # Number of pairs where k-th bit contributes to XOR
+        pairs_with_bit_set = count * (n - count)
+        
+        # Add contribution of this bit to total sum
+        total += pairs_with_bit_set * (1 << k)
+    
+    return total
+```

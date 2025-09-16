@@ -1,0 +1,34 @@
+
+
+def pairs_sum_to_zero(l):
+    """
+    pairs_sum_to_zero takes a list of integers as an input.
+    it returns True if there are two distinct elements in the list that
+    sum to zero, and False otherwise.
+    >>> pairs_sum_to_zero([1, 3, 5, 0])
+    False
+    >>> pairs_sum_to_zero([1, 3, -2, 1])
+    False
+    >>> pairs_sum_to_zero([1, 2, 3, 7])
+    False
+    >>> pairs_sum_to_zero([2, 4, -5, 3, 5, 7])
+    True
+    >>> pairs_sum_to_zero([1])
+    False
+    """
+
+The following is chain of thought:
+Looking at the problem, I need to find if there are two distinct elements that sum to zero. This means for each number, I need to check if its negative counterpart exists in the list.
+
+Let me think through the approach:
+1. I'll iterate through each element in the list
+2. For each element, I'll check if its negative exists in the remaining elements
+3. I need to ensure they're distinct (different indices)
+4. If I find such a pair, return True immediately
+5. If no pair is found after checking all, return False
+
+The time complexity will be O(n²) with nested loops, but I can optimize by using a set for O(n) time complexity.
+
+Wait, let me consider the set approach:
+1. Create an empty set to store seen numbers
+2. F

@@ -1,0 +1,11 @@
+import re
+def capital_words_spaces(str1):
+  return re.sub(r"(\w)([A-Z])", r"\1 \2", str1)
+The following is chain of thought:
+1. The function `capital_words_spaces` takes a string `str1` as input.
+2. It uses the `re.sub()` function from the regex module to perform a substitution.
+3. The pattern `r"(\w)([A-Z])"` matches:
+   - `(\w)`: any word character (captured as group 1)
+   - `([A-Z])`: any uppercase letter (captured as group 2)
+4. The replacement pattern `r"\1 \2"` inserts a space between the two captured groups.
+5. This effectively adds a space b

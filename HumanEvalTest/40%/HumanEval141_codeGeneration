@@ -1,0 +1,32 @@
+CodeGeneration:
+he extension is one of the allowed ones.
+- Check the digit count in the entire file name.
+
+Here's the implementation:
+
+```python
+def file_name_check(file_name):
+    # Check if there is exactly one dot
+    if file_name.count('.') != 1:
+        return 'No'
+    
+    # Split into base and extension
+    parts = file_name.split('.')
+    base = parts[0]
+    extension = parts[1]
+    
+    # Check base name: not empty and starts with a letter
+    if len(base) == 0 or not base[0].isalpha():
+        return 'No'
+    
+    # Check extension is one of the allowed ones
+    if extension not in ['txt', 'exe', 'dll']:
+        return 'No'
+    
+    # Check digit count (no more than three digits)
+    digit_count = sum(1 for char in file_name if char.isdigit())
+    if digit_count > 3:
+        return 'No'
+    
+    return 'Yes'
+```

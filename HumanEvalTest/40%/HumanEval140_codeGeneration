@@ -1,0 +1,78 @@
+CodeGeneration:
+le" has 7 characters? Wait, let me read the example: " Example   3" — let's break it down:
+        There is one space at the beginning, then "Example", then four spaces (because there are three shown but actually the string has four? The example says " Example   3" — in the docstring it is written with multiple spaces.
+
+ Actually, looking at the docstring: " Example   3" — this string has:
+   - One leading space
+   - Then "Example"
+   - Then four spaces (because in the string literal, "    " represents four spaces? Actually, in Python, when we write " Example   3", it has:
+        index0: ' '
+        index1-7: 'E','x','a','m','p','l','e'
+        index8: ' '
+        index9: ' '
+        index10: ' '
+        index11: ' '
+        index12: '3'
+
+ So the consecutive spaces after "Example" are 4.
+
+ Therefore, the rule is:
+   For any group of consecutive spaces:
+      if the group has 1 or 2 spaces, replace each space with an underscore.
+      if the group has 3 or more spaces, replace the entire group with a single dash.
+
+ So for the group of 4 spaces, we replace with one dash.
+
+ Implementation:
+   We traverse the string and when we find a space, we count the consecutive spaces.
+   Then:
+        if count >= 3: append a '-'
+        else: append '_' * count
+
+   Then set i = j (to skip the spaces we just processed).
+
+ But note: we must also handle non-space characters.
+
+ Let's code accordingly.
+```
+
+```python
+def fix_spaces(text):
+    """
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with - 
+    
+    fix_spaces("Example") == "Example"
+    fix_spaces("Example 1") == "Example_1"
+    fix_spaces(" Example 2") == "_Example_2"
+    fix_spaces(" Example   3") == "_Example-3"
+    """
+    i = 0
+    n = len(text)
+    result = []
+    while i < n:
+        if text[i] != ' ':
+            result.append(text[i])
+            i += 1
+        else:
+            # Count consecutive spaces
+            j = i
+            while j < n and text[j] == ' ':
+                j += 1
+            count = j - i
+            if count >= 3:
+                result.append('-')
+            else:
+                result.append('_' * count)
+            i = j  # skip the processed spaces
+    return ''.join(result)
+```
+
+Let's test with the examples:
+Example 1: "Example" -> no spaces, so output "Example"
+Example 2: "Example 1" -> one space, so replaced with '_' -> "Example_1"
+Example 3: " Example 2" -> leading space (count=1) -> '_', then one space after Example -> '_' -> "_Example_2"
+Example 4: " Example   3" -> leading space (count=1) -> '_', then four spaces after Example -> '-' -> "_Example-3"
+
+This matches the expected outputs.

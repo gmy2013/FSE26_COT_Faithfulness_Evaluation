@@ -1,0 +1,52 @@
+CodeGeneration:
+**: While the removal index is within bounds, remove the element at that index, then update the removal index by adding `first_ludic - 1` (since the list shrinks after each removal).
+7. **Increment index**: Move to the next index and repeat.
+
+Here is the complete function with detailed comments:
+
+```python
+def get_ludic(n):
+    """
+    Generate a list of Ludic numbers up to n.
+    
+    Ludic numbers are obtained by a process similar to the Sieve of Eratosthenes:
+    1. Start with the list of integers from 1 to n.
+    2. Start with the first number (1) and keep it.
+    3. For each subsequent number at position 'index', keep it and remove every 
+       (number at index)-th number after it in the list.
+    4. Repeat until no more numbers can be removed.
+    
+    Args:
+        n (int): Upper limit to generate Ludic numbers up to.
+    
+    Returns:
+        list: List of Ludic numbers <= n.
+    """
+    # Initialize the list with all integers from 1 to n
+    ludics = list(range(1, n + 1))
+    
+    # Start from index 1 (second element, since first element 1 is always kept)
+    index = 1
+    
+    # Process the list until we reach the end
+    while index < len(ludics):
+        # Get the current Ludic number at this index
+        current_ludic = ludics[index]
+        
+        # Calculate the first index to remove: index + current_ludic
+        remove_index = index + current_ludic
+        
+        # Remove every current_ludic-th element after the current position
+        while remove_index < len(ludics):
+            # Remove the element at remove_index
+            del ludics[remove_index]
+            
+            # Update remove_index: jump ahead by current_ludic - 1 positions
+            # (subtract 1 because the list just got shorter by 1 element)
+            remove_index += current_ludic - 1
+        
+        # Move to the next index in the modified list
+        index += 1
+    
+    return ludics
+```

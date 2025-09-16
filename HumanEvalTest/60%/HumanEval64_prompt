@@ -1,0 +1,58 @@
+
+FIX = """
+Add more test cases.
+"""
+
+def vowels_count(s):
+    """Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+
+    Example:
+    >>> vowels_count("abcde")
+    2
+    >>> vowels_count("ACEDY")
+    3
+    """
+
+The following is chain of thought:
+We are counting vowels: 'a', 'e', 'i', 'o', 'u' (case-insensitive) and also 'y' at the end (case-insensitive).
+ Steps:
+ 1. Convert the string to lower to handle case insensitivity.
+ 2. Count the standard vowels (a, e, i, o, u) in the entire string.
+ 3. Check if the last character is 'y'. If so, add 1 to the count.
+ 4. Return the total count.
+
+ However, note: if the last character is 'y', we must be cautious not to double count if we already counted it as a vowel?
+ But the problem says: 'y' is a vowel only when at the end. So we are not counting 'y' in the middle as a vowel.
+ Therefore, we should only count the standard vowels (a,e,i,o,u) everywhere, and then if the last char is 'y', we add one.
+
+ But wait: what if the last character is 'y' and we already counted it as a vowel? Actually, we are not counting 'y' in the standard vowels.
+ So we are safe.
+
+ However, note: the standard vowels are only a,e,i,o,u. So we are not counting 'y' in the main loop.
+
+ Implementation:
+ Let s_lower = s.lower()
+ count = 0
+ for char in s_lower:
+     if char in ['a','e','i','o','u']:
+         count += 1
+
+ if s_lower and s_lower[-1] == 'y':
+     count += 1
+
+ Return count.
+
+ Let's test with examples:
+ Example 1: "abcde" -> lower: "abcde"
+   a: vowel -> count=1
+   e: vowel -> count=2
+   last char is 'e' (not 'y') -> total=2 -> correct.
+
+ Example 2: "ACEDY" -> lower: "acedy"
+   a: vowel -> count=1
+   e: vowel -> count=2
+   d: not
+   y: not (because we are only counting a,e,i,o,u in the loop) -> so count=2 s

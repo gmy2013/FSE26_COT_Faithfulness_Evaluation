@@ -1,0 +1,43 @@
+20%CoT
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+def find_max(words):
+    """Write a function that accepts a list of strings.
+    The list contains different words. Return the word with maximum number
+    of unique characters. If multiple strings have maximum number of unique
+    characters, return the one which comes first in lexicographical order.
+
+    find_max(["name", "of", "string"]) == "string"
+    find_max(["name", "enam", "game"]) == "enam"
+    find_max(["aaaaaaa", "bb" ,"cc"]) == "aaaaaaa"
+    """
+    if not words:
+        return ""
+    
+    max_unique = -1
+    candidates = []
+    
+    for word in words:
+        unique_count = len(set(word))
+        
+        if unique_count > max_unique:
+            max_unique = unique_count
+            candidates = [word]
+        elif unique_count == max_unique:
+            candidates.append(word)
+    
+    # Return the lexicographically first word among candidates
+    return min(candidates) if candidates else ""
+```
+
+The function works as follows:
+1. First checks if the input list is empty and returns an empty string if so
+2. Iterates through each word, calculating the number of unique characters using `len(set(word))`
+3. Maintains a list of candidate words that have the current maximum unique character count
+4. When a word with more unique characters is found, it updates the maximum and resets the candidate list
+5. When words have the same number of unique characters, they're added to the candidate list
+6. Finally returns the lexicographically first word from the candidate list using `min()`
+
+The examples provided in the docstring will work correctly with this implementation.

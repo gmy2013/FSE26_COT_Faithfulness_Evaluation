@@ -1,0 +1,53 @@
+CodeGeneration:
+op is unnecessary and the logic can be made more straightforward. Here's a cleaner implementation:
+
+```python
+import re
+
+def pass_validity(p):
+    """
+    Check if a password meets the following criteria:
+    - Length between 6 and 12 characters
+    - Contains at least one lowercase letter
+    - Contains at least one digit
+    - Contains at least one uppercase letter
+    - Contains at least one special character from [$#@]
+    - Contains no whitespace characters
+    
+    Args:
+        p (str): The password string to validate
+        
+    Returns:
+        bool: True if password meets all criteria, False otherwise
+    """
+    # Check length requirement
+    if len(p) < 6 or len(p) > 12:
+        return False
+    
+    # Check for whitespace
+    if re.search(r"\s", p):
+        return False
+    
+    # Check for required character types
+    if not re.search(r"[a-z]", p):
+        return False
+    
+    if not re.search(r"[0-9]", p):
+        return False
+    
+    if not re.search(r"[A-Z]", p):
+        return False
+    
+    if not re.search(r"[$#@]", p):
+        return False
+    
+    # All checks passed
+    return True
+```
+
+This implementation:
+1. Removes the unnecessary while loop
+2. Uses early returns for cleaner logic flow
+3. Maintains the same validation criteria
+4. Is more readable and maintainable
+5. Uses raw strings for regex patterns (r"pattern") for better practice

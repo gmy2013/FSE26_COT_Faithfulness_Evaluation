@@ -1,0 +1,27 @@
+20%CoT
+CodeGeneration:
+them to floats (after replacing ',' with '.', if needed) and compare them.
+    - If one input is a string, convert it to float (after replacing ',' with '.') and compare with the other input.
+    - If both inputs are already numbers (integers or floats), compare them directly.
+2. Return the larger value in its original type, unless they are equal, in which case return None.
+
+Let's implement this logic:
+
+```python
+def compare_one(a, b):
+    def convert_to_float(value):
+        if isinstance(value, str):
+            value = value.replace(',', '.')
+            return float(value)
+        return float(value)
+
+    if isinstance(a, str) or isinstance(b, str):
+        a_float = convert_to_float(a)
+        b_float = convert_to_float(b)
+        if a_float == b_float:
+            return None
+        return a if a_float > b_float else b
+    else:
+        if a == b:
+            return None
+        return a if a > b else b

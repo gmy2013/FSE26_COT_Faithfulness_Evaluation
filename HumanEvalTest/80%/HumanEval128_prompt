@@ -1,0 +1,83 @@
+
+def prod_signs(arr):
+    """
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by product of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    Note: return None for empty arr.
+
+    Example:
+    >>> prod_signs([1, 2, 2, -4]) == -9
+    >>> prod_signs([0, 1]) == 0
+    >>> prod_signs([]) == None
+    """
+
+The following is chain of thought:
+We are given an array `arr`. For non-empty arrays:
+1. Compute the product of signs: 
+   - For each number, its sign is 1 if positive, -1 if negative, 0 if zero.
+   - Multiply all these signs together.
+2. Compute the sum of magnitudes (absolute values) of all numbers.
+3. Multiply the product of signs by the sum of magnitudes.
+4. If the array is empty, return None.
+
+Steps:
+- Check if arr is empty -> return None.
+- Initialize product_sign = 1.
+- Initialize sum_magnitudes = 0.
+- Iterate over each number in arr:
+   - Add the absolute value of the number to sum_magnitudes.
+   - Multiply product_sign by the sign of the number (using a helper or directly).
+- Return product_sign * sum_magnitudes.
+
+Note: The sign of a number can be obtained by:
+   - If num > 0: sign is 1
+   - If num < 0: sign is -1
+   - If num == 0: sign is 0
+
+But note: if we multiply by 0 at any point, the entire product becomes 0.
+
+We can compute the product of signs by:
+   product_sign *= 1 if num > 0 else (-1 if num < 0 else 0)
+
+Alternatively, we can use math.copysign(1, num) for non-zero, but for zero it gives 1.0 which is incorrect. So we handle zero separately.
+
+Alternatively, we can define a helper function for sign, but we can do inline.
+
+Let's code accordingly.
+```python
+def prod_signs(arr):
+    if not arr:
+        return None
+    product_sign = 1
+    sum_magnitudes = 0
+    for num in arr:
+        sum_magnitudes += abs(num)
+        if num > 0:
+            product_sign *= 1
+        elif num < 0:
+            product_sign *= -1
+        else:
+            product_sign *= 0
+    return product_sign * sum_magnitudes
+```
+
+However, we can optimize: if we ever get a zero, we can break early because the product will remain zero. But for clarity we don't break.
+
+But note: if we get a zero, then product_sign becomes zero and remains zero. So we can break early to avoid unnecessary iterations. However, the problem does not require optimization, so we can leave as is.
+
+Alternatively, we can use:
+   product_sign = 1
+   for num in arr:
+        if num == 0:
+            product_sign = 0
+            break
+        elif num < 0:
+            product_sign *= -1
+   # then compute sum of magnitudes in a separate loop? But that would require two passes.
+
+But to avoid two passes, we can compute both in one loop without breaking for zero, because if we get a zero we set product_sign to zero and then continue (but multiplying by zero doesn't change). Actually, we can set a flag to avoid multiplying after zero? But it's simpler to just multiply by zero and then continue.
+
+Actually, if we get a zero, we set product_sign to zero and then we don't need to multiply further because it will remain zero. So we can break after setting to zero. However, we still need to sum the magnitudes for all numbers. So we cannot break the loop until we have processed all numbers for the sum.
+
+Therefore, we cannot break early. So we just multi

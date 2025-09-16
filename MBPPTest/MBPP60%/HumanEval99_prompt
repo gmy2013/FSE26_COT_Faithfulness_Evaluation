@@ -1,0 +1,11 @@
+def count_range_in_list(li, min, max):
+	ctr = 0
+	for x in li:
+		if min <= x <= max:
+			ctr += 1
+	return ctr
+The following is chain of thought:
+1. The function `count_range_in_list` takes three parameters: `li` (a list), `min` (lower bound), and `max` (upper bound).
+2. Initialize a counter `ctr` to 0 to keep track of numbers within the range.
+3. Iterate through each element `x` in the list `li`.
+4. For each el

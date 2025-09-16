@@ -1,0 +1,37 @@
+CodeGeneration:
+I'll complete the function based on the docstring and your chain of thought. Here's the implementation:
+
+```python
+from itertools import combinations
+
+def sub_lists(my_list):
+    """
+    Generate all possible sublists of the input list.
+    
+    Args:
+        my_list (list): Input list for which to generate all sublists
+        
+    Returns:
+        list: List containing all possible sublists of the input list,
+              including the empty list and the original list itself
+    """
+    subs = []
+    for i in range(0, len(my_list)+1):
+        temp = [list(x) for x in combinations(my_list, i)]
+        if len(temp)>0:
+            subs.extend(temp)
+    return subs
+```
+
+This function:
+1. Takes any list as input
+2. Uses `itertools.combinations` to generate all possible combinations of different lengths
+3. Returns a list containing all possible sublists, including:
+   - The empty list (when i=0)
+   - All single-element sublists
+   - All possible combinations of elements
+   - The original list itself (when i=len(my_list))
+
+For example:
+```python
+print(sub_lists([1, 2, 3]))

@@ -1,0 +1,10 @@
+def sum_positivenum(nums):
+  sum_positivenum = list(filter(lambda nums:nums>0,nums))
+  return sum(sum_positivenum)
+The following is chain of thought:
+1. The function `sum_positivenum` takes a list `nums` as input.
+2. We need to filter out only the positive numbers from this list.
+3. We use `filter()` with a lambda function that checks if each number is greater than 0.
+4. The filtered result is converted to a list of positive numbers.
+5. We then return the sum of all numbers in this filtered list using `sum()`.
+6. The variable name `sum_positivenum` is reused for the filtered list, which might be conf

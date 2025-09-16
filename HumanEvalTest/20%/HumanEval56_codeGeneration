@@ -1,0 +1,38 @@
+20%CoT
+CodeGeneration:
+Here's the complete function implementation based on the given docstring:
+
+```python
+def correct_bracketing(brackets: str) -> bool:
+    """
+    brackets is a string of "<" and ">".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("<")
+    False
+    >>> correct_bracketing("<>")
+    True
+    >>> correct_bracketing("<<><>>")
+    True
+    >>> correct_bracketing("><<>")
+    False
+    """
+    # Initialize a counter for the balance of brackets
+    balance = 0
+    
+    # Iterate through each character in the string
+    for char in brackets:
+        # If it's an opening bracket, increment the balance
+        if char == "<":
+            balance += 1
+        # If it's a closing bracket, decrement the balance
+        elif char == ">":
+            balance -= 1
+        
+        # If balance goes negative, it means we have a closing bracket without a matching opening bracket
+        if balance < 0:
+            return False
+    
+    # At the end, the balance should be zero for the brackets to be correctly matched
+    return balance == 0
+```

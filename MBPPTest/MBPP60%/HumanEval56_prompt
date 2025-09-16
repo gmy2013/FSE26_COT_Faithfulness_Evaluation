@@ -1,0 +1,16 @@
+import math 
+def first_Digit(n) : 
+    fact = 1
+    for i in range(2,n + 1) : 
+        fact = fact * i 
+        while (fact % 10 == 0) :  
+            fact = int(fact / 10) 
+    while (fact >= 10) : 
+        fact = int(fact / 10) 
+    return math.floor(fact) 
+The following is chain of thought:
+1. The function calculates the factorial of `n` but removes trailing zeros during computation to avoid overflow and get the leading non-zero digits.
+2. Initialize `fact` to 1 (base case for factorial).
+3. Loop from 2 to `n` (inclusive) to compute factorial incrementally.
+4. For each multiplication, remove trailing zeros by dividing by 10 while the last digit is zero. This keeps the number manageable and preserves significant digits.
+5. 

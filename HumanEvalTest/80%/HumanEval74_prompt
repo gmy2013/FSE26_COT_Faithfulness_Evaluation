@@ -1,0 +1,29 @@
+
+def total_match(lst1, lst2):
+    '''
+    Write a function that accepts two lists of strings and returns the list that has 
+    total number of chars in the all strings of the list less than the other list.
+
+    if the two lists have the same number of chars, return the first list.
+
+    Examples
+    total_match([], []) ➞ []
+    total_match(['hi', 'admin'], ['hI', 'Hi']) ➞ ['hI', 'Hi']
+    total_match(['hi', 'admin'], ['hi', 'hi', 'admin', 'project']) ➞ ['hi', 'admin']
+    total_match(['hi', 'admin'], ['hI', 'hi', 'hi']) ➞ ['hI', 'hi', 'hi']
+    total_match(['4'], ['1', '2', '3', '4', '5']) ➞ ['4']
+    '''
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to calculate the total number of characters in all strings for each list.
+2. Compare the two totals:
+   - If list1 has fewer total characters, return list1.
+   - If list2 has fewer total characters, return list2.
+   - If they have the same total, return list1 (the first list).
+3. We need to handle empty lists correctly.
+
+Steps to implement:
+- Calculate total chars for lst1: sum(len(s) for s in lst1)
+- Calculate total chars fo

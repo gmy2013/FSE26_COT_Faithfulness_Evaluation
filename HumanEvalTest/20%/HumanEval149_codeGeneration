@@ -1,0 +1,21 @@
+20%CoT
+CodeGeneration:
+e length of each string and keep only those with even lengths.
+2. Sort the list: First by length (ascending), and then alphabetically for strings with the same length.
+
+Here is the implementation:
+
+```python
+def sorted_list_sum(lst):
+    # Filter out strings with odd lengths
+    filtered_list = [s for s in lst if len(s) % 2 == 0]
+    
+    # Sort the list: first by length (ascending), then alphabetically
+    filtered_list.sort(key=lambda s: (len(s), s))
+    
+    return filtered_list
+```
+
+Let's test with the provided examples:
+- sorted_list_sum(["aa", "a", "aaa"]) -> ["aa"] (only "aa" has even length)
+- sorted_list_sum(["ab", "a", "aaa", "cd"]) -> ["ab", "cd"] (both "ab" and "cd" have even length, and they are sorted alphabetically since they have the same length)

@@ -1,0 +1,15 @@
+CodeGeneration:
+5. If found, set `res` to `True` and break out of the loop early since we found the element.
+6. Return the result `res`.
+
+Here's the complete function:
+
+```python
+def check_K(test_tup, K):
+    res = False
+    for ele in test_tup:
+        if ele == K:
+            res = True
+            break
+    return res
+```

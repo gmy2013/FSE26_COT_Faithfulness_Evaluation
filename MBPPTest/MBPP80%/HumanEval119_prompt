@@ -1,0 +1,10 @@
+def add_dict_to_tuple(test_tup, test_dict):
+  test_tup = list(test_tup)
+  test_tup.append(test_dict)
+  test_tup = tuple(test_tup)
+  return (test_tup) 
+The following is chain of thought:
+1. Convert the input tuple `test_tup` to a list to make it mutable.
+2. Append the dictionary `test_dict` to this list.
+3. Convert the modified list back to a tuple.
+4. Return the new tuple containing 

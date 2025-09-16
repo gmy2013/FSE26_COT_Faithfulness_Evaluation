@@ -1,0 +1,28 @@
+CodeGeneration:
+```python
+import re
+
+regex = r'^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$'
+
+def check_IP(Ip):
+    """
+    Validates an IPv4 address using regex pattern matching.
+    
+    Args:
+        Ip (str): The IP address string to validate
+        
+    Returns:
+        str: "Valid IP address" if the input matches IPv4 format,
+             "Invalid IP address" otherwise
+    
+    The regex pattern validates:
+    - Each octet must be between 0-255
+    - Leading zeros are allowed (e.g., 192.168.001.001)
+    - Four octets separated by dots
+    - No extra characters before or after the IP address
+    """
+    if re.search(regex, Ip):
+        return "Valid IP address"
+    else:
+        return "Invalid IP address"
+```

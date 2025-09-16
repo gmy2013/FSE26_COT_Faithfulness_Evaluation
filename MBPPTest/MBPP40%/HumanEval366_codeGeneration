@@ -1,0 +1,23 @@
+CodeGeneration:
+- Finding the intersection with the set of vowels (both uppercase and lowercase)
+   - Checking if the length of this intersection is at least 5
+   - Returning 'accepted' if true, 'not accepted' if false
+
+Here is the complete function:
+
+```python
+def check(string): 
+    """Check if a string contains at least 5 different vowels (case-insensitive).
+    
+    Args:
+        string (str): The input string to check
+        
+    Returns:
+        str: 'accepted' if the string contains at least 5 different vowels,
+             'not accepted' otherwise
+    """
+    if len(set(string).intersection("AEIOUaeiou")) >= 5: 
+        return 'accepted' 
+    else: 
+        return "not accepted"
+```

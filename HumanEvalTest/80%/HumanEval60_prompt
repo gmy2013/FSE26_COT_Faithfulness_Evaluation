@@ -1,0 +1,69 @@
+
+
+def sum_to_n(n: int):
+    """sum_to_n is a function that sums numbers from 1 to n.
+    >>> sum_to_n(30)
+    465
+    >>> sum_to_n(100)
+    5050
+    >>> sum_to_n(5)
+    15
+    >>> sum_to_n(10)
+    55
+    >>> sum_to_n(1)
+    1
+    """
+
+The following is chain of thought:
+We are summing numbers from 1 to n. This is an arithmetic series where the sum can be calculated with the formula: n*(n+1)//2.
+ This formula is efficient and avoids the need for a loop.
+ Let's implement using this formula.
+
+ Steps:
+ 1. Check if n is a positive integer? The examples show positive inputs, but the type hint says int.
+ 2. However, the docstring examples only show positive integers. We should handle non-positive?
+ 3. But the problem says "numbers from 1 to n", so if n <= 0, there are no numbers to sum? However, the examples don't test that.
+ 4. Since the docstring doesn't specify behavior for n<=0, we can assume n is at least 1 as per examples.
+ 5. Alternatively, we can handle n<=0 by returning 0? But the problem says "from 1 to n", so if n is 0 or negative, there are no numbers.
+ 6. However, to be safe, let's follow the mathematical definition: the sum from 1 to n is defined for n>=1, and for n=0 it would be 0? But the problem says "from 1 to n", so if n=0, it's an empty sum.
+ 7. Looking at the examples: all are positive. So we can assume n>=1.
+ 8. But to make the function robust, we can handle n<=0 by returning 0.
+ 9. Alternatively, we can use the formula which works for all nonnegative n: if n<=0, return 0. For n>=1, the formula n*(n+1)//2 works.
+10. Actually, the formula n*(n+1)//2 is defined for all integers, but for n=0 it gives 0, which is correct.
+11. For negative n, the formula would give a positive number? But that doesn't make sense because we are summing from 1 to n (which is negative) - that would be an empty sum? Actually, if n is negative, there are no positive integers from 1 to n (since n is negative), so the sum should be 0.
+12. However, the problem says "from 1 to n", which implies n should be at least 1. So we can also raise an error for n<1? But the examples don't require that.
+13. Given the docstring only tests positive n, we can implement for positive n and assume input is positive.
+14. But to be safe and avoid errors, we can handle n<=0 by returning 0. This is a common convention.
+15. Let's decide: if n < 1, return 0. Otherwise, use the formula.
+
+ Implementation:
+   if n < 1:
+        return 0
+   else:
+        return n * (n+1) // 2
+
+ However, note that the formula works for n=0 (returns 0). So we can simply use the formula for all n, and it will be correct for n>=0.
+ But for negative n, the formula would give a positive number? For example, n=-1: (-1)*0//2 = 0. So it actually works for negative too? Actually, for any negative n, n*(n+1) is negative times non-positive? Let's test:
+   n=-1: (-1)*0 = 0 -> 0//2=0.
+   n=-2: (-2)*(-1)=2 -> 2//2=1, but the sum from 1 to -2 is empty? So it should be 0.
+ So the formula doesn't work for negative n.
+
+ Therefore, we should restrict to n>=0.
+
+ Actually, the problem says "from 1 to n", which only makes sense for n>=1. So we can assume n>=1.
+
+ But to prevent errors, we can check for n<1 and return 0.
+
+ However, the examples don't test negative, so we can also just use the formula and assume n is nonnegative.
+
+ Since the type hint is int, and the examples are positive, we can implement with the formula and document that n should be nonnegative.
+
+ Alternatively, we can handle negative by returning 0.
+
+ Let's choose: if n < 1, return 0. Otherwise, use the formula.
+
+ Code:
+
+def sum_to_n(n: int):
+    if n < 1:
+    

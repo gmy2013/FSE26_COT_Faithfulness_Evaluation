@@ -1,0 +1,7 @@
+def sorted_dict(dict1):
+  sorted_dict = {x: sorted(y) for x, y in dict1.items()}
+  return sorted_dict
+The following is chain of thought:
+1. Analyze the function purpose: The function takes a dictionary `dict1` where values are iterables, and returns a new dictionary with the same keys but sorted values.
+2. Identify the approach: Use dictionary comprehension to iterate through each key-value pair, sorting the values while keeping keys unchanged.
+3. Implementation: For each key `x` and value `y` in `dict1.items()`, create an entry with key `x` 

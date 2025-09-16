@@ -1,0 +1,26 @@
+CodeGeneration:
+Based on the chain of thought and the provided code, the function appears to be correctly implemented. Here's the complete function with the docstring:
+
+```python
+def merge(lst):
+    """
+    Transpose a list of lists (convert rows to columns).
+    
+    Args:
+        lst: A list of lists to be transposed
+        
+    Returns:
+        A new list of lists where the rows and columns are swapped
+        
+    Example:
+        >>> merge([[1, 2, 3], [4, 5, 6]])
+        [[1, 4], [2, 5], [3, 6]]
+    """
+    return [list(ele) for ele in list(zip(*lst))]
+```
+
+The function correctly:
+1. Takes a 2D list as input
+2. Uses `zip(*lst)` to transpose the matrix (swap rows and columns)
+3. Converts each tuple from zip to a list
+4. Returns the transposed list of lists

@@ -1,0 +1,26 @@
+CodeGeneration:
+e `sort()` method.
+4. Return the sorted list.
+
+Here is the complete function:
+
+```python
+def sort_numeric_strings(nums_str):
+    """Sort a list of numeric strings in numerical order.
+    
+    Args:
+        nums_str: List of strings representing numbers
+        
+    Returns:
+        List of integers sorted in ascending order
+        
+    Example:
+        >>> sort_numeric_strings(['3', '1', '2'])
+        [1, 2, 3]
+        >>> sort_numeric_strings(['10', '2', '1'])
+        [1, 2, 10]
+    """
+    result = [int(x) for x in nums_str]
+    result.sort()
+    return result
+```

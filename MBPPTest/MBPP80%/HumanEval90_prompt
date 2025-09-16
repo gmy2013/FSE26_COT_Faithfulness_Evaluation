@@ -1,0 +1,17 @@
+from itertools import groupby 
+def group_element(test_list):
+  res = dict()
+  for key, val in groupby(sorted(test_list, key = lambda ele: ele[1]), key = lambda ele: ele[1]):
+    res[key] = [ele[0] for ele in val] 
+  return (res)
+
+The following is chain of thought:
+1. The function `group_element` takes a list `test_list` as input.
+2. It initializes an empty dictionary `res` to store the grouped results.
+3. The `groupby` function from `itertools` is used to group elements. 
+   - First, the input list is sorted by the second element of each tuple (using `lambda ele: ele[1]`).
+   - Then, `groupby` groups the sorted list by the same key (the second element of each tuple).
+4. For each group (key and iterator of values), the function creates an entry in `res`:
+   - The key is the second element of the tuples (the grouping criterion).
+   - The value is a list of the first elements from all tuples in that group.
+5. The function returns the 

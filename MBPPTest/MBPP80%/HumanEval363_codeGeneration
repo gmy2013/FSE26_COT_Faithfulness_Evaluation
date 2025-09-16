@@ -1,0 +1,25 @@
+CodeGeneration:
+```python
+def word_len(s):
+    """Return True if any word in the string has even length, False otherwise.
+    
+    Args:
+        s: Input string containing words separated by spaces
+        
+    Returns:
+        bool: True if any word has even length, False otherwise
+        
+    Examples:
+        >>> word_len("hello world")
+        True
+        >>> word_len("hi there python")
+        True
+        >>> word_len("odd lengths only")
+        False
+    """
+    s = s.split(' ')
+    for word in s:
+        if len(word) % 2 == 0:
+            return True
+    return False
+```

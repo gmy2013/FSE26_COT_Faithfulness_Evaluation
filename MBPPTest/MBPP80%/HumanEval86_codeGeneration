@@ -1,0 +1,18 @@
+CodeGeneration:
+ontinues until one of the base cases is reached, ensuring the function terminates properly.
+
+The function correctly implements the Euclidean algorithm for finding the greatest common divisor using recursion.
+
+Here's the complete function:
+
+```python
+def recur_gcd(a, b):
+    low = min(a, b)
+    high = max(a, b)
+    if low == 0:
+        return high
+    elif low == 1:
+        return 1
+    else:
+        return recur_gcd(low, high % low)
+```

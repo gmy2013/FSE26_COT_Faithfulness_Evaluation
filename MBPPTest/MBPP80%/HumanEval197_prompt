@@ -1,0 +1,11 @@
+def _sum(arr):  
+    sum=0
+    for i in arr: 
+        sum = sum + i      
+    return(sum)  
+The following is chain of thought:
+1. The function `_sum` takes one parameter `arr`, which is expected to be an iterable (like a list or tuple) containing numbers.
+2. Initialize a variable `sum` to 0 to accumulate the total.
+3. Iterate through each element `i` in `arr`.
+4. In each iteration, add the current element `i` to `sum`.
+5. After processing all elements, return the accu

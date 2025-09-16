@@ -1,0 +1,21 @@
+CodeGeneration:
+```python
+import heapq as hq
+
+def raw_heap(rawheap):
+    """
+    Convert a list into a min-heap in-place using heapq.heapify.
+    
+    Args:
+        rawheap (list): The input list to be transformed into a min-heap.
+    
+    Returns:
+        list: The same list after being heapified (min-heap property).
+    
+    Example:
+        >>> raw_heap([3, 1, 4, 1, 5, 9, 2])
+        [1, 1, 2, 3, 5, 9, 4]
+    """
+    hq.heapify(rawheap)
+    return rawheap
+```

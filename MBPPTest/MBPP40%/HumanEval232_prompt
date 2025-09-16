@@ -1,0 +1,10 @@
+def get_key(dict): 
+    list = [] 
+    for key in dict.keys(): 
+        list.append(key)           
+    return list
+The following is chain of thought:
+1. The function name `get_key` suggests it should return keys from a dictionary
+2. The parameter `dict` is a dictionary input
+3. An empty list `list` is initialized to store the keys
+4. The function iterates through al

@@ -1,0 +1,50 @@
+CodeGeneration:
+Here's the implementation based on the chain of thought:
+
+```python
+def prod_signs(arr):
+    """
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by product of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    Note: return None for empty arr.
+
+    Example:
+    >>> prod_signs([1, 2, 2, -4]) == -9
+    >>> prod_signs([0, 1]) == 0
+    >>> prod_signs([]) == None
+    """
+    if not arr:
+        return None
+    
+    product = 1
+    sum_magnitudes = 0
+    
+    for num in arr:
+        # Determine the sign of the current number
+        if num > 0:
+            sign = 1
+        elif num < 0:
+            sign = -1
+        else:  # num == 0
+            sign = 0
+        
+        # Update the product of signs
+        product *= sign
+        
+        # Add the absolute value (magnitude) to the sum
+        sum_magnitudes += abs(num)
+    
+    return product * sum_magnitudes
+```
+
+This implementation:
+1. Returns `None` for empty arrays
+2. Calculates the product of all signs (1, -1, or 0)
+3. Calculates the sum of absolute values (magnitudes)
+4. Returns the product of these two values
+
+The examples work as expected:
+- `[1, 2, 2, -4]`: signs = [1, 1, 1, -1] → product = -1, magnitudes = [1, 2, 2, 4] → sum = 9, result = -9
+- `[0, 1]`: signs = [0, 1] → product = 0, magnitudes = [0, 1] → sum = 1, result = 0
+- `[]`: returns `None`

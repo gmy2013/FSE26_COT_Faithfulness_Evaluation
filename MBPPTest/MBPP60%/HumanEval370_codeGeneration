@@ -1,0 +1,36 @@
+CodeGeneration:
+```python
+def maximum_segments(n, a, b, c):
+    """
+    Find the maximum number of segments of lengths a, b, or c that can be combined to exactly form a rod of length n.
+    
+    Args:
+        n (int): Total length of the rod
+        a (int): Length of first segment type
+        b (int): Length of second segment type
+        c (int): Length of third segment type
+    
+    Returns:
+        int: Maximum number of segments that can be used to form exactly length n, or -1 if not possible
+    """
+    dp = [-1] * (n + 10) 
+    dp[0] = 0
+    
+    for i in range(0, n + 1):
+        if dp[i] != -1:
+            if i + a <= n:
+                dp[i + a] = max(dp[i] + 1, dp[i + a])
+            if i + b <= n:
+                dp[i + b] = max(dp[i] + 1, dp[i + b])
+            if i + c <= n:
+                dp[i + c] = max(dp[i] + 1, dp[i + c])
+    
+    return dp[n]
+```
+
+**Key improvements made:**
+1. **Fixed the loop range**: Changed from `range(0, n)` to `range(0, n + 1)` to ensure we process all possible lengths up to and including `n`
+2. **Added comprehensive docstring**: Clearly documents the function purpose, parameters, and return value
+3. **Maintained the core logic**: The dynamic programming approach remains the same - for each reachable length, try adding each segment type and update the maximum segments count
+
+The function now correctly handles cases where segments can be combined to reach exactly length `n`, returning the maximum number of segments possible or `-1` if it's not achievable.

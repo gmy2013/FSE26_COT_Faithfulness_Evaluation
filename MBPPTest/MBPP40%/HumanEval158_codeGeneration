@@ -1,0 +1,17 @@
+CodeGeneration:
+(\.[0-9]{1,2})?$` matches:
+   - `^[0-9]+`: One or more digits at the start
+   - `(\.[0-9]{1,2})?`: Optionally, a decimal point followed by 1 or 2 digits
+   - `$`: End of string
+4. The `search` method looks for this pattern in the input string.
+5. The result is converted to a boolean to return True if there's a match, False otherwise.
+
+Here's the complete function:
+
+```python
+def is_decimal(num):
+    import re
+    dnumre = re.compile(r"""^[0-9]+(\.[0-9]{1,2})?$""")
+    result = dnumre.search(num)
+    return bool(result)
+```

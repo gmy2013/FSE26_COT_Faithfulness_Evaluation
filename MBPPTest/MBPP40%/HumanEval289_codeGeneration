@@ -1,0 +1,27 @@
+CodeGeneration:
+Based on the chain of thought and the given function signature, here's the complete implementation:
+
+```python
+def find_Extra(arr1, arr2, n):
+    """
+    Find the index position where two arrays first differ.
+    
+    Parameters:
+    arr1 (list): First array (longer array with n+1 elements)
+    arr2 (list): Second array (shorter array with n elements)
+    n (int): Length of the shorter array (arr2)
+    
+    Returns:
+    int: Index of the first differing element, or n if all elements match
+    """
+    for i in range(0, n):
+        if arr1[i] != arr2[i]:
+            return i
+    return n
+```
+
+This implementation follows the chain of thought by:
+1. Using a linear search approach to compare elements at each index
+2. Iterating through indices 0 to n-1 (using `range(0, n)`)
+3. Returning the index where elements first differ
+4. Returning `n` if all elements in the shorter array match the corresponding elements in the longer array, indicating the extra element is at the end of arr1

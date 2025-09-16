@@ -1,0 +1,28 @@
+20%CoT
+CodeGeneration:
+the list to determine whether it has an odd or even number of elements.
+
+3. **Find the Median**:
+   - If the list has an odd number of elements, the median is the middle element. This can be found using integer division by 2 on the length to index into the sorted list.
+   - If the list has an even number of elements, the median is the average of the two middle elements. These can be found by taking the elements at positions `(length // 2) - 1` and `length // 2` in the sorted list.
+
+Now, let's implement the function:
+
+```python
+def median(l: list) -> float:
+    """Return median of elements in the list l."""
+    # Step 1: Sort the list
+    sorted_list = sorted(l)
+    
+    # Step 2: Determine the length of the list
+    n = len(sorted_list)
+    
+    # Step 3: Find the median
+    if n % 2 == 1:
+        # Odd number of elements, return the middle one
+        return sorted_list[n // 2]
+    else:
+        # Even number of elements, return the average of the two middle ones
+        mid1 = sorted_list[n // 2 - 1]
+        mid2 = sorted_list[n // 2]
+        return (mid1 + mid2) / 2

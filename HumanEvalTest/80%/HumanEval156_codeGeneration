@@ -1,0 +1,43 @@
+CodeGeneration:
+```python
+def int_to_mini_roman(number):
+    """
+    Given a positive integer, obtain its roman numeral equivalent as a string,
+    and return it in lowercase.
+    Restrictions: 1 <= num <= 1000
+
+    Examples:
+    >>> int_to_mini_roman(19) == 'xix'
+    >>> int_to_mini_roman(152) == 'clii'
+    >>> int_to_mini_roman(426) == 'cdxxvi'
+    """
+    # Define mappings for each place value
+    thousands = ["", "M", "MM", "MMM"]
+    hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+    tens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+    units = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+    
+    # Break the number into digits
+    thousand_digit = number // 1000
+    hundred_digit = (number % 1000) // 100
+    ten_digit = (number % 100) // 10
+    unit_digit = number % 10
+    
+    # Build the Roman numeral string
+    roman_numeral = (thousands[thousand_digit] + 
+                    hundreds[hundred_digit] + 
+                    tens[ten_digit] + 
+                    units[unit_digit])
+    
+    # Convert to lowercase and return
+    return roman_numeral.lower()
+```
+
+The function works by:
+1. Defining mappings for thousands, hundreds, tens, and units places
+2. Extracting each digit from the input number using integer division and modulus operations
+3. Looking up the Roman numeral representation for each digit in the appropriate mapping
+4. Combining all parts into a single string
+5. Converting the result to lowercase before returning it
+
+The mappings handle all special cases like 4 (IV), 9 (IX), 40 (XL), 90 (XC), 400 (CD), and 900 (CM) correctly.

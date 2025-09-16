@@ -1,0 +1,23 @@
+20%CoT
+CodeGeneration:
+```python
+def pluck(arr):
+    # Initialize variables to keep track of the smallest even value and its index
+    smallest_even_value = None
+    smallest_even_index = None
+
+    # Iterate through the array with both index and value
+    for index, value in enumerate(arr):
+        # Check if the value is even
+        if value % 2 == 0:
+            # If this is the first even value we find or it's smaller than the current smallest
+            if smallest_even_value is None or value < smallest_even_value:
+                smallest_even_value = value
+                smallest_even_index = index
+
+    # If we found a smallest even value, return it with its index in a list
+    if smallest_even_value is not None:
+        return [smallest_even_value, smallest_even_index]
+    
+    # If no even value was found, return an empty list
+    return []

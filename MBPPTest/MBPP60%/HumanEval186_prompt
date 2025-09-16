@@ -1,0 +1,13 @@
+import re
+def text_match_three(text):
+        patterns = 'ab{3}?'
+        if re.search(patterns,  text):
+                return 'Found a match!'
+        else:
+                return('Not matched!')
+The following is chain of thought:
+1. The function `text_match_three` checks if the input string `text` contains the pattern 'ab{3}?'.
+2. The regex pattern 'ab{3}?' means:
+   - 'a' matches the literal character 'a'
+   - 'b{3}?' matches exactly three 'b' characters (non-greedy quantifier, but since it's exact {3}, greediness doesn't matter)
+3. So the pattern looks for the substring "abbb"

@@ -1,0 +1,74 @@
+
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+
+The following is chain of thought:
+To solve this problem, we need to encode a message by:
+1. Swapping the case of all letters.
+2. Replacing each vowel with the letter that is two places ahead in the English alphabet.
+
+Let's break down the approach:
+- First, we'll create a mapping for vowels (both lowercase and uppercase) to their corresponding replacements.
+- For each character in the message:
+  - If it is a vowel (a, e, i, o, u or their uppercase counterparts), replace it with the letter two places ahead (e.g., 'a' becomes 'c', 'e' becomes 'g', etc.). Note that we need to handle the circular behavior for 'y' and 'Y'? Actually, the problem says "2 places ahead", and vowels are only a, e, i, o, u. So for 'u', it should become 'w' (since u->v->w). Similarly, 'U' becomes 'W'.
+  - Then, swap the case of the character (if it was a vowel, we already have the replacement in the correct case? Actually, we should swap the case first and then replace the vowel? Or replace the vowel and then swap the case? Wait, the docstring says: "swaps case of all letters, replaces all vowels...". So the order might matter.
+
+But note the example: 
+  encode('test') -> 'TGST'
+  't' is not a vowel, so we swap case: 't' becomes 'T'.
+  'e' is a vowel: we replace it with 'g' (since e->f->g) and then swap case? But 'e' is lowercase, so we should get 'G'? However, the output has 'G' for the first vowel? Actually, the output is 'TGST'. So the first letter 't' becomes 'T' (swapped), and the vowel 'e' becomes 'G' (replaced and then swapped? But wait, if we swap case first, 'e' becomes 'E', and then we replace the vowel 'E' with 'G' (since E->F->G) which is uppercase. Similarly, the same for the rest.
+
+Alternatively, we can do:
+  For each character:
+    If it is a vowel (in any case), replace it with the letter two ahead (in the same case) and then swap the case? But that would not work because swapping after replacement would change the case again.
+
+Actually, the requirement is to first swap the case and then replace the vowels. So:
+  Step 1: Swap the case of every letter.
+  Step 2: Then, for every vowel in the swapped string, replace it with the letter two places ahead.
+
+But let's test with 'test':
+  Original: 't','e','s','t'
+  After swapping case: 'T','E','S','T'
+  Now, replace vowels: 'E' is a vowel. Replace with two ahead: E -> F -> G. So we get 'G'. So the string becomes 'T','G','S','T' -> "TGST". This matches.
+
+Another example: 'This is a message'
+  First, swap case: 
+    'T' -> 't'
+    'h' -> 'H'
+    'i' -> 'I'
+    's' -> 'S'
+    ' ' -> ' '
+    'i' -> 'I'
+    's' -> 'S'
+    ' ' -> ' '
+    'a' -> 'A'
+    ' ' -> ' '
+    'm' -> 'M'
+    'e' -> 'E'
+    's' -> 'S'
+    's' -> 'S'
+    'a' -> 'A'
+    'g' -> 'G'
+    'e' -> 'E'
+  So we get: "tHIS IS A MESSAGE" -> but wait, actually we should get "tHKS KS C MGSSCGG" according to the example. So after swapping we have "tHIS IS A MESSAGE", then we replace vowels:
+    'I' (in "tHIS") is a vowel: I->J->K -> 'K'
+    'I' (in "IS") is a vowel: same -> 'K'
+    'A' is a vowel: A->B->C -> 'C'
+    'E' in "MESSAGE" is a vowel: E->F->G -> 'G'
+    'A' in "MESSAGE" is a vowel: same as above -> 'C'? But wait, the example output has "MGSSCGG". So the first 'E' becomes 'G', the next 'A' becomes 'C'? But then we have two 'S's and then 'C','G','G'. Actually, the word "MESSAGE" has letters: M,E,S,S,A,G,E. After swapping case: M,E,S,S,A,G,E becomes M,E,S,S,A,G,E? Actually no: original is 'm','e','s','s','a','g','e'. Swapping case: 'M','E','S','S','A','G','E'. Then replace vowels:
+      'E' (first) -> 'G'
+      'A' -> 'C'
+      'E' (last) -> 'G'
+    So we get: M, G, S, S, C, 

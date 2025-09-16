@@ -1,0 +1,43 @@
+CodeGeneration:
+2 are always unimodal
+
+    # Find the peak (point where trend changes from non-decreasing to non-increasing)
+    i = 1
+    while i < n and arr[i] >= arr[i-1]:
+        i += 1
+    
+    # Check if the remaining elements are non-increasing
+    while i < n and arr[i] <= arr[i-1]:
+        i += 1
+    
+    # If we reached the end, the array is unimodal
+    return i == n
+```
+
+```python
+def check(arr, n):
+    """
+    Check if the array is unimodal (non-decreasing then non-increasing) or monotonic.
+    
+    Args:
+        arr: List of numbers
+        n: Length of the array
+    
+    Returns:
+        bool: True if array is unimodal or monotonic, False otherwise
+    """
+    if n <= 2:
+        return True  # Arrays of length 0, 1, 2 are always unimodal
+
+    # Find the peak (point where trend changes from non-decreasing to non-increasing)
+    i = 1
+    while i < n and arr[i] >= arr[i-1]:
+        i += 1
+    
+    # Check if the remaining elements are non-increasing
+    while i < n and arr[i] <= arr[i-1]:
+        i += 1
+    
+    # If we reached the end, the array is unimodal
+    return i == n
+```

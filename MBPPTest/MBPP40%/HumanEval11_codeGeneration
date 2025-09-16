@@ -1,0 +1,23 @@
+CodeGeneration:
+```python
+def merge(lst):
+    """Transpose a list of lists (convert rows to columns).
+    
+    Args:
+        lst: A list of lists (matrix) to be transposed
+        
+    Returns:
+        A new list of lists where rows become columns and columns become rows
+        
+    Example:
+        >>> merge([[1, 2, 3], [4, 5, 6]])
+        [[1, 4], [2, 5], [3, 6]]
+    """
+    return [list(ele) for ele in list(zip(*lst))]
+```
+
+The function correctly transposes the input list of lists by:
+1. Using `*lst` to unpack the sublists as arguments to `zip()`
+2. `zip()` pairs elements from each sublist by their positions
+3. Converting each tuple from `zip()` to a list
+4. Returning the transposed matrix as a new list of lists

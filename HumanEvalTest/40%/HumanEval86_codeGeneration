@@ -1,0 +1,35 @@
+CodeGeneration:
+```python
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+    result = []
+    word = []
+    
+    for char in s:
+        if char == ' ':
+            # If we encounter a space, process the current word and add the space
+            if word:
+                # Sort the current word by ASCII value and add to result
+                result.append(''.join(sorted(word)))
+                word = []
+            result.append(' ')
+        else:
+            word.append(char)
+    
+    # Process the last word if exists
+    if word:
+        result.append(''.join(sorted(word)))
+    
+    return ''.join(result)
+```

@@ -1,0 +1,27 @@
+def count_duplic(lists):
+    element = []
+    frequency = []
+    if not lists:
+        return element
+    running_count = 1
+    for i in range(len(lists)-1):
+        if lists[i] == lists[i+1]:
+            running_count += 1
+        else:
+            frequency.append(running_count)
+            element.append(lists[i])
+            running_count = 1
+    frequency.append(running_count)
+    element.append(lists[i+1])
+    return element,frequency
+
+The following is chain of thought:
+1. **Understand the function purpose**: The function `count_duplic` takes a list `lists` and returns two lists: `element` (unique consecutive elements) and `frequency` (their consecutive counts).
+2. **Check for empty input**: If `lists` is empty, return an empty list for `element` (and implicitly no frequency, but the return is inconsistent; should return both lists).
+3. **Initialize variables**: `element` and `frequency` lists to store results, and `running_count` to track consecutive duplicates.
+4. **Iterate through the list**: Compare each element with the next one. If they are equal, increment `running_count`.
+5. **Handle non-duplicate**: When a change is detected, append the current `running_count` to `frequency` and the current element to `element`, then reset `running_count`.
+6. **Final element handling**: After the loop, append the last `running_count` and the last element (which was not processed in the loop).
+7. **Return both lists**: The function returns `element` and `frequency`.
+
+**Issue identified**: The function does not handle the empty list case correctly; it sh

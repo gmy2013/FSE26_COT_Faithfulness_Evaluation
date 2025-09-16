@@ -1,0 +1,20 @@
+class Node: 
+	def __init__(self, data): 
+		self.data = data 
+		self.left = None
+		self.right = None
+def max_height(node): 
+	if node is None: 
+		return 0 ; 
+	else : 
+		left_height = max_height(node.left) 
+		right_height = max_height(node.right) 
+		if (left_height > right_height): 
+			return left_height+1
+		else: 
+			return right_height+1
+The following is chain of thought:
+1. **Function Purpose**: The function `max_height` calculates the maximum height (depth) of a binary tree.
+2. **Base Case**: If the current node is `None`, return 0 (indicating no height).
+3. **Recursive Case**: 
+   - Recursively compute the height of the left s

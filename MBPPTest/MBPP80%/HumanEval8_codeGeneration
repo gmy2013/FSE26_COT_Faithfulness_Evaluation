@@ -1,0 +1,13 @@
+CodeGeneration:
+The function `floor_Min` is intended to compute the maximum value of `floor((A * x) / B)` for integer `x` in the range `[0, N]`.
+
+- The expression `(A * x) // B` computes the floor of `(A * x) / B`.
+- To maximize this floor value, `x` should be chosen to be as large as possible without causing the fractional part to reset or decrease the floor value per unit increase in `x`.
+- For `x` in the range `[0, B-1]`, the floor value increases with `x`.
+- For `x >= B`, the floor value continues to increase, but the rate may change, and the maximum per "cycle" is at `x = B - 1` (mod B), but since we are constrained by `x <= N`, the optimal `x` is the minimum of `B - 1` and `N`.
+- Using `max(B-1, N)` is incorrect because:
+  - If `N < B-1`, `max(B-1, N)` would set `x = B-1`, which is outside the allowed range `[0, N]`.
+  - If `N >= B-1`, `max(B-1, N)` would set `x = N`, which may be larger than `B-1`, but the floor value might not be maximized at `x = N`; it is better to use `x = B-1` to avoid potential decreases in the floor value due to modulo effects.
+- Therefore, the correct approach is to set `x = min(B - 1, N)`.
+
+The provided code uses `max(B-1, N)`, which is a logical error. The correct implementation should use `min(B-1, N)`.

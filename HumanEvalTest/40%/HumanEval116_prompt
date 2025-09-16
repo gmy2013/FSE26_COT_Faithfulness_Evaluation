@@ -1,0 +1,66 @@
+
+def sort_array(arr):
+    """
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    >>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+    >>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+    >>> sort_array([1, 0, 2, 3, 4]) [0, 1, 2, 3, 4]
+    """
+
+The following is chain of thought:
+First, the function needs to sort an array of integers based on two criteria:
+1. The number of ones in their binary representation (ascending order).
+2. For numbers with the same number of ones, sort by their decimal value (ascending order).
+
+However, note the examples: 
+- The first example includes non-negative integers: [1,5,2,3,4] becomes [1,2,3,4,5].
+- The second example includes negative integers: [-2,-3,-4,-5,-6] becomes [-6,-5,-4,-3,-2].
+- The third example includes zero: [1,0,2,3,4] becomes [0,1,2,3,4].
+
+Important: The problem says "non-negative integers", but the second example has negatives. This might be a mistake in the docstring? Actually, looking at the docstring: it says "non-negative integers", but the examples include negatives. Probably, the function should handle all integers, but the binary representation for negatives might be tricky.
+
+In Python, the bin() function for negative integers returns a string with a minus sign and the binary of the absolute value, e.g., bin(-2) is '-0b10'. But we need the number of ones in the binary representation. However, for negative integers, typically we consider two's complement, but the problem doesn't specify.
+
+But look at the expected output for negatives: [-6,-5,-4,-3,-2] sorted as [-6,-5,-4,-3,-2]. This is just ascending decimal order. Also, the number of ones in two's complement for negatives might not be straightforward.
+
+Wait, the docstring says "non-negative integers", but the example has negatives. This is inconsistent. Perhaps the function should only handle non-negative as stated, but the example is wrong? Or maybe it should handle all integers, and for negatives, we use their absolute value or something?
+
+Check the expected output for negatives: the sorted array is in ascending decimal order. So for negatives, they are being sorted by decimal value only? Or perhaps the number of ones for negatives is defined differently.
+
+Actually, in the second example, all negatives: the output is sorted in ascending order (which for negatives means more negative first). But the problem says "sort based on decimal value" for same number of ones. Here, all might have same number of ones? Let's compute the number of ones for negatives.
+
+But in Python, bin(-2) gives '-0b10', which has one '1' in the string if we ignore the sign? But that might not be correct.
+
+Alternatively, we can use the built-in method to get the number of ones in the binary representation of the integer, which for negative integers in Python is the number of ones in the two's complement representation? Actually, the bit_count() method in Python 3.10+ returns the number of ones in the binary representation of the integer, which for negatives is the number of ones in the two's complement.
+
+So, we can use the bit_count() method which is available from Python 3.10 onwards. This handles negatives correctly.
+
+For example:
+- (-2).bit_count() returns 1? Actually, in two's complement, -2 is represented as ...11111110, which has many ones. But in Python, for integers, the number of bits is variable.
+
+Actually, let's test:
+In Python:
+>>> (-2).bit_count()
+1
+Wait, that doesn't seem right for two's complement. Actually, the bit_count() method returns the number of ones in the absolute value for negative integers? Or?
+
+Documentation says: "int.bit_count() returns the number of ones in the binary representation of the absolute value of the integer." Actually, no: for negative integers, it returns the number of ones in the two's complement representation, but with an infinite number of sign bits? It's complicated.
+
+But in the context of this problem, the expected output for negatives is sorted by decimal value. So perhaps for negatives, we should use the same criteria: first by number of ones, then by decimal.
+
+But for -2 and -3:
+bin(-2) is '-0b10' -> if we count the '1's in the string without the sign, it has one '1'. Similarly, bin(-3) is '-0b11' -> two '1's.
+So if we use the string representation without the sign, -2 has one one, -3 has two ones.
+
+Then for the array [-2,-3,-4,-5,-6]:
+- -2: one one
+- -3: two ones
+- -4: one one (bin(-4) is '-0b100')
+- -5: two ones (bin(-5) is '-0b101')
+- -6: two ones (bin(-6) is '-0b110')
+
+So if we sort by number 

@@ -1,0 +1,41 @@
+CodeGeneration:
+```python
+def chinese_zodiac(year):
+    """
+    Calculate the Chinese zodiac sign for a given year.
+    
+    Args:
+        year (int): The year to find the zodiac sign for
+        
+    Returns:
+        str: The Chinese zodiac animal name
+        
+    The Chinese zodiac is a 12-year cycle where each year is represented by an animal.
+    Year 2000 is used as the reference point (Year of the Dragon).
+    """
+    if (year - 2000) % 12 == 0:
+        sign = 'Dragon'
+    elif (year - 2000) % 12 == 1:
+        sign = 'Snake'
+    elif (year - 2000) % 12 == 2:
+        sign = 'Horse'
+    elif (year - 2000) % 12 == 3:
+        sign = 'Sheep'  # Fixed capitalization
+    elif (year - 2000) % 12 == 4:
+        sign = 'Monkey'
+    elif (year - 2000) % 12 == 5:
+        sign = 'Rooster'
+    elif (year - 2000) % 12 == 6:
+        sign = 'Dog'
+    elif (year - 2000) % 12 == 7:
+        sign = 'Pig'
+    elif (year - 2000) % 12 == 8:
+        sign = 'Rat'
+    elif (year - 2000) % 12 == 9:
+        sign = 'Ox'
+    elif (year - 2000) % 12 == 10:
+        sign = 'Tiger'
+    else:
+        sign = 'Hare'
+    return sign
+```

@@ -1,0 +1,10 @@
+CodeGeneration:
+Here's the improved implementation:
+
+```python
+def palindrome_lambda(texts):
+    result = list(filter(lambda x: x == "".join(reversed(x)), texts))
+    return result
+```
+
+The unnecessary parentheses around the lambda expression have been removed, making the code cleaner while maintaining the same functionality. The lambda function still correctly identifies palindromes by checking if each string equals its reverse.

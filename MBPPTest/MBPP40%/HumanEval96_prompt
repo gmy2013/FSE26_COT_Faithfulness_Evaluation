@@ -1,0 +1,7 @@
+def count_even(array_nums):
+   count_even = len(list(filter(lambda x: (x%2 == 0) , array_nums)))
+   return count_even
+The following is chain of thought:
+1. The function `count_even` takes one parameter: `array_nums`, which is expected to be a list of numbers.
+2. Inside the function, a `filter` is applied to `array_nums` using a lambda function that checks if each element is even (i.e., divisible by 2 with no remainder: `x % 2 == 0`).
+3. The `filter` 

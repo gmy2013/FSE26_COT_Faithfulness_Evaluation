@@ -1,0 +1,76 @@
+CodeGeneration:
+l value of `ans` is set to `n - 1`, which represents the worst-case scenario where we need to remove all but one element. This handles cases where no valid contiguous subarray of length > 1 exists.
+
+7. **Efficiency**: The algorithm runs in O(n log n) time due to the sorting step and the binary search for each element, making it efficient for typical input sizes.
+
+Now, here's the complete code with improved formatting and comments:
+
+```python
+def find_ind(key, i, n, k, arr):
+    """
+    Helper function to find the largest index j (where j > i) such that
+    arr[j] - key <= k using binary search.
+    
+    Args:
+        key: The starting element value (arr[i])
+        i: Starting index
+        n: Length of array
+        k: Maximum allowed difference
+        arr: Sorted array
+    
+    Returns:
+        Largest index j where arr[j] - key <= k, or -1 if not found
+    """
+    ind = -1
+    start = i + 1
+    end = n - 1
+    
+    while start <= end:
+        mid = start + (end - start) // 2
+        
+        if arr[mid] - key <= k:
+            ind = mid
+            start = mid + 1
+        else:
+            end = mid - 1
+    
+    return ind
+
+
+def removals(arr, n, k):
+    """
+    Find the minimum number of elements to remove such that the difference
+    between maximum and minimum in the remaining array is at most k.
+    
+    Args:
+        arr: Input array of integers
+        n: Length of the array
+        k: Maximum allowed difference
+    
+    Returns:
+        Minimum number of elements to remove
+    """
+    if n <= 1:
+        return 0
+    
+    ans = n - 1  # Worst case: remove all but one element
+    arr.sort()  # Sort the array to enable binary search
+    
+    for i in range(n):
+        j = find_ind(arr[i], i, n, k, arr)
+        
+        if j != -1:
+            # Calculate removals needed for this valid subarray
+            removals_needed = n - (j - i + 1)
+            ans = min(ans, removals_needed)
+    
+    return ans
+```
+
+Key improvements made:
+1. Fixed the binary search logic to properly handle the termination condition
+2. Added proper docstrings for both functions
+3. Improved code formatting and readability
+4. Added comments to explain the logic
+5. Fixed the binary search calculation to use integer division
+6. Added a check for the base case (n ≤ 1)

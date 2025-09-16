@@ -1,0 +1,15 @@
+CodeGeneration:
+ement `x`, check if it is between `min` and `max` (inclusive).
+5. If the condition is true, increment the counter `ctr`.
+6. After processing all elements, return the counter `ctr`.
+
+Here is the complete function:
+
+```python
+def count_range_in_list(li, min, max):
+    ctr = 0
+    for x in li:
+        if min <= x <= max:
+            ctr += 1
+    return ctr
+```

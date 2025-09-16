@@ -1,0 +1,29 @@
+CodeGeneration:
+) to get the two smallest numbers (which could be negative).
+5. Compare the product of the three largest numbers and the product of the largest number with the two smallest numbers, and return the maximum of these two.
+
+Here is the complete function:
+
+```python
+def maximum_product(nums):
+    """
+    Find the maximum product of three numbers from the list.
+
+    Args:
+        nums: List of integers
+
+    Returns:
+        Maximum product of any three numbers from the list
+
+    Examples:
+        >>> maximum_product([1, 2, 3])
+        6
+        >>> maximum_product([-10, -10, 5, 2])
+        500
+        >>> maximum_product([-1, -2, -3, -4])
+        -6
+    """
+    import heapq
+    a, b = heapq.nlargest(3, nums), heapq.nsmallest(2, nums)
+    return max(a[0] * a[1] * a[2], a[0] * b[0] * b[1])
+```

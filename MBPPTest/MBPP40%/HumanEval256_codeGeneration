@@ -1,0 +1,22 @@
+CodeGeneration:
+```python
+def listify_list(list1):
+    """Convert each element in the input list to a list.
+
+    Args:
+        list1: A list whose elements will be converted to lists.
+
+    Returns:
+        A new list where each element from the input list is converted to a list.
+
+    Examples:
+        >>> listify_list([1, 2, 3])
+        [[1], [2], [3]]
+        >>> listify_list(['a', 'b', 'c'])
+        [['a'], ['b'], ['c']]
+        >>> listify_list([(1, 2), (3, 4)])
+        [[1, 2], [3, 4]]
+    """
+    result = list(map(list, list1))
+    return result
+```

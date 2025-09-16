@@ -1,0 +1,40 @@
+CodeGeneration:
+Based on the analysis of the existing code and the chain of thought, I can see that this code generates all possible coordinate combinations where each coordinate value can be ±1 from the original value in the input tuple.
+
+Here's the complete implementation with proper documentation:
+
+```python
+def adjac(ele, sub = []):
+    """
+    Recursive generator function that generates all adjacent coordinate combinations.
+    
+    Args:
+        ele: Tuple of coordinate values
+        sub: Current coordinate combination being built (default empty list)
+        
+    Yields:
+        Lists of coordinate values where each value is within ±1 of the original
+    """
+    if not ele: 
+        yield sub 
+    else: 
+        yield from [idx for j in range(ele[0] - 1, ele[0] + 2) 
+                   for idx in adjac(ele[1:], sub + [j])] 
+
+def get_coordinates(test_tup):
+    """
+    Get all adjacent coordinate combinations for a given tuple of coordinates.
+    
+    Args:
+        test_tup: Tuple of coordinate values
+        
+    Returns:
+        List of all possible coordinate combinations where each value
+        can be the original value, one less, or one more
+    """
+    res = list(adjac(test_tup))
+    return (res)
+```
+
+**Example usage:**
+```python

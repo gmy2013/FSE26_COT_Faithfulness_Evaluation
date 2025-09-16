@@ -1,0 +1,29 @@
+CodeGeneration:
+n = len(l)
+    if n < 3:
+        return False
+    l_sorted = sorted(l)
+    for i in range(n-2):
+        # Skip duplicate values for the first element to avoid redundant checks
+        if i > 0 and l_sorted[i] == l_sorted[i-1]:
+            continue
+        left, right = i+1, n-1
+        target = -l_sorted[i]
+        while left < right:
+            current_sum = l_sorted[left] + l_sorted[right]
+            if current_sum == target:
+                return True
+            elif current_sum < target:
+                left += 1
+            else:
+                right -= 1
+    return False
+```
+
+This implementation efficiently checks for triplets that sum to zero by:
+1. Sorting the list to enable the two-pointer technique
+2. Skipping duplicate values for the first element to avoid redundant checks
+3. Using two pointers to find pairs that sum to the negative of the current element
+4. Returning True as soon as a valid triplet is found, or False if none exist
+
+The time complexity is O(n²) due to the nested loops, which is efficient for this problem.

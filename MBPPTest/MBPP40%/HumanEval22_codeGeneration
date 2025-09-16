@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def nth_nums(nums, n):
+    """
+    Raise each number in the given list to the nth power.
+    
+    Args:
+        nums (list): A list of numbers
+        n (int): The exponent to raise each number to
+    
+    Returns:
+        list: A new list where each element is the corresponding element from nums raised to the nth power
+    
+    Examples:
+        >>> nth_nums([1, 2, 3], 2)
+        [1, 4, 9]
+        >>> nth_nums([2, 4, 6], 3)
+        [8, 64, 216]
+    """
+    nth_nums = list(map(lambda x: x ** n, nums))
+    return nth_nums
+```
+
+The function works by:
+1. Using `map()` to apply a lambda function to each element in `nums`
+2. The lambda function raises each element `x` to the power of `n` (x ** n)
+3. Converting the map object to a list and returning it
+
+This creates a new list where each element from the original list is raised to the specified power.

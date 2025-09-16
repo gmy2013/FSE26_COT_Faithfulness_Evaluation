@@ -1,0 +1,20 @@
+def roman_to_int(s):
+        rom_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        int_val = 0
+        for i in range(len(s)):
+            if i > 0 and rom_val[s[i]] > rom_val[s[i - 1]]:
+                int_val += rom_val[s[i]] - 2 * rom_val[s[i - 1]]
+            else:
+                int_val += rom_val[s[i]]
+        return int_val
+The following is chain of thought:
+1. **Understand the Roman numeral rules**: Values are typically additive (e.g., VI = 5 + 1 = 6), but subtractive notation is used when a smaller numeral precedes a larger one (e.g., IV = 5 - 1 = 4).
+
+2. **Initialize mapping**: Create a dictionary `rom_val` mapping each Roman numeral character to its integer value.
+
+3. **Initialize result**: Set `int_val` to 0 to accumulate the total value.
+
+4. **Iterate through each character**: Loop over each index `i` in the input string `s`.
+
+5. **Check for subtractive case**: If the current numeral (at index `i`) has a greater value than the previous numeral (at index `i-1`), this indicates a subtractive pair (e.g., IV, IX, etc.). In this case:
+   - Subtract twice the value of the prev

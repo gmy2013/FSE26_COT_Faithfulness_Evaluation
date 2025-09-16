@@ -1,0 +1,35 @@
+
+def is_equal_to_sum_even(n):
+    """Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers
+    Example
+    is_equal_to_sum_even(4) == False
+    is_equal_to_sum_even(6) == False
+    is_equal_to_sum_even(8) == True
+    """
+
+The following is chain of thought:
+To solve this problem, we need to determine if a given integer `n` can be expressed as the sum of exactly four positive even numbers. 
+
+Key observations:
+1. Since we are summing four positive even numbers, the smallest possible sum is 2+2+2+2 = 8. Therefore, any `n < 8` should return False.
+2. Each even number can be represented as 2 times an integer. So, the sum of four even numbers is 2*(a + b + c + d), where a, b, c, d are positive integers. This implies that the sum must be even and at least 8.
+3. However, note that the problem requires exactly four positive even numbers. This means we cannot use zero or negative numbers.
+
+But wait: if we let the four numbers be 2a, 2b, 2c, 2d (with a,b,c,d >=1), then the sum is 2(a+b+c+d). So n must be even and at least 8.
+However, is that sufficient? For example, n=8: 2+2+2+2=8 -> valid. n=10: 2+2+2+4=10 -> valid. Similarly, any even n>=8 can be written as 2 + 2 + 2 + (n-6). Since n>=8 is even, n-6 is at least 2 and even. So it seems that every even n>=8 can be expressed as the sum of exactly four positive even numbers.
+
+But check the examples:
+is_equal_to_sum_even(4) == False -> correct (4<8)
+is_equal_to_sum_even(6) == False -> correct (6<8)
+is_equal_to_sum_even(8) == True -> correct.
+
+So the solution is straightforward: return True if n is even and n>=8, otherwise False.
+
+However, let me double-check with n=2: should be False (too small) -> correct.
+n=12: 2+2+2+6=12 -> valid.
+n=14: 2+2+2+8=14 -> valid.
+
+Therefore, the function simply checks if n is an even integer and at least 8.
+
+Code implementation:
+We'll check if 

@@ -1,0 +1,7 @@
+def tuple_str_int(test_str):
+  res = tuple(int(num) for num in test_str.replace('(', '').replace(')', '').replace('...', '').split(', '))
+  return (res) 
+The following is chain of thought:
+1. **Understand the input**: The function takes a string `test_str` that represents a tuple of integers, possibly with ellipsis (`...`).
+2. **Remove parentheses**: Use `replace('(', '')` and `replace(')', '')` to remove the opening and closing parentheses from the string.
+3. **Handle ellipsis**: Use `replace('...', '')` to remove any ellipsis that might be present 

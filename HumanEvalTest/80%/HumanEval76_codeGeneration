@@ -1,0 +1,28 @@
+CodeGeneration:
+Based on the analysis and handling edge cases as described, here is the Python function:
+
+```python
+def is_simple_power(x, n):
+    if n == 1:
+        return x == 1
+    if x == 1:
+        return True
+    if n == 0:
+        return False
+    k = 1
+    power = n
+    while power <= x:
+        if power == x:
+            return True
+        power *= n
+        k += 1
+    return False
+```
+
+This function:
+- Returns `True` if `x` is 1 (since any non-zero `n` raised to 0 equals 1)
+- Returns `True` only if `n` is 1 and `x` is 1
+- Returns `False` if `n` is 0 (since 0 raised to any positive power is 0, but 0^0 is undefined)
+- Otherwise iterates through powers of `n` to check if any equals `x`
+
+The implementation handles all cases from the examples correctly and assumes positive integer inputs as typical for this problem.

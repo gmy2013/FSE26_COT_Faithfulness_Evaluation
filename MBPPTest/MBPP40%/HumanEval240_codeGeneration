@@ -1,0 +1,22 @@
+CodeGeneration:
+```python
+def get_inv_count(arr, n):
+    """
+    Counts the number of inversions in the given array.
+    
+    An inversion is a pair of indices (i, j) such that i < j and arr[i] > arr[j].
+    
+    Args:
+        arr (list): The input array of numbers
+        n (int): The length of the array
+    
+    Returns:
+        int: The number of inversions in the array
+    """
+    inv_count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if arr[i] > arr[j]:
+                inv_count += 1
+    return inv_count
+```

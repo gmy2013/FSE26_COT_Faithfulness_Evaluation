@@ -1,0 +1,43 @@
+CodeGeneration:
+Here's the corrected function with proper triangle type checking:
+
+```python
+def check_Type_Of_Triangle(a, b, c):
+    """
+    Determines the type of triangle based on side lengths.
+    
+    Args:
+        a, b, c: Three side lengths of a triangle
+    
+    Returns:
+        str: Type of triangle ("Right-angled", "Obtuse-angled", "Acute-angled")
+        or "Invalid Triangle" if sides cannot form a valid triangle
+    """
+    # First check if sides can form a valid triangle
+    if a <= 0 or b <= 0 or c <= 0 or (a + b <= c) or (a + c <= b) or (b + c <= a):
+        return "Invalid Triangle"
+    
+    # Calculate squares of sides
+    sqa = a * a
+    sqb = b * b
+    sqc = c * c
+    
+    # Check for right-angled triangle (Pythagorean theorem)
+    if (sqa + sqb == sqc) or (sqa + sqc == sqb) or (sqb + sqc == sqa):
+        return "Right-angled Triangle"
+    
+    # Check for obtuse-angled triangle (square of longest side > sum of squares of other two)
+    if (sqa > sqb + sqc) or (sqb > sqa + sqc) or (sqc > sqa + sqb):
+        return "Obtuse-angled Triangle"
+    
+    # Otherwise it's acute-angled (all angles < 90°)
+    return "Acute-angled Triangle"
+```
+
+Key improvements made:
+1. Added triangle validity check first
+2. Fixed the right-angled condition to properly check Pythagorean theorem
+3. Fixed the obtuse-angled condition to check if square of longest side > sum of squares of other two sides
+4. Made acute-angled the default case when neither right nor obtuse
+5. Used multiplication instead of pow() for better readability
+6. Added proper docstring documentation

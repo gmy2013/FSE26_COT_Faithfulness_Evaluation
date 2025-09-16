@@ -1,0 +1,17 @@
+def Check_Vow(string, vowels): 
+    final = [each for each in string if each in vowels] 
+    return(len(final)) 
+
+The following is chain of thought:
+1. Understand the function purpose: Count occurrences of vowels in a string.
+2. Analyze the current implementation:
+   - Uses list comprehension to filter characters that are in vowels
+   - Returns the length of the filtered list (count of vowels)
+3. Check for edge cases:
+   - Empty string should return 0
+   - String with no vowels should return 0
+   - Case sensitivity: current implementation is case-sensitive
+   - Vowels parameter can be customized
+4. Consider improvements:
+   - Could make case-insensitive by converting both string and vowels to same case
+   - Could add input vali

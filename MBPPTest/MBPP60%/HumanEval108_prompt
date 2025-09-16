@@ -1,0 +1,18 @@
+from collections import defaultdict 
+def get_unique(test_list):
+  res = defaultdict(list)
+  for sub in test_list:
+    res[sub[1]].append(sub[0])
+  res = dict(res)
+  res_dict = dict()
+  for key in res:
+    res_dict[key] = len(list(set(res[key])))
+  return (str(res_dict)) 
+The following is chain of thought:
+1. The function `get_unique` takes a list `test_list` as input, where each element is a sublist.
+2. Initialize a `defaultdict` called `res` with `list` as the default factory to accumulate values.
+3. Iterate over each sublist `sub` in `test_list`:
+   - Use the element at index 1 (i.e., `sub[1]`) as the key in the dictionary.
+   - Append the element at index 0 (i.e., `sub[0]`) to the list associated with that key.
+4. Convert the `defaultdict` to a regular dictionary `res`.
+5. Initialize an empty dictionary 

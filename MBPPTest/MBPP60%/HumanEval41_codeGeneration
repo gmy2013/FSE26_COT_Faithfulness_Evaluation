@@ -1,0 +1,28 @@
+CodeGeneration:
+remove duplicate rows (based on having the same unique elements regardless of order).
+5. Return the resulting set.
+
+However, there is an issue with the current implementation: the outer `sorted()` is unnecessary since converting to a set will remove duplicates regardless of order. The function can be simplified.
+
+Here's the improved implementation:
+
+```python
+def remove_similar_row(test_list):
+    """
+    Remove rows that have the same unique elements regardless of order.
+    
+    Args:
+        test_list (list): A list of lists (or other iterables) where each inner list represents a row.
+    
+    Returns:
+        set: A set of tuples where each tuple contains the sorted unique elements from a row.
+    
+    Example:
+        >>> remove_similar_row([[1, 2, 3], [3, 2, 1], [4, 5, 6]])
+        {(1, 2, 3), (4, 5, 6)}
+        >>> remove_similar_row([['a', 'b'], ['b', 'a'], ['c', 'd']])
+        {('a', 'b'), ('c', 'd')}
+    """
+    res = {tuple(sorted(set(sub))) for sub in test_list}
+    return res
+```

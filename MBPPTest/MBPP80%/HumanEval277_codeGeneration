@@ -1,0 +1,22 @@
+CodeGeneration:
+```python
+def check_tuples(test_tuple, K):
+    """
+    Check if all elements in the given tuple are present in K.
+    
+    Args:
+        test_tuple (tuple): The tuple to check
+        K (iterable): The collection to check against
+    
+    Returns:
+        bool: True if all elements of test_tuple are in K, False otherwise
+    
+    Examples:
+        >>> check_tuples((1, 2, 3), [1, 2, 3, 4])
+        True
+        >>> check_tuples((1, 5), [1, 2, 3])
+        False
+    """
+    res = all(ele in K for ele in test_tuple)
+    return res
+```

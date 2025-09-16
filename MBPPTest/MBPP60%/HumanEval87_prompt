@@ -1,0 +1,10 @@
+import cmath
+def len_complex(a,b):
+  cn=complex(a,b)
+  length=abs(cn)
+  return length
+The following is chain of thought:
+1. The function `len_complex` takes two parameters `a` and `b`, representing the real and imaginary parts of a complex number.
+2. It creates a complex number `cn` using `complex(a, b)`.
+3. It calculates the magnitude (length) of the complex number using `abs(cn)`, which returns the Euclidean norm.
+4. The function r

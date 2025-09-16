@@ -1,0 +1,14 @@
+def check_valid(test_tup):
+  res = not any(map(lambda ele: not ele, test_tup))
+  return (res) 
+The following is chain of thought:
+Here's the structured chain of thought for this function:
+
+1. **Function Purpose Analysis**: The function `check_valid` takes a tuple `test_tup` and returns a boolean indicating whether all elements in the tuple are truthy
+
+2. **Core Logic Understanding**: 
+   - `map(lambda ele: not ele, test_tup)` creates an iterator that applies `not` to each element, converting truthy values to `False` and falsy values to `True`
+   - `any()` returns `True` if any element in the mapped result is `True` (meaning at least one original element was falsy)
+   - `not any(...)` inverts this, so it returns `True` only if all original elements were truthy (no falsy values found)
+
+3. **Return Value**: The function returns `

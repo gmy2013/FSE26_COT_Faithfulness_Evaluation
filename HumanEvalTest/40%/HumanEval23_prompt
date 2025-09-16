@@ -1,0 +1,21 @@
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+
+The following is chain of thought:
+We are to implement a function that returns the length of a string.
+ Since we cannot use the built-in len() function, we need to count the characters manually.
+ We can iterate through the string and count each character until we reach the end.
+ Alternatively, we can use a while loop until we hit an empty character (but note: in Python, strings are not null-terminated).
+ Actually, the most straightforward way without using len() is to use a counter and a for loop.
+
+ Steps:
+ 1. Initialize a counter variable to 0.
+ 2. Iterate over each character in the string.
+ 3. Fo

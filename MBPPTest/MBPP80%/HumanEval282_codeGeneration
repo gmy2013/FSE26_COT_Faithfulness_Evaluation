@@ -1,0 +1,22 @@
+CodeGeneration:
+le by both (included). It also handles zero correctly if present in `nums` (since 0 is divisible by any non-zero number).
+
+5. Final assessment: The implementation is correct and efficient for the given problem. No changes are needed.
+
+Here is the complete function:
+
+```python
+def div_of_nums(nums, m, n):
+    """Return a list of numbers from nums that are divisible by both m and n.
+    
+    Args:
+        nums: List of numbers
+        m: First divisor
+        n: Second divisor
+    
+    Returns:
+        List of numbers divisible by both m and n
+    """
+    result = list(filter(lambda x: (x % m == 0 and x % n == 0), nums)) 
+    return result
+```

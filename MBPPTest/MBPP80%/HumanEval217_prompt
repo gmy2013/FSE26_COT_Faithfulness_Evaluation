@@ -1,0 +1,11 @@
+def lower_ctr(str):
+      lower_ctr= 0
+      for i in range(len(str)):
+          if str[i] >= 'a' and str[i] <= 'z': lower_ctr += 1     
+      return  lower_ctr
+The following is chain of thought:
+1. The function `lower_ctr` takes a string `str` as input.
+2. Initialize a counter variable `lower_ctr` to 0 to keep track of lowercase letters.
+3. Iterate through each character in the string using a for loop with index `i`.
+4. For each character at position `i`, check if it is a lowercase letter by comparing to 'a' and 'z'.
+5. If the character is lowercase, increment the counter `

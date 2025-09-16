@@ -1,0 +1,8 @@
+def float_to_tuple(test_str):
+  res = tuple(map(float, test_str.split(', ')))
+  return (res) 
+The following is chain of thought:
+1. The function `float_to_tuple` takes a string `test_str` as input.
+2. The string is expected to contain numbers separated by ", " (comma and space).
+3. Use `split(', ')` to split the string into a list of substrings at each ", " occurrence.
+4. Apply `ma

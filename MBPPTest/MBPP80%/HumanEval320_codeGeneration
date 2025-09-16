@@ -1,0 +1,36 @@
+CodeGeneration:
+Here's the complete function with improved docstring and edge case handling:
+
+```python
+def chunk_tuples(test_tup, N):
+    """
+    Split a tuple into smaller chunks of specified size.
+    
+    Args:
+        test_tup (tuple): The input tuple to be chunked
+        N (int): The size of each chunk
+        
+    Returns:
+        list: A list of tuples where each tuple contains N elements from the original tuple.
+              If the original tuple length is not divisible by N, the last chunk will be smaller.
+    
+    Examples:
+        >>> chunk_tuples((1, 2, 3, 4, 5, 6), 2)
+        [(1, 2), (3, 4), (5, 6)]
+        >>> chunk_tuples((1, 2, 3, 4, 5), 2)
+        [(1, 2), (3, 4), (5,)]
+    """
+    if not isinstance(test_tup, tuple):
+        raise TypeError("test_tup must be a tuple")
+    if not isinstance(N, int) or N <= 0:
+        raise ValueError("N must be a positive integer")
+    
+    res = [test_tup[i : i + N] for i in range(0, len(test_tup), N)]
+    return res
+```
+
+The function now includes:
+- Complete docstring with parameter descriptions, return type, and examples
+- Input validation to ensure test_tup is a tuple and N is a positive integer
+- Proper handling of edge cases where the tuple length isn't divisible by N
+- The original efficient list comprehension approach with tuple slicing

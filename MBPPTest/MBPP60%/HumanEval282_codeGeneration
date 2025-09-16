@@ -1,0 +1,31 @@
+CodeGeneration:
+The function is already correctly implemented. Here's the complete function with a docstring:
+
+```python
+def div_of_nums(nums, m, n):
+    """
+    Return numbers from the list that are divisible by both m and n.
+    
+    Args:
+        nums (list): List of numbers to filter
+        m (int): First divisor
+        n (int): Second divisor
+    
+    Returns:
+        list: Numbers divisible by both m and n
+    
+    Example:
+        >>> div_of_nums([10, 15, 20, 30], 5, 2)
+        [10, 20, 30]
+    """
+    result = list(filter(lambda x: (x % m == 0 and x % n == 0), nums)) 
+    return result
+```
+
+The function correctly:
+- Takes a list of numbers and two divisors
+- Uses `filter()` with a lambda function to check divisibility by both m and n
+- Converts the filter object to a list
+- Returns the filtered results
+
+The implementation is efficient and meets the requirements specified in the docstring.

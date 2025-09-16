@@ -1,0 +1,23 @@
+def super_seq(X, Y, m, n):
+	if (not m):
+		return n
+	if (not n):
+		return m
+	if (X[m - 1] == Y[n - 1]):
+		return 1 + super_seq(X, Y, m - 1, n - 1)
+	return 1 + min(super_seq(X, Y, m - 1, n),	super_seq(X, Y, m, n - 1))
+The following is chain of thought:
+Let's analyze the function `super_seq` step by step:
+
+1. **Base Cases**:
+   - If `m == 0` (i.e., string `X` is empty), then the shortest supersequence must include all characters of `Y`, so return `n` (length of `Y`).
+   - If `n == 0` (i.e., string `Y` is empty), then the shortest supersequence must include all characters of `X`, so return `m` (length of `X`).
+
+2. **Recursive Case**:
+   - If the last characters of `X` and `Y` match (i.e., `X[m-1] == Y[n-1]`), then this character should be included only once in the supersequence. So, we add 1 (for this common character) and recursively compute the super sequence for `X[0:m-1]` and `Y[0:n-1]`.
+   - If the last characters do not match, we have two choices:
+        a) Include the last character of `X` and recursively compute for `X[0:m-1]` and `Y[0:n]`.
+        b) Include the last character of `Y` and recursively compute for `X[0:m]` and `Y[0:n-1]`.
+     We take the minimum of these two choices (since we want the shortest supersequence) and add 1 (for the included character).
+
+However, note that the current implementation is recursive without memoization, which leads to exponential time complexity. For efficiency, we should use dynamic programming (with a 2D table) to avoid recomp

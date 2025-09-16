@@ -1,0 +1,24 @@
+def find_Min_Swaps(arr,n) : 
+    noOfZeroes = [0] * n 
+    count = 0 
+    noOfZeroes[n - 1] = 1 - arr[n - 1] 
+    for i in range(n-2,-1,-1) : 
+        noOfZeroes[i] = noOfZeroes[i + 1] 
+        if (arr[i] == 0) : 
+            noOfZeroes[i] = noOfZeroes[i] + 1
+    for i in range(0,n) : 
+        if (arr[i] == 1) : 
+            count = count + noOfZeroes[i] 
+    return count 
+The following is chain of thought:
+The function `find_Min_Swaps` calculates the minimum number of adjacent swaps required to group all 1's together in a binary array.
+
+**Chain of Thought:**
+1. **Problem Analysis:** The goal is to group all 1's together with minimum adjacent swaps. This is equivalent to counting the total "effort" (number of zeros) each 1 must cross when moving to a contiguous block.
+2. **Key Insight:** For each 1, the number of swaps needed to move it to the end of the 1's group is equal to the number of zeros to its right (since each zero requires one swap to pass). Summing these for all 1's gives the total swaps.
+3. **Efficient Calculation:**
+   - Precompute `noOfZeroes[i]`: the cumulative count of zeros from index `i` to the end.
+   - Traverse from right to left to build `noOfZeroes` (so each index knows zeros to its right).
+   - For each 1 encountered, add `noOfZeroes[i]` (zeros to its right) to `count`.
+4. **Why This Works:** The sum of zeros to the right of each 1 represents the total adjacent swaps if we aggregate all 1's to the right. This is optimal because it minimizes unnecessary crossings (each zero is swapped past only once per 1 that moves past it).
+5. **Edge Hand

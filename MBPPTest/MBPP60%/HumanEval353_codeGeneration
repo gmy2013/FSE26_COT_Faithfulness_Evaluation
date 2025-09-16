@@ -1,0 +1,23 @@
+CodeGeneration:
+Here's the completed function with a clear docstring:
+
+```python
+def profit_amount(actual_cost, sale_amount):
+    """
+    Calculate the profit amount when actual cost is greater than sale amount.
+    
+    Args:
+        actual_cost (float): The original cost of the item
+        sale_amount (float): The selling price of the item
+    
+    Returns:
+        float: The profit amount if actual_cost > sale_amount, otherwise None
+    """
+    if actual_cost > sale_amount:
+        amount = actual_cost - sale_amount
+        return amount
+    else:
+        return None
+```
+
+The function calculates profit when the actual cost exceeds the sale amount, which represents a loss scenario (negative profit). If you intended to calculate profit in the typical sense (sale_amount > actual_cost), you would need to reverse the comparison.

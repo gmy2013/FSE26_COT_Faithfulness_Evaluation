@@ -1,0 +1,21 @@
+def check_min_heap(arr, i):
+    if 2 * i + 2 > len(arr):
+        return True
+    left_child = (arr[i] <= arr[2 * i + 1]) and check_min_heap(arr, 2 * i + 1)
+    right_child = (2 * i + 2 == len(arr)) or (arr[i] <= arr[2 * i + 2] 
+                                      and check_min_heap(arr, 2 * i + 2))
+    return left_child and right_child
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Base Case Identification**: The function first checks if the current node at index `i` has any children by verifying if `2 * i + 2 > len(arr)`. If true, it means the node is a leaf (no children), so it returns `True` since a leaf node trivially satisfies the min-heap property.
+
+2. **Left Child Validation**: For the left child at index `2 * i + 1`, the function checks two conditions:
+   - The current node's value is less than or equal to its left child's value (`arr[i] <= arr[2 * i + 1]`)
+   - Recursively validates that the left subtree also forms a min-heap (`check_min_heap(arr, 2 * i + 1)`)
+
+3. **Right Child Validation**: For the right child at index `2 * i + 2`, the function handles two scenarios:
+   - If `2 * i + 2 == len(arr)`, it means there's no right child (array boundary), so this condition evaluates to `True`
+   - Otherwise, it checks that the current node's value is less than or equal to the right child's value (`arr[i] <= arr[2 * i + 2]`) and recursively validates the right subtree
+
+4. **Final Return**: The function returns the logical AND of both left and right child v

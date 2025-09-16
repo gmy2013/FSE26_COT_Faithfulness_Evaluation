@@ -1,0 +1,12 @@
+def find_Min_Diff(arr,n): 
+    arr = sorted(arr) 
+    diff = 10**20 
+    for i in range(n-1): 
+        if arr[i+1] - arr[i] < diff: 
+            diff = arr[i+1] - arr[i]  
+    return diff 
+The following is chain of thought:
+1. The function `find_Min_Diff` takes an array `arr` and its length `n` as inputs.
+2. The goal is to find the minimum difference between any two elements in the array.
+3. First, sort the array to arrange elements in ascending order. This allows adjacent elements to be the closest in value.
+4. Initialize `diff` 

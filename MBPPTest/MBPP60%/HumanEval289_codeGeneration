@@ -1,0 +1,28 @@
+CodeGeneration:
+urns n when arrays are identical up to index n-1 (implying the extra element is at the end of the larger array)
+
+5. **Assumptions**:
+   - One array has exactly one extra element compared to the other
+   - Arrays are identical except for one position
+   - n represents the size of the smaller array
+
+Here's the complete function:
+
+```python
+def find_Extra(arr1,arr2,n) : 
+    """
+    Find the index where two arrays first differ.
+    
+    Parameters:
+    arr1 (list): First input array
+    arr2 (list): Second input array
+    n (int): Length of the smaller array
+    
+    Returns:
+    int: Index where arrays first differ, or n if identical up to index n-1
+    """
+    for i in range(0, n) : 
+        if (arr1[i] != arr2[i]) : 
+            return i 
+    return n
+```

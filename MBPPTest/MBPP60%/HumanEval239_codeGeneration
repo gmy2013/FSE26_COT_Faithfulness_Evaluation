@@ -1,0 +1,31 @@
+CodeGeneration:
+Based on the chain of thought analysis, the current implementation doesn't properly check for solutions to the linear equation `a*x + b = c`. Here's the corrected function:
+
+```python
+def Check_Solution(a, b, c):
+    """
+    Check if the linear equation a*x + b = c has a solution.
+    
+    Args:
+        a (float): Coefficient of x
+        b (float): Constant term
+        c (float): Right-hand side constant
+    
+    Returns:
+        str: "Yes" if the equation has at least one solution, "No" otherwise
+    """
+    if a != 0:
+        # Unique solution exists (a ≠ 0)
+        return "Yes"
+    elif b == c:
+        # Infinite solutions (a = 0 and b = c)
+        return "Yes"
+    else:
+        # No solution (a = 0 and b ≠ c)
+        return "No"
+```
+
+This implementation correctly handles all cases:
+- When `a ≠ 0`: The equation has exactly one solution
+- When `a = 0` and `b = c`: The equation is an identity (0 = 0), so it has infinitely many solutions
+- When `a = 0` and `b ≠ c`: The equation is inconsistent (b = c where b ≠ c), so it has no solution

@@ -1,0 +1,68 @@
+
+def compare(game,guess):
+    """I think we all remember that feeling when the result of some long-awaited
+    event is finally known. The feelings and thoughts you have at that moment are
+    definitely worth noting down and comparing.
+    Your task is to determine if a person correctly guessed the results of a number of matches.
+    You are given two arrays of scores and guesses of equal length, where each index shows a match. 
+    Return an array of the same length denoting how far off each guess was. If they have guessed correctly,
+    the value is 0, and if not, the value is the absolute difference between the guess and the score.
+    
+    
+    example:
+
+    compare([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]
+    compare([0,5,0,0,0,4],[4,1,1,0,0,-2]) -> [4,4,1,0,0,6]
+    """
+
+The following is chain of thought:
+We are given two lists: `game` (actual scores) and `guess` (guessed scores), both of the same length.
+ For each index i, we need to compute the absolute difference between game[i] and guess[i] if they are not equal.
+ If they are equal, the result for that index should be 0.
+ However, note the example: compare([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]
+ For the last element: game[5]=1 and guess[5]=-2 -> absolute difference is |1 - (-2)| = 3.
+ So we can compute the absolute difference for every pair, but if they are equal the absolute difference is 0 anyway.
+
+ Therefore, we can simply compute the absolute difference for every element.
+
+ Steps:
+ 1. Initialize an empty list for the result.
+ 2. Iterate over the indices from 0 to len(game)-1.
+ 3. For each index i, compute abs(game[i] - guess[i]).
+ 4. Append that value to the result list.
+ 5. Return the result list.
+
+ However, note the example: compare([0,5,0,0,0,4],[4,1,1,0,0,-2]) -> [4,4,1,0,0,6]
+ For the first element: |0-4| = 4 -> correct.
+ Second: |5-1| = 4 -> correct.
+ Third: |0-1| = 1 -> correct.
+ Fourth: |0-0| = 0 -> correct.
+ Fifth: |0-0| = 0 -> correct.
+ Sixth: |4 - (-2)| = |4+2| = 6 -> correct.
+
+ So the plan is straightforward.
+
+ Implementation:
+ We can use a list comprehension to create the result list.
+```python
+def compare(game,guess):
+    return [abs(game[i] - guess[i]) for i in range(len(game))]
+```
+
+But note: the lists are of equal length, so we can also use zip to iterate simultaneously.
+
+Alternatively:
+```python
+def compare(game,guess):
+    return [abs(g - ge) for g, ge in zip(game, guess)]
+```
+
+This is more Pythonic.
+
+Let's test with the examples:
+Example 1:
+ game = [1,2,3,4,5,1], guess = [1,2,3,4,2,-2]
+ For each pair:
+   (1,1) -> abs(0)=0
+   (2,2) -> 0
+   (3,3) -> 0

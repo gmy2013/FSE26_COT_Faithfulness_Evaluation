@@ -1,0 +1,11 @@
+def maximum_product(nums):
+    import heapq
+    a, b = heapq.nlargest(3, nums), heapq.nsmallest(2, nums)
+    return max(a[0] * a[1] * a[2], a[0] * b[0] * b[1])
+The following is chain of thought:
+1. The function needs to find the maximum product of three numbers from the list.
+2. The maximum product can come from either:
+   - The three largest numbers (positive * positive * positive)
+   - The largest number and the two smallest numbers (positive * negative * negative)
+3. Use heapq.nlargest(3, nums) to get the three largest numbers.
+4. Use heapq.nsmallest(2, nums

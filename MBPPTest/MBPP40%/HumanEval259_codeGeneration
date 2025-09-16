@@ -1,0 +1,27 @@
+CodeGeneration:
+, A-Z, or 0-9).
+4. If there's a match, it returns "Accept"; otherwise, it returns "Discard".
+
+However, I notice there's a small typo in the regex pattern: `[a-zA-z0-9]$` should be `[a-zA-Z0-9]$` (capital Z instead of lowercase z in the character range).
+
+Here's the corrected function:
+
+```python
+import re 
+regex = '[a-zA-Z0-9]$'
+
+def check_alphanumeric(string): 
+    if(re.search(regex, string)): 
+        return ("Accept") 
+    else: 
+        return ("Discard")
+```
+
+The function will:
+- Return "Accept" if the string ends with an alphanumeric character
+- Return "Discard" if the string doesn't end with an alphanumeric character or is empty
+
+Examples:
+- `check_alphanumeric("hello1")` → "Accept"
+- `check_alphanumeric("hello!")` → "Discard"
+- `check_alphanumeric("")` → "Discard"

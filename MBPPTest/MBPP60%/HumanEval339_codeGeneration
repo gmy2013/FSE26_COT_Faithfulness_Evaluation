@@ -1,0 +1,67 @@
+CodeGeneration:
+I notice there's an issue with the `shift_down` call in the `heap_sort` function. After swapping the root (max element) with the last element, we need to maintain the heap property on the reduced heap (size `end-1`), but the current implementation has a logical error.
+
+Here's the corrected implementation:
+
+```python
+def heap_sort(arr):
+    """
+    Sorts an array in ascending order using the heap sort algorithm.
+    
+    Args:
+        arr: List of comparable elements to be sorted
+        
+    Returns:
+        List: The sorted array in ascending order
+    """
+    heapify(arr)  
+    end = len(arr) - 1
+    while end > 0:
+        arr[end], arr[0] = arr[0], arr[end]
+        end -= 1
+        shift_down(arr, 0, end)
+    return arr
+
+def heapify(arr):
+    """
+    Builds a max heap from the given array.
+    
+    Args:
+        arr: List to be transformed into a max heap
+    """
+    start = len(arr) // 2 - 1
+    while start >= 0:
+        shift_down(arr, start, len(arr) - 1)
+        start -= 1
+
+def shift_down(arr, start, end):
+    """
+    Maintains the max heap property by shifting an element down the heap.
+    
+    Args:
+        arr: The heap array
+        start: Index of the element to shift down
+        end: Last index of the heap (inclusive)
+    """
+    root = start
+    while root * 2 + 1 <= end:
+        child = root * 2 + 1
+        if child + 1 <= end and arr[child] < arr[child + 1]:
+            child += 1
+        if arr[root] < arr[child]:
+            arr[root], arr[child] = arr[child], arr[root]
+            root = child
+        else:
+            return
+```
+
+Key fixes made:
+1. **In `heap_sort`**: Decrement `end` first, then call `shift_down(arr, 0, end)` to maintain heap property on the correct reduced heap size
+2. **In `heapify`**: Changed `start = len(arr) // 2` to `start = len(arr) // 2 - 1` to correctly identify the last non-leaf node
+3. **Added comprehensive docstrings** for all functions to document their purpose and parameters
+
+The algorithm now correctly:
+1. Builds a max heap from the input array
+2. Repeatedly extracts the maximum element (root) and places it at the end
+3. Maintains heap property on the remaining elements after each extraction
+4. Returns the sorted array in ascending order

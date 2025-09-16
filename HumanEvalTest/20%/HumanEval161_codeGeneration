@@ -1,0 +1,24 @@
+20%CoT
+CodeGeneration:
+string contains letters, we iterate through each character:
+   - If the character is a letter, we reverse its case (lower to upper, upper to lower).
+   - Otherwise, we keep it as is.
+
+Here's the implementation:
+
+```python
+def solve(s):
+    if not any(c.isalpha() for c in s):
+        return s[::-1]
+    
+    result = []
+    for char in s:
+        if char.isalpha():
+            if char.islower():
+                result.append(char.upper())
+            else:
+                result.append(char.lower())
+        else:
+            result.append(char)
+    return ''.join(result)
+```

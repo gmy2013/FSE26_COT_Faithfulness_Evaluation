@@ -1,0 +1,15 @@
+CodeGeneration:
+```python
+def remove_tuple(test_list):
+    """
+    Removes tuples from the list where all elements are None.
+
+    Args:
+        test_list (list): A list of tuples to be processed.
+
+    Returns:
+        str: A string representation of the list with tuples containing all None elements removed.
+    """
+    res = [sub for sub in test_list if not all(ele == None for ele in sub)]
+    return str(res)
+```

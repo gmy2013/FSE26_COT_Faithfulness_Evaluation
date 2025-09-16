@@ -1,0 +1,29 @@
+CodeGeneration:
+is calculated using the formula: (π * r²) * (a/360).
+
+Here is the complete function with the docstring:
+
+```python
+def sector_area(r, a):
+    """
+    Calculate the area of a circular sector.
+    
+    Parameters:
+    r (float): Radius of the circle
+    a (float): Angle of the sector in degrees
+    
+    Returns:
+    float: Area of the sector if angle is less than 360, None otherwise
+    
+    Examples:
+    >>> sector_area(5, 90)
+    19.642857142857142
+    >>> sector_area(7, 360) is None
+    True
+    """
+    pi = 22/7
+    if a >= 360:
+        return None
+    sectorarea = (pi * r**2) * (a/360)
+    return sectorarea
+```

@@ -1,0 +1,7 @@
+def check_subset(test_tup1, test_tup2):
+  res = set(test_tup2).issubset(test_tup1)
+  return (res) 
+The following is chain of thought:
+1. The function `check_subset` takes two tuples `test_tup1` and `test_tup2` as input.
+2. Convert `test_tup2` to a set to remove duplicates and enable set operations.
+3. Use the `issubset` method to check if all elements of `test_tup2` (as a se

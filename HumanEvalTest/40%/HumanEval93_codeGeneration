@@ -1,0 +1,49 @@
+CodeGeneration:
+Here's the implementation based on the requirements:
+
+```python
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+    result = []
+    vowels = 'aeiouAEIOU'
+    
+    for char in message:
+        # Swap case first
+        swapped_char = char.swapcase()
+        
+        # Check if it's a vowel (after case swap)
+        if swapped_char in vowels:
+            # Get the ASCII value and add 2
+            if swapped_char.islower():
+                # For lowercase vowels, wrap around from 'y' to 'a'
+                new_char = chr((ord(swapped_char) - ord('a') + 2) % 26 + ord('a'))
+            else:
+                # For uppercase vowels, wrap around from 'Y' to 'A'
+                new_char = chr((ord(swapped_char) - ord('A') + 2) % 26 + ord('A'))
+            result.append(new_char)
+        else:
+            result.append(swapped_char)
+    
+    return ''.join(result)
+```
+
+The function works as follows:
+1. First, it swaps the case of each character
+2. Then it checks if the character (after case swap) is a vowel
+3. If it's a vowel, it calculates the letter two positions ahead, handling wrap-around (e.g., 'y' becomes 'a')
+4. If it's not a vowel, it keeps the case-swapped character
+5. Finally, it joins all characters into the encoded string
+
+The solution handles both uppercase and lowercase vowels correctly and ensures proper wrap-around for letters at the end of the alphabet.

@@ -1,0 +1,17 @@
+from typing import List, Any
+
+
+def filter_integers(values: List[Any]) -> List[int]:
+    """ Filter given list of any python values only for integers
+    >>> filter_integers(['a', 3.14, 5])
+    [5]
+    >>> filter_integers([1, 2, 3, 'abc', {}, []])
+    [1, 2, 3]
+    """
+
+The following is chain of thought:
+We are filtering a list of values to keep only integers.
+ We need to check the type of each element and keep it if it's an integer.
+ We can use a list comprehension with isinstance(element, int).
+ However, note: in Python, bool is a subclass of int (True and False are considered integers in some contexts).
+ But the examples show that we want on

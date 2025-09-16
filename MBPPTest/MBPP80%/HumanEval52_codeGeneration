@@ -1,0 +1,29 @@
+CodeGeneration:
+nary `d`.
+
+Here is the complete function:
+
+```python
+from collections import defaultdict
+
+def grouping_dictionary(l):
+    """
+    Groups values by their keys from a list of key-value tuples.
+    
+    Args:
+        l (list): A list of tuples where each tuple is (key, value)
+    
+    Returns:
+        defaultdict: A dictionary where keys are grouped and values are lists of all values
+                     associated with each key
+    """
+    d = defaultdict(list)
+    for k, v in l:
+        d[k].append(v)
+    return d
+```
+
+Example usage:
+```python
+input_list = [('a', 1), ('b', 2), ('a', 3), ('c', 4), ('b', 5)]
+result = grouping_dictionary(input_list)

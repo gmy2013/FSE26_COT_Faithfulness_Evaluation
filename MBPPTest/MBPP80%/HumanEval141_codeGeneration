@@ -1,0 +1,23 @@
+CodeGeneration:
+computes this formula. Here is the complete function:
+
+```python
+import math
+
+def area_tetrahedron(side):
+    """
+    Calculate the surface area of a regular tetrahedron.
+    
+    Args:
+        side (float): Length of a side of the tetrahedron.
+    
+    Returns:
+        float: Total surface area of the tetrahedron.
+    
+    Example:
+        >>> area_tetrahedron(5)
+        43.30127018922193
+    """
+    area = math.sqrt(3) * (side * side)
+    return area
+```

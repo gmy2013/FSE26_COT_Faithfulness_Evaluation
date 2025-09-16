@@ -1,0 +1,2 @@
+CodeGeneration:
+To solve this problem, we need to convert a given positive integer (between 1 and 1000) into its Roman numeral equivalent in lowercase. Roman numerals are represented using combinations of letters from the Latin alphabet. The basic symbols are I (1), V (5), X (10), L (50), C (100), D (500), and M (1000). The conversion involves breaking down the number into thousands, hundreds, tens, and units and then mapping each part to the corresponding Roman numeral symbols.

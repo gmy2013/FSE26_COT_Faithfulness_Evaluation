@@ -1,0 +1,25 @@
+import math
+import sys
+def sd_calc(data):
+    n = len(data)
+    if n <= 1:
+        return 0.0
+    mean, sd = avg_calc(data), 0.0
+    for el in data:
+        sd += (float(el) - mean)**2
+    sd = math.sqrt(sd / float(n-1))
+    return sd
+def avg_calc(ls):
+    n, mean = len(ls), 0.0
+    if n <= 1:
+        return ls[0]
+    for el in ls:
+        mean = mean + float(el)
+    mean = mean / float(n)
+    return mean
+The following is chain of thought:
+1. The function `sd_calc` calculates the sample standard deviation.
+2. It first checks if the data length is <= 1, returning 0.0 in that case.
+3. It calculates the mean using the `avg_calc` function.
+4. It initializes a sum variable `sd` to 0.0.
+5. For each element in the data, it adds the squared differenc

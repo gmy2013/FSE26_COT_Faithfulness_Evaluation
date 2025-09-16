@@ -1,0 +1,42 @@
+CodeGeneration:
+rn the total sum `sm`.
+
+However, note that the variable `j` is not necessary since we can compute the expression directly. We can simplify the code for clarity and efficiency.
+
+Here's the improved function:
+
+```python
+def odd_Num_Sum(n):
+    """
+    Calculate the sum of the fourth powers of the first n odd numbers.
+
+    Args:
+        n (int): Number of odd terms to include in the sum.
+
+    Returns:
+        int: Sum of the fourth powers of the first n odd numbers.
+    """
+    total = 0
+    for i in range(1, n + 1):
+        odd_num = 2 * i - 1
+        total += odd_num ** 4
+    return total
+```
+
+Alternatively, we can use a more Pythonic approach with a generator expression:
+
+```python
+def odd_Num_Sum(n):
+    """
+    Calculate the sum of the fourth powers of the first n odd numbers.
+
+    Args:
+        n (int): Number of odd terms to include in the sum.
+
+    Returns:
+        int: Sum of the fourth powers of the first n odd numbers.
+    """
+    return sum((2*i - 1)**4 for i in range(1, n + 1))
+```
+
+Both versions accomplish the same result, but the second one is more concise and Pythonic.

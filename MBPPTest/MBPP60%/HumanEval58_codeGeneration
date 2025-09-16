@@ -1,0 +1,42 @@
+CodeGeneration:
+re true, it appends `x[i]` to `repeated`.
+7. Finally, it returns the list `repeated` containing all duplicate elements found.
+
+However, the current implementation has a potential inefficiency: checking `x[i] not in repeated` for every duplicate pair can be slow for large lists since it requires scanning the `repeated` list each time.
+
+An optimized version could use a set for tracking seen duplicates to make the membership check O(1) instead of O(n). Here's an improved implementation:
+
+```python
+def Repeat(x):
+    """
+    Find and return a list of duplicate elements in the input list.
+    
+    Args:
+        x (list): Input list to search for duplicates.
+    
+    Returns:
+        list: List of elements that appear more than once in x, in the order of their first duplicate occurrence.
+    """
+    seen = set()
+    duplicates = set()
+    repeated = []
+    
+    for item in x:
+        if item in seen:
+            if item not in duplicates:
+                duplicates.add(item)
+                repeated.append(item)
+        else:
+            seen.add(item)
+            
+    return repeated
+```
+
+This improved version:
+1. Uses a set `seen` to track all elements encountered
+2. Uses a set `duplicates` for O(1) membership checking of duplicate elements
+3. Maintains `repeated` list to preserve order of first duplicate occurrence
+4. Has O(n) time complexity instead of O(n²)
+5. Only processes each element once
+
+The function returns duplicates in the order they first appear as duplicates in the original list.

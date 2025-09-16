@@ -1,0 +1,27 @@
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. The polynomial is represented as: xs[0] + xs[1]*x + xs[2]*x² + xs[3]*x³ + ...
+2. The derivative of a term xs[i] * x^i is: i * xs[i] * x^(i-1)
+3. The constant term (i=0) becomes 0 in the derivative and is dropped.
+4. For each coefficient at index i (which corresponds to x^i), the derivative coefficient becomes (i) * xs[i] at position (i-1) in the new list.
+5. We start from i=1 (since i=0 gives 0) and go to the last coefficient.
+6. The new list will have length = len(xs) - 1.
+
+Implementation:
+- If the input list has only one element (constant polynomial), return [0] or an empty list? But the examples show dropping the constant, so for [a] we should return [].
+- However, the examples: 
+    [3,1,2,4,5] -> [1,4,12,20] (length 4, original length 5)
+    [1,2,3] 

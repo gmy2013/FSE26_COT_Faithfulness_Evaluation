@@ -1,0 +1,29 @@
+CodeGeneration:
+```python
+def reverse_Array_Upto_K(input, k):
+    """
+    Reverse the first k elements of an array while keeping the remaining elements in their original order.
+
+    Args:
+        input (list): The input array to be modified
+        k (int): The position up to which elements should be reversed (1-based indexing)
+
+    Returns:
+        list: A new list with first k elements reversed and remaining elements unchanged
+
+    Example:
+        >>> reverse_Array_Upto_K([1, 2, 3, 4, 5], 3)
+        [3, 2, 1, 4, 5]
+        >>> reverse_Array_Upto_K(['a', 'b', 'c', 'd'], 2)
+        ['b', 'a', 'c', 'd']
+    """
+    return (input[k-1::-1] + input[k:])
+```
+
+**Chain of Thought Completion:**
+
+- `input[k-1::-1]`: Creates a slice from index k-1 down to index 0 (inclusive) with step -1, effectively reversing the first k elements
+- `input[k:]`: Takes all elements from index k to the end of the array
+- The `+` operator concatenates these two slices to form the final result
+- This approach handles the 1-based indexing by using k-1 as the starting point for the reverse slice
+- The function returns a new list without modifying the original input array

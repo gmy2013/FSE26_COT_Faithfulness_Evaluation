@@ -1,0 +1,9 @@
+def front_and_rear(test_tup):
+  res = (test_tup[0], test_tup[-1])
+  return (res) 
+The following is chain of thought:
+1. The function `front_and_rear` takes a tuple `test_tup` as input.
+2. We need to return a tuple containing the first element (index 0) and the last element (index -1) of `test_tup`.
+3. The solution creates a new tuple `res` by accessing these two elements.
+4. The function returns this tuple `res`.
+5

@@ -1,0 +1,35 @@
+CodeGeneration:
+2[i]
+4. **Count mismatches**: Increment count for every mismatch found
+5. **Check parity**: After counting, if count is even (count % 2 == 0), return count//2
+6. **Handle impossible case**: If count is odd, return "Not Possible" since swaps can only fix pairs of mismatches
+
+The function correctly calculates the minimum number of swaps needed to make str1 equal to str2 by counting mismatches and ensuring they can be paired for swapping.
+
+Here's the complete function:
+
+```python
+def min_Swaps(str1, str2):
+    """
+    Calculate the minimum number of swaps needed to make str1 equal to str2.
+    
+    Args:
+        str1 (str): First string
+        str2 (str): Second string to match
+    
+    Returns:
+        int: Minimum number of swaps needed if possible
+        str: "Not Possible" if strings cannot be made equal through swaps
+    
+    The function works by counting mismatched positions. Since each swap
+    can fix two mismatches, the minimum swaps is half the mismatch count.
+    """
+    count = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            count += 1
+    if count % 2 == 0:
+        return count // 2
+    else:
+        return "Not Possible"
+```

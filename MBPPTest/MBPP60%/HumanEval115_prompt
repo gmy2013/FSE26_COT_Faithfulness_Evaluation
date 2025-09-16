@@ -1,0 +1,8 @@
+def rombus_perimeter(a):
+  perimeter=4*a
+  return perimeter
+The following is chain of thought:
+1. The function name is `rombus_perimeter` (note: likely a typo for "rhombus" but we'll use the given name)
+2. The function takes one parameter `a`, which represents the side length of the rhombus
+3. The perimeter of a rhombus is calculated as 4 times the side length (since all sides are equal)
+4. The calcula

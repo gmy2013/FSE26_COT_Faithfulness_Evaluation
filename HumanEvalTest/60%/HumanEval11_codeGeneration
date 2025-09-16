@@ -1,0 +1,30 @@
+CodeGeneration:
+r both '1'), append '0' to the result.
+   - If they are different, append '1' to the result.
+4. Return the result string.
+
+Here is the implementation:
+
+```python
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+    if len(a) != len(b):
+        raise ValueError("Input strings must have the same length")
+    
+    result = []
+    for i in range(len(a)):
+        if a[i] == b[i]:
+            result.append('0')
+        else:
+            result.append('1')
+    return ''.join(result)
+```
+
+Note: The function includes a check to ensure both strings have the same length, as XOR operation typically requires operands of equal length. If the lengths are different, it raises a ValueError. This is a reasonable assumption for binary operations. If padding is needed, it should be specified, but the problem does not mention it, so we assume same length.

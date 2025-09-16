@@ -1,0 +1,14 @@
+import re
+def remove_parenthesis(items):
+ for item in items:
+    return (re.sub(r" ?\([^)]+\)", "", item))
+The following is chain of thought:
+1. The function `remove_parenthesis` takes a list of strings `items` as input.
+2. We need to remove all text within parentheses (including the parentheses themselves) from each string in the list.
+3. The regex pattern `r" ?\([^)]+\)"` matches:
+   - An optional space ` ?`
+   - An opening parenthesis `\(`
+   - One or more characters that are not closing parentheses `[^)]+`
+   - A closing parenthesis `\)`
+4. The current implementation only processes the first item and returns immediately, which is incorrect.
+5. We should iterate through all items, apply the r

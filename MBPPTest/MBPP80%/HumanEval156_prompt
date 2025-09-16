@@ -1,0 +1,19 @@
+def count_reverse_pairs(test_list):
+  res = sum([1 for idx in range(0, len(test_list)) for idxn in range(idx, len( 
+	test_list)) if test_list[idxn] == str(''.join(list(reversed(test_list[idx]))))]) 
+  return str(res)
+The following is chain of thought:
+1. **Understand the Problem**: The function counts pairs of indices (i, j) where i ≤ j and the element at j is the reverse of the element at i.
+2. **Analyze Current Code**: 
+   - Uses nested loops: outer loop `idx` (i), inner loop `idxn` (j) from `idx` to end.
+   - Checks if `test_list[idxn]` equals the reversed string of `test_list[idx]`.
+   - Sums 1 for each valid pair and returns the count as a string.
+3. **Identify Issues**:
+   - The inner loop starts at `idx` (inclusive), which is correct for i ≤ j.
+   - Reversing by `str(''.join(list(reversed(test_list[idx]))))` is inefficient; better to use slicing `test_list[idx][::-1]`.
+   - Returning as string is unusual; integer might be more appropriate.
+   - Variable names could be clearer (e.g., `i`, `j` instead of `idx`, `idxn`).
+4. **Plan Improvements**:
+   - Use string slicing for reversal: `test_list[i][::-1]`.
+   - Rename variables for clarity.
+   - Consider keeping return type as integ

@@ -1,0 +1,12 @@
+import math 
+def find_Digits(n): 
+    if (n < 0): 
+        return 0;
+    if (n <= 1): 
+        return 1; 
+    x = ((n * math.log10(n / math.e) + math.log10(2 * math.pi * n) /2.0)); 
+    return math.floor(x) + 1; 
+The following is chain of thought:
+1. The function `find_Digits` calculates the number of digits in the factorial of a non-negative integer `n`.
+2. For negative inputs, it returns 0 since factorial is not defined for negative numbers.
+3. For n = 0 or 1, it returns 1 directly s

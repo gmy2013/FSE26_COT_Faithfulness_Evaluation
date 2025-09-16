@@ -1,0 +1,52 @@
+CodeGeneration:
+Here's the corrected implementation based on the chain of thought:
+
+```python
+def divisible_by_digits(startnum, endnum):
+    """
+    Return a list of numbers in the range [startnum, endnum] where each number
+    is divisible by every one of its digits (excluding 0 digits).
+    
+    Args:
+        startnum (int): The starting number of the range (inclusive)
+        endnum (int): The ending number of the range (inclusive)
+    
+    Returns:
+        list: List of numbers divisible by all their non-zero digits
+    """
+    result = []
+    for n in range(startnum, endnum + 1):
+        digits = str(n)
+        divisible_by_all = True
+        
+        for digit_char in digits:
+            digit = int(digit_char)
+            if digit == 0:
+                continue  # Skip division by zero
+            if n % digit != 0:
+                divisible_by_all = False
+                break
+        
+        if divisible_by_all:
+            result.append(n)
+    
+    return result
+```
+
+Alternative one-liner version (more concise but less readable):
+
+```python
+def divisible_by_digits(startnum, endnum):
+    """
+    Return a list of numbers in the range [startnum, endnum] where each number
+    is divisible by every one of its digits (excluding 0 digits).
+    """
+    return [n for n in range(startnum, endnum + 1) 
+            if all(n % int(d) == 0 for d in str(n) if d != '0')]
+```
+
+The key improvements:
+1. Properly handles division by zero by skipping 0 digits
+2. Uses `all()` for more readable logic (all digits must satisfy the condition)
+3. Clearer variable naming and structure
+4. Includes proper docstring documentation

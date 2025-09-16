@@ -1,0 +1,47 @@
+CodeGeneration:
+ll number).
+
+Here is the complete function with the docstring:
+
+```python
+def bell_Number(n):
+    """
+    Compute the nth Bell number using dynamic programming with Bell triangle.
+    
+    The Bell number B_n counts the number of partitions of a set with n elements.
+    This implementation uses a 2D DP table to build the Bell triangle.
+    
+    Args:
+        n (int): The index of the Bell number to compute (non-negative integer)
+        
+    Returns:
+        int: The nth Bell number
+        
+    Examples:
+        >>> bell_Number(0)
+        1
+        >>> bell_Number(1)
+        1
+        >>> bell_Number(2)
+        2
+        >>> bell_Number(3)
+        5
+        >>> bell_Number(4)
+        15
+    """
+    # Handle edge case
+    if n < 0:
+        raise ValueError("n must be a non-negative integer")
+    
+    # Initialize Bell triangle
+    bell = [[0 for i in range(n+1)] for j in range(n+1)] 
+    bell[0][0] = 1
+    
+    # Build Bell triangle using dynamic programming
+    for i in range(1, n+1):
+        bell[i][0] = bell[i-1][i-1]
+        for j in range(1, i+1): 
+            bell[i][j] = bell[i-1][j-1] + bell[i][j-1] 
+    
+    return bell[n][0]
+```

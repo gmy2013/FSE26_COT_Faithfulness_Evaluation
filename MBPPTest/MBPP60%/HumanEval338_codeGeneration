@@ -1,0 +1,23 @@
+CodeGeneration:
+Based on the chain of thought and the provided function, here's the complete implementation:
+
+```python
+def sorted_models(models):
+    """Sort a list of model dictionaries by their color attribute.
+    
+    Args:
+        models: A list of dictionaries, each representing a model with a 'color' key
+        
+    Returns:
+        list: A new list of model dictionaries sorted by color in ascending order
+    """
+    sorted_models = sorted(models, key=lambda x: x['color'])
+    return sorted_models
+```
+
+This function:
+- Takes a list of dictionaries as input
+- Uses Python's built-in `sorted()` function to create a new sorted list
+- Uses a lambda function as the key to extract the 'color' value from each dictionary
+- Returns the sorted list in ascending alphabetical order based on color values
+- Maintains the original list unchanged (creates a new sorted list)

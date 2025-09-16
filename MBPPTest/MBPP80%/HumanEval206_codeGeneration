@@ -1,0 +1,23 @@
+CodeGeneration:
+Looking at your implementation, I can see it's already correct and follows the chain of thought perfectly. The function:
+
+1. Uses a generator expression `(el for el in nums if el%2!=0)` to find odd numbers
+2. Uses `next()` with a default value of `-1` to get the first odd number or return -1 if none exists
+3. Handles the edge case where no odd numbers are present
+4. Is efficient with early termination (stops at first odd number found)
+
+The implementation is complete and doesn't need any changes. Here's the same code for clarity:
+
+```python
+def first_odd(nums):
+    """Return the first odd number in the list, or -1 if no odd numbers exist.
+    
+    Args:
+        nums: List of integers to search through
+        
+    Returns:
+        First odd integer found, or -1 if no odd numbers exist
+    """
+    first_odd = next((el for el in nums if el % 2 != 0), -1)
+    return first_odd
+```

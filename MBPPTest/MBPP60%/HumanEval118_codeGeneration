@@ -1,0 +1,16 @@
+CodeGeneration:
+re 'b's), but it affects how the matching is performed (minimal matching). For the purpose of `re.search()`, which just checks for any match, the non-greedy quantifier doesn't change the result - it will still match any string that contains 'a'.
+
+6. Therefore, the function will return 'Found a match!' for any text containing at least one 'a', and 'Not matched!' for texts without any 'a'.
+
+Here's the complete function:
+
+```python
+import re
+def text_match(text):
+    patterns = 'ab*?'
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return 'Not matched!'
+```

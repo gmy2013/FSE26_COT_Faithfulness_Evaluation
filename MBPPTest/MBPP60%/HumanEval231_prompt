@@ -1,0 +1,10 @@
+import re 
+def extract_max(input): 
+	numbers = re.findall('\d+',input) 
+	numbers = map(int,numbers) 
+	return max(numbers)
+The following is chain of thought:
+1. Import the `re` module for regular expression operations.
+2. Define function `extract_max` that takes `input` parameter.
+3. Use `re.findall` with pattern `'\d+'` to find all numeric substrings in input.
+4. C

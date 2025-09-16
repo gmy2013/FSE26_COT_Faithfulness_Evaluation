@@ -1,0 +1,32 @@
+
+def solution(lst):
+    """Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.
+    
+
+    Examples
+    solution([5, 8, 7, 1]) ==> 12
+    solution([3, 3, 3, 3, 3]) ==> 9
+    solution([30, 13, 24, 321]) ==>0
+    """
+
+The following is chain of thought:
+The function needs to sum odd integers at even indices (0-indexed, so indices 0, 2, 4... are even positions).
+
+Chain of thought:
+1. Iterate through the list with both index and value
+2. Check if the index is even (i % 2 == 0)
+3. Check if the value is odd (value % 2 != 0)
+4. If both conditions are met, add the value to the sum
+5. Return the total sum
+
+The implementation will use enumerate() to get index-value pairs and a simple accumulator pattern.
+
+```python
+def solution(lst):
+    """Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.
+    
+
+    Examples
+    solution([5, 8, 7, 1]) ==> 12
+    solution([3, 3, 3, 3, 3]) ==> 9
+    s

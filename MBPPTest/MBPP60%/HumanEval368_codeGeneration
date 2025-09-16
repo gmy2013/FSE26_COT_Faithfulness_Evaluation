@@ -1,0 +1,32 @@
+CodeGeneration:
+om index 1 onward).
+   - If false, append the current tuple `sub` as a new list to `res`.
+4. After processing all tuples, convert each list in `res` back to a tuple.
+5. Return the list of merged tuples.
+
+Here's the complete function with the docstring:
+
+```python
+def join_tuples(test_list):
+    """
+    Join consecutive tuples in the list that have the same first element.
+    
+    Args:
+        test_list (list): List of tuples to process
+        
+    Returns:
+        list: List of merged tuples where consecutive tuples with same first element are combined
+        
+    Example:
+        >>> join_tuples([(5, 6), (5, 7), (6, 8), (6, 9), (7, 10)])
+        [(5, 6, 7), (6, 8, 9), (7, 10)]
+    """
+    res = []
+    for sub in test_list:
+        if res and res[-1][0] == sub[0]:
+            res[-1].extend(sub[1:])
+        else:
+            res.append([ele for ele in sub])
+    res = list(map(tuple, res))
+    return res
+```

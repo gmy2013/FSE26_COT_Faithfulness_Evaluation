@@ -1,0 +1,21 @@
+
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+
+The following is chain of thought:
+To solve this problem, we need to extract the decimal part of a positive floating point number. The decimal part is defined as the leftover part after removing the integer part (which is the largest integer smaller than the given number). 
+
+The approach is straightforward:
+1. The integer part can be obtained by converting the number to an integer (which truncates the decimal) or using the `math.floor` function. However, since the number is positive, both truncation and flooring yield the same result.
+2. Subtract this integer part from the original number to get the decimal part.
+3. Return the decimal part.
+
+We can implement this without any external libraries by simply using t

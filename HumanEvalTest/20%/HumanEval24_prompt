@@ -1,0 +1,12 @@
+
+
+def largest_divisor(n: int) -> int:
+    """ For a given number n, find the largest number that divides n evenly, smaller than n
+    >>> largest_divisor(15)
+    5
+    """
+
+The following is chain of thought:
+To solve the problem of finding the largest divisor of a given number `n` that is smaller than `n`, we can follow these steps:
+
+1. **Start from a potential divisor**: Begin checking from the largest p

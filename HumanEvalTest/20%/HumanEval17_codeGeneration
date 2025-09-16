@@ -1,0 +1,29 @@
+20%CoT
+CodeGeneration:
+To solve the problem of parsing the musical notes from the given string, we need to split the string into individual note representations, interpret each note according to the provided legend, and then return the list of beats corresponding to each note.
+
+Here's the implementation of the function:
+
+```python
+def parse_music(music_string: str) -> List[int]:
+    # Split the input string by spaces to get individual notes
+    notes = music_string.split()
+    
+    # Initialize an empty list to store the beats for each note
+    beats = []
+    
+    # Iterate over each note and determine the number of beats it represents
+    for note in notes:
+        if note == 'o':
+            beats.append(4)
+        elif note == 'o|':
+            beats.append(2)
+        elif note == '.|':
+            beats.append(1)
+        else:
+            # If an unrecognized note is found, we could throw an error or ignore it
+            # For now, let's assume the input is always valid as per the legend
+            raise ValueError(f"Unrecognized note: {note}")
+    
+    # Return the list of beats
+    return beats

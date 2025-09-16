@@ -1,0 +1,48 @@
+CodeGeneration:
+next element. If they are different (i.e., unique), add the next element to the sum.
+   - Return the accumulated sum
+
+4. **Potential Issues**:
+   - The function assumes the array has at least one element (n >= 1)
+   - It doesn't handle empty arrays (n = 0)
+   - The sorting step is O(n log n) complexity
+   - The approach works but could be optimized for better readability
+
+5. **Alternative Approaches**:
+   - Using a set to remove duplicates first, then summing
+   - Using dictionary keys to get unique elements
+   - Using list comprehension with conditional checks
+
+Here's the improved implementation:
+
+```python
+def find_Sum(arr, n):
+    """
+    Calculate the sum of unique elements in an array.
+    
+    Args:
+        arr (list): List of numbers
+        n (int): Length of the array
+    
+    Returns:
+        int/float: Sum of unique elements in the array
+    
+    Example:
+        >>> find_Sum([1, 2, 3, 2, 1], 5)
+        6
+        >>> find_Sum([1, 1, 1, 1], 4)
+        1
+    """
+    if n == 0:
+        return 0
+    
+    # More efficient approach using set
+    return sum(set(arr))
+```
+
+The improved version:
+- Handles empty arrays
+- Uses set to automatically remove duplicates
+- Is more concise and readable
+- Has the same time complexity (O(n)) for the set operation
+- Maintains the same functionality with cleaner code

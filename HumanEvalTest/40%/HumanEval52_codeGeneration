@@ -1,0 +1,18 @@
+CodeGeneration:
+ound a number that is not below the threshold)
+ 3. If we finish the loop without returning False, return True
+
+Here is the implementation:
+```python
+def below_threshold(l: list, t: int):
+    """Return True if all numbers in the list l are below threshold t.
+    >>> below_threshold([1, 2, 4, 10], 100)
+    True
+    >>> below_threshold([1, 20, 4, 10], 5)
+    False
+    """
+    for num in l:
+        if num >= t:
+            return False
+    return True
+```

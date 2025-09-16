@@ -1,0 +1,29 @@
+CodeGeneration:
+I see you've already provided a complete and correct implementation of the `equilibrium_index` function! The code correctly:
+
+1. Calculates the total sum of all elements
+2. Iterates through the array while maintaining a running left sum
+3. Subtracts the current element from the total sum (which effectively becomes the right sum)
+4. Checks if left_sum equals the remaining total_sum (right sum)
+5. Returns the index when found, or -1 if no equilibrium index exists
+
+This is an optimal O(n) time complexity solution with O(1) space complexity. The function works correctly for all cases including:
+- Arrays with positive and negative numbers
+- Multiple equilibrium indices (returns the first one found)
+- Arrays with no equilibrium index
+
+Here's your complete function:
+
+```python
+def equilibrium_index(arr):
+  total_sum = sum(arr)
+  left_sum=0
+  for i, num in enumerate(arr):
+    total_sum -= num
+    if left_sum == total_sum:
+      return i
+    left_sum += num
+  return -1
+```
+
+Is there anything specific you'd like me to explain or modify about this implementation?

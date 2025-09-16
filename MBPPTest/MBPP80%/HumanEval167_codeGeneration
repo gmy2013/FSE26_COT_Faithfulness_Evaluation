@@ -1,0 +1,35 @@
+CodeGeneration:
+I notice the chain of thought was cut off at the end. Let me complete the function with proper documentation and provide the full implementation:
+
+```python
+def check_Odd_Parity(x):
+    """
+    Check if a number has odd parity (odd number of 1-bits in its binary representation).
+    
+    Args:
+        x (int): The integer number to check for odd parity
+        
+    Returns:
+        bool: True if the number has odd parity (odd number of 1-bits), False otherwise
+        
+    Example:
+        >>> check_Odd_Parity(7)  # 7 in binary: 111 (three 1-bits - odd)
+        True
+        >>> check_Odd_Parity(6)  # 6 in binary: 110 (two 1-bits - even)
+        False
+    """
+    parity = 0
+    while (x != 0): 
+        x = x & (x - 1) 
+        parity += 1
+    if (parity % 2 == 1): 
+        return True
+    else: 
+        return False
+```
+
+**Time Complexity**: O(k) where k is the number of 1-bits in the binary representation, which is more efficient than O(n) for counting all bits.
+
+**Space Complexity**: O(1) as it uses constant extra space regardless of input size.
+
+The function efficiently counts the number of 1-bits using Brian Kernighan's algorithm and then checks if the count is odd to determine odd parity.

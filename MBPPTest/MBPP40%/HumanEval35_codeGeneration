@@ -1,0 +1,23 @@
+CodeGeneration:
+Based on the chain of thought, the function appears to be checking if `a` equals `c` and returning "Yes" or "No" accordingly. The parameter `b` is not used in the logic.
+
+Here's the complete function:
+
+```python
+def Check_Solution(a, b, c):
+    """
+    Check if a equals c.
+    
+    Parameters:
+    a: First value to compare
+    b: Unused parameter (present for interface consistency)
+    c: Second value to compare
+    
+    Returns:
+    str: "Yes" if a equals c, "No" otherwise
+    """
+    if a == c:
+        return "Yes"
+    else:
+        return "No"
+```

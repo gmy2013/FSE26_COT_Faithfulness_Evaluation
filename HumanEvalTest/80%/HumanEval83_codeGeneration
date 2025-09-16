@@ -1,0 +1,28 @@
+CodeGeneration:
+-2))
+
+But wait, for n=2: 18 * 10^(0) = 18 * 1 = 18.
+Let's verify for n=2:
+Numbers from 10 to 99.
+Start with 1: 10,11,...,19 -> 10 numbers.
+End with 1: 11,21,31,...,91 -> 9 numbers (but 11 is counted in both).
+Both: 11 -> 1 number.
+So total = 10 + 9 - 1 = 18. Correct.
+
+So the function can be implemented as:
+
+```python
+def starts_one_ends(n):
+    """
+    Given a positive integer n, return the count of the numbers of n-digit
+    positive integers that start or end with 1.
+    """
+    if n == 1:
+        return 1
+    else:
+        return 18 * (10 ** (n - 2))
+```
+
+However, to make it efficient and avoid recursion, we can use this direct computation.
+
+Let's write the code accordingly.

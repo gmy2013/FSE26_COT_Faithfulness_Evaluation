@@ -1,0 +1,44 @@
+CodeGeneration:
+Looking at the function, I can see it's designed to check if a string starts with the digit "5". However, the current implementation has a limitation - it only checks if the string starts with "5" but doesn't ensure the entire string consists of digits.
+
+Based on the function name `match_num`, it seems like it should verify if the string is a number that starts with 5. Here's an improved version:
+
+```python
+import re
+
+def match_num(string):
+    """
+    Check if the input string is a number that starts with the digit '5'.
+    
+    Args:
+        string (str): The input string to check
+        
+    Returns:
+        bool: True if the string is a number starting with '5', False otherwise
+    """
+    # Pattern matches: start of string, digit 5, followed by zero or more digits, end of string
+    pattern = re.compile(r"^5\d*$")
+    return bool(pattern.match(string))
+```
+
+Alternative implementation without regex:
+
+```python
+def match_num(string):
+    """
+    Check if the input string is a number that starts with the digit '5'.
+    
+    Args:
+        string (str): The input string to check
+        
+    Returns:
+        bool: True if the string is a number starting with '5', False otherwise
+    """
+    if not string:  # Handle empty string
+        return False
+    return string.isdigit() and string.startswith('5')
+```
+
+Both versions will:
+- Return `True` for strings like "5", "50", "5123"
+- Return `False` for strings like "4", "15", "abc", "5a", ""

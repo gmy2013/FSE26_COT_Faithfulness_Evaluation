@@ -1,0 +1,11 @@
+def jacobsthal_num(n): 
+	dp = [0] * (n + 1) 
+	dp[0] = 0
+	dp[1] = 1
+	for i in range(2, n+1): 
+		dp[i] = dp[i - 1] + 2 * dp[i - 2] 
+	return dp[n]
+The following is chain of thought:
+1. The function `jacobsthal_num(n)` computes the n-th Jacobsthal number using dynamic programming.
+2. Initialize a list `dp` of size `n+1` to store intermediate results, with `dp[0] = 0` and `dp[1] = 1` as base cases.
+3. For indices from 2 to n (inclusive), apply the recurrence relation: `dp[i] = dp[i-1

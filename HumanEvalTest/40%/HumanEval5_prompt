@@ -1,0 +1,19 @@
+from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """ Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    >>> intersperse([], 4)
+    []
+    >>> intersperse([1, 2, 3], 4)
+    [1, 4, 2, 4, 3]
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+1. If the list is empty, return an empty list.
+2. For a non-empty list, we need to insert the delimeter between every two elements.
+3. The result should start with the first element, then delimeter, then second element, then delimeter, and so on until the last element (which shouldn't be followed by a delimeter).
+
+Approach:
+- Initialize an empty result lis

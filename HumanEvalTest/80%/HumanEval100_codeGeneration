@@ -1,0 +1,35 @@
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+def make_a_pile(n):
+    """
+    Given a positive integer n, you have to make a pile of n levels of stones.
+    The first level has n stones.
+    The number of stones in the next level is:
+        - the next odd number if n is odd.
+        - the next even number if n is even.
+    Return the number of stones in each level in a list, where element at index
+    i represents the number of stones in the level (i+1).
+
+    Examples:
+    >>> make_a_pile(3)
+    [3, 5, 7]
+    """
+    pile = []
+    current = n
+    for i in range(n):
+        pile.append(current)
+        current += 2
+    return pile
+```
+
+This implementation:
+1. Creates an empty list to store the stone counts
+2. Starts with the initial value `n`
+3. Iterates `n` times to create `n` levels
+4. For each iteration, adds the current stone count to the list
+5. Increments by 2 to get the next number of the same parity (odd or even)
+6. Returns the completed list
+
+The function correctly handles both odd and even starting values by always adding 2, which preserves the parity and gives the next number of the same type (odd or even).

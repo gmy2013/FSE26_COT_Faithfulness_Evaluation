@@ -1,0 +1,28 @@
+
+def split_words(txt):
+    '''
+    Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you
+    should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the
+    alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25
+    Examples
+    split_words("Hello world!") ➞ ["Hello", "world!"]
+    split_words("Hello,world!") ➞ ["Hello", "world!"]
+    split_words("abcdef") == 3 
+    '''
+
+The following is chain of thought:
+First, I need to check if there are any whitespaces in the string. If yes, split on whitespace and return the list.
+
+If no whitespaces, then check for commas. If commas exist, split on commas and return the list.
+
+If neither whitespaces nor commas exist, then I need to count the number of lower-case letters that have an odd order in the alphabet. Note: ord('a') is 0, which is even, ord('b') is 1 (odd), and so on up to ord('z') = 25 (odd).
+
+So for each character in the string, if it's a lower-case letter, check if (ord(char) - ord('a')) is odd. Since ord('a') is 97, but the problem says ord('a') = 0, so I should use (ord(char) - ord('a')) to get the index, and then check if that index is odd.
+
+Actually, the problem states: "ord('a') = 0, ord('b') = 1, ... ord('z') = 25". So for a character c, the value is ord(c) - ord('a'). Then I need to check if that value is odd.
+
+So, for the string with no whitespace and no commas, iterate through each character, if it's between 'a' and 'z', compute index = ord(c) - ord('a'), and if index % 2 == 1, then it's odd, so count it.
+
+Finally, return that count.
+
+L

@@ -1,0 +1,26 @@
+def recur_gcd(a, b):
+	low = min(a, b)
+	high = max(a, b)
+	if low == 0:
+		return high
+	elif low == 1:
+		return 1
+	else:
+		return recur_gcd(low, high%low)
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose**: The function calculates the greatest common divisor (GCD) of two integers using the Euclidean algorithm implemented recursively.
+
+2. **Initial Setup**:
+   - Identify the smaller number as `low` using `min(a, b)`
+   - Identify the larger number as `high` using `max(a, b)`
+
+3. **Base Cases**:
+   - If `low` is 0, return `high` (since GCD(n, 0) = n)
+   - If `low` is 1, return 1 (since 1 is the only common divisor when one number is 1)
+
+4. **Recursive Case**:
+   - Apply the Euclidean algorithm property: GCD(a, b) = GCD(b, a mod b)
+   - Make a recursive call with `low` and `high % low` (remainder of high divided by low)
+   - This reduces the problem size w

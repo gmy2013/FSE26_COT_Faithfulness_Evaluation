@@ -1,0 +1,31 @@
+def heap_sort(arr):
+    heapify(arr)  
+    end = len(arr) - 1
+    while end > 0:
+        arr[end], arr[0] = arr[0], arr[end]
+        shift_down(arr, 0, end - 1)
+        end -= 1
+    return arr
+
+def heapify(arr):
+    start = len(arr) // 2
+    while start >= 0:
+        shift_down(arr, start, len(arr) - 1)
+        start -= 1
+def shift_down(arr, start, end):
+    root = start
+    while root * 2 + 1 <= end:
+        child = root * 2 + 1
+        if child + 1 <= end and arr[child] < arr[child + 1]:
+            child += 1
+        if child <= end and arr[root] < arr[child]:
+            arr[root], arr[child] = arr[child], arr[root]
+            root = child
+        else:
+            return
+
+The following is chain of thought:
+1. **Analyze heap_sort function**: The function builds a max heap, then repeatedly extracts the maximum element (swapping with the end) and maintains heap properties.
+2. **Analyze heapify function**: Builds a max heap by starting from the last non-leaf node and shifting down each node.
+3. **Analyze shift_down function**: Maintains max heap property by comparing parent with children and swapping if necessary, moving down the heap.
+4. **Identify issue**: The shift_down call in heap_sort uses end-1, but after swapping, the heap size decreases by 1 (end is the la

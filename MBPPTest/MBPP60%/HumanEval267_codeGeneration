@@ -1,0 +1,17 @@
+CodeGeneration:
+ncrement the length counter (current word continues)
+4. After iteration, return the final length counter (which will be length of last word)
+
+Here's the complete function:
+
+```python
+def length_Of_Last_Word(a): 
+    l = 0
+    x = a.strip() 
+    for i in range(len(x)): 
+        if x[i] == " ": 
+            l = 0
+        else: 
+            l += 1
+    return l
+```

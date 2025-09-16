@@ -1,0 +1,17 @@
+CodeGeneration:
+ap Application**: 
+   - `map(lambda ele: not ele, test_tup)` applies the lambda to each element
+   - This creates an iterator that yields `True` for falsy elements, `False` for truthy ones
+
+4. **Any Function Usage**: 
+   - `any(...)` checks if there's at least one `True` in the mapped results
+   - This means it returns `True` if any element was falsy (since falsy elements become `True`)
+
+5. **Result Inversion**: 
+   - `not any(...)` inverts the result
+   - So if `any` found a falsy element (returns `True`), `not` makes it `False`
+   - If no falsy elements were found (`any` returns `False`), `not` makes it `True`
+
+6. **Final Result**: The function returns `True` only if all elements are truthy, `False` otherwise
+
+The function is equivalent to `all(test_tup)` but implemented using `any` with negation.

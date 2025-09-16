@@ -1,0 +1,19 @@
+CodeGeneration:
+```python
+def remove_similar_row(test_list):
+    """
+    Removes duplicate rows from a list of lists by converting each sublist to a sorted tuple of unique elements.
+    
+    Args:
+        test_list (list): A list of lists (or any iterables) where each inner list represents a row.
+    
+    Returns:
+        set: A set of tuples where each tuple contains sorted unique elements from the original rows.
+    
+    Example:
+        >>> remove_similar_row([[1, 2, 3], [3, 2, 1], [4, 5, 6], [2, 1, 3]])
+        {(1, 2, 3), (4, 5, 6)}
+    """
+    res = set(sorted([tuple(sorted(set(sub))) for sub in test_list]))
+    return res
+```

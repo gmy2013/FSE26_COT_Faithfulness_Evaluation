@@ -1,0 +1,63 @@
+CodeGeneration:
+Based on the analysis, the current implementation has an issue with odd-length lists where it introduces `None` values. Here's the corrected function:
+
+```python
+from itertools import zip_longest, chain, tee
+
+def exchange_elements(lst):
+    """
+    Exchange adjacent elements in a list.
+    
+    Swaps elements at even and odd indices. For a list [a, b, c, d, e],
+    returns [b, a, d, c, e] (if length is odd, the last element remains in place).
+    
+    Args:
+        lst: Input list of elements
+        
+    Returns:
+        List with adjacent elements swapped
+    """
+    lst1, lst2 = tee(iter(lst), 2)
+    # Remove the unused tee variables since we're slicing the original list
+    even_indices = lst[::2]
+    odd_indices = lst[1::2]
+    
+    # Pair odd indices with even indices, handling different lengths
+    result = []
+    for odd, even in zip_longest(odd_indices, even_indices):
+        if odd is not None:
+            result.append(odd)
+        if even is not None:
+            result.append(even)
+    
+    return result
+```
+
+Alternative more concise implementation:
+
+```python
+from itertools import chain
+
+def exchange_elements(lst):
+    """
+    Exchange adjacent elements in a list.
+    
+    Swaps elements at even and odd indices. For a list [a, b, c, d, e],
+    returns [b, a, d, c, e] (if length is odd, the last element remains in place).
+    
+    Args:
+        lst: Input list of elements
+        
+    Returns:
+        List with adjacent elements swapped
+    """
+    result = []
+    for i in range(0, len(lst), 2):
+        if i + 1 < len(lst):
+            result.extend([lst[i+1], lst[i]])
+        else:
+            result.append(lst[i])
+    return result
+```
+
+The second implementation is more straightforward and handles odd-length lists correctly without introducing `None` values.

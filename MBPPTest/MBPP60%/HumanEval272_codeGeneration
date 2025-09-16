@@ -1,0 +1,41 @@
+CodeGeneration:
+I notice the function implementation is already provided, but there are a few issues to address:
+
+1. The function doesn't handle n = 0 (which should return 0)
+2. The function doesn't handle negative numbers
+3. The parentheses are unbalanced in the return statement
+
+Here's the corrected implementation:
+
+```python
+def fibonacci(n):
+    """
+    Calculate the nth Fibonacci number using recursion.
+    
+    Args:
+        n (int): The position in the Fibonacci sequence (n >= 0)
+    
+    Returns:
+        int: The nth Fibonacci number
+    
+    Raises:
+        ValueError: If n is negative
+    """
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if n == 0:
+        return 0
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+```
+
+Key improvements:
+- Added proper docstring with parameter description, return type, and exception handling
+- Added validation for negative inputs
+- Added base case for n = 0 (returns 0)
+- Fixed the unbalanced parentheses in the return statement
+- Used elif for better readability
+
+Note: While this recursive implementation is mathematically correct, it has exponential time complexity O(2^n). For practical use with larger values of n, a memoized or iterative approach would be more efficient.

@@ -1,0 +1,29 @@
+CodeGeneration:
+owercase (checked with `el[1:].islower()`)
+2. Join all the filtered strings together into a single string
+3. Return the length of that combined string
+
+Here's the complete function with the docstring:
+
+```python
+def sample_nam(sample_names):
+    """
+    Filter names that start with an uppercase letter and have the rest in lowercase,
+    then return the total length of all filtered names combined.
+    
+    Args:
+        sample_names (list): List of strings representing names
+        
+    Returns:
+        int: Total length of all valid names combined
+        
+    Example:
+        >>> sample_nam(['John', 'jane', 'Mary', 'peter', 'Alice'])
+        9  # 'John' (4) + 'Mary' (4) + 'Alice' (5) = 13, but wait let me recalculate...
+        Actually: 'John' (4) + 'Mary' (4) + 'Alice' (5) = 13
+    """
+    sample_names = list(filter(lambda el: el[0].isupper() and el[1:].islower(), sample_names))
+    return len(''.join(sample_names))
+```
+
+The function filters out names that don't start with an uppercase letter followed by lowercase letters, then returns the total character count of all valid names combined.

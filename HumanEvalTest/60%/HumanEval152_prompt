@@ -1,0 +1,35 @@
+
+def compare(game,guess):
+    """I think we all remember that feeling when the result of some long-awaited
+    event is finally known. The feelings and thoughts you have at that moment are
+    definitely worth noting down and comparing.
+    Your task is to determine if a person correctly guessed the results of a number of matches.
+    You are given two arrays of scores and guesses of equal length, where each index shows a match. 
+    Return an array of the same length denoting how far off each guess was. If they have guessed correctly,
+    the value is 0, and if not, the value is the absolute difference between the guess and the score.
+    
+    
+    example:
+
+    compare([1,2,3,4,5,1],[1,2,3,4,2,-2]) -> [0,0,0,0,3,3]
+    compare([0,5,0,0,0,4],[4,1,1,0,0,-2]) -> [4,4,1,0,0,6]
+    """
+
+The following is chain of thought:
+We are given two lists: `game` (actual scores) and `guess` (predicted scores).
+ We need to return a list of the same length where each element is:
+   0 if the guess is exactly correct (same as actual score),
+   otherwise the absolute difference between the actual score and the guess.
+
+ Steps:
+ 1. Initialize an empty list for the result.
+ 2. Iterate over the indices of the lists (since they are of equal length).
+ 3. For each index i:
+      if game[i] == guess[i]:
+          append 0 to the result list.
+      else:
+          append abs(game[i] - guess[i]) to the result list.
+ 4. Return the result list.
+
+ However, note the example: 
+    compare([1,2,3,4,5,1],[1,2,3,4,2,

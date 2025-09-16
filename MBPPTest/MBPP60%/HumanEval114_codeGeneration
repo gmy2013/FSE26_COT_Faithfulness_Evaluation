@@ -1,0 +1,29 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def str_to_tuple(test_str):
+    """
+    Convert a string of comma-separated numbers to a tuple of integers.
+    
+    Args:
+        test_str (str): A string containing numbers separated by ', '.
+    
+    Returns:
+        tuple: A tuple containing the integer values from the input string.
+    
+    Example:
+        >>> str_to_tuple('1, 2, 3, 4')
+        (1, 2, 3, 4)
+        >>> str_to_tuple('10, -5, 7, 0')
+        (10, -5, 7, 0)
+    """
+    res = tuple(map(int, test_str.split(', ')))
+    return (res)
+```
+
+The function works exactly as described in your chain of thought:
+1. Takes a string input with comma-space separated numbers
+2. Splits the string into a list using ', ' as the delimiter
+3. Maps the `int` function to convert each substring to an integer
+4. Converts the result to a tuple and returns it

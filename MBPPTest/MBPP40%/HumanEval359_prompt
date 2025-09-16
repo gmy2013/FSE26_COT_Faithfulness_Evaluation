@@ -1,0 +1,26 @@
+def get_noOfways(n):
+    if (n == 0):
+        return 0;
+    if (n == 1):
+        return 1; 
+    return get_noOfways(n - 1) + get_noOfways(n - 2);
+The following is chain of thought:
+The function `get_noOfways(n)` implements a recursive solution to calculate the number of ways to reach step `n` when only 1 or 2 steps can be taken at a time. This is essentially the Fibonacci sequence.
+
+**Chain of Thought:**
+1. **Base Case Handling:**
+   - If `n == 0`, return 0 because there are 0 ways to reach step 0 (assuming we start at step 0 and need to move).
+   - If `n == 1`, return 1 because the only way is to take one step of size 1.
+
+2. **Recursive Case:**
+   - For `n >= 2`, the number of ways to reach step `n` is the sum of:
+     - Ways to reach step `n-1` (then take a step of size 1)
+     - Ways to reach step `n-2` (then take a step of size 2)
+   - This recurrence relation matches the Fibonacci sequence: F(n) = F(n-1) + F(n-2)
+
+3. **Efficiency Note:**
+   - This recursive implementation has exponential time complexity O(2^n) due to repeated calculations.
+   - For practical use with larger `n`, memoization or iterative methods would be more efficient.
+
+4. **Example Outputs:**
+   - n=

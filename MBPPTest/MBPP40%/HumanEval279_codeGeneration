@@ -1,0 +1,31 @@
+CodeGeneration:
+not greater than 0, it checks if it equals 0:
+   - If true, it returns the string "1 solution", indicating one real root (a repeated root).
+5. If neither condition is met (discriminant is less than 0), it returns the string "No solutions", indicating no real roots.
+
+The function is complete and correctly implements the logic to determine the number of real solutions for a quadratic equation based on its discriminant.
+
+```python
+def Check_Solution(a, b, c):
+    """
+    Determines the number of real solutions for a quadratic equation ax² + bx + c = 0.
+    
+    Args:
+        a (float): Coefficient of x²
+        b (float): Coefficient of x
+        c (float): Constant term
+    
+    Returns:
+        str: "2 solutions" if discriminant > 0 (two distinct real roots)
+             "1 solution" if discriminant == 0 (one repeated real root)
+             "No solutions" if discriminant < 0 (no real roots)
+    """
+    discriminant = (b * b) - (4 * a * c)
+    
+    if discriminant > 0:
+        return "2 solutions"
+    elif discriminant == 0:
+        return "1 solution"
+    else:
+        return "No solutions"
+```

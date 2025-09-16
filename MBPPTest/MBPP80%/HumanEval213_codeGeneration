@@ -1,0 +1,20 @@
+CodeGeneration:
+ntation is correct and complete for the given docstring.
+
+Here is the function with an added docstring for clarity:
+
+```python
+def rombus_area(p, q):
+    """
+    Calculate the area of a rhombus given the lengths of its diagonals.
+    
+    Args:
+        p (float): Length of the first diagonal.
+        q (float): Length of the second diagonal.
+    
+    Returns:
+        float: Area of the rhombus calculated as (p * q) / 2.
+    """
+    area = (p * q) / 2
+    return area
+```

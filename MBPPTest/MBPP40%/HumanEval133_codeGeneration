@@ -1,0 +1,44 @@
+CodeGeneration:
+ous contiguous subarrays starting at `i+1` but now including `arr[i]` at the front (products = `arr[i] * product_of_each_subarray`)
+
+So `1 + res` represents:
+- `1` for the single element case
+- `res` for all the subarrays we can extend to the right
+
+Therefore, `incr = arr[i] * (1 + res)` gives us the sum of products of all contiguous subarrays starting at index `i`.
+
+By iterating from right to left and accumulating these values, we get the total sum of products of all contiguous subarrays.
+
+Here's the complete function with improved readability:
+
+```python
+def sum_Of_Subarray_Prod(arr, n):
+    """
+    Calculate the sum of products of all contiguous subarrays.
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+    
+    Returns:
+        int: Sum of products of all contiguous subarrays
+    
+    Example:
+        >>> sum_Of_Subarray_Prod([1, 2, 3], 3)
+        20
+        # Subarrays: [1], [2], [3], [1,2], [2,3], [1,2,3]
+        # Products: 1 + 2 + 3 + 2 + 6 + 6 = 20
+    """
+    ans = 0
+    res = 0
+    i = n - 1
+    
+    while i >= 0:
+        # Calculate sum of products for all subarrays starting at index i
+        incr = arr[i] * (1 + res)
+        ans += incr
+        res = incr
+        i -= 1
+    
+    return ans
+```

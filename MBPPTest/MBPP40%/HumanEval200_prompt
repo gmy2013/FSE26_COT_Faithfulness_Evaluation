@@ -1,0 +1,11 @@
+def test_three_equal(x,y,z):
+  result= set([x,y,z])
+  if len(result)==3:
+    return 0
+  else:
+    return (4-len(result))
+The following is chain of thought:
+1. The function `test_three_equal` takes three arguments: x, y, z.
+2. Create a set from these three values to remove duplicates.
+3. Check the length of the set:
+   - If all three values are unique (length=3),

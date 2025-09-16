@@ -1,0 +1,36 @@
+CodeGeneration:
+icating `n` is a perfect square).
+5. If the loop completes without finding such an `i`, it returns `False`.
+
+However, note that the condition `(n % i == 0) and (n / i == i)` can be simplified to just `i * i == n` since if `i*i == n`, then `n % i` is always 0 (unless `i=0`, but `i` starts at 1 and increases). Also, using integer arithmetic might be more efficient and avoid floating-point issues.
+
+Let me rewrite the function for clarity and efficiency:
+
+```python
+def is_Perfect_Square(n):
+    """
+    Check if a number is a perfect square.
+    
+    Args:
+        n (int): The number to check.
+        
+    Returns:
+        bool: True if n is a perfect square, False otherwise.
+    """
+    if n < 0:
+        return False
+    i = 1
+    while i * i <= n:
+        if i * i == n:
+            return True
+        i += 1
+    return False
+```
+
+This version:
+1. Handles negative numbers correctly (negative numbers cannot be perfect squares)
+2. Uses direct comparison `i*i == n` instead of the more complex condition
+3. Maintains the same time complexity O(√n)
+4. Is more readable and efficient
+
+For even better performance with large numbers, you could use binary search or mathematical properties, but this maintains the original approach while improving clarity.

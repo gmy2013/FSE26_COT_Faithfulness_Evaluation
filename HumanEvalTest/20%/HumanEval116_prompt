@@ -1,0 +1,31 @@
+
+def sort_array(arr):
+    """
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    >>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+    >>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+    >>> sort_array([1, 0, 2, 3, 4]) [0, 1, 2, 3, 4]
+    """
+
+The following is chain of thought:
+First, the function needs to sort an array of integers based on two criteria:
+1. The number of ones in their binary representation (ascending).
+2. For numbers with the same number of ones, sort by their decimal value (ascending).
+
+However, the docstring mentions non-negative integers, but the examples include negative numbers. I need to handle negative integers as well. The binary representation of negative integers in Python uses two's complement, but the problem might expect the number of ones in the absolute value or something else? Looking at the example:
+
+>>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+
+This output suggests that for negative numbers, we are sorting by their decimal value in ascending order (since -6 < -5 < -4 < -3 < -2). But wait, the docstring says "non-negative integers", so maybe the function should only handle non-negative, but the example has negatives. There might be a mistake.
+
+Reading the docstring again: "array of non-negative integers", but the second example has negatives. This is confusing. Perhaps the function should work for both, but the docstring is incomplete. The third example also has 0, which is non-negative.
+
+To be safe, I should implement it for all integers, and based on the examples:
+
+- For negative numbers, the example output is sorted in ascending decimal order, which is the same as sorting by the number of ones? Not necessarily. Let's check the binary of negatives.
+
+In Python, bin(-2) is '-0b10', which has two ones? Actually, the representation has a sign, but we need the number of ones in the binary representation. The problem doesn't specify how to handle negatives. But the example input [-2,-3,-4,-5,-6] o

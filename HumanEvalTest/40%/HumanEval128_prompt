@@ -1,0 +1,44 @@
+
+def prod_signs(arr):
+    """
+    You are given an array arr of integers and you need to return
+    sum of magnitudes of integers multiplied by product of all signs
+    of each number in the array, represented by 1, -1 or 0.
+    Note: return None for empty arr.
+
+    Example:
+    >>> prod_signs([1, 2, 2, -4]) == -9
+    >>> prod_signs([0, 1]) == 0
+    >>> prod_signs([]) == None
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. If the array is empty, return None.
+2. We need to compute two things:
+   a. The product of the signs of all numbers in the array.
+        - For a positive number, sign is 1.
+        - For a negative number, sign is -1.
+        - For zero, sign is 0.
+   b. The sum of the magnitudes (absolute values) of all numbers.
+3. Then, multiply the product of signs by the sum of magnitudes.
+
+Important: If there is at least one zero in the array, the product of signs becomes 0 (because multiplying by zero gives zero). So the entire result becomes 0.
+
+Let's structure the solution:
+
+Steps:
+1. Check for empty array -> return None.
+2. Initialize product_of_signs = 1 (we'll multiply signs one by one).
+3. Initialize sum_of_magnitudes = 0.
+4. Iterate over each number in the array:
+   - For each number:
+        * If the number is positive (n > 0): sign = 1.
+        * If the number is negative (n < 0): sign = -1.
+        * If the number is zero (n == 0): sign = 0.
+   - Multiply the current product_of_signs by this sign.
+   - Add the absolute value (magnitude) of the number to sum_of_magnitudes.
+5. After processing all numbers, return product_of_signs * sum_of_magnitudes.
+
+Note: If we encounter a zero at any point, the product_of_signs becomes 0 and remains 0 for the rest of the multiplication. So we can als

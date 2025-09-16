@@ -1,0 +1,11 @@
+from collections import defaultdict 
+def freq_element(test_tup):
+  res = defaultdict(int)
+  for ele in test_tup:
+    res[ele] += 1
+  return (str(dict(res))) 
+The following is chain of thought:
+1. The function `freq_element` takes a tuple `test_tup` as input.
+2. Initialize a `defaultdict` named `res` with integer values (default 0) to count frequencies.
+3. Iterate over each element `ele` in the input tuple `test_tup`.
+4. For each element, increment 

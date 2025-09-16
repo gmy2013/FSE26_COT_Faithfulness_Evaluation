@@ -1,0 +1,25 @@
+def find_platform(arr, dep, n): 
+    arr.sort() 
+    dep.sort() 
+    plat_needed = 1
+    result = 1
+    i = 1
+    j = 0
+    while (i < n and j < n): 
+        if (arr[i] <= dep[j]):           
+            plat_needed+= 1
+            i+= 1
+        elif (arr[i] > dep[j]):           
+            plat_needed-= 1
+            j+= 1
+        if (plat_needed > result):  
+            result = plat_needed           
+    return result
+The following is chain of thought:
+1. Sort both arrival and departure arrays to process events in chronological order.
+2. Initialize platform count (plat_needed) and result to 1 (minimum 1 platform needed).
+3. Use two pointers: i for arrivals (starting at index 1) and j for departures (starting at index 0).
+4. Compare current arrival (arr[i]) with current departure (dep[j]):
+   - If arrival <= departure: New train arrives before previous departs → increment platform count.
+   - If arrival > departure: Previous train departs before new arrival → decrement platform count.
+5. Update maximum platforms needed (result) whenever curr

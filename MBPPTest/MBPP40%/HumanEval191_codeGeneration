@@ -1,0 +1,24 @@
+CodeGeneration:
+Based on the function name and implementation, here's the completed function with an appropriate docstring:
+
+```python
+def count_list(input_list):
+    """
+    Count the number of elements in a list.
+    
+    Args:
+        input_list (list): The list whose elements need to be counted
+        
+    Returns:
+        int: The number of elements in the input list
+        
+    Examples:
+        >>> count_list([1, 2, 3])
+        3
+        >>> count_list(['a', 'b', 'c', 'd'])
+        4
+        >>> count_list([])
+        0
+    """
+    return len(input_list)
+```

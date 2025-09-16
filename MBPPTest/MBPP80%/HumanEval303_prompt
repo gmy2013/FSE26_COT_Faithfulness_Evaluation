@@ -1,0 +1,10 @@
+def even_num(x):
+  if x%2==0:
+     return True
+  else:
+    return False
+The following is chain of thought:
+1. The function `even_num(x)` checks if a number is even.
+2. The current implementation uses `if x%2==0: return True else: return False`.
+3. This can be simplified by directly returning the boolean result of the condition.
+4. The simplified version would be: `return x % 2 == 

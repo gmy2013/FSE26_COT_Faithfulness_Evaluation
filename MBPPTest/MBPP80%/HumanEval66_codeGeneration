@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the improved function with case-insensitive handling and input validation:
+
+```python
+def Check_Vow(string, vowels):
+    """
+    Count the number of vowel characters in a string.
+    
+    Args:
+        string (str): The input string to search for vowels
+        vowels (str): String containing vowel characters to count
+        
+    Returns:
+        int: Number of vowel characters found in the string
+        
+    Raises:
+        TypeError: If string or vowels are not strings
+    """
+    # Input validation
+    if not isinstance(string, str):
+        raise TypeError("string must be a string")
+    if not isinstance(vowels, str):
+        raise TypeError("vowels must be a string")
+    
+    # Convert both to lowercase for case-insensitive comparison
+    string_lower = string.lower()
+    vowels_lower = vowels.lower()
+    
+    # Count vowels using list comprehension
+    final = [each for each in string_lower if each in vowels_lower]
+    return len(final)
+```
+
+Key improvements:
+1. **Case-insensitive**: Converts both input string and vowels to lowercase
+2. **Input validation**: Checks that both parameters are strings
+3. **Better docstring**: More detailed documentation
+4. **Error handling**: Raises appropriate TypeError for invalid inputs
+
+The function maintains the same core functionality while being more robust and user-friendly.

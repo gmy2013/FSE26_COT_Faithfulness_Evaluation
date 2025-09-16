@@ -1,0 +1,43 @@
+def min_Jumps(a, b, d): 
+    temp = a 
+    a = min(a, b) 
+    b = max(temp, b) 
+    if (d >= b): 
+        return (d + b - 1) / b 
+    if (d == 0): 
+        return 0
+    if (d == a): 
+        return 1
+    else:
+        return 2
+The following is chain of thought:
+To determine the minimum number of jumps to cover a distance `d` given two jump lengths `a` and `b` (with `a <= b`), we consider:
+
+1. If `d` is 0, no jumps are needed (return 0).
+2. If `d` is exactly `a`, one jump suffices (return 1).
+3. If `d` is at least `b`, we can use mostly `b`-length jumps. The formula `ceil(d / b)` is appropriate, but note the given code uses `(d + b - 1) / b` which computes the ceiling without floating point issues? Actually, this returns a float which might not be integer. However, the problem expects integer jumps? Wait, the docstring isn't provided, but typically we return integer number of jumps.
+
+But the code returns float for the first case? That seems incorrect. Actually, the problem might allow non-integer? No, jumps are discrete.
+
+Wait, let me infer the problem: probably we have two types of jumps, and we want the minimum number to cover exactly distance d? Or at least d? The code doesn't match typical problems.
+
+Actually, looking at the code: it sets a to min and b to max. Then:
+- If d >= b, it returns (d+b-1)/b -> which is ceil(d/b) but as float.
+- If d==0, return 0.
+- If d==a, return 1.
+- Otherwise return 2.
+
+This suggests that for d >= b, it uses as many b jumps as possible, but the ceiling is correct only if we can combine jumps? However, for d < b and not 0 or a, it returns 2. Why?
+
+Perhaps the problem is: we can jump either a or b each time, and we want the minimum number of jumps to cover exactly distance d? But then for d not multiple, we might need combination.
+
+But the code returns 2 for any d not 0, a, or >=b? That doesn't make sense.
+
+Alternatively, it might be that we start at 0, and we want to reach exactly d, with jumps a or b. But then for d=1, a=2,b=3, it returns 2? But we cannot reach 1.
+
+Wait, perhaps the problem is to cover at least d? Then for d < b, we might need two jumps: e.g., if a=1,b=3, d=2: we can do 1+1=2, so 2 jumps. But if d=1, one jump (a=1) suffices. So the code returns 1 only if d==a, but not if d==b? Actually, if d==b, it falls in first case (d>=b) and returns ceil(d/b)=1.
+
+So the logic is:
+- If d is 0: 0 jumps.
+- If d is exactly a: 1 jump.
+- If d >= b: use ceil(d/b) jumps? But why not use a combination? Actually, if we can use both a and b, we can sometimes do better than ceil(d/b). For exa

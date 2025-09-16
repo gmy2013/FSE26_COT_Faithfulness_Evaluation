@@ -1,0 +1,24 @@
+CodeGeneration:
+s π * r * l.
+4. The function returns the computed lateral surface area.
+
+Here is the complete function:
+
+```python
+import math
+
+def lateralsurface_cone(r, h):
+    """
+    Calculate the lateral surface area of a cone.
+    
+    Parameters:
+    r (float): radius of the base of the cone
+    h (float): height of the cone
+    
+    Returns:
+    float: lateral surface area of the cone
+    """
+    l = math.sqrt(r * r + h * h)  # Calculate slant height
+    LSA = math.pi * r * l  # Calculate lateral surface area
+    return LSA
+```

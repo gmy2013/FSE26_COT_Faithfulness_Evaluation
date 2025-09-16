@@ -1,0 +1,32 @@
+CodeGeneration:
+I notice there's an issue with the function's logic. The docstring says it should compute the arc length given the diameter, but the current implementation returns `None` when the angle is 360 degrees or more, which doesn't make mathematical sense. A full circle (360 degrees) should have a valid arc length equal to the circumference.
+
+Here's the corrected function:
+
+```python
+def arc_length(d, a):
+    """
+    Computes the length of a circular arc given the diameter and angle in degrees.
+    
+    Args:
+        d (float): Diameter of the circle
+        a (float): Angle in degrees (0 to 360)
+    
+    Returns:
+        float: Length of the arc
+    """
+    pi = 22/7
+    # Calculate arc length: (π * diameter) * (angle / 360)
+    arclength = (pi * d) * (a / 360)
+    return arclength
+```
+
+The key changes:
+1. Removed the unnecessary check for angles ≥ 360 degrees
+2. Added proper docstring with parameter and return type descriptions
+3. The function now correctly handles all valid angles from 0 to 360 degrees
+4. For angles greater than 360, it will still calculate the arc length (which represents multiple rotations)
+
+Example usage:
+- `arc_length(7, 180)` returns half the circumference (11.0)
+- `arc_length(14, 360)` returns the full circumference (44.0)

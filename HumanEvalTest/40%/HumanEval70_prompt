@@ -1,0 +1,69 @@
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+The following is chain of thought:
+First, I need to sort the list in a strange order: start with the min, then max of remaining, then min, and so on.
+
+The list might be empty, so handle that case.
+
+I can repeatedly find the min and max from the remaining list and append them alternately.
+
+But I need to be careful: after taking the min, I remove it, then take the max from the remaining, remove it, and so on.
+
+Since the list might have duplicates, like [5,5,5,5], I should handle that.
+
+Plan:
+1. If the list is empty, return empty list.
+2. Make a copy of the list to avoid modifying the original, and sort it? Actually, I don't need to sort the entire list at once.
+3. Initialize an empty result list.
+4. While the list is not empty:
+   a. Find the minimum value in the current list, append it to result, and remove it from the list.
+   b. If the list is not empty, find the maximum value, append it, and remove it.
+5. Return the result.
+
+But in the example [1,2,3,4]:
+   First min: 1 -> result [1], list becomes [2,3,4]
+   Then max: 4 -> result [1,4], list becomes [2,3]
+   Then min: 2 -> result [1,4,2], list becomes [3]
+   Then max: 3 -> result [1,4,2,3], list empty.
+
+That matches.
+
+For [5,5,5,5]:
+   First min: 5 (first occurrence), remove one 5 -> result [5], list [5,5,5]
+   Then max: 5, remove one -> result [5,5], list [5,5]
+   Then min: 5, remove one -> result [5,5,5], list [5]
+   Then max: 5, remove -> result [5,5,5,5]
+
+Perfect.
+
+So code steps:
+- result = []
+- while lst: (meaning while there are elements)
+    min_val = min(lst)
+    result.append(min_val)
+    lst.remove(min_val)   # removes the first occurrence of min_val
+    if lst:  # if not empty after removing min
+        max_val = max(lst)
+        result.append(max_val)
+        lst.remove(max_val)  # removes first occurrence of max_val
+
+But note: removing by value might be inefficient for large lists, but for now it should work.
+
+Alternatively, I could sort the list first and then pop from both ends? But that might not work because the min and max are taken from the current remaining list, which changes.
+
+Actually, if I sort the list, the min is always the first element and max is the last, but after removing, the list changes.
+
+I could use a deque and sort it, then pop from left and right alternately.
+
+But the problem says "remaining integers", so the min and max are r

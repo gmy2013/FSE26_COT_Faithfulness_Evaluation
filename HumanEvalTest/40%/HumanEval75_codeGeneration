@@ -1,0 +1,48 @@
+CodeGeneration:
+```python
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+    if a < 8:
+        return False
+        
+    # Generate primes up to a
+    primes = []
+    for num in range(2, a + 1):
+        is_prime = True
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(num)
+    
+    # Check all combinations of three primes (with repetition allowed)
+    n = len(primes)
+    for i in range(n):
+        for j in range(i, n):  # Start from i to avoid duplicate combinations (but same primes allowed)
+            # Early break if product of first two already exceeds a
+            if primes[i] * primes[j] > a:
+                continue
+            for k in range(j, n):
+                product = primes[i] * primes[j] * primes[k]
+                if product == a:
+                    return True
+                if product > a:
+                    break  # Since primes are sorted, further k will only increase product
+    return False
+```
+
+This implementation:
+1. First checks if `a` is less than 8 (the smallest possible product of three primes)
+2. Generates all prime numbers up to `a` using a simple prime checking algorithm
+3. Uses three nested loops to check all combinations of three primes (with repetition allowed)
+4. Includes optimizations to break early when the product exceeds `a`
+5. Returns True if any combination matches `a`, False otherwise
+
+The solution efficiently handles all cases for numbers less than 100 by leveraging the small input size and early termination optimizations.

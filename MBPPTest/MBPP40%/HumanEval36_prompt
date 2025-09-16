@@ -1,0 +1,9 @@
+def noprofit_noloss(actual_cost,sale_amount): 
+  if(sale_amount == actual_cost):
+    return True
+  else:
+    return False
+The following is chain of thought:
+1. The function `noprofit_noloss` takes two parameters: `actual_cost` and `sale_amount`.
+2. The goal is to determine if there is no profit and no loss, which occurs when the sale amount equals the actual cost.
+3.

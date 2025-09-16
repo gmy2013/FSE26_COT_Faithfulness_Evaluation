@@ -1,0 +1,94 @@
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+The following is chain of thought:
+First, I need to sort the list in a strange order: start with the min, then max of remaining, then min, and so on.
+
+The list might be empty, so handle that case.
+
+I can repeatedly find the min and max from the current list and build the result step by step.
+
+Since we alternate between min and max, I'll use a flag to toggle between them.
+
+But note: after taking the min, we remove it, then take the max from the remaining, remove it, and so on.
+
+So, I can make a copy of the list to avoid modifying the original, and then repeatedly remove min and max.
+
+However, the list might have duplicates, like [5,5,5,5], so I need to handle that.
+
+Plan:
+1. If the list is empty, return empty list.
+2. Make a working copy of the list to avoid modifying the original.
+3. Initialize an empty result list.
+4. While the working copy is not empty:
+   a. Find the minimum value in the working copy and append it to the result.
+   b. Remove that minimum value from the working copy (only one occurrence, to handle duplicates).
+   c. If the working copy is not empty after that:
+        Find the maximum value in the working copy and append it to the result.
+        Remove that maximum value from the working copy.
+5. Return the result.
+
+But in the example [1,2,3,4]:
+   First min: 1 -> result [1], remove 1 -> working [2,3,4]
+   Then max: 4 -> result [1,4], remove 4 -> working [2,3]
+   Then min: 2 -> result [1,4,2], remove 2 -> working [3]
+   Then max: 3 -> result [1,4,2,3], remove 3 -> working empty.
+
+So that matches.
+
+For [5,5,5,5]:
+   First min: 5 (the first one found) -> result [5], remove one 5 -> working [5,5,5]
+   Then max: 5 -> result [5,5], remove one 5 -> working [5,5]
+   Then min: 5 -> result [5,5,5], remove one 5 -> working [5]
+   Then max: 5 -> result [5,5,5,5], remove last 5 -> working empty.
+
+So that also matches.
+
+I need to remove only one occurrence each time, not all occurrences of that value.
+
+So I can use list.remove(value) which removes the first occurrence.
+
+But when I remove the min, I need to remove the first occurrence of the min value.
+
+Similarly for max.
+
+To find the min and max, I can use min() and max() functions.
+
+Code steps:
+
+def strange_sort_list(lst):
+    if not lst:
+        return []
+    result = []
+    work_list = lst[:]  # make a copy
+    while work_list:
+        # get min and remove it
+        min_val = min(work_list)
+        result.append(min_val)
+        work_list.remove(min_val)  # removes first occurrence
+        if work_list:  # if not empty after removing min
+            max_val = max(work_list)
+            result.append(max_val)
+            work_list.remove(max_val)  # removes first occurrence
+    return result
+
+Let me test with the examples.
+
+For [1,2,3,4]:
+   work_list = [1,2,3,4]
+   min_val = 1, result = [1], remove 1 -> work_list = [2,3,4]
+   max_val = 4, result = [1,4], remove 4 -> work_list = [2,3]
+   min_val = 2, result = [1,4,2], remove 2 -> work_list = [3]
+   max_val = 3, result = [1,4,2,3], remove 3 -> work_list = [] -> done.
+
+For [5,5,

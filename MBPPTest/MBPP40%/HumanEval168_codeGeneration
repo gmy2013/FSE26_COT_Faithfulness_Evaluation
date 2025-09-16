@@ -1,0 +1,24 @@
+CodeGeneration:
+difference `set(li2) - set(li1)` to get elements in `li2` but not in `li1`.
+5. Convert both resulting sets to lists.
+6. Concatenate the two lists.
+7. Return the concatenated list.
+
+The function returns the symmetric difference between the two lists (elements present in only one of the lists).
+
+Here's the complete function:
+
+```python
+def Diff(li1, li2):
+    """
+    Returns the symmetric difference between two lists.
+    
+    Parameters:
+    li1 (list): First input list
+    li2 (list): Second input list
+    
+    Returns:
+    list: List containing elements that are in either li1 or li2 but not in both
+    """
+    return list(set(li1) - set(li2)) + list(set(li2) - set(li1))
+```

@@ -1,0 +1,52 @@
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. Convert the string input to a float to handle both integers and decimals.
+2. We need to round to the nearest integer, but with a special rule for .5 cases: round away from zero.
+3. Standard Python rounding (round()) uses "round half to even" which rounds to the nearest even integer for .5 cases.
+4. We need different behavior: for positive numbers, .5 should round up; for negative numbers, .5 should round down.
+5. We can implement this by checking if the fractional part is exactly 0.5 (or -0.5 for negatives).
+6. If it is exactly 0.5, we round up for positive, down for negative.
+7. Otherwise, we can use normal rounding.
+
+However, note: we must be cautious with floating point precision when checking for exactly 0.5.
+
+Alternatively, we can use:
+   - For positive numbers: if the fractional part >= 0.5, round up; else round down.
+   - For negative numbers: if the fractional part <= -0.5, round down; else round up.
+
+But wait: the problem says "equidistant from two integers" which only happens at exactly .5. So we need to detect exactly .5.
+
+But due to floating point issues, we might not get exactly 0.5. So we can check if the absolute difference between the value and (integer part + 0.5) is very small.
+
+Alternatively, we can avoid floating point by working with the string representation? But the problem says the input is a string representing a number.
+
+Another idea: use the decimal module for exact representation? But the problem doesn't require that.
+
+Alternatively, we can do:
+
+   n = float(value)
+   integer_part = int(n)
+   fractional = n - integer_part
+
+But for negative numbers, integer_part is rounded towards zero. So for negative n, inte

@@ -1,0 +1,20 @@
+def reverse_Array_Upto_K(input, k): 
+  return (input[k-1::-1] + input[k:]) 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose**: Reverse the first k elements of an array while keeping the remaining elements in their original order
+
+2. **Input Parameters**:
+   - `input`: The original array/list to be modified
+   - `k`: The position up to which elements should be reversed (1-based index)
+
+3. **Slicing Strategy**:
+   - `input[k-1::-1]`: Gets elements from index (k-1) down to index 0 in reverse order
+     - `k-1` converts from 1-based to 0-based indexing
+     - `::-1` reverses the slice
+   - `input[k:]`: Gets all elements from index k to the end (unchanged)
+
+4. **Concatenation**: The reversed portion and unchanged portion are combined using `+`
+
+5.

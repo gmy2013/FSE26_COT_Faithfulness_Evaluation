@@ -1,0 +1,30 @@
+CodeGeneration:
+t.
+- If the input list is empty, return the empty result list.
+- Otherwise, iterate through the list, adding each element followed by the delimeter (except for the last element).
+- Finally, add the last element without a trailing delimeter.
+
+Here's the implementation:
+
+```python
+from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """ Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    >>> intersperse([], 4)
+    []
+    >>> intersperse([1, 2, 3], 4)
+    [1, 4, 2, 4, 3]
+    """
+    if not numbers:
+        return []
+    
+    result = []
+    for i, num in enumerate(numbers):
+        result.append(num)
+        if i < len(numbers) - 1:
+            result.append(delimeter)
+    
+    return result
+```

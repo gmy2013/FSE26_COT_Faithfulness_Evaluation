@@ -1,0 +1,14 @@
+CodeGeneration:
+(abs) of the complex number is calculated using `abs(cn)`, which gives the magnitude (length) of the complex number.
+4. The magnitude is returned.
+
+The function is already complete and correct. No changes are needed.
+
+```python
+import cmath
+
+def len_complex(a, b):
+    cn = complex(a, b)
+    length = abs(cn)
+    return length
+```

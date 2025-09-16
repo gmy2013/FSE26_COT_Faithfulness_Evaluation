@@ -1,0 +1,23 @@
+class Pair(object): 
+	def __init__(self, a, b): 
+		self.a = a 
+		self.b = b 
+def max_chain_length(arr, n): 
+	max = 0
+	mcl = [1 for i in range(n)] 
+	for i in range(1, n): 
+		for j in range(0, i): 
+			if (arr[i].a > arr[j].b and
+				mcl[i] < mcl[j] + 1): 
+				mcl[i] = mcl[j] + 1
+	for i in range(n): 
+		if (max < mcl[i]): 
+			max = mcl[i] 
+	return max
+The following is chain of thought:
+1. The function `max_chain_length` computes the longest chain of pairs where each subsequent pair has its first element greater than the previous pair's second element.
+2. Initialize `max` to 0 to store the maximum chain length found.
+3. Create `mcl` (max chain length) list of size `n` with all values initialized to 1, since each pair is a chain of length 1 by itself.
+4. Use nested loops: for each pair at index `i` (from 1 to n-1), compare with all previous pairs at indices `j` (from 0 to i-1).
+5. For each comparison, check if the current pair's first element (`arr[i].a`) is greater than the previous pair's second element (`arr[j].b`), and if the chain length through `j` plus 1 is greater than the current chain length at `i`.
+6. If bot

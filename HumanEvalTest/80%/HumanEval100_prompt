@@ -1,0 +1,40 @@
+
+def make_a_pile(n):
+    """
+    Given a positive integer n, you have to make a pile of n levels of stones.
+    The first level has n stones.
+    The number of stones in the next level is:
+        - the next odd number if n is odd.
+        - the next even number if n is even.
+    Return the number of stones in each level in a list, where element at index
+    i represents the number of stones in the level (i+1).
+
+    Examples:
+    >>> make_a_pile(3)
+    [3, 5, 7]
+    """
+
+The following is chain of thought:
+To solve this problem, we need to generate a list where each element represents the number of stones in a level of a pile. The first level has `n` stones. For each subsequent level, if the current number of stones is odd, the next level should have the next odd number; if it's even, the next level should have the next even number.
+
+Approach:
+1. Initialize a list with the first element as `n`.
+2. For each level from 1 to `n-1` (since we already have the first level), calculate the next number:
+   - If the current number is odd, the next number is current + 2 (to get the next odd).
+   - If the current number is even, the next number is current + 2 (to get the next even).
+   Actually, in both cases, we are just adding 2 to get the next number of the same parity. So, regardless of whether n is odd or even, the next number is always current + 2.
+3. However, note the requirement: "the next odd number if n is odd" and "the next even number if n is even". For example, if n is 3 (odd), the next level should be 5 (next odd). Similarly, if n is 2 (even), the next level should be 4 (next even). So indeed, adding 2 will always give the next number of the same parity.
+4. Therefore, we can simply generate the list by starting with n and then each subsequent term is the previous term + 2.
+
+Implementation:
+- Create an empty list `pile`.
+- Start with `current = n`.
+- Append `current` to the list.
+- For i from 1 to n-1 (because we need n levels in total):
+   - current = current + 2
+   - Append current to the list.
+- Return the list.
+
+This will work because:
+- For n=3: 
+   Level1: 3 (odd) -> next should be odd

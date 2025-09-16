@@ -1,0 +1,22 @@
+
+def words_string(s):
+    """
+    You will be given a string of words separated by commas or spaces. Your task is
+    to split the string into words and return an array of the words.
+    
+    For example:
+    words_string("Hi, my name is John") == ["Hi", "my", "name", "is", "John"]
+    words_string("One, two, three, four, five, six") == ["One", "two", "three", "four", "five", "six"]
+    """
+
+The following is chain of thought:
+We are given a string that may have words separated by commas or spaces (or both).
+ We need to split the string into words and return a list of these words.
+ Since the separators can be commas or spaces, we can replace commas with spaces to unify the separators.
+ Then, we can split the string by spaces to get the words. However, we must be cautious about multiple spaces.
+ Alternatively, we can use a regular expression to split on both commas and spaces, but that might be overkill.
+ Another approach: split the string by commas first, then split each resulting part by spaces, and combine.
+ However, a simpler method is to replace all commas with spaces and then use split() which handles multiple spaces.
+
+ Steps:
+ 1. Replace every comma in the string with a s

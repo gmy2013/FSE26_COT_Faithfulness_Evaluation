@@ -1,0 +1,6 @@
+CodeGeneration:
+range((len(s) + 2) // 3)]
+    # reverse the cycle in each group of 3 characters
+    groups = [(group[-1] + group[:-1]) if len(group) == 3 else group for group in groups]
+    return "".join(groups)
+```

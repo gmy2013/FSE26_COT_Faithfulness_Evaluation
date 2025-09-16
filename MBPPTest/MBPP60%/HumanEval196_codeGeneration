@@ -1,0 +1,41 @@
+CodeGeneration:
+from l to r inclusive is equal to the sum of odd numbers up to r minus the sum of odd numbers up to (l-1).
+
+Here's the complete implementation:
+
+```python
+def sum_Odd(n):
+    """Calculate the sum of all odd numbers from 1 to n.
+    
+    Args:
+        n (int): The upper bound (inclusive)
+    
+    Returns:
+        int: Sum of all odd numbers from 1 to n
+    """
+    terms = (n + 1) // 2
+    sum1 = terms * terms 
+    return sum1  
+
+def sum_in_Range(l, r):
+    """Calculate the sum of all odd numbers in the range [l, r].
+    
+    Args:
+        l (int): Lower bound of the range (inclusive)
+        r (int): Upper bound of the range (inclusive)
+    
+    Returns:
+        int: Sum of all odd numbers between l and r inclusive
+    """
+    return sum_Odd(r) - sum_Odd(l - 1)
+```
+
+The implementation works by:
+1. `sum_Odd(n)` calculates the sum of all odd numbers from 1 to n using the mathematical formula
+2. `sum_in_Range(l, r)` uses the inclusion-exclusion principle: sum from l to r = sum to r - sum to (l-1)
+
+Example usage:
+```python
+print(sum_in_Range(2, 5))  # 3 + 5 = 8
+print(sum_in_Range(1, 10)) # 1 + 3 + 5 + 7 + 9 = 25
+```

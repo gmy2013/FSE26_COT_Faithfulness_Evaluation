@@ -1,0 +1,36 @@
+CodeGeneration:
+Here's the implementation of the Fibonacci function:
+
+```python
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b
+    return b
+```
+
+This implementation:
+1. Handles negative inputs by raising a ValueError
+2. Returns 0 for n=0 and 1 for n=1 (base cases)
+3. Uses an iterative approach with O(n) time complexity and O(1) space complexity
+4. Correctly computes the n-th Fibonacci number as specified in the examples
+
+The function follows the Fibonacci sequence definition where:
+- fib(0) = 0
+- fib(1) = 1
+- fib(n) = fib(n-1) + fib(n-2) for n ≥ 2

@@ -1,0 +1,55 @@
+CodeGeneration:
+Here's the complete function with improved implementation:
+
+```python
+def is_Isomorphic(str1, str2):
+    """
+    Check if two strings are isomorphic.
+    
+    Two strings are isomorphic if characters in str1 can be mapped to characters in str2
+    such that all occurrences of each character in str1 map to the same character in str2
+    while preserving the order and pattern of character positions.
+    
+    Args:
+        str1 (str): First input string
+        str2 (str): Second input string
+    
+    Returns:
+        bool: True if strings are isomorphic, False otherwise
+    
+    Examples:
+        >>> is_Isomorphic("egg", "add")
+        True
+        >>> is_Isomorphic("foo", "bar")
+        False
+        >>> is_Isomorphic("paper", "title")
+        True
+    """
+    if len(str1) != len(str2):
+        return False
+    
+    dict_str1 = {}
+    dict_str2 = {}
+    
+    for i, value in enumerate(str1):
+        dict_str1[value] = dict_str1.get(value, []) + [i]
+        
+    for j, value in enumerate(str2):
+        dict_str2[value] = dict_str2.get(value, []) + [j]
+    
+    if sorted(dict_str1.values()) == sorted(dict_str2.values()):
+        return True
+    else:
+        return False
+```
+
+**Key improvements:**
+1. Added length check at the beginning for efficiency
+2. Added comprehensive docstring with examples
+3. Maintained the core logic which correctly handles:
+   - Different length strings (returns False)
+   - Empty strings (returns True)
+   - Single character strings
+   - All edge cases mentioned in your chain of thought
+
+The function works by comparing the pattern of character positions - if two strings have the same pattern of character occurrences (same positions for equivalent characters), they are isomorphic.

@@ -1,0 +1,18 @@
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+The following is chain of thought:
+To solve the problem of sorting a list in the "strange" order as described, we can follow these steps:
+
+1. **Initialize** an empty list called `result` to store the final ordered elements.
+2. **Sor

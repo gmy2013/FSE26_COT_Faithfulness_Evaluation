@@ -1,0 +1,29 @@
+20%CoT
+CodeGeneration:
+to the end of the group, unless the group has fewer than three characters, in which case it remains unchanged.
+
+2. **Reverse the Process**: To decode, we need to reverse this cyclic shift. For each group of three characters, we move the last character to the start of the group.
+
+3. **Handling Groups**: We need to handle groups with fewer than three characters carefully, as they are not shifted during encoding and should remain unchanged during decoding.
+
+4. **Implement the Decoding Logic**:
+   - Split the encoded string into groups of three.
+   - For each group of three characters, perform the reverse shift.
+   - Reconstruct the string from the decoded groups.
+
+Here's the implementation of the `decode_cyclic` function:
+
+```python
+def decode_cyclic(s: str):
+    """
+    Takes as input string encoded with encode_cyclic function. Returns decoded string.
+    """
+    # Split string into groups of three characters
+    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]
+    # Reverse the cyclic shift for each group
+    decoded_groups = [(group[-1] + group[:-1]) if len(group) == 3 else group for group in groups]
+    # Concatenate the groups to form the decoded string
+    return "".join(decoded_groups)
+```
+
+This implementation follows the inverse of the encoding process, ensuring that each group of three is shifted back to its original order. Groups that are smaller than three characters are left unchanged, as they were during encoding.

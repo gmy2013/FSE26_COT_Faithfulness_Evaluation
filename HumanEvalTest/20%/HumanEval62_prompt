@@ -1,0 +1,17 @@
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+
+The following is chain of thought:
+1. **Understand the problem:** 
+   - We are given a list `xs` where each element represents a coefficient of a polynomial starting from the constant term.
+   - The polynomial is represented as: `xs[0] + xs[1] * x + xs[2] * x^2 + xs[3] * x^3 + ...`
+   

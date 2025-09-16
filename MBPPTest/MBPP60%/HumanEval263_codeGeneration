@@ -1,0 +1,24 @@
+CodeGeneration:
+with the reversed version to check if it's a palindrome.
+5. The `filter()` function returns an iterator of elements that are palindromes.
+6. Finally, it converts the iterator to a list and returns it.
+
+Here's the complete function:
+
+```python
+def palindrome_lambda(texts):
+    """Return a list of palindromic strings from the input list.
+    
+    Args:
+        texts: List of strings to check for palindromes
+        
+    Returns:
+        List containing only the palindromic strings from the input
+        
+    Example:
+        >>> palindrome_lambda(["racecar", "hello", "madam", "world"])
+        ['racecar', 'madam']
+    """
+    result = list(filter(lambda x: (x == "".join(reversed(x))), texts))
+    return result
+```

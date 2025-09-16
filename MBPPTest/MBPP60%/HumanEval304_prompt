@@ -1,0 +1,14 @@
+def factorial(start,end): 
+    res = 1 
+    for i in range(start,end + 1): 
+        res *= i      
+    return res 
+def sum_of_square(n): 
+   return int(factorial(n + 1, 2 * n)  /factorial(1, n)) 
+The following is chain of thought:
+1. The `factorial(start, end)` function calculates the product of integers from `start` to `end` inclusive.
+2. The `sum_of_square(n)` function attempts to compute a value using two calls to `factorial`.
+3. The expression `factorial(n + 1, 2 * n) / factorial(1, n)` appears to be a ratio of products.
+4. This ratio is equivalent to the central binomial coefficient: (2n choose n) = (2n)!/(n! * n!).
+5. However, the expression given is (product from n+1 to 2n) / (product from 1 to n) = (2n)!/(n! * n!).
+6. The central binomial coeffici

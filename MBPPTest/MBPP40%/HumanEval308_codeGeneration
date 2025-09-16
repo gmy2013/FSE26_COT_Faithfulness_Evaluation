@@ -1,0 +1,25 @@
+CodeGeneration:
+```python
+def previous_palindrome(num):
+    """
+    Returns the largest palindrome number strictly less than the given number.
+    
+    Args:
+        num (int): The input number
+        
+    Returns:
+        int: The largest palindrome number less than num, or None if no such number exists
+        
+    Examples:
+        >>> previous_palindrome(100)
+        99
+        >>> previous_palindrome(101)
+        99
+        >>> previous_palindrome(11)
+        9
+    """
+    for x in range(num-1, 0, -1):
+        if str(x) == str(x)[::-1]:
+            return x
+    return None
+```

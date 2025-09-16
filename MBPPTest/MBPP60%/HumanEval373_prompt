@@ -1,0 +1,25 @@
+def min_sum_path(A): 
+	memo = [None] * len(A) 
+	n = len(A) - 1
+	for i in range(len(A[n])): 
+		memo[i] = A[n][i] 
+	for i in range(len(A) - 2, -1,-1): 
+		for j in range( len(A[i])): 
+			memo[j] = A[i][j] + min(memo[j], 
+									memo[j + 1]) 
+	return memo[0]
+The following is chain of thought:
+Here's the structured chain of thought for the min_sum_path function:
+
+1. **Initialization**: Create a memoization array of the same length as the input list A, initially filled with None values
+
+2. **Base Case Setup**: 
+   - Get the index of the last row (n = len(A) - 1)
+   - Initialize the memo array with the values from the bottom row of the triangle (A[n])
+
+3. **Bottom-up Processing**:
+   - Iterate from the second-to-last row up to the top row (i from len(A)-2 down to 0)
+   - For each row, iterate through all elements in that row (j from 0 to len(A[i])-1)
+   - Update each memo position: current element value + minimum of the two possible paths below (memo[j] and memo[j+1])
+
+4. **Result Extraction**: Return memo[0], which now contains the minimum sum path from top to botto

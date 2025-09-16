@@ -1,0 +1,44 @@
+
+
+def prime_fib(n: int):
+    """
+    prime_fib returns n-th number that is a Fibonacci number and it's also prime.
+    >>> prime_fib(1)
+    2
+    >>> prime_fib(2)
+    3
+    >>> prime_fib(3)
+    5
+    >>> prime_fib(4)
+    13
+    >>> prime_fib(5)
+    89
+    """
+
+The following is chain of thought:
+Let me break down the problem:
+
+1. We need to generate Fibonacci numbers
+2. For each Fibonacci number, check if it's prime
+3. Collect the ones that are prime until we have n such numbers
+4. Return the n-th prime Fibonacci number
+
+Important considerations:
+- The Fibonacci sequence starts with 1, 1, 2, 3, 5, 8, 13...
+- We need to handle the first Fibonacci numbers carefully (1 is not prime)
+- We'll need an efficient prime checking function
+- We'll generate Fibonacci numbers sequentially and check each one
+
+Let me implement this step by step:
+
+First, I'll create a helper function to check if a number is prime.
+Then, I'll generate Fibonacci numbers and collect the prime ones.
+
+Note: The examples show:
+- 1st: 2 (2nd Fibonacci number)
+- 2nd: 3 (4th Fibonacci number)
+- 3rd: 5 (5th Fibonacci number)
+- 4th: 13 (7th Fibonacci number)
+- 5th: 89 (11th Fibonacci number)
+
+So we need to generate Fibonacci numbers until we find n prime ones.

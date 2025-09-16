@@ -1,0 +1,38 @@
+CodeGeneration:
+decreases n by 1, eventually reaching n < 0 (the base case), ensuring termination.
+
+6. **Edge Case Handling**:
+   - Negative n: returns 0 (correct for geometric series definition)
+   - n=0: returns 1 (correct: 1/2^0 = 1)
+   - Large n: will work correctly but may hit recursion limits for very large n
+
+The function is mathematically correct and properly implements the geometric series sum using recursion.
+
+Here is the complete function:
+
+```python
+def geometric_sum(n):
+  """Compute the geometric series sum 1 + 1/2 + 1/4 + ... + 1/(2^n).
+  
+  Args:
+    n: A non-negative integer representing the number of terms
+  
+  Returns:
+    The sum of the geometric series from term 0 to term n
+    Returns 0 for negative n values
+  
+  Examples:
+    >>> geometric_sum(0)
+    1.0
+    >>> geometric_sum(1)
+    1.5
+    >>> geometric_sum(2)
+    1.75
+    >>> geometric_sum(-1)
+    0
+  """
+  if n < 0:
+    return 0
+  else:
+    return 1 / (pow(2, n)) + geometric_sum(n - 1)
+```

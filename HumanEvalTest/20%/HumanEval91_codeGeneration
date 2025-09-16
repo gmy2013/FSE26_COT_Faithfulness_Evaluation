@@ -1,0 +1,43 @@
+20%CoT
+CodeGeneration:
+t the number of sentences that start with the word "I" in a given string. Sentences are separated by '.', '?', or '!'.
+
+Here's the implementation:
+
+```python
+def is_bored(S):
+    """
+    You'll be given a string of words, and your task is to count the number
+    of boredoms. A boredom is a sentence that starts with the word "I".
+    Sentences are delimited by '.', '?' or '!'.
+   
+    For example:
+    >>> is_bored("Hello world")
+    0
+    >>> is_bored("The sky is blue. The sun is shining. I love this weather")
+    1
+    """
+    import re
+    
+    # Split the string into sentences using the delimiters . ? !
+    sentences = re.split(r'[.?!]', S)
+    
+    count = 0
+    for sentence in sentences:
+        # Strip leading and trailing whitespace
+        sentence = sentence.strip()
+        # Check if the sentence starts with "I" (case-sensitive as per examples)
+        if sentence.startswith("I "):
+            count += 1
+    
+    return count
+```
+
+The function works by:
+1. Using regex to split the input string into sentences based on the delimiters '.', '?', and '!'
+2. Iterating through each sentence and stripping whitespace
+3. Checking if the sentence starts with "I " (note the space after "I" to ensure it's a word boundary)
+4. Counting the number of such sentences
+5. Returning the total count
+
+The examples provided in the docstring will work correctly with this implementation.

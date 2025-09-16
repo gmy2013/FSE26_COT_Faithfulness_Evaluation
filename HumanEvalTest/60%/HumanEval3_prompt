@@ -1,0 +1,22 @@
+from typing import List
+
+
+def below_zero(operations: List[int]) -> bool:
+    """ You're given a list of deposit and withdrawal operations on a bank account that starts with
+    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+    at that point function should return True. Otherwise it should return False.
+    >>> below_zero([1, 2, 3])
+    False
+    >>> below_zero([1, 2, -4, 5])
+    True
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We start with a balance of 0.
+2. We iterate through each operation in the list:
+   - For each operation, we update the balance by adding the operation value (since positive numbers are deposits and negative are withdrawals).
+3. After each update, we check if the balance has fallen below zero.
+4. If at any point the balance becomes negative, we immediately return True.
+5. If we finish all o

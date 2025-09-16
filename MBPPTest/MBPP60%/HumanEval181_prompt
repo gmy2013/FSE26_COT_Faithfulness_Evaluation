@@ -1,0 +1,17 @@
+def Odd_Length_Sum(arr):
+    Sum = 0
+    l = len(arr)
+    for i in range(l):
+        Sum += ((((i + 1) *(l - i) + 1) // 2) * arr[i])
+    return Sum
+The following is chain of thought:
+Here's the structured chain of thought for the Odd_Length_Sum function:
+
+1. **Problem Analysis**: The function calculates the sum of all elements in odd-length subarrays of the given array.
+
+2. **Key Insight**: For each element at position i, we need to count how many odd-length subarrays include that element.
+
+3. **Counting Occurrences**: 
+   - The number of subarrays starting at position j and ending at position k that include element i
+   - For element i, the number of starting positions is (i + 1) and ending positions is (l - i)
+   - Total subarrays containing element i: (i + 1) × (l

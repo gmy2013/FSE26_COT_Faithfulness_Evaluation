@@ -1,0 +1,29 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+from collections import Counter
+
+def most_common_elem(s, a):
+    """
+    Return the a most common elements in the iterable s along with their counts.
+    
+    Args:
+        s: An iterable (list, string, tuple, etc.) containing elements to count
+        a: An integer specifying how many most common elements to return
+        
+    Returns:
+        A list of tuples where each tuple contains (element, count) for the a most common elements,
+        ordered from most common to least common. If a is None, returns all elements in order of frequency.
+        
+    Example:
+        >>> most_common_elem('hello world', 2)
+        [('l', 3), ('o', 2)]
+        >>> most_common_elem([1, 2, 2, 3, 3, 3], 1)
+        [(3, 3)]
+    """
+    most_common_elem = Counter(s).most_common(a)
+    return most_common_elem
+```
+
+The function works exactly as described in your chain of thought - it uses `Counter` to count element frequencies and returns the `a` most common elements with their counts.

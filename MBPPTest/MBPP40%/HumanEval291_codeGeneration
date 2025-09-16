@@ -1,0 +1,30 @@
+CodeGeneration:
+e spaces.
+4. It replaces these matches with a single space `' '`.
+5. This effectively collapses multiple consecutive spaces into a single space.
+6. The function returns the modified string.
+
+Here is the complete function:
+
+```python
+import re
+
+def remove_spaces(text):
+    """Remove extra spaces from text by replacing multiple spaces with a single space.
+    
+    Args:
+        text (str): Input string that may contain multiple consecutive spaces
+        
+    Returns:
+        str: String with multiple consecutive spaces replaced by single spaces
+        
+    Examples:
+        >>> remove_spaces("Hello    world")
+        'Hello world'
+        >>> remove_spaces("Python  is   great")
+        'Python is great'
+        >>> remove_spaces("NoExtraSpaces")
+        'NoExtraSpaces'
+    """
+    return re.sub(' +', ' ', text)
+```

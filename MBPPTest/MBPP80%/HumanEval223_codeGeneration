@@ -1,0 +1,20 @@
+CodeGeneration:
+ar the original list and extend it with the odds to modify in-place.
+
+Here is the corrected code:
+
+```python
+def remove_even(l):
+    odds = [x for x in l if x % 2 != 0]
+    l.clear()
+    l.extend(odds)
+    return l
+```
+
+This approach:
+1. Creates a new list containing only the odd numbers
+2. Clears the original list
+3. Extends the original list with the odd numbers
+4. Returns the modified original list
+
+This maintains the in-place modification behavior while avoiding the iteration issues of the original implementation.

@@ -1,0 +1,12 @@
+CodeGeneration:
+alphanumeric or underscore) and captures it as group 1
+   - `([A-Z])`: any uppercase letter and captures it as group 2
+4. The replacement pattern `r"\1 \2"` inserts a space between the captured groups
+5. This effectively adds a space before each capital letter that follows a word character
+6. The function returns the modified string with spaces inserted before capital letters
+
+```python
+import re
+def capital_words_spaces(str1):
+  return re.sub(r"(\w)([A-Z])", r"\1 \2", str1)
+```

@@ -1,0 +1,21 @@
+CodeGeneration:
+h tuple contains the captured groups (year, month, day) for each match found in the URL.
+
+However, the function could be improved to handle cases where no date is found and to return a more structured result. Here's an enhanced version:
+
+```python
+import re
+
+def extract_date(url):
+    """
+    Extract date components from a URL string.
+    
+    Args:
+        url (str): The URL string to search for date patterns
+        
+    Returns:
+        list: A list of tuples where each tuple contains (year, month, day) strings,
+              or an empty list if no dates are found
+    """
+    pattern = r'/(\d{4})/(\d{1,2})/(\d{1,2})/'
+    return re.findall(pattern, url)

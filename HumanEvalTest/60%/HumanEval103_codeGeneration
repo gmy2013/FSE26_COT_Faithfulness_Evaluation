@@ -1,0 +1,4 @@
+CodeGeneration:
+avg = (n + m) / 2.0
+    rounded = round(avg)
+    return bin(rounded)

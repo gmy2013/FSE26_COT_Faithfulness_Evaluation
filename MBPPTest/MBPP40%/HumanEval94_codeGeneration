@@ -1,0 +1,23 @@
+CodeGeneration:
+```python
+def check_greater(test_tup1, test_tup2):
+    """
+    Check if every element in test_tup1 is less than the corresponding element in test_tup2.
+    
+    Args:
+        test_tup1 (tuple): First tuple of numbers
+        test_tup2 (tuple): Second tuple of numbers (must be same length as test_tup1)
+    
+    Returns:
+        bool: True if all elements in test_tup1 are less than corresponding elements in test_tup2,
+              False otherwise or if tuples have different lengths
+    
+    Raises:
+        ValueError: If tuples have different lengths
+    """
+    if len(test_tup1) != len(test_tup2):
+        raise ValueError("Tuples must be of the same length")
+    
+    res = all(x < y for x, y in zip(test_tup1, test_tup2))
+    return res
+```

@@ -1,0 +1,34 @@
+CodeGeneration:
+Based on the chain of thought, I can see that the current implementation is a recursive solution for finding the shortest common supersequence, but it has exponential time complexity. Let me provide an optimized dynamic programming solution with memoization:
+
+```python
+def super_seq(X, Y, m, n):
+    # Create a DP table to store results of subproblems
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    # Fill the DP table in bottom-up manner
+    for i in range(m + 1):
+        for j in range(n + 1):
+            # If first string is empty, include all characters of second string
+            if i == 0:
+                dp[i][j] = j
+            # If second string is empty, include all characters of first string
+            elif j == 0:
+                dp[i][j] = i
+            # If last characters are same, include it only once
+            elif X[i - 1] == Y[j - 1]:
+                dp[i][j] = 1 + dp[i - 1][j - 1]
+            # If last characters are different, take minimum of two options
+            else:
+                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1])
+    
+    return dp[m][n]
+```
+
+This implementation:
+1. Uses a 2D DP table to store intermediate results
+2. Has O(m*n) time complexity and O(m*n) space complexity
+3. Follows the same logic as the recursive version but avoids redundant calculations
+4. Returns the length of the shortest common supersequence of strings X and Y
+
+The DP table `dp[i][j]` represents the length of the shortest common supersequence for `X[0:i]` and `Y[0:j]`.

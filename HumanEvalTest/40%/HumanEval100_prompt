@@ -1,0 +1,35 @@
+
+def make_a_pile(n):
+    """
+    Given a positive integer n, you have to make a pile of n levels of stones.
+    The first level has n stones.
+    The number of stones in the next level is:
+        - the next odd number if n is odd.
+        - the next even number if n is even.
+    Return the number of stones in each level in a list, where element at index
+    i represents the number of stones in the level (i+1).
+
+    Examples:
+    >>> make_a_pile(3)
+    [3, 5, 7]
+    """
+
+The following is chain of thought:
+We are given a positive integer n.
+ The first level has n stones.
+ For each subsequent level:
+   If the current level is odd, the next level uses the next odd number.
+   If the current level is even, the next level uses the next even number.
+ We need to build a list of n levels.
+
+ Steps:
+ 1. Initialize a list with the first element as n.
+ 2. For the remaining n-1 levels:
+      Let current = last value in the list.
+      If current is odd, then next value = current + 2 (because the next odd after an odd is current+2).
+      If current is even, then next value = current + 2 (because the next even after an even is current+2).
+    Actually, note: 
+        For odd: the next odd is current + 2 (since odd numbers are 2 apart).
+        For even: the next even is current + 2 (since even numbers are 2 apart).
+    So regardless of whether current is odd or even, the next number in the sequence is always current + 2?
+    But wait: the problem says "the next odd

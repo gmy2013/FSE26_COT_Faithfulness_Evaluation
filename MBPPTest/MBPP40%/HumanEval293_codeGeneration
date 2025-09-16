@@ -1,0 +1,25 @@
+CodeGeneration:
+st of substrings at each occurrence of ', '.
+4. The `map(float, ...)` applies the `float` function to each substring, converting them to floats.
+5. The `tuple(...)` constructor converts the resulting map object into a tuple.
+6. The tuple is returned as the result.
+
+Here's the complete function:
+
+```python
+def float_to_tuple(test_str):
+    """Convert a comma-separated string of numbers to a tuple of floats.
+    
+    Args:
+        test_str (str): A string containing comma-separated numbers with space after comma
+        
+    Returns:
+        tuple: A tuple containing the converted float values
+        
+    Example:
+        >>> float_to_tuple('1.5, 2.3, 4.7')
+        (1.5, 2.3, 4.7)
+    """
+    res = tuple(map(float, test_str.split(', ')))
+    return res
+```

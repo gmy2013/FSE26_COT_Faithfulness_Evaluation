@@ -1,0 +1,35 @@
+CodeGeneration:
+j).
+- Return `SumOfPrimeDivisors[N]`.
+
+Here is the complete function with detailed comments:
+
+```python
+def Sum(N):
+    """
+    Compute the sum of all distinct prime divisors of N using a sieve-like approach.
+    
+    Args:
+        N (int): The number for which to compute the sum of distinct prime divisors.
+        
+    Returns:
+        int: The sum of all distinct prime divisors of N.
+    """
+    # Initialize an array to store the sum of distinct prime divisors for each number up to N.
+    # For indices 0 and 1, the value remains 0 as they have no prime divisors.
+    SumOfPrimeDivisors = [0] * (N + 1)
+    
+    # Iterate through all numbers from 2 to N
+    for i in range(2, N + 1):
+        # If SumOfPrimeDivisors[i] is 0, it means i is prime (not processed by any smaller prime)
+        if SumOfPrimeDivisors[i] == 0:
+            # Mark all multiples of i by adding i to their sum of prime divisors
+            j = i
+            while j <= N:
+                SumOfPrimeDivisors[j] += i
+                j += i
+                
+    return SumOfPrimeDivisors[N]
+```
+
+This implementation efficiently computes the sum of distinct prime divisors for N using a modified Sieve of Eratosthenes approach. The time complexity is O(N log log N), which is efficient for reasonably large values of N.

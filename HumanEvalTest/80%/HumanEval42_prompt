@@ -1,0 +1,21 @@
+
+
+def incr_list(l: list):
+    """Return list with elements incremented by 1.
+    >>> incr_list([1, 2, 3])
+    [2, 3, 4]
+    >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
+    [6, 4, 6, 3, 4, 4, 10, 1, 124]
+    """
+
+The following is chain of thought:
+To solve this problem, we need to create a function that takes a list of numbers and returns a new list where each element is incremented by 1. We can achieve this by iterating through each element in the input list, adding 1 to it, and collecting the results in a new list.
+
+Chain of thought:
+1. Initialize an empty list to store the incremented values.
+2. Iterate over each element in the input list.
+3. For each element, add 1 to it.
+4. Append the result to the new list.
+5. Return the new list after processing all elements.
+
+Alternatively, we can use a list comp

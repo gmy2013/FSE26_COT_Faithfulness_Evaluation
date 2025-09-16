@@ -1,0 +1,34 @@
+
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+
+The following is chain of thought:
+We are given a string `s`. We need to split it into words (by space) and then sort each word's characters by their ASCII values.
+ However, we must preserve the original order of words and spaces. So we can split the string while keeping the spaces?
+ Actually, note: the problem says "keep the order of words and blank spaces". But the example input has multiple words and punctuation.
+
+ Important: The example 'Hello World!!!' becomes 'Hello !!!Wdlor'. Note that the first word "Hello" becomes "Hello" (because 'H' has lower ASCII than 'e'? Actually, let's check: 
+ 'H' is 72, 'e' is 101, 'l' is 108, 'l' is 108, 'o' is 111. So sorted would be ['H','e','l','l','o'] which is "Hello" (same as original because the first letter is uppercase and has lower ASCII than the lowercase letters? Actually, 'H' is 72 and 'e' is 101 so indeed 'H' comes first. Then the second word "World!!!" becomes "!!!Wdlor": 
+ The original word is "World!!!". The sorted order: 
+ '!' is 33, '!' is 33, '!' is 33, 'W' is 87, 'd' is 100, 'l' is 108, 'o' is 111, 'r' is 114. So we get "!!!" followed by "Wdlor" (but note: the sorted string would be '!!!Wdlor' because after the exclamation marks comes 'W' (87), then 'd' (100), then 'l' (108), then 'o' (111), then 'r' (114). So that matches.
+
+ Approach:
+ We cannot simply split by spaces because we might have multiple spaces? The problem says "words (separated by space)" and we should keep the blank spaces. So we need to preserve the exact whitespace between words? Actually, the problem says "keep the order of words and blank spaces". So if there are multiple spaces, we should preserve them.
+
+ However, the examples don't have multiple spaces. But to be general, we should consider that the input might have multiple consecutive spaces.
+
+ How to do it?
+ We can split the string using the space as delimiter, but we want to keep the spaces. Alternatively, we can split the string into tokens: words and spaces. But note: the problem says "words (separated by space)". So we can split the string by spaces, but we also need to know how many spaces were between words.
+
+ Alternatively, we can iterate through the string and group consecutive non-space

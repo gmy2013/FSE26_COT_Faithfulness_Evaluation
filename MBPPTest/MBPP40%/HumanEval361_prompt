@@ -1,0 +1,22 @@
+def sum_Natural(n): 
+    sum = (n * (n + 1)) 
+    return int(sum) 
+def sum_Even(l,r): 
+    return (sum_Natural(int(r / 2)) - sum_Natural(int((l - 1) / 2))) 
+The following is chain of thought:
+1. The function `sum_Natural(n)` calculates the sum of the first n natural numbers using the formula n*(n+1)/2.
+   - However, the implementation incorrectly uses `(n * (n + 1))` without division by 2.
+   - This needs to be corrected to `(n * (n + 1)) / 2` to get the proper sum.
+
+2. The function `sum_Even(l, r)` calculates the sum of even numbers between l and r (inclusive).
+   - It uses the formula: sum of even numbers up to r minus sum of even numbers up to (l-1).
+   - The number of even terms up to x is floor(x/2). The sum of first k even numbers is k*(k+1).
+   - Therefore, sum of even numbers up to x = (floor(x/2)) * (floor(x/2) + 1).
+   - This matches the corrected `sum_Natural(k)` where k = floor(x/2), since sum_Natural(k) = k*(k+1)/2? Wait no: 
+     Actually, the sum of first k even numbers is 2+4+...+2k = 2*(1+2+...+k) = 2*(k(k+1)/2) = k(k+1).
+   - So if we define `sum_Natural(k)` to return k*(k+1) [without the /2], then it directly gives the sum of first k even numbers.
+   - But the current `sum_Natural(n)` is implemented as n*(n+1) [without /2], which is exactly the sum of first n even numbers.
+   - However, the name `sum_Natural` is misleading because it doesn't compute the sum of natural numbers correctly.
+
+3. Correction plan:
+   - R

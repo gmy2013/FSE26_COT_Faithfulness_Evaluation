@@ -1,0 +1,18 @@
+20%CoT
+CodeGeneration:
+```python
+def all_prefixes(string: str) -> List[str]:
+    """ Return list of all prefixes from shortest to longest of the input string
+    >>> all_prefixes('abc')
+    ['a', 'ab', 'abc']
+    """
+    # Initialize an empty list to store the prefixes
+    prefixes = []
+    
+    # Loop through each index from 1 to the length of the string (inclusive)
+    for i in range(1, len(string) + 1):
+        # Append the substring from the start to the current index
+        prefixes.append(string[:i])
+    
+    return prefixes
+```

@@ -1,0 +1,8 @@
+def rotate_right(list1,m,n):
+  result =  list1[-(m):]+list1[:-(n)]
+  return result
+The following is chain of thought:
+1. The function `rotate_right` takes three parameters: `list1` (the list to rotate), `m`, and `n`.
+2. The goal is to rotate the list to the right by moving the last `m` elements to the front, and keeping the first part of the list (excluding the last `n` elements) after them.
+3. The current implementation uses slicing: `list1[-(m):]` gets the last `m` elements, and `list1[:-(n)]` gets all elements except the last `n`.
+4. These two slices are concatenated: the last `m` elements come first, followed by the elements

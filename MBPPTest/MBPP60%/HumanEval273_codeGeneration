@@ -1,0 +1,36 @@
+CodeGeneration:
+alse
+
+4. **Return True if All Checks Pass**: If no mismatches found, return True
+
+The function is already correctly implemented. Here's the complete code:
+
+```python
+def check_Concat(str1, str2):
+    """
+    Check if str1 can be formed by concatenating multiple copies of str2.
+    
+    Args:
+        str1 (str): The target string to check
+        str2 (str): The base string to check against
+        
+    Returns:
+        bool: True if str1 is a concatenation of str2 copies, False otherwise
+        
+    Examples:
+        >>> check_Concat("abcabc", "abc")
+        True
+        >>> check_Concat("abcabc", "ab")
+        False
+        >>> check_Concat("aaa", "a")
+        True
+    """
+    N = len(str1)
+    M = len(str2)
+    if (N % M != 0):
+        return False
+    for i in range(N):
+        if (str1[i] != str2[i % M]):
+            return False         
+    return True
+```

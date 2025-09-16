@@ -1,0 +1,19 @@
+CodeGeneration:
+return `False`.
+5. If all elements match after the loop, return `True`.
+
+However, note that the loop condition in the provided code is `range(0, n - 1)`, which only goes up to index `n-2`. This is incorrect because we need to check all `n` elements. The correct loop should be `range(0, n)`.
+
+Here is the corrected function:
+
+```python
+def are_Equal(arr1, arr2, n, m):
+    if n != m:
+        return False
+    arr1.sort()
+    arr2.sort()
+    for i in range(n):
+        if arr1[i] != arr2[i]:
+            return False
+    return True
+```

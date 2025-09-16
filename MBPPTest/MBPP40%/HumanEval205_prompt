@@ -1,0 +1,19 @@
+def max_run_uppercase(test_str):
+  cnt = 0
+  res = 0
+  for idx in range(0, len(test_str)):
+    if test_str[idx].isupper():
+      cnt += 1
+    else:
+      res = cnt
+      cnt = 0
+  if test_str[len(test_str) - 1].isupper():
+    res = cnt
+  return (res)
+The following is chain of thought:
+1. The function `max_run_uppercase` aims to find the maximum consecutive uppercase letters in a string.
+2. Initialize `cnt` to 0 to count current consecutive uppercase letters, and `res` to 0 to store the maximum found.
+3. Iterate over each character in `test_str` by index.
+4. For each character, if it is uppercase, increment `cnt`.
+5. If it is not uppercase, update `res` to the maximum of current `res` and `cnt` (but the code sets `res = cnt` without comparing, which is incorrect), then reset `cnt` to 0.
+6. After the loop, if

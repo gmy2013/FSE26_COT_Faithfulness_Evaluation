@@ -1,0 +1,20 @@
+CodeGeneration:
+After computing the factorial without trailing zeros, extract the first digit by repeatedly dividing by 10 until the number is less than 10, then return that digit.
+
+Here's the complete function:
+
+```python
+import math
+
+def first_Digit(n):
+    fact = 1
+    for i in range(2, n + 1):
+        fact = fact * i
+        while fact % 10 == 0:
+            fact = fact // 10
+    while fact >= 10:
+        fact = fact // 10
+    return fact
+```
+
+Note: I changed `int(fact / 10)` to `fact // 10` for integer division, which is more efficient and clearer for integer operations. The function returns the first digit of the factorial of `n` after removing any trailing zeros during computation.

@@ -1,0 +1,95 @@
+
+def fix_spaces(text):
+    """
+    Given a string text, replace all spaces in it with underscores, 
+    and if a string has more than 2 consecutive spaces, 
+    then replace all consecutive spaces with - 
+    
+    fix_spaces("Example") == "Example"
+    fix_spaces("Example 1") == "Example_1"
+    fix_spaces(" Example 2") == "_Example_2"
+    fix_spaces(" Example   3") == "_Example-3"
+    """
+
+The following is chain of thought:
+We are going to process the string to replace spaces with underscores, but if there are more than 2 consecutive spaces, replace that entire group with a single '-'.
+ Steps:
+ 1. We cannot simply replace all spaces at once because we have two different replacements based on the number of consecutive spaces.
+ 2. We can traverse the string and group consecutive spaces.
+ 3. Alternatively, we can use regular expressions to identify groups of spaces and replace accordingly.
+
+ Approach with regex:
+ - We want to find all occurrences of two or more consecutive spaces and replace them with '-'.
+ - Then, replace any remaining single spaces with '_'.
+
+ However, note the requirement: 
+   "if a string has more than 2 consecutive spaces, then replace all consecutive spaces with -"
+   This means for any group of consecutive spaces of length >= 3, we replace with one '-'.
+   But wait: the example " Example   3" becomes "_Example-3". 
+   There are 3 consecutive spaces (after "Example") which are replaced by one '-', and the leading space (only one) becomes '_'.
+
+ But note: the example has a leading space (single) and then three consecutive spaces. So we break the spaces into groups.
+
+ Alternatively, we can do:
+   Replace every sequence of 3 or more spaces with a '-', and then replace every remaining space (which are now either single or double) with '_'?
+   However, the requirement says: if there are more than 2 (i.e., 3 or more) then replace with '-'. For 1 or 2 spaces, we replace with underscores (but note: two consecutive spaces would become two underscores?).
+
+ But wait, the example does not have two consecutive spaces. Let's check the examples:
+
+   "Example" -> no spaces -> unchanged.
+   "Example 1" -> one space -> becomes underscore.
+   " Example 2" -> one leading space and one space between -> becomes two underscores.
+   " Example   3" -> one leading space (becomes underscore) and three consecutive spaces (become one dash).
+
+ However, note the example output for " Example 2" is "_Example_2", which has two underscores. So two consecutive spaces are replaced by two underscores? Actually, in " Example 2" there are two spaces: one at the beginning and one between "Example" and "2". They are not consecutive? Actually, the string is " Example 2" which has a space at index0 and then a space between 'e' and '2'. They are not consecutive because there are non-space characters in between.
+
+ So the problem is about consecutive spaces. We need to group consecutive spaces.
+
+ Therefore, we can:
+   - Use a regular expression to find every sequence of 3 or more spaces and replace with '-'
+   - Then, replace every sequence of 1 or 2 spaces with '_' (but note: after the first replacement, we might have sequences of 1 or 2 spaces that are actually the same as the original?).
+
+ However, note: if we first replace sequences of 3 or more with '-', then the remaining spaces are in groups of 1 or 2. Then we can replace every space (which is now in groups of 1 or 2) with underscores? But wait: we want to replace each space in a group of 1 or 2 with an underscore. So for a group of two spaces, we want two underscores.
+
+ Alternatively, we can do in one pass with a function in re.sub.
+
+ Another idea: traverse the string and build a new string.
+
+ Without regex, we can:
+   Initialize an empty result string.
+   Traverse the string and whenever we see a space, we count how many consecutive spaces there are.
+   Then:
+        if count >= 3: append a '-' to the result and skip the rest of the spaces in this group.
+        else: for each space in the group, append an underscore.
+
+ But note: we are replacing a group of 3 or more spaces with a single '-', and groups of 1 or 2 spaces with the same number of underscores.
+
+ However, the problem says: "replace all consecutive spaces with -" for groups with more than 2. So the entire group becomes one dash.
+
+ So algorithm without regex:
+   result = []
+   i = 0
+   n = len(text)
+   while i < n:
+        if text[i] != ' ':
+            result.append(text[i])
+            i += 1
+        else:
+            count = 0
+            j = i
+            while j < n and text[j] == ' ':
+                count += 1
+                j += 1
+            if count > 2:
+                result.append('-')
+            else:
+                result.append('_' * count)
+            i = j   # skip the entire space group
+
+   Then return ''.join(result)
+
+ Let's test with examples:
+
+   Example 1: "Example" -> no spaces, so just append each char.
+   Example 2: "Example 1" -> one space: count=1 -> append one underscore.
+   Example 3: " Example 2" -> first group: one space (count=1) -> one underscor

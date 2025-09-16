@@ -1,0 +1,9 @@
+def is_upper(string):
+  return (string.upper())
+The following is chain of thought:
+1. The function is named `is_upper` and takes a string parameter.
+2. The docstring is missing, but the function should check if the string is uppercase.
+3. The current implementation returns `string.upper()`, which converts the string to uppercase but does not check if it was already uppercase.
+4. To check if the string is uppercase, we should compare the original string to its uppercase version.
+5. The correct implementation should return `True` if the string is already uppercase, `False` otherwise.
+6. We can achieve this by returning `string == string.upper()`.

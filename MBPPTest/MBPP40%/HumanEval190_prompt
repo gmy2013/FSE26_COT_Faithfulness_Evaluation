@@ -1,0 +1,18 @@
+def remove_nested(test_tup):
+  res = tuple()
+  for count, ele in enumerate(test_tup):
+    if not isinstance(ele, tuple):
+      res = res + (ele, )
+  return (res) 
+The following is chain of thought:
+Let's analyze the function and its intended behavior:
+
+1. The function is named `remove_nested`, suggesting it should remove nested tuples
+2. The current implementation only adds elements to the result if they are NOT tuples
+3. This means it removes ALL tuples (both nested and the outer tuple structure)
+4. However, the docstring is missing, but based on the function name, it should:
+   - Remove nested tuples while preserving the outer tuple structure
+   - Keep non-tuple elements intact
+   - Flatten the structure by one level
+
+Th

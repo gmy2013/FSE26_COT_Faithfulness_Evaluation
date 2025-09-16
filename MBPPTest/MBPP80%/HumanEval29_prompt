@@ -1,0 +1,28 @@
+def adjac(ele, sub = []): 
+  if not ele: 
+     yield sub 
+  else: 
+     yield from [idx for j in range(ele[0] - 1, ele[0] + 2) 
+                for idx in adjac(ele[1:], sub + [j])] 
+def get_coordinates(test_tup):
+  res = list(adjac(test_tup))
+  return (res) 
+The following is chain of thought:
+Let me analyze this code step by step:
+
+1. The `adjac` function is a recursive generator that:
+   - Takes an element `ele` (which appears to be a tuple/list of integers) and a `sub` list
+   - If `ele` is empty, it yields the current `sub` list
+   - Otherwise, it recursively generates coordinates by considering values in the range `[current_element-1, current_element+1]` for each position
+
+2. The `get_coordinates` function:
+   - Calls `adjac` with the input tuple `test_tup`
+   - Converts the generator to a list and returns it
+
+3. The purpose appears to be: Given a tuple of integers, generate all possible coordinate tuples where each coordinate component can vary by ±1 from the original value.
+
+4. However, there's an issue: The recursive call `adjac(ele[1:], sub + [j])` returns a generator, but the list comprehension tries to iterate over it directly, which won't work as intended.
+
+5. The correct implementation should use `yield from` with the recursive call, or properly handle the generator output in the list comprehension.
+
+Let me trace through an 

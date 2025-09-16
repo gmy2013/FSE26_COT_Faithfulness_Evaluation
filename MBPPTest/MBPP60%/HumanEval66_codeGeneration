@@ -1,0 +1,14 @@
+CodeGeneration:
+al`, which is the count of vowels found.
+
+3. **Check for correctness**: The implementation correctly counts the vowels as described. However, note that the function name `Check_Vow` should ideally follow Python naming conventions (i.e., `check_vow`), but since the requirement is to complete the function based on the docstring (which wasn't provided in the query, but the code is given), we assume the function is already implemented correctly.
+
+4. **No changes needed**: The function is complete and works as intended.
+
+Given the above, the function is already complete. Here is the code as provided:
+
+```python
+def Check_Vow(string, vowels): 
+    final = [each for each in string if each in vowels] 
+    return(len(final)) 
+```

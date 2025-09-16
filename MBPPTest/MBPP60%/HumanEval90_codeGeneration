@@ -1,0 +1,30 @@
+CodeGeneration:
+- The key is the second element of the tuples.
+   - The value is a list of first elements from all tuples in that group.
+5. The grouped dictionary is returned.
+
+Here is the complete function with the docstring:
+
+```python
+from itertools import groupby 
+
+def group_element(test_list):
+    """
+    Groups elements of a list of tuples by their second element.
+    
+    Args:
+        test_list (list): A list of tuples where each tuple contains at least two elements.
+        
+    Returns:
+        dict: A dictionary where keys are the second elements from the tuples,
+              and values are lists of first elements grouped by the key.
+              
+    Example:
+        >>> group_element([('a', 1), ('b', 2), ('c', 1), ('d', 3), ('e', 2)])
+        {1: ['a', 'c'], 2: ['b', 'e'], 3: ['d']}
+    """
+    res = dict()
+    for key, val in groupby(sorted(test_list, key=lambda ele: ele[1]), key=lambda ele: ele[1]):
+        res[key] = [ele[0] for ele in val] 
+    return res
+```

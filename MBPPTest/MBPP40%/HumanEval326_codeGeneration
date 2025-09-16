@@ -1,0 +1,7 @@
+CodeGeneration:
+ubtree and the right subtree.
+   - Return the maximum of these two heights plus one (to account for the current node).
+
+Here is the completed function with the docstring:
+
+```python

@@ -1,0 +1,188 @@
+
+def order_by_points(nums):
+    """
+    Write a function which sorts the given list of integers
+    in ascending order according to the sum of their digits.
+    Note: if there are several items with similar sum of their digits,
+    order them based on their index in original list.
+
+    For example:
+    >>> order_by_points([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    >>> order_by_points([]) == []
+    """
+
+The following is chain of thought:
+We are given a list of integers. We need to sort them by the sum of their digits (ascending).
+ If two numbers have the same digit sum, we must preserve their original relative order (i.e., stable sort by original index).
+ Steps:
+ 1. For each number, compute the sum of its digits. Note: negative numbers? We treat the digits without the sign? 
+    Example: -11 should have digit sum 1+1=2 (ignore the negative sign for digit sum calculation).
+ 2. We need to sort the list based on the digit sum, but if two have same digit sum, then by original index.
+ 3. We can use the `sorted` function with a key that returns a tuple (digit_sum, original_index).
+ 4. However, we cannot directly get the original index if we just have the value? So we should iterate with index.
+ 5. One way: create a list of tuples (digit_sum, index, value) for each element. Then sort by digit_sum and then index.
+ 6. Alternatively, we can use `enumerate` to get index and value, and then in the key function for sorted, we can return (digit_sum, index). But note: the key function in sorted doesn't naturally have the index. So we can create a list of (value, index) and then sort by (digit_sum(value), index).
+ 7. Actually, we can do: sorted_list = sorted([(num, i) for i, num in enumerate(nums)], key=lambda x: (digit_sum(x[0]), x[1]))
+    Then extract the numbers.
+ 8. How to compute digit sum? Convert the number to string (ignoring sign) and sum the integer value of each digit (but skip non-digit? Actually, the number is integer, so we can take absolute value and then get digits.
+ 9. Define a helper function to compute digit sum: 
+        def digit_sum(n):
+            s = str(abs(n))
+            return sum(int(d) for d in s)
+ 10. Then we can do:
+        sorted_nums = sorted(nums, key=lambda x: (digit_sum(x), nums.index(x))) 
+    But wait: using nums.index(x) might not be efficient and also if there are duplicates it returns the first index. So this is not safe for preserving original order when duplicates exist? Actually, the problem says "order them based on their index in original list". So we need the original index.
+
+ 11. Better: use enumerate to capture the index. Then we sort the list of (index, number) by (digit_sum(number), index). Then extract the number.
+ 12. So:
+        pairs = [(i, num) for i, num in enumerate(nums)]
+        sorted_pairs = sorted(pairs, key=lambda x: (digit_sum(x[1]), x[0]))
+        result = [num for i, num in sorted_pairs]
+
+ 13. Alternatively, we can do without building a list of pairs first by using the key function that uses the index? But the key function in sorted doesn't have the index. So we have to build the list with index.
+
+ 14. Let's code accordingly.
+
+ Implementation:
+
+ Define helper function for digit sum.
+ Then:
+    if nums is empty, return empty list.
+    else:
+        create list of tuples (index, number)
+        sort this list by key: (digit_sum(number), index)
+        extract the numbers.
+
+ Example check: [1, 11, -1, -11, -12]
+    digit_sum(1)=1, index0
+    digit_sum(11)=1+1=2, index1
+    digit_sum(-1)=1, index2
+    digit_sum(-11)=1+1=2, index3
+    digit_sum(-12)=1+2=3, index4
+
+    So we want to sort by digit_sum: first those with 1: indices0 and2 -> then by index: so -1 (index2) should come after 1 (index0)? But wait: the example output is [-1, -11, 1, -12, 11] which corresponds to:
+        -1: digit sum=1 (index2)
+        -11: digit sum=2 (index3)
+        1: digit sum=1 (index0)
+        -12: digit sum=3 (index4)
+        11: digit sum=2 (index1)
+
+    So actually the sorted order by digit sum is:
+        digit sum=1: [1 (index0), -1 (index2)] -> but we want stable sort by index? So index0 comes before index2. So 1 should come before -1? But the example output has -1 first and then 1? Wait, the example output is [-1, -11, 1, -12, 11]. This seems to be sorted by digit sum: first -1 (1), then -11 (2), then 1 (1), then -12 (3), then 11 (2). So it is not sorted by digit sum alone? Actually, it is: the digit sums are: 1,2,1,3,2. So the sorted digit sums should be [1,1,2,2,3]. Then the numbers with digit sum 1: which are 1 and -1. The example puts -1 first and then 1. So it is not by original index? Because original index of 1 is0 and -1 is2. So if we sort by index we get 1 then -1. But the example has the opposite.
+
+    Wait, read the example again: the input is [1, 11, -1, -11, -12] and output is [-1, -11, 1, -12, 11]. So the output is not sorted by original index for same digit sum? The problem says: "order them based on their index in original list". So for same digit sum, the one with lower index should come first. So 1 (index0) should come before -1 (index2). But the example output has -1 first. This is a contradiction.
+
+    Let me recalculate the digit sums:
+        For -1: digits are just '1' -> sum=1.
+        For 1: digits are '1' -> sum=1.
+        So both have digit sum 1. Then since 1 has index0 and -1 has index2, we should have 1 first and then -1. But the example output has -1 first.
+
+    I see the problem: the example might be wrong? Or perhaps I misread the problem? The problem says "ascending order according to the sum of their digits". So for negative numbers, should we consider the sign? The problem says "sum of their digits", and the example includes negative numbers. The note says "if there are several items with similar sum of their digits, order them based on their index in original list."
+
+    Alternatively, perhaps the digit sum for negative numbers is computed with the sign? But the problem says "digits", which are non-negative. So we should ignore the sign.
+
+    Given the example output, it seems that the intended behavior is to sort by the digit sum (ignoring sign) and then by the original index? But the example output does not match that.
+
+    Wait, look at the example output: [-1, -11, 1, -12, 11]. The digit sums (ignoring sign) are:
+        -1: 1
+        -11: 1+1=2
+        1: 1
+        -12: 1+2=3
+        11: 1+1=2
+
+    So if we sort by digit sum: the order should be: [ -1, 1, -11, 11, -12] because:
+        digit sum 1: -1 and 1 -> then by index: -1 has index2, 1 has index0 -> so if we sort by index we get 1 then -1. But the example has -1 first.
+
+    This indicates that the example might have a mistake? Or perhaps the problem means to sort by the numerical value of the number if digit sum is equal? But the problem says "index in original list".
+
+    After re-reading the problem: "Note: if there are several items with similar sum of their digits, order them based on their index in original list."
+
+    So for the example, the digit sum for -1 and 1 is the same (1). Then we should order by index: index0 (1) comes before index2 (-1). So 1 should come before -1. But the example output has -1 first.
+
+    Therefore, the example provided might be incorrect. Or perhaps I misinterpreted.
+
+    Another possibility: the problem means to sort by the digit sum, and for same digit sum, use the original order (i.e., the order in which they appear). So since -1 appears after 1 in the original list, it should come after? But the example has it before.
+
+    Given the confusion, I will follow the problem statement literally: sort by digit sum (ignoring sign), and for same digit sum, sort by original index (so lower index first).
+
+    So for the example [1,11,-1,-11,-12]:
+        digit sums: 
+            1: 1
+            11: 2
+            -1: 1
+            -11: 2
+            -12: 3
+        Then we sort by digit sum: first group (1): [1, -1] -> then by index: 1 (index0) and then -1 (index2). Second group (2): [11, -11] -> by index: 11 (index1) and then -11 (index3). Then -12 (index4).
+        So the sorted list should be [1, -1, 11, -11, -12].
+
+    But the example output is given as [-1, -11, 1, -12, 11]. This does not match.
+
+    After checking the example carefully, I see that the example might be sorting by the digit sum in ascending order, and for same digit sum, by the natural order of the number? Or something else.
+
+    Given the instruction to complete the function based on the docstring, and the docstring has an example that we must match, we must output the example result.
+
+    So despite the problem statement, we need to output as the example.
+
+    How can we achieve the example output?
+        For [1,11,-1,-11,-12] the output is [-1, -11, 1, -12, 11].
+        The digit sums (ignoring sign) are:
+            -1:1
+            -11:2
+            1:1
+            -12:3
+            11:2
+        So the sorted order by digit sum is: first digit sum1: -1 and 1; then digit sum2: -11 and 11; then digit sum3: -12.
+        In the example, for digit sum1: -1 comes before 1.
+        For digit sum2: -11 comes before 11.
+
+    This suggests that for same digit sum, we are sorting by the value of the number (ascending)? So negative numbers come before positive? And then by absolute value?
+
+    Or perhaps we are to sort by the digit sum, and then by the actual number (ascending)? So for digit sum1: compare -1 and 1: -1 < 1, so -1 first.
+    For digit sum2: -11 and 11: -11 < 11, so -11 first.
+
+    So the key would be: (digit_sum, the number itself)
+
+    Let's test: 
+        sorted([1, -1], key=lambda x: (digit_sum(x), x)) -> gives [-1, 1] because -1<1.
+        sorted([11, -11], key=lambda x: (digit_sum(x), x)) -> gives [-11,11].
+
+    This matches the example.
+
+    Therefore, the intended behavior is: sort first by digit sum (ascending), and then by the integer value (ascending).
+
+    So we should change the plan: use key = (digit_sum(n), n)
+
+    But wait, the problem says "order them based on their index in original list". This is not what we just deduced.
+
+    Given the example, it seems the problem intended to say: "if there are several items with similar sum of their digits, order them based on their value" (or perhaps the example is wrong).
+
+    To match the example, we will use key = (digit_sum(n), n)
+
+    So the function becomes:
+
+        def digit_sum(n):
+            return sum(int(d) for d in str(abs(n)))
+
+        sorted_nums = sorted(nums, key=lambda x: (digit_sum(x), x))
+
+    Test with the example:
+        nums = [1,11,-1,-11,-12]
+        digit_sum(1)=1, value=1 -> key (1,1)
+        digit_sum(11)=2, value=11 -> (2,11)
+        digit_sum(-1)=1, value=-1 -> (1,-1)
+        digit_sum(-11)=2, value=-11 -> (2,-11)
+        digit_sum(-12)=3, value=-12 -> (3,-12)
+
+        Sort by first element: so groups: (1,-1) and (1,1); (2,-11) and (2,11); (3,-12)
+        Within group1: sort by second element: -1 and 1 -> -1 comes first.
+        Within group2: sort by second element: -11 and 11 -> -11 comes first.
+        So overall: [-1, 1, -11, 11, -12]? But the example output is [-1, -11, 1, -12, 11]. This is not the same.
+
+    Wait, we get [-1,1,-11,11,-12] but the example is [-1, -11,1,-12,11]. So the order of the groups is correct, but within group2, we have -11 and then11, which matches. But the example has -11 before1? So the entire sorted list should be sorted by digit sum first, and then by value. So the list should be:
+
+        digit sum1: [-1,1]
+        digit sum2: [-11,11]
+        digit sum3: [-12]
+        So concatenated: [-1,1,-11,11,-12]
+
+    But the example output is different: it has -11 after -1 and before1. This means the e

@@ -1,0 +1,21 @@
+def roman_to_int(s):
+        rom_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        int_val = 0
+        for i in range(len(s)):
+            if i > 0 and rom_val[s[i]] > rom_val[s[i - 1]]:
+                int_val += rom_val[s[i]] - 2 * rom_val[s[i - 1]]
+            else:
+                int_val += rom_val[s[i]]
+        return int_val
+The following is chain of thought:
+1. **Understand the problem**: Convert a Roman numeral string to an integer using standard Roman numeral rules where smaller values before larger ones indicate subtraction.
+
+2. **Analyze the given code**:
+   - A dictionary `rom_val` maps Roman characters to their integer values
+   - The algorithm iterates through each character in the string
+   - When a larger value follows a smaller value, it subtracts twice the previous value (to undo the previous addition and apply the subtraction rule)
+   - Otherwise, it simply adds the current value
+
+3. **Identify the approach**: The code uses a left-to-right traversal with lookback to detect subtraction cases, applying the standard Roman numeral conversion algorithm correctly.
+
+4. **Verify correctness**: The logic properly handles cases like IV (4), IX (9), XL (40), etc., by subtracting the previous value when a 

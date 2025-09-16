@@ -1,0 +1,6 @@
+def count_list(input_list): 
+    return len(input_list)
+The following is chain of thought:
+1. The function is named `count_list` and takes one parameter `input_list`.
+2. The docstring is not provided, but the implementation returns `len(input_list)`.
+3. This suggests the function is inten

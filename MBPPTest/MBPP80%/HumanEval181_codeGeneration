@@ -1,0 +1,41 @@
+CodeGeneration:
+Here's the completed function with the corrected implementation:
+
+```python
+def Odd_Length_Sum(arr):
+    """
+    Calculate the sum of all elements in all odd-length subarrays of the given array.
+    
+    For each element arr[i], computes how many odd-length subarrays contain it,
+    then multiplies the element by this count and accumulates the total sum.
+    
+    Args:
+        arr: List of integers
+        
+    Returns:
+        int: Sum of all elements in all odd-length subarrays
+        
+    Example:
+        >>> Odd_Length_Sum([1, 4, 2, 5, 3])
+        58
+        >>> Odd_Length_Sum([1, 2])
+        3
+        >>> Odd_Length_Sum([10, 11, 12])
+        66
+    """
+    Sum = 0
+    l = len(arr)
+    for i in range(l):
+        # Calculate number of odd-length subarrays containing arr[i]
+        total_subarrays = (i + 1) * (l - i)
+        odd_subarrays = (total_subarrays + 1) // 2
+        Sum += odd_subarrays * arr[i]
+    return Sum
+```
+
+The implementation follows the chain of thought:
+- For each element at index i, calculate total subarrays containing it: (i+1) × (l-i)
+- The number of odd-length subarrays is exactly half (rounded up): (total + 1) // 2
+- Multiply each element by its occurrence count and sum the results
+
+This efficiently computes the desired sum without explicitly generating all subarrays, making it optimal with O(n) time complexity.

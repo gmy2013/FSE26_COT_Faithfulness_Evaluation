@@ -1,0 +1,34 @@
+CodeGeneration:
+says "monotonically increasing or decreasing" which typically allows equal adjacent elements (non-decreasing/non-increasing).
+
+Let me implement this:
+
+```python
+def monotonic(l: list):
+    """Return True is list elements are monotonically increasing or decreasing.
+    >>> monotonic([1, 2, 4, 20])
+    True
+    >>> monotonic([1, 20, 4, 10])
+    False
+    >>> monotonic([4, 1, 0, -10])
+    True
+    """
+    if len(l) <= 1:
+        return True
+    
+    # Check if non-decreasing
+    non_decreasing = True
+    for i in range(1, len(l)):
+        if l[i] < l[i-1]:
+            non_decreasing = False
+            break
+    
+    # Check if non-increasing
+    non_increasing = True
+    for i in range(1, len(l)):
+        if l[i] > l[i-1]:
+            non_increasing = False
+            break
+    
+    return non_decreasing or non_increasing
+```

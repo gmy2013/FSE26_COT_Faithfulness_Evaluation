@@ -1,0 +1,15 @@
+def sum_Odd(n): 
+    terms = (n + 1)//2
+    sum1 = terms * terms 
+    return sum1  
+def sum_in_Range(l,r): 
+    return sum_Odd(r) - sum_Odd(l - 1)
+The following is chain of thought:
+1. The function `sum_Odd(n)` computes the sum of all odd numbers from 1 to n (inclusive).
+   - The number of odd terms up to n is `(n + 1) // 2`.
+   - The sum of the first k odd numbers is k², so `sum1 = terms * terms`.
+   - Returns the sum.
+
+2. The function `sum_in_Range(l, r)` computes the sum of all odd numbers in the range [l, r].
+   - Uses `sum_Odd(r)` to get the sum of odds from 1 to r.
+   - Subtracts `sum_Odd(l - 1)` to r

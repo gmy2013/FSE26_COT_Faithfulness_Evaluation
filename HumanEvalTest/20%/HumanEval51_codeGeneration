@@ -1,0 +1,34 @@
+20%CoT
+CodeGeneration:
+removed from the input text. This includes both lowercase and uppercase vowels.
+
+2. **Iterate Over Characters**: Loop through each character in the input text.
+
+3. **Check and Filter**: If the character is not a vowel (i.e., not in the set of vowels we defined), include it in the result.
+
+4. **Construct and Return Result**: Join all the non-vowel characters together to form the resulting string without vowels and return it.
+
+Now, let's implement the function based on this plan:
+
+```python
+def remove_vowels(text):
+    """
+    remove_vowels is a function that takes string and returns string without vowels.
+    >>> remove_vowels('')
+    ''
+    >>> remove_vowels("abcdef\nghijklm")
+    'bcdf\nghjklm'
+    >>> remove_vowels('abcdef')
+    'bcdf'
+    >>> remove_vowels('aaaaa')
+    ''
+    >>> remove_vowels('aaBAA')
+    'B'
+    >>> remove_vowels('zbcd')
+    'zbcd'
+    """
+    vowels = set('aeiouAEIOU')  # Define a set of vowels
+    return ''.join(char for char in text if char not in vowels)
+```
+
+This code correctly identifies vowels and filters them out from the input text, resulting in a string that contains no vowels.

@@ -1,0 +1,18 @@
+CodeGeneration:
+5. If it is a tuple, break out of the loop immediately.
+6. Otherwise, increment the counter by 1.
+7. After the loop (either by breaking or finishing the iteration), return the counter value.
+
+The function counts the number of elements from the start of the iterable until the first tuple is encountered (excluding the tuple itself).
+
+Here is the complete function:
+
+```python
+def count_elim(num):
+  count_elim = 0
+  for n in num:
+    if isinstance(n, tuple):
+        break
+    count_elim += 1
+  return count_elim
+```

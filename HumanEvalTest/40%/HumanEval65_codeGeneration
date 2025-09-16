@@ -1,0 +1,48 @@
+CodeGeneration:
+cstring says: "If shift > number of digits, return digits reversed." But in the example for shift=2 (which equals number of digits), it returns "12" which is not reversed. There seems to be a discrepancy.
+
+Looking at the docstring again: "If shift > number of digits, return digits reversed." So for shift equal to number of digits, it should not reverse? But the example for shift=2 (which equals number of digits) returns "12", which is the original string. So actually:
+
+- If shift >= number of digits, we should reverse? But that doesn't match the example.
+
+Wait, let's read the docstring carefully: "If shift > number of digits, return digits reversed." So only when shift is strictly greater than the number of digits, we reverse. For shift equal to number of digits, we don't reverse.
+
+But in the example: circular_shift(12, 2) has shift=2 and number of digits=2, so shift is not > number of digits, so we do a circular shift. Shifting right by 2 in a circular way for 2 digits should bring it back to the original: "12".
+
+So the logic is:
+- Let n = len(str(x))
+- If shift > n: return the reversed string of digits.
+- Else: do a circular right shift by shift: take the last shift digits and put them in front.
+
+So for circular_shift(12, 1): n=2, shift=1 (not >2), so circular shift: last 1 digit is "2", the rest is "1", so "2" + "1" = "21".
+For circular_shift(12, 2): n=2, shift=2 (not >2), so circular shift: last 2 digits is "12", the rest is "" (since n-shift=0), so "12" + "" = "12".
+
+Now, what if shift=3? Then shift>2, so return reversed digits of "12" -> "21".
+
+So the code:
+
+```python
+def circular_shift(x, shift):
+    """Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    >>> circular_shift(12, 1)
+    "21"
+    >>> circular_shift(12, 2)
+    "12"
+    """
+    s = str(x)
+    n = len(s)
+    if shift > n:
+        return s[::-1]
+    else:
+        return s[-shift:] + s[:-shift]
+```
+
+Let's test with the examples:
+- circular_shift(12,1): s="12", n=2, shift=1 -> return s[-1:] + s[:-1] = "2" + "1" = "21"
+- circular_shift(12,2): s="12", n=2, shift=2 -> return s[-2:] + s[:-2] = "12" + "" = "12"
+
+Also, for shift=3: returns reversed "12" -> "21".
+
+This matches the requirements.

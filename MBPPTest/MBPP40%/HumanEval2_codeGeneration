@@ -1,0 +1,43 @@
+CodeGeneration:
+number at `index` (call it `first_ludic`).
+   - Calculate the first removal index as `index + first_ludic`.
+   - While this removal index is within the list bounds:
+        - Remove the element at that index.
+        - Update the removal index by adding `first_ludic - 1` (since the list size decreases by one after each removal).
+   - Increment `index` by 1.
+4. **Return**: The list `ludics` now contains all Ludic numbers up to n.
+
+Here is the complete function with the docstring:
+
+```python
+def get_ludic(n):
+    """
+    Return a list of Ludic numbers less than or equal to n.
+
+    Ludic numbers are obtained by considering the natural numbers starting from 1,
+    and repeatedly removing every k-th number in the remaining set, where k is the
+    first number in the remaining set (starting with k=2 for the second iteration).
+
+    Parameters:
+    n (int): Upper bound (inclusive) for Ludic numbers.
+
+    Returns:
+    list: List of Ludic numbers <= n.
+
+    Example:
+    >>> get_ludic(10)
+    [1, 2, 3, 5, 7]
+    >>> get_ludic(25)
+    [1, 2, 3, 5, 7, 11, 13, 17, 23, 25]
+    """
+    ludics = list(range(1, n + 1))
+    index = 1
+    while index < len(ludics):
+        first_ludic = ludics[index]
+        remove_index = index + first_ludic
+        while remove_index < len(ludics):
+            ludics.pop(remove_index)
+            remove_index += first_ludic - 1
+        index += 1
+    return ludics
+```

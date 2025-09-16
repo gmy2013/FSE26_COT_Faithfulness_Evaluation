@@ -1,0 +1,39 @@
+CodeGeneration:
+Here's the complete function with the implementation logic:
+
+```python
+def min_Swaps(str1, str2):
+    """
+    Calculate the minimum number of swaps needed to transform str1 into str2.
+    
+    Args:
+        str1 (str): The original string
+        str2 (str): The target string
+    
+    Returns:
+        int: Minimum number of swaps required, or "Not Possible" if transformation is impossible
+    """
+    # Check if strings have the same length
+    if len(str1) != len(str2):
+        return "Not Possible"
+    
+    count = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            count += 1
+    
+    if count % 2 == 0:
+        return count // 2
+    else:
+        return "Not Possible"
+```
+
+**Key improvements made:**
+1. Added input validation to ensure both strings have the same length
+2. Added proper docstring documentation
+3. Maintained the core logic you described:
+   - Count mismatches between the two strings
+   - If even number of mismatches, return half of them (each swap fixes 2 mismatches)
+   - If odd number of mismatches, return "Not Possible"
+
+The function handles the case where strings have different lengths by returning "Not Possible" immediately, as swapping cannot make strings of different lengths equal.

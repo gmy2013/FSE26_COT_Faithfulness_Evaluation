@@ -1,0 +1,21 @@
+
+
+def fibfib(n: int):
+    """The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+    fibfib(0) == 0
+    fibfib(1) == 0
+    fibfib(2) == 1
+    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+    Please write a function to efficiently compute the n-th element of the fibfib number sequence.
+    >>> fibfib(1)
+    0
+    >>> fibfib(5)
+    4
+    >>> fibfib(8)
+    24
+    """
+
+The following is chain of thought:
+To efficiently compute the n-th element of the FibFib sequence, we need to avoid the exponential time complexity that comes with a naive recursive approach. Instead, we can use an iterative approach with dynamic programming concepts to store the results of previous computations.
+
+1. **Base 

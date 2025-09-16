@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+def search(lst):
+    '''
+    You are given a non-empty list of positive integers. Return the greatest integer that is greater than 
+    zero, and has a frequency greater than or equal to the value of the integer itself. 
+    The frequency of an integer is the number of times it appears in the list.
+    If no such a value exist, return -1.
+    Examples:
+        search([4, 1, 2, 2, 3, 1]) == 2
+        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3
+        search([5, 5, 4, 4, 4]) == -1
+    '''
+    # Count frequency of each number
+    freq = {}
+    for num in lst:
+        freq[num] = freq.get(num, 0) + 1
+    
+    # Find the maximum number that satisfies the condition
+    max_candidate = -1
+    for num, count in freq.items():
+        if count >= num and num > max_candidate:
+            max_candidate = num
+    
+    return max_candidate
+```
+
+This implementation:
+1. Creates a frequency dictionary to count occurrences of each number
+2. Iterates through all distinct numbers and their frequencies
+3. For each number, checks if its frequency is greater than or equal to the number itself
+4. Keeps track of the maximum number that satisfies this condition
+5. Returns the maximum candidate found, or -1 if none exists (since max_candidate starts at -1)
+
+The solution handles all the test cases correctly:
+- `[4, 1, 2, 2, 3, 1]` → 2 (frequency 2 ≥ 2)
+- `[1, 2, 2, 3, 3, 3, 4, 4, 4]` → 3 (frequency 3 ≥ 3)
+- `[5, 5, 4, 4, 4]` → -1 (5: frequency 2 < 5, 4: frequency 3 < 4)

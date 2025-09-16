@@ -1,0 +1,25 @@
+
+def solve(s):
+    """You are given a string s.
+    if s[i] is a letter, reverse its case from lower to upper or vise versa, 
+    otherwise keep it as it is.
+    If the string contains no letters, reverse the string.
+    The function should return the resulted string.
+    Examples
+    solve("1234") = "4321"
+    solve("ab") = "AB"
+    solve("#a@C") = "#A@c"
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. Check if the string contains any letters. We can do this by checking if there is at least one character in `s` that is a letter (using `isalpha()`).
+2. If there are no letters, we reverse the entire string.
+3. If there are letters, we iterate through each character:
+   - If the character is a letter, we swap its case (using `swapcase()`).
+   - Otherwise, we leave it unchanged.
+
+We'll implement accordingly.
+
+Note: We must be cautious because if the string has no letters, we reverse the entire string (including non-let

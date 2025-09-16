@@ -1,0 +1,7 @@
+CodeGeneration:
+l) plus the maximum of the left and right subtree heights.
+   - This ensures we get the longest path from the root to a leaf.
+
+Here's the corrected and improved function with proper formatting:
+
+```python

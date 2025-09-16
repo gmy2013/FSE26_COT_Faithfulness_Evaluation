@@ -1,0 +1,14 @@
+CodeGeneration:
+la by multiplying `s` (number of sides) by `l` (side length).
+4. The function returns the calculated perimeter.
+5. The implementation is correct and complete based on the mathematical formula.
+
+No additional code is needed as the function is already correctly implemented.
+
+```python
+from math import tan, pi
+
+def perimeter_polygon(s, l):
+    perimeter = s * l
+    return perimeter
+```

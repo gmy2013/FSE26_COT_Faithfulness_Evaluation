@@ -1,0 +1,15 @@
+
+
+def unique(l: list):
+    """Return sorted unique elements in a list
+    >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])
+    [0, 2, 3, 5, 9, 123]
+    """
+
+The following is chain of thought:
+To implement the `unique` function that returns sorted unique elements from a list, we need to:
+1. Remove duplicate elements from the list
+2. Sort the resulting elements in ascending order
+
+We can achieve this by:
+- Convertin

@@ -1,0 +1,29 @@
+
+def encrypt(s):
+    """Create a function encrypt that takes a string as an argument and
+    returns a string encrypted with the alphabet being rotated. 
+    The alphabet should be rotated in a manner such that the letters 
+    shift down by two multiplied to two places.
+    For example:
+    encrypt('hi') returns 'lm'
+    encrypt('asdfghjkl') returns 'ewhjklnop'
+    encrypt('gf') returns 'kj'
+    encrypt('et') returns 'ix'
+    """
+
+The following is chain of thought:
+To solve this problem, we need to encrypt a string by rotating each letter in the alphabet by a fixed number of positions. The rotation is defined as shifting down by two multiplied by two places, which is equivalent to shifting by 4 positions (since 2 * 2 = 4). 
+
+Steps:
+1. Understand the rotation: Each letter should be replaced by the letter that is 4 positions ahead in the alphabet.
+2. Handle wrapping: If shifting goes beyond 'z', it should wrap around to the beginning of the alphabet.
+3. Process each character: For each character in the input string, if it is a lowercase letter, apply the shift; otherwise, leave it unchanged (though the examples only have lowercase, the function should be robust).
+4. Build the result: Construct the encrypted string by processing each character.
+
+Implementation:
+- Use the `ord` function to get the Unicode code point of a character.
+- For a lowercase letter, subtract the code of 'a' to get a position (0-25), add 4, take modulo 26 to handle wrapping, then add back 'a' to get the new character.
+- Use `chr` to convert the code point back to a character.
+- For non-lowercase letters, return the character as is.
+
+Let's code ac

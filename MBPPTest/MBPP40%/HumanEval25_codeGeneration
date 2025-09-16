@@ -1,0 +1,29 @@
+CodeGeneration:
+tion name suggests it should calculate the area of a triangle, but the implementation calculates the area of a square
+5. The function should be corrected to calculate the area of a triangle
+6. Since the function takes only one parameter `r`, this likely represents the base of the triangle
+7. However, to calculate triangle area, we need both base and height
+8. The function name might be misleading, or perhaps `r` represents something else
+9. Looking at the context, maybe `r` represents the radius of an inscribed circle or some other geometric property
+10. Without more context, I'll assume the function should calculate the area of an equilateral triangle where `r` is the side length
+11. The area of an equilateral triangle with side length `r` is (√3/4) × r²
+
+Here's the corrected implementation:
+
+```python
+import math
+
+def triangle_area(r):
+    """
+    Calculate the area of an equilateral triangle with side length r.
+    
+    Args:
+        r (float): The side length of the equilateral triangle
+        
+    Returns:
+        float: The area of the triangle, or -1 if r is negative
+    """
+    if r < 0:
+        return -1
+    return (math.sqrt(3) / 4) * r * r
+```

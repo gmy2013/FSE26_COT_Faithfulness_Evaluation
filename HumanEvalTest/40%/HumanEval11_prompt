@@ -1,0 +1,16 @@
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+
+The following is chain of thought:
+We are given two strings of '0's and '1's. We need to perform a binary XOR operation on each corresponding pair of bits.
+ Steps:
+ 1. Check that the strings have the same length? (The problem doesn't specify, but the example has same length. We assume same length.)
+ 2. Iterate over each index in the strings.
+ 3. For each index, compare the two bits. XOR is true (1) i

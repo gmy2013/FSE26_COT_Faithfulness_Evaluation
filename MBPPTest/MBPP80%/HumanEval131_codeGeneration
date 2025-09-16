@@ -1,0 +1,26 @@
+CodeGeneration:
+Here's the completed function based on the docstring:
+
+```python
+import re
+
+def replace_specialchar(text):
+    """
+    Replace all occurrences of space, comma, or period with a colon in the given text.
+    
+    Args:
+        text (str): The input string to process.
+    
+    Returns:
+        str: The modified string with special characters replaced by colons.
+    
+    Examples:
+        >>> replace_specialchar("Hello, world. How are you?")
+        'Hello::world::How:are:you?'
+        >>> replace_specialchar("a b,c.d")
+        'a:b:c:d'
+    """
+    return (re.sub("[ ,.]", ":", text))
+```
+
+The function replaces spaces, commas, and periods with colons using regular expression substitution. The pattern `[ ,.]` matches any single character that is either a space, comma, or period, and replaces each occurrence with a colon.

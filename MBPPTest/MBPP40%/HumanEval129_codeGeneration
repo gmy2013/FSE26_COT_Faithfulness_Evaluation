@@ -1,0 +1,27 @@
+CodeGeneration:
+ue and `group` is an iterator of consecutive duplicates.
+4. The list comprehension extracts only the `key` from each group, effectively removing consecutive duplicates while preserving the order of first occurrence.
+5. The result is a list containing each element only once when it first appears consecutively.
+
+Here is the complete function with the docstring:
+
+```python
+from itertools import groupby
+
+def consecutive_duplicates(nums):
+    """Remove consecutive duplicates from a list.
+    
+    Args:
+        nums: List of elements that may contain consecutive duplicates
+        
+    Returns:
+        List with consecutive duplicates removed, preserving order of first occurrence
+        
+    Examples:
+        >>> consecutive_duplicates([1, 2, 2, 3, 2, 2, 4])
+        [1, 2, 3, 2, 4]
+        >>> consecutive_duplicates(['a', 'a', 'b', 'c', 'c', 'a'])
+        ['a', 'b', 'c', 'a']
+    """
+    return [key for key, group in groupby(nums)]
+```

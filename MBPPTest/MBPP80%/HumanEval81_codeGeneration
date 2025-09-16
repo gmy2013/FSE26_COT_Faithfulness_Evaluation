@@ -1,0 +1,27 @@
+CodeGeneration:
+Looking at the function, I can see it already implements the desired functionality correctly. The function:
+
+1. Takes two lists `nums1` and `nums2`
+2. Uses `map()` with a lambda function to multiply corresponding elements
+3. Converts the map object to a list and returns it
+
+The implementation is complete and functional. Here's the same code with proper formatting:
+
+```python
+def mul_list(nums1, nums2):
+    """Multiply corresponding elements from two lists.
+    
+    Args:
+        nums1: First list of numbers
+        nums2: Second list of numbers (must be same length as nums1)
+    
+    Returns:
+        List containing element-wise multiplication results
+    """
+    result = map(lambda x, y: x * y, nums1, nums2)
+    return list(result)
+```
+
+The function works correctly for lists of the same length. For example:
+- `mul_list([1, 2, 3], [4, 5, 6])` returns `[4, 10, 18]`
+- `mul_list([2, 4], [3, 5])` returns `[6, 20]`

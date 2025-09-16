@@ -1,0 +1,69 @@
+def min_Jumps(a, b, d): 
+    temp = a 
+    a = min(a, b) 
+    b = max(temp, b) 
+    if (d >= b): 
+        return (d + b - 1) / b 
+    if (d == 0): 
+        return 0
+    if (d == a): 
+        return 1
+    else:
+        return 2
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. First, it ensures `a` is the smaller and `b` is the larger of the two inputs by swapping if necessary.
+2. Then it handles cases:
+   - If `d >= b`: returns `(d + b - 1) / b` (which is equivalent to ceiling(d/b) without using math.ceil)
+   - If `d == 0`: returns 0
+   - If `d == a`: returns 1
+   - Otherwise: returns 2
+
+However, there is a logical issue: when `d < b` and `d != 0` and `d != a`, it always returns 2. This might not cover all cases correctly (e.g., when `d` is less than `a` but not zero, or when `d` can be reached with one jump of size `b`? Actually, since `d < b` and `a <= b`, we cannot reach `d` with one jump of `b` (too big), but we might with one jump of `a`? But note: we already handled `d == a` returning 1. So for other `d` (with `0 < d < b` and `d != a`), we need at least two jumps? Actually, if `d < a`, we cannot even reach with one jump of `a`? So we need two jumps? But wait: if `d < a`, we can only overshoot? However, we can combine jumps in both directions? Actually, the problem is about reaching exactly `d` with jumps of sizes `a` and `b` (presumably positive jumps only?).
+
+But the function seems designed for a specific problem (probably "Frog Jump" or similar) where we can only jump forward. So for `d < b` and `d != a`, we need at least two jumps? However, if `d` is not divisible by `a` or `b`, we might need more? But the function only returns 2 in that case.
+
+This suggests the function might be incomplete or incorrect for some cases. But based on the given code, we must generate the structured chain of thought without modifying the logic.
+
+Structured chain of thought:
+
+1. **Input normalization**: Ensure `a` is the smaller jump and `b` is the larger.
+   - Store original `a` in `temp`.
+   - Set `a = min(a, b)`.
+   - Set `b = max(temp, b)`.
+
+2. **Case when `d >= b`**:
+   - The number of jumps is the ceiling of `d/b` (since we can use mostly `b`-sized jumps).
+   - Use integer arithmetic to compute ceiling: `(d + b - 1) // b` (but note: the code uses `/` which returns float, but the problem might expect integer? However, the code returns float here).
+
+3. **Case when `d == 0`**: Already at target, so 0 jumps.
+
+4. **Case when `d == a`**: Exactly one jump of size `a` suffices.
+
+5. **Other cases** (when `0 < d < b` and `d != a`):
+   - Since `d < b`, we cannot use a `b`-sized jump (it would overshoot).
+   - We can use one `a`-sized jump only if `d == a` (already handled).
+   - So we need at least two jumps (e.g., two `a`-sized jumps if `d=2a`, or an `a` and a `b` but `b` is too big, so actually we cannot use `b` at all? But wait, we might use a combination of `a` and `b` in opposite directions? However, the problem likely assumes only forward jumps.
+   - The function simply returns 2 for all these cases, which might be correct only if we can reach any `d` with two jumps? But that is not true: for example, if `a=2`, `b=3`, `d=1`: we cannot reach exactly 1 with forward jumps. But the function returns 2.
+
+This indicates the function might be for a problem where we can jump in both directions? Or it has a flaw.
+
+However, we are to complete the function as given. So we just follow the logic.
+
+Final code (with corrected return for the first case to use integer division? But the original uses `/`, so we keep it):
+
+```python
+def min_Jumps(a, b, d): 
+    temp = a 
+    a = min(a, b) 
+    b = max(temp, b) 
+    if (d >= b): 
+        return (d + b - 1) / b 
+    if (d == 0): 
+        return 0
+    if (d == a): 
+        return 1
+    else:
+        return 2
+```

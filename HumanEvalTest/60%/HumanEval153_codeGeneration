@@ -1,0 +1,35 @@
+CodeGeneration:
+Here is the implementation of the function:
+
+```python
+def Strongest_Extension(class_name, extensions):
+    max_strength = float('-inf')
+    strongest_extension = None
+    
+    for ext in extensions:
+        cap = 0
+        sm = 0
+        for char in ext:
+            if char.isupper():
+                cap += 1
+            elif char.islower():
+                sm += 1
+        
+        strength = cap - sm
+        
+        if strength > max_strength:
+            max_strength = strength
+            strongest_extension = ext
+    
+    return f"{class_name}.{strongest_extension}"
+```
+
+This implementation:
+1. Initializes `max_strength` to negative infinity to handle any possible strength value
+2. Iterates through each extension in the list
+3. For each extension, counts uppercase and lowercase letters
+4. Calculates the strength using the formula CAP - SM
+5. Updates the strongest extension whenever a higher strength is found
+6. Returns the result in the required format "ClassName.StrongestExtensionName"
+
+The solution correctly handles ties by always choosing the first occurrence of the maximum strength value, since we only update when we find a strictly greater strength.

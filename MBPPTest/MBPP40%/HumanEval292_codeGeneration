@@ -1,0 +1,23 @@
+CodeGeneration:
+, it accesses the last element using `item[-1]`.
+4. It returns a new list containing these last elements from each sublist.
+
+This function assumes that each `item` in `lst` is a list or sequence with at least one element. If any sublist is empty, it will raise an `IndexError`.
+
+Here's the complete function with the docstring:
+
+```python
+def Extract(lst):
+    """Extract the last element from each sublist in the given list.
+    
+    Args:
+        lst: A list of lists (or other indexable sequences)
+        
+    Returns:
+        A list containing the last element from each sublist
+        
+    Raises:
+        IndexError: If any sublist is empty
+    """
+    return [item[-1] for item in lst]
+```

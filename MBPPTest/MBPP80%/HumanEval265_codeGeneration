@@ -1,0 +1,28 @@
+CodeGeneration:
+```python
+def check_monthnumb(monthname2):
+    """
+    Check if a given month name has 31 days.
+    
+    Args:
+        monthname2 (str): The name of the month to check
+        
+    Returns:
+        bool: True if the month has 31 days, False otherwise
+        
+    Example:
+        >>> check_monthnumb("January")
+        True
+        >>> check_monthnumb("February")
+        False
+        >>> check_monthnumb("august")
+        True
+    """
+    # Convert to title case for case-insensitive comparison
+    monthname2 = monthname2.title()
+    
+    # Use a set for O(1) lookup of months with 31 days
+    months_with_31_days = {"January", "March", "May", "July", "August", "October", "December"}
+    
+    return monthname2 in months_with_31_days
+```

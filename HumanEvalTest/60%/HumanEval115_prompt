@@ -1,0 +1,52 @@
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We have a grid where each row is a well, and each 1 in a row represents a unit of water.
+2. We have buckets with a fixed capacity to extract water.
+3. We need to calculate the total number of times we must lower buckets to empty all wells.
+
+Approach:
+- For each well (each row in the grid), we need to calculate how many bucket trips are required to empty it.
+- The number of bucket trips for a well is the total water in that well (number of 1s) divided by the bucket capacity, rounded up (since each bucket can carry up to `capacity` units, and we might need a partial bucket for the remainder).
+- However, note: we can use one bucket to extract from multiple wells? Actually, the problem says "each well has a corresponding bucket", meaning we have one bucket per well? But wait, the problem says "use the buckets to empty the wells" and "number of times you need to lower the buckets".
+
+Clarification from examples:
+- In example 1: grid has 3 wells with [1, 1, 4] units of water. With capacity=1, we need 1+1+4=6 trips.
+- In example 2: wells have [2,0,4,3] units. With capacit

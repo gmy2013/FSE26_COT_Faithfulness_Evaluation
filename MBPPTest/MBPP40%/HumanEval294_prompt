@@ -1,0 +1,16 @@
+def max_sum_subseq(A):
+    n = len(A)
+    if n == 1:
+        return A[0]
+    look_up = [None] * n
+    look_up[0] = A[0]
+    look_up[1] = max(A[0], A[1])
+    for i in range(2, n):
+        look_up[i] = max(look_up[i - 1], look_up[i - 2] + A[i])
+        look_up[i] = max(look_up[i], A[i])
+    return look_up[n - 1]
+The following is chain of thought:
+1. The function `max_sum_subseq` computes the maximum sum of a subsequence where no two elements are adjacent.
+2. For an array of length 1, the maximum sum is simply the single element.
+3. For an array of length 2, the maximum sum is the maximum of the two elements (since they cannot both be chosen).
+4. For longer arrays, dynamic programming is used with a `look_up` 

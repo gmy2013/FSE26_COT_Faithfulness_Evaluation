@@ -1,0 +1,6 @@
+def str_to_tuple(test_str):
+  res = tuple(map(int, test_str.split(', ')))
+  return (res) 
+The following is chain of thought:
+1. The function takes a string `test_str` as input.
+2. The string is split using `', '` as the delimiter to create a l

@@ -1,0 +1,16 @@
+CodeGeneration:
+The function you provided is already correct and complete. Here's the full implementation:
+
+```python
+def mul_even_odd(list1):
+    first_even = next((el for el in list1 if el%2==0),-1)
+    first_odd = next((el for el in list1 if el%2!=0),-1)
+    return (first_even*first_odd)
+```
+
+This function will:
+- Find the first even number in the list (or return -1 if none exists)
+- Find the first odd number in the list (or return -1 if none exists)
+- Return the product of these two values
+
+The implementation is efficient as it uses generator expressions with `next()` which stops searching once the first matching element is found, rather than processing the entire list unnecessarily.

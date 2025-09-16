@@ -1,0 +1,26 @@
+CodeGeneration:
+x `C` in the 2D list `list1`.
+3. We iterate through each row in `list1` and access the element at index `C`.
+4. We use a generator expression inside the `sum()` function to efficiently compute the total sum.
+5. Finally, we return the computed result.
+
+Here is the complete function with the docstring:
+
+```python
+def sum_column(list1, C):
+    """Return the sum of all elements in column C of the 2D list list1.
+    
+    Args:
+        list1: A 2D list (list of lists) containing numerical values
+        C: Integer index of the column to sum
+    
+    Returns:
+        The sum of all values in column C
+    
+    Example:
+        >>> sum_column([[1, 2, 3], [4, 5, 6]], 1)
+        7
+    """
+    result = sum(row[C] for row in list1)
+    return result
+```

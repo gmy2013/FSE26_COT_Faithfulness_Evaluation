@@ -1,0 +1,94 @@
+
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+
+The following is chain of thought:
+Let's break down the requirements step by step:
+
+1. Swap the case of all letters.
+2. Replace all vowels (a, e, i, o, u) with the letter that appears 2 places ahead in the English alphabet.
+   - Note: We need to handle both uppercase and lowercase vowels? Actually, after swapping case, we can process uniformly.
+   - But the replacement should be done after swapping case? Actually, the requirement says: "swaps case of all letters, replaces all vowels...". So we should swap case first, then replace vowels.
+
+However, note: after swapping case, the vowels might be in uppercase. But the replacement should be with the letter 2 places ahead, which should be in the same case? Actually, the examples show:
+   'test' becomes 'TGST' -> 'e' (lower) becomes 'G' (upper) because after swapping case, 'e' becomes 'E', then we replace 'E' with 'G' (2 ahead: E->F->G).
+
+So the process is:
+   For each character in the message:
+      First, swap the case (if it's a letter).
+      Then, if it is a vowel (now in swapped case), replace it with the letter two places ahead in the alphabet (maintaining the same case).
+
+But note: what about 'y'? It is not considered a vowel here.
+Also, what about the vowels at the end? For 'u', two places ahead would be 'w' (since after u is v, then w). Similarly, 'U' becomes 'W'.
+
+Implementation plan:
+   Create a string of vowels: "aeiouAEIOU" (but after swapping case, we only have either all uppercase or all lowercase? Actually no: after swapping, the vowels become either uppercase or lowercase. So we can check for vowels in both cases? Alternatively, we can swap case first and then check only for uppercase vowels? Actually, after swapping, all letters are in opposite case. So if we have an original lowercase letter, it becomes uppercase. So after swapping, all vowels are uppercase? Not exactly: if the original was uppercase, it becomes lowercase. So after swapping, we have both cases? Actually no: the swapping is applied per character. So we have a mix.
+
+Wait, let's clarify with the example:
+   Original: 'This is a message'
+   After swapping case: 'tHIS IS A MESSAGE' (but wait, actually: 'T' becomes 't', 'h' becomes 'H', 'i' becomes 'I', etc. So it becomes: 'tHKS KS C MGSSCGG'? Actually the example output is 'tHKS KS C MGSSCGG'. So we see both cases.
+
+So to handle vowels after swapping, we should consider both uppercase and lowercase vowels.
+
+But the replacement: for a vowel, we want to replace with the letter two places ahead. So for 'a' (lowercase) we replace with 'c', for 'A' we replace with 'C'. Similarly, 'e' becomes 'g', 'E' becomes 'G', etc.
+
+So we can do:
+   For each char in message:
+      swapped_char = char.swapcase()
+      if swapped_char is a vowel (in any case), then we replace it with the letter two places ahead in the alphabet, maintaining the case.
+      else, we just keep the swapped_char.
+
+How to get the letter two places ahead?
+   We can use the ASCII value. For a lowercase vowel: 
+        new_char = chr( (ord(swapped_char) - ord('a') + 2) % 26 + ord('a') )
+   Similarly for uppercase:
+        new_char = chr( (ord(swapped_char) - ord('A') + 2) % 26 + ord('A') )
+
+But note: for 'u' (lowercase), we have: 
+   ord('u') = 117, so (117 - 97 + 2) = 22, which is less than 26, so it becomes 'w' (97+22=119 -> 'w').
+For 'U': (85 - 65 + 2)=22 -> 65+22=87 -> 'W'.
+
+For 'y' is not a vowel, so we don't change.
+
+So steps in code:
+   result = []
+   for char in message:
+        swapped = char.swapcase()
+        if swapped in 'aeiouAEIOU':
+            if swapped.islower():
+                # For lowercase vowel
+                new_ord = (ord(swapped) - ord('a') + 2) % 26 + ord('a')
+            else:
+                new_ord = (ord(swapped) - ord('A') + 2) % 26 + ord('A')
+            result.append(chr(new_ord))
+        else:
+            result.append(swapped)
+
+   return ''.join(result)
+
+Let's test with examples:
+
+Example 1: 'test'
+   t -> T (not vowel) -> T
+   e -> E (vowel) -> (E: uppercase) -> (69-65+2=6 -> 65+6=71 -> 'G')
+   s -> S (not vowel) -> S
+   t -> T (not vowel) -> T
+   So we get "TGST", which matches.
+
+Example 2: 'This is a message'
+   Let's take the first word: 'This'
+   T -> t (not vowel) -> t
+   h -> H (not vowel) -> H
+   i -> 

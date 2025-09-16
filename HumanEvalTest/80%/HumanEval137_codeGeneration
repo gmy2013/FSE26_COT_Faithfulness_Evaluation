@@ -1,0 +1,33 @@
+CodeGeneration:
+```python
+def compare_one(a, b):
+    def to_float(value):
+        if isinstance(value, str):
+            # Replace comma with dot and convert to float
+            return float(value.replace(',', '.'))
+        else:
+            return float(value)
+    
+    try:
+        num_a = to_float(a)
+        num_b = to_float(b)
+        
+        if abs(num_a - num_b) < 1e-10:  # Handle floating point precision
+            return None
+        elif num_a > num_b:
+            return a
+        else:
+            return b
+    except (ValueError, TypeError):
+        # Handle invalid inputs by returning None (though problem states inputs are valid)
+        return None
+```
+
+The function handles the requirements by:
+1. Converting both inputs to floats for comparison, handling string representations with either '.' or ',' as decimal separators
+2. Using a small epsilon (1e-10) to handle floating point precision issues when checking equality
+3. Returning the original input value (with its original type and formatting) of the larger number
+4. Returning None when the numeric values are equal
+5. Including error handling for invalid inputs (though the problem states inputs will be valid representations)
+
+The helper function `to_float` properly handles string inputs by replacing commas with dots before conversion, ensuring accurate numeric comparison regardless of the decimal separator used in string representations.

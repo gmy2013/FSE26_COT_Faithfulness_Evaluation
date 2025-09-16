@@ -1,0 +1,9 @@
+def parallelogram_perimeter(b,h):
+  perimeter=2*(b*h)
+  return perimeter
+The following is chain of thought:
+1. The function is named `parallelogram_perimeter` with parameters `b` and `h`.
+2. The formula for parallelogram perimeter is P = 2(a + b), where a and b are adjacent sides.
+3. However, the given implementation uses `2*(b*h)` which incorrectly multiplies base and height.
+4. The height (h) is not used in perimeter calculation - perimeter depends on side lengths.
+5. The function should calculate perimeter using two adjacent sides, but only one 

@@ -1,0 +1,38 @@
+CodeGeneration:
+Based on the chain of thought analysis, here's the complete function with improved documentation and error handling:
+
+```python
+def check_tuples(test_tuple, K):
+    """
+    Check if all elements in the test_tuple are present in the collection K.
+    
+    Args:
+        test_tuple (tuple): A tuple containing elements to be checked for membership
+        K (iterable): A collection (tuple, list, set, etc.) that serves as the reference
+                     for membership checking. Must support the 'in' operator.
+    
+    Returns:
+        bool: True if all elements of test_tuple are found in K, False otherwise
+        
+    Raises:
+        TypeError: If test_tuple is not a tuple
+        ValueError: If test_tuple is empty
+    """
+    # Input validation
+    if not isinstance(test_tuple, tuple):
+        raise TypeError("test_tuple must be a tuple")
+    
+    if len(test_tuple) == 0:
+        raise ValueError("test_tuple cannot be empty")
+    
+    # Check membership using all() with generator expression
+    res = all(ele in K for ele in test_tuple)
+    return res
+```
+
+**Key improvements:**
+- Added comprehensive docstring with parameter descriptions and return type
+- Included input validation to ensure `test_tuple` is actually a tuple
+- Added check for empty tuple to prevent unexpected behavior
+- Maintained the original efficient logic using `all()` with generator expression
+- Added proper error handling with specific exception types

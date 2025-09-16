@@ -1,0 +1,20 @@
+CodeGeneration:
+odd lengths
+    filtered = [s for s in lst if len(s) % 2 == 0]
+    
+    # Sort by length (ascending), then alphabetically for same length
+    filtered.sort(key=lambda s: (len(s), s))
+    
+    return filtered
+```
+
+```python
+def sorted_list_sum(lst):
+    # Filter out strings with odd lengths
+    filtered = [s for s in lst if len(s) % 2 == 0]
+    
+    # Sort by length (ascending), then alphabetically for same length
+    filtered.sort(key=lambda s: (len(s), s))
+    
+    return filtered
+```

@@ -1,0 +1,24 @@
+def check_Concat(str1,str2):
+    N = len(str1)
+    M = len(str2)
+    if (N % M != 0):
+        return False
+    for i in range(N):
+        if (str1[i] != str2[i % M]):
+            return False         
+    return True
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose Analysis**: The function checks if str1 can be formed by concatenating multiple copies of str2
+
+2. **Length Check**: 
+   - Calculate lengths of both strings (N and M)
+   - If N is not divisible by M, str1 cannot be formed by concatenating str2 copies
+   - Return False immediately in this case
+
+3. **Character-by-Character Verification**:
+   - Iterate through each character in str1 (index i from 0 to N-1)
+   - For each position i in str1, check if it matches the corresponding character in str2
+   - Use modulo operation (i % M) to cycle through str2 characters repeatedly
+   - If any character doesn't match, return F

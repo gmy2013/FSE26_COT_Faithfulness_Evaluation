@@ -1,0 +1,132 @@
+
+def numerical_letter_grade(grades):
+    """It is the last week of the semester and the teacher has to give the grades
+    to students. The teacher has been making her own algorithm for grading.
+    The only problem is, she has lost the code she used for grading.
+    She has given you a list of GPAs for some students and you have to write 
+    a function that can output a list of letter grades using the following table:
+             GPA       |    Letter grade
+              4.0                A+
+            > 3.7                A 
+            > 3.3                A- 
+            > 3.0                B+
+            > 2.7                B 
+            > 2.3                B-
+            > 2.0                C+
+            > 1.7                C
+            > 1.3                C-
+            > 1.0                D+ 
+            > 0.7                D 
+            > 0.0                D-
+              0.0                E
+    
+
+    Example:
+    grade_equation([4.0, 3, 1.7, 2, 3.5]) ==> ['A+', 'B', 'C-', 'C', 'A-']
+    """
+
+The following is chain of thought:
+We are given a list of GPAs and need to map each GPA to a letter grade based on the provided table.
+ The table has specific thresholds for each grade. Note that the table uses ">" for ranges, meaning:
+   - A+ is exactly 4.0
+   - For other grades, the range is from the threshold (exclusive) up to the next threshold (inclusive), but note the table uses ">" meaning:
+        For example: 
+          "> 3.7" means A for GPAs greater than 3.7 and up to 4.0 (but not including 4.0, since that is A+). However, note the table has:
+            4.0 -> A+
+            >3.7 -> A   (so A is for GPAs strictly greater than 3.7 and less than 4.0? Actually, the table is written with inequalities that are lower bounds.
+
+ Actually, the table is written with ">" meaning the lower bound. So:
+   A: if GPA > 3.7 and <= 4.0? But note 4.0 is already taken by A+.
+   Similarly, A-: if GPA > 3.3 and <= 3.7? But wait, the table says "> 3.3" for A-, meaning that if it is greater than 3.3 then it gets A-? But that would include values above 3.7 too.
+
+ This is ambiguous. However, looking at the example: 
+   [4.0, 3, 1.7, 2, 3.5] becomes ['A+', 'B', 'C-', 'C', 'A-']
+   So:
+      4.0 -> A+
+      3.0 -> B (since 3.0 is greater than 2.7? But note the table says for B: "> 2.7", meaning if GPA > 2.7 then B? But 3.0 is also greater than 3.0? Wait, no.
+
+ Actually, the table should be read as:
+   A+ for exactly 4.0
+   A for GPA > 3.7 and <= 4.0 (but 4.0 is already taken, so actually A for GPAs in (3.7, 4.0))
+   A- for GPA > 3.3 and <= 3.7
+   B+ for GPA > 3.0 and <= 3.3
+   B for GPA > 2.7 and <= 3.0
+   B- for GPA > 2.3 and <= 2.7
+   C+ for GPA > 2.0 and <= 2.3
+   C for GPA > 1.7 and <= 2.0
+   C- for GPA > 1.3 and <= 1.7
+   D+ for GPA > 1.0 and <= 1.3
+   D for GPA > 0.7 and <= 1.0
+   D- for GPA > 0.0 and <= 0.7
+   E for exactly 0.0
+
+ However, note the table says "> 0.0" for D-, which would include all positive numbers less than or equal to 0.7? But then what about E? The table also says 0.0 is E.
+
+ Actually, the table has two entries for 0.0: one for E and one for D- (with >0.0). So we must interpret that E is only for exactly 0.0, and D- is for GPAs greater than 0.0 and up to 0.7.
+
+ But wait, the example input includes 1.7 -> 'C-'. According to our breakdown above, 1.7 would be in the range for C-? Actually, the range for C- is (1.3, 1.7]? But 1.7 is the upper bound. So we should use inclusive upper bounds for the lower grades? Actually, the table uses ">" for the lower bound, meaning strictly greater. So for C-: it requires GPA > 1.3. So 1.3 is not included. But 1.7 is not specified as the upper bound.
+
+ Alternatively, we can reverse the order and use if-elif chains with decreasing thresholds.
+
+ Standard way: we check from the highest grade down to the lowest.
+
+ Steps:
+   For each gpa in grades:
+      if gpa == 4.0: return 'A+'
+      elif gpa > 3.7: return 'A'
+      elif gpa > 3.3: return 'A-'
+      elif gpa > 3.0: return 'B+'
+      elif gpa > 2.7: return 'B'
+      elif gpa > 2.3: return 'B-'
+      elif gpa > 2.0: return 'C+'
+      elif gpa > 1.7: return 'C'
+      elif gpa > 1.3: return 'C-'
+      elif gpa > 1.0: return 'D+'
+      elif gpa > 0.7: return 'D'
+      elif gpa > 0.0: return 'D-'
+      else: return 'E'   (which is for gpa == 0.0)
+
+ But note: the table says "> 0.0" for D-, so if gpa is exactly 0.0, it should be E. So the above chain will work because if gpa is 0.0, it does not satisfy any of the ">" conditions and falls to else.
+
+ However, what about negative GPAs? The problem says GPAs are given, and the table has down to 0.0. So we assume GPAs are non-negative.
+
+ Let's test with the example:
+   gpa=4.0 -> 'A+'
+   gpa=3 -> which is 3.0: 
+        check: 3.0 > 3.7? No.
+        >3.3? No.
+        >3.0? No. (because 3.0 is not greater than 3.0)
+        So it falls to next: >2.7? Yes, because 3.0 > 2.7 -> so it returns 'B'. But the example expects 'B' for 3.0? Actually, the example says 3 becomes 'B'. So that matches.
+
+   gpa=1.7: 
+        >1.7? No.
+        >1.3? Yes (1.7>1.3) -> so returns 'C-'. Matches example.
+
+   gpa=2: which is 2.0:
+        >2.0? No.
+        >1.7? Yes (2.0>1.7) -> returns 'C'. But the example expects 'C' for 2.0? Actually, the example says 2 becomes 'C'. So that matches.
+
+   gpa=3.5:
+        >3.7? No.
+        >3.3? Yes (3.5>3.3) -> returns 'A-'. Matches.
+
+ So the if-elif chain as above is correct.
+
+ Therefore, we can implement the function by iterating over each grade and applying this chain.
+
+ Code:
+   result = []
+   for gpa in grades:
+        if gpa == 4.0:
+            result.append('A+')
+        elif gpa > 3.7:
+            result.append('A')
+        elif gpa > 3.3:
+            result.append('A-')
+        elif gpa > 3.0:
+            result.append('B+')
+        elif gpa > 2.7:
+            result.append('B')
+        elif gpa > 2.3:
+            result.append('B-')
+    

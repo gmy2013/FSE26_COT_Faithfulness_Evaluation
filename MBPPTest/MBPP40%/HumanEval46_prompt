@@ -1,0 +1,9 @@
+import re
+def split_upperstring(text):
+ return (re.findall('[A-Z][^A-Z]*', text))
+The following is chain of thought:
+1. The function `split_upperstring` takes a string `text` as input.
+2. It uses the `re.findall` method from the `re` module to find all occurrences of a specific pattern.
+3. The pattern `'[A-Z][^A-Z]*'` matches:
+   - `[A-Z]`: a single uppercase letter (A-Z)
+   - `[^A-Z]*`: zero or more characters that are not upperca

@@ -1,0 +1,9 @@
+def access_elements(nums, list_index):
+    result = [nums[i] for i in list_index]
+    return result
+The following is chain of thought:
+1. Analyze the function purpose: The function should access elements from `nums` at indices specified in `list_index`.
+2. Check parameter types: `nums` is a list, `list_index` is a list of integers representing indices.
+3. Consider edge cases: 
+   - Empty `list_index` should return empty list
+   - Index out of r

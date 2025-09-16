@@ -1,0 +1,11 @@
+def mul_even_odd(list1):
+    first_even = next((el for el in list1 if el%2==0),-1)
+    first_odd = next((el for el in list1 if el%2!=0),-1)
+    return (first_even*first_odd)
+The following is chain of thought:
+1. The function `mul_even_odd` takes a list `list1` as input.
+2. It needs to find the first even number in the list using a generator expression with `next()`, defaulting to -1 if no even number exists.
+3. Similarly, it finds the first odd number in the list using `next()` with a generator expression, defaulting to -1 if no odd number exists.
+4. The function returns the product of these two numbers (first even * first odd).
+5. The implementation correctly uses generator expressions with conditions `el%2==0` for even and `el%2!=0` for odd.
+6. The default value -1 ensures the product

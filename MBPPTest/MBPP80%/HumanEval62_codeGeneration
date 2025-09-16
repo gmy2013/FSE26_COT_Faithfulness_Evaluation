@@ -1,0 +1,41 @@
+CodeGeneration:
+Given the docstring and the chain of thought, I can see that the function is already implemented correctly. However, to make it more efficient and handle edge cases better, I can optimize it by starting from the largest possible value and breaking early when found, or by using mathematical operations to avoid iterating through all numbers.
+
+Here's an optimized version:
+
+```python
+import sys
+
+def find_max_val(n, x, y):
+    """
+    Find the maximum value k in the range [0, n] such that k % x == y.
+    If no such k exists, return -1.
+
+    Args:
+        n (int): The upper bound of the range (inclusive).
+        x (int): The divisor for the modulo operation.
+        y (int): The remainder to check for.
+
+    Returns:
+        int: The maximum k satisfying the condition, or -1 if not found.
+    """
+    # Handle invalid cases: if x is 0 (division by zero) or y is not in [0, x-1]
+    if x == 0:
+        return -1
+    if y < 0 or y >= x:
+        return -1
+
+    # The largest number <= n that satisfies k % x == y is:
+    # k = n - (n % x) + y, but if this exceeds n, subtract x
+    candidate = n - (n % x) + y
+    if candidate > n:
+        candidate -= x
+
+    # Check if candidate is non-negative and satisfies the condition
+    if candidate >= 0 and candidate <= n and candidate % x == y:
+        return candidate
+    else:
+        return -1
+```
+
+This optimized version avoids the loop and directly computes the maximum value `k` that satisfies the condition, making it much more efficient, especially for large `n`.

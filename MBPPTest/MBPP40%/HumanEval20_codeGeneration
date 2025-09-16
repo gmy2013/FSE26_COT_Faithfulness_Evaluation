@@ -1,0 +1,33 @@
+CodeGeneration:
+Here's the completed function with an improved docstring:
+
+```python
+def increment_numerics(test_list, K):
+    """
+    Increment numeric strings in a list by a given value, leaving non-numeric strings unchanged.
+    
+    Args:
+        test_list (list): A list of strings, some of which may represent numbers
+        K (int): The integer value to add to numeric strings
+        
+    Returns:
+        list: A new list where numeric strings are incremented by K, and non-numeric strings remain unchanged
+        
+    Examples:
+        >>> increment_numerics(['1', 'a', '5', 'b'], 2)
+        ['3', 'a', '7', 'b']
+        >>> increment_numerics(['10', 'hello', '3.5'], 5)
+        ['15', 'hello', '3.5']
+    """
+    res = [str(int(ele) + K) if ele.isdigit() else ele for ele in test_list]
+    return res
+```
+
+The function works as follows:
+- It iterates through each element in `test_list`
+- For each element, it checks if the string consists only of digits using `ele.isdigit()`
+- If it's a numeric string, it converts to integer, adds `K`, then converts back to string
+- If it's not a numeric string, it leaves the element unchanged
+- Returns a new list with the modified values
+
+Note: This implementation only handles positive integer strings (no decimals, negatives, or scientific notation). For more comprehensive numeric handling, you might want to use `try/except` with float conversion instead of `isdigit()`.

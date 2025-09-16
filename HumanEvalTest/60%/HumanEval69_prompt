@@ -1,0 +1,51 @@
+
+def search(lst):
+    '''
+    You are given a non-empty list of positive integers. Return the greatest integer that is greater than 
+    zero, and has a frequency greater than or equal to the value of the integer itself. 
+    The frequency of an integer is the number of times it appears in the list.
+    If no such a value exist, return -1.
+    Examples:
+        search([4, 1, 2, 2, 3, 1]) == 2
+        search([1, 2, 2, 3, 3, 3, 4, 4, 4]) == 3
+        search([5, 5, 4, 4, 4]) == -1
+    '''
+
+The following is chain of thought:
+To solve this problem, we need to find the greatest integer in the list that is greater than zero and has a frequency at least equal to its own value. If no such integer exists, return -1.
+
+Approach:
+1. Count the frequency of each number in the list.
+2. Consider only numbers that are positive (which they all are, as per the problem).
+3. For each number, check if its frequency is >= the number itself.
+4. Among all numbers satisfying the condition, we want the greatest one.
+5. If there are multiple numbers with the same value (but we are counting frequencies, so each distinct number is considered once), we compare the numbers themselves.
+
+However, note: the same number might appear multiple times in the list, but we only need to consider each distinct number once when checking the condition.
+
+But we are to return the greatest integer that satisfies the condition. So we should iterate over distinct numbers that meet the condition and find the maximum.
+
+Alternatively, we can iterate from the highest number downwards to find the first (which would be the greatest) that satisfies the condition. But since we don't know the range, it might be efficient to first get the frequencies, then filter the numbers that satisfy the condition, and then take the maximum of those.
+
+But note: the list has positive integers only. So we can:
+
+- Create a frequency dictionary.
+- Then, for each key in the dictionary, if key <= frequency[key], then it is a candidate.
+- Then we want the maximum candidate.
+
+However, what if the same number appears multiple times? The dictionary keys are distinct.
+
+But also note: the problem says "the greatest integer", so we are comparing the integers themselves.
+
+So steps:
+1. Count frequencies.
+2. Initialize candidate = -1.
+3. For each number in the frequencies:
+   - If number <= frequency[number] and number > candidate (or we can collect all candidates and then take max), then we update candidate.
+4. Alternatively, we can iterate and keep the maximum number that satisfies the condition.
+
+But to get the greatest, we can simply iterate over all distinct numbers and take the maximum that satisfies the condition.
+
+So:
+candidates = [num for num in freq if num <= freq[num]]
+Then if candidates is not empty

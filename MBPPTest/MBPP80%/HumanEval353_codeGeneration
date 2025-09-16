@@ -1,0 +1,35 @@
+CodeGeneration:
+else statement.
+
+However, the docstring is missing. Let me provide the complete function with a proper docstring:
+
+```python
+def profit_amount(actual_cost, sale_amount):
+    """
+    Calculate the profit amount when actual cost is greater than sale amount.
+    
+    Args:
+        actual_cost (float): The original cost of the item
+        sale_amount (float): The amount the item was sold for
+    
+    Returns:
+        float: The profit amount (actual_cost - sale_amount) if actual_cost > sale_amount
+        None: If actual_cost <= sale_amount (no profit or loss situation)
+    
+    Examples:
+        >>> profit_amount(100, 80)
+        20.0
+        >>> profit_amount(50, 70)
+        None
+    """
+    if actual_cost > sale_amount:
+        amount = actual_cost - sale_amount
+        return amount
+    else:
+        return None
+```
+
+The function works as intended:
+- When actual_cost > sale_amount: returns the profit (difference)
+- When actual_cost <= sale_amount: returns None (indicating no profit)
+- The docstring provides clear documentation of parameters, return values, and examples

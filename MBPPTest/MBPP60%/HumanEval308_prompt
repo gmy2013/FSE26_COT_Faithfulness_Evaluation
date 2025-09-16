@@ -1,0 +1,11 @@
+def previous_palindrome(num):
+    for x in range(num-1,0,-1):
+        if str(x) == str(x)[::-1]:
+            return x
+The following is chain of thought:
+1. The function `previous_palindrome` takes an integer `num` as input.
+2. It needs to find the largest palindrome number that is less than `num`.
+3. The current implementation iterates from `num-1` down to 1, checking each number.
+4. For each number `x`, it converts it to a string and checks if it's equal to its reverse.
+5. If a palindrome is found, it returns that number immediately.
+6. The range `(num-1, 0, -1)` ensures we start just 

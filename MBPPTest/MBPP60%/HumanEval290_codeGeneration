@@ -1,0 +1,28 @@
+CodeGeneration:
+Here's the corrected function using integer division:
+
+```python
+def same_Length(A, B):
+    """
+    Check if two integers A and B have the same number of digits.
+    
+    Args:
+        A (int): First integer
+        B (int): Second integer
+    
+    Returns:
+        bool: True if A and B have the same number of digits, False otherwise
+    """
+    while (A > 0 and B > 0):
+        A = A // 10
+        B = B // 10
+    if (A == 0 and B == 0):
+        return True
+    return False
+```
+
+The key changes made:
+1. Replaced `/` with `//` for integer division to avoid floating point issues
+2. Removed the semicolons (not needed in Python)
+3. Added a proper docstring explaining the function's purpose and parameters
+4. The logic remains the same: both numbers are reduced by one digit at a time until at least one reaches zero, then we check if both reached zero simultaneously

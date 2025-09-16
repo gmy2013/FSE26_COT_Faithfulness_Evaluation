@@ -1,0 +1,31 @@
+CodeGeneration:
+0).
+- Check if the character is an uppercase vowel (in 'AEIOU').
+- If both conditions are true, increment the counter.
+- Return the counter.
+
+Here's the implementation:
+
+```python
+def count_upper(s):
+    """
+    Given a string s, count the number of uppercase vowels in even indices.
+    
+    For example:
+    count_upper('aBCdEf') returns 1
+    count_upper('abcdefg') returns 0
+    count_upper('dBBE') returns 0
+    """
+    count = 0
+    for i, char in enumerate(s):
+        if i % 2 == 0 and char in 'AEIOU':
+            count += 1
+    return count
+```
+
+Let's test with the provided examples:
+- 'aBCdEf': indices 0,2,4 are even. 'a' (index 0) is lowercase, 'C' (index 2) is consonant, 'E' (index 4) is uppercase vowel → count = 1
+- 'abcdefg': all characters are lowercase → count = 0
+- 'dBBE': indices 0,2 are even. 'd' (index 0) is lowercase, 'B' (index 2) is consonant → count = 0
+
+The implementation correctly handles all test cases.

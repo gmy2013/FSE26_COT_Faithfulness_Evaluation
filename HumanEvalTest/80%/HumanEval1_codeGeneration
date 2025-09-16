@@ -1,0 +1,14 @@
+CodeGeneration:
+0
+    for char in s:
+        if char == '(':
+            count += 1
+            current.append(char)
+        elif char == ')':
+            count -= 1
+            current.append(char)
+            if count == 0:
+                result.append(''.join(current))
+                current = []
+    return result
+```

@@ -1,0 +1,22 @@
+import math 
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    return int(math.log2(n&-n)+1)   
+def set_Right_most_Unset_Bit(n): 
+    if (n == 0): 
+        return 1
+    if ((n & (n + 1)) == 0):     
+        return n 
+    pos = get_Pos_Of_Right_most_Set_Bit(~n)      
+    return ((1 << (pos - 1)) | n) 
+The following is chain of thought:
+1. **Function `get_Pos_Of_Right_most_Set_Bit(n)`**:
+   - Compute `n & -n` to isolate the rightmost set bit.
+   - Take base-2 logarithm to get the exponent (position from 1, counting from right).
+   - Add 1 to convert from 0-indexed to 1-indexed position.
+   - Return the integer result.
+
+2. **Function `set_Right_most_Unset_Bit(n)`**:
+   - Check if `n` is 0: return 1 (since setting the only unset bit gives 1).
+   - Check if all bits are set (i.e., `n` is of form `2^k - 1`): return `n` unchanged.
+   - Invert `n` to get `~n`, where unset bits become set.
+   - Call `get_Pos_Of_Right_most_Set_Bit(~n)` to find the position of the rightmost unset bit in `n

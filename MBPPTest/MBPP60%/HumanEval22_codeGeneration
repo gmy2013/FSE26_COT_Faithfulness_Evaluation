@@ -1,0 +1,31 @@
+CodeGeneration:
+This implementation is already correct and efficient. The function uses `map` with a lambda to apply exponentiation to each element, then converts to a list and returns the result.
+
+Here's the complete function:
+
+```python
+def nth_nums(nums, n):
+    """Raise each number in the given list to the nth power.
+    
+    Args:
+        nums (list): List of numbers
+        n (int): The exponent to raise each number to
+    
+    Returns:
+        list: List where each element is raised to the nth power
+    
+    Examples:
+        >>> nth_nums([1, 2, 3], 2)
+        [1, 4, 9]
+        >>> nth_nums([2, 3, 4], 3)
+        [8, 27, 64]
+    """
+    nth_nums = list(map(lambda x: x ** n, nums))
+    return nth_nums
+```
+
+The implementation correctly handles the requirements:
+- Uses `map` for efficient element-wise operation
+- Lambda function applies exponentiation with `x ** n`
+- Converts map object to list for the return value
+- Handles any numeric type that supports exponentiation

@@ -1,0 +1,25 @@
+CodeGeneration:
+Here is the complete function with the docstring:
+
+```python
+def max_sum_list(lists):
+    """Return the list with the maximum sum of elements.
+    
+    Args:
+        lists: A list of lists containing numeric values
+        
+    Returns:
+        The sublist with the highest sum of its elements
+        
+    Examples:
+        >>> max_sum_list([[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]])
+        [10, 11, 12]
+        >>> max_sum_list([[1, 2, 3], [100], [4, 5]])
+        [100]
+        >>> max_sum_list([[-1, -2], [0, -5], [1, 2]])
+        [1, 2]
+    """
+    return max(lists, key=sum)
+```
+
+Your chain of thought is correct. The function uses Python's built-in `max()` function with `key=sum` to efficiently find the sublist with the maximum sum by comparing the sums of all sublists rather than the lists themselves.

@@ -1,0 +1,32 @@
+CodeGeneration:
+Based on the chain of thought analysis, here's the complete function with the docstring:
+
+```python
+def sum_nums(x, y, m, n):
+    """
+    Calculate the sum of x and y, and return 20 if the sum is in the range [m, n),
+    otherwise return the actual sum.
+    
+    Args:
+        x (int): First number to add
+        y (int): Second number to add
+        m (int): Lower bound of the range (inclusive)
+        n (int): Upper bound of the range (exclusive)
+    
+    Returns:
+        int: 20 if sum is in range [m, n), otherwise the actual sum of x and y
+    
+    Examples:
+        >>> sum_nums(5, 3, 5, 10)
+        20
+        >>> sum_nums(2, 3, 10, 20)
+        5
+        >>> sum_nums(7, 8, 10, 20)
+        15
+    """
+    sum_nums = x + y
+    if sum_nums in range(m, n):
+        return 20
+    else:
+        return sum_nums
+```

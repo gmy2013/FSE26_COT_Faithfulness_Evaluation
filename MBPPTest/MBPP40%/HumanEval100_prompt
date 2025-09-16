@@ -1,0 +1,18 @@
+def equilibrium_index(arr):
+  total_sum = sum(arr)
+  left_sum=0
+  for i, num in enumerate(arr):
+    total_sum -= num
+    if left_sum == total_sum:
+      return i
+    left_sum += num
+  return -1
+The following is chain of thought:
+Here is the structured chain of thought for the equilibrium_index function:
+
+1. **Understand the problem**: An equilibrium index is where the sum of elements to the left equals the sum of elements to the right (excluding the current element)
+
+2. **Initial approach**: Calculate total sum first, then iterate through array while maintaining left sum
+
+3. **Initialize variables**:
+   - total_sum: sum of all elements in array (right sum initially)

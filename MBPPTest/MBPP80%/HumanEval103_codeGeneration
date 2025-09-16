@@ -1,0 +1,29 @@
+CodeGeneration:
+Looking at this function, I notice there's an issue with the base case logic. Let me fix it:
+
+```python
+def harmonic_sum(n):
+    if n < 1:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return 1 / n + harmonic_sum(n - 1)
+```
+
+**Explanation of the fix:**
+- The original base case `if n < 2: return 1` would incorrectly return 1 for n=0 and negative values
+- I added proper handling for n < 1 (return 0 since harmonic sum of 0 terms is 0)
+- Made the base case explicit for n == 1
+- The recursive case remains the same: 1/n + harmonic_sum(n-1)
+
+**Alternative implementation (iterative version for comparison):**
+```python
+def harmonic_sum_iterative(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += 1 / i
+    return total
+```
+
+The recursive version is mathematically elegant but has the limitation of Python's recursion depth for large values of n.

@@ -1,0 +1,15 @@
+import re
+def text_match(text):
+        patterns = 'ab*?'
+        if re.search(patterns,  text):
+                return 'Found a match!'
+        else:
+                return('Not matched!')
+The following is chain of thought:
+1. The function `text_match` uses a regex pattern `'ab*?'` to search in the input text.
+2. The pattern `'ab*?'` matches:
+   - 'a' followed by zero or more 'b's (non-greedy quantifier `*?`).
+   - Since it's non-greedy, it will match the shortest possible string (i.e., just 'a' if available, or 'ab' only if necessary).
+3. The function returns 'Found a match!' if the pattern is found anywhere in the text, otherwise 'Not matched!'.
+4. The pattern will match any string containing at least one 'a' (since the 'b' part is optional due to `*`).
+5. However, note the non-greedy quantifier `*?` doesn't change the fundamental matches (it still matches zero or mo

@@ -1,0 +1,14 @@
+def triangle_area(r) :  
+    if r < 0 : 
+        return -1
+    return r * r 
+The following is chain of thought:
+The function name "triangle_area" suggests calculating area of a triangle, but the implementation returns r² which is the area of a square.
+
+Chain of thought:
+1. Function name indicates it should calculate triangle area
+2. Current implementation returns r² (square area)
+3. Triangle area formula is (base × height)/2
+4. If r represents base/height, triangle area should be (r × r)/2
+5. Need to modify return statement to use triangle area formula
+6

@@ -1,0 +1,38 @@
+CodeGeneration:
+I notice that the function implementation is already provided, but the docstring is incomplete. Based on the chain of thought, here's the complete function with a proper docstring:
+
+```python
+def sort_String(str):
+    """
+    Sorts the characters in the input string in ascending order.
+    
+    Args:
+        str (string): The input string to be sorted
+        
+    Returns:
+        string: The sorted string with characters in ascending order
+    """
+    str = ''.join(sorted(str)) 
+    return (str)
+```
+
+However, I should note that using `str` as a parameter name is not recommended since `str` is a built-in Python type. A better practice would be:
+
+```python
+def sort_String(input_string):
+    """
+    Sorts the characters in the input string in ascending order.
+    
+    Args:
+        input_string (string): The input string to be sorted
+        
+    Returns:
+        string: The sorted string with characters in ascending order
+    """
+    return ''.join(sorted(input_string))
+```
+
+The function works by:
+1. Using `sorted()` to convert the string into a sorted list of characters
+2. Using `''.join()` to convert the sorted list back into a string
+3. Returning the sorted string

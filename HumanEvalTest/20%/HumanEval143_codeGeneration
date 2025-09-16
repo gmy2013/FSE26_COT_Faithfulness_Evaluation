@@ -1,0 +1,45 @@
+20%CoT
+CodeGeneration:
+if a number is prime.
+3. Iterate through each word in the list and check if the length of the word is a prime number using the helper function.
+4. Collect the words that satisfy the condition and join them back into a string with spaces.
+5. Return the resulting string.
+
+Here is the implementation:
+
+```python
+def words_in_sentence(sentence):
+    """
+    You are given a string representing a sentence,
+    the sentence contains some words separated by a space,
+    and you have to return a string that contains the words from the original sentence,
+    whose lengths are prime numbers,
+    the order of the words in the new string should be the same as the original one.
+
+    Example 1:
+        Input: sentence = "This is a test"
+        Output: "is"
+
+    Example 2:
+        Input: sentence = "lets go for swimming"
+        Output: "go for"
+
+    Constraints:
+        * 1 <= len(sentence) <= 100
+        * sentence contains only letters
+    """
+    def is_prime(n):
+        if n < 2:
+            return False
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+
+    words = sentence.split()
+    result = []
+    for word in words:
+        if is_prime(len(word)):
+            result.append(word)
+    return ' '.join(result)
+```

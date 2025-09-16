@@ -1,0 +1,42 @@
+CodeGeneration:
+ch the right half (mid+1 to end) since all elements up to mid are present
+   - This means the missing number must be in the higher indices
+
+5. **Recursive Case 2 - Left Half Search**: If array[mid] doesn't equal mid, search the left half (start to mid)
+   - This means the missing number is somewhere in the lower indices, including mid
+
+The function efficiently finds the smallest missing non-negative integer in a sorted array using binary search recursion.
+
+Here's the complete function with the docstring:
+
+```python
+def find_First_Missing(array, start, end):
+    """
+    Find the smallest missing non-negative integer in a sorted array.
+    
+    This function uses binary search to efficiently locate the first missing
+    number in O(log n) time complexity.
+    
+    Args:
+        array: A sorted list of non-negative integers
+        start: Starting index of the search range
+        end: Ending index of the search range
+    
+    Returns:
+        int: The smallest missing non-negative integer
+    
+    Example:
+        >>> find_First_Missing([0, 1, 2, 3, 4, 5], 0, 5)
+        6
+        >>> find_First_Missing([0, 1, 2, 4, 5], 0, 4)
+        3
+    """
+    if (start > end): 
+        return end + 1
+    if (start != array[start]): 
+        return start; 
+    mid = int((start + end) / 2) 
+    if (array[mid] == mid): 
+        return find_First_Missing(array, mid+1, end) 
+    return find_First_Missing(array, start, mid)
+```

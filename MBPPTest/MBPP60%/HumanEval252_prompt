@@ -1,0 +1,26 @@
+import math
+def sum_of_odd_Factors(n): 
+    res = 1
+    while n % 2 == 0: 
+        n = n // 2 
+    for i in range(3,int(math.sqrt(n) + 1)): 
+        count = 0
+        curr_sum = 1
+        curr_term = 1
+        while n % i == 0: 
+            count+=1 
+            n = n // i 
+            curr_term *= i 
+            curr_sum += curr_term    
+        res *= curr_sum  
+    if n >= 2: 
+        res *= (1 + n) 
+    return res 
+The following is chain of thought:
+1. The function calculates the sum of all odd factors of a given integer `n`.
+2. First, handle the even factors: repeatedly divide `n` by 2 until it becomes odd. This removes all even factors.
+3. Now, `n` is odd. Iterate through possible odd factors starting from 3 up to sqrt(n) (step by 2 for efficiency? But note: the code uses range(3, ...) which steps by 1, but since n is odd, only odd divisors will divide it).
+4. For each candidate divisor `i`:
+   - Count how many times `i` divides `n`.
+   - Calculate the sum of the powers of `i` (i^0 + i^1 + ... + i^count) which represents the sum of factors contributed by the prime factor `i`.
+   - Multiply this sum into the

@@ -1,0 +1,22 @@
+def check_Type_Of_Triangle(a,b,c): 
+    sqa = pow(a,2) 
+    sqb = pow(b,2) 
+    sqc = pow(c,2) 
+    if (sqa == sqa + sqb or sqb == sqa + sqc or sqc == sqa + sqb): 
+        return ("Right-angled Triangle") 
+    elif (sqa > sqc + sqb or sqb > sqa + sqc or sqc > sqa + sqb): 
+        return ("Obtuse-angled Triangle") 
+    else: 
+        return ("Acute-angled Triangle") 
+The following is chain of thought:
+Here's the structured chain of thought for analyzing and improving this function:
+
+1. **Identify the purpose**: The function aims to classify triangles based on angle types using side lengths
+
+2. **Check mathematical correctness**:
+   - The Pythagorean theorem condition for right triangles is incorrect: `sqa == sqa + sqb` should be `sqa == sqb + sqc` (and similar for other combinations)
+   - The obtuse triangle condition uses correct inequality but wrong variable combinations
+   - The acute triangle condition is the default else case, which is mathematically correct
+
+3. **Identify edge cases**:
+   - The function doesn't val

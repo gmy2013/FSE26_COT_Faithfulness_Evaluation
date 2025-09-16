@@ -1,0 +1,9 @@
+def remove_length(test_str, K):
+  temp = test_str.split()
+  res = [ele for ele in temp if len(ele) != K]
+  res = ' '.join(res)
+  return (res) 
+The following is chain of thought:
+1. The function `remove_length` takes two parameters: `test_str` (a string) and `K` (an integer).
+2. Split `test_str` into a list of words using `split()` and store in `temp`.
+3. Use a list comprehension to iterate over each word in `temp`, keepi

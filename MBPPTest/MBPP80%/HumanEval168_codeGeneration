@@ -1,0 +1,26 @@
+CodeGeneration:
+The function `Diff` correctly implements the symmetric difference between two lists, returning elements that are in either list but not in both. Here's the complete function with the docstring:
+
+```python
+def Diff(li1, li2):
+    """
+    Return the symmetric difference between two lists.
+    
+    The symmetric difference contains elements that are in either li1 or li2
+    but not in both. Duplicates are removed from the result.
+    
+    Args:
+        li1 (list): First input list
+        li2 (list): Second input list
+    
+    Returns:
+        list: List containing elements that are in li1 or li2 but not in both
+    
+    Examples:
+        >>> Diff([1, 2, 3], [2, 3, 4])
+        [1, 4]
+        >>> Diff(['a', 'b', 'c'], ['b', 'c', 'd'])
+        ['a', 'd']
+    """
+    return (list(list(set(li1)-set(li2)) + list(set(li2)-set(li1))))
+```

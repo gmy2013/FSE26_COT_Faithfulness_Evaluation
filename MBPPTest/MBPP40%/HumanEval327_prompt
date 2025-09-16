@@ -1,0 +1,10 @@
+import re
+def change_date_format(dt):
+        return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', dt)
+        return change_date_format(dt)
+The following is chain of thought:
+The function `change_date_format` uses a regex pattern to match dates in YYYY-MM-DD format and rearranges them to DD-MM-YYYY format using backreferences. The second return statement is unreachable and should be removed.
+
+Chain of thought:
+1. The regex pattern `r'(\d{4})-(\d{1,2})-(\d{1,2})'` captures:
+   - Group 1: 4-digit year

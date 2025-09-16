@@ -1,0 +1,26 @@
+CodeGeneration:
+be 0, causing a division by zero error. To handle this, we should add a check for an empty list.
+
+Here's the updated function with proper handling for empty lists:
+
+```python
+def sum_num(numbers):
+    if len(numbers) == 0:
+        return 0  # or you could return None, or raise an exception
+    total = 0
+    for x in numbers:
+        total += x
+    return total/len(numbers)
+```
+
+Alternatively, if you want to raise an exception for empty lists:
+
+```python
+def sum_num(numbers):
+    if len(numbers) == 0:
+        raise ValueError("Cannot calculate average of empty list")
+    total = 0
+    for x in numbers:
+        total += x
+    return total/len(numbers)
+```

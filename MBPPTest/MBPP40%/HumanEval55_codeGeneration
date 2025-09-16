@@ -1,0 +1,27 @@
+CodeGeneration:
+e the absolute difference between a[i] and b[i]
+5. Add this difference to the running sum
+6. Return the total sum after processing all elements
+
+Here's the complete function:
+
+```python
+def find_Min_Sum(a, b, n):
+    """
+    Find the minimum sum of absolute differences between elements of two arrays.
+    
+    Args:
+        a (list): First array of integers
+        b (list): Second array of integers
+        n (int): Number of elements to consider from each array
+    
+    Returns:
+        int: Minimum sum of absolute differences between corresponding elements
+    """
+    a.sort()
+    b.sort()
+    sum = 0
+    for i in range(n):
+        sum = sum + abs(a[i] - b[i])
+    return sum
+```

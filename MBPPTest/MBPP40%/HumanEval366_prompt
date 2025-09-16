@@ -1,0 +1,11 @@
+def check(string): 
+  if len(set(string).intersection("AEIOUaeiou"))>=5: 
+    return ('accepted') 
+  else: 
+    return ("not accepted") 
+The following is chain of thought:
+1. The function `check` takes a string as input.
+2. It checks if the string contains at least 5 different vowels (case-insensitive).
+3. It does this by:
+   - Converting the string to a set to get unique characters
+   - 

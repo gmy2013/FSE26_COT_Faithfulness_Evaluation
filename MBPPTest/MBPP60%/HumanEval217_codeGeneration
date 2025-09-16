@@ -1,0 +1,15 @@
+CodeGeneration:
+se letter by comparing it to the range 'a' to 'z'.
+5. If the character is lowercase, increment the counter.
+6. After processing all characters, return the counter value.
+
+Here's the complete function:
+
+```python
+def lower_ctr(str):
+    lower_ctr = 0
+    for i in range(len(str)):
+        if str[i] >= 'a' and str[i] <= 'z':
+            lower_ctr += 1
+    return lower_ctr
+```

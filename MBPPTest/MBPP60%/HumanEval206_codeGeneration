@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the complete implementation of the function:
+
+```python
+def first_odd(nums):
+    """Return the first odd number in a list, or -1 if no odd numbers exist.
+    
+    Args:
+        nums: List of numbers to search through
+        
+    Returns:
+        int: First odd number found, or -1 if no odd numbers exist
+        
+    Examples:
+        >>> first_odd([2, 4, 6, 8, 10])
+        -1
+        >>> first_odd([2, 4, 7, 8, 10])
+        7
+        >>> first_odd([])
+        -1
+    """
+    first_odd = next((el for el in nums if el % 2 != 0), -1)
+    return first_odd
+```
+
+The implementation uses:
+- A generator expression `(el for el in nums if el % 2 != 0)` that yields only odd numbers
+- The `next()` function with a default value of `-1` to return the first element from the generator
+- If no odd numbers exist, the generator won't yield anything and `next()` returns the default value `-1`
+- This approach is efficient as it stops iterating once the first odd number is found

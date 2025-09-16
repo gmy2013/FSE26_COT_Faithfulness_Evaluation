@@ -1,0 +1,54 @@
+CodeGeneration:
+Based on the chain of thought, here's the complete implementation of the `sum_of_odd_Factors` function:
+
+```python
+import math
+
+def sum_of_odd_Factors(n):
+    """
+    Calculate the sum of all odd factors of a given number n.
+    
+    Parameters:
+    n (int): The input number
+    
+    Returns:
+    int: Sum of all odd factors of n
+    
+    Example:
+    >>> sum_of_odd_Factors(18)
+    13  # Odd factors of 18: 1, 3, 9 → 1 + 3 + 9 = 13
+    """
+    res = 1  # Initialize with 1 since 1 is always an odd factor
+    
+    # Remove all even factors (2's) from n
+    while n % 2 == 0:
+        n = n // 2
+    
+    # Factorize the remaining odd number
+    for i in range(3, int(math.sqrt(n)) + 1, 2):  # Only check odd numbers
+        count = 0
+        curr_sum = 1
+        curr_term = 1
+        
+        while n % i == 0:
+            count += 1
+            n = n // i
+            curr_term *= i
+            curr_sum += curr_term
+        
+        res *= curr_sum
+    
+    # Handle the remaining prime factor if n > 1
+    if n >= 2:
+        res *= (1 + n)
+    
+    return res
+```
+
+The function efficiently calculates the sum of all odd factors by:
+1. Removing all even factors first
+2. Factorizing the remaining odd number using prime factorization
+3. Calculating the sum of all powers for each prime factor
+4. Multiplying these sums together to get the final result
+
+The implementation follows the mathematical principle that the sum of all divisors (including odd ones) can be found by multiplying the sums of all prime power series.

@@ -1,0 +1,52 @@
+
+def maximum(arr, k):
+    """
+    Given an array arr of integers and a positive integer k, return a sorted list 
+    of length k with the maximum k numbers in arr.
+
+    Example 1:
+
+        Input: arr = [-3, -4, 5], k = 3
+        Output: [-4, -3, 5]
+
+    Example 2:
+
+        Input: arr = [4, -4, 4], k = 2
+        Output: [4, 4]
+
+    Example 3:
+
+        Input: arr = [-3, 2, 1, 2, -1, -2, 1], k = 1
+        Output: [2]
+
+    Note:
+        1. The length of the array will be in the range of [1, 1000].
+        2. The elements in the array will be in the range of [-1000, 1000].
+        3. 0 <= k <= len(arr)
+    """
+
+The following is chain of thought:
+We are given an array `arr` and an integer `k`. We need to return a sorted list of the top `k` maximum numbers.
+ Since we need the top k maximum, we can sort the array in descending order and take the first k elements, then sort those in ascending order.
+ Alternatively, we can sort the entire array in ascending order and take the last k elements, then sort them in ascending order (which they already are).
+ However, note the examples: the output is sorted in ascending order.
+
+ Steps:
+ 1. Sort the entire array in ascending order.
+ 2. Take the last k elements (which are the largest k numbers).
+ 3. Since we are taking from the end of the sorted array, these are already in ascending order.
+ 4. Return this list.
+
+ Example: 
+   arr = [-3, -4, 5], k=3 -> sorted arr is [-4, -3, 5] -> last 3 are [-4, -3, 5] which is the output.
+   arr = [4, -4, 4], k=2 -> sorted arr is [-4, 4, 4] -> last 2 are [4,4].
+   arr = [-3,2,1,2,-1,-2,1], k=1 -> sorted arr is [-3,-2,-1,1,1,2,2] -> last 1 is [2].
+
+ Implementation:
+   We can use sorted(arr) to sort the array, then slice the last k elements.
+
+ However, note that k might be 0. Then we should return an empty list.
+
+ Code:
+   sorted_arr = sorted(arr)
+   return sorted_arr[-k:]   # This works because if k=

@@ -1,0 +1,28 @@
+def sort_by_dnf(arr, n):
+  low=0
+  mid=0
+  high=n-1
+  while mid <= high:
+    if arr[mid] == 0:
+      arr[low], arr[mid] = arr[mid], arr[low]
+      low = low + 1
+      mid = mid + 1
+    elif arr[mid] == 1:
+      mid = mid + 1
+    else:
+      arr[mid], arr[high] = arr[high], arr[mid]
+      high = high - 1
+  return arr
+The following is chain of thought:
+Here's the structured chain of thought for the Dutch National Flag (DNF) sort algorithm:
+
+1. **Problem Analysis**: The function sorts an array containing only 0s, 1s, and 2s (Dutch National Flag problem)
+2. **Pointer Initialization**: 
+   - `low` tracks the boundary for 0s (starts at beginning)
+   - `mid` scans through the array (starts at beginning)
+   - `high` tracks the boundary for 2s (starts at end)
+3. **Main Loop**: While `mid` hasn't passed `high`:
+   - **Case 0**: If current element is 0, swap with `low` position and move both `low` and `mid` forward
+   - **Case 1**: If current element is 1, just move `mid` forward (1s stay in middle)
+   - **Case 2**: If current element is 2, swap with `high` position and move `high` backward
+4. **Termination**: When `mid` exceeds `high`, all elements are sorted with 0s at 

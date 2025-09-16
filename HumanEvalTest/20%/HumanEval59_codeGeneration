@@ -1,0 +1,33 @@
+20%CoT
+CodeGeneration:
+all factors of 2 from `n`.
+
+2. **Check for odd factors:** 
+   - Start checking for factors from 3 onwards, incrementing by 2 (to only check odd numbers since even numbers greater than 2 can't be prime).
+   - For each odd factor `i`, while `n` is divisible by `i`, divide `n` by `i`.
+   - Continue this until `i * i` is greater than `n`.
+
+3. **Check the remaining value of `n`:** 
+   - After the loop, if `n` is greater than 1, then `n` itself is a prime number and the largest prime factor.
+
+Let's implement this logic in the function:
+
+```python
+def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime."""
+    # Remove factors of 2
+    while n % 2 == 0:
+        n //= 2
+
+    # Check for odd factors from 3 onwards
+    factor = 3
+    while factor * factor <= n:
+        while n % factor == 0:
+            n //= factor
+        factor += 2
+
+    # If n is still greater than 1, then it's a prime number
+    return n if n > 1 else factor - 2
+```
+
+This code correctly finds the largest prime factor of a given integer `n` by methodically removing all smaller prime factors first. The largest prime factor will be the remaining value of `n` if it is greater than 1, or the last odd factor checked.

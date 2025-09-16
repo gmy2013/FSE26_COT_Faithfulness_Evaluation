@@ -1,0 +1,39 @@
+20%CoT
+CodeGeneration:
+```python
+def count_up_to(n):
+    """Implement a function that takes an non-negative integer and returns an array of the first n
+    integers that are prime numbers and less than n.
+    for example:
+    count_up_to(5) => [2,3]
+    count_up_to(11) => [2,3,5,7]
+    count_up_to(0) => []
+    count_up_to(20) => [2,3,5,7,11,13,17,19]
+    count_up_to(1) => []
+    count_up_to(18) => [2,3,5,7,11,13,17]
+    """
+    if n <= 1:
+        return []
+    
+    primes = []
+    sieve = [True] * n
+    sieve[0] = sieve[1] = False
+    
+    for i in range(2, n):
+        if sieve[i]:
+            primes.append(i)
+            for j in range(i*i, n, i):
+                sieve[j] = False
+                
+    return primes
+```
+
+This implementation uses the Sieve of Eratosthenes algorithm to efficiently find all prime numbers less than `n`. The algorithm works by:
+
+1. Creating a boolean list `sieve` where each index represents a number
+2. Marking 0 and 1 as non-prime (False)
+3. Iterating through numbers starting from 2
+4. When finding a prime number, adding it to the result list and marking all its multiples as non-prime
+5. Returning the list of primes found
+
+The time complexity is O(n log log n) and space complexity is O(n), making it efficient for finding primes up to moderately large values of `n`.

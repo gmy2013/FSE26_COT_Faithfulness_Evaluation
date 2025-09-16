@@ -1,0 +1,39 @@
+def is_triangleexists(a,b,c): 
+    if(a != 0 and b != 0 and c != 0 and (a + b + c)== 180): 
+        if((a + b)>= c or (b + c)>= a or (a + c)>= b): 
+            return True 
+        else:
+            return False
+    else:
+        return False
+The following is chain of thought:
+Here is the structured chain of thought for analyzing and improving the given function:
+
+1. **Understand the problem**: The function should determine if three angles (a, b, c) can form a valid triangle.
+
+2. **Identify triangle validity conditions**:
+   - All angles must be positive (non-zero)
+   - Sum of angles must equal 180°
+   - Each angle must be less than 180° (implied by the sum condition)
+   - No angle should be negative (not currently checked)
+
+3. **Analyze the current implementation**:
+   - Correctly checks for non-zero angles and sum = 180°
+   - Uses OR condition for angle inequalities, which is incorrect - should be AND
+   - The inequality condition is reversed - should check if sum of any two angles > third angle
+   - Missing check for negative angles
+
+4. **Identify the bugs**:
+   - Line 3: `(a + b) >= c` should be `(a + b) > c` (strict inequality)
+   - Line 3: Uses OR instead of AND - all three triangle inequalities must be satisfied
+   - No validation for negative angle values
+
+5. **Propose the corrected logic**:
+   - Check if all angles are positive
+   - Check if sum equals 180°
+   - Check all three triangle inequalities: a + b > c, b + c > a, a + c > b
+   - All conditions must be True for a valid triangle
+
+6. **Consider edge cases**:
+   - Negative angles should return False
+   - Zero angl

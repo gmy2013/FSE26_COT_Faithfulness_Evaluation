@@ -1,0 +1,20 @@
+CodeGeneration:
+= n` to check all possible second squares.
+5. **Check Condition**: Inside the inner loop, check if `i*i + j*j == n`. If true, return `True` immediately.
+6. **Increment and Continue**: Increment `j` in the inner loop and `i` in the outer loop to explore all pairs.
+7. **Return False**: If no such pair is found after all iterations, return `False`.
+
+Here is the complete function with the corrected inner loop condition and proper indentation:
+
+```python
+def sum_Square(n):
+    i = 1
+    while i * i <= n:
+        j = 1
+        while j * j <= n:
+            if i * i + j * j == n:
+                return True
+            j = j + 1
+        i = i + 1
+    return False
+```

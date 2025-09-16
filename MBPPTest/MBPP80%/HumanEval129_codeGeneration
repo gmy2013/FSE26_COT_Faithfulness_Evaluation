@@ -1,0 +1,26 @@
+CodeGeneration:
+duplicates have been removed, preserving the order of first occurrence for each distinct consecutive element.
+
+Here is the complete function with the docstring:
+
+```python
+from itertools import groupby
+
+def consecutive_duplicates(nums):
+    """
+    Remove consecutive duplicate elements from a list.
+    
+    Args:
+        nums (list): A list of elements that may contain consecutive duplicates.
+    
+    Returns:
+        list: A new list with consecutive duplicates removed, preserving order.
+    
+    Examples:
+        >>> consecutive_duplicates([1, 2, 2, 3, 2, 2, 4, 5, 5, 5])
+        [1, 2, 3, 2, 4, 5]
+        >>> consecutive_duplicates(['a', 'a', 'b', 'c', 'c', 'a'])
+        ['a', 'b', 'c', 'a']
+    """
+    return [key for key, group in groupby(nums)]
+```

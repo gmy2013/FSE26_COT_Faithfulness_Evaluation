@@ -1,0 +1,27 @@
+def largest_subset(a, n):
+	dp = [0 for i in range(n)]
+	dp[n - 1] = 1; 
+	for i in range(n - 2, -1, -1):
+		mxm = 0;
+		for j in range(i + 1, n):
+			if a[j] % a[i] == 0 or a[i] % a[j] == 0:
+				mxm = max(mxm, dp[j])
+		dp[i] = 1 + mxm
+	return max(dp)
+The following is chain of thought:
+1. **Understand the Problem**: The function `largest_subset` aims to find the size of the largest subset of the list `a` (of length `n`) such that for every pair of elements in the subset, one element divides the other (i.e., `a[i] % a[j] == 0` or `a[j] % a[i] == 0`).
+
+2. **Dynamic Programming Setup**: 
+   - Initialize `dp` as a list of zeros with length `n`. `dp[i]` will store the size of the largest valid subset starting at index `i`.
+   - Set the last element `dp[n-1]` to 1 because a single element always forms a valid subset.
+
+3. **Fill DP Array Backwards**:
+   - Iterate from the second last element (`n-2`) to the first element (index 0).
+   - For each index `i`, initialize `mxm` to 0 to track the maximum `dp[j]` for valid `j`.
+   - For each `j` from `i+1` to `n-1`, check if `a[i]` and `a[j]` are divisible (either direction).
+   - If valid, update `mxm` to the maximum of its current value and `dp[j]`.
+   - Set `dp[i]` to `1 + mxm`, meaning we include `a[i]` and the largest valid subset from the remaining elements.
+
+4. **Return Result**: The answer is the maximum value in `dp`, representing the largest valid subset size.
+
+5. **Edge Handling**: The code naturally handles cases with no elements (n=0) by returning 0 (since `max(dp)` of an empty list would error, but n is given as 

@@ -1,0 +1,39 @@
+CodeGeneration:
+I notice that the function is already implemented, but there's a small issue in the range calculation. The current code uses `(int)(math.sqrt(n)) + 2`, which might cause unnecessary iterations. Let me provide the corrected version:
+
+```python
+import math 
+
+def count_Divisors(n):
+    """
+    Determine if the number of divisors of n is even or odd.
+    
+    Args:
+        n (int): The number to count divisors for
+        
+    Returns:
+        str: "Even" if the number of divisors is even, "Odd" if odd
+    """
+    count = 0
+    # Iterate up to sqrt(n) + 1 to ensure we cover all divisors
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            if n // i == i:
+                count += 1  # Perfect square divisor
+            else:
+                count += 2  # Regular divisor pair
+    
+    # Check if total divisor count is even or odd
+    if count % 2 == 0:
+        return "Even"
+    else:
+        return "Odd"
+```
+
+Key improvements:
+1. Fixed the range to `int(math.sqrt(n)) + 1` (removed the unnecessary +2)
+2. Added proper docstring with parameter and return value documentation
+3. Used `+=` operator for cleaner increment syntax
+4. Removed unnecessary parentheses for cleaner code
+
+The function works by counting all divisors efficiently (O(√n) time complexity) and returns "Even" or "Odd" based on the total count.

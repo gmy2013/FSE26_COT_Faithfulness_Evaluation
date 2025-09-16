@@ -1,0 +1,27 @@
+CodeGeneration:
+Here's the complete function with docstring:
+
+```python
+def odd_position(nums):
+    """
+    Check if all elements at odd indices are odd numbers and elements at even indices are even numbers.
+    
+    Args:
+        nums (list): A list of integers to check
+        
+    Returns:
+        bool: True if for every index i, nums[i] has the same parity as i (even indices have even numbers, 
+              odd indices have odd numbers), False otherwise
+              
+    Examples:
+        >>> odd_position([2, 1, 4, 3, 6, 5])
+        True
+        >>> odd_position([2, 1, 4, 3, 6, 4])
+        False
+        >>> odd_position([0, 1, 2, 3, 4, 5])
+        True
+    """
+    return all(nums[i] % 2 == i % 2 for i in range(len(nums)))
+```
+
+The function works by checking if each element has the same parity (even/odd) as its index position. The expression `nums[i] % 2 == i % 2` evaluates to `True` when both the number and its index are either even or odd, and `False` otherwise. The `all()` function returns `True` only if this condition holds for every element in the list.

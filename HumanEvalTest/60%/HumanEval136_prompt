@@ -1,0 +1,39 @@
+
+def largest_smallest_integers(lst):
+    '''
+    Create a function that returns a tuple (a, b), where 'a' is
+    the largest of negative integers, and 'b' is the smallest
+    of positive integers in a list.
+    If there is no negative or positive integers, return them as None.
+
+    Examples:
+    largest_smallest_integers([2, 4, 1, 3, 5, 7]) == (None, 1)
+    largest_smallest_integers([]) == (None, None)
+    largest_smallest_integers([0]) == (None, None)
+    '''
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to find the largest negative integer (closest to zero) and the smallest positive integer (closest to zero).
+2. If there are no negative integers, the first element of the tuple should be None.
+3. If there are no positive integers, the second element of the tuple should be None.
+4. We should ignore zero since it is neither positive nor negative.
+
+Approach:
+- Initialize two variables: `largest_neg` to negative infinity (or None) and `smallest_pos` to positive infinity (or None).
+- Iterate through each number in the list.
+- For negative numbers (less than 0):
+    - If `largest_neg` is None or the number is greater than `largest_neg` (since -3 > -5), update `largest_neg`.
+- For positive numbers (greater than 0):
+    - If `smallest_pos` is None or the number is less than `smallest_pos`, update `smallest_pos`.
+- After processing all numbers, if `largest_neg` is still negative infinity (or None), set it to None.
+- Similarly, if `smallest_pos` is still positive infinity (or None), set it to None.
+- Return a tuple of (`largest_neg`, `smallest_pos`).
+
+Implementation details:
+- We can initialize `largest_neg` as None and `smallest_pos` as None.
+- For each number:
+    - If number < 0:
+        - If `largest_neg` is None or number > `largest_neg` (because we want the largest negative, which is the one closest to zero), update.
+    - If numbe

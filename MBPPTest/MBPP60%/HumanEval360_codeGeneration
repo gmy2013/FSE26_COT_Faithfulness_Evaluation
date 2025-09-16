@@ -1,0 +1,20 @@
+CodeGeneration:
+ious numeral because it was added in the previous step, then add the current numeral's value minus the previous numeral's value. This effectively corrects the previous addition and applies the subtraction rule.
+
+6. **Otherwise, add normally**: If no subtractive case is detected, simply add the current numeral's value to `int_val`.
+
+7. **Return the result**: After processing all characters, return the accumulated `int_val`.
+
+The code is correct and efficiently handles both additive and subtractive cases in Roman numerals. Here's the complete function for reference:
+
+```python
+def roman_to_int(s):
+    rom_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    int_val = 0
+    for i in range(len(s)):
+        if i > 0 and rom_val[s[i]] > rom_val[s[i - 1]]:
+            int_val += rom_val[s[i]] - 2 * rom_val[s[i - 1]]
+        else:
+            int_val += rom_val[s[i]]
+    return int_val
+```

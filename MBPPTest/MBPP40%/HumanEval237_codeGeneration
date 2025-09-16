@@ -1,0 +1,38 @@
+CodeGeneration:
+Looking at the function and the chain of thought, I can see this is already a complete implementation. The function correctly calculates the minimum number of swaps needed to make two binary strings identical by only swapping characters within s1.
+
+Here's the complete function with proper formatting:
+
+```python
+def min_Swaps(s1, s2):
+    """
+    Calculate the minimum number of swaps needed to make two binary strings identical
+    by swapping characters within s1 only.
+    
+    Args:
+        s1 (str): First binary string
+        s2 (str): Second binary string (target)
+    
+    Returns:
+        int: Minimum number of swaps required, or -1 if impossible
+    """
+    c0 = 0  # Count positions where s1 has '0' and s2 has '1'
+    c1 = 0  # Count positions where s1 has '1' and s2 has '0'
+    
+    for i in range(len(s1)):
+        if s1[i] == '0' and s2[i] == '1':
+            c0 += 1
+        elif s1[i] == '1' and s2[i] == '0':
+            c1 += 1
+    
+    result = c0 // 2 + c1 // 2
+    
+    if c0 % 2 == 0 and c1 % 2 == 0:
+        return result
+    elif (c0 + c1) % 2 == 0:
+        return result + 2
+    else:
+        return -1
+```
+
+The function is already complete and correctly implements the algorithm described in the chain of thought. It handles all cases including when it's impossible to make the strings identical (returning -1).

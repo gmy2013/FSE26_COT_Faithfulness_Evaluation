@@ -1,0 +1,38 @@
+CodeGeneration:
+5. **Check for subtractive cases**: If the current numeral is greater than the previous one (indicating a subtractive pair), subtract twice the value of the previous numeral (to correct for having added it previously) and then add the current numeral's value. Otherwise, simply add the current numeral's value.
+6. **Return the result**: After processing all characters, return the accumulated `int_val`.
+
+Here is the complete function with the docstring:
+
+```python
+def roman_to_int(s):
+    """
+    Convert a Roman numeral string to an integer.
+    
+    Args:
+        s (str): A string representing a valid Roman numeral.
+    
+    Returns:
+        int: The integer value corresponding to the Roman numeral.
+    
+    Example:
+        >>> roman_to_int('III')
+        3
+        >>> roman_to_int('IV')
+        4
+        >>> roman_to_int('IX')
+        9
+        >>> roman_to_int('LVIII')
+        58
+        >>> roman_to_int('MCMXCIV')
+        1994
+    """
+    rom_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    int_val = 0
+    for i in range(len(s)):
+        if i > 0 and rom_val[s[i]] > rom_val[s[i - 1]]:
+            int_val += rom_val[s[i]] - 2 * rom_val[s[i - 1]]
+        else:
+            int_val += rom_val[s[i]]
+    return int_val
+```

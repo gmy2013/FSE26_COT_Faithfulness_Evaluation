@@ -1,0 +1,15 @@
+def Sum(N): 
+    SumOfPrimeDivisors = [0]*(N + 1)   
+    for i in range(2,N + 1) : 
+        if (SumOfPrimeDivisors[i] == 0) : 
+            for j in range(i,N + 1,i) : 
+                SumOfPrimeDivisors[j] += i           
+    return SumOfPrimeDivisors[N] 
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function `Sum(N)` computes the sum of all distinct prime divisors of the number `N`.
+2. It uses a sieve-like approach (similar to the Sieve of Eratosthenes) to precompute an array `SumOfPrimeDivisors` of size `N+1`.
+3. For each index `i` from 2 to `N`:
+   - If `SumOfPrimeDivisors[i] == 0`, it means `i` is prime (because no prime divisor has been added to it yet).
+   - Then, for every multiple `j` of `i` (i.e., `j = i, 2i, 3i, ...` up to `N`), add `i` to `SumOfP

@@ -1,0 +1,27 @@
+CodeGeneration:
+t from the list of words.
+5. Use the most_common method to get the n most common words.
+6. Return the result as a list.
+
+Here is the complete function:
+
+```python
+from collections import Counter
+import re
+
+def n_common_words(text, n):
+    """Return the n most common words in the given text.
+    
+    Args:
+        text (str): The input text to analyze
+        n (int): Number of most common words to return
+        
+    Returns:
+        list: List of tuples containing (word, count) for the n most common words
+    """
+    words = re.findall('\w+', text.lower())
+    n_common_words = Counter(words).most_common(n)
+    return n_common_words
+```
+
+I've added `.lower()` to make the function case-insensitive, which is typically desired for word frequency analysis. The function will return the n most common words along with their counts as a list of tuples.

@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+def mul_consecutive_nums(nums):
+    """
+    Multiply each consecutive pair of numbers in the given list.
+    
+    Args:
+        nums: A list of numbers
+        
+    Returns:
+        A list containing the product of each consecutive pair of numbers
+        
+    Examples:
+        >>> mul_consecutive_nums([1, 2, 3, 4])
+        [2, 6, 12]
+        >>> mul_consecutive_nums([4, 5, 8, 9, 6])
+        [20, 40, 72, 54]
+    """
+    result = [b*a for a, b in zip(nums[:-1], nums[1:])]
+    return result
+```
+
+The function works as follows:
+- `nums[:-1]` gives all elements except the last one
+- `nums[1:]` gives all elements except the first one
+- `zip()` pairs each element from the first slice with the corresponding element from the second slice
+- The list comprehension multiplies each pair to create the result list
+- The result contains products of consecutive pairs: (nums[0]*nums[1], nums[1]*nums[2], nums[2]*nums[3], etc.)

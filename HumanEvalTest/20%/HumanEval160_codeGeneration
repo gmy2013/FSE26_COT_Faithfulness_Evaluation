@@ -1,0 +1,38 @@
+20%CoT
+CodeGeneration:
+```python
+def do_algebra(operator, operand):
+    """
+    Given two lists operator, and operand. The first list has basic algebra operations, and 
+    the second list is a list of integers. Use the two given lists to build the algebric 
+    expression and return the evaluation of this expression.
+
+    The basic algebra operations:
+    Addition ( + ) 
+    Subtraction ( - ) 
+    Multiplication ( * ) 
+    Floor division ( // ) 
+    Exponentiation ( ** ) 
+
+    Example:
+    operator['+', '*', '-']
+    array = [2, 3, 4, 5]
+    result = 2 + 3 * 4 - 5
+    => result = 9
+
+    Note:
+        The length of operator list is equal to the length of operand list minus one.
+        Operand is a list of of non-negative integers.
+        Operator list has at least one operator, and operand list has at least two operands.
+
+    """
+    # Create the expression as a string
+    expr = str(operand[0])
+    for i in range(len(operator)):
+        expr += ' ' + operator[i] + ' ' + str(operand[i+1])
+    
+    # Evaluate the expression with proper operator precedence
+    return eval(expr)
+```
+
+Note: While this solution uses `eval()` which works for the given requirements, in production code you might want to consider a safer alternative like building an abstract syntax tree or using a parsing library, especially if the input source is not trusted. However, for this specific problem with controlled inputs, `eval()` provides a concise solution.

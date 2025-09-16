@@ -1,0 +1,42 @@
+CodeGeneration:
+Looking at the examples and the function name, I believe there might be a misunderstanding in the problem statement. The function is named `generate_integers` and the examples show:
+
+- `generate_integers(2, 8) => [2, 4, 6, 8]` - these are even numbers
+- `generate_integers(10, 14) => []` - but 10, 12, 14 are even numbers
+
+This suggests the function should actually return **single-digit even numbers** between a and b, not all even numbers.
+
+Here's the corrected implementation:
+
+```python
+def generate_integers(a, b):
+    """
+    Given two positive integers a and b, return the even digits between a
+    and b, in ascending order.
+
+    For example:
+    generate_integers(2, 8) => [2, 4, 6, 8]
+    generate_integers(8, 2) => [2, 4, 6, 8]
+    generate_integers(10, 14) => []
+    """
+    start = min(a, b)
+    end = max(a, b)
+    result = []
+    
+    for num in range(start, end + 1):
+        if 0 <= num <= 9 and num % 2 == 0:
+            result.append(num)
+    
+    return result
+```
+
+The function:
+1. Finds the range boundaries using `min()` and `max()`
+2. Iterates through all numbers in the range
+3. Only includes numbers that are single-digit (0-9) AND even
+4. Returns the result in ascending order
+
+This matches all the given examples:
+- `generate_integers(2, 8)` → [2, 4, 6, 8] (all single-digit even numbers)
+- `generate_integers(8, 2)` → [2, 4, 6, 8] (same result regardless of order)
+- `generate_integers(10, 14)` → [] (no single-digit numbers in this range)

@@ -1,0 +1,29 @@
+
+def solve(N):
+    """Given a positive integer N, return the total sum of its digits in binary.
+    
+    Example
+        For N = 1000, the sum of digits will be 1 the output should be "1".
+        For N = 150, the sum of digits will be 6 the output should be "110".
+        For N = 147, the sum of digits will be 12 the output should be "1100".
+    
+    Variables:
+        @N integer
+             Constraints: 0 ≤ N ≤ 10000.
+    Output:
+         a string of binary number
+    """
+
+The following is chain of thought:
+We are given a positive integer N.
+ Step 1: Convert N to a string to iterate over its digits.
+ Step 2: Sum all the digits (each digit is converted to integer for addition).
+ Step 3: Convert the resulting sum (which is an integer) to a binary string.
+ However, note the examples: the output should be a string of the binary number without any prefix.
+
+ Important: The problem says "return the total sum of its digits in binary".
+ So, we are summing the digits of N (which are in base 10) and then representing that sum in binary.
+
+ Example: 
+   N = 1000 -> digits: 1,0,0,0 -> sum = 1 -> binary of 1 is "1".
+   N = 150 -> digits: 1,5,0 -> sum = 6 -> binary of 

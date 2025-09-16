@@ -1,0 +1,15 @@
+def check(string): 
+  if len(set(string).intersection("AEIOUaeiou"))>=5: 
+    return ('accepted') 
+  else: 
+    return ("not accepted") 
+The following is chain of thought:
+1. The function `check` takes a string as input.
+2. It checks if the string contains at least 5 different vowels (both uppercase and lowercase).
+3. It does this by:
+   - Converting the string to a set of unique characters
+   - Finding the intersection with the set of vowels "AEIOUaeiou"
+   - Checking if the size of this intersection is at least 5
+4. Returns "accepted" if condition is met, otherwise "not accepted"
+5. The function handles both uppercase and lowercase vowels correctly
+6. The lo

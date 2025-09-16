@@ -1,0 +1,29 @@
+
+def circular_shift(x, shift):
+    """Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    >>> circular_shift(12, 1)
+    "21"
+    >>> circular_shift(12, 2)
+    "12"
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. Convert the integer x to a string to work with its digits.
+2. Calculate the number of digits (n) in x.
+3. If shift is greater than the number of digits, reverse the string and return.
+4. Otherwise, perform a circular shift right by shift positions:
+   - A circular shift right by shift means taking the last 'shift' digits and moving them to the front.
+   - This can be done by slicing: last 'shift' digits + the first (n - shift) digits.
+5. Return the resulting string.
+
+Now, let's implement accordingly.
+```python
+def circular_shift(x, shift):
+    """Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+  

@@ -1,0 +1,67 @@
+CodeGeneration:
+Based on the chain of thought and the provided function, I can see that the function is designed to remove nested tuples from the input tuple. However, I notice that the function doesn't handle nested tuples recursively - it only removes immediate tuple elements. If you want to flatten all nested tuples recursively, here's an improved version:
+
+```python
+def remove_nested(test_tup):
+    """
+    Remove all nested tuples from the input tuple, returning a flattened tuple.
+    
+    Args:
+        test_tup (tuple): Input tuple that may contain nested tuples
+        
+    Returns:
+        tuple: A new tuple with all elements from the original tuple,
+               but with any nested tuples flattened (removed as containers)
+    
+    Examples:
+        >>> remove_nested((1, (2, 3), 4))
+        (1, 2, 3, 4)
+        >>> remove_nested((1, 2, 3))
+        (1, 2, 3)
+        >>> remove_nested((1, (2, (3, 4)), 5))
+        (1, 2, 3, 4, 5)
+    """
+    def flatten(tup):
+        result = []
+        for item in tup:
+            if isinstance(item, tuple):
+                result.extend(flatten(item))
+            else:
+                result.append(item)
+        return result
+    
+    return tuple(flatten(test_tup))
+```
+
+If you want to keep the original behavior (only removing immediate tuple elements without recursive flattening), here's the corrected version:
+
+```python
+def remove_nested(test_tup):
+    """
+    Remove immediate nested tuples from the input tuple.
+    
+    Args:
+        test_tup (tuple): Input tuple that may contain nested tuples
+        
+    Returns:
+        tuple: A new tuple with all non-tuple elements from the original tuple
+    
+    Examples:
+        >>> remove_nested((1, (2, 3), 4))
+        (1, 4)
+        >>> remove_nested((1, 2, 3))
+        (1, 2, 3)
+        >>> remove_nested((1, (2, (3, 4)), 5))
+        (1, 5)
+    """
+    res = tuple()
+    for ele in test_tup:
+        if not isinstance(ele, tuple):
+            res = res + (ele,)
+    return res
+```
+
+The main improvements are:
+1. Removed unused `count` variable from enumerate
+2. Added proper docstring with examples
+3. Provided both recursive and non-recursive versions based on the intended behavior

@@ -1,0 +1,11 @@
+CodeGeneration:
+and returns their product.
+4. Since `map` returns an iterator, convert it to a list before returning.
+
+The provided implementation correctly follows this logic. Here's the complete function:
+
+```python
+def mul_list(nums1, nums2):
+    result = map(lambda x, y: x * y, nums1, nums2)
+    return list(result)
+```

@@ -1,0 +1,32 @@
+CodeGeneration:
+turn "Invalid Email"
+
+Here's the complete function with improved formatting:
+
+```python
+import re
+
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+
+def check_email(email):
+    """Check if an email address is valid based on regex pattern.
+    
+    Args:
+        email (str): The email address to validate
+        
+    Returns:
+        str: "Valid Email" if valid, "Invalid Email" otherwise
+    """
+    if re.search(regex, email):
+        return "Valid Email"
+    else:
+        return "Invalid Email"
+```
+
+Note: This regex pattern has some limitations:
+- It only accepts lowercase letters
+- It requires the TLD to be exactly 2-3 characters
+- It doesn't support newer TLDs that can be longer
+- It doesn't handle internationalized domain names
+
+For production use, consider using a more comprehensive email validation library or a more robust regex pattern.

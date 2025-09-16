@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the implementation:
+
+```python
+def solution(lst):
+    """Given a non-empty list of integers, return the sum of all of the odd elements that are in even positions.
+    
+
+    Examples
+    solution([5, 8, 7, 1]) ==> 12
+    solution([3, 3, 3, 3, 3]) ==> 9
+    solution([30, 13, 24, 321]) ==>0
+    """
+    total = 0
+    for i, num in enumerate(lst):
+        if i % 2 == 0 and num % 2 != 0:
+            total += num
+    return total
+```
+
+This implementation:
+1. Initializes `total` to accumulate the sum
+2. Uses `enumerate()` to get both index and value while iterating
+3. Checks if the index is even (position 0, 2, 4, etc.) AND if the number is odd
+4. Adds qualifying numbers to the total
+5. Returns the final sum
+
+The examples work as expected:
+- `[5, 8, 7, 1]` → 5 (index 0) + 7 (index 2) = 12
+- `[3, 3, 3, 3, 3]` → 3 + 3 + 3 = 9
+- `[30, 13, 24, 321]` → 30 (even) + 24 (even) = 0

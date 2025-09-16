@@ -1,0 +1,11 @@
+import math
+def round_up(a, digits):
+    n = 10**-digits
+    return round(math.ceil(a / n) * n, digits)
+The following is chain of thought:
+1. The function `round_up` takes two arguments: `a` (the number to round up) and `digits` (the number of decimal places to round to).
+2. Compute `n` as `10**-digits`. This creates a scaling factor. For example, if `digits=2`, `n=0.01`.
+3. Divide `a` by `n` to scale the number up so that the decimal places become integers. For instance, if `a=3.141` and `digits=2`, `a/n = 314.1`.
+4. Apply `math.ceil` to the scaled value to round it up to the nearest integer. Continuing the example: `math.ceil(314.1) = 315`.
+5. Multiply the result by `n` to scale it back down to the original magnitude: `315 * 0.01 = 3.15`.
+6. Finally, use Python's built-in `round` function with the specified `digit

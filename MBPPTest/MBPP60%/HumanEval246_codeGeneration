@@ -1,0 +1,7 @@
+CodeGeneration:
+is the standard way to create a shallow copy of a list in Python.
+
+```python
+def lcopy(xs):
+    return xs[:]
+```

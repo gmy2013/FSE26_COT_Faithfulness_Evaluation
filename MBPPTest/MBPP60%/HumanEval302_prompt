@@ -1,0 +1,54 @@
+def count_Unset_Bits(n) :  
+    cnt = 0;  
+    for i in range(1,n + 1) : 
+        temp = i;  
+        while (temp) :  
+            if (temp % 2 == 0) : 
+                cnt += 1;  
+            temp = temp // 2;  
+    return cnt;  
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function counts unset bits (0s) in the binary representations of all numbers from 1 to n.
+2. For each number i (from 1 to n):
+   - Convert i to binary by repeatedly dividing by 2 (using integer division).
+   - For each division step, check if the remainder is 0 (which means the current bit is unset).
+   - Count every unset bit found.
+3. However, this approach has an issue: it doesn't count leading zeros (which are unset bits) because the loop stops when temp becomes 0.
+
+But note: The problem likely considers only the significant bits (without leading zeros). For example:
+- Number 5 (binary '101') has 1 unset bit (the middle one).
+- Number 2 (binary '10') has 1 unset bit (the most significant one in this representation).
+
+However, the current implementation actually counts unset bits correctly for the significant bits (without leading zeros) because:
+- The while loop processes bits until the number becomes 0 (so it processes all set bits and the zeros between them, but not the leading zeros).
+
+But wait: There's a logical error in the current code. It checks `temp % 2 == 0` to identify unset bits. However, when we are processing the bits from least significant to most significant, this correctly identifies unset bits.
+
+However, the code is inefficient because it uses division and modulus in a loop. We can use bit-level operations for better performance.
+
+But the user asked to complete the function based on the docstring. The docstring is not provided in the query. Since the function is already implemented, and the user might be asking for a corrected version or an improved version?
+
+Wait: The user said "Complete the following function", but the function is already written. Perhaps there is a mistake?
+
+Looking at the code: It counts unset bits for numbers from 1 to n. However, it does not count the unset bits in the binary representation of 0. But the range starts from 1, so that's fine.
+
+But there is a known efficient way: The total unset bits from 1 to n can be computed using a formula or bit DP. However, the current iterative method is straightforward but slow for large n.
+
+Since the user didn't provide a docstring, I assume we need to keep the same logic.
+
+But note: The code has a semicolon at the end of each line, which is not Pythonic. We should remove them.
+
+Also, the variable names should be in snake_case per PEP8.
+
+Let me rewrite the function in a cleaner way without changing the logic:
+
+```python
+def count_unset_bits(n):
+    cnt = 0
+    for i in range(1, n + 1):
+        temp = i
+        while temp:
+            if temp % 2 == 0:
+           

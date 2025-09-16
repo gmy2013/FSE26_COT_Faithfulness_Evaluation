@@ -1,0 +1,7 @@
+def remove_tuple(test_list):
+  res = [sub for sub in test_list if not all(ele == None for ele in sub)]
+  return (str(res)) 
+The following is chain of thought:
+1. The function `remove_tuple` takes a list `test_list` as input.
+2. It uses a list comprehension to iterate over each tuple `sub` in `test_list`.
+3. For each tuple, it checks if not all elements `ele` in the tuple are `None`

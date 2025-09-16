@@ -1,0 +1,12 @@
+import heapq as hq
+def heap_sort(iterable):
+    h = []
+    for value in iterable:
+        hq.heappush(h, value)
+    return [hq.heappop(h) for i in range(len(h))]
+The following is chain of thought:
+1. Initialize an empty list `h` to serve as the heap.
+2. Iterate through each value in the input `iterable`.
+3. Use `heapq.heappush` to push each value onto the heap `h`, maintaining the min-heap property.
+4. After building the heap, construct the sorted list by repeatedly popping the smallest element from the heap using `heapq.heappop`.
+5. The list comprehension pops elements un

@@ -1,0 +1,22 @@
+
+def multiply(a, b):
+    """Complete the function that takes two integers and returns 
+    the product of their unit digits.
+    Assume the input is always valid.
+    Examples:
+    multiply(148, 412) should return 16.
+    multiply(19, 28) should return 72.
+    multiply(2020, 1851) should return 0.
+    multiply(14,-15) should return 20.
+    """
+
+The following is chain of thought:
+To solve this problem, we need to multiply the unit digits of two given integers. The unit digit is the last digit of the number. We can extract the unit digit of each number by taking the absolute value (to handle negative numbers correctly) and then using modulo 10. This gives us the last digit regardless of the sign. Then, we multiply these two unit digits and return the result.
+
+Steps:
+1. Get the absolute value of each input to ignore any negative signs.
+2. Extract the unit digit of each absolute value by computing modulo 10.
+3. Multiply the two unit digits.
+4. Return the product.
+
+This approach works for both positive and negative inputs as required by the examples (e.g., mult

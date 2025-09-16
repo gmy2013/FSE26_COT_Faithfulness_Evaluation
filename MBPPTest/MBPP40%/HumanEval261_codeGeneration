@@ -1,0 +1,29 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+from collections import Counter
+import re
+
+def n_common_words(text, n):
+    """
+    Returns the n most common words in the given text.
+    
+    Args:
+        text (str): The input text to analyze
+        n (int): The number of most common words to return
+        
+    Returns:
+        list: A list of tuples containing the n most common words and their counts,
+              sorted by frequency in descending order
+    """
+    words = re.findall('\w+', text)
+    n_common_words = Counter(words).most_common(n)
+    return list(n_common_words)
+```
+
+The function:
+1. Uses regex to find all words (sequences of alphanumeric characters) in the input text
+2. Creates a Counter object to count word frequencies
+3. Uses `most_common(n)` to get the top n words by frequency
+4. Returns the result as a list of tuples where each tuple contains (word, count)

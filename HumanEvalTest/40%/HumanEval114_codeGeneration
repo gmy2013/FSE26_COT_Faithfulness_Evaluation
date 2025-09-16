@@ -1,0 +1,10 @@
+CodeGeneration:
+global_min = nums[0]
+    current_min = nums[0]
+    
+    for i in range(1, len(nums)):
+        current_min = min(nums[i], current_min + nums[i])
+        global_min = min(global_min, current_min)
+    
+    return global_min
+```

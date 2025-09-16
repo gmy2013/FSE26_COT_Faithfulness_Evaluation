@@ -1,0 +1,15 @@
+CodeGeneration:
+first_val = array[0]
+    last_val = array[-1]
+    total = first_val + last_val
+    
+    # Create a copy of the array to avoid modifying the original
+    result = array.copy()
+    
+    # Sort based on the sum condition
+    if total % 2 == 1:  # odd sum
+        result.sort()  # ascending order
+    else:  # even sum
+        result.sort(reverse=True)  # descending order
+    
+    return result

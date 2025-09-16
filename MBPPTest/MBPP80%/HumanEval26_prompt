@@ -1,0 +1,18 @@
+def find_First_Missing(array,start,end): 
+    if (start > end): 
+        return end + 1
+    if (start != array[start]): 
+        return start; 
+    mid = int((start + end) / 2) 
+    if (array[mid] == mid): 
+        return find_First_Missing(array,mid+1,end) 
+    return find_First_Missing(array,start,mid) 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Base Case 1 - Invalid Range**: If the start index exceeds the end index, return end + 1 as the first missing number
+2. **Base Case 2 - Immediate Detection**: If the element at start index doesn't equal its index value, return start as the first missing number
+3. **Binary Search Approach**: Calculate the midpoint between start and end indices
+4. **Recursive Case 1 - Right Subarray**: If the element at midpoint equals its index, search the right half (mid+1 to end) for the missing number
+5. **Recursive Case 2 - Left Subarray**: If the element at midpoint doesn't equal its index, search the left half (start to mid) for the missing number
+6. **Assumption**: The array

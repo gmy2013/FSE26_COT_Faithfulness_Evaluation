@@ -1,0 +1,34 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def remove_length(test_str, K):
+    """
+    Remove all words from the string that have length equal to K.
+    
+    Args:
+        test_str (str): The input string containing words
+        K (int): The length of words to remove
+    
+    Returns:
+        str: The string with words of length K removed
+    
+    Examples:
+        >>> remove_length("hello world this is a test", 5)
+        'world this is a'
+        >>> remove_length("python programming is fun", 3)
+        'python programming fun'
+    """
+    temp = test_str.split()
+    res = [ele for ele in temp if len(ele) != K]
+    res = ' '.join(res)
+    return (res)
+```
+
+The function works by:
+1. Splitting the input string into individual words
+2. Filtering out words whose length equals K using a list comprehension
+3. Joining the remaining words back into a string
+4. Returning the result
+
+The function handles cases where words are separated by spaces and preserves the original word order while removing only the words that match the specified length.

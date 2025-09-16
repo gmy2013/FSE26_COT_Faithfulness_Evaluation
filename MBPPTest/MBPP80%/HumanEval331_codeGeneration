@@ -1,0 +1,29 @@
+CodeGeneration:
+ts, return the `temp` list containing unique elements.
+
+This function preserves the order of first occurrence of each element while removing duplicates.
+
+Here is the complete function with the docstring:
+
+```python
+def remove_duplic_list(l):
+    """Remove duplicates from a list while preserving order of first occurrence.
+    
+    Args:
+        l (list): Input list that may contain duplicate elements
+        
+    Returns:
+        list: A new list with duplicates removed, preserving the order of first occurrence
+        
+    Examples:
+        >>> remove_duplic_list([1, 2, 2, 3, 1, 4])
+        [1, 2, 3, 4]
+        >>> remove_duplic_list(['a', 'b', 'a', 'c', 'b'])
+        ['a', 'b', 'c']
+    """
+    temp = []
+    for x in l:
+        if x not in temp:
+            temp.append(x)
+    return temp
+```

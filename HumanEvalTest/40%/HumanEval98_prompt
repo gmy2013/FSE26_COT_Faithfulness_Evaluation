@@ -1,0 +1,18 @@
+
+def count_upper(s):
+    """
+    Given a string s, count the number of uppercase vowels in even indices.
+    
+    For example:
+    count_upper('aBCdEf') returns 1
+    count_upper('abcdefg') returns 0
+    count_upper('dBBE') returns 0
+    """
+
+The following is chain of thought:
+We are counting uppercase vowels that occur at even indices (0-indexed).
+ Steps:
+ 1. Define what are the uppercase vowels: 'A', 'E', 'I', 'O', 'U'
+ 2. Iterate over the string with index and character.
+ 3. Check if the index is even (index % 2 == 0) and if the character is an uppercase vowel.
+ 4. If both conditions are true

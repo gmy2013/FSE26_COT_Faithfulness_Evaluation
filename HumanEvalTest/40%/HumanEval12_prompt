@@ -1,0 +1,23 @@
+from typing import List, Optional
+
+
+def longest(strings: List[str]) -> Optional[str]:
+    """ Out of list of strings, return the longest one. Return the first one in case of multiple
+    strings of the same length. Return None in case the input list is empty.
+    >>> longest([])
+
+    >>> longest(['a', 'b', 'c'])
+    'a'
+    >>> longest(['a', 'bb', 'ccc'])
+    'ccc'
+    """
+
+The following is chain of thought:
+We are given a list of strings. We need to:
+1. If the list is empty, return None.
+2. Otherwise, find the longest string (by length).
+3. If multiple strings have the same maximum length, return the first one.
+
+We can iterate through the list and keep track of the current longest string.
+Initialize a variable to None (for empty list case) or the first element.
+Then compare each string's length with the cur

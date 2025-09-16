@@ -1,0 +1,12 @@
+def concatenate_nested(test_tup1, test_tup2):
+  res = test_tup1 + test_tup2
+  return (res) 
+The following is chain of thought:
+Here is the structured chain of thought for implementing the concatenate_nested function:
+
+1. **Function Purpose Analysis**: The function needs to concatenate two nested tuples (test_tup1 and test_tup2) into a single tuple
+2. **Input Consideration**: Both inputs are tuples that may contain nested elements (other tuples)
+3. **Operation Selection**: Use tuple concatenation with the + operator which preserves the nested structure
+4. **Implementation Approach**: 
+   - Simply add the two tuples together using the + operator
+   - This will create a new tuple containing all elements fr

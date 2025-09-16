@@ -1,0 +1,21 @@
+CodeGeneration:
+lly, it returns the result.
+
+This implementation correctly handles the requirement. However, note that if there are ties in the second element, the order of elements with the same key is preserved from the original list (as per Python's stable sort, but since the key is the same, the relative order might not matter for the min selection). Also, if `K` is larger than the length of the list, it will return the entire sorted list.
+
+Here's the complete function with the docstring:
+
+```python
+def min_k(test_list, K):
+    """Return the first K elements from test_list when sorted by the second element of each sub-element.
+    
+    Args:
+        test_list (list): A list of elements where each element is a tuple or list with at least two elements.
+        K (int): The number of elements to return.
+    
+    Returns:
+        list: The first K elements from the sorted list.
+    """
+    res = sorted(test_list, key=lambda x: x[1])[:K]
+    return res
+```

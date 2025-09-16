@@ -1,0 +1,34 @@
+CodeGeneration:
+Here's the completed function with the corrected regex pattern:
+
+```python
+import re 
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+def check_email(email): 
+    if(re.search(regex,email)): 
+        return ("Valid Email") 
+    else: 
+        return ("Invalid Email")
+```
+
+**Chain of Thought Completion:**
+
+3. **Regex Pattern Analysis (continued)**:
+   - `[@]`: Contains an "@" symbol (literal character)
+   - `\w+`: Followed by one or more word characters (letters, digits, or underscores) for the domain name
+   - `[.]`: Contains a literal dot (escaped with backslash)
+   - `\w{2,3}$`: Ends with 2-3 word characters (typically the top-level domain like .com, .org, etc.)
+
+4. **Function Behavior**:
+   - Uses `re.search()` to check if the entire string matches the regex pattern
+   - Returns "Valid Email" if the pattern matches
+   - Returns "Invalid Email" if the pattern doesn't match
+   - The regex validates emails like: user@domain.com, user_name@domain.org, user.name@example.co
+
+5. **Limitations**:
+   - Only accepts lowercase letters (no uppercase)
+   - Limited to 2-3 character TLDs (won't accept newer longer TLDs like .info, .museum)
+   - Doesn't support internationalized domain names or special characters
+   - The pattern is relatively restrictive compared to modern email standards
+
+The function provides basic email validation suitable for many common use cases, though it may reject some valid email formats.

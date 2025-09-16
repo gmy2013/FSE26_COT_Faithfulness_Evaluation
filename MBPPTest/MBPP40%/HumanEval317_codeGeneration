@@ -1,0 +1,50 @@
+CodeGeneration:
+ake change (by using no coins), so initialize all table[0][j] = 1
+
+4. **DP Table Population**:
+   - For each amount i from 1 to n
+   - For each coin index j from 0 to m-1
+   - x = ways to make amount (i - current coin value) using same coin
+   - y = ways to make amount i using previous coins only
+   - table[i][j] = x + y (include current coin + exclude current coin)
+
+5. **Return Result**: The bottom-right cell table[n][m-1] contains the total number of ways
+
+Here's the corrected and complete implementation:
+
+```python
+def coin_change(S, m, n):
+    """
+    Count the number of ways to make change for amount n using coins from set S
+    
+    Args:
+        S: List of coin denominations
+        m: Number of coin denominations (length of S)
+        n: Target amount
+    
+    Returns:
+        Number of ways to make change for amount n using coins from S
+    """
+    # Create DP table with dimensions (n+1) × m
+    table = [[0 for _ in range(m)] for _ in range(n+1)]
+    
+    # Base case: for amount 0, there's 1 way (use no coins)
+    for j in range(m):
+        table[0][j] = 1
+    
+    # Fill the DP table
+    for i in range(1, n+1):
+        for j in range(m):
+            # Number of ways including the j-th coin
+            x = table[i - S[j]][j] if i - S[j] >= 0 else 0
+            
+            # Number of ways excluding the j-th coin
+            y = table[i][j-1] if j >= 1 else 0
+            
+            # Total ways = include current coin + exclude current coin
+            table[i][j] = x + y
+    
+    return table[n][m-1]
+```
+
+The function uses dynamic programming with a 2D table to efficiently count the number of coin combinations that sum to the target amount.

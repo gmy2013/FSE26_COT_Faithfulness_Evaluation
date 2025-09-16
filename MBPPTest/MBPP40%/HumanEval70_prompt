@@ -1,0 +1,14 @@
+import math 
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    return int(math.log2(n&-n)+1)   
+def set_Right_most_Unset_Bit(n): 
+    if (n == 0): 
+        return 1
+    if ((n & (n + 1)) == 0):     
+        return n 
+    pos = get_Pos_Of_Right_most_Set_Bit(~n)      
+    return ((1 << (pos - 1)) | n) 
+The following is chain of thought:
+1. The function `set_Right_most_Unset_Bit` aims to set the rightmost unset (0) bit in the binary representation of integer `n`.
+2. First, check if `n` is 0: if so, return 1 because setting the only unset bit (in a hypothetical representation) gives 1.
+3. Next, check if all bits are set (i.e., `n` is of the form `2^k - 1`): if `(n & (n+1)) =

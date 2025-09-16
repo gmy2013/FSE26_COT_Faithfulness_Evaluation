@@ -1,0 +1,23 @@
+CodeGeneration:
+```python
+def palindrome_lambda(texts):
+    """
+    Filters a list of strings to return only palindromes (case-insensitive, alphanumeric only).
+    
+    Args:
+        texts: List of strings to filter
+        
+    Returns:
+        List of strings that are palindromes when considering only alphanumeric 
+        characters and ignoring case differences
+        
+    Example:
+        >>> palindrome_lambda(["racecar", "Racecar", "hello", "madam!", "A man, a plan, a canal: Panama"])
+        ['racecar', 'Racecar', 'madam!', 'A man, a plan, a canal: Panama']
+    """
+    import re
+    
+    result = list(filter(lambda x: re.sub(r'[^a-zA-Z0-9]', '', x.lower()) == 
+                         re.sub(r'[^a-zA-Z0-9]', '', x.lower())[::-1], texts))
+    return result
+```

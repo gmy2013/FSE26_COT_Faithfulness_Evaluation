@@ -1,0 +1,42 @@
+CodeGeneration:
+I'll complete the function based on the docstring and chain of thought. The function appears to be calculating the number of digits in n! (factorial of n) using Stirling's approximation.
+
+```python
+import math 
+
+def find_Digits(n): 
+    """
+    Calculate the number of digits in the factorial of a non-negative integer n.
+    
+    Args:
+        n (int): A non-negative integer
+        
+    Returns:
+        int: Number of digits in n! (factorial of n)
+        
+    Examples:
+        >>> find_Digits(0)
+        1
+        >>> find_Digits(1)
+        1
+        >>> find_Digits(5)
+        3
+        >>> find_Digits(10)
+        7
+    """
+    if (n < 0): 
+        return 0
+    if (n <= 1): 
+        return 1 
+    x = ((n * math.log10(n / math.e) + math.log10(2 * math.pi * n) / 2.0)) 
+    return math.floor(x) + 1
+```
+
+The function is already complete and correctly implements the logic described in the chain of thought:
+
+1. **Negative input**: Returns 0 for n < 0 (factorial undefined for negatives)
+2. **Base cases**: Returns 1 for n = 0 or 1 (0! = 1, 1! = 1, both have 1 digit)
+3. **Stirling's approximation**: For n > 1, uses the formula to approximate log₁₀(n!) without calculating the actual factorial
+4. **Digit calculation**: The floor of log₁₀(n!) + 1 gives the number of digits
+
+The formula used is based on Stirling's approximation: log₁₀(n!) ≈ n·log₁₀(n/e) + log₁₀(2πn)/2

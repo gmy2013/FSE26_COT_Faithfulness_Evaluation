@@ -1,0 +1,35 @@
+CodeGeneration:
+Based on the chain of thought, the function appears to be correctly implemented. Here's the complete function with the given implementation:
+
+```python
+def min_Swaps(str1, str2):
+    """
+    Calculate the minimum number of adjacent swaps needed to make two strings identical.
+    
+    Args:
+        str1 (str): First input string
+        str2 (str): Second input string
+    
+    Returns:
+        int or str: Minimum number of swaps if possible, "Not Possible" otherwise
+    
+    The function works by:
+    1. Counting mismatches between the two strings
+    2. If mismatch count is even, returns half the count (each swap fixes 2 mismatches)
+    3. If mismatch count is odd, returns "Not Possible" (impossible to fix all mismatches)
+    """
+    count = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            count += 1
+    if count % 2 == 0:
+        return (count // 2)
+    else:
+        return ("Not Possible")
+```
+
+The implementation correctly follows the chain of thought:
+- It iterates through both strings to count mismatches
+- It checks if the mismatch count is even (returning half the count)
+- It handles the impossible case when mismatch count is odd
+- The function assumes both strings are of equal length (a reasonable assumption for this problem)

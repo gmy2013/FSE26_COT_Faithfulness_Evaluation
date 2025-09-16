@@ -1,0 +1,30 @@
+CodeGeneration:
+he sorted list with the original list.
+3. However, this approach creates a new sorted list which has O(n log n) time complexity and O(n) space complexity.
+4. A more efficient approach would be to iterate through the list once and check if each element is <= the next element.
+5. This would have O(n) time complexity and O(1) space complexity.
+
+Here's the improved implementation:
+
+```python
+def increasing_trend(nums):
+    """
+    Check if the given list of numbers is sorted in non-decreasing order.
+    
+    Args:
+        nums (list): List of numbers to check
+        
+    Returns:
+        bool: True if the list is sorted in non-decreasing order, False otherwise
+    """
+    for i in range(len(nums) - 1):
+        if nums[i] > nums[i + 1]:
+            return False
+    return True
+```
+
+This implementation:
+- Handles empty lists and single-element lists correctly (returns True)
+- Only requires O(n) time complexity (one pass through the list)
+- Uses O(1) space complexity (no additional data structures)
+- Stops early if it finds any element that violates the non-decreasing order

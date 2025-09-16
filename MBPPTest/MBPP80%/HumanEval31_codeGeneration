@@ -1,0 +1,27 @@
+CodeGeneration:
+5. Return the result: Return the modified list `x` with zeros moved to the end.
+
+Here's the complete function:
+
+```python
+def move_zero(num_list):
+    """Move all zeros in the given list to the end while maintaining the order of non-zero elements.
+    
+    Args:
+        num_list (list): A list of integers that may contain zeros
+        
+    Returns:
+        list: A new list with all zeros moved to the end, preserving the order of non-zero elements
+    """
+    a = [0 for i in range(num_list.count(0))]
+    x = [i for i in num_list if i != 0]
+    x.extend(a)
+    return x
+```
+
+The function works by:
+1. Counting the zeros in the input list
+2. Creating a list of zeros of the same count
+3. Filtering out all non-zero elements from the original list
+4. Appending the zeros to the end of the filtered list
+5. Returning the result with zeros moved to the end while preserving the order of non-zero elements

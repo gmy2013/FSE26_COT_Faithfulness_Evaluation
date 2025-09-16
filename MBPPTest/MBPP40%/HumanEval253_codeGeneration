@@ -1,0 +1,18 @@
+CodeGeneration:
+Looking at this function, I can see that it's already complete and working correctly. The function:
+
+1. Takes a list `rawheap` as input
+2. Uses `heapq.heapify()` to transform it into a min-heap in-place
+3. Returns the heapified list
+
+Here's the complete function:
+
+```python
+import heapq as hq
+
+def raw_heap(rawheap):
+    hq.heapify(rawheap)
+    return rawheap
+```
+
+This function will convert any list into a valid min-heap structure using Python's built-in heapq module. The heapify operation has O(n) time complexity and modifies the original list in-place.

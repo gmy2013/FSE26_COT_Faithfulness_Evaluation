@@ -1,0 +1,39 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+import re 
+
+def replace(string, char):
+    """
+    Replace consecutive occurrences of a character with a single instance.
+    
+    This function uses regular expressions to find sequences of two or more
+    identical characters and replaces them with a single instance of that character.
+    
+    Args:
+        string (str): The input string to process
+        char (str): The character to deduplicate (must be a single character)
+    
+    Returns:
+        str: The processed string with consecutive duplicates removed
+    
+    Example:
+        >>> replace("hello world", "l")
+        'helo world'
+        >>> replace("bookkeeper", "o")
+        'bokeper'
+        >>> replace("mississippi", "s")
+        'misisippi'
+    """
+    pattern = char + '{2,}'
+    string = re.sub(pattern, char, string) 
+    return string
+```
+
+The function works by:
+1. Creating a regex pattern that matches 2 or more consecutive occurrences of the specified character
+2. Using `re.sub()` to replace all such sequences with just a single instance of the character
+3. Returning the modified string
+
+Note: The `char` parameter should be a single character string, as using multi-character strings could produce unexpected results with this regex pattern.

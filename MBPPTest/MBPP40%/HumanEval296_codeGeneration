@@ -1,0 +1,31 @@
+CodeGeneration:
+matches the target word exactly (case-sensitive)
+4. If a match is found, return True immediately
+5. If no match is found after checking all words, return False
+
+Here's the complete function:
+
+```python
+def is_Word_Present(sentence, word):
+    """
+    Check if a given word is present in a sentence.
+    
+    Args:
+        sentence (str): The input sentence to search in
+        word (str): The word to search for
+    
+    Returns:
+        bool: True if the word is found in the sentence, False otherwise
+    
+    Example:
+        >>> is_Word_Present("Hello world", "world")
+        True
+        >>> is_Word_Present("Hello world", "python")
+        False
+    """
+    s = sentence.split(" ")
+    for i in s:
+        if (i == word):
+            return True
+    return False
+```

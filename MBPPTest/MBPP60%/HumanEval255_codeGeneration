@@ -1,0 +1,46 @@
+CodeGeneration:
+Based on the chain of thought, here's the complete function with improved implementation:
+
+```python
+def find_Min_Swaps(arr, n):
+    """
+    Calculate the minimum number of adjacent swaps required to group all 1's together in a binary array.
+    
+    Args:
+        arr (list): Binary array containing 0s and 1s
+        n (int): Length of the array
+    
+    Returns:
+        int: Minimum number of adjacent swaps needed
+    
+    Approach:
+    For each '1' in the array, the number of swaps needed equals the number of '0's
+    to its right (since each zero must be swapped past to move the 1 leftwards).
+    Summing this for all 1's gives the total minimum swaps.
+    """
+    # Count zeros from right to left
+    zeros_to_right = [0] * n
+    zeros_to_right[n - 1] = 1 - arr[n - 1]  # 1 if last element is 0, else 0
+    
+    # Build zeros_to_right array backwards
+    for i in range(n - 2, -1, -1):
+        zeros_to_right[i] = zeros_to_right[i + 1]
+        if arr[i] == 0:
+            zeros_to_right[i] += 1
+    
+    # Calculate total swaps by summing zeros to right for each '1'
+    total_swaps = 0
+    for i in range(n):
+        if arr[i] == 1:
+            total_swaps += zeros_to_right[i]
+    
+    return total_swaps
+```
+
+This implementation efficiently calculates the minimum adjacent swaps by:
+1. Precomputing the cumulative count of zeros from each position to the end
+2. Summing the zeros to the right of each '1' to get the total swap count
+3. Using a backward traversal to build the zeros count array efficiently in O(n) time
+4. Maintaining O(n) space complexity with the zeros_to_right array
+
+The function handles edge cases like all 1's or all 0's correctly, and the time complexity is optimal at O(n).

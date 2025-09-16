@@ -1,0 +1,58 @@
+CodeGeneration:
+ng parenthesis matched with a corresponding closing parenthesis.
+
+Approach:
+1. We have two strings: s1 and s2 from the list `lst`.
+2. There are only two possible orders of concatenation: s1 + s2 or s2 + s1.
+3. For each concatenation, we can check if the resulting string is balanced.
+4. To check if a string is balanced, we can use a stack-like approach with a counter:
+   - Initialize a counter to 0.
+   - Traverse each character in the string:
+        - If it's '(', increment the counter.
+        - If it's ')', decrement the counter.
+   - If at any point the counter becomes negative, it means there are more closing parentheses than opening ones at that point, which makes it unbalanced.
+   - After processing all characters, if the counter is 0, the string is balanced.
+5. If either concatenation (s1+s2 or s2+s1) is balanced, return 'Yes'. Otherwise, return 'No'.
+
+However, note that the strings might be large, but since we only have two strings and two combinations, it is efficient.
+
+Let's implement accordingly.
+
+Code:
+```python
+def match_parens(lst):
+    '''
+    You are given a list of two strings, both strings consist of open
+    parentheses '(' or close parentheses ')' only.
+    Your job is to check if it is possible to concatenate the two strings in
+    some order, that the resulting string will be good.
+    A string S is considered to be good if and only if all parentheses in S
+    are balanced. For example: the string '(())()' is good, while the string
+    '())' is not.
+    Return 'Yes' if there's a way to make a good string, and return 'No' otherwise.
+
+    Examples:
+    match_parens(['()(', ')']) == 'Yes'
+    match_parens([')', ')']) == 'No'
+    '''
+    s1, s2 = lst
+    
+    def is_balanced(s):
+        count = 0
+        for char in s:
+            if char == '(':
+                count += 1
+            else:
+                count -= 1
+            if count < 0:
+                return False
+        return count == 0
+    
+    # Check both orders: s1+s2 and s2+s1
+    if is_balanced(s1 + s2) or is_balanced(s2 + s1):
+        return 'Yes'
+    else:
+        return 'No'
+```
+
+This code defines a helper function `is_balanced` to check if a given string of parentheses is balanced. Then it checks both possible concatenations of the two input strings. If either is balanced, it returns 'Yes'; otherwise, 'No'.

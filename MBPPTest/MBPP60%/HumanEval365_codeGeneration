@@ -1,0 +1,29 @@
+CodeGeneration:
+uple, the output should also be a tuple. Here's the corrected function:
+
+```python
+def remove_empty(tuple1):
+    """
+    Remove empty tuples or tuples containing only empty strings from the input tuple.
+    
+    Args:
+        tuple1: A tuple containing various elements including empty tuples and tuples with empty strings
+        
+    Returns:
+        tuple: A new tuple with empty elements removed
+        
+    Example:
+        >>> L = [(), (), ('',), ('a', 'b'), ('a', 'b', 'c'), ('d')]
+        >>> remove_empty(tuple(L))
+        (('a', 'b'), ('a', 'b', 'c'), ('d',))
+    """
+    return tuple(t for t in tuple1 if t)
+```
+
+The key changes:
+1. The function now returns a tuple instead of a list using `tuple()`
+2. Added proper docstring with parameter and return type documentation
+3. The example shows how to convert a list to a tuple for input
+4. The list comprehension is wrapped in `tuple()` to maintain consistent return type
+
+This ensures that if a tuple is passed in, a tuple is returned, maintaining type consistency.

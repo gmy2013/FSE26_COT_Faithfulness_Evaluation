@@ -1,0 +1,11 @@
+def swap_List(newList): 
+    size = len(newList) 
+    temp = newList[0] 
+    newList[0] = newList[size - 1] 
+    newList[size - 1] = temp   
+    return newList 
+The following is chain of thought:
+1. The function `swap_List` takes a list `newList` as input.
+2. It calculates the size (length) of the list and stores it in variable `size`.
+3. It stores the first element of the list (`newList[0]`) in a temporary variable `temp`.
+4. It replaces the first element of the list with the last element (`newLi

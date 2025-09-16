@@ -1,0 +1,26 @@
+def min_Swaps(s1,s2) :  
+    c0 = 0; c1 = 0;  
+    for i in range(len(s1)) :  
+        if (s1[i] == '0' and s2[i] == '1') : 
+            c0 += 1;    
+        elif (s1[i] == '1' and s2[i] == '0') : 
+            c1 += 1;  
+    result = c0 // 2 + c1 // 2;  
+    if (c0 % 2 == 0 and c1 % 2 == 0) : 
+        return result;  
+    elif ((c0 + c1) % 2 == 0) : 
+        return result + 2;  
+    else : 
+        return -1;  
+The following is chain of thought:
+Here's the structured chain of thought for the min_Swaps function:
+
+1. **Problem Analysis**: The function calculates the minimum number of swaps needed to make two binary strings identical by swapping characters within s1 only.
+
+2. **Variable Initialization**: 
+   - `c0` counts positions where s1 has '0' and s2 has '1'
+   - `c1` counts positions where s1 has '1' and s2 has '0'
+
+3. **Counting Mismatches**:
+   - Iterate through each character position in both strings
+   - Count mismatches

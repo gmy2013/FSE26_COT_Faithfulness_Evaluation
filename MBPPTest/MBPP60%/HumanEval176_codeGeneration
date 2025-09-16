@@ -1,0 +1,30 @@
+CodeGeneration:
+distinct element (since duplicates are adjacent after sorting), so add `arr[i+1]` to the sum.
+
+6. **Return Result**: After processing all elements, return the accumulated sum of distinct elements.
+
+**Potential Issue**: The function assumes `n` is the length of `arr` and that `n >= 1`. If `n=0`, it would cause an index error when accessing `arr[0]`. However, based on the docstring context, we assume `n` is valid.
+
+**Alternative Approach**: Could use a set for uniqueness, but the current method is efficient with sorting (O(n log n)) and avoids extra space.
+
+Here is the complete function with a docstring:
+
+```python
+def find_Sum(arr, n):
+    """
+    Calculate the sum of distinct elements in the given array.
+
+    Parameters:
+    arr (list): List of integers
+    n (int): Length of the array
+
+    Returns:
+    int: Sum of distinct elements in the array
+    """
+    arr.sort() 
+    sum = arr[0] 
+    for i in range(0, n-1): 
+        if (arr[i] != arr[i+1]): 
+            sum = sum + arr[i+1]   
+    return sum
+```

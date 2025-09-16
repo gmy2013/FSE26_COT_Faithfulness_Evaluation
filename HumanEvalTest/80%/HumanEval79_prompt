@@ -1,0 +1,30 @@
+
+def decimal_to_binary(decimal):
+    """You will be given a number in decimal form and your task is to convert it to
+    binary format. The function should return a string, with each character representing a binary
+    number. Each character in the string will be '0' or '1'.
+
+    There will be an extra couple of characters 'db' at the beginning and at the end of the string.
+    The extra characters are there to help with the format.
+
+    Examples:
+    decimal_to_binary(15)   # returns "db1111db"
+    decimal_to_binary(32)   # returns "db100000db"
+    """
+
+The following is chain of thought:
+To solve this problem, we need to convert a decimal number to its binary representation, then wrap the result with 'db' at both the beginning and the end. The binary conversion should be done without any extra formatting (like the '0b' prefix from Python's built-in bin function), and the result should be a string of '0's and '1's.
+
+Steps:
+1. Convert the decimal number to binary. We can use bin() which returns a string starting with '0b', so we need to slice off the first two characters.
+2. The bin() function returns the binary representation without any leading zeros except for the number 0. However, for zero, we need to handle it separately to avoid an empty string.
+3. For decimal 0, bin(0) is '0b0', so slicing gives '0'. This is correct.
+4. After getting the binary string (without '0b'), we add 'db' at the start and end.
+
+Let's code accordingly:
+- If the input is 0, the binary should be "0", so the result would be "db0db".
+- For positive integers, bin() works directly.
+
+We assume the input is a non-negative integer as per typical decimal to binary conversion.
+
+I

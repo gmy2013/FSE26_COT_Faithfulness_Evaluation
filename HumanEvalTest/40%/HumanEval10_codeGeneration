@@ -1,0 +1,15 @@
+CodeGeneration:
+"""
+    # If the string is already a palindrome, return it
+    if is_palindrome(string):
+        return string
+    
+    # Find the longest palindromic suffix
+    for i in range(len(string)):
+        # Check if substring from index i to end is a palindrome
+        if is_palindrome(string[i:]):
+            # Append the reverse of the prefix (from start to i) to the original string
+            return string + string[:i][::-1]
+    
+    # This line should never be reached since at least the last character is always a palindrome
+    return string + string[:-1][::-1]

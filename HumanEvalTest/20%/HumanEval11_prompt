@@ -1,0 +1,14 @@
+from typing import List
+
+
+def string_xor(a: str, b: str) -> str:
+    """ Input are two strings a and b consisting only of 1s and 0s.
+    Perform binary XOR on these inputs and return result also as a string.
+    >>> string_xor('010', '110')
+    '100'
+    """
+
+The following is chain of thought:
+1. **Input Validation**: Both input strings `a` and `b` are assumed to consist only of '1's and '0's, and they should be of the same length for a character-wise XOR operation.
+
+2. **Initia

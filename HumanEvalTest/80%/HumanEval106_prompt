@@ -1,0 +1,88 @@
+
+def f(n):
+    """ Implement the function f that takes n as a parameter,
+    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even
+    or the sum of numbers from 1 to i otherwise.
+    i starts from 1.
+    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).
+    Example:
+    f(5) == [1, 2, 6, 24, 15]
+    """
+
+The following is chain of thought:
+To implement this function, we need to generate a list of size `n` where each element at index `i` (with i starting from 1) is computed as:
+- Factorial of `i` if `i` is even.
+- Sum of numbers from 1 to `i` (i.e., triangular number) if `i` is odd.
+
+Since the list indices in Python start at 0, but our problem starts at i=1, we note that the element at index 0 corresponds to i=1, index 1 to i=2, and so on.
+
+We can compute the factorial and triangular numbers iteratively to avoid recalculating from scratch for each i.
+
+Let's break it down step by step:
+1. Initialize an empty list `result` to store the values.
+2. Initialize variables to keep track of the current factorial and current triangular number.
+   - Let `fact` start at 1 (for i=1, but note i=1 is odd so we use triangular number, but we need to compute for even i).
+   - Let `triangular` start at 0.
+3. Loop from i=1 to n (inclusive), which corresponds to indices 0 to n-1.
+   - For each i:
+        - If i is even (i % 2 == 0), we need the factorial of i.
+            We can update the factorial by multiplying the previous factorial by (i-1) and then by i? Actually, we can update incrementally.
+        - Else (i is odd), we need the triangular number for i.
+4. However, to compute efficiently, we can:
+   - For factorial: start with fact=1 for i=1, but for i=2 (even) we need fact=2. So we can update the factorial for every i, but only use it when i is even.
+   - Similarly, for triangular number: we can update it for every i by adding i to the previous triangular value.
+
+But note: for i=1 (odd), we need triangular number = 1.
+For i=2 (even), we need factorial = 2.
+For i=3 (odd), triangular = 1+2+3=6.
+For i=4 (even), factorial = 24.
+For i=5 (odd), triangular = 15.
+
+So we can:
+   - Initialize:
+        fact = 1   # will be updated for each i to be i!
+        triangular = 0
+   - For i from 1 to n:
+        triangular = triangular + i   # now triangular is the sum for i
+        fact = fact * i               # now fact is i!
+        Then, if i is even, we append fact to result.
+        Else, we append triangular to result.
+
+But wait: for i=1:
+   triangular = 0+1 = 1 -> correct.
+   fact = 1*1 = 1 -> but we don't use it for i=1 (odd).
+So we append triangular=1.
+
+For i=2:
+   triangular = 1+2=3 -> but we don't use it for even.
+   fact = 1*2=2 -> correct.
+So we append fact=2.
+
+For i=3:
+   triangular = 3+3=6 -> correct.
+   fact = 2*3=6 -> but we don't use it.
+So we append triangular=6.
+
+For i=4:
+   triangular = 6+4=10 -> not used.
+   fact = 6*4=24 -> correct.
+So we append 24.
+
+For i=5:
+   triangular = 10+5=15 -> correct.
+   fact = 24*5=120 -> not used.
+So we append 15.
+
+This matches the example: [1,2,6,24,15].
+
+Therefore, we can code accordingly.
+
+However, note that we are generating a list of size n, so we loop for i from 1 to n.
+
+Code steps:
+   result = []
+   fact = 1
+   triangular = 0
+   for i in range(1, n+1):
+        triangular += i
+        fact *= i

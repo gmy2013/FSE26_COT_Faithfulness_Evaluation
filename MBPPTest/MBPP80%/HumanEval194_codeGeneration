@@ -1,0 +1,21 @@
+CodeGeneration:
+compare the 'price' value of each dictionary.
+
+Here is the complete function:
+
+```python
+import heapq
+
+def cheap_items(items, n):
+    """Return the n cheapest items from a list of dictionaries based on price.
+    
+    Args:
+        items: List of dictionaries where each dictionary has a 'price' key
+        n: Number of cheapest items to return
+        
+    Returns:
+        List of n dictionaries with the smallest prices
+    """
+    cheap_items = heapq.nsmallest(n, items, key=lambda s: s['price'])
+    return cheap_items
+```

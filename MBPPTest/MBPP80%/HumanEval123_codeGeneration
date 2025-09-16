@@ -1,0 +1,27 @@
+CodeGeneration:
+ts
+5. Return the sum
+
+Here is the complete function with the docstring:
+
+```python
+def power_base_sum(base, power):
+    """Calculate the sum of the digits of base raised to a power.
+    
+    Args:
+        base (int): The base number
+        power (int): The exponent to raise the base to
+        
+    Returns:
+        int: Sum of all digits of base^power
+        
+    Examples:
+        >>> power_base_sum(2, 3)
+        8
+        >>> power_base_sum(2, 4)
+        7
+        >>> power_base_sum(2, 100)
+        115
+    """
+    return sum([int(i) for i in str(pow(base, power))])
+```

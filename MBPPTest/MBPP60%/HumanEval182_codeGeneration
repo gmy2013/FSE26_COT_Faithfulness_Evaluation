@@ -1,0 +1,57 @@
+CodeGeneration:
+(r-g)/df) + 240) % 360
+
+5. **Saturation calculation**:
+   - If maximum is 0 (all components are 0), saturation is 0
+   - Otherwise: s = (df/mx)*100 (converted to percentage)
+
+6. **Value calculation**: v = mx*100 (converted to percentage)
+
+7. **Return result**: Return the calculated (h, s, v) tuple
+
+Here's the complete function:
+
+```python
+def rgb_to_hsv(r, g, b):
+    """Convert RGB color values to HSV color space.
+    
+    Args:
+        r: Red component (0-255)
+        g: Green component (0-255)
+        b: Blue component (0-255)
+    
+    Returns:
+        tuple: (h, s, v) where:
+            h: Hue in degrees (0-360)
+            s: Saturation percentage (0-100)
+            v: Value/brightness percentage (0-100)
+    """
+    # Normalize RGB values to 0-1 range
+    r, g, b = r/255.0, g/255.0, b/255.0
+    
+    # Find maximum and minimum values
+    mx = max(r, g, b)
+    mn = min(r, g, b)
+    df = mx - mn
+    
+    # Calculate hue
+    if mx == mn:
+        h = 0
+    elif mx == r:
+        h = (60 * ((g - b) / df) + 360) % 360
+    elif mx == g:
+        h = (60 * ((b - r) / df) + 120) % 360
+    elif mx == b:
+        h = (60 * ((r - g) / df) + 240) % 360
+    
+    # Calculate saturation
+    if mx == 0:
+        s = 0
+    else:
+        s = (df / mx) * 100
+    
+    # Calculate value
+    v = mx * 100
+    
+    return h, s, v
+```

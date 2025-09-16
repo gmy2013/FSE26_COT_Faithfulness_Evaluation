@@ -1,0 +1,9 @@
+CodeGeneration:
+Based on the docstring and the examples provided, the function should compute the absolute difference between each corresponding element in the two input lists. If the elements are equal, the result is 0 (which is naturally handled by the absolute difference). Here is the implementation:
+
+```python
+def compare(game,guess):
+    return [abs(score - g) for score, g in zip(game, guess)]
+```
+
+This uses a list comprehension with `zip` to iterate through corresponding elements of `game` and `guess`, calculating the absolute difference for each pair. This approach is efficient and Pythonic.

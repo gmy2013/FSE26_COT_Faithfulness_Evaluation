@@ -1,0 +1,25 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+import bisect
+
+def left_insertion(a, x):
+    """Return the index where to insert item x in list a, assuming a is sorted.
+
+    The return value i is such that all e in a[:i] have e < x, and all e in
+    a[i:] have e >= x.  So if x already appears in the list, a.insert(i, x) will
+    insert just before the leftmost x already there.
+    
+    Args:
+        a: A sorted list
+        x: The value to find the insertion point for
+        
+    Returns:
+        int: The insertion index
+    """
+    i = bisect.bisect_left(a, x)
+    return i
+```
+
+The function uses `bisect.bisect_left()` which returns the position where `x` should be inserted in the sorted list `a` to maintain sorted order. If `x` is already present in the list, it returns the position of the first occurrence of `x`.

@@ -1,0 +1,39 @@
+CodeGeneration:
+I'll complete the function based on the docstring and your chain of thought. The regex pattern appears to be cut off at the end, but I can see it's meant to validate email addresses with a specific format.
+
+```python
+import re 
+
+regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+
+def check_email(email):
+    """
+    Validates an email address using a regex pattern.
+    
+    The regex pattern checks:
+    - Starts with one or more alphanumeric characters (lowercase letters or digits)
+    - Optional dot or underscore
+    - Followed by one or more alphanumeric characters
+    - Then an '@' symbol
+    - Then one or more word characters (alphanumeric + underscore)
+    - Then a dot
+    - Ends with 2-3 word characters (typically the domain extension)
+    
+    Args:
+        email (str): The email address to validate
+        
+    Returns:
+        str: "Valid Email" if the email matches the pattern, "Invalid Email" otherwise
+    """
+    if(re.search(regex, email)): 
+        return ("Valid Email") 
+    else: 
+        return ("Invalid Email")
+```
+
+Note: This regex pattern has some limitations for real-world email validation:
+1. It only allows lowercase letters
+2. It restricts domain extensions to 2-3 characters (missing newer TLDs like .info, .museum, etc.)
+3. It doesn't handle quoted strings or special characters that are technically valid in emails
+
+For production use, you might want to use a more comprehensive email validation library or a more robust regex pattern.

@@ -1,0 +1,11 @@
+def triangle_area(r) :  
+    if r < 0 : 
+        return -1
+    return r * r 
+The following is chain of thought:
+Let me analyze this function step by step:
+
+1. The function is named `triangle_area(r)` but calculates `r * r` which is the area of a square, not a triangle
+2. The area of a triangle should be (base × height)/2
+3. The function returns -1 for negative inputs, which is good error handling
+4. The func

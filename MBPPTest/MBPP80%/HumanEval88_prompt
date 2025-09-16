@@ -1,0 +1,31 @@
+def min_jumps(arr, n):
+	jumps = [0 for i in range(n)]
+	if (n == 0) or (arr[0] == 0):
+		return float('inf')
+	jumps[0] = 0
+	for i in range(1, n):
+		jumps[i] = float('inf')
+		for j in range(i):
+			if (i <= j + arr[j]) and (jumps[j] != float('inf')):
+				jumps[i] = min(jumps[i], jumps[j] + 1)
+				break
+	return jumps[n-1]
+The following is chain of thought:
+Here's the structured chain of thought for the min_jumps function:
+
+1. **Initialization**: Create a jumps array of size n initialized with 0 to store minimum jumps needed to reach each position
+
+2. **Edge case handling**: 
+   - If array is empty (n == 0) or first element is 0 (can't move), return infinity (impossible to reach end)
+   - Set jumps[0] = 0 since no jumps needed to reach starting position
+
+3. **Main algorithm**:
+   - For each position i from 1 to n-1:
+     - Initialize jumps[i] to infinity (initially unreachable)
+     - Check all previous positions j (0 to i-1):
+       - If position i is reachable from j (i ≤ j + arr[j]) 
+       - And j is reachable (jumps[j] ≠ infinity)
+       - Then update jumps[i] to minimum of current value and jumps[j] + 1
+     - Use break to stop checking once a valid path is found (greedy approach)
+
+4

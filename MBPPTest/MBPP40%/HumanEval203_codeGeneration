@@ -1,0 +1,28 @@
+CodeGeneration:
+e large and inefficient), we can simply check if any element in the array is even.
+4. If we find at least one even number, we return True immediately.
+5. If no even number is found after checking all elements, we return False.
+
+Here is the completed function with the docstring:
+
+```python
+def is_Product_Even(arr, n):
+    """
+    Check if the product of all elements in the array is even.
+
+    Parameters:
+    arr (list): The input array of integers.
+    n (int): The number of elements in the array.
+
+    Returns:
+    bool: True if the product is even, False otherwise.
+
+    Explanation:
+    The product of numbers is even if at least one number is even.
+    This function checks for the presence of any even number in the array.
+    """
+    for i in range(0, n):
+        if ((arr[i] & 1) == 0):
+            return True
+    return False
+```

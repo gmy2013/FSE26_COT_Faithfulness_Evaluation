@@ -1,0 +1,32 @@
+CodeGeneration:
+ation of the number (skipping the '-' if negative).
+- For each digit character, convert to integer and check if even (num % 2 == 0).
+- Increment respective counters.
+- Return tuple with counts.
+
+Here's the implementation:
+
+```python
+def even_odd_count(num):
+    """Given an integer. return a tuple that has the number of even and odd digits respectively.
+
+     Example:
+        even_odd_count(-12) ==> (1, 1)
+        even_odd_count(123) ==> (1, 2)
+    """
+    num_str = str(num)
+    even_count = 0
+    odd_count = 0
+    
+    # Start from index 0 if positive, index 1 if negative (to skip '-')
+    start_index = 1 if num_str[0] == '-' else 0
+    
+    for i in range(start_index, len(num_str)):
+        digit = int(num_str[i])
+        if digit % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+            
+    return (even_count, odd_count)
+```

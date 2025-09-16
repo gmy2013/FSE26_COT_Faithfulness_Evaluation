@@ -1,0 +1,25 @@
+CodeGeneration:
+rate from index `m` to `n` (inclusive) with a step of 1.
+4. In each iteration, add the element at the current index to `sum_range`.
+5. Finally, return the accumulated sum.
+
+Here is the complete function:
+
+```python
+def sum_Range_list(nums, m, n):
+    """
+    Calculate the sum of elements in the list `nums` from index `m` to index `n` (inclusive).
+    
+    Parameters:
+    nums (list): List of numbers
+    m (int): Starting index (inclusive)
+    n (int): Ending index (inclusive)
+    
+    Returns:
+    int/float: Sum of elements from index m to n
+    """
+    sum_range = 0
+    for i in range(m, n+1, 1):
+        sum_range += nums[i]
+    return sum_range
+```

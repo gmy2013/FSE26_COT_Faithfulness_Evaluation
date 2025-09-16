@@ -1,0 +1,40 @@
+20%CoT
+CodeGeneration:
+Here's the implementation of the `prime_length` function:
+
+```python
+def prime_length(string):
+    """Write a function that takes a string and returns True if the string
+    length is a prime number or False otherwise
+    Examples
+    prime_length('Hello') == True
+    prime_length('abcdcba') == True
+    prime_length('kittens') == True
+    prime_length('orange') == False
+    """
+    n = len(string)
+    
+    # Prime numbers must be >= 2
+    if n < 2:
+        return False
+    
+    # Check for factors from 2 to sqrt(n)
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    
+    return True
+```
+
+The function works as follows:
+1. Gets the length of the input string
+2. Returns False if the length is less than 2 (since primes start at 2)
+3. Checks for factors from 2 up to the square root of the length
+4. If any factor is found, returns False (not prime)
+5. If no factors are found, returns True (prime)
+
+The examples provided will work correctly:
+- 'Hello' (length 5) → prime → True
+- 'abcdcba' (length 7) → prime → True  
+- 'kittens' (length 7) → prime → True
+- 'orange' (length 6) → not prime → False

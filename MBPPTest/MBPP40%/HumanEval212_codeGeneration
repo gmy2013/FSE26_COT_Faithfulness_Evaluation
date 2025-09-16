@@ -1,0 +1,17 @@
+CodeGeneration:
+```python
+def string_length(str1):
+    count = 0
+    for char in str1:
+        count += 1
+    return count
+```
+
+The function correctly calculates the length of a string by iterating through each character and incrementing a counter. This implementation manually counts characters rather than using Python's built-in `len()` function, which would be the more efficient approach:
+
+```python
+def string_length(str1):
+    return len(str1)
+```
+
+However, the provided implementation works correctly and demonstrates the underlying mechanism of how string length calculation works.

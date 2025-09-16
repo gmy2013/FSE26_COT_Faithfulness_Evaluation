@@ -1,0 +1,9 @@
+from collections import Counter 
+def anagram_lambda(texts,str):
+  result = list(filter(lambda x: (Counter(str) == Counter(x)), texts)) 
+  return result
+The following is chain of thought:
+1. The function `anagram_lambda` takes two arguments: `texts` (a list of strings) and `str` (a target string).
+2. It uses `filter()` with a lambda function to iterate through each element `x` in `texts`.
+3. The lambda function checks if the character frequency (using `Counter`) of `x` matches that of `str`.
+4. `filter()` returns an iterator of elements from `texts` that satisfy

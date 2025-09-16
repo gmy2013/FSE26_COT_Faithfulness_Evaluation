@@ -1,0 +1,31 @@
+CodeGeneration:
+Looking at the function and the chain of thought, this implementation correctly checks if a number can be expressed as the sum of two perfect squares. However, there are some optimizations we can make to improve efficiency:
+
+```python
+def sum_Square(n):
+    """
+    Check if a number n can be expressed as the sum of two perfect squares (i² + j² = n).
+    
+    Args:
+        n (int): The number to check
+        
+    Returns:
+        bool: True if n can be expressed as sum of two squares, False otherwise
+    """
+    i = 1
+    while i * i <= n:
+        j = 1
+        while j * j <= n - i * i:  # Optimize: j² only needs to go up to n - i²
+            if i * i + j * j == n:
+                return True
+            j += 1
+        i += 1
+    return False
+```
+
+**Key improvements:**
+1. **Optimized inner loop condition**: `j * j <= n - i * i` instead of `j * j <= n` - this reduces the search space significantly
+2. **Added proper docstring** with parameter and return type documentation
+3. **Maintained the same logic** while improving efficiency
+
+The time complexity is still O(n) in the worst case, but the average case performance is much better due to the reduced search space in the inner loop.

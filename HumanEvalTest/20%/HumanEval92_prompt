@@ -1,0 +1,28 @@
+
+def any_int(x, y, z):
+    '''
+    Create a function that takes 3 numbers.
+    Returns true if one of the numbers is equal to the sum of the other two, and all numbers are integers.
+    Returns false in any other cases.
+    
+    Examples
+    any_int(5, 2, 7) ➞ True
+    
+    any_int(3, 2, 2) ➞ False
+
+    any_int(3, -2, 1) ➞ True
+    
+    any_int(3.6, -2.2, 2) ➞ False
+  
+
+    
+    '''
+
+The following is chain of thought:
+We are given three numbers x, y, z.
+ We need to check:
+  1. All numbers are integers.
+  2. One of the numbers is equal to the sum of the other two.
+
+ Steps:
+  - First, check if all three are integers. If any 

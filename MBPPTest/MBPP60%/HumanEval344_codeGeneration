@@ -1,0 +1,14 @@
+CodeGeneration:
+```python
+def tuple_to_set(t):
+    """Convert a tuple to a set, removing any duplicate elements.
+    
+    Args:
+        t (tuple): Input tuple to convert to a set
+        
+    Returns:
+        set: A set containing the unique elements from the input tuple
+    """
+    s = set(t)
+    return s
+```

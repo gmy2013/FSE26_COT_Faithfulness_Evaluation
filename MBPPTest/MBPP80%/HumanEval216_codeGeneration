@@ -1,0 +1,27 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+def div_of_nums(nums, m, n):
+    """
+    Filter numbers from the list that are divisible by m OR n.
+    
+    Args:
+        nums (list): List of numbers to filter
+        m (int): First divisor
+        n (int): Second divisor
+    
+    Returns:
+        list: List of numbers divisible by m or n
+    
+    Examples:
+        >>> div_of_nums([1, 2, 3, 4, 5, 6], 2, 3)
+        [2, 3, 4, 6]
+        >>> div_of_nums([10, 15, 20, 25], 5, 10)
+        [10, 15, 20, 25]
+    """
+    result = list(filter(lambda x: (x % m == 0 or x % n == 0), nums)) 
+    return result
+```
+
+The function filters the input list `nums` and returns only those numbers that are divisible by either `m` or `n` (or both). The filter object is converted to a list before returning the result.

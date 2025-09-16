@@ -1,0 +1,15 @@
+def super_seq(X, Y, m, n):
+	if (not m):
+		return n
+	if (not n):
+		return m
+	if (X[m - 1] == Y[n - 1]):
+		return 1 + super_seq(X, Y, m - 1, n - 1)
+	return 1 + min(super_seq(X, Y, m - 1, n),	super_seq(X, Y, m, n - 1))
+The following is chain of thought:
+The function `super_seq` computes the length of the shortest common supersequence (SCS) of two sequences `X` and `Y` using recursion. Here is the structured chain of thought:
+
+1. **Base Case 1 - X is empty**: If `m` (length of X) is 0, the entire supersequence is just Y, so return `n` (length of Y).
+2. **Base Case 2 - Y is empty**: If `n` (length of Y) is 0, the entire supersequence is just X, so return `m` (length of X).
+3. **Recursive Case - Last characters match**: If the last characters of X and Y are equal, that character is included once in the supersequence. Then recursively compute SCS for X[0:m-1] and Y[0:n-1] and add 1.
+4. **Recursive Case - Last charac

@@ -1,0 +1,32 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+from collections import Counter
+
+def max_char(str1):
+    """
+    Returns the character that appears most frequently in the given string.
+    
+    Args:
+        str1 (str): The input string to analyze
+        
+    Returns:
+        str: The character that appears most frequently in the string.
+             If multiple characters have the same maximum frequency,
+             returns the one that appears first in the string.
+    
+    Examples:
+        >>> max_char("hello")
+        'l'
+        >>> max_char("banana")
+        'a'
+        >>> max_char("test")
+        't'
+    """
+    temp = Counter(str1) 
+    max_char = max(temp, key = temp.get)
+    return max_char
+```
+
+The function uses `Counter` to count character frequencies and then finds the character with the maximum frequency using the `max()` function with `temp.get` as the key. If multiple characters have the same maximum frequency, it returns the one that appears first in the original string due to how `max()` handles ties.

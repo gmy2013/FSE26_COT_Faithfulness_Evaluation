@@ -1,0 +1,25 @@
+CodeGeneration:
+t `i`, check if it exactly matches the given `word`.
+5. If a match is found, return `True` immediately.
+6. If no match is found after iterating through all elements, return `False`.
+
+Here is the complete function with the docstring:
+
+```python
+def is_Word_Present(sentence, word):
+    """
+    Check if a given word is present in the sentence.
+
+    Parameters:
+    sentence (str): The input sentence to search in.
+    word (str): The word to search for in the sentence.
+
+    Returns:
+    bool: True if the word is found in the sentence, False otherwise.
+    """
+    s = sentence.split(" ") 
+    for i in s:  
+        if (i == word): 
+            return True
+    return False
+```

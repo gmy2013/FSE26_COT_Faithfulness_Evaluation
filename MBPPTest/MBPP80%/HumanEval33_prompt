@@ -1,0 +1,11 @@
+def even_Power_Sum(n): 
+    sum = 0; 
+    for i in range(1,n + 1): 
+        j = 2*i; 
+        sum = sum + (j*j*j*j); 
+    return sum; 
+The following is chain of thought:
+1. The function `even_Power_Sum(n)` calculates the sum of the fourth powers of the first `n` even numbers.
+2. The even numbers are generated as `2*i` for `i` from 1 to `n`.
+3. For each even number `j = 2*i`, we compute `j^4` (which is equivalent to `j*j*j*j`).
+4. We accumulat

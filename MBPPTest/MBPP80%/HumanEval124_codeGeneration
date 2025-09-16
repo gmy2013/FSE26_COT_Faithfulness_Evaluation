@@ -1,0 +1,30 @@
+CodeGeneration:
+The function `extract_quotation` is already correctly implemented to extract all quoted substrings from the input text. Here's the complete function with proper documentation:
+
+```python
+import re
+
+def extract_quotation(text1):
+    """
+    Extract all substrings enclosed in double quotes from the input text.
+    
+    Args:
+        text1 (str): The input text containing quoted strings
+        
+    Returns:
+        list: A list of all quoted substrings found in the text
+        
+    Example:
+        >>> extract_quotation('Hello "world" and "universe"')
+        ['world', 'universe']
+    """
+    return re.findall(r'"(.*?)"', text1)
+```
+
+The function works as follows:
+- Uses a regular expression pattern `r'"(.*?)"'` to match text between double quotes
+- The `.*?` is a non-greedy quantifier that captures the shortest possible match
+- `re.findall()` returns all non-overlapping matches as a list of strings
+- Empty quotes (`""`) will return empty strings in the result list
+
+The implementation is complete and handles the extraction of quoted text as specified.

@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the implementation based on the chain of thought:
+
+```python
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+    result = []
+    # Create a copy to avoid modifying the original list
+    temp_list = lst.copy()
+    
+    while temp_list:
+        # Find and append the minimum value
+        min_val = min(temp_list)
+        result.append(min_val)
+        temp_list.remove(min_val)
+        
+        # If list is not empty after removing min, find and append max
+        if temp_list:
+            max_val = max(temp_list)
+            result.append(max_val)
+            temp_list.remove(max_val)
+    
+    return result
+```
+
+This implementation follows the described approach:
+1. Handles empty lists by returning an empty list immediately
+2. Creates a copy of the input list to avoid modifying the original
+3. Alternately finds and removes the minimum and maximum values from the remaining list
+4. Appends these values to the result list in the required strange order
+5. Works correctly with duplicate values as shown in the example [5,5,5,5]

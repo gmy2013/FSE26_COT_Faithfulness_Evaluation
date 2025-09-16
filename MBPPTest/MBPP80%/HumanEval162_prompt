@@ -1,0 +1,13 @@
+def find_Min_Diff(arr,n): 
+    arr = sorted(arr) 
+    diff = 10**20 
+    for i in range(n-1): 
+        if arr[i+1] - arr[i] < diff: 
+            diff = arr[i+1] - arr[i]  
+    return diff 
+The following is chain of thought:
+1. Sort the input array to arrange numbers in ascending order, making adjacent elements the closest.
+2. Initialize `diff` to a very large value (10^20) to ensure any computed difference will be smaller initially.
+3. Iterate through the sorted array from index 0 to n-2 (since we compare each element with the next one).
+4. For each pair of consecutive elements, compute their absolute difference (though since the array is sorted, subtraction gives positive value).
+5. Update `diff` if the current pair's

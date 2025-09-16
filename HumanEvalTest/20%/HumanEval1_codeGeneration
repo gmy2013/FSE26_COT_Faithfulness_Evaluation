@@ -1,0 +1,49 @@
+20%CoT
+CodeGeneration:
+keep track of the balance between open and close parentheses.
+
+2. **Iterate Through the String**:
+   - Loop through each character in the `paren_string`.
+
+3. **Process Each Character**:
+   - Ignore any spaces in the string.
+   - If the character is an open parenthesis `(`:
+     - Append it to `current_group`.
+     - Increment the `balance` counter by 1.
+   - If the character is a close parenthesis `)`:
+     - Append it to `current_group`.
+     - Decrement the `balance` counter by 1.
+
+4. **Check for Complete Groups**:
+   - Whenever the `balance` counter reaches 0, it indicates that a complete balanced group of parentheses has been formed.
+   - At this point, append `current_group` to the `result` list.
+   - Reset `current_group` to an empty string to start accumulating the next group.
+
+5. **Return the Result**:
+   - After processing all characters, return the `result` list containing all separate groups of balanced parentheses.
+
+Here is the implementation:
+
+```python
+def separate_paren_groups(paren_string: str) -> List[str]:
+    result = []
+    current_group = ""
+    balance = 0
+    
+    for char in paren_string:
+        if char == ' ':
+            continue
+        current_group += char
+        if char == '(':
+            balance += 1
+        elif char == ')':
+            balance -= 1
+        
+        if balance == 0 and current_group:
+            result.append(current_group)
+            current_group = ""
+    
+    return result
+```
+
+This function will correctly separate groups of balanced parentheses while ignoring spaces, as described in the docstring.

@@ -1,0 +1,31 @@
+CodeGeneration:
+```python
+def file_name_check(file_name):
+    # Check if there is exactly one dot
+    if file_name.count('.') != 1:
+        return 'No'
+    
+    # Split into base and extension
+    parts = file_name.split('.')
+    base = parts[0]
+    extension = parts[1]
+    
+    # Check if base is empty
+    if len(base) == 0:
+        return 'No'
+    
+    # Check if base starts with a Latin alphabet letter
+    if not base[0].isalpha():
+        return 'No'
+    
+    # Check if extension is valid
+    if extension not in ['txt', 'exe', 'dll']:
+        return 'No'
+    
+    # Count digits in the entire file name
+    digit_count = sum(1 for char in file_name if char.isdigit())
+    if digit_count > 3:
+        return 'No'
+    
+    return 'Yes'
+```

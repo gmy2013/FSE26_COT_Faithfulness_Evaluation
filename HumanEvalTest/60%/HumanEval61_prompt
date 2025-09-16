@@ -1,0 +1,23 @@
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "(" and ")".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("(")
+    False
+    >>> correct_bracketing("()")
+    True
+    >>> correct_bracketing("(()())")
+    True
+    >>> correct_bracketing(")(()")
+    False
+    """
+
+The following is chain of thought:
+We are going to iterate through each character in the string.
+ We'll maintain a counter that starts at 0.
+ For each opening bracket '(', we increment the counter.
+ For each closing bracket ')', we decrement the counter.
+ If at any point the counter becomes negative, it means we have more closing brackets than opening ones (which is invalid), so return False.
+ After processing all brackets, if the counter is exactly 0, return True (all opened brackets were closed

@@ -1,0 +1,26 @@
+def is_odd(n) : 
+    if (n^1 == n-1) :
+        return True; 
+    else :
+        return False; 
+The following is chain of thought:
+Let me analyze the function `is_odd(n)`:
+
+The function uses bitwise XOR (^) to check if a number is odd. Here's how it works:
+- For odd numbers: n^1 equals n-1
+- For even numbers: n^1 equals n+1
+
+Example with n=3 (odd):
+3 in binary: 11
+1 in binary: 01
+XOR: 11 ^ 01 = 10 (which is 2, and 3-1=2) → True
+
+Example with n=4 (even):
+4 in binary: 100
+1 in binary: 001
+XOR: 100 ^ 001 = 101 (which is 5, and 4-1=3) → False
+
+The logic is correct, but the implementation can be simplified. Instead of using if-else, we can directly return the boolean expression.
+
+Chain of thought:
+1. The expres

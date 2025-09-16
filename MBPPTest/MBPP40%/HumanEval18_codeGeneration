@@ -1,0 +1,21 @@
+CodeGeneration:
+st_str`.
+4. If `ele` is a digit, append it to `dig`.
+5. Otherwise, append it to `res`.
+6. After processing all characters, append `dig` to `res`.
+7. Return the resulting string.
+
+Here is the completed function:
+
+```python
+def move_num(test_str):
+    res = ''
+    dig = ''
+    for ele in test_str:
+        if ele.isdigit():
+            dig += ele
+        else:
+            res += ele
+    res += dig
+    return res
+```

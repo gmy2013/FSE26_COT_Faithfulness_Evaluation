@@ -1,0 +1,22 @@
+20%CoT
+CodeGeneration:
+3. **Plan the Solution**:
+   - Iterate over each element in the list `l`.
+   - For each element, check if it is greater than or equal to the threshold `t`.
+   - If any element is found to be greater than or equal to `t`, return `False`.
+   - If we finish checking all elements and none are greater than or equal to `t`, return `True`.
+
+4. **Implement the Solution**:
+
+Here's the implementation of the function:
+
+```python
+def below_threshold(l: list, t: int) -> bool:
+    """Return True if all numbers in the list l are below threshold t."""
+    for number in l:
+        if number >= t:
+            return False
+    return True
+```
+
+This function iterates through each number in the list `l` and checks if it is greater than or equal to the threshold `t`. If any such number is found, it immediately returns `False`. If the loop completes without finding any numbers that meet that condition, it returns `True`, indicating all numbers in the list are below the threshold.

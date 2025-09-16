@@ -1,0 +1,32 @@
+CodeGeneration:
+min_even is None, set min_even to the current element and min_index to the current index.
+   - Else, if the current element is smaller than min_even, update both min_even and min_index.
+   - Else, if the current element equals min_even and the current index is smaller than min_index, update min_index.
+6. After the loop, if min_even is not None, return [min_even, min_index]. Otherwise, return [].
+
+Here is the implementation:
+
+```python
+def pluck(arr):
+    if not arr:
+        return []
+    
+    min_even = None
+    min_index = -1
+    
+    for i, num in enumerate(arr):
+        if num % 2 == 0:
+            if min_even is None:
+                min_even = num
+                min_index = i
+            elif num < min_even:
+                min_even = num
+                min_index = i
+            elif num == min_even and i < min_index:
+                min_index = i
+                
+    if min_even is not None:
+        return [min_even, min_index]
+    else:
+        return []
+```

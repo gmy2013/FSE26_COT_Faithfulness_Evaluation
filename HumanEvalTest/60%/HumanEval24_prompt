@@ -1,0 +1,40 @@
+
+
+def largest_divisor(n: int) -> int:
+    """ For a given number n, find the largest number that divides n evenly, smaller than n
+    >>> largest_divisor(15)
+    5
+    """
+
+The following is chain of thought:
+To solve this problem, we need to find the largest divisor of a given number `n` that is smaller than `n`. The largest divisor (other than `n` itself) will be found by checking numbers from `n-1` down to 1, but a more efficient approach is to iterate from the square root of `n` downwards.
+
+However, note that the largest divisor (excluding `n`) might be `n//2` if `n` is even, but for odd numbers it could be smaller. Actually, the largest divisor (other than `n`) is always at most `n//2`. So we can iterate from `n//2` down to 1 to find the first divisor.
+
+But to be efficient, we can start from `n//2` and go downwards until we find a divisor. Alternatively, we can iterate from 2 to `sqrt(n)` to find factors, but we need the largest one. Actually, the largest divisor (excluding `n`) is either `n//2` (if n is even) or a smaller number for odd n.
+
+Alternatively, we can iterate from `n-1` down to 1 and return the first number that divides `n` evenly. This is straightforward but inefficient for large `n`.
+
+Since the problem does not specify the size of `n`, we can use a simple loop from `n-1` down to 1. However, for large `n` this might be slow.
+
+But note: the largest divisor (other than `n`) is actually `n // p` where `p` is the smallest prime factor of `n`. So if we find the smallest divisor (greater than 1), then the largest divisor (excluding `n`) is `n // p`.
+
+For example, for n=15, smallest divisor (greater than 1) is 3, so largest divisor (excluding 15) is 15/3=5.
+
+So the efficient method is:
+1. Find the smallest divisor `d` of `n` (starting from 2 up to sqrt(n)).
+2. Then the largest divisor (excluding n) is `n // d`.
+
+If no divisor is found (meaning n is prime), then the largest divisor is 1.
+
+So we can implement:
+- Iterate `d` from 2 to sqrt(n) (inclusive).
+- If `d` divides `n`, then return `n // d`.
+- If no divisor found, return 1.
+
+This is efficient.
+
+Let's code accordingly.
+```python
+def largest_divisor(n: int) -> int:
+    """ For a given number n, find the la

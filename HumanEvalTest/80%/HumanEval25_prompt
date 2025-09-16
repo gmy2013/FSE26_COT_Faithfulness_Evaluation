@@ -1,0 +1,38 @@
+from typing import List
+
+
+def factorize(n: int) -> List[int]:
+    """ Return list of prime factors of given integer in the order from smallest to largest.
+    Each of the factors should be listed number of times corresponding to how many times it appeares in factorization.
+    Input number should be equal to the product of all factors
+    >>> factorize(8)
+    [2, 2, 2]
+    >>> factorize(25)
+    [5, 5]
+    >>> factorize(70)
+    [2, 5, 7]
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to factorize an integer n into its prime factors.
+2. The factors should be listed from smallest to largest.
+3. Each prime factor should appear as many times as it divides n.
+4. The product of all factors in the list should equal n.
+
+Approach:
+- Start with the smallest prime factor (2).
+- While n is divisible by 2, add 2 to the list and divide n by 2.
+- Then check for odd factors starting from 3, incrementing by 2 (only odd numbers).
+- For each candidate factor i, while n is divisible by i, add i to the list and divide n by i.
+- Continue until n becomes 1.
+- If n is a prime number greater than 2, it will be handled by the loop.
+
+Edge case: if n is 1, return an empty list? But note: the problem says "integer", and 1 has no prime factors. However, the examples don't include 1. Since the product of factors should equal n, for n=1 we should return an empty list. But let's check the docstring: it doesn't specify n>1. So we should handle n=1.
+
+But wait: the examples are all greater than 1. However, to be safe, we should handle n=1.
+
+Alternatively, we can note that n>=2? Actually, the problem says "integer", which could be 1. But prime factors are defined for integers greater than 1. So for n=1, we return [].
+
+However, the problem states: "Input number should be equal to the product of all factors". For n=1, the product of an empty list is 1? Actually, the product of an empty list is conventionally 1. S

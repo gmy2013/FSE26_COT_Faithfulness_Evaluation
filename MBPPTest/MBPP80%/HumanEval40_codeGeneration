@@ -1,0 +1,31 @@
+CodeGeneration:
+```python
+def is_nonagonal(n):
+    """
+    Calculate the nth nonagonal number.
+
+    Nonagonal numbers are figurate numbers that extend the concept of
+    triangular and square numbers to the nonagon (9-sided polygon).
+    The nth nonagonal number is given by the formula: n(7n-5)/2.
+
+    Parameters:
+    n (int): Position in the nonagonal number sequence (must be positive integer)
+
+    Returns:
+    int: The nth nonagonal number
+
+    Examples:
+    >>> is_nonagonal(1)
+    1
+    >>> is_nonagonal(2)
+    9
+    >>> is_nonagonal(3)
+    24
+    >>> is_nonagonal(4)
+    46
+    """
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("n must be a positive integer")
+    
+    return int(n * (7 * n - 5) / 2)
+```

@@ -1,0 +1,16 @@
+def last_Two_Digits(N): 
+    if (N >= 10): 
+        return
+    fac = 1
+    for i in range(1,N + 1): 
+        fac = (fac * i) % 100
+    return (fac) 
+The following is chain of thought:
+1. The function `last_Two_Digits(N)` is intended to compute the last two digits of N! (N factorial).
+2. The current code has a condition `if (N >= 10): return` which returns `None` for N >= 10. This is incorrect because we need to compute for all N.
+3. The condition should be removed to allow computation for all N.
+4. The modulus operation `% 100` correctly extracts the last two digits during the factorial calculation.
+5. The loop should run from 1 to N (inclusive) to compute the factorial.
+6. The initial value of `fac` is 1, which is correct for factorial calculation.
+7. The return statement returns `fac`, which holds the last two digits of N!.
+8. The corrected funct

@@ -1,0 +1,13 @@
+def unique_Element(arr,n):
+    s = set(arr)
+    if (len(s) == 1):
+        return ('YES')
+    else:
+        return ('NO')
+The following is chain of thought:
+1. The function `unique_Element` takes two parameters: `arr` (a list) and `n` (the length of the list).
+2. Convert the list `arr` to a set `s` to remove duplicate elements.
+3. Check if the length of the set `s` is exactly 1:
+   - If true, all elements in the original list are identical, so return 'YES'.
+   - Otherwise, there are at least two distinct elements, so return 'NO'.
+4. Note: The paramet

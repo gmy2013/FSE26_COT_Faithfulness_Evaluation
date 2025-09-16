@@ -1,0 +1,63 @@
+
+def sort_array(arr):
+    """
+    In this Kata, you have to sort an array of non-negative integers according to
+    number of ones in their binary representation in ascending order.
+    For similar number of ones, sort based on decimal value.
+
+    It must be implemented like this:
+    >>> sort_array([1, 5, 2, 3, 4]) == [1, 2, 3, 4, 5]
+    >>> sort_array([-2, -3, -4, -5, -6]) == [-6, -5, -4, -3, -2]
+    >>> sort_array([1, 0, 2, 3, 4]) [0, 1, 2, 3, 4]
+    """
+
+The following is chain of thought:
+1. The function must sort non-negative integers by the count of 1's in their binary representation.
+2. For numbers with the same number of 1's, sort by their decimal value in ascending order.
+3. The examples show that negative numbers should be handled (though the docstring says "non-negative", the examples include negatives).
+4. For negative numbers, we need to consider their binary representation (likely two's complement, but the examples sort them by decimal value).
+5. Actually, looking at the second example: negative numbers are sorted in reverse order (which matches sorting by decimal value ascending: -6 < -5).
+6. However, the docstring specifies "non-negative integers", but the examples include negatives. We should handle both.
+7. The key for sorting: primary key is the number of ones in the binary representation, secondary key is the decimal value.
+8. For negative numbers, we can use bit_length and manipulation to get the binary representation without the sign? Or use modulo?
+9. Alternatively, we can convert to two's complement binary string for negative numbers? But that might be complex.
+10. Actually, the examples suggest that for negative numbers, the sorting is purely by decimal value (as the output is reversed), meaning the number of ones is not considered for negatives?
+11. Check the second example: input [-2,-3,-4,-5,-6] becomes [-6,-5,-4,-3,-2]. This is sorted in ascending decimal order.
+12. The third example includes 0, which is non-negative.
+13. So, the intended behavior: for non-negative integers, sort by popcount then decimal; for negative integers, sort by decimal only? Or should we also consider popcount for negatives?
+14. But the docstring says "non-negative integers", so perhaps the function should only handle non-negative? But the examples include negatives.
+15. To be safe, we should handle negatives as well. The examples show that negatives are sorted by decimal value.
+16. How to compute the number of ones for negative integers? In Python, bin(-2) is '-0b10', which has two ones? But that might not be standard.
+17. Alternatively, we can use n.bit_length() and modulo to get the binary representation for negatives? But it's messy.
+18. Actually, the problem might assume that the array can have negatives, and for negatives we just sort by decimal value without considering popcount.
+19. Looking at the examples: the first example has only positives, sorted by popcount then decimal.
+   The second example has only negatives, sorted by decimal (ascending).
+   The third example has non-negatives including 0.
+20. So, we can define a key function: if x >= 0, key = (popcount(x), x); else, key = (0, x) [so that negatives are grouped together and sorted by x]?
+21. But wait, the second example output is sorted in ascending order: -6, -5, -4, -3, -2. So we want negatives to be sorted by x.
+22. Alternatively, we can treat negatives as having a popcount of 0? Then sort by (0, x) for negatives, and (popcount, x) for non-negatives.
+23. This would group all negatives together (with popcount=0) and then sort them by x. Then non-negatives with popcount>=0.
+24. But in the second example, all negatives have the same popcount (0), so they are sorted by x: which gives -6, -5, -4, -3, -2 (since -6 < -5 < ...).
+25. This matches the example.
+26. For non-negatives, we sort by (popcount, x).
+27. So the key function: if x < 0, return (0, x); else, return (bin(x).count('1'), x)
+28. However, for non-negatives, we can also use the built-in method: x.bit_count() in Python 3.10+ which is faster.
+29. Since the problem doesn't specify Python version, we can use bin(x).count('1') for compatibility.
+30. But to be efficient, we can use .bit_count() if available, else fall back to bin count.
+31. Alternatively, we can assume modern Python and use .bit_count().
+32. Let's implement with .bit_count() for non-negatives.
+33. Code structure:
+   def sort_array(arr):
+        return sorted(arr, key=lambda x: (0, x) if x < 0 else (x.bit_count(), x))
+34. Test with the examples:
+   Example 1: [1,5,2,3,4]
+        1: bin=1 -> popcount=1
+        5: bin=101 -> popcount=2
+        2: bin=10 -> popcount=1
+        3: bin=11 -> popcount=2
+        4: bin=100 -> popcount=1
+        So non-negatives: group by popcount:
+          popcount=1: [1,2,4] -> sorted by x: [1,2,4]
+          popcount=2: [5,3] -> sorted by x: [3,5]
+        So overall: [1,2,4,3,5] -> but wait, the expected is [1,2,3,4,5]
+        Actually, we have to sort the entire

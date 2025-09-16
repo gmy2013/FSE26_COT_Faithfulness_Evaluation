@@ -1,0 +1,38 @@
+CodeGeneration:
+Based on the function implementation and the chain of thought analysis, this function calculates the nth Fibonacci number. Here's the complete function with an appropriate docstring:
+
+```python
+def get_noOfways(n):
+    """
+    Calculate the nth Fibonacci number using recursion.
+    
+    This function follows the Fibonacci sequence definition:
+    F(0) = 0, F(1) = 1, F(n) = F(n-1) + F(n-2)
+    
+    Note: This recursive implementation has exponential time complexity O(2^n)
+    and is inefficient for large values of n.
+    
+    Args:
+        n (int): The position in the Fibonacci sequence (non-negative integer)
+    
+    Returns:
+        int: The nth Fibonacci number
+    
+    Examples:
+        >>> get_noOfways(0)
+        0
+        >>> get_noOfways(1)
+        1
+        >>> get_noOfways(5)
+        5
+        >>> get_noOfways(10)
+        55
+    """
+    if (n == 0):
+        return 0
+    if (n == 1):
+        return 1
+    return get_noOfways(n - 1) + get_noOfways(n - 2)
+```
+
+For better performance with large inputs, consider using iterative approaches, memoization, or dynamic programming techniques instead of pure recursion.

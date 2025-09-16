@@ -1,0 +1,35 @@
+from collections import deque
+def check_expression(exp):
+    if len(exp) & 1:
+        return False
+    stack = deque()
+    for ch in exp:
+        if ch == '(' or ch == '{' or ch == '[':
+            stack.append(ch)
+        if ch == ')' or ch == '}' or ch == ']':
+            if not stack:
+                return False
+            top = stack.pop()
+            if (top == '(' and ch != ')') or (top == '{' and ch != '}' or (top == '[' and ch != ']')):
+                return False
+    return not stack
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. **Length Check**: First, it checks if the length of the expression is odd (using bitwise AND with 1). If so, it returns False immediately because a balanced expression must have an even number of characters.
+
+2. **Stack Initialization**: It initializes a deque (used as a stack) to keep track of opening brackets.
+
+3. **Iterate Through Characters**:
+   - For each character in the expression:
+     - If it's an opening bracket ('(', '{', '['), push it onto the stack.
+     - If it's a closing bracket (')', '}', ']'):
+        - Check if the stack is empty. If empty, there's no matching opening bracket, so return False.
+        - Pop the top element from the stack (which should be the most recent opening bracket).
+        - Check if the popped opening bracket matches the current closing bracket. If not, return False.
+
+4. **Final Check**: After processing all characters, if the stack is empty (all opening brackets were matched), return True. Otherwise, return False.
+
+However, there is a logical error in the condition for matching brackets. The condition:
+```python
+if (top == '(' and ch != ')') or (top == '{' and ch != '}' or (top == '[' and ch 

@@ -1,0 +1,43 @@
+CodeGeneration:
+sing Euclidean algorithm)
+   - Then use the GCD to compute LCM using the formula
+   - Handle edge cases (zero values, negative numbers)
+
+Here's the optimized implementation:
+
+```python
+def gcd(a, b):
+    """Calculate the Greatest Common Divisor of two numbers."""
+    while b:
+        a, b = b, a % b
+    return abs(a)
+
+def lcm(x, y):
+    """Calculate the Least Common Multiple of two numbers.
+    
+    Args:
+        x (int): First integer
+        y (int): Second integer
+        
+    Returns:
+        int: Least common multiple of x and y
+        
+    Examples:
+        >>> lcm(12, 18)
+        36
+        >>> lcm(5, 7)
+        35
+        >>> lcm(0, 5)
+        0
+    """
+    if x == 0 or y == 0:
+        return 0
+    return abs(x * y) // gcd(x, y)
+```
+
+The optimized version:
+- Uses the mathematical relationship between LCM and GCD
+- Handles zero values properly (LCM of 0 and any number is 0)
+- Works with negative numbers by using absolute values
+- Is much more efficient (O(log(min(x, y))) instead of O(max(x, y)))
+- Uses integer division (//) to ensure the result is an integer

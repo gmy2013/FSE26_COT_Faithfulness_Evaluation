@@ -1,0 +1,78 @@
+CodeGeneration:
+except the last `n`.
+
+However, there is an issue with the current implementation: if `n` is not equal to `m`, the resulting list may not have the same length as the original list. For example, if `list1 = [1, 2, 3, 4, 5]`, `m=2`, and `n=3`, the result would be `[4, 5] + [1, 2]` = `[4, 5, 1, 2]`, which has length 4 instead of 5.
+
+Based on the typical meaning of "rotate right by m positions", we should move the last `m` elements to the front, and the rest should follow. This implies that `n` should equal `m` for a proper rotation that preserves the list length. But the function allows different `m` and `n`, which suggests it might be intended for a more general operation.
+
+Let me reexamine the docstring to understand the intended behavior. Since the docstring was not provided, I'll assume the function is meant to perform a right rotation by `m` positions, which typically requires `n = m`. Alternatively, if the function is meant to be more general, we should clarify the behavior.
+
+Given the function name `rotate_right`, it is most likely intended to perform a standard right rotation by `m` positions. In that case, we should set `n = m` to ensure the list length is preserved.
+
+Here's the corrected function:
+
+```python
+def rotate_right(list1, m, n):
+    """
+    Rotates the list to the right by moving the last m elements to the front.
+    
+    Args:
+        list1 (list): The list to rotate.
+        m (int): Number of elements to move from the end to the front.
+        n (int): This parameter is redundant for a standard rotation; it should equal m.
+                 For backward compatibility, if n != m, the behavior may not preserve length.
+    
+    Returns:
+        list: The rotated list.
+    
+    Note:
+        For a proper rotation that preserves list length, n should equal m.
+        If n != m, the result may have a different length.
+    """
+    # If n is not equal to m, warn or handle? For now, we proceed as given.
+    # But typically for rotate_right, we want n = m.
+    # To ensure standard behavior, we can ignore n and use m for both.
+    # However, to match the original intent (which might be general), we use both.
+    # Given the original code, we return:
+    return list1[-(m):] + list1[:-(n)]
+```
+
+But to make it a proper right rotation (which is likely the intent), we should set `n = m`. Alternatively, we can change the function to take only `m` and ignore `n`. Since the function signature has `n`, we must keep it.
+
+Given the ambiguity, I'll provide two versions:
+
+1. The original behavior (which may change list length if n != m):
+```python
+def rotate_right(list1, m, n):
+    return list1[-(m):] + list1[:-(n)]
+```
+
+2. A standard right rotation that preserves length (by using n = m):
+```python
+def rotate_right(list1, m, n):
+    # Ignore n and use m for both, to perform a standard right rotation.
+    return list1[-m:] + list1[:-m]
+```
+
+Since the instruction is to complete the function based on the given docstring, and the docstring was not provided, I cannot be certain. However, the function name suggests a standard rotation.
+
+Given the initial implementation, it seems the function is designed to work with `m` and `n` independently. Therefore, I will stick with the original implementation.
+
+Final code:
+```python
+def rotate_right(list1, m, n):
+    """
+    Rotates the list to the right by moving the last m elements to the front, 
+    and appending the elements except the last n.
+
+    Args:
+        list1 (list): The list to rotate.
+        m (int): Number of elements from the end to move to the front.
+        n (int): Number of elements to exclude from the end when taking the first part.
+
+    Returns:
+        list: The concatenation of the last m elements and the elements except the last n.
+    """
+    result = list1[-(m):] + list1[:-(n)]
+    return result
+```

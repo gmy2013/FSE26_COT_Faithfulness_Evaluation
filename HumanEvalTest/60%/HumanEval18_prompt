@@ -1,0 +1,36 @@
+
+
+def how_many_times(string: str, substring: str) -> int:
+    """ Find how many times a given substring can be found in the original string. Count overlaping cases.
+    >>> how_many_times('', 'a')
+    0
+    >>> how_many_times('aaa', 'a')
+    3
+    >>> how_many_times('aaaa', 'aa')
+    3
+    """
+
+The following is chain of thought:
+We are counting overlapping occurrences of substring in string.
+ We can iterate through the string and at each index check if the substring starts there.
+ Since we are counting overlaps, we move one character at a time.
+
+ Steps:
+ 1. If the substring is empty, we should return 0 (as per typical behavior, though not specified in examples).
+ 2. Initialize a counter to 0.
+ 3. Loop through each starting index i in the range [0, len(string) - len(substring) + 1].
+ 4. For each i, check if string[i:i+len(substring)] equals substring.
+ 5. If yes, increment the counter.
+ 6. Return the counter.
+
+ However, note the examples:
+   how_many_times('', 'a') -> 0: because string is empty.
+   how_many_times('aaa', 'a') -> 3: non-overlapping but same as overlapping in this case.
+   how_many_times('aaaa', 'aa') -> 3: overlapping counts: 
+        indices: 0-1, 1-2, 2-3 -> 3 times.
+
+ Let's code accordingly.
+ We must handle the case when substring is longer than string -> return 0.
+ Also, if substring is empty, we return 0 (as it doesn't make sense to count empty substring).
+
+ Implement

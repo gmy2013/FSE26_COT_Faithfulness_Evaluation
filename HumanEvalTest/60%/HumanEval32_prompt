@@ -1,0 +1,109 @@
+import math
+
+
+def poly(xs: list, x: float):
+    """
+    Evaluates polynomial with coefficients xs at point x.
+    return xs[0] + xs[1] * x + xs[1] * x^2 + .... xs[n] * x^n
+    """
+    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])
+
+
+def find_zero(xs: list):
+    """ xs are coefficients of a polynomial.
+    find_zero find x such that poly(x) = 0.
+    find_zero returns only only zero point, even if there are many.
+    Moreover, find_zero only takes list xs having even number of coefficients
+    and largest non zero coefficient as it guarantees
+    a solution.
+    >>> round(find_zero([1, 2]), 2) # f(x) = 1 + 2x
+    -0.5
+    >>> round(find_zero([-6, 11, -6, 1]), 2) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3
+    1.0
+    """
+
+The following is chain of thought:
+We are given that the polynomial has an even number of coefficients and the largest non-zero coefficient (so the polynomial is non-constant and of odd degree? Actually, note: the number of coefficients is the degree+1. Even number of coefficients means the degree is odd. So we have an odd-degree polynomial, which guarantees at least one real root.
+
+We can use a simple root-finding method like the bisection method. Since the polynomial is continuous and of odd degree, it goes to -∞ and +∞ at the ends. So we can start with an interval where the function has opposite signs at the endpoints.
+
+Steps:
+1. Determine an initial interval [a, b] such that poly(xs, a) and poly(xs, b) have opposite signs.
+   Since the polynomial is of odd degree, we can choose a sufficiently negative and sufficiently positive number.
+   For example, we can set a = -1 and b = 1 initially, but if the signs are the same we need to expand.
+   Alternatively, we can set a = -100, b = 100 (a large range) to ensure we bracket a root.
+
+2. Use the bisection method to narrow down to a root.
+
+However, note the docstring says: "find_zero returns only one zero point, even if there are many".
+
+Implementation of bisection:
+   - We need to define a tolerance for convergence.
+   - We iterate until the interval is small enough.
+
+But note: the polynomial might have multiple roots. We are to return one.
+
+Alternatively, we can use Newton's method? But we don't have the derivative. We could compute the derivative numerically, but the problem says "only takes list xs having even number of coefficients", meaning the polynomial is of odd degree, so bisection is safe.
+
+Let's implement bisection:
+
+Steps for bisection:
+   Let a0 = -100.0, b0 = 100.0 (large enough to bracket a root for an odd-degree polynomial).
+   Let tolerance = 1e-6.
+
+   while (b - a) > tolerance:
+        mid = (a + b) / 2
+        f_mid = poly(xs, mid)
+        if abs(f_mid) < tolerance: return mid
+        if f_mid * poly(xs, a) < 0:
+            b = mid
+        else:
+            a = mid
+
+   return (a+b)/2
+
+But note: we must check the signs at a and b initially. Actually, we know that for an odd-degree polynomial, as x -> -∞, the polynomial goes to -∞ if leading coefficient is positive, and +∞ if negative. Similarly for x->+∞. So we can set:
+   if poly(xs, -100) < 0 and poly(xs, 100) >0, then we have a root in between.
+   But if the leading coefficient is negative, then as x-> -∞, poly-> +∞, and as x-> +∞, poly-> -∞.
+
+So to be generic, we can check:
+   Let a = -100.0, b = 100.0
+   if poly(xs, a) * poly(xs, b) > 0:
+        # They have same sign? Actually for odd degree, they should have opposite signs. But wait: if the polynomial has multiple roots, the endpoints might have same sign? Actually no: because the degree is odd, the limits at -∞ and +∞ are opposite. So if we choose sufficiently large negative and positive, we should get opposite signs.
+
+   So we can assume that f(-100) and f(100) have opposite signs.
+
+Therefore, we can proceed with bisection.
+
+Code:
+
+Let's code accordingly.
+```python
+    # Initialize the interval
+    a = -100.0
+    b = 100.0
+    tolerance = 1e-6
+
+    # Check if we already have a root at the endpoints?
+    if abs(poly(xs, a)) < tolerance:
+        return a
+    if abs(poly(xs, b)) < tolerance:
+        return b
+
+    # Bisection iteration
+    while (b - a) > tolerance:
+        mid = (a + b) / 2.0
+        f_mid = poly(xs, mid)
+        if abs(f_mid) < tolerance:
+            return mid
+        if f_mid * poly(xs, a) < 0:
+            b = mid
+        else:
+            a = mid
+
+    return (a + b) / 2.0
+```
+
+But note: the function poly is defined above. We can use it.
+
+However, we must be cautious: the polynomial mi

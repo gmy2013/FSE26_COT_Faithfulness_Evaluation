@@ -1,0 +1,32 @@
+CodeGeneration:
+Looking at the function, I can see that it's already correctly implemented. The function takes a list of numbers and two divisors, and returns a new list containing only those numbers that are divisible by either of the two divisors.
+
+Here's the complete function with proper formatting and documentation:
+
+```python
+def div_of_nums(nums, m, n):
+    """
+    Filter a list of numbers to include only those divisible by either m or n.
+    
+    Args:
+        nums (list): List of numbers to filter
+        m (int): First divisor
+        n (int): Second divisor
+    
+    Returns:
+        list: List containing numbers divisible by either m or n
+    
+    Example:
+        >>> div_of_nums([1, 2, 3, 4, 5, 6], 2, 3)
+        [2, 3, 4, 6]
+    """
+    result = list(filter(lambda x: (x % m == 0 or x % n == 0), nums))
+    return result
+```
+
+The function works correctly:
+- Uses `filter()` with a lambda function to check divisibility
+- The condition `x % m == 0 or x % n == 0` ensures numbers divisible by either divisor are included
+- Converts the filter object to a list for the final result
+
+The implementation is efficient and follows Python best practices for this type of filtering operation.

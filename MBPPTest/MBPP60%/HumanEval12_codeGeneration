@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the corrected function with the completed docstring:
+
+```python
+def maximum_value(test_list):
+    """
+    Extracts the maximum value from each list associated with keys.
+
+    Args:
+        test_list (list): A list of tuples where each tuple contains a key and a list of numbers.
+
+    Returns:
+        list: A list of tuples where each tuple contains the original key and the maximum value from its associated list.
+
+    Examples:
+        >>> maximum_value([('a', [1, 2, 3]), ('b', [4, 5, 6])])
+        [('a', 3), ('b', 6)]
+        >>> maximum_value([('x', [10, 20, 5]), ('y', [8, 12, 15])])
+        [('x', 20), ('y', 15)]
+    """
+    res = [(key, max(lst)) for key, lst in test_list]
+    return res
+```
+
+The function correctly implements the described behavior:
+- It takes a list of tuples where each tuple contains a key and a list of numbers
+- It uses a list comprehension to iterate through each tuple
+- For each tuple, it extracts the key and finds the maximum value from the list using `max()`
+- It returns a new list of tuples with the original keys and their corresponding maximum values
+
+The function handles edge cases like empty lists (will raise a ValueError) and works with any numeric values that can be compared using the `max()` function.

@@ -1,0 +1,51 @@
+CodeGeneration:
+Here's the completed function with improved code structure and comments:
+
+```python
+def find_longest_conseq_subseq(arr, n):
+    """
+    Find the length of the longest consecutive subsequence in an array.
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+    
+    Returns:
+        int: Length of the longest consecutive subsequence
+    
+    Example:
+        >>> find_longest_conseq_subseq([1, 9, 3, 10, 4, 20, 2], 7)
+        4  # [1, 2, 3, 4]
+    """
+    ans = 0
+    count = 0
+    
+    # Sort the array to group consecutive numbers
+    arr.sort()
+    
+    # Remove duplicates by creating a new list with only unique elements
+    unique_arr = []
+    unique_arr.append(arr[0])
+    
+    for i in range(1, n):
+        if arr[i] != arr[i - 1]:
+            unique_arr.append(arr[i])
+    
+    # Find the longest consecutive subsequence
+    for i in range(len(unique_arr)):
+        if i > 0 and unique_arr[i] == unique_arr[i - 1] + 1:
+            count += 1
+        else:
+            count = 1
+        ans = max(ans, count)
+    
+    return ans
+```
+
+The function follows the chain of thought:
+1. Sorts the input array to group consecutive numbers
+2. Removes duplicates by creating a new list with only unique elements
+3. Iterates through the unique sorted array to find the longest consecutive sequence
+4. Returns the length of the longest consecutive subsequence
+
+The time complexity is O(n log n) due to sorting, and space complexity is O(n) for the unique array.

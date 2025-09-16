@@ -1,0 +1,17 @@
+CodeGeneration:
+```python
+def sample_nam(sample_names):
+    """
+    Filters a list of names to keep only those that start with an uppercase letter
+    and have the remaining letters in lowercase, then returns the total length
+    of all filtered names concatenated together.
+    
+    Args:
+        sample_names (list): List of strings representing names
+        
+    Returns:
+        int: Total length of all valid names concatenated together
+    """
+    sample_names = list(filter(lambda el: el[0].isupper() and el[1:].islower(), sample_names))
+    return len(''.join(sample_names))
+```

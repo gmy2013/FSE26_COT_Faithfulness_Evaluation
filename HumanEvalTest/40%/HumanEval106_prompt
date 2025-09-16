@@ -1,0 +1,49 @@
+
+def f(n):
+    """ Implement the function f that takes n as a parameter,
+    and returns a list of size n, such that the value of the element at index i is the factorial of i if i is even
+    or the sum of numbers from 1 to i otherwise.
+    i starts from 1.
+    the factorial of i is the multiplication of the numbers from 1 to i (1 * 2 * ... * i).
+    Example:
+    f(5) == [1, 2, 6, 24, 15]
+    """
+
+The following is chain of thought:
+We are to create a list of size n (indexed 1 to n).
+ For each index i (starting at 1):
+   If i is even, the value is factorial(i) = 1 * 2 * ... * i.
+   If i is odd, the value is the sum from 1 to i = i*(i+1)//2.
+
+ Steps:
+ 1. Initialize an empty list to store results.
+ 2. Loop i from 1 to n (inclusive).
+ 3. For each i:
+      if i is even: compute factorial (we can compute iteratively or use math.factorial, but we'll do iteratively to avoid import).
+      else: compute the sum using the formula for the sum of first i natural numbers: i*(i+1)//2.
+ 4. Append the computed value to the list.
+ 5. Return the list.
+
+ However, note: for even i we need factorial. We can compute factorial by iterating from 1 to i and multiplying.
+
+ Alternatively, we can compute factorial recursively or iteratively. Since n might be large, we should compute iteratively without recursion.
+
+ But note: we are iterating i from 1 to n, and for each even i we need to compute factorial. We can compute the factorial for the current i by building on the previous factorial? Actually, we are going in order, so we can keep a running factorial variable.
+
+ However, for odd i we don't need factorial. So we can do:
+
+ Let result = []
+ current_factorial = 1   # we will use this to compute factorial for each i, but only when i is even? Actually, we need factorial only for even i, but we can update the factorial for every i to avoid recalculating from scratch.
+
+ Actually, we can compute the factorial for each i by multiplying the previous factorial by i. But note: we are going from i=1 to n. So:
+
+ For i=1: current_factorial = 1 (if we start at 1)
+ For i=2: current_factorial = 1 * 2 = 2
+ For i=3: current_factorial = 2 * 3 = 6
+ etc.
+
+ So we can maintain a variable for the factorial that we update at every step. Then for even i we use that factorial, for odd i we use the sum.
+
+ But wait: for odd i we don't need the factorial, but we are updating it anyway. That is acceptable.
+
+ Alternatively, we can compute the factorial only when i is even

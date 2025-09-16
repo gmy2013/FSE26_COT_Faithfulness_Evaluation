@@ -1,0 +1,28 @@
+from collections import defaultdict 
+def get_unique(test_list):
+  res = defaultdict(list)
+  for sub in test_list:
+    res[sub[1]].append(sub[0])
+  res = dict(res)
+  res_dict = dict()
+  for key in res:
+    res_dict[key] = len(list(set(res[key])))
+  return (str(res_dict)) 
+The following is chain of thought:
+Here is the structured chain of thought for the given function:
+
+1. **Import defaultdict**: Import defaultdict from collections to use as the initial data structure.
+
+2. **Initialize defaultdict**: Create a defaultdict that defaults to an empty list to accumulate values by key.
+
+3. **Iterate through input list**: For each sublist in the input test_list:
+   - Use the second element (index 1) as the key
+   - Append the first element (index 0) to the list associated with that key
+
+4. **Convert to regular dict**: Convert the defaultdict to a regular dictionary for further processing.
+
+5. **Create result dictionary**: Initialize an empty dictionary to store the final counts.
+
+6. **Process each key**: For each key in the intermediate dictionary:
+   - Get the list of values associated with the key
+   - Convert to a set to remove

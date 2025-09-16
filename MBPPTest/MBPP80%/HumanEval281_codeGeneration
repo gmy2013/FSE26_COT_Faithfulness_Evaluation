@@ -1,0 +1,20 @@
+CodeGeneration:
+imeter.
+
+Here is the corrected function:
+
+```python
+def parallelogram_perimeter(b, h):
+    """
+    Calculate the perimeter of a parallelogram.
+
+    Parameters:
+    b (float): The length of the base of the parallelogram.
+    h (float): The length of the height (side adjacent to base) of the parallelogram.
+
+    Returns:
+    float: The perimeter of the parallelogram, calculated as 2 * (b + h).
+    """
+    perimeter = 2 * (b + h)
+    return perimeter
+```

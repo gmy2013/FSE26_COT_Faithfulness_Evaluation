@@ -1,0 +1,32 @@
+CodeGeneration:
+```python
+def rearrange_numbs(array_nums):
+    """
+    Rearrange the numbers in the array such that:
+    - All zeros come first
+    - Then negative numbers in increasing order (from most negative to least negative)
+    - Then positive numbers in increasing order
+    
+    Args:
+        array_nums (list): List of integers to be rearranged
+    
+    Returns:
+        list: Rearranged list according to the specified order
+    """
+    return sorted(array_nums, key=lambda x: (
+        0 if x == 0 else 
+        1 if x > 0 else 
+        2
+    ))
+```
+
+The corrected implementation uses a key function that assigns:
+- 0 for zeros (placed first)
+- 1 for positive numbers (placed second)
+- 2 for negative numbers (placed third)
+
+Within each group, the natural ordering of numbers is maintained by the sorted() function, so:
+- Negative numbers appear in increasing order (from most negative to least negative)
+- Positive numbers appear in increasing order
+
+This ensures zeros come first, followed by negative numbers in increasing order, then positive numbers in increasing order.

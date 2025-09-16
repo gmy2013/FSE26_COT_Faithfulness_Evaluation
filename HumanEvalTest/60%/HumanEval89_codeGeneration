@@ -1,0 +1,28 @@
+CodeGeneration:
+nt to shifting by 4 positions (since 2 * 2 = 4). We'll handle both lowercase and uppercase letters, but the examples only show lowercase, so we'll assume the input is lowercase for simplicity, but we can make it case-sensitive if needed. However, the examples don't include uppercase, so we'll implement for lowercase only.
+
+Steps:
+1. Define the shift amount: shift = 4 (because 2 * 2 = 4).
+2. For each character in the string:
+   - If it is a lowercase letter, shift it by 4 positions in the alphabet.
+   - If it goes beyond 'z', wrap around to the beginning.
+   - Non-alphabet characters should remain unchanged.
+3. Return the encrypted string.
+
+We can use the `ord` and `chr` functions to handle the shifting.
+
+Let's implement accordingly.
+```python
+def encrypt(s):
+    shift = 4  # because 2 multiplied by 2 is 4
+    encrypted = []
+    for char in s:
+        if 'a' <= char <= 'z':
+            # Shift the character by 4 positions
+            new_char = chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+            encrypted.append(new_char)
+        else:
+            # Non-lowercase letters are left unchanged
+            encrypted.append(char)
+    return ''.join(encrypted)
+```

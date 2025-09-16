@@ -1,0 +1,158 @@
+
+def anti_shuffle(s):
+    """
+    Write a function that takes a string and returns an ordered version of it.
+    Ordered version of string, is a string where all words (separated by space)
+    are replaced by a new word where all the characters arranged in
+    ascending order based on ascii value.
+    Note: You should keep the order of words and blank spaces in the sentence.
+
+    For example:
+    anti_shuffle('Hi') returns 'Hi'
+    anti_shuffle('hello') returns 'ehllo'
+    anti_shuffle('Hello World!!!') returns 'Hello !!!Wdlor'
+    """
+
+The following is chain of thought:
+We are given a string `s`. We need to split it into words (by spaces) and then sort each word's characters by their ASCII values.
+ However, we must preserve the original order of words and the spaces between them.
+
+ Steps:
+ 1. Split the string into words. But note: we need to preserve the exact spacing (multiple spaces?).
+    Actually, the problem says: "keep the order of words and blank spaces". So we cannot simply split by space and then rejoin with single space.
+    We need to preserve the original spacing.
+
+ 2. Alternatively, we can traverse the string and group consecutive non-space characters as words, and spaces as separators.
+
+ 3. We can split the string by words and spaces simultaneously. We can use a list to store each word and each space as separate elements.
+
+ 4. Another idea: we can split the string using a regular expression to split on whitespace but also capture the whitespace?
+    However, the problem does not specify multiple spaces, but we should preserve them.
+
+ 5. Actually, the examples do not have multiple spaces. But to be safe, we should preserve all spaces.
+
+ 6. We can do:
+    - Split the string by words (non-space sequences) and also get the separators (spaces). We can use `re.split` with a pattern that captures the spaces.
+
+ 7. Alternatively, we can iterate through the string and whenever we find a non-space, we form a word until we hit a space. Then when we hit a space, we form a space token.
+
+ 8. We'll create a list of tokens: each token is either a word (to be sorted) or a space (to be kept as is).
+
+ 9. Then we process each token: if it's a word, we sort its characters by their ASCII value (using sorted) and then join them back. If it's a space, we leave it.
+
+ 10. Finally, we combine all tokens to form the result.
+
+ Implementation without regex:
+
+    tokens = []
+    i = 0
+    n = len(s)
+    while i < n:
+        if s[i] == ' ':
+            # collect consecutive spaces
+            j = i
+            while j < n and s[j] == ' ':
+                j += 1
+            tokens.append(s[i:j])
+            i = j
+        else:
+            j = i
+            while j < n and s[j] != ' ':
+                j += 1
+            tokens.append(s[i:j])
+            i = j
+
+ 11. Then we map each token: if the token has no space (i.e., it's a word) then we sort it, else we leave it.
+
+ 12. Alternatively, we can check if the token string contains any non-space? Actually, we know: if the token is made of spaces, then we don't sort.
+
+ 13. We can check: if the token has at least one non-space, then it's a word? But wait, our tokens are either all spaces or no spaces.
+
+ 14. So for each token, if the first character is a space, then the entire token is spaces -> we don't sort.
+     Otherwise, it's a word -> we sort.
+
+ 15. However, what if the string starts with a space? Then the first token would be spaces.
+
+ 16. This method will work.
+
+ 17. But note: the problem says "blank spaces" - so we are preserving all spaces.
+
+ 18. Alternatively, we can use a simpler method: split the string by words without losing spaces? Actually, we can use `re.split` to split on (\\s+) but also keep the delimiters.
+
+ 19. Let me use `re.split` to split the string into words and spaces. The pattern will be (\\s+) meaning one or more whitespace. But we want to capture the whitespace.
+
+    Example: 
+        import re
+        parts = re.split(r'(\s+)', s)
+
+    This will split the string and also return the spaces as separate elements.
+
+ 20. Then we process: for each part, if the part contains non-whitespace (i.e., if it's a word), we sort it. Otherwise, we leave it.
+
+ 21. How to check if a string is entirely whitespace? We can use `str.isspace()`.
+
+ 22. So for each token in the list from `re.split(r'(\s+)', s)`:
+        if token.isspace():
+            result.append(token)
+        else:
+            result.append(''.join(sorted(token)))
+
+ 23. Then join the result list.
+
+ 24. This handles multiple spaces and also any other whitespace (tabs, etc.)? The problem says "blank spaces", but the example uses space. However, the problem says "separated by space", so we assume only space.
+
+ 25. But to be safe, we should consider that the problem might have tabs or newlines? The problem says "blank spaces", so we assume only space character.
+
+ 26. However, the problem says "blank spaces", which might include tabs? But the example uses space.
+
+ 27. Let's stick to the problem: it says "blank spaces", so we assume any whitespace? But the example is space.
+
+ 28. The problem says: "keep the order of words and blank spaces". So we should preserve any whitespace between words.
+
+ 29. We'll use the `re.split` method because it is straightforward.
+
+ 30. Code:
+
+    import re
+    parts = re.split(r'(\s+)', s)
+    result = []
+    for part in parts:
+        if part.isspace():
+            result.append(part)
+        else:
+            result.append(''.join(sorted(part)))
+    return ''.join(result)
+
+ 31. But note: what if the string has no spaces? Then `re.split` will return the whole string as one part.
+
+ 32. Also, what if the string starts or ends with spaces? The split will include them.
+
+ 33. This should work.
+
+ 34. However, the problem says "blank spaces", and we are using `isspace` which checks for any whitespace. But the problem might only mean space character.
+
+ 35. To be precise, we can change the pattern to split only on space characters? Actually, the problem says "blank spaces", which are space characters.
+
+ 36. So we should split only on space characters, not all whitespace.
+
+ 37. We can change the pattern to split on ( +) to capture one or more spaces.
+
+ 38. But what if there are tabs? The problem says "blank spaces", so we assume only ' '.
+
+ 39. Let's look at the example: 'Hello World!!!' becomes 'Hello !!!Wdlor'. The space is preserved.
+
+ 40. So we'll use:
+
+        parts = re.split(r'( +)', s)
+
+    This splits on one or more spaces and captures the spaces.
+
+ 41. However, this will not split on other whitespace. But the problem says "blank spaces", so we assume only ' '.
+
+ 42. Alternatively, we can do without regex by splitting on spaces and then remembering the exact spaces.
+
+ 43. But the regex method is concise.
+
+ 44. Let's code with regex for spaces only.
+
+ 45. However, note: the pattern r'( +)' will split on consecutive spaces, but what if there are zero spaces? I

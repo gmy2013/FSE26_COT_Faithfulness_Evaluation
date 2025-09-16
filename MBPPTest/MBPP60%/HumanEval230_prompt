@@ -1,0 +1,12 @@
+def count_Pairs(arr,n): 
+    cnt = 0; 
+    for i in range(n): 
+        for j in range(i + 1,n): 
+            if (arr[i] == arr[j]): 
+                cnt += 1; 
+    return cnt; 
+The following is chain of thought:
+1. **Understand the function purpose**: Count pairs of equal elements in an array using nested loops.
+2. **Initialize counter**: Start with `cnt = 0` to accumulate pairs.
+3. **Outer loop**: Iterate over each element with index `i` from `0` to `n-1`.
+4. **Inner loop**: For each `i`, iterate over elements with index `j` from `i+1` to `n-1` to avoid duplicate pa

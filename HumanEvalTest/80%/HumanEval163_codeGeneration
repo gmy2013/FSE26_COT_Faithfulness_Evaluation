@@ -1,0 +1,27 @@
+CodeGeneration:
+```python
+def generate_integers(a, b):
+    """
+    Given two positive integers a and b, return the even digits between a
+    and b, in ascending order.
+
+    For example:
+    generate_integers(2, 8) => [2, 4, 6, 8]
+    generate_integers(8, 2) => [2, 4, 6, 8]
+    generate_integers(10, 14) => []
+    """
+    # Define the set of even digits we're looking for
+    even_digits = {2, 4, 6, 8}
+    
+    # Determine the range boundaries
+    start = min(a, b)
+    end = max(a, b)
+    
+    # Collect even digits within the range
+    result = []
+    for num in range(start, end + 1):
+        if num in even_digits:
+            result.append(num)
+    
+    return sorted(result)
+```

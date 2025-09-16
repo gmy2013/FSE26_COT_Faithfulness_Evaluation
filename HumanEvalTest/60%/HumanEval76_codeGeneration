@@ -1,0 +1,38 @@
+CodeGeneration:
+```python
+def is_simple_power(x, n):
+    """Your task is to write a function that returns true if a number x is a simple
+    power of n and false in other cases.
+    x is a simple power of n if n**int=x
+    For example:
+    is_simple_power(1, 4) => true
+    is_simple_power(2, 2) => true
+    is_simple_power(8, 2) => true
+    is_simple_power(3, 2) => false
+    is_simple_power(3, 1) => false
+    is_simple_power(5, 3) => false
+    """
+    # Handle edge cases for n
+    if n == 0:
+        # 0**k is 0 for k >= 1, undefined for k=0
+        return x == 0
+    elif n == 1:
+        # 1**k is always 1
+        return x == 1
+    elif n == -1:
+        # (-1)**k is 1 if k even, -1 if k odd
+        return x == 1 or x == -1
+    
+    # For other n, iterate over possible exponents k starting from 0
+    k = 0
+    while True:
+        power = n ** k
+        if power == x:
+            return True
+        # If the absolute value of power exceeds absolute value of x, no need to check further
+        if abs(power) > abs(x):
+            break
+        k += 1
+    
+    return False
+```

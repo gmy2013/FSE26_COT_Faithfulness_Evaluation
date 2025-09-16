@@ -1,0 +1,27 @@
+def get_Number(n, k): 
+    arr = [0] * n; 
+    i = 0; 
+    odd = 1; 
+    while (odd <= n):   
+        arr[i] = odd; 
+        i += 1; 
+        odd += 2;
+    even = 2; 
+    while (even <= n): 
+        arr[i] = even; 
+        i += 1;
+        even += 2; 
+    return arr[k - 1]; 
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function creates an array `arr` of length `n` (initialized with zeros).
+2. It first fills the array with all odd numbers from 1 to n (inclusive) in increasing order.
+3. Then it appends all even numbers from 2 to n (inclusive) in increasing order.
+4. Finally, it returns the element at index `k-1` (since k is 1-indexed).
+
+This arrangement means:
+- The first half (or nearly half) of the array contains odd numbers in ascending order.
+- The second half contains even numbers in ascending order.
+
+The number of odd numbers from 1 to

@@ -1,0 +1,25 @@
+CodeGeneration:
+Here's the completed function with the chain of thought:
+
+```python
+def length_Of_Last_Word(a): 
+    l = 0
+    x = a.strip() 
+    for i in range(len(x)): 
+        if x[i] == " ": 
+            l = 0
+        else: 
+            l += 1
+    return l
+```
+
+The chain of thought continues:
+4. For each character in the stripped string `x`:
+   - If the character is a space, reset the counter `l` to 0 (indicating we've reached the end of a word)
+   - If the character is not a space, increment the counter `l` (tracking the length of the current word)
+5. After processing all characters, return `l` which will contain the length of the last word since we reset the counter at spaces but keep accumulating for the final word
+
+This approach works because:
+- Stripping removes leading/trailing whitespace so we don't count empty spaces
+- The counter resets at each space, but the final word's length remains stored in `l`
+- The function returns the length of the last non-whitespace word in the string

@@ -1,0 +1,72 @@
+CodeGeneration:
+Here's the complete implementation of the heap sort algorithm with the missing `shift_down` function:
+
+```python
+def heap_sort(arr):
+    """
+    Sorts an array in ascending order using the heap sort algorithm.
+    
+    Args:
+        arr: List of comparable elements to be sorted
+        
+    Returns:
+        List: The sorted array in ascending order
+        
+    Example:
+        >>> heap_sort([3, 1, 4, 1, 5, 9, 2, 6])
+        [1, 1, 2, 3, 4, 5, 6, 9]
+    """
+    heapify(arr)  
+    end = len(arr) - 1
+    while end > 0:
+        arr[end], arr[0] = arr[0], arr[end]
+        shift_down(arr, 0, end - 1)
+        end -= 1
+    return arr
+
+def heapify(arr):
+    """
+    Converts an array into a max-heap.
+    
+    Args:
+        arr: List to be converted into a max-heap
+    """
+    start = len(arr) // 2
+    while start >= 0:
+        shift_down(arr, start, len(arr) - 1)
+        start -= 1
+
+def shift_down(arr, start, end):
+    """
+    Maintains the max-heap property by shifting an element down the heap.
+    
+    Args:
+        arr: The heap array
+        start: Index of the element to shift down
+        end: Last index of the heap to consider
+    """
+    root = start
+    while root * 2 + 1 <= end:
+        child = root * 2 + 1
+        if child + 1 <= end and arr[child] < arr[child + 1]:
+            child += 1
+        if child <= end and arr[root] < arr[child]:
+            arr[root], arr[child] = arr[child], arr[root]
+            root = child
+        else:
+            return
+```
+
+The implementation is now complete with:
+1. `heap_sort()` - Main function that performs heap sort
+2. `heapify()` - Converts array to max-heap
+3. `shift_down()` - Maintains heap property by shifting elements down
+
+The algorithm works by:
+1. Building a max-heap from the input array
+2. Repeatedly extracting the maximum element (root) and placing it at the end
+3. Restoring heap property after each extraction
+4. Continuing until the entire array is sorted in ascending order
+
+Time complexity: O(n log n) in all cases
+Space complexity: O(1) - in-place sorting

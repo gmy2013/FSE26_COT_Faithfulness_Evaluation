@@ -1,0 +1,26 @@
+CodeGeneration:
+ew dictionary with the same keys and sorted lists as values.
+5. Return the new dictionary.
+
+Here is the completed function with the docstring:
+
+```python
+def sorted_dict(dict1):
+    """
+    Return a new dictionary where each value list is sorted in ascending order.
+    
+    Args:
+        dict1 (dict): A dictionary where each value is a list of comparable items.
+    
+    Returns:
+        dict: A new dictionary with the same keys as dict1, but with each value list sorted.
+    
+    Examples:
+        >>> sorted_dict({'a': [3, 1, 2], 'b': [5, 4]})
+        {'a': [1, 2, 3], 'b': [4, 5]}
+        >>> sorted_dict({'x': ['c', 'a', 'b']})
+        {'x': ['a', 'b', 'c']}
+    """
+    sorted_dict = {x: sorted(y) for x, y in dict1.items()}
+    return sorted_dict
+```

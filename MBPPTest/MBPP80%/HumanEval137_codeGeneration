@@ -1,0 +1,36 @@
+CodeGeneration:
+ues**: The function uses recursion, which may lead to stack overflow for very large n due to deep recursion. An iterative approach or tail recursion optimization (though Python doesn't optimize tail recursion) would be better for large n.
+
+Here is the improved version with iterative approach:
+
+```python
+def geometric_sum(n):
+    """
+    Calculate the sum of the geometric series 1 + 1/2 + 1/4 + ... + 1/2^n.
+    
+    Args:
+        n (int): The upper limit of the series (non-negative integer)
+    
+    Returns:
+        float: The sum of the geometric series from 0 to n
+    
+    Examples:
+        >>> geometric_sum(0)
+        1.0
+        >>> geometric_sum(1)
+        1.5
+        >>> geometric_sum(2)
+        1.75
+        >>> geometric_sum(-1)
+        0.0
+    """
+    if n < 0:
+        return 0.0
+    
+    total = 0.0
+    for i in range(n + 1):
+        total += 1.0 / (2 ** i)
+    return total
+```
+
+The iterative version avoids recursion depth issues and is more efficient for large values of n.

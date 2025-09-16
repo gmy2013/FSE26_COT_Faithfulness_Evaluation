@@ -1,0 +1,13 @@
+def rearrange_numbs(array_nums):
+  result = sorted(array_nums, key = lambda i: 0 if i == 0 else -1 / i)
+  return result 
+The following is chain of thought:
+Here is the structured chain of thought for the rearrange_numbs function:
+
+1. **Function Purpose Analysis**: The function needs to rearrange numbers with a specific ordering priority
+2. **Sorting Strategy Identification**: Using Python's sorted() function with a custom key
+3. **Key Function Logic**: 
+   - Handle zero values first (priority: 0)
+   - For non-zero values, use -1/i to create a specific ordering
+4. **Zero Handling**: When i == 0, assign key value 0 (highest priority in ascending sort)
+5. **Non-ze

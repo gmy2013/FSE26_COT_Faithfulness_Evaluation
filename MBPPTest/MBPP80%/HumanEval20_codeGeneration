@@ -1,0 +1,24 @@
+CodeGeneration:
+keep the element as is.
+7. Return the resulting list.
+
+Here is the complete function:
+
+```python
+def increment_numerics(test_list, K):
+    """Increment numeric strings in a list by a given value.
+    
+    Args:
+        test_list (list): List of strings, some of which may be numeric
+        K (int): Integer value to add to numeric strings
+        
+    Returns:
+        list: List where numeric strings are incremented by K, non-numeric strings unchanged
+        
+    Example:
+        >>> increment_numerics(['1', 'a', '23', 'b5'], 2)
+        ['3', 'a', '25', 'b5']
+    """
+    res = [str(int(ele) + K) if ele.isdigit() else ele for ele in test_list]
+    return res
+```

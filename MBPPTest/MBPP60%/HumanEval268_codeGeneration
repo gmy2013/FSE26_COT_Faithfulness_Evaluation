@@ -1,0 +1,31 @@
+CodeGeneration:
+```python
+def remove_list_range(list1, leftrange, rightrange):
+    """
+    Remove sublists where the minimum or maximum value falls outside the given range.
+    
+    Args:
+        list1: List of lists (sublists containing numeric values)
+        leftrange: Minimum allowed value (inclusive)
+        rightrange: Maximum allowed value (inclusive)
+    
+    Returns:
+        List of sublists where all elements are within [leftrange, rightrange]
+    
+    Example:
+        >>> remove_list_range([[1, 2], [3, 5], [0, 4]], 1, 4)
+        [[1, 2]]
+    """
+    result = [i for i in list1 if (min(i) >= leftrange and max(i) <= rightrange)]
+    return result
+```
+
+The main changes made:
+1. Fixed the parameter name from "rigthrange" to "rightrange"
+2. Added comprehensive docstring with parameter descriptions and example
+3. The core logic remains the same as it correctly filters sublists where all elements fall within the specified range
+
+The function handles edge cases appropriately:
+- Empty sublists: min()/max() will raise ValueError, so empty sublists should be handled separately if needed
+- Empty input list: returns empty list
+- Single-element sublists: min() and max() both return the same value

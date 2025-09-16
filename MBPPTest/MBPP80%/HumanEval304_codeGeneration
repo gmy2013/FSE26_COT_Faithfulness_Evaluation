@@ -1,0 +1,34 @@
+CodeGeneration:
+) and divides by n!.
+- This is equivalent to (2n)! / (n! * n!) = C(2n, n).
+
+Based on this analysis, here is the corrected function with proper docstring:
+
+```python
+def sum_of_square(n):
+    """
+    Compute the central binomial coefficient C(2n, n).
+    
+    This function calculates the binomial coefficient (2n choose n) using the formula:
+    C(2n, n) = (2n)! / (n! * n!) = product from i=n+1 to 2n of i / n!
+    
+    Args:
+        n (int): A non-negative integer
+        
+    Returns:
+        int: The central binomial coefficient C(2n, n)
+        
+    Examples:
+        >>> sum_of_square(0)
+        1
+        >>> sum_of_square(1)
+        2
+        >>> sum_of_square(2)
+        6
+        >>> sum_of_square(3)
+        20
+    """
+    return int(factorial(n + 1, 2 * n) / factorial(1, n))
+```
+
+Note: The function name `sum_of_square` is misleading since it doesn't actually compute the sum of squares. A more appropriate name would be `central_binomial_coefficient` or `binomial_2n_choose_n`.

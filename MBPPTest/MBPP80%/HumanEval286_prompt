@@ -1,0 +1,14 @@
+def is_odd(n) : 
+    if (n^1 == n-1) :
+        return True; 
+    else :
+        return False; 
+The following is chain of thought:
+The function attempts to check if a number is odd using bitwise XOR, but the logic is flawed. Let me analyze:
+
+1. The expression `n^1 == n-1` is incorrect for determining oddness
+2. For odd numbers: `n^1` equals `n-1` (e.g., 3^1 = 2, which equals 3-1)
+3. For even numbers: `n^1` equals `n+1` (e.g., 4^1 = 5, which doesn't equal 4-1=3)
+4. So the condition `n^1 == n-1` actually correctly identifies odd numbers
+5. However, this approach is unnecessarily complex and non-intuitive
+6. The proper way is to ch

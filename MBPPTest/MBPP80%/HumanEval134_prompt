@@ -1,0 +1,48 @@
+def set_middle_bits(n):  
+    n |= n >> 1; 
+    n |= n >> 2; 
+    n |= n >> 4; 
+    n |= n >> 8; 
+    n |= n >> 16;  
+    return (n >> 1) ^ 1
+def toggle_middle_bits(n): 
+    if (n == 1): 
+        return 1
+    return n ^ set_middle_bits(n) 
+The following is chain of thought:
+The function `toggle_middle_bits(n)` toggles (flips) all bits of `n` except the most significant set bit and the least significant bit.
+
+**Chain of thought:**
+1. **Handle edge case**: If `n == 1` (binary `1`), there are no middle bits to toggle, so return `1` unchanged.
+2. **Compute mask**: Use `set_middle_bits(n)` to create a mask where:
+   - The sequence `n |= n >> 1; n |= n >> 2; ...` propagates the highest set bit to all lower bits, creating a number with all bits set from the MSB downward.
+   - `(n >> 1) ^ 1` then adjusts this to set all bits *between* the MSB and LSB (exclusive):
+     - `n >> 1` shifts right to exclude the MSB.
+     - XOR with `1` flips the LSB (to exclude it) and all other bits (which are 1s) become 0s? Wait, let's clarify:
+       Actually, after the propagation, `n` is of the form `0b111...1` (at least from the MSB down).
+       Then `n >> 1` is `0b011...1`, and XOR with `1` (binary `...0001`) flips the LSB: so it becomes `0b011...0`.
+       This mask has bits set from the first bit below the MSB down to (but not including) the LSB.
+3. **Toggle middle bits**: XOR `n` with this mask (`n ^ set_middle_bits(n)`) flips exactly the bits covered by the mask (i.e., all bits except the MSB and LSB).
+
+**Example for n=13 (binary 1101):**
+- MSB is at position 3 (value 8), LSB is 1.
+- Middle bits are at positions 2 and 1 (values 4 and 2).
+- Toggling should yield: 8 (unchanged) + (4 flipped to 0) + (2 flipped to 0) + 1 (unchanged) = 8+1=9.
+- Compute `set_middle_bits(13)`:
+  - Start with 13 (1101).
+  - Propagate: 13 | 6 = 15 (1111); then 15 | 3 = 15; etc. So n becomes 15 (1111).
+  - Then (15 >> 1) = 7 (0111), XOR 1 = 6 (0110). So mask is 6 (binary 110).
+- Then 13 XOR 6 = 15 (1111) XOR 6 (0110)? Wait, no: 13 is 1101, XOR 0110 = 1011 which is 11, not 9.
+  Correction: Actually, the mask from `set_middle_bits` is designed to exclude both ends. For 13 (1101):
+  - After propagation: n=15 (1111).
+  - (n >> 1) = 7 (0111).
+  - (n >> 1) ^ 1 = 7 XOR 1 = 6 (0110). This mask has bits 2 and 1 set (values 4 and 2), which are the middle bits.
+  - So 13 XOR 6 = 1101 XOR 0110 = 1011 (11), but expected is 9 (1001). There's a discrepancy.
+
+Wait, let's reexamine the docstring: "toggles all bits except the most significant set bit and the least significant bit". For 13 (1101):
+- MSB is bit 3 (8), LSB is bit 0 (1).
+- So bits to toggle: bits 2 and 1 (4 and 2). Toggling gives: 8 + (0) + (0) + 1 = 9.
+- So the mask should be 6 (0110) indeed.
+- But 13 XOR 6 = 11 (1011), which is not 9. Why?
+  Because 13 has bit 2 set (4), toggling should clear it (0), and bit 1 not set (0), toggling should set it (2). So result should be 8 + 0 + 2 + 1 = 11.
+  But the

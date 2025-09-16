@@ -1,0 +1,27 @@
+CodeGeneration:
+Looking at the function, I notice there's a potential issue with the first case returning a float when integer division might be more appropriate. However, since the original code uses `/`, I'll maintain that behavior to match the given implementation.
+
+Here's the completed function with the original logic preserved:
+
+```python
+def min_Jumps(a, b, d): 
+    temp = a 
+    a = min(a, b) 
+    b = max(temp, b) 
+    if (d >= b): 
+        return (d + b - 1) / b 
+    if (d == 0): 
+        return 0
+    if (d == a): 
+        return 1
+    else:
+        return 2
+```
+
+The function handles four cases:
+1. When `d` is greater than or equal to the larger jump `b`, it calculates the ceiling of `d/b` using floating-point division
+2. When `d` is 0 (already at target), returns 0
+3. When `d` equals the smaller jump `a`, returns 1
+4. For all other cases where `d` is less than `b` but not 0 or equal to `a`, returns 2
+
+Note: This implementation assumes forward-only jumps and may not handle all edge cases correctly (like when `d` is not reachable with the given jump sizes).

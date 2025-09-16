@@ -1,0 +1,31 @@
+20%CoT
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+def double_the_difference(lst):
+    '''
+    Given a list of numbers, return the sum of squares of the numbers
+    in the list that are odd. Ignore numbers that are negative or not integers.
+    
+    double_the_difference([1, 3, 2, 0]) == 1 + 9 + 0 + 0 = 10
+    double_the_difference([-1, -2, 0]) == 0
+    double_the_difference([9, -2]) == 81
+    double_the_difference([0]) == 0  
+   
+    If the input list is empty, return 0.
+    '''
+    total = 0
+    for num in lst:
+        # Check if number is positive, integer, and odd
+        if isinstance(num, int) and num > 0 and num % 2 == 1:
+            total += num * num
+    return total
+```
+
+This implementation:
+1. Iterates through each number in the list
+2. Checks if the number is a positive integer and odd (using `num % 2 == 1`)
+3. Adds the square of qualifying numbers to the total
+4. Returns 0 for empty lists automatically since the loop won't execute
+5. Handles all the test cases correctly by ignoring negative numbers and non-integers

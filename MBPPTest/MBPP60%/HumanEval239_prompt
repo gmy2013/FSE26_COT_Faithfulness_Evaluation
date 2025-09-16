@@ -1,0 +1,7 @@
+def Check_Solution(a,b,c):  
+    if b == 0:  
+        return ("Yes")  
+    else: 
+        return ("No")  
+The following is chain of thought:
+The function `Check_Solution` returns "Yes" if `b` is 0, otherwise "No". This suggests it checks if `b` is zero, but the name implies checking a solution, likely for a linear equation. For a linear equation `a*x + b = c`, the solution exists uniquely if `a != 0`, or infinitely if `a == 0` and `b == c`, or none if `a == 0` and `b != c`. The current code only checks `b == 0`, which doesn't fully align with solving `a*x + b = c`.

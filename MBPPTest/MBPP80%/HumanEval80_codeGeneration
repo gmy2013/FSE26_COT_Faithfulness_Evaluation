@@ -1,0 +1,39 @@
+CodeGeneration:
+tely.
+5. If no divisor is found, n is prime, so return n itself.
+
+Here is the complete function with the docstring:
+
+```python
+def smallest_Divisor(n):
+    """
+    Returns the smallest divisor (greater than 1) of the given integer n.
+    
+    Args:
+        n (int): The integer to find the smallest divisor for.
+        
+    Returns:
+        int: The smallest divisor of n (if n > 1), or n itself if n is prime.
+        
+    Examples:
+        >>> smallest_Divisor(15)
+        3
+        >>> smallest_Divisor(17)
+        17
+        >>> smallest_Divisor(4)
+        2
+    """
+    if n <= 1:
+        return n
+    
+    if (n % 2 == 0): 
+        return 2
+    i = 3
+    while (i * i <= n): 
+        if (n % i == 0): 
+            return i
+        i += 2
+    return n
+```
+
+Note: I added a check for n <= 1 to handle edge cases where n might be 0, 1, or negative numbers. For n <= 1, the function returns n itself since these numbers don't have divisors greater than 1.

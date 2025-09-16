@@ -1,0 +1,20 @@
+def max_sum_subseq(A):
+    n = len(A)
+    if n == 1:
+        return A[0]
+    look_up = [None] * n
+    look_up[0] = A[0]
+    look_up[1] = max(A[0], A[1])
+    for i in range(2, n):
+        look_up[i] = max(look_up[i - 1], look_up[i - 2] + A[i])
+        look_up[i] = max(look_up[i], A[i])
+    return look_up[n - 1]
+The following is chain of thought:
+1. **Understand the problem**: The function computes the maximum sum of a subsequence where no two elements are adjacent.
+2. **Base cases handling**:
+   - If the list has only one element, return that element.
+   - Initialize a DP array `look_up` to store maximum sums up to each index.
+   - For index 0: maximum sum is `A[0]`.
+   - For index 1: maximum sum is `max(A[0], A[1])` (cannot take both adjacent elements).
+3. **DP recurrence for i >= 2**:
+   - Option 1: Skip current element → value is 

@@ -1,0 +1,13 @@
+CodeGeneration:
+*i*i) and add it to `sm`.
+5. After the loop, return the accumulated sum `sm`.
+
+The provided code already correctly implements this logic. Here is the complete function:
+
+```python
+def fifth_Power_Sum(n) : 
+    sm = 0 
+    for i in range(1,n+1) : 
+        sm = sm + (i*i*i*i*i) 
+    return sm 
+```

@@ -1,0 +1,18 @@
+CodeGeneration:
+ements swapped.
+
+The function is already correctly implemented to swap the first and last elements of the input list. Here's the complete function:
+
+```python
+def swap_List(newList):
+    size = len(newList)
+    temp = newList[0]
+    newList[0] = newList[size - 1]
+    newList[size - 1] = temp
+    return newList
+```
+
+This function will work for any non-empty list. For example:
+- `swap_List([1, 2, 3, 4])` returns `[4, 2, 3, 1]`
+- `swap_List(['a', 'b', 'c'])` returns `['c', 'b', 'a']`
+- `swap_List([5])` returns `[5]` (single element list remains unchanged)

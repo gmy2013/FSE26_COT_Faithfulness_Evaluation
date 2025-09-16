@@ -1,0 +1,42 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def count_Set_Bits(n):
+    """
+    Count the total number of set bits (1s) in the binary representations 
+    of all numbers from 0 to n.
+    
+    This function uses an efficient algorithm that processes each bit position
+    separately rather than counting bits in each number individually.
+    
+    Args:
+        n (int): The upper bound (inclusive) of the range [0, n]
+    
+    Returns:
+        int: Total count of set bits in all numbers from 0 to n
+    """
+    n += 1  # Include 0 in the count
+    powerOf2 = 2
+    cnt = n // 2  # Each odd number contributes 1 set bit at the LSB position
+    
+    while powerOf2 <= n:
+        totalPairs = n // powerOf2
+        cnt += (totalPairs // 2) * powerOf2
+        
+        if totalPairs & 1:
+            cnt += (n % powerOf2)
+        
+        powerOf2 <<= 1
+    
+    return cnt
+```
+
+The algorithm works by:
+1. **Initial setup**: Counting the least significant bits (each odd number contributes 1)
+2. **Processing each bit position**: For each power of 2 (bit position), it calculates:
+   - How many complete pairs of 0s and 1s exist at that position
+   - Any remaining partial pair that contributes additional set bits
+3. **Efficiency**: O(log n) time complexity instead of O(n) for brute force approaches
+
+This approach is much more efficient than iterating through each number and counting its bits individually, especially for large values of n.

@@ -1,0 +1,18 @@
+
+
+def greatest_common_divisor(a: int, b: int) -> int:
+    """ Return a greatest common divisor of two integers a and b
+    >>> greatest_common_divisor(3, 5)
+    1
+    >>> greatest_common_divisor(25, 15)
+    5
+    """
+
+The following is chain of thought:
+We are to implement the greatest common divisor (GCD) of two integers.
+ The Euclidean algorithm is efficient for this:
+   gcd(a, b) = gcd(b, a mod b) until b becomes 0, then the GCD is a.
+ We'll use a while loop to repeatedly apply this until we get the GCD.
+ Let's code accordingly.
+ Note: We should handle negative numbers by taking absolute values since GCD is defined for non-negative integers.
+ However, the examples are positive. But to be safe, we can u

@@ -1,0 +1,16 @@
+def max_of_three(num1,num2,num3): 
+    if (num1 >= num2) and (num1 >= num3):
+       lnum = num1
+    elif (num2 >= num1) and (num2 >= num3):
+       lnum = num2
+    else:
+       lnum = num3
+    return lnum
+The following is chain of thought:
+1. The function `max_of_three` takes three parameters: `num1`, `num2`, and `num3`.
+2. The function compares the three numbers to find the maximum value.
+3. First, it checks if `num1` is greater than or equal to both `num2` and `num3`.
+   - If true, it assigns `num1` to `lnum`.
+4. If the first condition is false, it checks if `num2` is greater than or equal to both `num1` and `num3`.
+   - If true, it assigns `num2` to `lnum`.
+5. If both previous conditions are false, it defaults to 

@@ -1,0 +1,15 @@
+def geometric_sum(n):
+  if n < 0:
+    return 0
+  else:
+    return 1 / (pow(2, n)) + geometric_sum(n - 1)
+The following is chain of thought:
+Here is the structured chain of thought for analyzing the given geometric_sum function:
+
+1. **Function Purpose Analysis**: The function aims to compute the sum of a geometric series with ratio 1/2 from n=0 to the given n. The series is: 1 + 1/2 + 1/4 + ... + 1/(2^n)
+
+2. **Base Case Handling**: When n < 0, the function returns 0. This handles negative inputs gracefully by treating them as having no terms to sum.
+
+3. **Recursive Case Logic**: For n ≥ 0, the function returns the current term (1/(2^n)) plus the sum of all previous terms via recursion (geometric_sum(n-1)).
+
+4. **Mathematical

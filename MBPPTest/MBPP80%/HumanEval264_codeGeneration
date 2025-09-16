@@ -1,0 +1,27 @@
+CodeGeneration:
+return a new list where each element is the corresponding element in `nums` multiplied by `n`.
+
+Here's the complete function:
+
+```python
+def ntimes_list(nums, n):
+    """Return a new list where each element is n times the corresponding element in nums.
+    
+    Args:
+        nums: A list of numbers
+        n: A number to multiply each element by
+        
+    Returns:
+        A new list with each element multiplied by n
+        
+    Examples:
+        >>> ntimes_list([1, 2, 3], 2)
+        [2, 4, 6]
+        >>> ntimes_list([0, -1, 5], 3)
+        [0, -3, 15]
+    """
+    result = map(lambda x: n * x, nums)
+    return list(result)
+```
+
+The implementation is correct and efficient. The `map` function applies the multiplication operation to each element, and converting it to a list gives us the desired result.

@@ -1,0 +1,8 @@
+import re
+def replace_specialchar(text):
+ return (re.sub("[ ,.]", ":", text))
+The following is chain of thought:
+1. The function `replace_specialchar` takes a string `text` as input.
+2. It uses `re.sub` to replace all occurrences of the characters in the pattern `[ ,.]` (space, comma, or period) with a colon `:`.
+3. The modified string is returned.
+4. No additiona

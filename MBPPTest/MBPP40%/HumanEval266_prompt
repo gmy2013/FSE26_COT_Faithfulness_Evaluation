@@ -1,0 +1,13 @@
+def min_Num(arr,n):  
+    odd = 0
+    for i in range(n): 
+        if (arr[i] % 2): 
+            odd += 1 
+    if (odd % 2): 
+        return 1
+    return 2
+The following is chain of thought:
+1. The function `min_Num` takes two parameters: an array `arr` and its length `n`.
+2. Initialize a variable `odd` to 0 to count the number of odd elements in the array.
+3. Iterate through each element in the array using a for loop from index 0 to n-1.
+4. For each el

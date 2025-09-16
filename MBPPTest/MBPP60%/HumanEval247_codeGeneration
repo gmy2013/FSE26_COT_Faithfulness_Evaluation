@@ -1,0 +1,11 @@
+CodeGeneration:
+in the variable `area`.
+4. Finally, the function returns the computed area.
+
+Here is the complete function:
+
+```python
+def area_trapezium(base1, base2, height):
+    area = 0.5 * (base1 + base2) * height
+    return area
+```

@@ -1,0 +1,27 @@
+CodeGeneration:
+```python
+def Check_Vow(string, vowels):
+    """
+    Count the number of vowels in a string.
+    
+    Args:
+        string (str): The input string to check for vowels
+        vowels (str): A string containing vowel characters to count
+        
+    Returns:
+        int: The number of vowel characters found in the string
+    """
+    final = [each for each in string if each in vowels] 
+    return(len(final))
+```
+
+The function is already correctly implemented. It:
+1. Takes a string and a vowels parameter (which should be a string containing vowel characters)
+2. Uses list comprehension to filter only characters that exist in the vowels string
+3. Returns the count of those filtered characters
+
+Example usage:
+```python
+print(Check_Vow("Hello World", "aeiouAEIOU"))  # Returns 3 (e, o, o)
+print(Check_Vow("Python", "aeiou"))  # Returns 1 (o)
+```

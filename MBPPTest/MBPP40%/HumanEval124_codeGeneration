@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+import re
+
+def extract_quotation(text1):
+    """Extract all text within double quotes from the input string.
+    
+    Args:
+        text1 (str): The input string containing quoted text
+        
+    Returns:
+        list: A list of strings found within double quotes
+        
+    Examples:
+        >>> extract_quotation('Hello "world" and "universe"')
+        ['world', 'universe']
+        >>> extract_quotation('No quotes here')
+        []
+    """
+    return (re.findall(r'"(.*?)"', text1))
+```
+
+The function uses a regular expression pattern `r'"(.*?)"'` which:
+- `"` matches the opening double quote
+- `(.*?)` captures any characters (non-greedy match) between the quotes
+- `"` matches the closing double quote
+
+The `re.findall()` method returns all non-overlapping matches as a list of strings.

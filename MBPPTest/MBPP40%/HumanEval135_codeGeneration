@@ -1,0 +1,26 @@
+CodeGeneration:
+ertion point is the index at which `x` would be inserted to keep the list sorted, with any existing entries of `x` placed to the right.
+4. The function returns this index.
+
+Here is the complete function:
+
+```python
+import bisect
+
+def left_insertion(a, x):
+    """Return the index where to insert item x in list a, assuming a is sorted.
+
+    The return value i is such that all e in a[:i] have e < x, and all e in
+    a[i:] have e >= x.  So if x already appears in the list, a.insert(i, x) will
+    insert just before the leftmost x already there.
+
+    Args:
+        a (list): A sorted list.
+        x: The value to insert.
+
+    Returns:
+        int: The insertion index.
+    """
+    i = bisect.bisect_left(a, x)
+    return i
+```

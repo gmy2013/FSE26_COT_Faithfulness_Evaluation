@@ -1,0 +1,20 @@
+def first_odd(nums):
+  first_odd = next((el for el in nums if el%2!=0),-1)
+  return first_odd
+The following is chain of thought:
+Here is the structured chain of thought for implementing the first_odd function:
+
+1. **Understand the requirement**: The function should return the first odd number in a list, or -1 if no odd numbers exist
+
+2. **Choose the right approach**: 
+   - Need to iterate through the list until finding the first odd element
+   - Should handle the case where no odd numbers are found
+
+3. **Select appropriate Python constructs**:
+   - Use a generator expression with next() for efficient iteration
+   - The generator filters for odd numbers (el%2 != 0)
+   - Provide -1 as default value if no odd number is found
+
+4. **Implement the solution**:
+   - Create generator expression that yields odd numbers
+   -

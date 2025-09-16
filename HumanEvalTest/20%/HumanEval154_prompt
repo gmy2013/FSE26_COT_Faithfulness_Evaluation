@@ -1,0 +1,20 @@
+
+def cycpattern_check(a , b):
+    """You are given 2 words. You need to return True if the second word or any of its rotations is a substring in the first word
+    cycpattern_check("abcd","abd") => False
+    cycpattern_check("hello","ell") => True
+    cycpattern_check("whassup","psus") => False
+    cycpattern_check("abab","baa") => True
+    cycpattern_check("efef","eeff") => False
+    cycpattern_check("himenss","simen") => True
+
+    """
+
+The following is chain of thought:
+**Chain of Thought:**
+
+1. **Understand the Problem:** We need to check if the second word `b` (or any cyclic rotation of `b`) is a substring of the first word `a`.
+2. **Key Insight:** Instead of generating all rotations of `b`, we can create a doubled version of `b` (i.e., `b + b`). This doubled string will contain every possible cyclic rotation of `b` as a contiguous substring.
+   - For example, if `b = "baa"`, then doubled string is `"baabaa"`. The rotations are "baa", "aab", "aba", which are all contained in "baabaa".
+3. **Approach:** 
+   - If the doubled string of `b` (i.e., `b + b`) contains a sub

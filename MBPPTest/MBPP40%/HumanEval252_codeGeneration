@@ -1,0 +1,50 @@
+CodeGeneration:
+or i, count its occurrences and calculate the sum of its powers (1 + i + i² + ... + i^count)
+   - Multiply this sum into the result
+
+4. **Handle remaining prime factor**: If n > 1 after processing, it's an odd prime factor, so multiply (1 + n) into the result
+
+5. **Return the final result**: The product of all the sums of powers of odd prime factors
+
+Here's the complete function:
+
+```python
+import math
+
+def sum_of_odd_Factors(n):
+    """
+    Returns the sum of all odd factors of a given number n.
+    
+    Args:
+        n (int): The input number
+        
+    Returns:
+        int: Sum of all odd factors of n
+        
+    Example:
+        >>> sum_of_odd_Factors(18)
+        13  # Odd factors: 1, 3, 9 → 1 + 3 + 9 = 13
+    """
+    res = 1
+    # Remove all factors of 2
+    while n % 2 == 0:
+        n = n // 2
+    
+    # Process odd prime factors
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        count = 0
+        curr_sum = 1
+        curr_term = 1
+        while n % i == 0:
+            count += 1
+            n = n // i
+            curr_term *= i
+            curr_sum += curr_term
+        res *= curr_sum
+    
+    # Handle remaining prime factor if n > 1
+    if n > 1:
+        res *= (1 + n)
+    
+    return res
+```

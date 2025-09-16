@@ -1,0 +1,37 @@
+CodeGeneration:
+n is ceil(n/2), and the number of even numbers is floor(n/2).
+
+Let me complete the function with the optimized approach:
+
+```python
+def get_Number(n, k):
+    """
+    Returns the k-th element (1-indexed) in a sequence where all odd numbers 
+    from 1 to n appear first in ascending order, followed by all even numbers 
+    from 2 to n in ascending order.
+    
+    Args:
+        n (int): The upper bound of numbers to include
+        k (int): The position to return (1-indexed)
+    
+    Returns:
+        int: The k-th element in the sequence
+    
+    Examples:
+        >>> get_Number(5, 3)
+        5
+        >>> get_Number(6, 4)
+        2
+    """
+    # Calculate the number of odd numbers
+    num_odds = (n + 1) // 2
+    
+    if k <= num_odds:
+        # k-th element is an odd number
+        return 2 * k - 1
+    else:
+        # k-th element is an even number
+        return 2 * (k - num_odds)
+```
+
+This optimized version avoids creating the entire array and uses mathematical calculations instead, making it more efficient with O(1) time and space complexity.

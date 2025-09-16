@@ -1,0 +1,17 @@
+CodeGeneration:
+e through each element in the tuple `test_tup`.
+4. For each element, check if it is equal to `K`.
+5. If a match is found, set `res` to `True` and break out of the loop early (since we found the value).
+6. After the loop, return the value of `res`.
+
+Here is the complete function:
+
+```python
+def check_K(test_tup, K):
+    res = False
+    for ele in test_tup:
+        if ele == K:
+            res = True
+            break
+    return res
+```

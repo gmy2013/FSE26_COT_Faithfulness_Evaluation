@@ -1,0 +1,16 @@
+CodeGeneration:
+result = []
+    for num in x:
+        # Convert number to string to iterate through digits
+        num_str = str(num)
+        # Check if all digits are odd
+        all_odd = True
+        for digit in num_str:
+            if int(digit) % 2 == 0:  # Even digit found
+                all_odd = False
+                break
+        if all_odd:
+            result.append(num)
+    
+    # Return sorted result
+    return sorted(result)

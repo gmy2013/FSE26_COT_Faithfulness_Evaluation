@@ -1,0 +1,22 @@
+CodeGeneration:
+if char is lowercase -> convert to uppercase and add to result.
+      else -> add the char as is to result.
+ 4. Return the result string.
+
+Here is the implementation:
+```python
+def flip_case(string: str) -> str:
+    """ For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
+    >>> flip_case('Hello')
+    'hELLO'
+    """
+    result = ""
+    for char in string:
+        if char.isupper():
+            result += char.lower()
+        elif char.islower():
+            result += char.upper()
+        else:
+            result += char
+    return result
+```

@@ -1,0 +1,18 @@
+CodeGeneration:
+the elements of the list with the string it's called on as the separator.
+ Since we want no separator between the strings, we should call join on an empty string.
+ Let's implement this.
+
+```python
+from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+    return ''.join(strings)
+```

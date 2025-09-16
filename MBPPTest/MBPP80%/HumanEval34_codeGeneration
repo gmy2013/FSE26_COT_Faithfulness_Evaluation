@@ -1,0 +1,29 @@
+CodeGeneration:
+til the heap is empty, resulting in a sorted list in ascending order.
+
+Here is the complete function with the docstring:
+
+```python
+import heapq as hq
+
+def heap_sort(iterable):
+    """
+    Sorts the given iterable using a heap sort algorithm.
+    
+    Args:
+        iterable: An iterable of comparable elements to be sorted.
+        
+    Returns:
+        list: A new list containing all elements from the iterable in ascending order.
+        
+    Example:
+        >>> heap_sort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    """
+    h = []
+    for value in iterable:
+        hq.heappush(h, value)
+    return [hq.heappop(h) for i in range(len(h))]
+```
+
+This implementation has a time complexity of O(n log n) for both building the heap and popping all elements, making it efficient for sorting. The space complexity is O(n) as it creates a new heap and returns a new sorted list.

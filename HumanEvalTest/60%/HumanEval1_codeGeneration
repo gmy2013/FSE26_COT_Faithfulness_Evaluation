@@ -1,0 +1,48 @@
+CodeGeneration:
+Here's the implementation:
+
+```python
+from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """ Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    >>> separate_paren_groups('( ) (( )) (( )( ))')
+    ['()', '(())', '(()())']
+    """
+    # Remove all spaces from the input string
+    clean_string = paren_string.replace(' ', '')
+    
+    result = []
+    current_group = []
+    balance = 0
+    
+    for char in clean_string:
+        current_group.append(char)
+        
+        if char == '(':
+            balance += 1
+        elif char == ')':
+            balance -= 1
+            
+        # When balance reaches 0, we've found a complete balanced group
+        if balance == 0:
+            result.append(''.join(current_group))
+            current_group = []
+    
+    return result
+```
+
+**Chain of thought:**
+1. First, remove all spaces from the input string since we need to ignore them
+2. Use a counter (`balance`) to track the nesting level of parentheses
+3. Iterate through each character, building the current group
+4. Increment `balance` for '(' and decrement for ')'
+5. When `balance` reaches 0, we've found a complete balanced group
+6. Add the completed group to the result list and reset for the next group
+7. Return all the separated groups
+
+This approach efficiently separates the balanced parentheses groups by tracking the nesting level and grouping characters until we return to the base level (balance = 0).

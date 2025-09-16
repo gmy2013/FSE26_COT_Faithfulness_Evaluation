@@ -1,0 +1,29 @@
+CodeGeneration:
+g (`$` anchor).
+3. However, the pattern does not allow any other characters before or after, meaning the entire string must consist only of uppercase followed by lowercase letters.
+4. The function returns 'Found a match!' if the pattern is found, otherwise 'Not matched!'.
+
+Let me test the function with some examples to ensure it works as expected.
+
+Example 1: "Hello" -> matches because it starts with uppercase 'H' and then lowercase 'ello'
+Example 2: "HELLO" -> does not match because there are no lowercase letters after the uppercase
+Example 3: "hello" -> does not match because it doesn't start with uppercase
+Example 4: "Hello World" -> does not match because of the space and additional word
+Example 5: "A" -> does not match because there must be at least one lowercase letter after the uppercase
+Example 6: "a" -> does not match because it doesn't start with uppercase
+Example 7: "Aa" -> matches
+Example 8: "AA" -> does not match (no lowercase)
+Example 9: "aa" -> does not match (no uppercase at start)
+Example 10: "Hello123" -> does not match (contains digits)
+
+The function seems correct based on the pattern. No changes needed.
+
+```python
+import re
+def text_uppercase_lowercase(text):
+        patterns = '[A-Z]+[a-z]+$'
+        if re.search(patterns, text):
+                return 'Found a match!'
+        else:
+                return ('Not matched!')
+```

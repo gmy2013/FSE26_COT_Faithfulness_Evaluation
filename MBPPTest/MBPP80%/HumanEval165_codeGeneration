@@ -1,0 +1,32 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def pair_wise(l1):
+    """
+    Generate a list of consecutive element pairs from the input list.
+    
+    Args:
+        l1 (list): Input list of elements
+        
+    Returns:
+        list: List of tuples where each tuple contains consecutive elements
+              from the input list. Returns empty list if input has less than 2 elements.
+    
+    Examples:
+        >>> pair_wise([1, 2, 3, 4])
+        [(1, 2), (2, 3), (3, 4)]
+        >>> pair_wise(['a', 'b', 'c'])
+        [('a', 'b'), ('b', 'c')]
+        >>> pair_wise([5])
+        []
+    """
+    temp = []
+    for i in range(len(l1) - 1):
+        current_element, next_element = l1[i], l1[i + 1]
+        x = (current_element, next_element)
+        temp.append(x)
+    return temp
+```
+
+The function takes a list and returns a list of tuples where each tuple contains consecutive pairs of elements from the input list. If the input list has fewer than 2 elements, it returns an empty list.

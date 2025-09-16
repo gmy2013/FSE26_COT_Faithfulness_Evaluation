@@ -1,0 +1,6 @@
+def min_k(test_list, K):
+  res = sorted(test_list, key = lambda x: x[1])[:K]
+  return (res) 
+The following is chain of thought:
+1. The function `min_k` takes two parameters: `test_list` (a list of elements) and `K` (an integer).
+2. The goal is to return the first `K` elements from `test_list` when sorted by the second element of each sub-element (assuming each element in `test_list` is a tuple or list with at least

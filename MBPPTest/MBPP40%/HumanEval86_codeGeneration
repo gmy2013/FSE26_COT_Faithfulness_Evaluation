@@ -1,0 +1,38 @@
+CodeGeneration:
+r and 0 is the number itself)
+4. **Base Case 2**: If `low == 1`, return 1 (GCD of any number and 1 is 1)
+5. **Recursive Case**: If neither base case applies, recursively call `recur_gcd(low, high % low)` using the Euclidean algorithm
+
+The function correctly implements the Euclidean algorithm for finding GCD recursively.
+
+Here's the complete function:
+
+```python
+def recur_gcd(a, b):
+    """
+    Calculate the greatest common divisor (GCD) of two integers using recursion.
+    
+    Args:
+        a (int): First integer
+        b (int): Second integer
+        
+    Returns:
+        int: The greatest common divisor of a and b
+        
+    Examples:
+        >>> recur_gcd(48, 18)
+        6
+        >>> recur_gcd(17, 13)
+        1
+        >>> recur_gcd(0, 5)
+        5
+    """
+    low = min(a, b)
+    high = max(a, b)
+    if low == 0:
+        return high
+    elif low == 1:
+        return 1
+    else:
+        return recur_gcd(low, high % low)
+```

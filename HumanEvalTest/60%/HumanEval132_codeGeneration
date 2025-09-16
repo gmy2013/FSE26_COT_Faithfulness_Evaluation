@@ -1,0 +1,57 @@
+CodeGeneration:
+Looking at the problem and the examples, I need to find if there exists a valid subsequence of brackets where at least one bracket is nested. The key insight is that we need to find a pattern of four brackets in order: an outer open bracket, an inner open bracket, an inner close bracket, and an outer close bracket.
+
+Here's an efficient solution:
+
+```python
+def is_nested(string):
+    '''
+    Create a function that takes a string as input which contains only square brackets.
+    The function should return True if and only if there is a valid subsequence of brackets 
+    where at least one bracket in the subsequence is nested.
+
+    is_nested('[[]]') ➞ True
+    is_nested('[]]]]]]][[[[[]') ➞ False
+    is_nested('[][]') ➞ False
+    is_nested('[]') ➞ False
+    is_nested('[[][]]') ➞ True
+    is_nested('[[]][[') ➞ True
+    '''
+    n = len(string)
+    
+    # We need at least 4 brackets to have nesting
+    if n < 4:
+        return False
+    
+    # Look for the pattern: [, [, ], ] in order
+    for i in range(n):
+        if string[i] == '[':
+            # Look for second [ after i
+            for j in range(i + 1, n):
+                if string[j] == '[':
+                    # Look for first ] after j
+                    for k in range(j + 1, n):
+                        if string[k] == ']':
+                            # Look for second ] after k
+                            for l in range(k + 1, n):
+                                if string[l] == ']':
+                                    return True
+    return False
+```
+
+This solution works by searching for the minimal nested pattern `[[ ]]` in the string. We look for four brackets in the specific order: open, open, close, close. If we can find such a sequence (skipping any unwanted brackets in between), then we have a valid nested subsequence.
+
+The algorithm:
+1. Iterates through all possible outer open brackets
+2. For each outer open, looks for an inner open bracket after it
+3. For each inner open, looks for its matching close bracket
+4. For each inner close, looks for the outer close bracket
+5. Returns True as soon as we find a valid nested pattern
+
+This handles all the test cases correctly:
+- `[[]]` → True (direct nested pattern)
+- `[]]]]]]][[[[[]` → False (no valid nested pattern)
+- `[][]` → False (parallel brackets, no nesting)
+- `[]` → False (too short for nesting)
+- `[[][]]` → True (contains nested pattern)
+- `[[]][[` → True (contains nested pattern in first part)

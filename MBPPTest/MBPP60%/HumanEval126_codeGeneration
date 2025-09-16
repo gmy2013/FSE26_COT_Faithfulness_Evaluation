@@ -1,0 +1,30 @@
+CodeGeneration:
+acters are replaced with an empty string, effectively removing them.
+3. The result is returned.
+
+However, note that the pattern `[\W_]+` will remove all non-alphanumeric characters and underscores. This includes punctuation, whitespace, symbols, etc.
+
+Here's the complete function:
+
+```python
+import re 
+
+def remove_char(S):
+    """Remove all non-alphanumeric characters and underscores from a string.
+    
+    Args:
+        S (str): Input string
+        
+    Returns:
+        str: String with all non-alphanumeric characters and underscores removed
+    """
+    result = re.sub('[\W_]+', '', S) 
+    return result
+```
+
+Example usage:
+```python
+print(remove_char("Hello, World!"))  # Output: "HelloWorld"
+print(remove_char("test_123@email.com"))  # Output: "test123emailcom"
+print(remove_char("   spaces_and_symbols!@#"))  # Output: "spacesandsymbols"
+```

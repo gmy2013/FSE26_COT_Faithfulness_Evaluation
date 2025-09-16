@@ -1,0 +1,17 @@
+CodeGeneration:
+lper function `get_product` multiplies all elements in the list together and returns the result.
+6. Finally, `find_k_product` returns this product.
+
+Here's the complete code:
+
+```python
+def get_product(val):
+    res = 1
+    for ele in val:
+        res *= ele
+    return res
+
+def find_k_product(test_list, K):
+    res = get_product([sub[K] for sub in test_list])
+    return res
+```

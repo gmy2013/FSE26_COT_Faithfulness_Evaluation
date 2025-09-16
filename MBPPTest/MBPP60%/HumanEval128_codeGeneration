@@ -1,0 +1,24 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def add_list(nums1, nums2):
+    """Add corresponding elements from two lists.
+    
+    Args:
+        nums1: First list of numbers
+        nums2: Second list of numbers
+        
+    Returns:
+        list: A new list where each element is the sum of corresponding 
+              elements from nums1 and nums2
+        
+    Example:
+        >>> add_list([1, 2, 3], [4, 5, 6])
+        [5, 7, 9]
+    """
+    result = map(lambda x, y: x + y, nums1, nums2)
+    return list(result)
+```
+
+The function takes two lists of numbers and returns a new list where each element is the sum of the corresponding elements from both input lists. The implementation uses `map()` with a lambda function to perform element-wise addition, then converts the result to a list before returning.

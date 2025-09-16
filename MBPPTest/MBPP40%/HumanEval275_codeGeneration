@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the completed function with the docstring:
+
+```python
+def lcm(x, y):
+    """
+    Calculate the Least Common Multiple (LCM) of two integers.
+    
+    Args:
+        x (int): First integer
+        y (int): Second integer
+    
+    Returns:
+        int: The least common multiple of x and y
+    
+    Example:
+        >>> lcm(4, 6)
+        12
+        >>> lcm(15, 20)
+        60
+    """
+    if x > y:
+        z = x
+    else:
+        z = y
+    while(True):
+        if((z % x == 0) and (z % y == 0)):
+            lcm = z
+            break
+        z += 1
+    return lcm
+```
+
+The function implements the algorithm described in your chain of thought:
+1. It starts with the larger of the two numbers as the initial candidate
+2. It uses an infinite loop to check each subsequent number
+3. It finds the first number that is divisible by both input values
+4. Returns that number as the LCM
+
+Note: For very large numbers, this brute-force approach might be inefficient. More efficient algorithms exist using the relationship LCM(a, b) = (a × b) / GCD(a, b).

@@ -1,0 +1,27 @@
+CodeGeneration:
+ation might not always yield the smallest `m` because:
+   - The approximation `T_m ≈ m²/2` is not exact.
+   - Rounding might sometimes give a value that is slightly too low.
+
+To ensure correctness, we should compute the actual triangular number for the candidate `m` and verify it has at least `n` digits. If not, we increment `m` until it does.
+
+Here is the corrected code:
+
+```python
+import math
+
+def find_Index(n):
+    if n == 1:
+        return 1  # T_1 = 1 has 1 digit
+    # Compute initial approximation
+    m_approx = math.isqrt(2 * (10 ** (n-1)))
+    # Start from the floor to be safe, but we use the approximation as a starting point
+    m = m_approx
+    while True:
+        T_m = m * (m + 1) // 2
+        if T_m >= 10 ** (n - 1):  # Check if T_m has at least n digits
+            return m
+        m += 1
+```
+
+This code first computes an approximate `m` using the square root, then checks the actual triangular number to ensure it meets the digit requirement. If not, it increments `m` until it does. This guarantees we find the smallest such `m`.

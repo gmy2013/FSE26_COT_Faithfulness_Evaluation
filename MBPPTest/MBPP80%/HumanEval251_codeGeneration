@@ -1,0 +1,42 @@
+CodeGeneration:
+I understand the issue. Modifying a list while iterating over it can cause elements to be skipped because the iteration index gets out of sync with the list's actual contents. Here's a corrected version:
+
+```python
+def remove_negs(num_list):
+    """
+    Remove all negative numbers from the given list.
+    
+    Args:
+        num_list (list): A list of numbers
+        
+    Returns:
+        list: A new list with all negative numbers removed
+        
+    Example:
+        >>> remove_negs([1, -2, 3, -4, 5])
+        [1, 3, 5]
+    """
+    return [item for item in num_list if item >= 0]
+```
+
+Alternative implementation using a while loop (if you prefer not to use list comprehension):
+
+```python
+def remove_negs(num_list):
+    """
+    Remove all negative numbers from the given list.
+    
+    Args:
+        num_list (list): A list of numbers
+        
+    Returns:
+        list: A new list with all negative numbers removed
+    """
+    result = []
+    for item in num_list:
+        if item >= 0:
+            result.append(item)
+    return result
+```
+
+Both solutions avoid modifying the list while iterating over it, which was the main issue with the original implementation. The list comprehension version is more Pythonic and concise.

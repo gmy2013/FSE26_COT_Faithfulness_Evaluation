@@ -1,0 +1,13 @@
+import re 
+regex = '[a-zA-z0-9]$'
+def check_alphanumeric(string): 
+	if(re.search(regex, string)): 
+		return ("Accept") 
+	else: 
+		return ("Discard") 
+The following is chain of thought:
+1. The function `check_alphanumeric` takes a string as input.
+2. It uses `re.search` with the regex pattern `[a-zA-z0-9]$` to check if the string ends with an alphanumeric character.
+3. If the pattern matches (i.e., the string ends with an alphanumeric character), it returns "Accept".
+4. If the pattern doesn't match, it returns "Discard".
+5. Note: The regex pattern `[a-zA-z0-9]$` has a typo - `A-z` should be `A-Z` to properly match 

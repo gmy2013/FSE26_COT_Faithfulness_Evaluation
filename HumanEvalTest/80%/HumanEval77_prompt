@@ -1,0 +1,42 @@
+
+def iscube(a):
+    '''
+    Write a function that takes an integer a and returns True 
+    if this ingeger is a cube of some integer number.
+    Note: you may assume the input is always valid.
+    Examples:
+    iscube(1) ==> True
+    iscube(2) ==> False
+    iscube(-1) ==> True
+    iscube(64) ==> True
+    iscube(0) ==> True
+    iscube(180) ==> False
+    '''
+
+The following is chain of thought:
+1. The function needs to check if integer `a` is a perfect cube (cube of some integer).
+2. Since cubes can be negative (e.g., -1 is cube of -1), we need to handle negative inputs.
+3. We can compute the cube root of `a` and check if it is an integer.
+4. However, due to floating point precision issues, we should avoid direct equality checks with floats.
+5. Instead, we can compute the cube root, round it to the nearest integer, and then check if cubing that integer gives back `a`.
+6. Special case: when `a` is 0, the cube root is 0, which is an integer.
+7. Steps:
+   - If `a` is 0, return True.
+   - Compute the cube root: `cube_root = abs(a) ** (1/3)`
+   - But since `a` might be negative, we need to preserve the sign. Actually, we can compute: `cube_root = round(a ** (1/3))` but careful with negatives.
+   - However, for negative numbers: in Python, `a ** (1/3)` for negative `a` returns a complex number, which is not desired.
+8. Better approach: compute the cube root by taking the absolute value first, then applying the sign.
+   - Let `sign = 1 if a >= 0 else -1`
+   - Compute `cube_root = sign * round(abs(a) ** (1/3))`
+9. Then check if `cube_root ** 3 == a`. If yes, return True; else False.
+10. However, we must be cautious with rounding: for large numbers, rounding might not be perfect? But since we are dealing with integers, and the cube root of a perfect cube is integer, rounding should work.
+11. Alternatively, we can avoid floating point by using integer root calculation, but that might be less efficient for large numbers.
+12. Given the problem states input is always valid (integer), and efficiency is not specified, we'll use the rounding method.
+13. Implementation:
+    - If a == 0: return True
+    - sign = 1 if a >= 0 else -1
+    - candidate = sign * round(abs(a) ** (1/3))
+    - return candidate**3 == a
+
+But note: for negative numbers, e.g., -8: abs(-8)=8, cube root is 2, then sign * 2 = -2, and (-2)**3 = -8, which matches.
+14. However, there is a potential issue: when the cube root is exactly halfway between two integers? But since we are rounding, it should round to the nearest integer. For perfect cub

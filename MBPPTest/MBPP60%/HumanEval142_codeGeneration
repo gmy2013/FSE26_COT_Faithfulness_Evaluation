@@ -1,0 +1,53 @@
+CodeGeneration:
+Looking at the function implementation, it appears to be performing a rotation operation where:
+- The last `m` elements are moved to the front
+- The remaining elements (excluding the last `n` elements) follow
+
+However, this implementation seems inconsistent for a typical rotation operation. For a standard right rotation by `k` positions, we would expect:
+`result = list1[-k:] + list1[:-k]`
+
+Here's a revised implementation with proper documentation that clarifies the intended behavior:
+
+```python
+def rotate_right(list1, m, n):
+    """
+    Rotates the list to the right by moving the last m elements to the front,
+    then appends the remaining elements excluding the last n elements.
+    
+    Args:
+        list1: The input list to be rotated
+        m: Number of elements from the end to move to the front
+        n: Number of elements from the end to exclude from the remaining portion
+    
+    Returns:
+        A new list with the rotated elements
+        
+    Example:
+        >>> rotate_right([1, 2, 3, 4, 5], 2, 1)
+        [4, 5, 1, 2, 3]  # Last 2 elements moved to front, excluding last 1 element from remainder
+    """
+    result = list1[-(m):] + list1[:-(n)]
+    return result
+```
+
+If you intended a standard right rotation by `k` positions, the function would be:
+
+```python
+def rotate_right(list1, k):
+    """
+    Rotates the list to the right by k positions.
+    
+    Args:
+        list1: The input list to be rotated
+        k: Number of positions to rotate right
+    
+    Returns:
+        A new list rotated right by k positions
+        
+    Example:
+        >>> rotate_right([1, 2, 3, 4, 5], 2)
+        [4, 5, 1, 2, 3]
+    """
+    k = k % len(list1)  # Handle rotations larger than list length
+    return list1[-k:] + list1[:-k]
+```

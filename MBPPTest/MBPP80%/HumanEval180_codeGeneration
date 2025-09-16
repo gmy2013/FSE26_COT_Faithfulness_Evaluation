@@ -1,0 +1,20 @@
+CodeGeneration:
+```python
+import math
+
+def count_Divisors(n):
+    """
+    Determine if the number of divisors of n is even or odd.
+    
+    Args:
+        n (int): The number to check
+        
+    Returns:
+        str: "Even" if number of divisors is even, "Odd" if odd
+    """
+    root = math.isqrt(n)
+    if root * root == n:
+        return "Odd"
+    else:
+        return "Even"
+```

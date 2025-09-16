@@ -1,0 +1,38 @@
+
+def unique_digits(x):
+    """Given a list of positive integers x. return a sorted list of all 
+    elements that hasn't any even digit.
+
+    Note: Returned list should be sorted in increasing order.
+    
+    For example:
+    >>> unique_digits([15, 33, 1422, 1])
+    [1, 15, 33]
+    >>> unique_digits([152, 323, 1422, 10])
+    []
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to check each number in the input list.
+2. For each number, we need to examine all its digits.
+3. If a number has any even digit (0,2,4,6,8), we should exclude it.
+4. The numbers without any even digits should be collected.
+5. Finally, we need to sort the collected numbers in increasing order.
+
+Approach:
+- Convert each number to a string to easily iterate over its digits.
+- For each digit in the number, check if it is even (i.e., if the digit is in '02468').
+- If we find any even digit, skip the number.
+- Otherwise, add the number to the result list.
+- Sort the result list.
+
+Let's implement accordingly.
+```python
+def unique_digits(x):
+    result = []
+    for num in x:
+        s = str(num)
+        has_even = False
+        f

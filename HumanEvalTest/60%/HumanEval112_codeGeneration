@@ -1,0 +1,22 @@
+CodeGeneration:
+):
+    # Create a set of characters to delete for efficient lookup
+    to_delete = set(c)
+    
+    # Build the result string by including only characters not in to_delete
+    result_str = ''.join(char for char in s if char not in to_delete)
+    
+    # Check if the result string is a palindrome
+    is_palindrome = result_str == result_str[::-1]
+    
+    return (result_str, is_palindrome)
+```
+
+This implementation:
+1. Creates a set `to_delete` from the characters in `c` for O(1) lookup time
+2. Uses a generator expression to filter out characters from `s` that are in the deletion set
+3. Joins the filtered characters to form the result string
+4. Checks if the result string is a palindrome by comparing it with its reverse
+5. Returns a tuple containing both the result string and the palindrome check result
+
+The solution is efficient with O(n) time complexity for both the filtering and palindrome check operations.

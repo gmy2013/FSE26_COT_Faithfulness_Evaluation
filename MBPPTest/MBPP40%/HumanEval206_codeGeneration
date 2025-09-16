@@ -1,0 +1,20 @@
+CodeGeneration:
+rectly identifies odd numbers.
+4. Confirm the default value `-1` is returned when no odd numbers are found.
+5. The implementation is correct and efficient as it stops at the first match.
+
+Here's the complete function with the docstring:
+
+```python
+def first_odd(nums):
+    """Return the first odd number in the list.
+    
+    Args:
+        nums: List of integers to search through
+        
+    Returns:
+        First odd number found in the list, or -1 if no odd numbers exist
+    """
+    first_odd = next((el for el in nums if el%2!=0), -1)
+    return first_odd
+```

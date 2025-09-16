@@ -1,0 +1,9 @@
+def Extract(lst): 
+    return [item[-1] for item in lst] 
+The following is chain of thought:
+1. The function is named `Extract` and takes one parameter `lst`.
+2. The function returns a list comprehension: `[item[-1] for item in lst]`.
+3. This list comprehension iterates over each `item` in the input list `lst`.
+4. For each `item`, it extracts the last element using `item[-1]` (negative indexing).
+5. The result is a new list containing the last elements of all sublists/items in `lst`.
+6. The function assumes `lst` contains iterable items (like lists, tuples, strin

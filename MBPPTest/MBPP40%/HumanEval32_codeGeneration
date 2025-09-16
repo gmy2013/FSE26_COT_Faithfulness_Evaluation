@@ -1,0 +1,32 @@
+CodeGeneration:
+Based on your analysis, here's the optimized implementation:
+
+```python
+def pair_OR_Sum(arr, n):
+    """
+    Compute the sum of XOR for all pairs in the array.
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+    
+    Returns:
+        int: Sum of XOR for all pairs
+    """
+    total = 0
+    
+    # Consider each bit position (0 to 31 for 32-bit integers)
+    for i in range(32):
+        # Count numbers with the i-th bit set
+        count = 0
+        for num in arr:
+            if num & (1 << i):
+                count += 1
+        
+        # Contribution of this bit to total sum
+        total += count * (n - count) * (1 << i)
+    
+    return total
+```
+
+This optimized solution has O(32 * n) = O(n) time complexity, which is much more efficient than the O(n²) nested loop approach for large arrays.

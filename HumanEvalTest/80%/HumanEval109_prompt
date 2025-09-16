@@ -1,0 +1,89 @@
+
+def move_one_ball(arr):
+    """We have an array 'arr' of N integers arr[1], arr[2], ..., arr[N].The
+    numbers in the array will be randomly ordered. Your task is to determine if
+    it is possible to get an array sorted in non-decreasing order by performing 
+    the following operation on the given array:
+        You are allowed to perform right shift operation any number of times.
+    
+    One right shift operation means shifting all elements of the array by one
+    position in the right direction. The last element of the array will be moved to
+    the starting position in the array i.e. 0th index. 
+
+    If it is possible to obtain the sorted array by performing the above operation
+    then return True else return False.
+    If the given array is empty then return True.
+
+    Note: The given list is guaranteed to have unique elements.
+
+    For Example:
+    
+    move_one_ball([3, 4, 5, 1, 2])==>True
+    Explanation: By performin 2 right shift operations, non-decreasing order can
+                 be achieved for the given array.
+    move_one_ball([3, 5, 4, 1, 2])==>False
+    Explanation:It is not possible to get non-decreasing order for the given
+                array by performing any number of right shift operations.
+                
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We are allowed to perform only right shift operations (any number of times).
+2. Each right shift moves every element one step to the right, with the last element wrapping around to the front.
+3. We need to check if there exists some number of shifts (k) such that the shifted array is non-decreasing.
+4. Since the array has unique elements, the sorted array is strictly increasing.
+
+Observation:
+- After k right shifts, the array becomes: [arr[n-k], arr[n-k+1], ..., arr[n-1], arr[0], arr[1], ..., arr[n-k-1]]
+- Essentially, we are rotating the array to the right by k positions.
+- So the problem reduces to: is the array a rotation of a sorted array?
+
+Approach:
+1. If the array is empty, return True.
+2. Find the minimum element in the array (since elements are unique, there is only one minimum).
+3. The sorted array should start from the minimum element and be strictly increasing (since unique).
+4. However, we must consider that the array might be rotated. So we can:
+   - Locate the index of the minimum element. This is the point where the sorted sequence should start.
+   - Check if from that index to the end, and then from the start to that index-1, the sequence is strictly increasing.
+   - But note: after rotation, the entire array should be sorted. So we can simulate the rotated array and check if it is sorted.
+
+Alternatively, we can:
+- Without actually rotating, we can traverse the array and check for the number of "dips" (where arr[i] > arr[i+1]).
+- In a sorted array that is rotated, there should be exactly one dip: when we wrap around from the end to the beginning.
+- Specifically, if the array is sorted (non-decreasing) after rotation, then when we traverse the circular array, there should be at most one index i such that arr[i] > arr[(i+1) % n].
+
+Steps:
+1. Let n = len(arr). If n <= 1, return True.
+2. Count the number of indices i (from 0 to n-1) where arr[i] > arr[(i+1) % n].
+   - Why modulo? To check the wrap-around from last to first.
+3. If the number of such dips is 0, the array is already sorted.
+4. If there is exactly one dip, then it is possible to rotate to get sorted array.
+   - For example, in [3,4,5,1,2]: the dip is at index 2 (5>1) and also we need to check the wrap-around: last element (2) and first (3): 2 < 3, so no dip there. So only one dip.
+5. But wait: what if the array is not rotated sorted? For example [3,5,4,1,2]:
+   - Check dips: 
+        index0: 3>5? no
+        index1: 5>4? yes -> dip1
+        index2: 4>1? yes -> dip2
+        index3: 1>2? no
+        wrap: last (2) and first (3): 2<3 -> no dip.
+   So two dips -> not sorted after any rotation.
+
+Therefore, the condition is: if the number of dips is exactly 0 or 1, return True; otherwise False.
+
+But note: if the array is already sorted (0 dips), it is valid. Also, if there is exactly one dip, it means we can rotate to make it sorted.
+
+However, we must be cautious: the dip should occur only at the wrap-around point? Actually, in a rotated sorted array, the only dip should be at the point where the array wraps. So when we traverse, we should find exactly one dip.
+
+So code:
+dips = 0
+n = len(arr)
+for i in range(n):
+    if arr[i] > arr[(i+1) % n]:
+        dips += 1
+    if dips > 1:
+        return False
+return True
+
+But wait: what if the array has d

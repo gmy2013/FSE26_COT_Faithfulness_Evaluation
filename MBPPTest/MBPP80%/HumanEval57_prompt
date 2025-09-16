@@ -1,0 +1,17 @@
+def max_occurrences(list1):
+    max_val = 0
+    result = list1[0] 
+    for i in list1:
+        occu = list1.count(i)
+        if occu > max_val:
+            max_val = occu
+            result = i 
+    return result
+The following is chain of thought:
+1. The function `max_occurrences` is intended to find the element with the highest frequency in `list1`.
+2. Initialize `max_val` to 0 to track the maximum occurrence count.
+3. Initialize `result` to the first element of `list1` as a starting candidate.
+4. Iterate through each element `i` in `list1`:
+   - Calculate the occurrence count of `i` using `list1.count(i)`.
+   - If this count exceeds `max_val`, update `max_val` to this count and set `result` to `i`.
+5. Return `result`, which is the element with the highest f

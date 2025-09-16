@@ -1,0 +1,11 @@
+import re
+def num_position(text):
+ for m in re.finditer("\d+", text):
+    return m.start()
+The following is chain of thought:
+1. The function `num_position` is intended to find the starting index of the first occurrence of a number in the input string `text`.
+2. The regex pattern `"\d+"` matches one or more consecutive digits.
+3. `re.finditer` returns an iterator yielding match objects for all non-overlapping matches.
+4. The loop iterates over each match object `m` from `re.finditer`.
+5. For the first match found, `m.start()` returns the starting index of that match.
+6. The function immediately returns this index upon the first iteration, effectively fin

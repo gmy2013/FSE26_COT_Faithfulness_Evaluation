@@ -1,0 +1,25 @@
+CodeGeneration:
+would be inserted after any existing entries of `x` in `a`.
+3. The function returns this insertion index `i`.
+
+Here is the complete function:
+
+```python
+import bisect
+
+def right_insertion(a, x):
+    """Return the index at which x should be inserted into list a, assuming a is sorted.
+
+    The return value i is such that all e in a[:i] have e <= x, and all e in a[i:] have e > x.
+    So if x already appears in the list, a.insert(i, x) will insert just after the rightmost x already there.
+
+    Args:
+        a (list): A sorted list of comparable elements.
+        x: The value to find the insertion point for.
+
+    Returns:
+        int: The insertion index.
+    """
+    i = bisect.bisect_right(a, x)
+    return i
+```

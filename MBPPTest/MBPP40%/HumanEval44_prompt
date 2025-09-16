@@ -1,0 +1,11 @@
+def get_product(val) : 
+	res = 1
+	for ele in val: 
+		res *= ele 
+	return res 
+def find_k_product(test_list, K):
+  res = get_product([sub[K] for sub in test_list])
+  return (res) 
+The following is chain of thought:
+1. The function `find_k_product` takes two arguments: `test_list` (a list of sublists) and `K` (an integer index).
+2. It uses a helper function `get_product` which computes the product of all elements in a g

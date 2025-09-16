@@ -1,0 +1,37 @@
+
+def count_nums(arr):
+    """
+    Write a function count_nums which takes an array of integers and returns
+    the number of elements which has a sum of digits > 0.
+    If a number is negative, then its first signed digit will be negative:
+    e.g. -123 has signed digits -1, 2, and 3.
+    >>> count_nums([]) == 0
+    >>> count_nums([-1, 11, -11]) == 1
+    >>> count_nums([1, 1, 2]) == 3
+    """
+
+The following is chain of thought:
+We are counting numbers where the sum of digits (with the sign considered for negative numbers) is > 0.
+ For negative numbers, the first digit (the most significant digit) is negative. For example, -123 has digits: -1, 2, 3.
+ Steps:
+ 1. Iterate over each number in the array.
+ 2. For each number, convert it to a string to process each digit.
+ 3. If the number is negative, the first character will be '-'. Then we treat the first digit as negative.
+ 4. Calculate the sum of digits. For negative numbers: the first digit (after the sign) is negative, the rest are positive.
+    Actually, note: the problem says "signed digits". So for -123: digits are -1, 2, 3. The sum is -1+2+3=4.
+ 5. Alternatively, we can avoid string conversion for negative numbers by taking absolute value and then negating the first digit?
+ 6. Another idea: for a negative number n, we can compute the sum of digits as: 
+    Let s = sum(int(d) for d in str(abs(n)))   but then we have to subtract twice the first digit? Actually, no.
+
+ Actually, let's break down with example:
+   n = -123
+   Convert to string: '-123'
+   We want digits: [ -1, 2, 3 ]
+   How to get that?
+   We can iterate over the string:
+      If the string has a '-' at the beginning, then the first digit (after the sign) should be negative.
+   So algorithm for one number:
+      s = str(n)
+      if s[0] == '-':
+          digits = [ -int(s[1]) ]   # the first digit after sign is negative
+          then for the rest of the characters (from index 2 to end), convert to posit

@@ -1,0 +1,14 @@
+from collections import Counter 
+	
+def second_frequent(input): 
+	dict = Counter(input) 
+	value = sorted(dict.values(), reverse=True)  
+	second_large = value[1] 
+	for (key, val) in dict.items(): 
+		if val == second_large: 
+			return (key) 
+The following is chain of thought:
+1. The function uses Counter to count frequency of elements in input
+2. It sorts the frequency values in descending order
+3. It takes the second value from the sorted list (index 1) as the second largest frequency
+4. It iterates through the counter items to find the key that matches this second

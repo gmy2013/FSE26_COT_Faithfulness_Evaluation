@@ -1,0 +1,21 @@
+def find_First_Missing(array,start,end): 
+    if (start > end): 
+        return end + 1
+    if (start != array[start]): 
+        return start; 
+    mid = int((start + end) / 2) 
+    if (array[mid] == mid): 
+        return find_First_Missing(array,mid+1,end) 
+    return find_First_Missing(array,start,mid) 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Base Case 1 - Invalid Range**: If the start index exceeds the end index, return end + 1
+   - This handles the case where the entire array is properly sequenced (no missing numbers)
+   - The first missing number would be the next integer after the last element
+
+2. **Base Case 2 - Immediate Detection**: If the first element doesn't match its index, return start
+   - This catches missing numbers at the very beginning of the array
+   - If array[0] ≠ 0, then 0 is the first missing number
+
+3. **B

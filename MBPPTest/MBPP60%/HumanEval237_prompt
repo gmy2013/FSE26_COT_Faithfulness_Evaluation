@@ -1,0 +1,38 @@
+def min_Swaps(s1,s2) :  
+    c0 = 0; c1 = 0;  
+    for i in range(len(s1)) :  
+        if (s1[i] == '0' and s2[i] == '1') : 
+            c0 += 1;    
+        elif (s1[i] == '1' and s2[i] == '0') : 
+            c1 += 1;  
+    result = c0 // 2 + c1 // 2;  
+    if (c0 % 2 == 0 and c1 % 2 == 0) : 
+        return result;  
+    elif ((c0 + c1) % 2 == 0) : 
+        return result + 2;  
+    else : 
+        return -1;  
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function counts two types of mismatches:
+   - c0: positions where s1 has '0' and s2 has '1'
+   - c1: positions where s1 has '1' and s2 has '0'
+
+2. The initial result is computed as (c0//2 + c1//2). This handles cases where mismatches can be fixed with one swap (each swap fixes two mismatches).
+
+3. The conditions:
+   - If both c0 and c1 are even: all mismatches can be fixed with (c0//2 + c1//2) swaps.
+   - If the total number of mismatches (c0+c1) is even (but individually not both even): this implies both c0 and c1 are odd (since odd+odd=even). In this case, we need two extra swaps (so result+2) to handle the remaining two mismatches (one of each type).
+   - Otherwise (if total mismatches is odd): it's impossible to make strings equal with swaps, return -1.
+
+However, there is a logical issue: the condition `elif ((c0 + c1) % 2 == 0)` is redundant because if both c0 and c1 are not even (so at least one is odd), but their sum is even, then both must be odd. So the condition is correct but could be written as `elif (c0 % 2 == 1 and c1 % 2 == 1)`.
+
+But note: the code already checks for both even first, so the next condition is when they are not both even. Then if the total is even, it must be that both are odd (since odd+odd=even, and even+odd=odd). So the condition is equivalent to checking both are odd.
+
+Therefore, the chain of thought is:
+- Count mismatches of type (0,1) as c0 and (1,0) as c1.
+- Base swaps: each swap can fix two mismatches of the same type (so c0//2 + c1//2).
+- If both counts are even: return base swaps.
+- If both counts are odd: we have one leftover of each type. These can be fixed with two swaps (e.g., swap one to create two extra mismatches of the same type, then swap again to fix three). So return base swaps + 2.
+- If the total mismatches is odd (which means one count

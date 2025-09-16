@@ -1,0 +1,16 @@
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+
+The following is chain of thought:
+1. **Understand the Problem**: The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, usually starting with 0 and 1. The task is to return the n-th Fibonacci number using a zero-based index where fib(0) = 0.
+
+2. **Recogn

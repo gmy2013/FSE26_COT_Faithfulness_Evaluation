@@ -1,0 +1,25 @@
+CodeGeneration:
+e result.
+
+Here is the complete function:
+
+```python
+def check_smaller(test_tup1, test_tup2):
+    """Check if every element in the first tuple is greater than the corresponding element in the second tuple.
+    
+    Args:
+        test_tup1 (tuple): First tuple of numbers
+        test_tup2 (tuple): Second tuple of numbers (same length as test_tup1)
+    
+    Returns:
+        bool: True if all elements in test_tup1 > corresponding elements in test_tup2, False otherwise
+    
+    Example:
+        >>> check_smaller((4, 5, 6), (1, 2, 3))
+        True
+        >>> check_smaller((4, 5, 6), (1, 7, 3))
+        False
+    """
+    res = all(x > y for x, y in zip(test_tup1, test_tup2))
+    return res
+```

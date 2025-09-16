@@ -1,0 +1,6 @@
+def rectangle_perimeter(l,b):
+  perimeter=2*(l+b)
+  return perimeter
+The following is chain of thought:
+1. The function is named `rectangle_perimeter` with parameters `l` (length) and `b` (breadth).
+2. The formula for the perimeter of a rectangle is

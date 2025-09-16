@@ -1,0 +1,7 @@
+def rombus_area(p,q):
+  area=(p*q)/2
+  return area
+The following is chain of thought:
+1. The function `rombus_area` takes two parameters, `p` and `q`.
+2. The formula for the area of a rhombus is (diagonal1 * diagonal2) / 2.
+3. The parameters `p` and `q` represent 

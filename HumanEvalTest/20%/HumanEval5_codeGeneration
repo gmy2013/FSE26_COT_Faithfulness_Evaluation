@@ -1,0 +1,26 @@
+20%CoT
+CodeGeneration:
+```python
+    # should also be an empty list.
+
+2. **Plan the solution**:
+    - If the list `numbers` is empty, return an empty list.
+    - Initialize an empty list to store the result.
+    - Iterate over the list `numbers` using an index.
+    - Append each number to the result list.
+    - If the current number is not the last element, append the delimiter to the result list.
+    - Return the result list.
+
+3. **Implement the solution**:
+    """
+    if not numbers:
+        return []
+
+    result = []
+    for i in range(len(numbers)):
+        result.append(numbers[i])
+        if i < len(numbers) - 1:
+            result.append(delimeter)
+
+    return result
+```

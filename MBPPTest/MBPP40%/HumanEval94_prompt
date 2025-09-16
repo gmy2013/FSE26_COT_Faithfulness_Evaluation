@@ -1,0 +1,9 @@
+def check_greater(test_tup1, test_tup2):
+  res = all(x < y for x, y in zip(test_tup1, test_tup2))
+  return (res) 
+The following is chain of thought:
+Here is the structured chain of thought for the given function:
+
+1. **Function Purpose Analysis**: The function `check_greater` takes two tuples `test_tup1` and `test_tup2` and returns a boolean value indicating whether every element in `test_tup1` is less than the corresponding element in `test_tup2`.
+
+2. **Input Handling**: The function expects two tuples of the same length. If they are of different lengths, `zip` will only iterate up to the length of the shorter tuple, which may lead to incomplete comparisons.

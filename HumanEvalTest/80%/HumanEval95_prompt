@@ -1,0 +1,44 @@
+
+def check_dict_case(dict):
+    """
+    Given a dictionary, return True if all keys are strings in lower 
+    case or all keys are strings in upper case, else return False.
+    The function should return False is the given dictionary is empty.
+    Examples:
+    check_dict_case({"a":"apple", "b":"banana"}) should return True.
+    check_dict_case({"a":"apple", "A":"banana", "B":"banana"}) should return False.
+    check_dict_case({"a":"apple", 8:"banana", "a":"apple"}) should return False.
+    check_dict_case({"Name":"John", "Age":"36", "City":"Houston"}) should return False.
+    check_dict_case({"STATE":"NC", "ZIP":"12345" }) should return True.
+    """
+
+The following is chain of thought:
+1. Check if the dictionary is empty. If yes, return False.
+2. Extract all keys from the dictionary.
+3. Check if all keys are strings. If any key is not a string, return False.
+4. Check if all keys are in lowercase: compare each key to its lowercase version.
+5. Check if all keys are in uppercase: compare each key to its uppercase version.
+6. Return True if either all keys are lowercase or all keys are uppercase, else return False.
+
+Now implementing the function based on this logic:
+
+```python
+def check_dict_case(dict):
+    """
+    Given a dictionary, return True if all keys are strings in lower 
+    case or all keys are strings in upper case, else return False.
+    The function should return False is the given dictionary is empty.
+    Examples:
+    check_dict_case({"a":"apple", "b":"banana"}) should return True.
+    check_dict_case({"a":"apple", "A":"banana", "B":"banana"}) should return False.
+    check_dict_case({"a":"apple", 8:"banana", "a":"apple"}) should return False.
+    check_dict_case({"Name":"John", "Age":"36", "City":"Houston"}) should return False.
+    check_dict_case({"STATE":"NC", "ZIP":"12345" }) should return True.
+    """
+    if not dict:
+        return False
+        
+    keys = dict.keys()
+    
+    # Check if all keys are strings
+ 

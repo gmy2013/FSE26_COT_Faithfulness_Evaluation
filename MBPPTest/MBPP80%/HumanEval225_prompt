@@ -1,0 +1,31 @@
+def check_Type_Of_Triangle(a,b,c): 
+    sqa = pow(a,2) 
+    sqb = pow(b,2) 
+    sqc = pow(c,2) 
+    if (sqa == sqa + sqb or sqb == sqa + sqc or sqc == sqa + sqb): 
+        return ("Right-angled Triangle") 
+    elif (sqa > sqc + sqb or sqb > sqa + sqc or sqc > sqa + sqb): 
+        return ("Obtuse-angled Triangle") 
+    else: 
+        return ("Acute-angled Triangle") 
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function calculates squares of sides: sqa = a², sqb = b², sqc = c²
+2. The first condition checks for a right triangle using the Pythagorean theorem. However, there is a logical error:
+   - The condition "sqa == sqa + sqb" is always false (unless sqb=0, which isn't a triangle)
+   - Similarly, "sqb == sqa + sqc" and "sqc == sqa + sqb" have the same issue
+   - Correct right triangle condition should be: (sqa == sqb + sqc) or (sqb == sqa + sqc) or (sqc == sqa + sqb)
+
+3. The second condition checks for an obtuse triangle using the converse of the Pythagorean theorem:
+   - The condition "sqa > sqc + sqb" is correct for angle A being obtuse
+   - Similarly "sqb > sqa + sqc" for angle B, and "sqc > sqa + sqb" for angle C
+   - This part is correctly implemented
+
+4. The else case correctly returns acute triangle when neither right nor obtuse conditions are met
+
+The main issue is in the right triangle condition. The function needs to be corrected to properly identify right triangles.
+
+Corrected implementation:
+- Change the right triangle condition to check if any side squared equals the sum of squares of the other two sides
+- The obtuse and acute condition

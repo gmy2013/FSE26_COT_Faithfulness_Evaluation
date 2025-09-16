@@ -1,0 +1,69 @@
+
+def closest_integer(value):
+    '''
+    Create a function that takes a value (string) representing a number
+    and returns the closest integer to it. If the number is equidistant
+    from two integers, round it away from zero.
+
+    Examples
+    >>> closest_integer("10")
+    10
+    >>> closest_integer("15.3")
+    15
+
+    Note:
+    Rounding away from zero means that if the given number is equidistant
+    from two integers, the one you should return is the one that is the
+    farthest from zero. For example closest_integer("14.5") should
+    return 15 and closest_integer("-14.5") should return -15.
+    '''
+
+The following is chain of thought:
+Let's break down the problem:
+1. Convert the string input to a float to handle both integers and decimals.
+2. We need to round to the nearest integer, but with a special rule for tie-breaking (away from zero).
+3. Standard rounding in Python (round()) uses "round half to even" which rounds to the nearest even integer for .5 cases.
+4. However, we need "round half away from zero", meaning:
+   - For positive numbers: 14.5 rounds to 15 (up)
+   - For negative numbers: -14.5 rounds to -15 (down)
+5. We can implement this by checking if the fractional part is exactly 0.5 (or -0.5 for negatives) and then rounding accordingly.
+
+Approach:
+- Convert string to float.
+- Check if the number is exactly halfway between two integers (i.e., fractional part is 0.5 or -0.5).
+- If it is, round away from zero: for positive, ceil; for negative, floor.
+- Otherwise, use standard rounding (which will work correctly for non-tie cases).
+
+Implementation:
+1. Let n = float(value)
+2. Check if n is positive and has fractional part exactly 0.5: then return ceil(n)
+3. Check if n is negative and has fractional part exactly -0.5: then return floor(n)
+4. Else: return round(n)
+
+Note: We need to be cautious with floating point precision. Instead of comparing to 0.5 exactly, we might use a tolerance.
+
+However, since the input is a string representing a number, we can assume exact representation for .5 cases.
+But to be safe, we can check with a tolerance.
+
+Alternatively, we can use the decimal module for exact decimal representation, but the problem says the input is a string that represents a number, so we can rely on float for these cases.
+
+Let's code accordingly.
+```python
+def closest_integer(value):
+    n = float(value)
+    fractional = n % 1
+    if n >= 0:
+        if abs(fractional - 0.5) < 1e-10:
+            return int(n) + 1
+        else:
+            return round(n)
+    else:
+        if abs(fractional + 0.5) < 1e-10:
+            return int(n) - 1
+        else:
+            return round(n)
+```
+
+But note: for negative numbers, the fractional part is negative (e.g., -14.5 % 1 is 0.5 in Python? Actually, modulo for negatives in Python returns a non-negative remainder. So for -14.5, n % 1 would be 0.5. So we need to adjust.
+
+Actually, for 

@@ -1,0 +1,30 @@
+CodeGeneration:
+Here's the completed function with improved clarity and documentation:
+
+```python
+def No_of_cubes(N, K):
+    """
+    Calculate the number of cubes of side length K that can fit inside a larger cube of side length N.
+    
+    The number of cubes along one dimension is (N - K + 1) because we can position
+    the smaller cube at integer coordinates from 0 to (N - K) along each axis.
+    
+    Args:
+        N (int): Side length of the larger cube
+        K (int): Side length of the smaller cubes
+    
+    Returns:
+        int: Total number of K-sized cubes that fit in the N-sized cube
+    """
+    No = 0
+    No = (N - K + 1)
+    No = pow(No, 3)
+    return No
+```
+
+The function correctly calculates the number of smaller cubes by:
+1. Finding how many positions the smaller cube can occupy along one dimension: (N - K + 1)
+2. Cubing this value since we're working in 3D space
+3. Returning the total count
+
+For example: No_of_cubes(5, 2) = (5 - 2 + 1)^3 = 4^3 = 64 cubes

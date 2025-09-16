@@ -1,0 +1,37 @@
+CodeGeneration:
+Based on the analysis, the function correctly checks if a given month number corresponds to a month with exactly 30 days (April, June, September, November). Here's the complete function with improved formatting:
+
+```python
+def check_monthnumber_number(monthnum3):
+    """Check if a month number corresponds to a 30-day month.
+    
+    Args:
+        monthnum3 (int): The month number to check (1-12)
+        
+    Returns:
+        bool: True if the month has 30 days (April, June, September, November),
+              False otherwise
+    """
+    if monthnum3 == 4 or monthnum3 == 6 or monthnum3 == 9 or monthnum3 == 11:
+        return True
+    else:
+        return False
+```
+
+Alternative implementation using a more concise approach:
+
+```python
+def check_monthnumber_number(monthnum3):
+    """Check if a month number corresponds to a 30-day month.
+    
+    Args:
+        monthnum3 (int): The month number to check (1-12)
+        
+    Returns:
+        bool: True if the month has 30 days (April, June, September, November),
+              False otherwise
+    """
+    return monthnum3 in {4, 6, 9, 11}
+```
+
+Both implementations achieve the same result, with the second version being more Pythonic and concise.

@@ -1,0 +1,19 @@
+
+
+def triangle_area(a, h):
+    """Given length of a side and high return area for a triangle.
+    >>> triangle_area(5, 3)
+    7.5
+    """
+
+The following is chain of thought:
+We are calculating the area of a triangle given the side length (a) and the height (h).
+ The formula for the area of a triangle is: (base * height) / 2.
+ In this function, the side length (a) is the base, and (h) is the height.
+ So, we compute: (a * h) / 2.
+ We return the result as a float since division might result in a decimal.
+
+ Steps:
+ 1. Multiply the base (a) by the height (h).
+ 2. Divide the product by 2.
+ 3. Return the res

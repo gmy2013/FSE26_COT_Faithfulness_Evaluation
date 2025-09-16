@@ -1,0 +1,14 @@
+def lucky_num(n):
+ List=range(-1,n*n+9,2)
+ i=2
+ while List[i:]:List=sorted(set(List)-set(List[List[i]::List[i]]));i+=1
+ return List[1:n+1]
+The following is chain of thought:
+1. **Function Purpose**: The function `lucky_num(n)` aims to generate the first `n` lucky numbers.
+2. **Initial List Construction**: 
+   - Create a list `List` starting from -1, stepping by 2, up to `n*n+9`. This generates odd numbers (with -1 as an anomaly) to form the initial candidate set.
+3. **Sieve Process**:
+   - Start with index `i=2` (pointing to the third element, which is the first lucky number after 1).
+   - In each iteration:
+     - Remove every `List[i]`-th element from the current list (simulating the lucky number sieve).
+     - Update `List` to be the sorted set difference between th

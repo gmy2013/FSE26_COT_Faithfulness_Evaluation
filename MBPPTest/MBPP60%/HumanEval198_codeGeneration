@@ -1,0 +1,40 @@
+CodeGeneration:
+```python
+INT_BITS = 32
+
+def left_Rotate(n, d):
+    """
+    Rotate a 32-bit integer n to the left by d bits.
+    
+    Left rotation means shifting bits to the left, with the bits that
+    fall off the left end reappearing on the right side.
+    
+    Args:
+        n (int): The 32-bit integer to rotate
+        d (int): Number of bits to rotate left (0 <= d <= 32)
+    
+    Returns:
+        int: The rotated 32-bit integer
+    
+    Example:
+        >>> left_Rotate(0b11000000000000000000000000000001, 1)
+        0b10000000000000000000000000000011
+    """
+    # Ensure d is within valid range (0-32) using modulo operation
+    d = d % INT_BITS
+    if d == 0:
+        return n
+    
+    # Perform left rotation: 
+    # (n << d) shifts left by d bits, moving higher bits out
+    # (n >> (INT_BITS - d)) brings the lower bits that were shifted out
+    # OR operation combines both parts
+    return ((n << d) | (n >> (INT_BITS - d))) & ((1 << INT_BITS) - 1)
+```
+
+The key improvements made:
+1. Added proper docstring with clear explanation, parameters, return value, and example
+2. Added input validation using modulo operation to handle d values outside 0-32 range
+3. Added special case handling for d=0 to avoid unnecessary computation
+4. Added bitmask `& ((1 << INT_BITS) - 1)` to ensure the result is always a 32-bit integer
+5. Used proper Python naming conventions (though the original function name was preserved as requested)

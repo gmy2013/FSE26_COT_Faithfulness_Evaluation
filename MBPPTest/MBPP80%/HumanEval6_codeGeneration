@@ -1,0 +1,21 @@
+CodeGeneration:
+Here's the completed function based on the docstring and your chain of thought:
+
+```python
+import re
+
+def find_literals(text, pattern):
+    """
+    Find the first occurrence of a pattern in text and return pattern with indices.
+    
+    Args:
+        text (str): The string to search
+        pattern (str): The regex pattern to find
+    
+    Returns:
+        tuple: (pattern_string, start_index, end_index)
+    """
+    match = re.search(pattern, text)
+    s = match.start()
+    e = match.end()
+    return (match.re.pattern, s, e)

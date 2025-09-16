@@ -1,0 +1,27 @@
+CodeGeneration:
+e is correct and follows the chain of thought. Here's the complete function with proper formatting:
+
+```python
+def divisible_by_digits(startnum, endnum):
+    """
+    Return a list of numbers between startnum and endnum (inclusive) where 
+    every non-zero digit of the number divides the number itself.
+    
+    Args:
+        startnum (int): The starting number of the range
+        endnum (int): The ending number of the range (inclusive)
+    
+    Returns:
+        list: List of numbers where all non-zero digits divide the number
+    """
+    return [n for n in range(startnum, endnum+1) \
+                if not any(map(lambda x: int(x) == 0 or n%int(x) != 0, str(n)))]
+```
+
+The function efficiently checks each number by:
+1. Converting the number to a string to access individual digits
+2. Using `map()` to apply the check to each digit
+3. Using `any()` with negation to ensure ALL digits pass the condition
+4. Handling the zero digit case to avoid division by zero
+
+The list comprehension creates a clean, readable solution that matches the problem requirements.

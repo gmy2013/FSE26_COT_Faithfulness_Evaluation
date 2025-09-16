@@ -1,0 +1,38 @@
+CodeGeneration:
+I notice the chain of thought was cut off, but I can see the function implementation. Based on the function name and implementation, I can complete the docstring:
+
+```python
+def count_vowels(test_str):
+    """
+    Count characters that are not vowels but have adjacent vowels.
+    
+    This function counts the number of non-vowel characters in a string that
+    are immediately adjacent to at least one vowel character.
+    
+    Args:
+        test_str (str): The input string to analyze
+        
+    Returns:
+        int: The count of non-vowel characters with adjacent vowels
+        
+    Examples:
+        >>> count_vowels("hello")
+        1  # 'h' is not vowel, 'e' is vowel (right adjacent)
+        >>> count_vowels("world")
+        2  # 'w' (right adjacent to 'o'), 'r' (left adjacent to 'o')
+        >>> count_vowels("aeiou")
+        0  # all vowels
+    """
+    res = 0
+    vow_list = ['a', 'e', 'i', 'o', 'u']
+    for idx in range(1, len(test_str) - 1):
+        if test_str[idx] not in vow_list and (test_str[idx - 1] in vow_list or test_str[idx + 1] in vow_list):
+            res += 1
+    if test_str[0] not in vow_list and test_str[1] in vow_list:
+        res += 1
+    if test_str[-1] not in vow_list and test_str[-2] in vow_list:
+        res += 1
+    return res
+```
+
+The function counts non-vowel characters that have at least one adjacent vowel character, handling edge cases for the first and last characters separately.

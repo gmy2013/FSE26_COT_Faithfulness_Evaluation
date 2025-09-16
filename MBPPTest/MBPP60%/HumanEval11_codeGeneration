@@ -1,0 +1,12 @@
+CodeGeneration:
+omprehension `[list(ele) for ele in ...]` converts each tuple to a list.
+6. The final result is a list of lists where each inner list contains elements from the same position in each original sublist.
+
+Therefore, the function correctly transposes the input list of lists.
+
+Here's the complete function:
+
+```python
+def merge(lst):  
+    return [list(ele) for ele in list(zip(*lst))]
+```

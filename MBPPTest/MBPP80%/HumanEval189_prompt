@@ -1,0 +1,10 @@
+def even_position(nums):
+	return all(nums[i]%2==i%2 for i in range(len(nums)))
+The following is chain of thought:
+1. Understand the function purpose: Check if every element at index `i` has the same parity (even/odd) as its index `i`.
+2. Analyze the current implementation: Uses a generator expression with `all()` to verify `nums[i] % 2 == i % 2` for all indices.
+3. Validate correctness:
+   - For even index (i % 2 == 0): element should be even (nums[i] % 2 == 0)
+   - For odd index (i % 2 == 1): element should be odd (nums[i] % 2 == 1)
+4. Confirm this matches the condition "nums[i] % 2 == i % 2" exactly.
+5. The implementation is correct and efficien

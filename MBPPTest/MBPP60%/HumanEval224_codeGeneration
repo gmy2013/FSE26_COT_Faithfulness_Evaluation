@@ -1,0 +1,26 @@
+CodeGeneration:
+Here's the complete function with the docstring:
+
+```python
+def access_elements(nums, list_index):
+    """
+    Returns a list of elements from nums at the indices specified in list_index.
+    
+    Args:
+        nums (list): The source list from which elements will be accessed
+        list_index (list): A list of indices to access from nums
+        
+    Returns:
+        list: A new list containing elements from nums at the specified indices
+        
+    Example:
+        >>> access_elements([10, 20, 30, 40], [0, 2])
+        [10, 30]
+        >>> access_elements(['a', 'b', 'c', 'd'], [1, 3])
+        ['b', 'd']
+    """
+    result = [nums[i] for i in list_index]
+    return result
+```
+
+The function uses a list comprehension to efficiently create a new list by accessing elements from `nums` at each index specified in `list_index`. This approach is concise and Pythonic.

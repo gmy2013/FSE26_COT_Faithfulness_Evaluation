@@ -1,0 +1,34 @@
+CodeGeneration:
+```python
+def nCr_mod_p(n, r, p):
+    """
+    Compute the binomial coefficient C(n, r) modulo p using dynamic programming.
+
+    This function calculates the number of ways to choose r items from n items
+    without repetition and order, returning the result modulo p.
+
+    Args:
+        n (int): Total number of items
+        r (int): Number of items to choose
+        p (int): Modulus value
+
+    Returns:
+        int: C(n, r) mod p
+
+    Example:
+        >>> nCr_mod_p(5, 2, 100)
+        10
+        >>> nCr_mod_p(10, 3, 1000)
+        120
+    """
+    if r < 0 or r > n:
+        return 0
+    if r > n - r:
+        r = n - r
+    C = [0] * (r + 1)
+    C[0] = 1
+    for i in range(1, n + 1):
+        for j in range(min(i, r), 0, -1):
+            C[j] = (C[j] + C[j - 1]) % p
+    return C[r]
+```

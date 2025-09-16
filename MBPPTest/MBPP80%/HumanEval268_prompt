@@ -1,0 +1,10 @@
+def remove_list_range(list1, leftrange, rigthrange):
+   result = [i for i in list1 if (min(i)>=leftrange and max(i)<=rigthrange)]
+   return result
+The following is chain of thought:
+1. The function `remove_list_range` takes three parameters: `list1` (a list of lists), `leftrange`, and `rigthrange` (note: likely a typo, should be `rightrange`).
+2. The goal is to filter `list1` to keep only those sublists where the minimum element is at least `leftrange` and the maximum element is at most `rigthrange`.
+3. The current implementation uses a list comprehension to iterate over each sublist `i` in `list1`.
+4. For each sublist `i`, it checks if `min(i) >= leftrange` and `max(i) <= rigthrange`.
+5. If both conditions are true, the sublist is included in the result.
+6. The f

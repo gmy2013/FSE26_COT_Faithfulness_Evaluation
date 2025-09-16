@@ -1,0 +1,13 @@
+def fibonacci(n):
+  if n == 1 or n == 2:
+    return 1
+  else:
+    return (fibonacci(n - 1) + (fibonacci(n - 2)))
+The following is chain of thought:
+Here's the structured chain of thought for the fibonacci function:
+
+1. **Base Case Analysis**: The function first checks if n equals 1 or 2, which are the base cases of the Fibonacci sequence where both positions return 1.
+
+2. **Recursive Case Logic**: For any n greater than 2, the function uses recursion by calling itself with n-1 and n-2, then summing the results.
+
+3. **Mathemati

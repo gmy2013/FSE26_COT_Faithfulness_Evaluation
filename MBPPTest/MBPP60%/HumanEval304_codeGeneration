@@ -1,0 +1,20 @@
+CodeGeneration:
+ent is indeed (2n choose n) = (2n)!/(n! * n!) = factorial(n+1, 2*n) / factorial(1, n).
+
+However, the function name `sum_of_square(n)` is misleading because this actually computes the central binomial coefficient, not the sum of squares.
+
+If you want to compute the sum of squares of the first n natural numbers, the correct formula is:
+sum_of_squares(n) = n(n+1)(2n+1)/6
+
+Here's the corrected implementation:
+
+```python
+def factorial(start, end):
+    res = 1
+    for i in range(start, end + 1):
+        res *= i
+    return res
+
+def sum_of_square(n):
+    # Formula for sum of squares: n(n+1)(2n+1)/6
+    return n * (n + 1) * (2 * n + 1) // 6

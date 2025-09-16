@@ -1,0 +1,24 @@
+CodeGeneration:
+popping the smallest element from the heap repeatedly using `heapq.heappop` until the heap is empty. This ensures that elements are extracted in ascending order.
+
+Here's the complete function:
+
+```python
+import heapq as hq
+
+def heap_sort(iterable):
+    """Sorts the given iterable in ascending order using a min-heap.
+    
+    Args:
+        iterable: An iterable of comparable elements.
+        
+    Returns:
+        A new list containing all elements from the iterable in ascending order.
+    """
+    h = []
+    for value in iterable:
+        hq.heappush(h, value)
+    return [hq.heappop(h) for i in range(len(h))]
+```
+
+This implementation has a time complexity of O(n log n) for both building the heap and extracting elements, making it efficient for sorting.

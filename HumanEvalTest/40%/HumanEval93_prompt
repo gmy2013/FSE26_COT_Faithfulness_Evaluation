@@ -1,0 +1,40 @@
+
+def encode(message):
+    """
+    Write a function that takes a message, and encodes in such a 
+    way that it swaps case of all letters, replaces all vowels in 
+    the message with the letter that appears 2 places ahead of that 
+    vowel in the english alphabet. 
+    Assume only letters. 
+    
+    Examples:
+    >>> encode('test')
+    'TGST'
+    >>> encode('This is a message')
+    'tHKS KS C MGSSCGG'
+    """
+
+The following is chain of thought:
+To solve this problem, we need to encode a message by performing two main operations: swapping the case of all letters and replacing each vowel with the letter that appears two places ahead in the English alphabet. The solution involves processing each character in the input string individually.
+
+1. **Swap Case**: For each character, if it is a letter, swap its case (uppercase becomes lowercase and vice versa). Non-letter characters (like spaces) should remain unchanged, but the problem states to assume only letters, so we can focus on letters only.
+
+2. **Replace Vowels**: For each vowel (both uppercase and lowercase), replace it with the letter two places ahead in the alphabet. For example:
+   - 'a' (or 'A') becomes 'c' (or 'C' after case swap).
+   - 'e' becomes 'g'
+   - 'i' becomes 'k'
+   - 'o' becomes 'q'
+   - 'u' becomes 'w'
+
+However, note that after swapping the case, the vowel might be in uppercase or lowercase. But since we are swapping case first, we can handle the vowel replacement based on the original case? Actually, we should swap the case first and then replace the vowels. But wait: the problem says "swaps case of all letters, replaces all vowels...". So the operations are sequential: first swap case, then replace vowels.
+
+But when replacing vowels, we need to consider the case of the vowel after swapping. For instance, if we have 'A' (which becomes 'a' after swap) then we replace it with the letter two ahead in lowercase? Actually, the replacement should be in the same case as the vowel after swap. So if after swap the vowel is lowercase, the replacement should be lowercase; if uppercase, then uppercase.
+
+However, the examples:
+   - 'test' becomes 'TGST'. 
+     't' (lower) becomes 'T' (upper) after swap? Actually, 't' is lowercase, so after swap it becomes 'T'. Then 'e' (vowel) becomes 'G'? Because after swap, 'e' becomes 'E'? Wait no: first we swap case: 
+        't' -> 'T'
+        'e' -> 'E'
+        's' -> 'S'
+        't' -> 'T'
+     So we have "TEST". Then we replace vowels: 'E' is a vowel. We replace it with the letter two ahead: E -> G (since E, F, G). So 'E' becomes 'G'. So t

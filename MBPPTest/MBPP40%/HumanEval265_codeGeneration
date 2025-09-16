@@ -1,0 +1,28 @@
+CodeGeneration:
+Here's the corrected function with proper month names and improved formatting:
+
+```python
+def check_monthnumb(monthname2):
+    """
+    Check if a given month name has 31 days.
+    
+    Args:
+        monthname2 (str): Name of the month to check
+        
+    Returns:
+        bool: True if the month has 31 days, False otherwise
+    """
+    if (monthname2 == "January" or monthname2 == "March" or 
+        monthname2 == "May" or monthname2 == "July" or 
+        monthname2 == "August" or monthname2 == "October" or 
+        monthname2 == "December"):
+        return True
+    else:
+        return False
+```
+
+Key improvements:
+- Fixed the typo: "Augest" → "August"
+- Added proper docstring documentation
+- Improved code formatting for better readability
+- Maintained the same logic (checking for months with 31 days)

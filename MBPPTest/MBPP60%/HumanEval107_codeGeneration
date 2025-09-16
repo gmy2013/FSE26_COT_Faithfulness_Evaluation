@@ -1,0 +1,13 @@
+CodeGeneration:
+ing `list()`
+4. The list is returned
+
+This function effectively converts a space-separated string into a list of words.
+
+Here's the complete function:
+
+```python
+def Convert(string): 
+    li = list(string.split(" ")) 
+    return li
+```

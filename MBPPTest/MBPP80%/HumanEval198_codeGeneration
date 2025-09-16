@@ -1,0 +1,33 @@
+CodeGeneration:
+BITS` is defined as 32, this function is specifically designed for 32-bit integers.
+
+Here's the complete function with proper documentation:
+
+```python
+INT_BITS = 32
+
+def left_Rotate(n, d):
+    """
+    Perform a left rotation on a 32-bit integer.
+    
+    Args:
+        n (int): The 32-bit integer to rotate
+        d (int): Number of bits to rotate left (0 <= d <= 32)
+    
+    Returns:
+        int: The result of left-rotating n by d bits
+    
+    Example:
+        >>> left_Rotate(0b11000000000000000000000000000001, 1)
+        0b10000000000000000000000000000011
+    """
+    return (n << d) | (n >> (INT_BITS - d))
+```
+
+The function works by:
+1. Shifting the number left by `d` bits (this moves the MSBs out of the 32-bit range)
+2. Shifting the number right by `(32 - d)` bits (this brings the LSBs to the MSB positions)
+3. Combining both results with a bitwise OR to create the rotated value
+
+Note: For proper 32-bit behavior, the input should be masked to 32 bits if needed:
+`n = n & 0xFFFFFFFF` before the rotation operations.

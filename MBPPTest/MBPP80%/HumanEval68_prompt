@@ -1,0 +1,20 @@
+import re 
+regex = '''^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.( 
+			25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.( 
+			25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.( 
+			25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$'''
+def check_IP(Ip): 
+	if(re.search(regex, Ip)): 
+		return ("Valid IP address") 
+	else: 
+		return ("Invalid IP address") 
+The following is chain of thought:
+The function `check_IP` validates an IPv4 address using a regular expression. Here's the structured chain of thought:
+
+1. **Function Definition**: The function `check_IP` takes one argument `Ip`, which is a string representing the IP address to validate.
+2. **Regular Expression Matching**: It uses `re.search()` to check if `Ip` matches the pattern defined by `regex`.
+   - The regex pattern is designed to match valid IPv4 addresses:
+     - Each octet (separated by dots) must be between 0 and 255.
+     - The pattern accounts for leading zeros (e.g., "192.168.01.1" is invalid, but "192.168.1.1" is valid).
+3. **Condition Check**: 
+   - If `re.search()` returns a match object (truthy), the IP is valid, and it returns "Valid IP

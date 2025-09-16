@@ -1,0 +1,40 @@
+from typing import List
+
+
+def parse_music(music_string: str) -> List[int]:
+    """ Input to this function is a string representing musical notes in a special ASCII format.
+    Your task is to parse this string and return list of integers corresponding to how many beats does each
+    not last.
+
+    Here is a legend:
+    'o' - whole note, lasts four beats
+    'o|' - half note, lasts two beats
+    '.|' - quater note, lasts one beat
+
+    >>> parse_music('o o| .| o| o| .| .| .| .| o o')
+    [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+    """
+
+The following is chain of thought:
+Let's break down the problem:
+
+1. We need to split the input string into individual note tokens
+2. Each token can be one of three possibilities: 'o', 'o|', or '.|'
+3. We need to map each token to its corresponding beat value:
+   - 'o' → 4
+   - 'o|' → 2  
+   - '.|' → 1
+4. Return a list of these integer values
+
+However, note that the tokens are separated by spaces in the input string, but some tokens contain spaces within them (like 'o|' which is two characters).
+
+Actually, looking at the example input: 'o o| .| o| o| .| .| .| .| o o'
+- This string has spaces separating each token, so we can simply split by space
+- The tokens are: 'o', 'o|', '.|', 'o|', 'o|', '.|', '.|', '.|', '.|', 'o', 'o'
+
+So the approach is:
+1. Split the input string by spaces to get individual tokens
+2. For each token, map it to the corresponding integer value
+3. Return the list of these values
+
+Let's implement this

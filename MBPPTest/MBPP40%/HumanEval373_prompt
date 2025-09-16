@@ -1,0 +1,18 @@
+def min_sum_path(A): 
+	memo = [None] * len(A) 
+	n = len(A) - 1
+	for i in range(len(A[n])): 
+		memo[i] = A[n][i] 
+	for i in range(len(A) - 2, -1,-1): 
+		for j in range( len(A[i])): 
+			memo[j] = A[i][j] + min(memo[j], 
+									memo[j + 1]) 
+	return memo[0]
+The following is chain of thought:
+Here's the structured chain of thought for the min_sum_path function:
+
+1. **Problem Analysis**: The function finds the minimum sum path from top to bottom in a triangular matrix (like a pyramid) using dynamic programming with bottom-up approach
+
+2. **Initialization**: 
+   - Create a memoization array of the same length as the input list A
+   - Store the last row values directly into memo since they represen

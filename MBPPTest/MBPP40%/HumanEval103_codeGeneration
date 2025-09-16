@@ -1,0 +1,24 @@
+CodeGeneration:
+1 + 1/2 + 1/3 + ... + 1/n
+
+The function is already correctly implemented. Here's the complete function:
+
+```python
+def harmonic_sum(n):
+  """
+  Compute the n-th harmonic number using recursion.
+  
+  The harmonic number Hₙ is defined as:
+  Hₙ = 1 + 1/2 + 1/3 + ... + 1/n
+  
+  Args:
+      n (int): The number of terms in the harmonic series
+  
+  Returns:
+      float: The n-th harmonic number
+  """
+  if n < 2:
+    return 1
+  else:
+    return 1 / n + harmonic_sum(n - 1)
+```

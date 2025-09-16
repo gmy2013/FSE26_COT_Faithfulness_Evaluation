@@ -1,0 +1,30 @@
+CodeGeneration:
+a closing parenthesis `[^)]+`
+   - And finally a closing parenthesis `\)`
+4. The function returns the result of applying this substitution to the first item only, which is incorrect since it should process all items.
+
+Here's the corrected function that processes all items:
+
+```python
+import re
+def remove_parenthesis(items):
+    """Remove text within parentheses and the parentheses themselves from each string in the list.
+    
+    Args:
+        items (list): A list of strings that may contain parentheses.
+    
+    Returns:
+        list: A new list with the same strings but with parenthetical content removed.
+    
+    Examples:
+        >>> remove_parenthesis(["hello (world)", "foo (bar) baz"])
+        ['hello', 'foo  baz']
+        >>> remove_parenthesis(["test", "no parentheses here"])
+        ['test', 'no parentheses here']
+    """
+    result = []
+    for item in items:
+        cleaned = re.sub(r" ?\([^)]+\)", "", item)
+        result.append(cleaned)
+    return result
+```

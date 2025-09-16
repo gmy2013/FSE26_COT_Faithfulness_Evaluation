@@ -1,0 +1,35 @@
+
+def can_arrange(arr):
+    """Create a function which returns the largest index of an element which
+    is not greater than or equal to the element immediately preceding it. If
+    no such element exists then return -1. The given array will not contain
+    duplicate values.
+
+    Examples:
+    can_arrange([1,2,4,3,5]) = 3
+    can_arrange([1,2,3]) = -1
+    """
+
+The following is chain of thought:
+We are to find the largest index where arr[i] <= arr[i-1]. If no such index exists, return -1.
+ Since we want the largest index, we should iterate from the end of the array backwards to the beginning (starting from the last element to index 1).
+ For each index i (from len(arr)-1 down to 1), check if arr[i] <= arr[i-1]. The first such index we find (from the end) will be the largest index.
+ If we don't find any such index during the iteration, return -1.
+
+ Steps:
+ 1. Get the length of the array.
+ 2. Iterate from the last index (n-1) down to index 1 (inclusive).
+ 3. For each index i, check if arr[i] <= arr[i-1]. If true, return i.
+ 4. If no such index is found after the loop, return -1.
+
+ Note: The problem states no duplicate values, but the condition is "not greater than or equal" which is equivalent to strictly less.
+ However, note the condition: "not greater than or equal" means the element is less than the preceding one.
+ Actually, the condition is: we are looking for an element which is not (greater than or equal to) the preceding one.
+ That is equivalent to: the element is less than the preceding one.
+
+ But wait: the docstring says: "not greater than or equal to" -> meaning it is less than.
+
+ However, let's read the problem again: "returns the largest index of an element which is not greater than or equal to the element immediately preceding it"
+ So for an element at index i, we are checking if it is not (>= arr[i-1]), i.e., if arr[i] < arr[i-1].
+
+ But note: the example [1,2,4,3,5] returns 3. At index 3, we have 3 and preceding is 4

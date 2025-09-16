@@ -1,0 +1,27 @@
+
+
+def same_chars(s0: str, s1: str):
+    """
+    Check if two words have the same characters.
+    >>> same_chars('eabcdzzzz', 'dddzzzzzzzddeddabc')
+    True
+    >>> same_chars('abcd', 'dddddddabc')
+    True
+    >>> same_chars('dddddddabc', 'abcd')
+    True
+    >>> same_chars('eabcd', 'dddddddabc')
+    False
+    >>> same_chars('abcd', 'dddddddabce')
+    False
+    >>> same_chars('eabcdzzzz', 'dddzzzzzzzddddabc')
+    False
+    """
+
+The following is chain of thought:
+To solve this problem, we need to check if two strings have the same characters, meaning every character that appears in one string must appear in the other and vice versa, regardless of frequency. This can be achieved by comparing the sets of characters from both strings.
+
+Chain of thought:
+1. The function should return True if both strings have exactly the same unique characters.
+2. We can get the set of characters for each string, which removes duplicates and gives us the unique characters.
+3. Then, we simply check if these two sets are equal.
+4. This approach works because sets are unordered and only care about membership, not fr

@@ -1,0 +1,46 @@
+CodeGeneration:
+I'll complete the function based on the provided docstring and chain of thought. The function creates an array with odd numbers first, then even numbers, and returns the k-th element.
+
+```python
+def get_Number(n, k):
+    """
+    Returns the k-th element in a sequence where all odd numbers (in ascending order)
+    come first, followed by all even numbers (in ascending order).
+
+    Args:
+        n (int): The upper bound for numbers in the sequence
+        k (int): The position to return (1-indexed)
+
+    Returns:
+        int: The k-th element in the sequence
+
+    Example:
+        >>> get_Number(5, 1)
+        1
+        >>> get_Number(5, 3)
+        5
+        >>> get_Number(5, 4)
+        2
+        >>> get_Number(6, 6)
+        6
+    """
+    arr = [0] * n
+    i = 0
+    odd = 1
+    while (odd <= n):   
+        arr[i] = odd
+        i += 1
+        odd += 2
+    even = 2
+    while (even <= n):
+        arr[i] = even
+        i += 1
+        even += 2
+    return arr[k - 1]
+```
+
+The function works as described:
+1. Creates an array of length `n` initialized with zeros
+2. First fills the array with odd numbers from 1 to n (inclusive)
+3. Then fills the remaining positions with even numbers from 2 to n (inclusive)
+4. Returns the element at position `k-1` (converting from 1-indexed to 0-indexed)

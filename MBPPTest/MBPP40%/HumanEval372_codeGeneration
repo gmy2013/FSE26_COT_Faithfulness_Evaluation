@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the completed function:
+
+```python
+def left_rotate(s, d):
+    """
+    Rotates a string left by d positions.
+    
+    Args:
+        s (str): The input string to be rotated
+        d (int): Number of positions to rotate left
+    
+    Returns:
+        str: The rotated string
+    
+    Example:
+        >>> left_rotate("abcdef", 2)
+        'cdefab'
+        >>> left_rotate("hello", 3)
+        'lohel'
+    """
+    tmp = s[d : ] + s[0 : d]
+    return tmp
+```
+
+The function works by:
+1. Taking the substring from position `d` to the end of the string
+2. Concatenating it with the substring from the beginning to position `d`
+3. Returning the combined result
+
+This effectively rotates the string left by `d` positions, moving the first `d` characters to the end of the string.

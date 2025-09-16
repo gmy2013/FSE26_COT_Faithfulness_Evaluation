@@ -1,0 +1,31 @@
+CodeGeneration:
+I'll complete the function based on the docstring and your chain of thought. The function counts pairs of elements in an array that sum to a target value.
+
+```python
+def get_Pairs_Count(arr, n, sum):
+    """
+    Count the number of pairs in an array that sum to a target value.
+    
+    Args:
+        arr (list): List of numbers
+        n (int): Length of the list
+        sum (int): Target sum value
+    
+    Returns:
+        int: Number of pairs that sum to the target value
+    """
+    count = 0  
+    for i in range(0, n):
+        for j in range(i + 1, n):
+            if arr[i] + arr[j] == sum:
+                count += 1
+    return count
+```
+
+This implementation follows your chain of thought:
+- Initializes a counter to track valid pairs
+- Uses nested loops to check all unique pairs (i, j) where i < j
+- For each pair, checks if their sum equals the target value
+- Returns the total count of valid pairs
+
+The time complexity is O(n²) since it checks all possible pairs, and the space complexity is O(1) as it only uses a constant amount of extra space.

@@ -1,0 +1,23 @@
+CodeGeneration:
+greater than the current maximum, update the strongest extension and maximum strength.
+8. If there's a tie in strength, we should choose the first one encountered, so we only update when the current strength is strictly greater.
+9. Finally, return the result in the format "ClassName.StrongestExtensionName".
+
+Here's the implementation:
+
+```python
+def Strongest_Extension(class_name, extensions):
+    max_strength = float('-inf')
+    strongest_extension = None
+    
+    for ext in extensions:
+        cap = sum(1 for char in ext if char.isupper())
+        sm = sum(1 for char in ext if char.islower())
+        strength = cap - sm
+        
+        if strength > max_strength:
+            max_strength = strength
+            strongest_extension = ext
+    
+    return f"{class_name}.{strongest_extension}"
+```

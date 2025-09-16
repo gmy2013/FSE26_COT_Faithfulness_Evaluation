@@ -1,0 +1,18 @@
+
+
+def largest_divisor(n: int) -> int:
+    """ For a given number n, find the largest number that divides n evenly, smaller than n
+    >>> largest_divisor(15)
+    5
+    """
+
+The following is chain of thought:
+To solve this problem, we need to find the largest divisor of a given number `n` that is smaller than `n`. The largest divisor (other than `n` itself) will be found by checking divisors from `n-1` downwards until we find one that divides `n` evenly. Alternatively, we can optimize by starting from the integer just below `n` and moving backwards to 1, returning the first divisor we encounter.
+
+However, a more efficient approach is to consider that the largest divisor (other than `n`) is actually `n` divided by its smallest prime factor. But since we are required to return the largest divisor smaller than `n`, we can also iterate from `n//2` down to 1 (because any divisor larger than `n//2` would be `n` itself, which we exclude). Actually, the largest possible divisor (other than `n`) is at most `n//2` (if `n` is even) or even smaller for odd numbers.
+
+But for simplicity and correctness, we can iterate from `n-1` down to 1 and return the first number that divides `n` without a remainder. This is straightforward and works for all positive integers `n>1`.
+
+However, for efficiency (especially for large `n`), we can note:
+- If `n` is even, the largest divisor is `n//2`.
+- If `n` is odd, we need to find the largest factor. Actually, the largest divisor is `n` divided by the smallest prime factor. But w

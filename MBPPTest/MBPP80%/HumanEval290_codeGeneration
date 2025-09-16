@@ -1,0 +1,24 @@
+CodeGeneration:
+e while condition, so we assume non-negative inputs), and compare the lengths of these string representations.
+
+Here is the corrected function:
+
+```python
+def same_Length(A, B):
+    """
+    Check if two integers A and B have the same number of digits.
+
+    Args:
+        A (int): First integer.
+        B (int): Second integer.
+
+    Returns:
+        bool: True if A and B have the same number of digits, False otherwise.
+    """
+    # Convert to strings and get the length (ignoring negative signs if any)
+    len_A = len(str(abs(A)))
+    len_B = len(str(abs(B)))
+    return len_A == len_B
+```
+
+This implementation handles positive and negative integers correctly by using `abs()` to get the absolute value before converting to string, ensuring the digit count is accurate regardless of sign.

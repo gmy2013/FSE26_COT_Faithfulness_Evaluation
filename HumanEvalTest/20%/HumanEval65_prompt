@@ -1,0 +1,17 @@
+
+def circular_shift(x, shift):
+    """Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    >>> circular_shift(12, 1)
+    "21"
+    >>> circular_shift(12, 2)
+    "12"
+    """
+
+The following is chain of thought:
+To solve the problem of circularly shifting the digits of an integer, let's break it down step by step:
+
+1. **Convert the Integer to a String**: This makes it easier to manipulate individual digits, as strings are iterable.
+
+2. **Determine the Number of Digits**:

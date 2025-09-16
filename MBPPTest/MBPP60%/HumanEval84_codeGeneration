@@ -1,0 +1,51 @@
+CodeGeneration:
+false by a smaller prime).
+6. If `p` is prime, mark all multiples of `p` (starting from `p*2`) as non-prime.
+7. Increment `p` and repeat until `p*p > n`.
+8. After the sieve, iterate through numbers from 2 to `n`, summing those still marked as prime.
+9. Return the total sum.
+
+Here is the complete function with the docstring:
+
+```python
+def sum_Of_Primes(n):
+    """
+    Calculate the sum of all prime numbers up to and including n.
+
+    Args:
+        n (int): The upper limit (inclusive) for prime numbers to sum.
+
+    Returns:
+        int: The sum of all prime numbers from 2 to n.
+
+    Example:
+        >>> sum_Of_Primes(10)
+        17  # 2 + 3 + 5 + 7 = 17
+    """
+    if n < 2:
+        return 0
+    
+    prime = [True] * (n + 1)
+    p = 2
+    while p * p <= n:
+        if prime[p]:
+            # Mark all multiples of p as non-prime
+            i = p * 2
+            while i <= n:
+                prime[i] = False
+                i += p
+        p += 1
+    
+    total_sum = 0
+    for i in range(2, n + 1):
+        if prime[i]:
+            total_sum += i
+    
+    return total_sum
+```
+
+Key improvements made:
+1. Added proper docstring with parameter description, return type, and example
+2. Added edge case handling for n < 2 (returns 0 since there are no primes)
+3. Changed variable name from `sum` to `total_sum` to avoid shadowing the built-in `sum()` function
+4. Maintained the efficient Sieve of Eratosthenes algorithm for prime detection

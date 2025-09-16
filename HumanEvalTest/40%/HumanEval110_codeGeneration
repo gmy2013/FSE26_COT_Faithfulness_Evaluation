@@ -1,0 +1,44 @@
+CodeGeneration:
+trarily, but with the constraint that the sizes of the lists remain the same (since we are exchanging elements one for one). So we are essentially partitioning the combined multiset of all elements into two groups of sizes len(lst1) and len(lst2).
+
+ Therefore, the problem becomes: is there a way to partition the combined multiset into two groups of sizes len(lst1) and len(lst2) such that the group of size len(lst1) contains only even numbers?
+
+ This is possible if and only if the total number of even numbers in the combined multiset is at least len(lst1).
+
+ Why?
+ - We need to assign len(lst1) even numbers to lst1. So we must have at least that many even numbers in total.
+
+ However, consider: what if we have more than len(lst1) even numbers? Then we can assign len(lst1) of them to lst1 and the rest to lst2. So it works.
+
+ Therefore, the condition is: total_even >= len(lst1)
+
+ But wait: is that sufficient? Let's test with the examples.
+
+ Example 1:
+   lst1 = [1,2,3,4], lst2 = [1,2,3,4]
+   Combined: [1,2,3,4,1,2,3,4] -> even numbers: 2,4,2,4 -> total_even = 4
+   len(lst1)=4 -> 4>=4 -> YES -> matches.
+
+ Example 2:
+   lst1 = [1,2,3,4], lst2 = [1,5,3,4]
+   Combined: [1,2,3,4,1,5,3,4] -> even numbers: 2,4,4 -> total_even=3
+   len(lst1)=4 -> 3>=4? No -> NO -> matches.
+
+ So the solution is to count the total number of even numbers in both lists and check if it is at least the length of lst1.
+
+ Implementation:
+   total_even = count of even numbers in lst1 + count of even numbers in lst2
+   if total_even >= len(lst1):
+        return "YES"
+   else:
+        return "NO"
+
+ Let's code accordingly.
+```python
+def exchange(lst1, lst2):
+    total_even = sum(1 for num in lst1 if num % 2 == 0) + sum(1 for num in lst2 if num % 2 == 0)
+    if total_even >= len(lst1):
+        return "YES"
+    else:
+        return "NO"
+```

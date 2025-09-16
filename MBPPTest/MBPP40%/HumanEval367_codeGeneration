@@ -1,0 +1,12 @@
+CodeGeneration:
+mize the floor value before the next integer step down. However, since x is bounded by N and B-1, we set x = min(B-1, N) to avoid the periodic drop after multiples of B.
+
+5. Implementation: The provided code already implements this by setting x to min(B-1, N) and then computing (A*x)//B.
+
+Therefore, the function is correct as given. No changes are needed.
+
+```python
+def floor_Max(A,B,N):
+    x = min(B - 1,N)
+    return (A*x) // B
+```

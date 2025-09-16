@@ -1,0 +1,20 @@
+CodeGeneration:
+Looking at this function, I can see it's already complete and correctly implements the described functionality. The function:
+
+1. Takes a list `nums` and two indices `m` (start) and `n` (end)
+2. Initializes a sum variable to 0
+3. Iterates through the range from `m` to `n` (inclusive) using `range(m, n+1, 1)`
+4. Adds each element at the current index to the sum
+5. Returns the total sum
+
+The function is well-implemented and handles the inclusive range correctly. Here's the complete code as provided:
+
+```python
+def sum_Range_list(nums, m, n):
+    sum_range = 0
+    for i in range(m, n+1, 1):
+        sum_range += nums[i]
+    return sum_range
+```
+
+This function will successfully calculate the sum of elements from index `m` to index `n` (inclusive) in the given list `nums`.

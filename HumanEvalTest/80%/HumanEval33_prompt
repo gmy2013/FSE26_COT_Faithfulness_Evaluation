@@ -1,0 +1,42 @@
+
+
+def sort_third(l: list):
+    """This function takes a list l and returns a list l' such that
+    l' is identical to l in the indicies that are not divisible by three, while its values at the indicies that are divisible by three are equal
+    to the values of the corresponding indicies of l, but sorted.
+    >>> sort_third([1, 2, 3])
+    [1, 2, 3]
+    >>> sort_third([5, 6, 3, 4, 8, 9, 2])
+    [2, 6, 3, 4, 8, 9, 5]
+    """
+
+The following is chain of thought:
+To solve this problem, we need to create a new list that is identical to the input list `l` at indices not divisible by 3, but at indices divisible by 3, the values should be sorted in ascending order. However, note that the sorting should only consider the values at indices divisible by 3 themselves, not the entire list. The sorted values should replace the original ones at those positions in the same relative order.
+
+Chain of thought:
+1. Identify all indices in the list that are divisible by 3.
+2. Extract the values at these indices into a separate list.
+3. Sort this extracted list.
+4. Create a new result list. For each index in the original list:
+   - If the index is not divisible by 3, copy the value from the original list.
+   - If the index is divisible by 3, take the next value from the sorted list (in order) and place it at that index.
+5. Return the new list.
+
+Implementation:
+- We can iterate over the indices divisible by 3, extract those values, sort them.
+- Then, we traverse the original list and build the result: for each index, if it is divisible by 3, we assign the next sorted value; otherwise, we assign the original value.
+
+Code:
+```python
+def sort_third(l: list):
+    # Extract values at indices divisible by 3
+    divisible_by_three = [l[i] for i in range(len(l)) if i % 3 == 0]
+    # Sort these values
+    sorted_vals = sorted(divisible_by_three)
+    # Initialize result list
+    result = []
+    # Index to track the next sorted value to use
+    sorted_index = 0
+    for i, value in enumerate(l):
+        if i % 3 == 0:
+      

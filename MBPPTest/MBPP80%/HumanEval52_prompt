@@ -1,0 +1,12 @@
+from collections import defaultdict
+def grouping_dictionary(l):
+    d = defaultdict(list)
+    for k, v in l:
+        d[k].append(v)
+    return d
+The following is chain of thought:
+1. The function `grouping_dictionary` takes a list `l` as input, where each element is a tuple `(k, v)`.
+2. Initialize a `defaultdict` with `list` as the default factory to automatically create empty lists for new keys.
+3. Iterate over each tuple `(k, v)` in the input list `l`.
+4. For each tuple, append the value `v` to the list associated with key `k` in the dictionary `d`.
+5. Return the resulting dictio

@@ -1,0 +1,13 @@
+CodeGeneration:
+iterates over each element `i` in `arr` and adds it to `sum`.
+4. Finally, it returns the accumulated `sum`.
+
+Here is the complete function:
+
+```python
+def _sum(arr):
+    sum = 0
+    for i in arr:
+        sum = sum + i
+    return sum
+```

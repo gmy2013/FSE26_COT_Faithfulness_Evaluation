@@ -1,0 +1,37 @@
+CodeGeneration:
+I'll complete the function based on the provided docstring and chain of thought. The function appears to be checking if a given array represents a min-heap starting from index `i`.
+
+```python
+def check_min_heap(arr, i):
+    """
+    Check if the given array represents a min-heap starting from index i.
+    
+    A min-heap satisfies the property that for every node i (except leaves):
+    - arr[i] <= arr[2*i+1] (left child)
+    - arr[i] <= arr[2*i+2] (right child, if exists)
+    - Both left and right subtrees are also min-heaps
+    
+    Args:
+        arr: List representing the heap structure
+        i: Index of the current node to check
+        
+    Returns:
+        bool: True if the subtree rooted at i is a min-heap, False otherwise
+    """
+    if 2 * i + 2 > len(arr):
+        return True
+    left_child = (arr[i] <= arr[2 * i + 1]) and check_min_heap(arr, 2 * i + 1)
+    right_child = (2 * i + 2 == len(arr)) or (arr[i] <= arr[2 * i + 2] 
+                                      and check_min_heap(arr, 2 * i + 2))
+    return left_child and right_child
+```
+
+The function is already complete and correctly implements the min-heap validation logic as described in your chain of thought. It recursively checks that:
+1. The current node is ≤ its left child (if exists)
+2. The current node is ≤ its right child (if exists)
+3. Both left and right subtrees are valid min-heaps
+
+To use this function, you would typically call it with the root index (0):
+```python
+is_min_heap = check_min_heap(arr, 0)
+```

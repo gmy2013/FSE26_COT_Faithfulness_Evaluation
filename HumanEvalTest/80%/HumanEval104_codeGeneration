@@ -1,0 +1,9 @@
+CodeGeneration:
+or digit in s:
+            if digit in '02468':
+                has_even = True
+                break
+        if not has_even:
+            result.append(num)
+    return sorted(result)
+```

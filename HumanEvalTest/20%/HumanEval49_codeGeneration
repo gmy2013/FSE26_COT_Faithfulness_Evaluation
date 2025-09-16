@@ -1,0 +1,30 @@
+20%CoT
+CodeGeneration:
+1. **Optimize the Approach using Modular Exponentiation:**
+   - Directly calculating \(2^n\) can result in very large numbers that are difficult to handle directly due to memory and computation time constraints. Instead, we can use a method known as modular exponentiation to efficiently compute large powers modulo a number.
+   - Modular exponentiation can be accomplished using the method of exponentiation by squaring, which reduces the number of multiplicative operations and keeps intermediate results manageable by taking modulo \(p\) at each step.
+
+2. **Implement the Function:**
+   - We will use a loop to apply the method of exponentiation by squaring. This method recursively reduces the power by half and squares the base, taking advantage of properties like \(a^{2b} \equiv (a^b)^2 \mod p\) and \(a^{2b+1} \equiv a \cdot (a^b)^2 \mod p\).
+
+Here is the implementation:
+
+```python
+def modp(n: int, p: int) -> int:
+    """Return 2^n modulo p using an efficient method of modular exponentiation."""
+    result = 1
+    base = 2
+    
+    while n > 0:
+        # If n is odd, multiply the result by the current base
+        if n % 2 == 1:
+            result = (result * base) % p
+        # Square the base
+        base = (base * base) % p
+        # Shift n right by 1 (divide by 2)
+        n = n // 2
+    
+    return result
+```
+
+This implementation efficiently handles the calculation of \(2^n \mod p\) even for very large \(n\), using the method of modular exponentiation by squaring.

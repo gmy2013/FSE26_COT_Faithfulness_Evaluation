@@ -1,0 +1,41 @@
+
+
+def fibfib(n: int):
+    """The FibFib number sequence is a sequence similar to the Fibbonacci sequnece that's defined as follows:
+    fibfib(0) == 0
+    fibfib(1) == 0
+    fibfib(2) == 1
+    fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+    Please write a function to efficiently compute the n-th element of the fibfib number sequence.
+    >>> fibfib(1)
+    0
+    >>> fibfib(5)
+    4
+    >>> fibfib(8)
+    24
+    """
+
+The following is chain of thought:
+To solve this problem, we need to compute the n-th element of the FibFib sequence efficiently. The sequence is defined recursively with base cases and a recurrence relation. However, a naive recursive approach would be inefficient for larger n due to repeated calculations. Instead, we can use dynamic programming to store computed values and avoid redundant work.
+
+Chain of thought:
+1. The base cases are given: fibfib(0)=0, fibfib(1)=0, fibfib(2)=1.
+2. For n>=3, fibfib(n) = fibfib(n-1) + fibfib(n-2) + fibfib(n-3).
+3. We can use an iterative dynamic programming approach to build the solution from the base cases up to n.
+4. Initialize a list or variables to hold the last three values since each step depends on the previous three.
+5. If n is 0, 1, or 2, return the corresponding base value immediately.
+6. For n>=3, iterate from 3 to n, updating the current value as the sum of the previous three.
+7. We only need to keep track of the last three values to compute the next one, so we can use variables to save space (O(1) space).
+8. Start with the base values for n=0,1,2: let a=0 (n-2), b=0 (n-1), c=1 (n).
+9. For each i from 3 to n:
+   - The next value is a + b + c.
+   - Then update a, b, c to the next set of three: a becomes b, b becomes c, c becomes the computed next value.
+10. After processing, return c for n>=2. But note: for n=0,1 we return a and b respectively.
+
+Implementation plan:
+- Handle n=0 and n=1 by returning 0.
+- Handle n=2 by returning 1.
+- For n>=3, initialize:
+   a, b, c = 0, 0, 1   # for n=0,1,2
+- Loop from 3 to n (inclusive):
+   next_val = a + b 

@@ -1,0 +1,20 @@
+CodeGeneration:
+ll match:
+   - The string "a" (with zero 'b's)
+   - The string "ab" (with one 'b')
+   - The string "abb" (with two 'b's), etc.
+   But it will match the minimal number of 'b's possible.
+
+4. The function returns 'Found a match!' if the pattern is found anywhere in the text, otherwise 'Not matched!'.
+
+Here's the complete function:
+
+```python
+import re
+def text_match(text):
+        patterns = 'ab*?'
+        if re.search(patterns,  text):
+                return ('Found a match!')
+        else:
+                return ('Not matched!')
+```

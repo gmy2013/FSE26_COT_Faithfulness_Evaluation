@@ -1,0 +1,8 @@
+import re
+def num_position(text):
+ for m in re.finditer("\d+", text):
+    return m.start()
+The following is chain of thought:
+1. The function `num_position` is intended to find the starting position of the first number in the input string `text`.
+2. It uses `re.finditer` to iterate over all matches of the regex pattern `\d+` (which matches one or more digits).
+3. For the first match found (i.e., the first number), it returns the starting index (`m

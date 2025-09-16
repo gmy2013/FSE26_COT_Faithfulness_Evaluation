@@ -1,0 +1,23 @@
+CodeGeneration:
+urns the modified list of lists.
+
+However, note that the function name `reverse_list_lists` might be misleading because it doesn't reverse the order of the lists themselves, but rather sorts each sublist in descending order. If the intention was to reverse each sublist (without sorting), the implementation would be different.
+
+Here's the complete function:
+
+```python
+def reverse_list_lists(lists):
+    for l in lists:
+        l.sort(reverse = True)
+    return lists
+```
+
+Alternative implementation if the goal was to reverse each sublist (not sort in descending order):
+```python
+def reverse_list_lists(lists):
+    for l in lists:
+        l.reverse()
+    return lists
+```
+
+The original implementation sorts each sublist in descending order, while the alternative simply reverses the order of elements in each sublist.

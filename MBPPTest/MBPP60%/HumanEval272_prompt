@@ -1,0 +1,17 @@
+def fibonacci(n):
+  if n == 1 or n == 2:
+    return 1
+  else:
+    return (fibonacci(n - 1) + (fibonacci(n - 2)))
+The following is chain of thought:
+Here's the structured chain of thought for the fibonacci function:
+
+1. **Function Purpose**: The function calculates the nth Fibonacci number using recursion
+2. **Base Case Handling**: 
+   - If n equals 1, return 1 (first Fibonacci number)
+   - If n equals 2, return 1 (second Fibonacci number)
+3. **Recursive Case**: 
+   - For n > 2, recursively call fibonacci(n-1) and fibonacci(n-2)
+   - Return the sum of these two recursive calls
+4. **Mathematical Definition**: Follows the Fibonacci sequence definition where each number is the sum of the two preceding ones
+5. **Edge Cases**: Handles 

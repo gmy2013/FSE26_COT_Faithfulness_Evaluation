@@ -1,0 +1,21 @@
+def count_Char(str,x): 
+    count = 0
+    for i in range(len(str)):  
+        if (str[i] == x) : 
+            count += 1
+    n = 10
+    repititions = n // len(str)  
+    count = count * repititions  
+    l = n % len(str)  
+    for i in range(l): 
+        if (str[i] == x):  
+            count += 1
+    return count  
+The following is chain of thought:
+Here's the structured chain of thought for the count_Char function:
+
+1. **Function Purpose**: Count occurrences of character 'x' in the first 'n' characters of a repeated string
+2. **Initial Count**: Count occurrences of 'x' in the original string
+3. **Repetition Calculation**: Determine how many full repetitions of the string fit into 'n' characters
+4. **Full Repetitions Count**: Multiply the initial count by the number of full repetitions
+5. **Remaining Chara

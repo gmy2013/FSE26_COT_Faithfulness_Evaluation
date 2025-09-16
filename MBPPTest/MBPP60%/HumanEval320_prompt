@@ -1,0 +1,9 @@
+def chunk_tuples(test_tup, N):
+  res = [test_tup[i : i + N] for i in range(0, len(test_tup), N)]
+  return (res) 
+The following is chain of thought:
+1. The function `chunk_tuples` takes two parameters: `test_tup` (a tuple) and `N` (chunk size).
+2. We need to split the input tuple into chunks of size `N`.
+3. Use list comprehension to iterate over the tuple indices with step size `N`.
+4. For each starting index `i`, slice the tuple from `i` to `i + N`.
+5. Collect all chunks in a list a

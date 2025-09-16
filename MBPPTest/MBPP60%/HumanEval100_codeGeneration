@@ -1,0 +1,46 @@
+CodeGeneration:
+Here's the complete function with detailed implementation:
+
+```python
+def equilibrium_index(arr):
+    """
+    Finds the equilibrium index in an array.
+    
+    An equilibrium index is an index i such that the sum of elements
+    to the left of i equals the sum of elements to the right of i.
+    
+    Args:
+        arr: List of integers
+        
+    Returns:
+        int: The first equilibrium index found, or -1 if none exists
+    """
+    total_sum = sum(arr)
+    left_sum = 0
+    
+    for i, num in enumerate(arr):
+        total_sum -= num  # total_sum now represents right sum
+        if left_sum == total_sum:
+            return i
+        left_sum += num
+    
+    return -1
+```
+
+**How it works:**
+1. **Total sum calculation**: `sum(arr)` gives the sum of all elements
+2. **Iteration**: For each element at index i:
+   - Subtract current element from total_sum (total_sum now represents sum of elements to the right)
+   - Check if left_sum equals the updated total_sum
+   - If equal, return current index i
+   - Otherwise, add current element to left_sum for next iteration
+3. **Return -1**: If no equilibrium index is found after processing all elements
+
+**Time Complexity**: O(n) - single pass through the array
+**Space Complexity**: O(1) - constant extra space used
+
+**Example usage:**
+```python
+print(equilibrium_index([-7, 1, 5, 2, -4, 3, 0]))  # Output: 3
+print(equilibrium_index([1, 2, 3]))               # Output: -1
+```

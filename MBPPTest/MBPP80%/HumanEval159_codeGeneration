@@ -1,0 +1,13 @@
+CodeGeneration:
+er `n` is not used in the function, but it's included in the signature, likely for consistency with other functions or as a requirement from the problem context.
+
+Here is the complete function:
+
+```python
+def unique_Element(arr,n):
+    s = set(arr)
+    if (len(s) == 1):
+        return ('YES')
+    else:
+        return ('NO')
+```

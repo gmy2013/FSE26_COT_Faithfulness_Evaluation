@@ -1,0 +1,35 @@
+CodeGeneration:
+```python
+import math
+
+def get_First_Set_Bit_Pos(n):
+    """
+    Returns the position of the first set bit (1) from the right side in the binary representation of n.
+    
+    Args:
+        n (int): The integer to find the first set bit position for.
+    
+    Returns:
+        int: The position of the first set bit (1-indexed from right), or 0 if no set bits exist.
+    
+    Examples:
+        >>> get_First_Set_Bit_Pos(12)  # binary: 1100
+        3
+        >>> get_First_Set_Bit_Pos(18)  # binary: 10010
+        2
+        >>> get_First_Set_Bit_Pos(0)
+        0
+    """
+    if n == 0:
+        return 0
+    return int(math.log2(n & -n)) + 1
+```
+
+The function now properly handles the case where `n = 0` by returning 0, and includes type conversion to ensure the result is an integer. The key improvements:
+
+1. **Added input validation**: Checks if `n = 0` and returns 0 immediately
+2. **Added type conversion**: Uses `int()` to convert the float result from `math.log2()` to an integer
+3. **Added comprehensive docstring**: Explains the function's purpose, parameters, return value, and provides examples
+4. **Maintains the 1-indexed position**: The `+1` ensures the position is counted from 1 (rightmost bit = position 1)
+
+The function correctly isolates the lowest set bit using `n & -n`, calculates its position using `math.log2()`, and returns the 1-indexed position.

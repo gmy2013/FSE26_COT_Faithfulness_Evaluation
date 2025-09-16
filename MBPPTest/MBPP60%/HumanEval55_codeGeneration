@@ -1,0 +1,33 @@
+CodeGeneration:
+Looking at the function and the chain of thought, this implementation correctly solves the problem of finding the minimum sum of absolute differences between elements of two arrays when optimally paired.
+
+The function is already complete and follows the optimal approach:
+1. Sorting both arrays ensures we pair the smallest elements with each other
+2. This minimizes the sum of absolute differences
+3. The time complexity is O(n log n) due to sorting
+4. The space complexity is O(1) (excluding input storage)
+
+Here's the complete function:
+
+```python
+def find_Min_Sum(a, b, n):
+    """
+    Find the minimum sum of absolute differences between elements of two arrays.
+    
+    Args:
+        a: First list of integers
+        b: Second list of integers  
+        n: Number of elements to consider from each list
+    
+    Returns:
+        Minimum sum of absolute differences when optimally pairing elements
+    """
+    a.sort() 
+    b.sort() 
+    sum = 0  
+    for i in range(n): 
+        sum = sum + abs(a[i] - b[i]) 
+    return sum
+```
+
+The function is correct and follows the optimal mathematical approach for this problem.

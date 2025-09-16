@@ -1,0 +1,32 @@
+CodeGeneration:
+The function appears to be complete and working correctly. Here's the full implementation with proper formatting:
+
+```python
+def swap_List(newList):
+    """Swap the first and last elements of a list.
+    
+    Args:
+        newList: A list of elements
+        
+    Returns:
+        The same list with first and last elements swapped
+        
+    Example:
+        >>> swap_List([1, 2, 3, 4])
+        [4, 2, 3, 1]
+    """
+    size = len(newList) 
+    temp = newList[0] 
+    newList[0] = newList[size - 1] 
+    newList[size - 1] = temp   
+    return newList
+```
+
+The function works by:
+1. Getting the length of the list
+2. Storing the first element in a temporary variable
+3. Replacing the first element with the last element
+4. Replacing the last element with the temporary value (original first element)
+5. Returning the modified list
+
+This effectively swaps the first and last elements of the input list in place.

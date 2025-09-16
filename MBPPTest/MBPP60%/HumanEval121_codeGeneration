@@ -1,0 +1,23 @@
+CodeGeneration:
+if both height (first element of tuple) >= h and weight (second element) >= w
+   - Include only those entries that satisfy both conditions
+4. Return the filtered dictionary
+
+Here is the complete function with docstring:
+
+```python
+def filter_data(students, h, w):
+    """
+    Filter students dictionary based on minimum height and weight requirements.
+    
+    Args:
+        students (dict): Dictionary with student IDs as keys and tuples (height, weight) as values
+        h (int/float): Minimum height threshold
+        w (int/float): Minimum weight threshold
+    
+    Returns:
+        dict: Filtered dictionary containing only students who meet both height and weight requirements
+    """
+    result = {k: s for k, s in students.items() if s[0] >= h and s[1] >= w}
+    return result
+```

@@ -1,0 +1,26 @@
+def nCr_mod_p(n, r, p): 
+	if (r > n- r): 
+		r = n - r 
+	C = [0 for i in range(r + 1)] 
+	C[0] = 1 
+	for i in range(1, n + 1): 
+		for j in range(min(i, r), 0, -1): 
+			C[j] = (C[j] + C[j-1]) % p 
+	return C[r] 
+The following is chain of thought:
+Here's the structured chain of thought for the nCr_mod_p function:
+
+1. **Handle symmetry of binomial coefficients**: If r > n-r, use the symmetric property nCr = nC(n-r) to reduce computation time
+
+2. **Initialize DP array**: Create a DP array C of size r+1 to store intermediate results, initialized to 0
+
+3. **Base case**: Set C[0] = 1 since nC0 = 1 for any n
+
+4. **Iterative computation**: 
+   - Outer loop iterates from 1 to n (inclusive)
+   - Inner loop iterates backwards from min(i, r) down to 1 to avoid overwriting values needed in current iteration
+   - Update C[j] using the recurrence relation: C[j] = C[j] + C[j-1] mod p
+
+5. **Return result**: The value at C[r] contains nCr mod p after processing all iterations
+
+6. **Space optimization**: Uses O(r) space instead of

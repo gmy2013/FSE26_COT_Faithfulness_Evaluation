@@ -1,0 +1,24 @@
+CodeGeneration:
+The provided code is already complete and correct. Here's the full implementation:
+
+```python
+def last(n):
+   return n[-1]
+
+def sort_list_last(tuples):
+  return sorted(tuples, key=last)
+```
+
+This code will:
+1. Define a helper function `last()` that returns the last element of any sequence
+2. Define the main function `sort_list_last()` that sorts a list of tuples based on their last elements
+3. Use Python's built-in `sorted()` function with the `last` function as the key parameter
+
+Example usage:
+```python
+tuples_list = [(1, 3), (3, 2), (2, 1)]
+sorted_tuples = sort_list_last(tuples_list)
+print(sorted_tuples)  # Output: [(2, 1), (3, 2), (1, 3)]
+```
+
+The code is working as intended and doesn't need any modifications.

@@ -1,0 +1,31 @@
+from typing import List, Tuple
+
+
+def find_closest_elements(numbers: List[float]) -> Tuple[float, float]:
+    """ From a supplied list of numbers (of length at least two) select and return two that are the closest to each
+    other and return them in order (smaller number, larger number).
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+    (2.0, 2.2)
+    >>> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+    (2.0, 2.0)
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to find two numbers from the list that have the smallest difference.
+2. If there are multiple pairs with the same smallest difference, we need to return the first such pair we encounter (the docstring examples don't specify behavior for ties, but we'll follow the natural approach).
+3. We must return the pair as (smaller, larger), unless they are equal.
+
+Approach:
+- Sort the list to easily compare adjacent elements (closest numbers will be adjacent in sorted order).
+- Iterate through the sorted list and compute differences between consecutive elements.
+- Track the pair with the minimum difference.
+- Return the pair with the smaller number first.
+
+However, note: the list might have duplicates (like the second example [1.0, 2.0, 3.0, 4.0, 5.0, 2.0] which has two 2.0s). Sorting will group duplicates together, so the difference will be 0, which is the smallest possible.
+
+Implementation:
+1. Sort the input list.
+2. Initialize variables to track the minimum difference and the corresponding pair.
+3. Iterate from index 0 to len(numbers)-2, comparing number

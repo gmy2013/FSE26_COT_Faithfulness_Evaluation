@@ -1,0 +1,29 @@
+def subset(ar, n): 
+    res = 0
+    ar.sort() 
+    for i in range(0, n) : 
+        count = 1
+        for i in range(n - 1): 
+            if ar[i] == ar[i + 1]: 
+                count+=1
+            else: 
+                break 
+        res = max(res, count)  
+    return res 
+The following is chain of thought:
+Let's analyze the function step by step:
+
+1. The function takes an array `ar` and its length `n`.
+2. It initializes `res = 0` (to store the maximum frequency).
+3. It sorts the array (so identical elements become consecutive).
+4. There's an outer loop `for i in range(0, n)` - but note: the inner loop uses the same variable `i`, which will cause issues.
+5. The inner loop tries to count consecutive duplicates, but it's inside the outer loop which is redundant and incorrect.
+6. The logic intends to find the maximum frequency of any element in the array.
+
+The current code has problems:
+- Variable name conflict (both loops use `i`).
+- Inefficient nested loops (O(n²) when it can be O(n)).
+- The inner loop doesn't use the outer loop's `i` value correctly.
+
+Correct approach:
+- After sorting, traverse once and count consecutive duplicat

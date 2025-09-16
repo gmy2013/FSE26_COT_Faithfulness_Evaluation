@@ -1,0 +1,57 @@
+
+
+def change_base(x: int, base: int):
+    """Change numerical base of input number x to base.
+    return string representation after the conversion.
+    base numbers are less than 10.
+    >>> change_base(8, 3)
+    '22'
+    >>> change_base(8, 2)
+    '1000'
+    >>> change_base(7, 2)
+    '111'
+    """
+
+The following is chain of thought:
+We are converting a number x to a given base (which is less than 10).
+ Since base is less than 10, we can use digits 0 to base-1.
+ We need to return a string representation.
+
+ Steps:
+ 1. Handle the case when x is 0: return "0".
+ 2. We will build the digits from least significant to most.
+ 3. While x is greater than 0:
+    - Get the remainder when dividing by base.
+    - Prepend the remainder (as a string) to the result.
+    - Update x to be x // base.
+ 4. Alternatively, we can build the string in reverse and then reverse it at the end.
+    But since we are prepending, we can also build the list of digits and then combine.
+
+ However, note: prepending to a string repeatedly is inefficient. Instead, we can collect digits in a list and then reverse and join.
+
+ Implementation:
+   digits = []
+   while x > 0:
+        digits.append(str(x % base))
+        x //= base
+   if not digits:  # if x was 0
+        return "0"
+   return ''.join(digits[::-1])
+
+ But note: the example change_base(8,2) returns '1000'. So we are building from the most significant to least.
+
+ Alternatively, we can build the string by prepending (but that is O(n^2) so we avoid.
+
+ Let's code accordingly.
+ However, note: the function should also work for negative numbers? The docstring doesn't specify. But the examples are positive.
+ Since the problem says "input number x", and examples are positive, we assume non-negative.
+
+ But the type hint is int, which can be negative. However, the examples are positive.
+ We should handle negative numbers? The docstring doesn't say. But the examples are positive.
+
+ Since the problem says "base numbers are less than 10", and doesn't specify negative, we assume x is non-negative.
+
+ So we proceed for non-negative x.
+
+ Code:
+

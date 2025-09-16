@@ -1,0 +1,11 @@
+CodeGeneration:
+he results for all items and return the list. Here's the corrected function:
+
+```python
+import re
+def remove_parenthesis(items):
+    result = []
+    for item in items:
+        result.append(re.sub(r" ?\([^)]+\)", "", item))
+    return result
+```

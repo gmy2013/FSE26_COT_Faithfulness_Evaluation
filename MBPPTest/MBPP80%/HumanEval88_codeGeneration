@@ -1,0 +1,40 @@
+CodeGeneration:
+Looking at this function, I can see it's implementing a greedy approach to find the minimum jumps to reach the end of an array, but there's an issue with the break statement that makes it non-optimal. Let me fix this:
+
+```python
+def min_jumps(arr, n):
+    """
+    Find the minimum number of jumps to reach the end of the array.
+    
+    Args:
+        arr: List of integers where each element represents the maximum jump length from that position
+        n: Length of the array
+    
+    Returns:
+        Minimum number of jumps to reach arr[n-1] from arr[0], or float('inf') if unreachable
+    """
+    jumps = [0 for i in range(n)]
+    
+    if (n == 0) or (arr[0] == 0):
+        return float('inf')
+    
+    jumps[0] = 0
+    
+    for i in range(1, n):
+        jumps[i] = float('inf')
+        for j in range(i):
+            if (i <= j + arr[j]) and (jumps[j] != float('inf')):
+                jumps[i] = min(jumps[i], jumps[j] + 1)
+                # Removed the break statement to ensure we check all possible paths
+                # The break was causing the algorithm to be greedy but potentially non-optimal
+    
+    return jumps[n-1]
+```
+
+The key change I made was removing the `break` statement. The original implementation was breaking out of the inner loop after finding the first valid jump, which could lead to non-optimal solutions. By removing the break, we ensure that we check all possible paths from previous positions to find the truly minimum number of jumps.
+
+For example, with array `[2, 3, 1, 1, 4]`:
+- Without break: correctly finds 2 jumps (0→1→4)
+- With break: might find a suboptimal path if it breaks early
+
+This implementation now correctly solves the minimum jumps problem using dynamic programming with O(n²) time complexity.

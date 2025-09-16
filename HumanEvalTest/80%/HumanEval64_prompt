@@ -1,0 +1,43 @@
+
+FIX = """
+Add more test cases.
+"""
+
+def vowels_count(s):
+    """Write a function vowels_count which takes a string representing
+    a word as input and returns the number of vowels in the string.
+    Vowels in this case are 'a', 'e', 'i', 'o', 'u'. Here, 'y' is also a
+    vowel, but only when it is at the end of the given word.
+
+    Example:
+    >>> vowels_count("abcde")
+    2
+    >>> vowels_count("ACEDY")
+    3
+    """
+
+The following is chain of thought:
+We are counting vowels in a string, including 'y' only when it's at the end.
+ Steps:
+ 1. Convert the entire string to lower case to handle both uppercase and lowercase.
+ 2. Define the set of vowels: 'a', 'e', 'i', 'o', 'u'.
+ 3. Count the number of vowels in the string (excluding 'y' for now).
+ 4. Check if the last character is 'y'. If so, add 1 to the count.
+ 5. Return the total count.
+
+ However, note: the example "ACEDY" has 3 vowels. Let's break it down:
+   Convert to lower: "acedy"
+   Vowels: 'a','e','y' (but note: 'y' is at the end, so we count it).
+   So we count 'a', 'e', and then the trailing 'y'.
+
+ Implementation:
+   We can iterate through each character and check if it is a vowel (for non-y) OR if it is 'y' and at the end.
+   Alternatively, we can count all non-y vowels first, then check the last character.
+
+ Let's code accordingly.
+"""
+
+def vowels_count(s):
+    s_lower = s.lower()
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    count = 0

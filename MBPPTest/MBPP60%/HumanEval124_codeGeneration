@@ -1,0 +1,20 @@
+CodeGeneration:
+uantifier `?` ensures that the shortest possible substring between quotes is captured, which is important for cases with multiple quoted substrings in the same text.
+
+Here is the complete function:
+
+```python
+import re
+
+def extract_quotation(text1):
+    """Extract all substrings from text1 that are enclosed in double quotes.
+    
+    Args:
+        text1 (str): The input string from which to extract quoted substrings.
+        
+    Returns:
+        list: A list of all substrings found within double quotes in text1.
+        Returns an empty list if no quoted substrings are found.
+    """
+    return re.findall(r'"(.*?)"', text1)
+```

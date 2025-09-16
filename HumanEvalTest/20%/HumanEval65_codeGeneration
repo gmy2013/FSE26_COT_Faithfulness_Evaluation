@@ -1,0 +1,32 @@
+20%CoT
+CodeGeneration:
+```python
+def circular_shift(x, shift):
+    """Circular shift the digits of the integer x, shift the digits right by shift
+    and return the result as a string.
+    If shift > number of digits, return digits reversed.
+    >>> circular_shift(12, 1)
+    "21"
+    >>> circular_shift(12, 2)
+    "12"
+    """
+    # Convert the integer to a string to facilitate manipulation
+    x_str = str(x)
+    
+    # Determine the number of digits
+    num_digits = len(x_str)
+    
+    # If the shift is greater than or equal to the number of digits, return the reversed string
+    if shift >= num_digits:
+        return x_str[::-1]
+    
+    # Calculate the effective shift amount using modulo to handle circular shifts
+    effective_shift = shift % num_digits
+    
+    # Perform the circular shift by slicing the string
+    shifted_str = x_str[-effective_shift:] + x_str[:-effective_shift]
+    
+    return shifted_str
+```
+
+This function performs a circular shift by converting the integer into a string, computing the effective shift using modulo, and then slicing the string to achieve the desired shift. If the shift is greater than the number of digits, it reverses the string.

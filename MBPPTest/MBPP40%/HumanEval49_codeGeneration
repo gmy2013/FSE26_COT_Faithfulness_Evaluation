@@ -1,0 +1,28 @@
+CodeGeneration:
+I notice there's a small issue in the loop condition. The current code uses `range(0, n - 1)` which will only iterate up to index `n-2`, missing the last element. Here's the corrected version:
+
+```python
+def are_Equal(arr1, arr2, n, m):
+    """
+    Check if two arrays are equal (contain the same elements in any order).
+    
+    Args:
+        arr1: First array
+        arr2: Second array
+        n: Length of first array
+        m: Length of second array
+    
+    Returns:
+        bool: True if arrays contain the same elements, False otherwise
+    """
+    if (n != m):
+        return False
+    arr1.sort()
+    arr2.sort()
+    for i in range(0, n):  # Changed from n-1 to n to include all elements
+        if (arr1[i] != arr2[i]):
+            return False
+    return True
+```
+
+The key fix is changing `range(0, n - 1)` to `range(0, n)` to ensure we compare all elements of both arrays. The original version would miss comparing the last element of each sorted array.

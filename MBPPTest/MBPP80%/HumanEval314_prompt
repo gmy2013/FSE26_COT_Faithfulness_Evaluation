@@ -1,0 +1,15 @@
+def rearrange_numbs(array_nums):
+  result = sorted(array_nums, key = lambda i: 0 if i == 0 else -1 / i)
+  return result 
+The following is chain of thought:
+1. The function `rearrange_numbs` takes an array `array_nums` as input.
+2. The goal is to sort the array with a specific key: 
+   - For any element that is 0, assign a key value of 0.
+   - For any non-zero element, assign a key value of `-1 / i` (where `i` is the element).
+3. The `sorted` function will sort the array based on these computed keys in ascending order.
+4. Since the key for non-zero elements is negative and inversely proportional to the element, this will:
+   - Place all zeros at the beginning (because their key is 0, which is greater than negative numbers).
+   - For non-zero numbers: larger positive numbers yield less negative keys (closer to zero), so they come after zeros but before smaller positive numbers.
+   - Negative numbers: since `-1 / i` becomes positive for negative `i` (because dividing by negative flips sign), and larger magnitude negatives yield smaller positive keys, so they are ordered from least negative to most negative.
+5. However, note: for negative numbers, `-1/i` is positive and decreases as the negative number increases in magnitude (e.g., for -2: key is 0.5, for -1: key is 1.0). So negatives are sorted in ascending order (from least negative to most negative).
+6. Positive non-zero num

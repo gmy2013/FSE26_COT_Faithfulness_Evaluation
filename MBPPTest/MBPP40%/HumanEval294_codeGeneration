@@ -1,0 +1,52 @@
+CodeGeneration:
+array to store the maximum sum achievable up to each index.
+5. The recurrence relation considers three possibilities at each index i:
+   - Not including the current element: look_up[i-1]
+   - Including the current element and the best solution from i-2: look_up[i-2] + A[i]
+   - Just the current element (in case previous sums are negative): A[i]
+6. The maximum of these three values is stored in look_up[i].
+7. The final result is the last element of the look_up array.
+
+Here is the complete function with the docstring:
+
+```python
+def max_sum_subseq(A):
+    """
+    Compute the maximum sum of a subsequence where no two elements are adjacent.
+
+    Args:
+        A (list): List of integers
+
+    Returns:
+        int: Maximum sum of non-adjacent subsequence
+
+    Examples:
+        >>> max_sum_subseq([1, 2, 3, 4])
+        6
+        >>> max_sum_subseq([5, 1, 1, 5])
+        10
+        >>> max_sum_subseq([-1, -2, -3])
+        -1
+    """
+    n = len(A)
+    if n == 0:
+        return 0
+    if n == 1:
+        return A[0]
+    
+    look_up = [None] * n
+    look_up[0] = A[0]
+    look_up[1] = max(A[0], A[1])
+    
+    for i in range(2, n):
+        look_up[i] = max(look_up[i - 1], look_up[i - 2] + A[i])
+        look_up[i] = max(look_up[i], A[i])
+    
+    return look_up[n - 1]
+```
+
+I've added:
+1. A complete docstring with parameter descriptions, return type, and examples
+2. A check for empty array (returns 0)
+3. The dynamic programming logic as described in the chain of thought
+4. The three-way comparison at each step to handle all cases including negative numbers

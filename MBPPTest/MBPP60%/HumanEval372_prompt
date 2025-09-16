@@ -1,0 +1,12 @@
+def left_rotate(s,d):
+    tmp = s[d : ] + s[0 : d]
+    return tmp  
+The following is chain of thought:
+1. The function `left_rotate(s, d)` takes a string `s` and an integer `d`.
+2. The goal is to rotate the string left by `d` positions.
+3. To achieve this, we can split the string into two parts:
+   - The substring starting from index `d` to the end.
+   - The substring from the start to index `d`.
+4. Concatenate these two substrings in reverse order (the part from `d` to end first, then the part from start to `d`).
+5. The current implementation correctly does this:
+   - `s[d:]` gets all character

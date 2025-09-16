@@ -1,0 +1,10 @@
+import re
+def remove_all_spaces(text):
+ return (re.sub(r'\s+', '',text))
+The following is chain of thought:
+Here is the structured chain of thought for implementing the remove_all_spaces function:
+
+1. **Understand the requirement**: The function needs to remove all whitespace characters from the input text
+2. **Choose the right tool**: Regular expressions are well-suited for pattern-based text manipulation
+3. **Select the appropriate regex pattern**: 
+   - `\s` match

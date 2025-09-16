@@ -1,0 +1,21 @@
+import math 
+def first_Digit(n) : 
+    fact = 1
+    for i in range(2,n + 1) : 
+        fact = fact * i 
+        while (fact % 10 == 0) :  
+            fact = int(fact / 10) 
+    while (fact >= 10) : 
+        fact = int(fact / 10) 
+    return math.floor(fact) 
+The following is chain of thought:
+Let's break down the function step by step:
+
+1. **Initialization**: Start with `fact = 1` (base for factorial calculation).
+2. **Compute factorial with trailing zero removal**:
+   - For each integer `i` from 2 to `n` (inclusive):
+     - Multiply `fact` by `i`.
+     - While the last digit of `fact` is zero (i.e., `fact % 10 == 0`), remove that zero by integer division by 10.
+   - This prevents the number from becoming too large and removes trailing zeros that don't affect the first non-zero digit.
+3. **Extract the first digit**:
+   - After computing the factorial (with trailing zeros rem

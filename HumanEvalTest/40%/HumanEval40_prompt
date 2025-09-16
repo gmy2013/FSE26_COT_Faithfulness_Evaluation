@@ -1,0 +1,27 @@
+
+
+def triples_sum_to_zero(l: list):
+    """
+    triples_sum_to_zero takes a list of integers as an input.
+    it returns True if there are three distinct elements in the list that
+    sum to zero, and False otherwise.
+
+    >>> triples_sum_to_zero([1, 3, 5, 0])
+    False
+    >>> triples_sum_to_zero([1, 3, -2, 1])
+    True
+    >>> triples_sum_to_zero([1, 2, 3, 7])
+    False
+    >>> triples_sum_to_zero([2, 4, -5, 3, 9, 7])
+    True
+    >>> triples_sum_to_zero([1])
+    False
+    """
+
+The following is chain of thought:
+To solve this problem, we need to determine if there are three distinct elements in a list of integers that sum to zero. The solution should efficiently check all possible triplets without duplicates.
+
+Approach:
+1. Sort the list to facilitate the two-pointer technique for the inner loop.
+2. Iterate through each element as the first element of the triplet.
+3. For each first element, use two pointers (left and right) to find two other elements such that the sum of the triplet 

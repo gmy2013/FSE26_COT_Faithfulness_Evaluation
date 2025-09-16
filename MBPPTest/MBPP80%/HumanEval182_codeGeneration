@@ -1,0 +1,62 @@
+CodeGeneration:
+- Otherwise: s = (df/mx)*100 (as percentage)
+
+6. **Value Calculation**: v = mx*100 (as percentage)
+
+7. **Return Values**: Return (h, s, v) tuple
+
+Now here's the complete function with the docstring:
+
+```python
+def rgb_to_hsv(r, g, b):
+    """
+    Convert RGB color values to HSV color space.
+    
+    Parameters:
+    r (int): Red component (0-255)
+    g (int): Green component (0-255)
+    b (int): Blue component (0-255)
+    
+    Returns:
+    tuple: (h, s, v) where:
+        h (float): Hue in degrees (0-359)
+        s (float): Saturation percentage (0-100)
+        v (float): Value/brightness percentage (0-100)
+    
+    Example:
+    >>> rgb_to_hsv(255, 0, 0)
+    (0.0, 100.0, 100.0)
+    >>> rgb_to_hsv(0, 255, 0)
+    (120.0, 100.0, 100.0)
+    >>> rgb_to_hsv(0, 0, 255)
+    (240.0, 100.0, 100.0)
+    """
+    # Normalize RGB values to 0-1 range
+    r, g, b = r/255.0, g/255.0, b/255.0
+    
+    # Find maximum and minimum values
+    mx = max(r, g, b)
+    mn = min(r, g, b)
+    df = mx - mn
+    
+    # Calculate Hue
+    if mx == mn:
+        h = 0
+    elif mx == r:
+        h = (60 * ((g - b) / df) + 360) % 360
+    elif mx == g:
+        h = (60 * ((b - r) / df) + 120) % 360
+    elif mx == b:
+        h = (60 * ((r - g) / df) + 240) % 360
+    
+    # Calculate Saturation
+    if mx == 0:
+        s = 0
+    else:
+        s = (df / mx) * 100
+    
+    # Calculate Value
+    v = mx * 100
+    
+    return h, s, v
+```

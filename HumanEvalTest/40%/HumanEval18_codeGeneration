@@ -1,0 +1,24 @@
+CodeGeneration:
+, check if the substring starting at that index matches the given substring.
+4. If it matches, increment the counter.
+5. Return the counter.
+
+Let's implement this accordingly.
+
+```python
+def how_many_times(string: str, substring: str) -> int:
+    """ Find how many times a given substring can be found in the original string. Count overlaping cases.
+    >>> how_many_times('', 'a')
+    0
+    >>> how_many_times('aaa', 'a')
+    3
+    >>> how_many_times('aaaa', 'aa')
+    3
+    """
+    count = 0
+    n = len(substring)
+    for i in range(len(string) - n + 1):
+        if string[i:i+n] == substring:
+            count += 1
+    return count
+```

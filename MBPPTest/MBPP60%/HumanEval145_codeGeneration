@@ -1,0 +1,29 @@
+CodeGeneration:
+e has area πr², and angles ≥360° are not valid for a sector).
+4. **Sector Area Calculation**: The area of the sector is calculated using the formula (π * r²) * (a/360).
+5. **Return Result**: The calculated sector area is returned.
+
+However, note that the function returns `None` for angles >=360, which might be intended to handle invalid inputs. But in some contexts, angles >=360 could be normalized (e.g., by taking modulo 360), but the docstring doesn't specify that. Since the docstring is not provided, we assume the current behavior is as intended.
+
+Let me write the code with the same logic, but with improved comments and style:
+
+```python
+def sector_area(r, a):
+    """
+    Calculate the area of a sector given the radius and angle in degrees.
+    
+    Args:
+        r (float): Radius of the circle.
+        a (float): Angle of the sector in degrees.
+    
+    Returns:
+        float: Area of the sector if angle is less than 360, else None.
+    """
+    pi = 22 / 7  # Approximation of pi
+    if a >= 360:
+        return None  # Invalid angle for a sector
+    sector_area = (pi * r ** 2) * (a / 360)
+    return sector_area
+```
+
+This code maintains the original functionality while adding a docstring for clarity.

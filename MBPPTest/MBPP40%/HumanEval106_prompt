@@ -1,0 +1,25 @@
+def count_Set_Bits(n) :  
+    n += 1; 
+    powerOf2 = 2;   
+    cnt = n // 2;  
+    while (powerOf2 <= n) : 
+        totalPairs = n // powerOf2;  
+        cnt += (totalPairs // 2) * powerOf2;  
+        if (totalPairs & 1) : 
+            cnt += (n % powerOf2) 
+        else : 
+            cnt += 0
+        powerOf2 <<= 1;    
+    return cnt;  
+The following is chain of thought:
+Here's the structured chain of thought for the count_Set_Bits function:
+
+1. **Function Purpose**: Count the total number of set bits (1s) in the binary representations of all numbers from 0 to n
+
+2. **Initial Setup**:
+   - Increment n by 1 to include 0 in the count (since we're counting from 0 to n)
+   - Initialize powerOf2 to 2 (starting with the first bit position)
+   - Initialize cnt to n//2 (each even number contributes 0, each odd contributes 1)
+
+3. **Bit Position Processing**:
+   - For each bit position (powerOf2), calculate how many co

@@ -1,0 +1,61 @@
+
+def choose_num(x, y):
+    """This function takes two positive numbers x and y and returns the
+    biggest even integer number that is in the range [x, y] inclusive. If 
+    there's no such number, then the function should return -1.
+
+    For example:
+    choose_num(12, 15) = 14
+    choose_num(13, 12) = -1
+    """
+
+The following is chain of thought:
+Let's break down the problem step by step:
+
+1. We need to find the largest even integer in the range [x, y] inclusive.
+2. If x > y, there are no numbers in the range, so return -1.
+3. If there are numbers in the range, we should look for the largest even number.
+4. If no even number exists in the range, return -1.
+
+Approach:
+- First, check if x > y -> return -1.
+- We want the largest number in the range, so we should start from y and go backwards to x.
+- For each number from y down to x, check if it is even.
+- The first even number we find (which will be the largest) should be returned.
+- If we don't find any even number in the entire range, return -1.
+
+Alternatively, we can compute:
+- The largest number in the range is y.
+- If y is even, then it is the answer.
+- If y is odd, then y-1 is the next candidate (if it is >= x).
+- If y is odd and y-1 < x, then there is no even number in the range.
+
+So we can do:
+1. If x > y: return -1
+2. If y is even: return y
+3. Else (y is odd): 
+   - candidate = y - 1
+   - if candidate >= x: return candidate
+   - else: return -1
+
+This handles all cases efficiently.
+
+Let's test with examples:
+- choose_num(12,15): y=15 is odd -> candidate=14, which is >=12 -> return 14. Correct.
+- choose_num(13,12): x=13 > y=12 -> return -1. Correct.
+
+Another test: choose_num(3,5): 
+y=5 is odd -> candidate=4, which is >=3 -> return 4. Correct.
+
+Test: choose_num(3,3): 
+y=3 is odd -> candidate=2, which is <3 -> return -1. Correct? But wait, 3 is odd and there is no even number in [3,3] so indeed -1.
+
+Test: choose_num(2,2): 
+y=2 is even -> return 2. Correct.
+
+So the logic is sound.
+
+Now we code accordingly.
+```python
+def choose_num(x, y):
+    """This function takes two positive numbers x and y an

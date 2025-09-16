@@ -1,0 +1,23 @@
+CodeGeneration:
+t is returned as the average.
+
+Here is the complete function with the docstring:
+
+```python
+def Average(lst):
+    """Calculate the average of a list of numbers.
+    
+    Args:
+        lst (list): A list of numbers (integers or floats)
+    
+    Returns:
+        float: The average of the numbers in the list
+    
+    Example:
+        >>> Average([1, 2, 3, 4, 5])
+        3.0
+        >>> Average([10.5, 20.3, 15.2])
+        15.333333333333334
+    """
+    return sum(lst) / len(lst)
+```

@@ -1,0 +1,19 @@
+CodeGeneration:
+convert it to an integer, and sum all these integers
+4. Return the resulting sum
+
+Here's the complete function:
+
+```python
+def power_base_sum(base, power):
+    """Calculate the sum of the digits of base raised to the given power.
+    
+    Args:
+        base (int): The base number
+        power (int): The exponent to raise the base to
+    
+    Returns:
+        int: The sum of all digits in base^power
+    """
+    return sum([int(i) for i in str(pow(base, power))])
+```

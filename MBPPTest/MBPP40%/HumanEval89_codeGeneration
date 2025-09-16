@@ -1,0 +1,21 @@
+CodeGeneration:
+```python
+def mul_consecutive_nums(nums):
+    """
+    Multiply each consecutive pair of numbers in the list.
+    
+    Args:
+        nums (list): List of numbers (integers or floats)
+    
+    Returns:
+        list: List containing the product of each consecutive pair
+    
+    Example:
+        >>> mul_consecutive_nums([1, 2, 3, 4])
+        [2, 6, 12]
+        >>> mul_consecutive_nums([4, 3, 2, 1])
+        [12, 6, 2]
+    """
+    result = [a * b for a, b in zip(nums[:-1], nums[1:])]
+    return result
+```

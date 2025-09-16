@@ -1,0 +1,28 @@
+CodeGeneration:
+the two diagonals of the rhombus.
+4. The function calculates the area using the formula and returns it.
+5. The implementation is correct and matches the mathematical formula.
+
+Here is the complete function with the docstring:
+
+```python
+def rombus_area(p, q):
+    """
+    Calculate the area of a rhombus given its diagonals.
+    
+    Parameters:
+    p (float): Length of the first diagonal.
+    q (float): Length of the second diagonal.
+    
+    Returns:
+    float: Area of the rhombus calculated as (p * q) / 2.
+    
+    Examples:
+    >>> rombus_area(8, 6)
+    24.0
+    >>> rombus_area(10.5, 7.2)
+    37.8
+    """
+    area = (p * q) / 2
+    return area
+```

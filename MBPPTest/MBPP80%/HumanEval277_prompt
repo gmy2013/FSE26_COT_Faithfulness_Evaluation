@@ -1,0 +1,9 @@
+def check_tuples(test_tuple, K):
+  res = all(ele in K for ele in test_tuple)
+  return (res) 
+The following is chain of thought:
+1. The function `check_tuples` takes two parameters: `test_tuple` and `K`.
+2. The goal is to check if all elements in `test_tuple` are present in `K`.
+3. Use the `all()` function with a generator expression that iterates over each element `ele` in `test_tuple`.
+4. For each element, check if it is in `K` using `ele in K`.
+5. Return 

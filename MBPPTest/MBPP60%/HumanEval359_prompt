@@ -1,0 +1,22 @@
+def get_noOfways(n):
+    if (n == 0):
+        return 0;
+    if (n == 1):
+        return 1; 
+    return get_noOfways(n - 1) + get_noOfways(n - 2);
+The following is chain of thought:
+Here is the structured chain of thought for analyzing the function:
+
+1. **Function Purpose Identification**: The function `get_noOfways(n)` appears to be calculating the number of ways to reach step `n` by taking 1 or 2 steps at a time, which is the Fibonacci sequence.
+
+2. **Base Cases Analysis**:
+   - When `n == 0`, returns 0 (no ways to reach step 0 in typical step problems).
+   - When `n == 1`, returns 1 (only one way: single step).
+
+3. **Recursive Case Analysis**:
+   - For `n > 1`, returns the sum of `get_noOfways(n-1)` and `get_noOfways(n-2)`.
+   - This follows the Fibonacci recurrence relation: F(n) = F(n-1) + F(n-2).
+
+4. **Efficiency Consideration**:
+   - The implementation uses naive recursion, leading to exponential time complexity O(2^n) due to repeated calculations.
+   - This is inefficient for large `n` and could be optimized with memoization or iterative

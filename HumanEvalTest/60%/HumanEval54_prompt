@@ -1,0 +1,81 @@
+
+
+def same_chars(s0: str, s1: str):
+    """
+    Check if two words have the same characters.
+    >>> same_chars('eabcdzzzz', 'dddzzzzzzzddeddabc')
+    True
+    >>> same_chars('abcd', 'dddddddabc')
+    True
+    >>> same_chars('dddddddabc', 'abcd')
+    True
+    >>> same_chars('eabcd', 'dddddddabc')
+    False
+    >>> same_chars('abcd', 'dddddddabce')
+    False
+    >>> same_chars('eabcdzzzz', 'dddzzzzzzzddddabc')
+    False
+    """
+
+The following is chain of thought:
+To solve this problem, we need to check if two strings have the same characters, meaning they contain the same set of characters with the same frequencies (i.e., they are anagrams). 
+
+Approach:
+1. Compare the lengths of the two strings. If they are not equal, return False because they cannot have the same character frequencies.
+2. If the lengths are equal, we can proceed to check the character frequencies.
+3. Count the frequency of each character in both strings.
+4. Compare the frequency dictionaries. If they are identical, return True; otherwise, return False.
+
+However, note the examples: 
+- The first example has strings of different lengths but returns True. This contradicts the typical anagram definition.
+Wait, let's reexamine the examples:
+- 'eabcdzzzz' and 'dddzzzzzzzddeddabc' have different lengths (9 vs 17) but return True.
+This indicates that the function does not require the strings to be of the same length. Instead, it checks if one string has at least the same character frequencies as the other? Actually, the docstring says "have the same characters", which might mean that every character in s0 is present in s1 and vice versa? But the examples show that the frequencies matter.
+
+Looking at the examples:
+- 'eabcdzzzz' and 'dddzzzzzzzddeddabc': 
+   - s0 has: e:1, a:1, b:1, c:1, d:1, z:4
+   - s1 has: d:7, z:7, e:2, a:1, b:1, c:1
+   For s0 to be contained in s1, we need that for every char in s0, the count in s1 is at least as much. Similarly, for s1 to be contained in s0? But the function returns True.
+
+Actually, the examples suggest that the function checks if the multiset of characters of s0 is a subset of the multiset of characters of s1? Or vice versa? But the docstring says "have the same characters", which is ambiguous.
+
+Wait, the third example: same_chars('dddddddabc', 'abcd') returns True. Here, s1 has only one d, but s0 has 7 d's. So it cannot be that both are subsets of each other.
+
+Alternatively, the function might be checking if the set of characters is the same, ignoring frequencies? But then the last example would return True, but it returns False.
+
+Let me analyze the last example: 
+   s0: 'eabcdzzzz' -> chars: e,a,b,c,d,z
+   s1: 'dddzzzzzzzddddabc' -> chars: d,z,a,b,c
+   The set of characters is the same: both have a,b,c,d,e,z. But the function returns False.
+
+So it is not about the set.
+
+Another possibility: the function checks if the character frequency of s0 is exactly the same as that of s1? But the first example has different frequencies.
+
+Wait, the first example: 
+   s0: e:1, a:1, b:1, c:1, d:1, z:4
+   s1: d:7, z:7, e:2, a:1, b:1, c:1
+   The frequencies are not the same.
+
+But the function returns True.
+
+After careful thought, the examples indicate that the function should return True if for every character, the count in s0 is less than or equal to the count in s1? But then the third example: 
+   s0: 'dddddddabc' has d:7, a:1, b:1, c:1
+   s1: 'abcd' has d:1, a:1, b:1, c:1
+   Here, for 'd', count in s0 (7) > count in s1 (1), so it would fail if we check s0 <= s1.
+
+But it returns True.
+
+Alternatively, it might be that the function checks if the character frequency of s1 is at least that of s0 for every character? But in the third example, for 'd', s1 has only 1 which is less than 7 in s0, so it should return False, but it returns True.
+
+This is confusing.
+
+Wait, the docstring says: "Check if two words have the same characters." and the examples show that it is symmetric? Actually, the second and third examples are symmetric calls.
+
+I realize: the function is symmetric. It returns True if the multiset of characters of s0 is exactly the same as that of s1? But the first example has different multisets.
+
+Another idea: perhaps it is checking if the sorted strings are the same? But the first example sorted would be different.
+
+Let me sort the first example:
+   s0 sorted: "abbccddzzzz" wait 

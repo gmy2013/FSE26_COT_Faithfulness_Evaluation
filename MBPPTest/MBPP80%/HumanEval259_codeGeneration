@@ -1,0 +1,15 @@
+CodeGeneration:
+The regex pattern has a typo: `[a-zA-z0-9]$` should be `[a-zA-Z0-9]$` to properly match alphanumeric characters. Here's the corrected function:
+
+```python
+import re 
+regex = '[a-zA-Z0-9]$'
+
+def check_alphanumeric(string): 
+    if(re.search(regex, string)): 
+        return ("Accept") 
+    else: 
+        return ("Discard")
+```
+
+The correction changes `A-z` to `A-Z` to properly match uppercase letters from A to Z. The original pattern `A-z` would match characters from ASCII 65 to 122, which includes non-alphabetic characters like `[`, `\`, `]`, `^`, `_`, and `` ` ``.

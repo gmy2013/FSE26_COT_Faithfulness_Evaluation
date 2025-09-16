@@ -1,0 +1,24 @@
+CodeGeneration:
+s a digit by comparing it to the characters '0' and '9'.
+5. If the character is a digit, increment the counter `number_ctr` by 1.
+6. After processing all characters, return the total count of digits.
+
+Here is the complete function:
+
+```python
+def number_ctr(str):
+    number_ctr = 0
+    for i in range(len(str)):
+        if str[i] >= '0' and str[i] <= '9':
+            number_ctr += 1
+    return number_ctr
+```
+
+Alternatively, here's a more Pythonic version using string methods:
+
+```python
+def number_ctr(s):
+    return sum(1 for char in s if char.isdigit())
+```
+
+Both versions achieve the same result - counting the number of digits in the input string.

@@ -1,0 +1,55 @@
+CodeGeneration:
+Let's compute `count0` and `count1`:
+
+- `count0`: number of indices `i` (0-indexed) such that `(i+1) % 3 == 2`
+- `count1`: the rest, i.e., `n - count0`
+
+We can compute `count0` by:
+   Let k = n // 3
+   Then, the residues of (i+1) for i=0 to n-1 are: 1,2,0,1,2,0,... repeating.
+   So, the number of times residue 2 appears (which gives count0) is:
+        if n % 3 == 0: k
+        if n % 3 == 1: k   (because the residues are 1,2,0,1 -> only one full cycle and then 1, so residue2 appears k times)
+        if n % 3 == 2: k+1 (because residues are 1,2,0,1,2 -> so residue2 appears k+1 times)
+
+Alternatively, we can write:
+   count0 = (n + 1) // 3   [because for every group of 3, there is one residue2, and if there is an extra element at the end, it might be residue2 only if n % 3 == 2]
+   Actually, let's check:
+        n=1: residues: [1] -> count0=0, and (1+1)//3=2//3=0 -> correct.
+        n=2: residues: [1,2] -> count0=1, and (2+1)//3=3//3=1 -> correct.
+        n=3: residues: [1,2,0] -> count0=1, and (3+1)//3=4//3=1 -> correct.
+        n=4: residues: [1,2,0,1] -> count0=1, and (4+1)//3=5//3=1 -> correct.
+        n=5: residues: [1,2,0,1,2] -> count0=2, and (5+1)//3=6//3=2 -> correct.
+
+So, indeed: count0 = (n+1) // 3
+Then count1 = n - count0
+
+Therefore, the number of triples is:
+   total = C(count0, 3) + C(count1, 3)
+
+Now, we can code accordingly.
+
+```python
+def get_max_triples(n):
+    count0 = (n + 1) // 3
+    count1 = n - count0
+    
+    def nCr(n, r):
+        if n < r:
+            return 0
+        numerator = 1
+        denominator = 1
+        for i in range(1, r+1):
+            numerator *= n - i + 1
+            denominator *= i
+        return numerator // denominator
+    
+    return nCr(count0, 3) + nCr(count1, 3)
+```
+
+Let's test with the example n=5:
+   count0 = (5+1)//3 = 6//3 = 2
+   count1 = 5-2=3
+   nCr(2,3)=0, nCr(3,3)=1 -> total=1, which matches the example.
+
+This solution is efficient with O(1) time complexity.

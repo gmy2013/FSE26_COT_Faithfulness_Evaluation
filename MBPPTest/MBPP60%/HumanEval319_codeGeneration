@@ -1,0 +1,30 @@
+CodeGeneration:
+Based on the analysis, here's an improved implementation that returns the actual list instead of a string representation:
+
+```python
+def remove_tuple(test_list):
+    """
+    Remove tuples from test_list where all elements are None.
+    
+    Args:
+        test_list (list): List of tuples to filter
+        
+    Returns:
+        list: List with tuples containing only None values removed
+        
+    Example:
+        >>> remove_tuple([(1, 2), (None, None), (3, None)])
+        [(1, 2), (3, None)]
+        >>> remove_tuple([(None, None), (None, None)])
+        []
+    """
+    return [sub for sub in test_list if not all(ele is None for ele in sub)]
+```
+
+Key improvements:
+1. Returns the actual list instead of string representation
+2. Uses `is None` instead of `== None` (more Pythonic for None comparisons)
+3. Added comprehensive docstring with examples
+4. Handles edge cases like empty lists or lists with only None tuples
+
+The function now properly filters out tuples where all elements are `None` while preserving the original data structure.

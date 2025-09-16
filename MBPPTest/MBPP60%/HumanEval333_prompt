@@ -1,0 +1,33 @@
+def dealnnoy_num(n, m): 
+	if (m == 0 or n == 0) : 
+		return 1
+	return dealnnoy_num(m - 1, n) + dealnnoy_num(m - 1, n - 1) + dealnnoy_num(m, n - 1)
+The following is chain of thought:
+Let's analyze the given recursive function for computing the Dealnnoy number:
+
+The Dealnnoy number D(m, n) counts the number of paths from (0, 0) to (m, n) in a grid, using only steps north (↑), east (→), or northeast (↗).
+
+The recursive definition is:
+- Base case: If either m or n is 0, there is exactly 1 path (all moves in one direction).
+- Recursive case: D(m, n) = D(m-1, n) + D(m-1, n-1) + D(m, n-1)
+
+However, the given function has the parameters reversed: it defines `dealnnoy_num(n, m)` but uses the recursion with `m` and `n` swapped in the calls. This will lead to incorrect results because the recurrence is defined for D(m, n), not D(n, m).
+
+To fix this, we should either:
+1. Swap the parameters in the function definition to `dealnnoy_num(m, n)`, or
+2. Adjust the recursive calls to match the parameter order.
+
+Since the function is named with `n` first and `m` second, we should correct the recursive calls to be consistent with the parameter order.
+
+Corrected recursive calls:
+- Instead of `dealnnoy_num(m - 1, n)`, it should be `dealnnoy_num(n, m - 1)` to compute D(m-1, n).
+- Instead of `dealnnoy_num(m - 1, n - 1)`, it should be `dealnnoy_num(n - 1, m - 1)` to compute D(m-1, n-1).
+- Instead of `dealnnoy_num(m, n - 1)`, it should be `dealnnoy_num(n - 1, m)` to compute D(m, n-1).
+
+Therefore, the corrected function is:
+
+```python
+def dealnnoy_num(n, m): 
+    if (m == 0 or n == 0): 
+        return 1
+    return

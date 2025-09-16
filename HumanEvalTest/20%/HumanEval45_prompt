@@ -1,0 +1,11 @@
+
+
+def triangle_area(a, h):
+    """Given length of a side and high return area for a triangle.
+    >>> triangle_area(5, 3)
+    7.5
+    """
+
+The following is chain of thought:
+1. **Understand the Formula for Triangle Area**: 
+   - The area of a triangle can be calculated using the formula: \( \text{Area} = \frac{1}{2} \times \text

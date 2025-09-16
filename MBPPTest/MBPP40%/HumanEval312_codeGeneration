@@ -1,0 +1,42 @@
+CodeGeneration:
+tion at the end of the string
+3. The `match()` method checks if the pattern matches from the beginning of the string
+4. However, using `match()` with `.*` at the start might be inefficient for this purpose
+5. A more efficient approach would be to use `search()` with a pattern that specifically looks for a digit at the end
+
+Here's an improved version of the function:
+
+```python
+import re
+
+def end_num(string):
+    """
+    Check if a string ends with a digit (0-9).
+    
+    Args:
+        string (str): The input string to check
+        
+    Returns:
+        bool: True if the string ends with a digit, False otherwise
+    """
+    pattern = re.compile(r"[0-9]$")
+    return bool(pattern.search(string))
+```
+
+Alternative simpler approach without regex:
+
+```python
+def end_num(string):
+    """
+    Check if a string ends with a digit (0-9).
+    
+    Args:
+        string (str): The input string to check
+        
+    Returns:
+        bool: True if the string ends with a digit, False otherwise
+    """
+    return string and string[-1].isdigit()
+```
+
+The second approach is more efficient and readable for this specific use case.

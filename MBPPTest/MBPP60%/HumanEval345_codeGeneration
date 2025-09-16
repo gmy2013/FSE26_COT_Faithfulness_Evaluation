@@ -1,0 +1,22 @@
+CodeGeneration:
+y the `most_common(a)` method to get the `a` most common elements with their counts.
+5. Return the result.
+
+Here is the complete function:
+
+```python
+from collections import Counter
+
+def most_common_elem(s, a):
+    """Return the a most common elements in the iterable s along with their counts.
+    
+    Args:
+        s: An iterable (list, string, etc.) containing elements to count.
+        a: An integer specifying how many most common elements to return.
+        
+    Returns:
+        A list of tuples where each tuple contains (element, count) for the a most common elements.
+    """
+    most_common_elem = Counter(s).most_common(a)
+    return most_common_elem
+```

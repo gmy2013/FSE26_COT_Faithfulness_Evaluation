@@ -1,0 +1,40 @@
+CodeGeneration:
+Here's the complete function based on the provided code and docstring:
+
+```python
+def get_product(val):
+    """Calculate the product of all elements in a list.
+    
+    Args:
+        val (list): List of numeric values
+        
+    Returns:
+        int/float: Product of all elements in the list
+    """
+    res = 1
+    for ele in val:
+        res *= ele
+    return res
+
+def find_k_product(test_list, K):
+    """Find the product of elements at index K across all sublists.
+    
+    Args:
+        test_list (list): List of sublists containing numeric values
+        K (int): Index position to extract elements from each sublist
+        
+    Returns:
+        int/float: Product of all elements at index K across sublists
+        
+    Example:
+        >>> find_k_product([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1)
+        80  # (2 * 5 * 8 = 80)
+    """
+    res = get_product([sub[K] for sub in test_list])
+    return res
+```
+
+The function works as described in your chain of thought:
+- Extracts the K-th element from each sublist
+- Calculates the product of all these extracted elements
+- Returns the final product result

@@ -1,0 +1,19 @@
+CodeGeneration:
+e if all elements satisfy the condition, False otherwise.
+
+The provided function is already correct and complete. Here's the full function with proper formatting:
+
+```python
+def even_position(nums):
+    """Check if every element at index i has the same parity (even/odd) as its index.
+    
+    Args:
+        nums: List of integers to check
+        
+    Returns:
+        bool: True if all elements satisfy nums[i] % 2 == i % 2, False otherwise
+    """
+    return all(nums[i] % 2 == i % 2 for i in range(len(nums)))
+```
+
+The function correctly implements the specified behavior by checking if each element's parity (even/odd) matches its index position's parity.

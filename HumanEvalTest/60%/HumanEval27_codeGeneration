@@ -1,0 +1,31 @@
+CodeGeneration:
+Here's the implementation of the `flip_case` function:
+
+```python
+def flip_case(string: str) -> str:
+    """ For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
+    >>> flip_case('Hello')
+    'hELLO'
+    """
+    result = []
+    for char in string:
+        if char.isupper():
+            result.append(char.lower())
+        elif char.islower():
+            result.append(char.upper())
+        else:
+            result.append(char)
+    return ''.join(result)
+```
+
+Alternative one-liner using list comprehension:
+```python
+def flip_case(string: str) -> str:
+    """ For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
+    >>> flip_case('Hello')
+    'hELLO'
+    """
+    return ''.join([char.lower() if char.isupper() else char.upper() if char.islower() else char for char in string])
+```
+
+Both implementations will correctly convert 'Hello' to 'hELLO' and handle all other characters appropriately.

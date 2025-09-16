@@ -1,0 +1,9 @@
+def floor_Max(A,B,N):
+    x = min(B - 1,N)
+    return (A*x) // B
+The following is chain of thought:
+1. Understand the problem: The function computes the maximum value of floor((A*x)/B) for x in the range [0, N].
+2. Key insight: The expression (A*x)//B is maximized when x is as large as possible, but with a constraint: x must be less than B to avoid the floor function causing a decrease due to modulo effects.
+3. Determine optimal x: The optimal x is min(B-1, N) because:
+   - If N >= B-1, then x = B-1 gives the maximum value without the floor operation causing a drop.
+   - If N < B-1, then x = N is the 

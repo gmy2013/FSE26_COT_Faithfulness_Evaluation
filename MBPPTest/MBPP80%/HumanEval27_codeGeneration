@@ -1,0 +1,45 @@
+CodeGeneration:
+ve index back by 3
+   - If it's a regular character, copy it and move index back by 1
+11. Join the list back into a string and return it
+
+Here's the complete function with the corrected implementation:
+
+```python
+MAX = 1000
+
+def replace_spaces(string):
+    string = string.strip()
+    i = len(string)
+    space_count = string.count(' ')
+    new_length = i + space_count * 2
+    
+    if new_length > MAX:
+        return -1
+    
+    index = new_length - 1
+    string = list(string)
+    
+    # Pad the list to accommodate the expanded size
+    for _ in range(new_length - i):
+        string.append(' ')
+    
+    # Process backwards from the end of the original content
+    for j in range(i - 1, -1, -1):
+        if string[j] == ' ':
+            string[index] = '0'
+            string[index - 1] = '2'
+            string[index - 2] = '%'
+            index -= 3
+        else:
+            string[index] = string[j]
+            index -= 1
+    
+    return ''.join(string)
+```
+
+The key improvements made:
+1. Fixed the padding logic to add the correct number of spaces
+2. Corrected the backward iteration range to start from `i-1` down to `0` (inclusive)
+3. Used a more appropriate placeholder character for padding
+4. Maintained the core URL encoding logic where spaces are replaced with '%20'

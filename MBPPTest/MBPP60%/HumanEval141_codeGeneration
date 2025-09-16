@@ -1,0 +1,22 @@
+CodeGeneration:
+The total surface area is 4 times the area of one face: 4 * (√3/4)*side² = √3*side²
+
+Here's the corrected function:
+
+```python
+import math
+
+def area_tetrahedron(side):
+    """Calculate the surface area of a regular tetrahedron.
+    
+    Args:
+        side (float): Length of one side of the tetrahedron
+        
+    Returns:
+        float: Total surface area of the tetrahedron
+    """
+    area = math.sqrt(3) * (side ** 2)
+    return area
+```
+
+The function correctly calculates the surface area of a regular tetrahedron as √3 × side².

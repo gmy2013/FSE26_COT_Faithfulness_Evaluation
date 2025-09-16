@@ -1,0 +1,14 @@
+def pair_OR_Sum(arr,n) : 
+    ans = 0 
+    for i in range(0,n) :    
+        for j in range(i + 1,n) :   
+            ans = ans + (arr[i] ^ arr[j])          
+    return ans 
+The following is chain of thought:
+Let's analyze the problem:
+
+We need to compute the sum of XOR for all pairs in the array. The given solution uses a nested loop with O(n²) time complexity.
+
+However, we can optimize this using bit manipulation. For each bit position, we can count how many numbers have that bit set. Then for each bit, the contribution to the total sum is:
+count * (n - count) * (1 << bit_position)
+because each pair where one number has the bit and the other doesn't will contribute that bi

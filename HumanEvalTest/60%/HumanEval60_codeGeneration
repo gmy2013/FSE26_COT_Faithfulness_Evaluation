@@ -1,0 +1,27 @@
+CodeGeneration:
+Here's the implementation:
+
+```python
+def sum_to_n(n: int):
+    """sum_to_n is a function that sums numbers from 1 to n.
+    >>> sum_to_n(30)
+    465
+    >>> sum_to_n(100)
+    5050
+    >>> sum_to_n(5)
+    15
+    >>> sum_to_n(10)
+    55
+    >>> sum_to_n(1)
+    1
+    """
+    if n <= 0:
+        return 0
+    return n * (n + 1) // 2
+```
+
+This implementation:
+1. Handles non-positive inputs correctly by returning 0 (since you can't sum from 1 to a non-positive number)
+2. Uses the efficient arithmetic series formula `n*(n+1)//2` for positive inputs
+3. Passes all the provided test cases in the docstring
+4. Works for any integer input while maintaining the expected behavior described in the function's purpose

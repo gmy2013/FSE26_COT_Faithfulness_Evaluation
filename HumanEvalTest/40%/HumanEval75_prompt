@@ -1,0 +1,45 @@
+
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+
+The following is chain of thought:
+To solve this problem, we need to determine if a given number `a` (less than 100) is the product of exactly three prime numbers. The approach involves generating all primes up to `a` (since `a < 100`, primes are small), then checking all combinations of three primes whose product equals `a`.
+
+1. **Generate primes up to `a`**: Since `a` is less than 100, we can generate primes up to 100 (but actually up to `a` is sufficient, but for safety, generate up to 100). However, note that primes larger than `a` cannot be factors, so generating primes up to `a` is efficient.
+2. **Check all triplets**: For every combination of three primes (with repetition allowed, since same prime might be used multiple times, e.g., 8 = 2*2*2), check if their product equals `a`.
+3. **Return result**: If any triplet satisfies the condition, return True; otherwise, return False.
+
+Important: The problem allows the same prime to be used multiple times (e.g., 8 = 2*2*2), so combinations with repetition should be considered.
+
+However, note that if the same prime is used multiple times, it is still a prime factor (repeated). So we need to include duplicates in the combinations.
+
+But generating all combinations with repetition (with three elements) from the list of primes, and checking if the product equals `a`.
+
+Since the number of primes up to 100 is only 25, and we are taking combinations of three (with repetition), the total number of combinations is C(n+3-1, 3) = C(25+3-1, 3)=C(27,3)=2925, which is manageable.
+
+Alternatively, we can use nested loops. Since the number of primes is small (25), three nested loops would be 25^3=15625, which is acceptable for a number less than 100.
+
+But we can optimize by breaking early when the product exceeds `a`.
+
+Steps in code:
+1. Write a helper function to generate primes up to `n` (here n=100, but we can generate up to `a` actually, but for simplicity generate up to 100).
+2. Get the list of primes up to 100.
+3. Use three nested loops over the list of primes (allowing same index to be repeated).
+4. For each triplet (i, j, k), compute the product. If it equals `a`, return True.
+5. If no triplet found, return False.
+
+However, we can avoid generating primes beyond `a` (since if a prime is larger than `a`, it cannot be a factor). So we generate primes only up to `a`.
+
+But note: if `a` is 1, there are no primes (since primes are >=2). So we should handle that.
+
+Also, if `a` is less than 2*2*2=8, it cannot be product of three primes (smallest product is 8). So we can return False for a < 8.
+
+But wait: what about a=2*2*2=8? So a>=8.
+
+So we can add a check:

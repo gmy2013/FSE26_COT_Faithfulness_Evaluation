@@ -1,0 +1,23 @@
+def first_repeated_char(str1):
+  for index,c in enumerate(str1):
+    if str1[:index+1].count(c) > 1:
+      return c 
+  return "None"
+The following is chain of thought:
+Here is the structured chain of thought for analyzing the given function:
+
+1. **Function Purpose Analysis**: The function `first_repeated_char` aims to find the first character in the input string `str1` that repeats (i.e., appears more than once in the substring processed so far).
+
+2. **Iteration Strategy**: The function uses a `for` loop with `enumerate` to iterate through each character `c` in `str1` along with its index.
+
+3. **Substring Check**: For each character at position `index`, it checks the substring from the start to the current index (inclusive) using `str1[:index+1]`.
+
+4. **Count Condition**: It uses the `count` method to check if the current character `c` appears more than once in that substring. If `count` > 1, it means `c` has repeated.
+
+5. **Return on First Match**: When the condition is met, it immediately returns `c`, ensuring it is the first repeated character encountered during the left-to-right traversal.
+
+6. **No Repetition Case**: If the loop completes without finding any repeated character, it returns the string `"None"`.
+
+7. **Efficiency Consideration**: The approach is straightforward but has O(n²) time complexity in the worst case due to nested operations (the `count` method inside the loop), which may be inefficient for long strings.
+
+8. **Edge Cases**: Handles empty st

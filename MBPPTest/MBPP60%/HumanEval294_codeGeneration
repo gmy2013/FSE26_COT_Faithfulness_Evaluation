@@ -1,0 +1,52 @@
+CodeGeneration:
+`look_up[i-1]`
+   - Option 2: Take current element and the best sum from two indices back → value is `look_up[i-2] + A[i]`
+   - Option 3: Take only the current element (in case it's larger than previous sums) → value is `A[i]`
+   - Then take the maximum of these three options.
+
+Here's the complete function with the thought process integrated:
+
+```python
+def max_sum_subseq(A):
+    """
+    Compute the maximum sum of a subsequence where no two elements are adjacent.
+    
+    Args:
+        A: List of integers (can be negative)
+    
+    Returns:
+        Maximum sum of non-adjacent subsequence
+    
+    Examples:
+        >>> max_sum_subseq([3, 2, 7, 10])
+        13
+        >>> max_sum_subseq([3, 2, 5, 10, 7])
+        15
+        >>> max_sum_subseq([-1, -2, -3])
+        -1
+    """
+    n = len(A)
+    if n == 0:
+        return 0
+    if n == 1:
+        return A[0]
+    
+    # DP array to store maximum sum up to each index
+    look_up = [None] * n
+    look_up[0] = A[0]
+    look_up[1] = max(A[0], A[1])
+    
+    for i in range(2, n):
+        # Three options:
+        # 1. Skip current element: look_up[i-1]
+        # 2. Take current element + best from two indices back: look_up[i-2] + A[i]
+        # 3. Take only current element (if it's better than previous sums): A[i]
+        look_up[i] = max(look_up[i - 1], look_up[i - 2] + A[i], A[i])
+    
+    return look_up[n - 1]
+```
+
+The key insight is that we consider three possibilities at each step and take the maximum:
+1. Exclude the current element (keep the previous maximum)
+2. Include the current element and the maximum from two indices back
+3. Start a new subsequence with just the current element (important for negative numbers)

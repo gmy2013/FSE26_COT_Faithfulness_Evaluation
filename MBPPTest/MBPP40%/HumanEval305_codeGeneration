@@ -1,0 +1,39 @@
+CodeGeneration:
+iteral forward slash `/`
+   - Then 1 or 2 digits (captured as group 2) for the month
+   - Then a literal forward slash `/`
+   - Then 1 or 2 digits (captured as group 3) for the day
+   - Then a literal forward slash `/`
+
+4. The function returns a list of tuples where each tuple contains the year, month, and day found in the URL.
+
+Here's the complete function:
+
+```python
+import re
+
+def extract_date(url):
+    """
+    Extract date components from a URL that contains a date in the format /YYYY/MM/DD/
+    
+    Args:
+        url (str): The URL string to search for date patterns
+        
+    Returns:
+        list: A list of tuples where each tuple contains (year, month, day) strings
+              Returns an empty list if no matches are found
+    """
+    return re.findall(r'/(\d{4})/(\d{1,2})/(\d{1,2})/', url)
+```
+
+Example usage:
+```python
+url = "https://example.com/blog/2023/12/25/christmas-post/"
+print(extract_date(url))  # Output: [('2023', '12', '25')]
+
+url2 = "https://example.com/archive/2022/1/5/some-post/2023/8/15/another-post/"
+print(extract_date(url2))  # Output: [('2022', '1', '5'), ('2023', '8', '15')]
+
+url3 = "https://example.com/no-date-here/"
+print(extract_date(url3))  # Output: []
+```

@@ -1,0 +1,26 @@
+CodeGeneration:
+rds using `s.split()`, which by default splits on whitespace.
+4. Then, reverse the list of words using `reversed()`.
+5. Finally, join the reversed list back into a string with spaces using `' '.join()`.
+6. This approach handles multiple spaces correctly as `split()` without arguments collapses consecutive whitespace.
+
+Here is the complete function:
+
+```python
+def reverse_words(s):
+    """Reverse the order of words in a string.
+
+    Args:
+        s (str): Input string containing words.
+
+    Returns:
+        str: String with words in reversed order.
+
+    Examples:
+        >>> reverse_words("hello world")
+        'world hello'
+        >>> reverse_words(" multiple   spaces   here ")
+        'here spaces multiple'
+    """
+    return ' '.join(reversed(s.split()))
+```

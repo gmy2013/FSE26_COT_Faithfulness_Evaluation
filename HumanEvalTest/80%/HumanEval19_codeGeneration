@@ -1,0 +1,14 @@
+CodeGeneration:
+'eight': 8,
+        'nine': 9
+    }
+    
+    # Split the input string into words
+    words = numbers.split()
+    
+    # Sort the words based on their numerical values
+    sorted_words = sorted(words, key=lambda word: number_map[word])
+    
+    # Join the sorted words back into a string
+    return ' '.join(sorted_words)
+```

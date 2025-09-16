@@ -1,0 +1,15 @@
+CodeGeneration:
+with itself and the quantifier '{2,}' to match two or more consecutive occurrences.
+3. It uses `re.sub` to replace all occurrences of this pattern with just a single `char`.
+4. Finally, it returns the modified string.
+
+Here is the complete function:
+
+```python
+import re 
+
+def replace(string, char): 
+    pattern = char + '{2,}'
+    string = re.sub(pattern, char, string) 
+    return string
+```

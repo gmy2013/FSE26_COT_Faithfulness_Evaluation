@@ -1,0 +1,9 @@
+def check_greater(test_tup1, test_tup2):
+  res = all(x < y for x, y in zip(test_tup1, test_tup2))
+  return (res) 
+The following is chain of thought:
+1. Understand the function purpose: Check if every element in test_tup1 is less than the corresponding element in test_tup2.
+2. Identify the approach: Use zip to pair elements from both tuples, then check if all pairs satisfy x < y.
+3. Implement the logic: Use a generator expression with all() to verify the condition for each pair.
+4. Return the result: The boolean result from the all() function.
+5. Consider edge cases: Tuples of different 

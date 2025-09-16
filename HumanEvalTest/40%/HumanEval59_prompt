@@ -1,0 +1,80 @@
+
+
+def largest_prime_factor(n: int):
+    """Return the largest prime factor of n. Assume n > 1 and is not a prime.
+    >>> largest_prime_factor(13195)
+    29
+    >>> largest_prime_factor(2048)
+    2
+    """
+
+The following is chain of thought:
+We are to find the largest prime factor of n (n>1 and not prime).
+ Steps:
+ 1. Start with the smallest prime factor (2) and divide n by it as long as possible.
+ 2. Then check odd factors starting from 3, incrementing by 2.
+ 3. Each time we find a factor, we divide n by that factor until it is no longer divisible.
+ 4. The last factor that divides n will be the largest prime factor.
+
+ However, note: if after dividing by all factors up to sqrt(n), n is still greater than 1, then that n is prime and is the largest factor.
+
+ Since the problem states n is not prime, we don't have to worry about n being prime at the end? But actually, the problem says "assume n>1 and is not a prime", meaning the input is composite. So we are safe.
+
+ Implementation:
+ Initialize factor = 2.
+ While factor * factor <= n:
+   if n is divisible by factor, then divide n by factor as long as possible.
+   else increment factor (to next odd number after 2).
+
+ After the loop, if n>1, then n is prime and is the largest factor. But since n is composite, we expect to have reduced n to 1? Actually not necessarily: for example, n=4: factors are 2 and 2. After dividing by 2 twice, n becomes 1.
+
+ However, in the problem, n is not prime, but it might become 1 exactly. So we need to return the last factor that divided n? Actually, the largest prime factor is the last factor we divided by? Not exactly: for example, n=8: factors are 2,2,2. The largest is 2. But we divide until n becomes 1.
+
+ Alternatively, we can keep track of the last factor that divided n. But note: the largest factor is the one that remains at the end if n>1? Actually, if we divide by all factors, the last factor we divided by is the largest? Not necessarily: for n=10: factors are 2 and 5. We divide by 2 first, then n=5. Then we check factors: next factor is 3 (which doesn't divide 5), then 5 (which does). So the last factor we divide by is 5, which is the largest.
+
+ Actually, the algorithm naturally leaves the largest prime factor as the last non-one value of n? Or we can return the last factor that divided n? Actually, the common method is to return n if n>1 after the loop? But in our case, since we are dividing by factors, the last factor that divides n is the largest.
+
+ However, the standard approach is:
+   factor = 2
+   while factor * factor <= n:
+        if n % factor == 0:
+            n //= factor
+        else:
+            factor += 1
+   Then return n.
+
+ But let's test with examples:
+
+ Example 1: n=13195
+   factor=2: not divisible -> factor=3
+   factor=3: divisible? 13195/3=4398.333? -> no. So factor=5.
+   factor=5: divisible -> n=13195/5=2639.
+   Now n=2639, factor=5: check again? Actually, we should check same factor again? Because we need to divide out all factors of 5. So we should have an inner loop.
+
+ Revised algorithm:
+
+   factor = 2
+   while factor * factor <= n:
+        while n % factor == 0:
+            n //= factor
+        factor += 1
+   Then if n>1, return n.
+
+ But wait: for n=13195:
+   factor=2: no division -> factor=3
+   factor=3: no division -> factor=4 (but we can skip even numbers after 2? Actually, we can optimize by treating 2 separately and then only odd factors.)
+
+ Let's do:
+
+   while n % 2 == 0:
+        n //= 2
+   factor = 3
+   while factor * factor <= n:
+        while n % factor == 0:
+            n //= factor
+        factor += 2
+   Then return n if n>1, but if n==1 then the last factor that divided was the largest? Actually, if n becomes 1, then the last factor we divided by is the largest. But we didn't store it.
+
+ Alternatively, we can store the last factor that divided n. However, the common solution is to return n after the loop if n>1, else the last factor? Actually, if n becomes 1, then the largest factor is the last factor we divided by. But we don't have that stored.
+
+ Actually, for composite n (as given), n will not become 1 during the loop? Because we are only going up to sqrt(n). For example, n=4: we divide by 2 until n=1. Then we break out of the loop and n=1. So we need to return the last 

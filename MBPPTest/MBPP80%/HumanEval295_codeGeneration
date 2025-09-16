@@ -1,0 +1,32 @@
+CodeGeneration:
+Based on the provided chain of thought, here's the complete implementation:
+
+```python
+def last(n):
+    """Return the last element of the input sequence.
+    
+    Args:
+        n: A sequence (tuple, list, etc.) with at least one element
+        
+    Returns:
+        The last element of the sequence
+    """
+    return n[-1]
+
+def sort_list_last(tuples):
+    """Sort a list of tuples based on the last element of each tuple.
+    
+    Args:
+        tuples: A list of tuples to be sorted
+        
+    Returns:
+        A new list of tuples sorted in ascending order based on the last element
+    """
+    return sorted(tuples, key=last)
+```
+
+This implementation:
+- Defines `last(n)` to extract the last element of any sequence
+- Defines `sort_list_last(tuples)` that sorts a list of tuples using the `last` function as the key
+- Uses Python's built-in `sorted()` function with the custom key function
+- Returns a new sorted list without modifying the original input list

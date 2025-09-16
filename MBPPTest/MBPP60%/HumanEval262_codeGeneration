@@ -1,0 +1,55 @@
+CodeGeneration:
+re than the previous, increment count.
+   - Otherwise, reset count to 1.
+   - Update ans with the maximum value.
+5. Return ans.
+
+Here's the complete function with improved code style and comments:
+
+```python
+def find_longest_conseq_subseq(arr, n):
+    """
+    Find the length of the longest consecutive subsequence in an array.
+    
+    Args:
+        arr: List of integers
+        n: Length of the array
+    
+    Returns:
+        int: Length of the longest consecutive subsequence
+    """
+    if n == 0:
+        return 0
+    
+    # Sort the array to group consecutive numbers
+    arr.sort()
+    
+    # Remove duplicates while preserving order
+    unique_arr = []
+    unique_arr.append(arr[0])
+    for i in range(1, n):
+        if arr[i] != arr[i - 1]:
+            unique_arr.append(arr[i])
+    
+    count = 1  # Current consecutive sequence length
+    ans = 1    # Maximum consecutive sequence length
+    
+    # Iterate through unique elements to find longest consecutive sequence
+    for i in range(1, len(unique_arr)):
+        if unique_arr[i] == unique_arr[i - 1] + 1:
+            count += 1
+        else:
+            count = 1  # Reset count if not consecutive
+        ans = max(ans, count)
+    
+    return ans
+```
+
+This implementation:
+1. Handles edge case of empty array
+2. Uses more descriptive variable names
+3. Includes proper docstring documentation
+4. Maintains the same O(n log n) time complexity due to sorting
+5. Uses efficient space by removing duplicates in a single pass
+
+The function finds the longest sequence of consecutive integers in the array, where consecutive means numbers that follow each other in numerical order (e.g., [1, 2, 3, 4]).

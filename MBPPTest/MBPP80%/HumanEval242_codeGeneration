@@ -1,0 +1,25 @@
+CodeGeneration:
+ast added ugly number, append it to `uglies`.
+6. Return the last element of `uglies`.
+
+However, there's a potential issue with this implementation: `heapq.merge` requires that the input iterables are already sorted, which they are in this case since `gen` yields in the order of `uglies` (which is maintained as sorted). But as `uglies` grows, the generators are re-used and continue to yield new products. This approach should work correctly.
+
+Let me complete the code with the missing part:
+
+```python
+import heapq
+
+def nth_super_ugly_number(n, primes):
+    uglies = [1]
+    def gen(prime):
+        for ugly in uglies:
+            yield ugly * prime
+    merged = heapq.merge(*map(gen, primes))
+    while len(uglies) < n:
+        ugly = next(merged)
+        if ugly != uglies[-1]:
+            uglies.append(ugly)
+    return uglies[-1]
+```
+
+The implementation is complete and should correctly find the nth super ugly number. The key insight is using a heap to efficiently merge the streams of products from each prime, ensuring we always get the next smallest candidate.

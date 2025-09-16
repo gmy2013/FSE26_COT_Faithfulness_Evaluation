@@ -1,0 +1,35 @@
+CodeGeneration:
+Here's the completed function with edge case handling:
+
+```python
+def reverse_Array_Upto_K(input, k):
+    """
+    Reverse the first k elements of an array while keeping the remaining elements in their original order.
+    
+    Args:
+        input (list): The array to be partially reversed
+        k (int): The position up to which elements should be reversed (1-indexed)
+    
+    Returns:
+        list: Array with first k elements reversed and remaining elements unchanged
+    
+    Edge Cases:
+        - If k <= 0: returns original array unchanged
+        - If k >= len(input): reverses entire array
+        - If k == 1: returns original array (reversing first element has no effect)
+    """
+    if not input or k <= 0:
+        return input.copy()
+    
+    if k >= len(input):
+        return input[::-1]
+    
+    return input[k-1::-1] + input[k:]
+```
+
+**Edge Case Handling:**
+- `k <= 0`: Returns original array (no elements to reverse)
+- `k >= len(input)`: Reverses entire array (reverse all elements)
+- `k == 1`: Returns original array (reversing single element has no effect)
+- Empty input: Returns empty array
+- Uses `copy()` to avoid modifying original input array

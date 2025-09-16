@@ -1,0 +1,10 @@
+def clear_tuple(test_tup):
+  temp = list(test_tup)
+  temp.clear()
+  test_tup = tuple(temp)
+  return (test_tup) 
+The following is chain of thought:
+1. The function takes a tuple `test_tup` as input.
+2. Convert the tuple to a list using `list()` to make it mutable.
+3. Use the `clear()` method on the list to remove all elements.
+4. Convert th

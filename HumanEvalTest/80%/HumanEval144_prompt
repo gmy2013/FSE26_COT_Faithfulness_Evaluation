@@ -1,0 +1,223 @@
+
+def simplify(x, n):
+    """Your task is to implement a function that will simplify the expression
+    x * n. The function returns True if x * n evaluates to a whole number and False
+    otherwise. Both x and n, are string representation of a fraction, and have the following format,
+    <numerator>/<denominator> where both numerator and denominator are positive whole numbers.
+
+    You can assume that x, and n are valid fractions, and do not have zero as denominator.
+
+    simplify("1/5", "5/1") = True
+    simplify("1/6", "2/1") = False
+    simplify("7/10", "10/2") = False
+    """
+
+The following is chain of thought:
+We are given two fractions as strings: x and n, each in the form "numerator/denominator".
+ We need to check if the product x * n is a whole number (integer).
+
+ Steps:
+ 1. Split each fraction string to get numerator and denominator as integers.
+ 2. Multiply the fractions: (num_x * num_n) / (den_x * den_n)
+ 3. Check if the denominator (den_x * den_n) divides the numerator (num_x * num_n) exactly.
+    That is, (num_x * num_n) % (den_x * den_n) == 0.
+
+ However, note: we are multiplying two fractions. So the product is (a/b) * (c/d) = (a*c)/(b*d).
+ We need to check if (a*c) is divisible by (b*d).
+
+ But wait: we can also simplify the fractions before multiplying to avoid large numbers?
+ However, the problem does not require simplification of the fractions themselves, only to check if the product is integer.
+
+ Alternatively, we can compute the product and then check if the denominator after simplification is 1?
+ Actually, we don't need to compute the entire fraction, we just need to check divisibility.
+
+ Important: Since the fractions are positive, we can do integer multiplication.
+
+ However, there is a catch: the product might be an integer even if the denominator is not 1? Actually, we are multiplying two fractions and we want to know if the result is integer.
+
+ So the plan:
+   Let x = a/b, n = c/d.
+   Then product = (a*c) / (b*d)
+   This is an integer if and only if (b*d) divides (a*c).
+
+ But note: we can also reduce the fractions to avoid large numbers? Actually, we can use gcd to simplify the cross terms.
+
+ However, the problem does not require efficiency, but we should avoid overflow if possible? But the numbers are positive whole numbers and we are told they are valid.
+
+ Alternatively, we can break it down:
+
+   We can write: (a*c) / (b*d) is integer if (a*c) % (b*d) == 0.
+
+ But note: we can also simplify by dividing numerator and denominator by gcd(a, d) and gcd(c, b) to reduce the numbers.
+
+ However, for correctness, we can do:
+
+   numerator = a * c
+   denominator = b * d
+
+   Then check if numerator % denominator == 0.
+
+ But wait: what if the denominator is 1? Then it's integer. But also if the numerator is multiple of denominator.
+
+ However, there is a potential for large numbers? But the problem does not specify the size, so we assume integers are manageable.
+
+ But to be safe and efficient, we can simplify the fractions before multiplying:
+
+   We can break the product into: (a * c) / (b * d)
+
+   We can simplify by:
+      Let g1 = gcd(a, d)   -> then a = g1 * a1, d = g1 * d1
+      Let g2 = gcd(c, b)   -> then c = g2 * c1, b = g2 * b1
+
+   Then the product becomes: (g1*a1 * g2*c1) / (g2*b1 * g1*d1) = (a1 * c1) / (b1 * d1)
+
+   Now we have a simpler fraction. Then we need to check if (a1 * c1) is divisible by (b1 * d1).
+
+   Alternatively, after this simplification, we can check if the denominator (b1 * d1) is 1? But not exactly: we need to check if the denominator divides the numerator.
+
+   Actually, after simplification, the fraction is in reduced form? Not exactly: we only reduced cross terms. But we can also reduce a1 and d1? and c1 and b1? Actually, we have already taken gcd.
+
+   However, we can do without this if we use modulo operation on the original product? But if numbers are large, we might avoid big integers by simplifying.
+
+ But the problem says "both numerator and denominator are positive whole numbers", and we are to return True if whole number.
+
+ Since the problem does not specify the size, we can do the direct multiplication and modulo.
+
+ However, to be efficient and avoid large numbers (if possible), we can simplify:
+
+   We can write:
+
+      product_num = a * c
+      product_den = b * d
+
+   But we can reduce the fraction (product_num, product_den) by dividing both by gcd(product_num, product_den). Then if the denominator becomes 1, it is integer.
+
+   Alternatively, we can check without building the large numbers: we can check if (a * c) is divisible by (b * d).
+
+   But note: (a * c) % (b * d) == 0 is equivalent to the product being integer.
+
+   However, we can also use:
+
+        if (a * c) % (b * d) == 0: then True
+
+   But this requires computing a*c and b*d which might be large.
+
+   Another idea: we can check without full multiplication by using properties.
+
+   Actually, we can use:
+
+        The product is integer if and only if the denominator of x (b) divides the numerator of n (c) after accounting for the other factors? Not exactly.
+
+   Alternatively, we can use:
+
+        Let g = gcd(a * c, b * d)
+        Then the reduced denominator is (b*d)/g. We need this to be 1.
+
+   But that requires computing gcd of two large numbers.
+
+   Given the constraints are not known, we will do the direct modulo check.
+
+   However, we can break the modulo check into two steps? Actually, we can use:
+
+        We require that (a * c) is divisible by (b * d).
+
+        This is equivalent to:
+            a * c is divisible by b and also by d? Not exactly: because b and d might share factors.
+
+        Actually, it is equivalent to: (a * c) must be divisible by the least common multiple of b and d? Not exactly: the denominator is b*d, so we need divisibility by b*d.
+
+   So the direct way is to compute the product of the numerators and the product of the denominators and check if the numerator product is divisible by the denominator product.
+
+   But note: the denominator product might be zero? But we are assured that denominators are not zero.
+
+   So code:
+
+        a, b = map(int, x.split('/'))
+        c, d = map(int, n.split('/'))
+
+        numerator = a * c
+        denominator = b * d
+
+        if numerator % denominator == 0:
+            return True
+        else:
+            return False
+
+   However, there is a catch: what if the fraction simplifies to an integer but the modulo fails because of integer division? Actually, since we are using integers, it should work.
+
+   But consider: numerator=4, denominator=2 -> 4 % 2 == 0 -> True.
+
+   But what if the product is zero? Then numerator=0, and 0 % denominator == 0 -> True. So zero is a whole number.
+
+   However, the problem says "whole number", which typically includes non-negative integers. So zero is included.
+
+   But note: the fractions are positive, so the product is non-negative.
+
+   So this should work.
+
+   However, we must be cautious: if the numbers are very large, the multiplication might cause overflow? But in Python, integers are arbitrary precision, so it is acceptable.
+
+   But if the numbers are extremely large, it might be inefficient. We can try to simplify before multiplying.
+
+   We can reduce the fractions by cross-canceling:
+
+        Let g1 = gcd(a, d)
+        Let g2 = gcd(c, b)
+
+        Then we can write:
+            a' = a // g1
+            d' = d // g1
+            c' = c // g2
+            b' = b // g2
+
+        Then the product becomes: (a' * c') / (b' * d')   [because the g1 and g2 cancel]
+
+        Now we have a simpler fraction. Then we need to check if (a' * c') is divisible by (b' * d').
+
+        But note: we might not have reduced completely? For example, there might be common factors between a' and b', or between c' and d'. So we can further reduce.
+
+        Alternatively, we can compute the gcd between (a' * c') and (b' * d')? But that is similar to the original problem.
+
+   Actually, after cross-canceling, we can check if the denominator (b' * d') is 1? But it might not be.
+
+   Another idea: we can reduce the fraction step by step:
+
+        Let num = a * c
+        Let den = b * d
+
+        But we can reduce by gcd(num, den). Then if the reduced denominator is 1, return True.
+
+   So we can do:
+
+        g = math.gcd(num, den)
+        reduced_den = den // g
+        if reduced_den == 1:
+            return True
+        else:
+            return False
+
+   This is equivalent to checking if the denominator divides the numerator.
+
+   Why? Because if the reduced denominator is 1, then the fraction is integer.
+
+   But note: we don't need to compute the reduced numerator.
+
+   However, we need to compute the gcd of two potentially large numbers (num and den). But the gcd algorithm is efficient.
+
+   So we can use:
+
+        import math
+        num = a * c
+        den = b * d
+        g = math.gcd(num, den)
+        return (den // g) == 1
+
+   But wait: what if the fraction is zero? Then num=0, den>0, then gcd(0, den)=den, then reduced_den = den//den=1 -> True. So it works for zero.
+
+   However, we can also avoid the multiplication by using:
+
+        We require that the denominator (b*d) divides the numerator (a*c). This is equivalent to:
+
+            (a * c) % (b * d) == 0
+
+   But with the gcd method, we are effectively computing the same thing without doing the modulo on large numbers? Actually, the gcd algorithm also uses modulo, but it is effic

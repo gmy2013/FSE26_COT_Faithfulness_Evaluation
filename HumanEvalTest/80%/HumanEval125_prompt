@@ -1,0 +1,41 @@
+
+def split_words(txt):
+    '''
+    Given a string of words, return a list of words split on whitespace, if no whitespaces exists in the text you
+    should split on commas ',' if no commas exists you should return the number of lower-case letters with odd order in the
+    alphabet, ord('a') = 0, ord('b') = 1, ... ord('z') = 25
+    Examples
+    split_words("Hello world!") ➞ ["Hello", "world!"]
+    split_words("Hello,world!") ➞ ["Hello", "world!"]
+    split_words("abcdef") == 3 
+    '''
+
+The following is chain of thought:
+First, I need to check if there are any whitespaces in the string. If there are, split on whitespace and return the list of words.
+
+If there are no whitespaces, then I should check for commas. If there are commas, split on commas and return the list.
+
+If there are neither whitespaces nor commas, then I need to count the number of lower-case letters that have an odd order in the alphabet. The order is defined with 'a' being 0, 'b' being 1, up to 'z' being 25. So, odd order means the numerical value (from ord) minus the ord of 'a') is odd.
+
+I should iterate through each character in the string, check if it's a lower-case letter, and then check if (ord(char) - ord('a')) is odd. Then count how many such letters there are.
+
+Let me outline the steps:
+
+1. Check if there is any whitespace in txt: if ' ' in txt
+   - If yes, return txt.split()  (this splits on whitespace)
+
+2. Else, check if there is any comma in txt: if ',' in txt
+   - If yes, return txt.split(',')  (split on commas)
+
+3. Else, initialize a counter to 0.
+   - For each character in txt:
+        if the character is a lower-case letter (between 'a' and 'z'):
+            compute position = ord(char) - ord('a')
+            if position % 2 == 1 (i.e., odd), then increment counter.
+   - Return the counter.
+
+I need to be careful: the problem says "ord('a') = 0", so for a char c, we do ord(c) - ord('a') to get its position.
+
+Also, we only consider lower-case letters.
+
+Let me write the c

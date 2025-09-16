@@ -1,0 +1,39 @@
+CodeGeneration:
+increment the special character counter
+6. Return a tuple containing the three counts
+
+Here's the complete function:
+
+```python
+def count_alpha_dig_spl(string):
+    """
+    Count the number of alphabetic characters, digits, and special characters in a string.
+    
+    Args:
+        string (str): The input string to analyze
+        
+    Returns:
+        tuple: A tuple containing (alphabets_count, digits_count, special_characters_count)
+    """
+    alphabets = digits = special = 0
+    for i in range(len(string)):
+        if string[i].isalpha():
+            alphabets += 1
+        elif string[i].isdigit():
+            digits += 1
+        else:
+            special += 1
+    return (alphabets, digits, special)
+```
+
+The function works by:
+1. Initializing three counters to zero
+2. Iterating through each character in the string
+3. Using string methods `isalpha()` and `isdigit()` to categorize each character
+4. Returning the counts as a tuple
+
+Example usage:
+```python
+result = count_alpha_dig_spl("Hello123!@#")
+print(result)  # Output: (5, 3, 3)
+```

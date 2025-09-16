@@ -1,0 +1,12 @@
+def is_Perfect_Square(n) :
+    i = 1
+    while (i * i<= n):
+        if ((n % i == 0) and (n / i == i)):
+            return True     
+        i = i + 1
+    return False
+The following is chain of thought:
+1. The function `is_Perfect_Square(n)` checks if `n` is a perfect square.
+2. It initializes `i` to 1 and enters a while loop that continues as long as `i*i <= n`.
+3. Inside the loop, it checks two conditions:
+   - `n % i == 0`: This ensures `i` is a divisor of 

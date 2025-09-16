@@ -1,0 +1,122 @@
+CodeGeneration:
+lementation:
+
+```python
+def specialFilter(nums):
+    count = 0
+    for num in nums:
+        if num > 10:
+            # Convert to string and remove negative sign if present
+            num_str = str(abs(num))
+            
+            # Check if both first and last digits are odd
+            first_digit = num_str[0]
+            last_digit = num_str[-1]
+            
+            if first_digit in '13579' and last_digit in '13579':
+                count += 1
+                
+    return count
+```
+
+Let's test it with the provided examples:
+- `specialFilter([15, -73, 14, -15])` 
+  - 15: >10, first digit '1' odd, last digit '5' odd → count
+  - -73: >10, first digit '7' odd, last digit '3' odd → count
+  - 14: >10, first digit '1' odd, last digit '4' even → skip
+  - -15: >10, first digit '1' odd, last digit '5' odd → count
+  - Returns 3 (but expected 1) - wait, I see the issue
+
+Wait, I made an error in the second example analysis. Let me reconsider:
+- -73: absolute value is 73, which is >10, first digit '7' odd, last digit '3' odd → should count
+- -15: absolute value is 15, which is >10, first digit '1' odd, last digit '5' odd → should count
+
+But the expected output is 1, not 3. Let me re-read the problem...
+
+Ah, I see the issue! The example `specialFilter([15, -73, 14, -15]) => 1` 
+means only -73 should count, not 15 and -15. Let me check why:
+
+Looking at the numbers:
+- 15: first digit '1' odd, last digit '5' odd, >10 → should count
+- -73: first digit '7' odd, last digit '3' odd, >10 → should count
+- 14: last digit '4' even → doesn't count
+- -15: first digit '1' odd, last digit '5' odd, >10 → should count
+
+Wait, this doesn't match the expected output of 1. Let me re-examine the problem...
+
+Actually, I think there might be a misunderstanding. Let me look at the second example:
+`specialFilter([33, -2, -3, 45, 21, 109]) => 2`
+
+Let me analyze:
+- 33: >10, first '3' odd, last '3' odd → count
+- -2: not >10 → skip
+- -3: not >10 → skip
+- 45: >10, first '4' even → skip
+- 21: >10, first '2' even → skip
+- 109: >10, first '1' odd, last '9' odd → count
+
+This gives us 2, which matches. So my implementation should be correct.
+
+Wait, let me double-check the first example again. Maybe I misread it or there's a different interpretation.
+
+Actually, let me run the code with the first example:
+- 15: >10, digits '1' and '5' are both odd → count
+- -73: >10, digits '7' and '3' are both odd → count
+- 14: >10, but '4' is even → skip
+- -15: >10, digits '1' and '5' are both odd → count
+
+This gives 3, but expected is 1. There must be something I'm missing...
+
+Wait! I think I found the issue. The problem says "greater than 10" but -73 and -15 are NOT greater than 10! They are negative numbers, so they are less than 0.
+
+Let me fix the implementation:
+
+```python
+def specialFilter(nums):
+    count = 0
+    for num in nums:
+        if num > 10:  # Only positive numbers greater than 10
+            num_str = str(num)
+            first_digit = num_str[0]
+            last_digit = num_str[-1]
+            
+            if first_digit in '13579' and last_digit in '13579':
+                count += 1
+                
+    return count
+```
+
+Now let's test the first example:
+- 15: >10, digits '1' and '5' are both odd → count
+- -73: not >10 → skip
+- 14: >10, but '4' is even → skip
+- -15: not >10 → skip
+
+This gives 1, which matches the expected output!
+
+And the second example:
+- 33: >10, digits '3' and '3' are both odd → count
+- -2: not >10 → skip
+- -3: not >10 → skip
+- 45: >10, but '4' is even → skip
+- 21: >10, but '2' is even → skip
+- 109: >10, digits '1' and '9' are both odd → count
+
+This gives 2, which also matches!
+
+Here's the final corrected implementation:
+
+```python
+def specialFilter(nums):
+    count = 0
+    for num in nums:
+        if num > 10:
+            num_str = str(num)
+            first_digit = num_str[0]
+            last_digit = num_str[-1]
+            
+            if first_digit in '13579' and last_digit in '13579':
+                count += 1
+                
+    return count
+```

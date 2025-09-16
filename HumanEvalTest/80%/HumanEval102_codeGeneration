@@ -1,0 +1,17 @@
+CodeGeneration:
+d returns the
+    biggest even integer number that is in the range [x, y] inclusive. If 
+    there's no such number, then the function should return -1.
+    """
+    if x > y:
+        return -1
+    
+    if y % 2 == 0:
+        return y
+    else:
+        candidate = y - 1
+        if candidate >= x:
+            return candidate
+        else:
+            return -1
+```

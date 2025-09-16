@@ -1,0 +1,32 @@
+CodeGeneration:
+Here's the implementation of the function:
+
+```python
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+    n = len(numbers)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if abs(numbers[i] - numbers[j]) < threshold:
+                return True
+    return False
+```
+
+The implementation follows the chain of thought:
+1. It iterates through all pairs of numbers using nested loops
+2. The outer loop goes through each element (index i)
+3. The inner loop goes through all subsequent elements (index j > i) to avoid duplicate comparisons
+4. For each pair, it calculates the absolute difference
+5. If any difference is less than the threshold, it returns True immediately
+6. If no close elements are found after checking all pairs, it returns False
+
+The time complexity is O(n²) where n is the length of the list, which is optimal for this problem as we need to check all possible pairs.

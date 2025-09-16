@@ -1,0 +1,21 @@
+
+
+def encode_shift(s: str):
+    """
+    returns encoded string by shifting every character by 5 in the alphabet.
+    """
+    return "".join([chr(((ord(ch) + 5 - ord("a")) % 26) + ord("a")) for ch in s])
+
+
+def decode_shift(s: str):
+    """
+    takes as input string encoded with encode_shift function. Returns decoded string.
+    """
+
+The following is chain of thought:
+To decode a string encoded with `encode_shift`, we need to reverse the encoding operation. The encoding shifted each character forward by 5 positions in the alphabet. Therefore, decoding requires shifting each character backward by 5 positions in the alphabet.
+
+The encoding operation was:
+`chr(((ord(ch) + 5 - ord("a")) % 26) + ord("a"))`
+
+To decode, we need to subtract 5 instead of adding 5. However, we must handle th

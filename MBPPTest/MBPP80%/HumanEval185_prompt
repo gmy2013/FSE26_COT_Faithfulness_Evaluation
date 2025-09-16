@@ -1,0 +1,9 @@
+import bisect
+def right_insertion(a, x):
+    i = bisect.bisect_right(a, x)
+    return i
+The following is chain of thought:
+1. The function `right_insertion` takes a sorted list `a` and a value `x`.
+2. It uses `bisect.bisect_right(a, x)` to find the insertion point for `x` in `a` to maintain sorted order, such that `x` would be inserted after any existing entries of `x`.
+3. The function returns this insertion index `i`.
+4. This index is the position whe

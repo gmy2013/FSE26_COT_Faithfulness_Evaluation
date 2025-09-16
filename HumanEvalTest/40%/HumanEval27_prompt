@@ -1,0 +1,16 @@
+
+
+def flip_case(string: str) -> str:
+    """ For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
+    >>> flip_case('Hello')
+    'hELLO'
+    """
+
+The following is chain of thought:
+We are going to iterate through each character in the string.
+ For each character:
+   - If it is uppercase, convert it to lowercase.
+   - If it is lowercase, convert it to uppercase.
+   - If it is neither (like a digit or punctuation), leave it unchanged.
+ We can use the string methods isupper() and islower() to check the case.
+ Then, we build a new string with the transf

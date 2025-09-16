@@ -1,0 +1,30 @@
+CodeGeneration:
+elements from `num_list` that are not equal to the first element.
+5. Finally, extend `x` with the list `a` (which contains all occurrences of the first element) and return the result.
+
+Here is the complete function with the docstring:
+
+```python
+def move_last(num_list):
+    """
+    Move all occurrences of the first element to the end of the list.
+
+    Parameters:
+    num_list (list): The input list of numbers.
+
+    Returns:
+    list: A new list with all occurrences of the first element moved to the end.
+
+    Example:
+    >>> move_last([1, 2, 3, 1, 4, 1])
+    [2, 3, 4, 1, 1, 1]
+    >>> move_last([5, 5, 5, 5])
+    [5, 5, 5, 5]
+    >>> move_last([0, 1, 0, 2])
+    [1, 2, 0, 0]
+    """
+    a = [num_list[0] for i in range(num_list.count(num_list[0]))]
+    x = [i for i in num_list if i != num_list[0]]
+    x.extend(a)
+    return x
+```

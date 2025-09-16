@@ -1,0 +1,34 @@
+CodeGeneration:
+inserts an underscore between them.
+3. The second regex `([a-z0-9])([A-Z])` finds positions where a lowercase letter or digit is followed by an uppercase letter, and inserts an underscore between them.
+4. Finally, the entire string is converted to lowercase.
+
+Here is the complete function with the docstring:
+
+```python
+import re
+
+def camel_to_snake(text):
+    """
+    Convert a camelCase string to snake_case.
+    
+    Args:
+        text (str): The camelCase string to convert.
+        
+    Returns:
+        str: The converted snake_case string.
+        
+    Examples:
+        >>> camel_to_snake('camelCase')
+        'camel_case'
+        >>> camel_to_snake('HTMLParser')
+        'html_parser'
+        >>> camel_to_snake('XMLHttpRequest')
+        'xml_http_request'
+    """
+    # First pass: insert underscore before capital letters followed by lowercase
+    str1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', text)
+    # Second pass: insert underscore before remaining capital letters
+    # Then convert the whole string to lowercase
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', str1).lower()
+```

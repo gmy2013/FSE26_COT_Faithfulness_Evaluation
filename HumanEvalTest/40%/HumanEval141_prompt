@@ -1,0 +1,31 @@
+
+def file_name_check(file_name):
+    """Create a function which takes a string representing a file's name, and returns
+    'Yes' if the the file's name is valid, and returns 'No' otherwise.
+    A file's name is considered to be valid if and only if all the following conditions 
+    are met:
+    - There should not be more than three digits ('0'-'9') in the file's name.
+    - The file's name contains exactly one dot '.'
+    - The substring before the dot should not be empty, and it starts with a letter from 
+    the latin alphapet ('a'-'z' and 'A'-'Z').
+    - The substring after the dot should be one of these: ['txt', 'exe', 'dll']
+    Examples:
+    file_name_check("example.txt") # => 'Yes'
+    file_name_check("1example.dll") # => 'No' (the name should start with a latin alphapet letter)
+    """
+
+The following is chain of thought:
+Let's break down the conditions for a valid file name:
+
+1. There should not be more than three digits ('0'-'9') in the entire file name.
+2. The file name must contain exactly one dot '.'.
+3. The substring before the dot (the base name) must:
+   - Not be empty.
+   - Start with a Latin alphabet letter (a-z, A-Z).
+4. The substring after the dot (the extension) must be one of: ['txt', 'exe', 'dll'].
+
+We'll implement this step by step:
+- First, check if there is exactly one dot in the string.
+- Split the file name into base and extension using the dot.
+- Check the base name: not empty and starts with a letter.
+- Check t

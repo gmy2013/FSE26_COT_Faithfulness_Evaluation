@@ -1,0 +1,15 @@
+CodeGeneration:
+6 is "110".
+   N = 147 -> digits: 1,4,7 -> sum = 12 -> binary of 12 is "1100".
+
+ Implementation:
+   We can use:
+      digit_sum = sum(int(d) for d in str(N))
+   Then convert digit_sum to binary using bin(digit_sum)[2:] to remove the '0b' prefix.
+
+ Let's code accordingly.
+```python
+def solve(N):
+    digit_sum = sum(int(d) for d in str(N))
+    return bin(digit_sum)[2:]
+```

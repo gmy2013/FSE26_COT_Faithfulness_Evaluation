@@ -1,0 +1,32 @@
+from typing import List
+
+
+def rescale_to_unit(numbers: List[float]) -> List[float]:
+    """ Given list of numbers (of at least two elements), apply a linear transform to that list,
+    such that the smallest number will become 0 and the largest will become 1
+    >>> rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0])
+    [0.0, 0.25, 0.5, 0.75, 1.0]
+    """
+
+The following is chain of thought:
+To solve this problem, we need to linearly transform a list of numbers such that the smallest number becomes 0 and the largest becomes 1. The transformation formula for each number is (x - min) / (max - min).
+
+Chain of thought:
+1. Check if the list has at least two elements (as per docstring requirement).
+2. Find the minimum and maximum values in the list.
+3. If the min and max are equal (to avoid division by zero), return a list of zeros (or handle appropriately, but the problem states at least two elements, but they could be same? However, the docstring example has distinct numbers. But to be safe, we should handle the case where min==max.
+4. For each number in the list, apply the transformation: (x - min) / (max - min).
+5. Return the transformed list.
+
+However, the docstring requires at least two elements, so we can assume the list has at least two. But if all numbers are same, then max-min=0, which would cause division by zero. So we need to handle that edge case.
+
+But the problem says "of at least two elements", but it doesn't guarantee they are distinct. So we must handle the case where all numbers are identical.
+
+If all numbers are identical, then after rescaling, they should all become 0? But the docstring says smallest becomes 0 and largest becomes 1. However, if all are same, then smallest and largest are same. So we cannot satisfy both conditions. One common approach is to return all zeros in that case.
+
+Alternatively, we can define: if max == min, then return list of zeros (since we cannot scale).
+
+So steps:
+1. Let min_val = min(numbers)
+2. Let max_val = max(numbers)
+3. If max_val == min_val, re

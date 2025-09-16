@@ -1,0 +1,103 @@
+
+def is_sorted(lst):
+    '''
+    Given a list of numbers, return whether or not they are sorted
+    in ascending order. If list has more than 1 duplicate of the same
+    number, return False. Assume no negative numbers and only integers.
+
+    Examples
+    is_sorted([5]) ➞ True
+    is_sorted([1, 2, 3, 4, 5]) ➞ True
+    is_sorted([1, 3, 2, 4, 5]) ➞ False
+    is_sorted([1, 2, 3, 4, 5, 6]) ➞ True
+    is_sorted([1, 2, 3, 4, 5, 6, 7]) ➞ True
+    is_sorted([1, 3, 2, 4, 5, 6, 7]) ➞ False
+    is_sorted([1, 2, 2, 3, 3, 4]) ➞ True
+    is_sorted([1, 2, 2, 2, 3, 4]) ➞ False
+    '''
+
+The following is chain of thought:
+To solve this problem, we need to check two conditions:
+1. The list must be sorted in ascending order.
+2. There should not be more than one duplicate of any number (i.e., no number appears more than twice).
+
+We can iterate through the list and check:
+- If each element is less than or equal to the next (for ascending order).
+- But if we find an element that is greater than the next, the list is not sorted.
+- Additionally, we need to check for duplicates: if any number appears more than twice, return False.
+
+However, note the examples: [1,2,2,3,3,4] is allowed (each duplicate appears exactly twice) but [1,2,2,2,3,4] is not (2 appears three times).
+
+So, we can:
+1. First, check for duplicates: if any number has a count greater than 2, return False.
+2. Then, check if the list is sorted in ascending order.
+
+But note: if we have duplicates, they must be consecutive for the list to be sorted. So if we check for sortedness first, we might catch duplicates that are not consecutive? Actually, if the list is sorted, duplicates will be consecutive. So we can combine the checks.
+
+Alternatively, we can:
+- Iterate through the list and check for both conditions in one pass.
+
+However, to avoid multiple passes, we can do:
+- Check for duplicates by using a frequency dictionary. But that requires an extra pass.
+
+Alternatively, we can check for duplicates while checking sortedness.
+
+But note: the problem says "if list has more than 1 duplicate of the same number" meaning if a number appears more than twice (i.e., count >= 3), return False.
+
+So we can:
+1. Create a frequency dictionary to count occurrences. If any value >= 3, return False.
+2. Then check if the list is sorted.
+
+But this requires two passes. Since the list might be large, we want to be efficient. However, the problem does not specify performance, so we can do two passes for clarity.
+
+Alternatively, we can do one pass:
+- For each index i from 0 to len(lst)-2:
+   - if lst[i] > lst[i+1]: return False (not sorted)
+   - also, we can count duplicates? But to count duplicates we need to know the entire list.
+
+So it's easier to do two passes.
+
+Let's break down:
+Pass 1: Count frequency. If any number has count >= 3, return False.
+Pass 2: Check if for every i, lst[i] <= lst[i+1]. If not, return False.
+
+If both passes are cleared, return True.
+
+But note: what if the list has duplicates that are not consecutive? For example [1,2,1] is not sorted. So in pass2 we will catch that because 2 > 1. So if the list is not sorted, we return False in pass2.
+
+So the plan:
+1. Check frequency: if any number appears 3 or more times, return False.
+2. Check if the list is sorted (each element <= next). If not, return False.
+3. Otherwise, return True.
+
+We can write the code accordingly.
+
+Let's code accordingly.
+```python
+def is_sorted(lst):
+    '''
+    Given a list of numbers, return whether or not they are sorted
+    in ascending order. If list has more than 1 duplicate of the same
+    number, return False. Assume no negative numbers and only integers.
+
+    Examples
+    is_sorted([5]) ➞ True
+    is_sorted([1, 2, 3, 4, 5]) ➞ True
+    is_sorted([1, 3, 2, 4, 5]) ➞ False
+    is_sorted([1, 2, 3, 4, 5, 6]) ➞ True
+    is_sorted([1, 2, 3, 4, 5, 6, 7]) ➞ True
+    is_sorted([1, 3, 2, 4, 5, 6, 7]) ➞ False
+    is_sorted([1, 2, 2, 3, 3, 4]) ➞ True
+    is_sorted([1, 2, 2, 2, 3, 4]) ➞ False
+    '''
+    # Check for duplicates: if any number appears 3 or more times, return False.
+    from collections import defaultdict
+    freq = defaultdict(int)
+    for num in lst:
+        freq[num] += 1
+        if freq[num] >= 3:
+            return False
+
+    # Check if the list is sorted in ascending order.
+    for i in range(len(lst) - 1):
+        if 

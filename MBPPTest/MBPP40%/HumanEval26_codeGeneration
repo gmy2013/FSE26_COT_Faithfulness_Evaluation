@@ -1,0 +1,58 @@
+CodeGeneration:
+inary Search Setup**: Calculate the midpoint of the current range
+   - This divides the problem into smaller subproblems for efficient search
+
+4. **Recursive Cases**:
+   - If array[mid] == mid: All numbers from start to mid are present
+     - Search the right half (mid+1 to end) for the first missing number
+   - If array[mid] ≠ mid: There's a missing number in the left half
+     - Search the left half (start to mid) for the first missing number
+
+Here's the complete function with the chain of thought incorporated:
+
+```python
+def find_First_Missing(array, start, end):
+    """
+    Find the smallest missing non-negative integer in a sorted array of distinct integers.
+    
+    The function uses a binary search approach to efficiently locate the first
+    missing number where array[i] != i.
+    
+    Args:
+        array: Sorted list of distinct integers
+        start: Starting index of the search range
+        end: Ending index of the search range
+    
+    Returns:
+        The first missing non-negative integer in the sequence
+    
+    Example:
+        >>> find_First_Missing([0, 1, 2, 3, 4, 6, 9], 0, 6)
+        5
+        >>> find_First_Missing([0, 1, 2, 3], 0, 3)
+        4
+        >>> find_First_Missing([1, 2, 3, 4], 0, 3)
+        0
+    """
+    # Base Case 1: If start exceeds end, the entire range is properly sequenced
+    # The first missing number is end + 1 (next integer after last element)
+    if start > end:
+        return end + 1
+    
+    # Base Case 2: If the first element doesn't match its index
+    # The first missing number is the start index itself
+    if start != array[start]:
+        return start
+    
+    # Calculate midpoint for binary search
+    mid = (start + end) // 2
+    
+    # If the midpoint value equals its index, all numbers from start to mid are present
+    # Search the right half for the first missing number
+    if array[mid] == mid:
+        return find_First_Missing(array, mid + 1, end)
+    
+    # Otherwise, there's a missing number in the left half
+    # Search the left half (including mid) for the first missing number
+    return find_First_Missing(array, start, mid)
+```

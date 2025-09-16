@@ -1,0 +1,42 @@
+CodeGeneration:
+position (since we start counting from 1 from the right).
+   - Multiply it to `prodOdd`.
+   - Remove that digit by integer division.
+   - If no digits remain, break.
+   - The next digit (now rightmost) is considered at an even position.
+   - Multiply it to `prodEven`.
+   - Remove that digit.
+5. After processing all digits, compare `prodOdd` and `prodEven`.
+6. Return True if equal, else False.
+
+However, note that the current implementation processes digits from right to left, and considers the rightmost digit as odd position, next as even, and so on. This matches the typical interpretation where positions are counted from the right (with units place as position 1).
+
+Let me verify with an example: n = 1221
+- Rightmost digit (1) is odd position -> prodOdd = 1
+- Next digit (2) is even position -> prodEven = 2
+- Next digit (2) is odd position -> prodOdd = 1*2 = 2
+- Next digit (1) is even position -> prodEven = 2*1 = 2
+- Products are equal (2 == 2) -> returns True
+
+This is correct.
+
+The code is complete and functional. No changes needed.
+
+```python
+def product_Equal(n): 
+    if n < 10: 
+        return False
+    prodOdd = 1; prodEven = 1
+    while n > 0: 
+        digit = n % 10
+        prodOdd *= digit 
+        n = n//10
+        if n == 0: 
+            break; 
+        digit = n % 10
+        prodEven *= digit 
+        n = n//10
+    if prodOdd == prodEven: 
+        return True
+    return False
+```

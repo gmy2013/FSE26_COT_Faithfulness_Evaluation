@@ -1,0 +1,36 @@
+CodeGeneration:
+Here's the corrected and improved implementation of the Fibonacci function:
+
+```python
+def fibonacci(n):
+    """
+    Calculate the nth Fibonacci number.
+    
+    The Fibonacci sequence is defined as:
+    F(1) = 1, F(2) = 1, and F(n) = F(n-1) + F(n-2) for n > 2
+    
+    Args:
+        n (int): The position in the Fibonacci sequence (must be positive integer)
+    
+    Returns:
+        int: The nth Fibonacci number
+    
+    Raises:
+        ValueError: If n is not a positive integer
+    """
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("n must be a positive integer")
+    
+    if n == 1 or n == 2:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+```
+
+**Key improvements made:**
+- Added proper input validation to ensure `n` is a positive integer
+- Added comprehensive docstring explaining the function's purpose, parameters, return value, and error handling
+- Fixed the parentheses placement in the recursive call (removed extra parentheses around `fibonacci(n - 2)`)
+- Maintained the same recursive logic while making it more robust
+
+**Note:** While this recursive implementation is mathematically correct, it has exponential time complexity O(2^n). For practical use with larger values of n, consider using iterative approaches or memoization for better performance.

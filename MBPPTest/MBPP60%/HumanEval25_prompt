@@ -1,0 +1,12 @@
+def triangle_area(r) :  
+    if r < 0 : 
+        return -1
+    return r * r 
+The following is chain of thought:
+The function name "triangle_area" suggests calculating the area of a triangle, but the implementation returns r², which would be the area of a square with side r.
+
+For a triangle, the area should be (base × height)/2. Since no specific triangle type is specified, I'll assume an equilateral triangle where all sides are equal to r.
+
+The area of an equilateral triangle with side length r is (√3/4) × r².
+
+However, the current implementation returns r², which suggests it might be intended for a different type of triangle or there might be a mi

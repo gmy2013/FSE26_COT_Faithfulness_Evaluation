@@ -1,0 +1,12 @@
+def tuple_to_dict(test_tup):
+  res = dict(test_tup[idx : idx + 2] for idx in range(0, len(test_tup), 2))
+  return (res) 
+The following is chain of thought:
+1. The function `tuple_to_dict` takes a tuple `test_tup` as input.
+2. The goal is to convert the tuple into a dictionary by grouping elements in pairs.
+3. The approach uses a generator expression inside the `dict()` constructor.
+4. The generator iterates over indices starting from 0 to the length of the tuple, stepping by 2 each time.
+5. For each index `idx`, it slices the tuple from `idx` to `idx + 2`, creating a key-value pair.
+6. The `dict()` constructor consumes these slices to form the dictionary.
+7. Finally, the resulting dictionary is returned.
+8. Note: This assumes the tuple has an even number of elem

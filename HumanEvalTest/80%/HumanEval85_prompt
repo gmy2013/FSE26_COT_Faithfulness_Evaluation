@@ -1,0 +1,31 @@
+
+def add(lst):
+    """Given a non-empty list of integers lst. add the even elements that are at odd indices..
+
+
+    Examples:
+        add([4, 2, 6, 7]) ==> 2 
+    """
+
+The following is chain of thought:
+We are given a non-empty list of integers.
+ We need to add (sum) the even elements that are at odd indices.
+ Steps:
+ 1. Iterate over the indices of the list.
+ 2. Check if the index is odd (i.e., index % 2 != 0).
+ 3. For elements at odd indices, check if the element is even (i.e., element % 2 == 0).
+ 4. If both conditions are true, add the element to the total.
+ 5. Return the total.
+
+ Example: 
+   For [4, 2, 6, 7]:
+     Index 0 (even index) -> skip.
+     Index 1 (odd index): element is 2 (even) -> add 2.
+     Index 2 (even index) -> skip.
+     Index 3 (odd index): element is 7 (odd) -> skip.
+   Total = 2.
+
+ Implementation:
+   We can use a loop with enumerate to get both index and value.
+   Initialize a variable (e.g., total) to 0.
+   For each 

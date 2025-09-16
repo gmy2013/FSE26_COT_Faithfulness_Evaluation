@@ -1,0 +1,29 @@
+import re
+def pass_validity(p):
+ x = True
+ while x:  
+    if (len(p)<6 or len(p)>12):
+        break
+    elif not re.search("[a-z]",p):
+        break
+    elif not re.search("[0-9]",p):
+        break
+    elif not re.search("[A-Z]",p):
+        break
+    elif not re.search("[$#@]",p):
+        break
+    elif re.search("\s",p):
+        break
+    else:
+        return True
+        x=False
+        break
+
+ if x:
+    return False
+The following is chain of thought:
+1. The function `pass_validity(p)` checks if a password string `p` meets specific criteria.
+2. The criteria are: length between 6-12 characters, contains at least one lowercase letter, one digit, one uppercase letter, one special character from [$#@], and no whitespace.
+3. The current implementation uses a while loop with multiple condition checks that break out of the loop if any condition fails.
+4. The while loop condition `x = True` means it will only run once since `x` is set to False only in the else block (which returns True and breaks).
+5. The structure can be simplified since the while lo

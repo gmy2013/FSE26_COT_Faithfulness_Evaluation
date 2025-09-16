@@ -1,0 +1,6 @@
+import re
+def road_rd(street):
+  return (re.sub('Road$', 'Rd.', street))
+The following is chain of thought:
+1. The function `road_rd` takes a string `street` as input.
+2. It uses `re.sub` to perform a regex substitution: replacing the substring "Road" at the very end of the string (indicated by `$`) with "Rd.".

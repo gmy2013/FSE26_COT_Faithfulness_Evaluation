@@ -1,0 +1,41 @@
+CodeGeneration:
+The function you provided correctly implements the formula for the sum of cubes of the first n natural numbers. Here's the complete function with improved formatting:
+
+```python
+import math
+
+def sum_series(number):
+    """
+    Calculate the sum of cubes of the first n natural numbers.
+    
+    Formula: (n(n+1)/2)^2
+    
+    Args:
+        number (int): The number of natural numbers to sum the cubes of
+    
+    Returns:
+        float: The sum of cubes of the first n natural numbers
+    """
+    total = math.pow((number * (number + 1)) / 2, 2)
+    return total
+```
+
+Alternative implementation without using math.pow():
+
+```python
+def sum_series(number):
+    """
+    Calculate the sum of cubes of the first n natural numbers.
+    
+    Formula: (n(n+1)/2)^2
+    
+    Args:
+        number (int): The number of natural numbers to sum the cubes of
+    
+    Returns:
+        float: The sum of cubes of the first n natural numbers
+    """
+    return ((number * (number + 1)) / 2) ** 2
+```
+
+Both implementations correctly compute the sum of cubes using the mathematical identity: 1³ + 2³ + 3³ + ... + n³ = (n(n+1)/2)²

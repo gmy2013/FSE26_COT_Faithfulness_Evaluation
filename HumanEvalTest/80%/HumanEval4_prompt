@@ -1,0 +1,41 @@
+from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """ For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+    1.0
+    """
+
+The following is chain of thought:
+We are calculating the Mean Absolute Deviation (MAD) around the mean.
+ Steps:
+ 1. Calculate the mean of the input list.
+ 2. For each number, compute the absolute difference from the mean.
+ 3. Calculate the average of these absolute differences.
+
+ Let's implement accordingly.
+ Note: We need to handle empty list? But the docstring doesn't specify, so we assume non-empty.
+ However, to be safe, we can check for empty list and return 0.0 or raise? 
+ Since the docstring example has non-empty, we'll proceed without explicit check for simplicity.
+ But let's consider: if list is empty, mean would be undefined. So we should handle.
+
+ Actually, the problem says "list of input numbers", which implies non-empty? 
+ However, to be robust, we can return 0.0 for empty list (since there are no deviations) or raise ValueError?
+ Looking at the docstring, it doesn't specify, but mathematically MAD is undefined for empty list.
+ However, in practice, we might want to return 0.0 to avoid breaking code.
+
+ Alternatively, we can follow the principle: "if there are no numbers, the average deviation is 0".
+ But let's see the common practice: in statistics, n=0 is often handled as undefined.
+ However, for code simplicity, we'll return 0.0 for empty list.
+
+ Alternatively, we can raise ValueError for empty list? But the docstring doesn't specify.
+
+ Since the problem does not specify, and to avoid division by zero, we'll handle empty list by returning 0.0.
+
+ Implementation:
+   n = len

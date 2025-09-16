@@ -1,0 +1,49 @@
+CodeGeneration:
+nerator `gen` for each prime that yields multiples of existing ugly numbers by that prime.
+
+4. **Merge generators**: Use `heapq.merge` to combine all generators into a single sorted stream of candidate ugly numbers.
+
+5. **Build the list**: Iterate through the merged stream, adding unique numbers to `uglies` until we have n numbers.
+
+6. **Return result**: The last element in `uglies` is the nth super ugly number.
+
+Here is the complete function with detailed comments:
+
+```python
+import heapq
+
+def nth_super_ugly_number(n, primes):
+    """
+    Find the nth super ugly number.
+    
+    Super ugly numbers are positive numbers whose all prime factors are in the given prime list.
+    
+    Args:
+        n (int): The position of the super ugly number to find (1-based)
+        primes (list): List of prime numbers
+    
+    Returns:
+        int: The nth super ugly number
+    
+    Example:
+        >>> nth_super_ugly_number(12, [2,7,13,19])
+        32
+    """
+    uglies = [1]  # Start with the first ugly number
+    
+    def gen(prime):
+        """Generator that yields multiples of existing ugly numbers by a given prime"""
+        for ugly in uglies:
+            yield ugly * prime
+    
+    # Merge all generators into a single sorted stream of candidate numbers
+    merged = heapq.merge(*map(gen, primes))
+    
+    # Build the list of super ugly numbers
+    while len(uglies) < n:
+        ugly = next(merged)  # Get the next smallest candidate
+        if ugly != uglies[-1]:  # Avoid duplicates
+            uglies.append(ugly)
+    
+    return uglies[-1]  # Return the nth super ugly number
+```

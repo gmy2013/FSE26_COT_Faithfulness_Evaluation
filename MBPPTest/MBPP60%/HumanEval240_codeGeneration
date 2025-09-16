@@ -1,0 +1,35 @@
+CodeGeneration:
+Based on the chain of thought analysis, the current implementation correctly counts inversions using a straightforward nested loop approach. Here's the complete function:
+
+```python
+def get_inv_count(arr, n):
+    """
+    Count the number of inversions in an array.
+    
+    An inversion is a pair of indices (i, j) where i < j but arr[i] > arr[j].
+    
+    Args:
+        arr: Input array/list
+        n: Length of the array
+    
+    Returns:
+        int: Number of inversions in the array
+    
+    Time Complexity: O(n²)
+    Space Complexity: O(1)
+    
+    Example:
+        >>> get_inv_count([2, 4, 1, 3, 5], 5)
+        3
+        >>> get_inv_count([1, 2, 3, 4, 5], 5)
+        0
+    """
+    inv_count = 0
+    for i in range(n): 
+        for j in range(i + 1, n): 
+            if (arr[i] > arr[j]): 
+                inv_count += 1
+    return inv_count
+```
+
+The function correctly implements the inversion count algorithm using the straightforward approach. For better performance on large arrays, you could consider using a more efficient algorithm like merge sort inversion counting (O(n log n)), but this implementation works correctly for the given problem.

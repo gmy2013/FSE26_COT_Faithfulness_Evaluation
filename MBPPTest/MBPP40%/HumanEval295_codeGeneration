@@ -1,0 +1,16 @@
+CodeGeneration:
+takes a list of tuples as input and returns the list sorted based on the last element of each tuple.
+
+Here's the complete implementation:
+
+```python
+def last(n):
+    return n[-1]
+
+def sort_list_last(tuples):
+    return sorted(tuples, key=last)
+```
+
+This implementation will sort the list of tuples in ascending order based on the last element of each tuple. For example:
+
+```python

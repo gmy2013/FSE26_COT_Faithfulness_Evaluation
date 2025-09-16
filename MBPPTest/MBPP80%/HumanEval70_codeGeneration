@@ -1,0 +1,39 @@
+CodeGeneration:
+Based on the provided chain of thought and the existing function implementations, here's the complete Python code with the functions:
+
+```python
+import math 
+
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    """
+    Returns the 1-indexed position of the rightmost set bit in n.
+    
+    Args:
+        n (int): The input number
+        
+    Returns:
+        int: Position of the rightmost set bit (1-indexed from right)
+    """
+    return int(math.log2(n&-n)+1)   
+
+def set_Right_most_Unset_Bit(n): 
+    """
+    Sets the rightmost unset bit in n and returns the result.
+    
+    Args:
+        n (int): The input number
+        
+    Returns:
+        int: Number with the rightmost unset bit set
+    """
+    if (n == 0): 
+        return 1
+    if ((n & (n + 1)) == 0):     
+        return n 
+    pos = get_Pos_Of_Right_most_Set_Bit(~n)      
+    return ((1 << (pos - 1)) | n)
+```
+
+The code is already complete and functional as provided. The functions work as described in the chain of thought:
+- `get_Pos_Of_Right_most_Set_Bit()` isolates the rightmost set bit and returns its 1-indexed position
+- `set_Right_most_Unset_Bit()` handles edge cases (0 and all bits set), then finds and sets the rightmost unset bit

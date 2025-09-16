@@ -1,0 +1,22 @@
+CodeGeneration:
+h any string that contains an 'a' followed by zero or more 'b's (with minimal matching).
+
+4. The function uses `re.search()` to check if the pattern exists anywhere in the input text.
+5. If found, it returns 'Found a match!', otherwise 'Not matched!'.
+
+Here's the complete function:
+
+```python
+import re
+
+def text_match(text):
+    patterns = 'ab*?'
+    if re.search(patterns, text):
+        return 'Found a match!'
+    else:
+        return 'Not matched!'
+```
+
+This function will:
+- Return 'Found a match!' for strings like: 'a', 'ab', 'abc', 'xay', 'cab', 'a', 'abbb' (anywhere in the string)
+- Return 'Not matched!' for strings that don't contain 'a' at all, like: 'b', 'c', 'xyz', 'bbb'

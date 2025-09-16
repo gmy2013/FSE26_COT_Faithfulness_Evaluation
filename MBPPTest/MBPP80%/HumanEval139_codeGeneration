@@ -1,0 +1,23 @@
+CodeGeneration:
+ents to form proper key-value pairs. If the tuple has an odd length, the last element will be ignored since slicing `idx:idx+2` will only yield one element for the last iteration when `idx` is the last index.
+
+Here is the complete function with the docstring:
+
+```python
+def tuple_to_dict(test_tup):
+    """
+    Convert a tuple into a dictionary by grouping elements into key-value pairs.
+    
+    Args:
+        test_tup (tuple): Input tuple with an even number of elements to form proper pairs.
+        
+    Returns:
+        dict: Dictionary created from consecutive pairs of elements in the tuple.
+        
+    Example:
+        >>> tuple_to_dict(('a', 1, 'b', 2, 'c', 3))
+        {'a': 1, 'b': 2, 'c': 3}
+    """
+    res = dict(test_tup[idx : idx + 2] for idx in range(0, len(test_tup), 2))
+    return res
+```

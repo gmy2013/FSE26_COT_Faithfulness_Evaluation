@@ -1,0 +1,29 @@
+CodeGeneration:
+on the condition that the minimum value in the sublist is at least `leftrange` and the maximum value in the sublist is at most `rightrange`.
+3. The current implementation uses a list comprehension to iterate over each sublist `i` in `list1`.
+4. For each sublist, it checks if `min(i) >= leftrange` and `max(i) <= rightrange`.
+5. If both conditions are true, the sublist is included in the result.
+6. The function returns the filtered list.
+
+However, note the typo in the parameter name `rigthrange` (should be `rightrange`). Let's correct that and ensure the function is robust.
+
+Here is the corrected and improved function:
+
+```python
+def remove_list_range(list1, leftrange, rightrange):
+    """
+    Remove sublists from list1 where the minimum value is less than leftrange or the maximum value is greater than rightrange.
+
+    Parameters:
+    list1 (list of list): Input list containing sublists of numbers.
+    leftrange (int or float): Lower bound for the minimum value in each sublist.
+    rightrange (int or float): Upper bound for the maximum value in each sublist.
+
+    Returns:
+    list: A list of sublists that satisfy min(sublist) >= leftrange and max(sublist) <= rightrange.
+    """
+    result = [sublist for sublist in list1 if min(sublist) >= leftrange and max(sublist) <= rightrange]
+    return result
+```
+
+This function now correctly filters the sublists based on the given range constraints. The docstring has been updated to clearly describe the function's behavior, parameters, and return value. The variable names are also improved for clarity.

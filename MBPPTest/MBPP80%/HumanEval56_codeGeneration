@@ -1,0 +1,39 @@
+CodeGeneration:
+Based on the chain of thought, the function appears to be correctly implemented to find the first non-zero digit of n! (factorial of n). The implementation:
+
+1. Calculates factorial while removing trailing zeros during computation
+2. Extracts the first digit by repeatedly dividing by 10
+3. Returns the first digit as an integer
+
+Here's the complete function with a docstring:
+
+```python
+import math 
+
+def first_Digit(n):
+    """
+    Returns the first non-zero digit of n! (factorial of n).
+    
+    Args:
+        n (int): The number for which to calculate the factorial's first digit
+    
+    Returns:
+        int: The first non-zero digit of n!
+    
+    Example:
+        >>> first_Digit(5)
+        1  # 5! = 120, first digit is 1
+        >>> first_Digit(7)
+        5  # 7! = 5040, first digit is 5
+    """
+    fact = 1
+    for i in range(2, n + 1):
+        fact = fact * i 
+        while (fact % 10 == 0):  
+            fact = int(fact / 10) 
+    while (fact >= 10): 
+        fact = int(fact / 10) 
+    return math.floor(fact)
+```
+
+Note: The `math.floor()` call is indeed redundant since `fact` is already an integer after the integer division operations, but it doesn't harm the functionality.

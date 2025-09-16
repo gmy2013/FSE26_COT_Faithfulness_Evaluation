@@ -1,0 +1,11 @@
+def string_length(str1):
+    count = 0
+    for char in str1:
+        count += 1
+    return count
+The following is chain of thought:
+1. The function `string_length` takes one argument `str1`, which is expected to be a string.
+2. Initialize a variable `count` to 0. This will be used to accumulate the number of characters.
+3. Iterate over each character in the string `str1` using a for loop.
+4. For each character encountered, increment `count` by 1.
+5. After

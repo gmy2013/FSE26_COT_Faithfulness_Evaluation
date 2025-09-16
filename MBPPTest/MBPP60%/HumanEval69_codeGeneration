@@ -1,0 +1,23 @@
+CodeGeneration:
+```python
+def decreasing_trend(nums):
+    """
+    Check if the list is in strictly decreasing order.
+    
+    Args:
+        nums (list): A list of numbers
+        
+    Returns:
+        bool: True if the list is strictly decreasing, False otherwise
+    """
+    # Check if the list is equal to itself sorted in reverse order
+    # This ensures all elements are in decreasing order
+    if nums == sorted(nums, reverse=True):
+        # Additional check to ensure no duplicate values (strictly decreasing)
+        # If any adjacent elements are equal, it's not strictly decreasing
+        for i in range(len(nums) - 1):
+            if nums[i] <= nums[i + 1]:
+                return False
+        return True
+    return False
+```

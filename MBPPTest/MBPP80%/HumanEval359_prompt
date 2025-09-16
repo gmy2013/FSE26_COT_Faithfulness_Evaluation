@@ -1,0 +1,19 @@
+def get_noOfways(n):
+    if (n == 0):
+        return 0;
+    if (n == 1):
+        return 1; 
+    return get_noOfways(n - 1) + get_noOfways(n - 2);
+The following is chain of thought:
+The function `get_noOfways(n)` appears to implement a recursive Fibonacci sequence calculation, but with base cases that differ from the standard Fibonacci definition.
+
+Chain of thought:
+1. The function takes an integer `n` as input
+2. Base case: if n == 0, returns 0
+3. Base case: if n == 1, returns 1
+4. Recursive case: returns sum of function calls with n-1 and n-2
+5. This matches the Fibonacci sequence pattern: F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2)
+6. The function calculates the nth Fibonacci number
+7. The name "get_noOfways" suggests it might be intended for counting ways (like climbing stairs), which often follows Fibonacci pattern
+8. However, the docstring is missing, so the exact intended purpose is unclear from the code alone
+9. The function uses recursion which is inefficient

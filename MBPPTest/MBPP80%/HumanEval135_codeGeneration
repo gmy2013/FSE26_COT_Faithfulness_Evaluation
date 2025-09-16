@@ -1,0 +1,17 @@
+CodeGeneration:
+The function is already complete and correct. Here's the full implementation:
+
+```python
+import bisect
+
+def left_insertion(a, x):
+    i = bisect.bisect_left(a, x)
+    return i
+```
+
+This function:
+- Takes a sorted list `a` and a value `x`
+- Uses `bisect.bisect_left()` to find the leftmost position where `x` can be inserted while maintaining sorted order
+- Returns the insertion index `i`
+
+The function works as specified and requires no additional code.

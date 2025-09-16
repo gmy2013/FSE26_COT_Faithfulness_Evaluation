@@ -1,0 +1,22 @@
+
+
+def fizz_buzz(n: int):
+    """Return the number of times the digit 7 appears in integers less than n which are divisible by 11 or 13.
+    >>> fizz_buzz(50)
+    0
+    >>> fizz_buzz(78)
+    2
+    >>> fizz_buzz(79)
+    3
+    """
+
+The following is chain of thought:
+To solve this problem, we need to count the number of times the digit '7' appears in all integers less than `n` that are divisible by 11 or 13. Here's the step-by-step approach:
+
+1. **Iterate through all integers from 1 to n-1**: For each number in this range, check if it is divisible by 11 or 13.
+2. **Check divisibility**: If the number is divisible by 11 or 13, convert it to a string to examine each digit.
+3. **Count digit '7'**: For each such number, count how many times the digit '7' appears in its string representation.
+4. **Accumulate the count**: Sum these counts for all numbers that meet the divisibility condition.
+5. **Return the total count**: The result is the total number of occurrences of the digit '7' in all qualifying numbers.
+
+Let's implement this l

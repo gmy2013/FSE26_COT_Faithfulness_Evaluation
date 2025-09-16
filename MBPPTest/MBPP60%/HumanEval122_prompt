@@ -1,0 +1,9 @@
+from operator import eq
+def count_same_pair(nums1, nums2):
+    result = sum(map(eq, nums1, nums2))
+    return result
+The following is chain of thought:
+1. The function `count_same_pair` takes two lists `nums1` and `nums2`.
+2. It uses `map(eq, nums1, nums2)` to apply the equality operator `eq` to corresponding elements of both lists.
+3. This returns an iterator of boolean values (True for equal, False for unequal).
+4. `sum()` is then used to count the n

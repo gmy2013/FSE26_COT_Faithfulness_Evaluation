@@ -1,0 +1,9 @@
+def re_arrange_tuples(test_list, ord_list):
+  temp = dict(test_list)
+  res = [(key, temp[key]) for key in ord_list]
+  return (res) 
+The following is chain of thought:
+1. The function `re_arrange_tuples` takes two parameters: `test_list` (a list of tuples) and `ord_list` (a list of keys).
+2. Convert `test_list` into a dictionary `temp` for O(1) key lookups.
+3. Use a list comprehension to create the result list `res`:
+   - For each `key` in

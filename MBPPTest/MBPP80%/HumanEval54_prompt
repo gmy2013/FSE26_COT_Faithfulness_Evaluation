@@ -1,0 +1,12 @@
+def fifth_Power_Sum(n) : 
+    sm = 0 
+    for i in range(1,n+1) : 
+        sm = sm + (i*i*i*i*i) 
+    return sm 
+The following is chain of thought:
+1. The function `fifth_Power_Sum(n)` calculates the sum of the fifth powers of all integers from 1 to n.
+2. Initialize a variable `sm` to 0 to accumulate the sum.
+3. Use a for loop to iterate through each integer `i` from 1 to n (inclusive).
+4. In each iteration, compute the fifth power of `i` (i.e., i⁵) and add it to `sm`.
+5. After processing all integers, return the accumulated sum `sm`.
+6. The i

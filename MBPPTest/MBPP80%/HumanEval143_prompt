@@ -1,0 +1,21 @@
+def check_none(test_tup):
+  res = any(map(lambda ele: ele is None, test_tup))
+  return (res) 
+The following is chain of thought:
+Here's the structured chain of thought for the given function:
+
+1. **Function Purpose Analysis**: The function `check_none` needs to determine if any element in the input tuple `test_tup` is `None`
+
+2. **Input Processing**: 
+   - The function receives `test_tup` as input parameter
+   - It processes this tuple to check for `None` values
+
+3. **Implementation Strategy**:
+   - Use `map()` to apply a lambda function to each element
+   - The lambda function `lambda ele: ele is None` checks if an element equals `None`
+   - Use `any()` to return `True` if any element in the mapped result is `True`
+   - This efficiently checks if at least one `None` value exists in the tuple
+
+4. **Return Value**: 
+   - The result is returned as a boolean (`True` if any `None` found, `False` otherwise)
+   - The parentheses around `res` are redundant but val

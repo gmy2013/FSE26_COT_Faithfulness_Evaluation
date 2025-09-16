@@ -1,0 +1,51 @@
+CodeGeneration:
+e matched substring (using slicing `text[s:e]`), the start index, and the end index.
+
+However, there's an issue with the current implementation: it only returns the first occurrence and ignores any subsequent matches. Based on the function name `occurance_substring` (which appears to be a misspelling of "occurrence"), it seems like it should handle multiple occurrences.
+
+Here's the corrected function that returns all occurrences:
+
+```python
+import re
+def occurance_substring(text, pattern):
+    """
+    Find all occurrences of a pattern in a text string.
+    
+    Args:
+        text (str): The string to search in
+        pattern (str): The regex pattern to search for
+    
+    Returns:
+        list: A list of tuples, each containing (substring, start_index, end_index)
+              for each occurrence found
+    """
+    occurrences = []
+    for match in re.finditer(pattern, text):
+        s = match.start()
+        e = match.end()
+        occurrences.append((text[s:e], s, e))
+    return occurrences
+```
+
+If you specifically want only the first occurrence (as in the original code), here's the corrected version with proper documentation:
+
+```python
+import re
+def occurance_substring(text, pattern):
+    """
+    Find the first occurrence of a pattern in a text string.
+    
+    Args:
+        text (str): The string to search in
+        pattern (str): The regex pattern to search for
+    
+    Returns:
+        tuple: A tuple containing (substring, start_index, end_index) for the first occurrence,
+               or None if no match is found
+    """
+    for match in re.finditer(pattern, text):
+        s = match.start()
+        e = match.end()
+        return (text[s:e], s, e)
+    return None
+```

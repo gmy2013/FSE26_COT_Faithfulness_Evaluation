@@ -1,0 +1,30 @@
+CodeGeneration:
+Based on the provided function and chain of thought, here's the complete implementation:
+
+```python
+def sum_list(lst1, lst2):
+    """
+    Sums corresponding elements from two lists of numbers.
+    
+    This function takes two lists of numbers and returns a new list where
+    each element is the sum of the corresponding elements from the input lists.
+    
+    Args:
+        lst1 (list): First list of numbers
+        lst2 (list): Second list of numbers (must be same length as lst1)
+    
+    Returns:
+        list: A new list containing element-wise sums
+    
+    Raises:
+        IndexError: If the lists have different lengths
+    
+    Example:
+        >>> sum_list([1, 2, 3], [4, 5, 6])
+        [5, 7, 9]
+    """
+    res_list = [lst1[i] + lst2[i] for i in range(len(lst1))]
+    return res_list
+```
+
+The function performs element-wise addition of two lists, assuming they have the same length. If the lists have different lengths, it will raise an `IndexError` when trying to access elements beyond the length of the shorter list.

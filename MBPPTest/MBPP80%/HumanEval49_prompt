@@ -1,0 +1,17 @@
+def are_Equal(arr1,arr2,n,m):
+    if (n != m):
+        return False
+    arr1.sort()
+    arr2.sort()
+    for i in range(0,n - 1):
+        if (arr1[i] != arr2[i]):
+            return False
+    return True
+The following is chain of thought:
+1. Check if the lengths n and m are equal. If not, return False immediately since arrays of different lengths cannot be equal.
+2. Sort both arrays to bring them into a comparable order.
+3. Iterate through each index from 0 to n-1 (since n = m after the first check).
+4. Compare elements at each index in the sorted arrays. If any pair is not equal, return False.
+5. If all elements match after the loop, return True.
+
+The code correctly impleme

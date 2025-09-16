@@ -1,0 +1,27 @@
+def binomial_coeff(n, k): 
+	C = [[0 for j in range(k + 1)] 
+			for i in range(n + 1)] 
+	for i in range(0, n + 1): 
+		for j in range(0, min(i, k) + 1): 
+			if (j == 0 or j == i): 
+				C[i][j] = 1
+			else: 
+				C[i][j] = (C[i - 1][j - 1] 
+							+ C[i - 1][j]) 
+	return C[n][k] 
+def lobb_num(n, m): 
+	return (((2 * m + 1) *
+		binomial_coeff(2 * n, m + n)) 
+					/ (m + n + 1))
+The following is chain of thought:
+I'll analyze the given code and provide the structured thought process.
+
+1. **Function Analysis**: The code defines two functions - `binomial_coeff(n, k)` which calculates binomial coefficients using dynamic programming, and `lobb_num(n, m)` which computes Lobb numbers using the binomial coefficient function.
+
+2. **Binomial Coefficient Implementation**: The `binomial_coeff` function uses a 2D DP table approach with proper base cases (when j=0 or j=i, value=1) and recurrence relation (C[i][j] = C[i-1][j-1] + C[i-1][j]).
+
+3. **Lobb Number Formula**: The `lobb_num` function implements the mathematical formula for Lobb numbers: L(m,n) = ((2m+1)/(m+n+1)) × C(2n, m+n), where C is the binomial coefficient.
+
+4. **Code Structure**: Both functions are properly implemented with appropriate parameter handling and return statements. The code uses nested list comprehensions for the DP table and proper mathematical operations.
+
+5. **Edge Cases**: The `min(i, k)` in the binomial coefficient function ensures we don't compute unnecessary values beyond the required k p

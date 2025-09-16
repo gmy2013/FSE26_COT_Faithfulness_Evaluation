@@ -1,0 +1,35 @@
+CodeGeneration:
+tations.
+6. Split the string by ', ' to get individual number strings.
+7. Convert each number string to an integer using a list comprehension.
+8. Convert the resulting list to a tuple and return it.
+
+However, the current implementation might not handle all edge cases properly, such as when there are spaces after commas or no spaces. Let's improve it to be more robust.
+
+Revised implementation:
+```python
+def tuple_str_int(test_str):
+    """
+    Convert a string representation of a tuple to a tuple of integers.
+    
+    Args:
+        test_str (str): A string representing a tuple, e.g., "(1, 2, 3)" or "1, 2, 3"
+    
+    Returns:
+        tuple: A tuple of integers parsed from the input string.
+    
+    Example:
+        >>> tuple_str_int("(1, 2, 3)")
+        (1, 2, 3)
+        >>> tuple_str_int("1, 2, 3")
+        (1, 2, 3)
+        >>> tuple_str_int("(1,2,3)")
+        (1, 2, 3)
+    """
+    # Remove parentheses and ellipsis if present
+    cleaned_str = test_str.replace('(', '').replace(')', '').replace('...', '')
+    # Split by comma and strip whitespace from each element
+    num_strs = [num.strip() for num in cleaned_str.split(',') if num.strip()]
+    # Convert to integers and return as tuple
+    return tuple(int(num) for num in num_strs)
+```

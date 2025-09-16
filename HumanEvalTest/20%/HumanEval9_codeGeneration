@@ -1,0 +1,38 @@
+20%CoT
+CodeGeneration:
+```python
+from typing import List
+
+def rolling_max(numbers: List[int]) -> List[int]:
+    """
+    From a given list of integers, generate a list of rolling maximum element found until given moment
+    in the sequence.
+    
+    >>> rolling_max([1, 2, 3, 2, 3, 4, 2])
+    [1, 2, 3, 3, 3, 4, 4]
+    """
+    if not numbers:
+        return []
+    
+    # Step 1: Initialize a variable to keep track of the maximum value.
+    current_max = numbers[0]
+    
+    # Step 2: Create an empty list to store the rolling maximums.
+    rolling_max_list = []
+    
+    # Step 3: Iterate over the numbers in the input list.
+    for num in numbers:
+        # Update the current_max if the current number is greater.
+        if num > current_max:
+            current_max = num
+        # Append the current maximum to the rolling_max_list.
+        rolling_max_list.append(current_max)
+    
+    return rolling_max_list
+```
+This implementation follows the plan outlined in the chain of thought:
+
+1. It initializes `current_max` with the first element of the list.
+2. It uses a list `rolling_max_list` to store the rolling maximum values.
+3. It iterates over each number in the input list, updating the `current_max` where necessary, and appends the current maximum to the list.
+4. It returns the list of rolling maximums.

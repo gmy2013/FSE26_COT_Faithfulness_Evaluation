@@ -1,0 +1,10 @@
+import re 
+def remove_char(S):
+  result = re.sub('[\W_]+', '', S) 
+  return result
+The following is chain of thought:
+1. The function `remove_char(S)` takes a string `S` as input.
+2. It uses `re.sub` with the pattern `'[\W_]+'` to remove all non-word characters and underscores.
+   - `\W` matches any non-word character (equivalent to `[^a-zA-Z0-9_]`).
+   - The underscore `_` is included in the pattern to also remove underscores.
+   - The `+` means one or more occurrences of these char

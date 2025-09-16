@@ -1,0 +1,35 @@
+CodeGeneration:
+se letters (the rest of the segment)
+
+3. **Implementation**: Use `re.findall()` with this pattern to extract all matching segments from the input text.
+
+4. **Edge Cases**: The pattern handles:
+   - Consecutive uppercase letters (each becomes a separate segment)
+   - Strings starting with lowercase (those characters won't be captured)
+   - Empty strings (returns empty list)
+
+Here's the complete implementation:
+
+```python
+import re
+
+def split_list(text):
+    """Split a string at uppercase letters.
+    
+    Args:
+        text: Input string to split
+        
+    Returns:
+        List of strings where each string starts with an uppercase letter
+        followed by zero or more non-uppercase letters
+        
+    Examples:
+        >>> split_list('HelloWorld')
+        ['Hello', 'World']
+        >>> split_list('ABC')
+        ['A', 'B', 'C']
+        >>> split_list('hello')
+        []
+    """
+    return re.findall('[A-Z][^A-Z]*', text)
+```

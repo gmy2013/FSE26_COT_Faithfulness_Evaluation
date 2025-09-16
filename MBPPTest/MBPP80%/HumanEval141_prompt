@@ -1,0 +1,6 @@
+import math
+def area_tetrahedron(side):
+  area = math.sqrt(3)*(side*side)
+  return area
+The following is chain of thought:
+The function `area_tetrahedron` calculates the surface area of a regular tetrahedron given the length of its side. A regular tetrahedron has 4 equilateral triangular faces. The area of one equilateral triangle is (√3/4) * side². Therefore, the total surface area is 4 * (√3/4) * side² = √3 * side². The implementation correctly 

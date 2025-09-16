@@ -1,0 +1,43 @@
+CodeGeneration:
+i` from 0 to `n-1`, check if `dp[i]` is reachable (i.e., not `-1`).
+   - For each reachable state `i`, consider adding segments of length `a`, `b`, or `c`:
+     - If `i + a <= n`, update `dp[i + a]` to the maximum of its current value and `dp[i] + 1`.
+     - Similarly for `b` and `c`.
+
+4. **Return Result**: After processing, `dp[n]` holds the maximum segments to form length `n`, or `-1` if not possible.
+
+Here is the complete function with detailed comments:
+
+```python
+def maximum_segments(n, a, b, c):
+    """
+    Compute the maximum number of segments of lengths a, b, or c that can be combined to exactly form a rod of length n.
+
+    Args:
+        n (int): Total length of the rod.
+        a (int): Length of the first type of segment.
+        b (int): Length of the second type of segment.
+        c (int): Length of the third type of segment.
+
+    Returns:
+        int: Maximum number of segments to form exactly length n, or -1 if not possible.
+    """
+    # Initialize DP array with -1 (unreachable) and size n+10 to avoid index errors
+    dp = [-1] * (n + 10)
+    dp[0] = 0  # Base case: 0 segments for length 0
+
+    # Iterate through all lengths from 0 to n
+    for i in range(0, n):
+        if dp[i] != -1:  # If current length i is reachable
+            # Try adding segment of length a
+            if i + a <= n:
+                dp[i + a] = max(dp[i] + 1, dp[i + a])
+            # Try adding segment of length b
+            if i + b <= n:
+                dp[i + b] = max(dp[i] + 1, dp[i + b])
+            # Try adding segment of length c
+            if i + c <= n:
+                dp[i + c] = max(dp[i] + 1, dp[i + c])
+    
+    return dp[n]  # Return the result for length n
+```

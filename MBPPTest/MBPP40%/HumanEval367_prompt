@@ -1,0 +1,8 @@
+def floor_Max(A,B,N):
+    x = min(B - 1,N)
+    return (A*x) // B
+The following is chain of thought:
+1. Understand the function goal: Compute the maximum value of floor((A*x)/B) for x in [0, N].
+2. Recognize that the expression (A*x)//B is integer floor division of (A*x) by B.
+3. Analyze the behavior: The function is linear in x, but since we're taking floor division, it may not be strictly increasing due to integer truncation.
+4. Key insight: The maximum typically occurs at the largest x where (A*x) mod B is close to B-1, to maxi

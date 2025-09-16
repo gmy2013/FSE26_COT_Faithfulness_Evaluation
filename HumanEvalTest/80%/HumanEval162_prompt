@@ -1,0 +1,19 @@
+
+def string_to_md5(text):
+    """
+    Given a string 'text', return its md5 hash equivalent string.
+    If 'text' is an empty string, return None.
+
+    >>> string_to_md5('Hello world') == '3e25960a79dbc69b674cd4ec67a72c62'
+    """
+
+The following is chain of thought:
+We are going to:
+1. Check if the input text is an empty string -> return None
+2. Otherwise, compute the MD5 hash of the string
+3. Return the hexadecimal digest of the hash as a string
+
+Steps:
+- Import hashlib for md5 functionality
+- Handle empty string case
+- Encode the string to bytes (since hashlib requires bytes

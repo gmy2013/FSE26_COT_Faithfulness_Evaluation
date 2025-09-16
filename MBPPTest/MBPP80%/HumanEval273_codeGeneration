@@ -1,0 +1,46 @@
+CodeGeneration:
+Here's the completed function with proper handling for edge cases:
+
+```python
+def check_Concat(str1, str2):
+    """
+    Check if str1 can be formed by concatenating multiple copies of str2.
+    
+    Args:
+        str1 (str): The target string to check
+        str2 (str): The base string to repeat
+    
+    Returns:
+        bool: True if str1 can be formed by concatenating str2 multiple times,
+              False otherwise
+    
+    Examples:
+        >>> check_Concat("abcabc", "abc")
+        True
+        >>> check_Concat("abcabc", "ab")
+        False
+        >>> check_Concat("", "abc")
+        True
+        >>> check_Concat("abc", "")
+        False
+    """
+    N = len(str1)
+    M = len(str2)
+    
+    # Handle edge case: empty str2
+    if M == 0:
+        return N == 0  # Only empty str1 can be formed from empty str2
+    
+    # Check if str1 length is divisible by str2 length
+    if N % M != 0:
+        return False
+    
+    # Verify each character matches the corresponding position in str2
+    for i in range(N):
+        if str1[i] != str2[i % M]:
+            return False         
+    
+    return True
+```
+
+The key addition is handling the edge case where `str2` is empty (M=0), which would otherwise cause a division by zero error. In this case, the function returns True only if `str1` is also empty, as an empty string can only be formed by concatenating empty strings.
